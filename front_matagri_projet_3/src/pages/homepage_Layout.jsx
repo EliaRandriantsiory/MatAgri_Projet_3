@@ -348,14 +348,14 @@ function HomePage_Layout() {
                                 <img src="../assets/images/jewellery/icon/avatar.png" className="opacity-1" alt="" />
                                 <ul className="onhover-show-div">
                                 <li>
-                                    <a href="#" data-lng="en">
+                                    <Link to="/Login" data-lng="en">
                                     Se connecter
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#" data-lng="es">
+                                    <Link to="/SignUp" data-lng="es">
                                     S'enregistrer
-                                    </a>
+                                    </Link>
                                 </li>
                                 </ul>
                             </li>

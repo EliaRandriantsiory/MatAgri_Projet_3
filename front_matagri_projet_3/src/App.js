@@ -4,6 +4,8 @@ import './App.css';
 
 import HomePage_Layout from "./pages/homepage_Layout";
 import HomePage from "./pages/homePage/homepage";
+import Login from "./pages/AuthenticationPage/LoginPage";
+import SignUp from "./pages/AuthenticationPage/SignupPage";
 
 function App() {
   return (
@@ -11,7 +13,9 @@ function App() {
     <Routes>
      
     <Route path="/" element=<HomePage_Layout /> >
-        {/* <Route path="/" element=<HomePage /> />   */}
+        <Route path="/" element=<HomePage /> />  
+        <Route path="/Login" element=<Login /> />  
+        <Route path="/SignUp" element=<SignUp /> />  
         {/* <Route path="/ajoutmateriel" element=<AjoutMateriel /> />   */}
     </Route>
     {/* <Route path="/" element=<PageProduit /> />   */}
