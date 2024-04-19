@@ -51,6 +51,8 @@ public class Users {
     @NotNull
     private String password;
     
+    private String profile;
+    
     
     
     
