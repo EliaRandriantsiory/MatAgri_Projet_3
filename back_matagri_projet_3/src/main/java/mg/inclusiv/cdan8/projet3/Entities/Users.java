@@ -26,29 +26,24 @@ public class Users {
     private Long idUser;    
     private String name;
     private String lastname;
-    @NotBlank
-    @NotNull
+    
     private String address;
-    @NotBlank
-    @NotNull
-    @UniqueElements
+    
+    
     private String phone;
-    @UniqueElements
+    
     private String nif;
-    @UniqueElements
+    
     private String stat;
-    @UniqueElements
+    
     private String cin;
-    @NotBlank
-    @NotNull
-    @UniqueElements
+    
+    
     private String email;
-    @NotBlank
-    @NotNull
+    
     private String region;
     private String companyName;
-    @NotBlank
-    @NotNull
+    
     private String password;
     
     private String profile;
