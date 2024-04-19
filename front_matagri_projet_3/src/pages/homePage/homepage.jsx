@@ -1,6 +1,6 @@
-function HomePage() {
-    return ( 
-    <>
+
+function SectionSlide(){
+    return(
         <section className="p-0">
             <div className="slide-1 home-slider">
                 <div>
@@ -21,7 +21,7 @@ function HomePage() {
                 </div>
                 </div>
                 <div>
-                <div className="home text-start">
+                <div hidden className="home text-start">
                     <img src="../assets/images/home-banner/12.jpg" alt="" className="bg-img blur-up lazyload" />
                     <div className="container">
                     <div className="row">
@@ -38,7 +38,7 @@ function HomePage() {
                 </div>
                 </div>
                 <div>
-                <div className="home text-start">
+                <div hidden className="home text-start">
                     <img src="../assets/images/home-banner/64.jpg" alt="" className="bg-img blur-up lazyload" />
                     <div className="container">
                     <div className="row">
@@ -56,7 +56,10 @@ function HomePage() {
                 </div>
             </div>
         </section>
-        
+    )
+}
+function BannerFurniture(){
+    return(
         <section className="banner-furniture ratio_45 banner-padding">
         <div className="container-fluid">
             <div className="row partition3">
@@ -108,7 +111,10 @@ function HomePage() {
             </div>
         </div>
         </section>
-        
+    )
+}
+function SectionProduct(){
+    return(
         <section className="section-b-space pt-0 ratio_asos">
         <div className="container">
             <div className="row">
@@ -749,7 +755,10 @@ function HomePage() {
             </div>
         </div>
         </section>
-        
+    )
+}
+function SectionPartenaria(){
+    return(
         <section className="p-0">
         <div className="full-banner parallax text-center p-left">
             <img src="../assets/images/parallax/3.jpg" alt="" className="bg-img blur-up lazyload" />
@@ -766,7 +775,12 @@ function HomePage() {
             </div>
         </div>
         </section>
-        
+    )
+}
+function HomePage() {
+    
+    return ( 
+    <>
         <section className="blog blog-2 section-b-space ratio3_2 slick-default-margin">
         <div className="container">
             <div className="row">
@@ -848,9 +862,6 @@ function HomePage() {
             </div>
         </div>
         </section>
-            
-        
-    
     </> 
     );
 }
