@@ -22,5 +22,5 @@ public class Materiels {
     private String informationComplMat;    
     private String imagePath;
     private String imageDetailsPath;
-
+    
 }

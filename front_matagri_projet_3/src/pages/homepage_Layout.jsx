@@ -188,7 +188,7 @@ function HomePage_Layout() {
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">Contact</a>
+                                <a href="#">Nos partenaires</a>
                                 <ul>
                                 <li><a href="category-page(vegetables).html">tab style<span className="new-tag">new</span></a></li>
                                 <li><a href="category-page(top-filter).html">top filter</a></li>
@@ -208,7 +208,7 @@ function HomePage_Layout() {
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">product</a>
+                                <a href="#">Contact</a>
                                 <ul>
                                 <li><a href="product-page(360-view).html">360 view <span className="new-tag">new</span></a></li>
                                 <li><a href="product-page(video-thumbnail).html">video
