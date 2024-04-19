@@ -41,7 +41,7 @@ function HomePage_Layout() {
                           </div>
                         </li>
                         <li>
-                          <a href="">Accueil</a>
+                          <a href="#">Accueil</a>
                         </li>
                         <li className="mega" id="hover-cls">
                           <a href="#">Matériel </a>
@@ -725,13 +725,18 @@ function HomePage_Layout() {
                           />
                           <ul className="onhover-show-div">
                             <li>
-                              <Link to="/Login" data-lng="en">
-                                Se connecter
+                              <Link to="/SignUpProvider" data-lng="en">
+                                Fournisseur
                               </Link>
                             </li>
                             <li>
                               <Link to="/SignUp" data-lng="es">
-                                S'inscrire
+                                Agriculteur
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/SignUpCooperative" data-lng="es">
+                                Coopérative
                               </Link>
                             </li>
                           </ul>
