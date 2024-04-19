@@ -3,7 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import InscriptionAgriculteur from "./components/inscriptionagricultuer";
+import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricultuer";
+import LabelwithInput from "./components/labelwithInputComponent";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
