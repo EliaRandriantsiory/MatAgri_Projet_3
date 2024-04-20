@@ -54,7 +54,8 @@ public class HomeRestController {
 
     @PostMapping("add_agriculteur")
     public ResponseEntity<String> addContact(@RequestBody Users users) {
-        userService.addUsersAgriculteur(users);
+        //userService.addUsersAgriculteur(users);
+        System.out.println(users);
         return ResponseEntity.ok("Données reçues avec succès !");
     }
     

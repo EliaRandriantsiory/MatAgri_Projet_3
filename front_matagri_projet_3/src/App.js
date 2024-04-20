@@ -8,6 +8,7 @@ import SignUp from "./pages/AuthenticationPage/SignupPage";
 import SignUpProvider from "./pages/AuthenticationPage/SignUpProvider";
 import SignUpCooperative from "./pages/AuthenticationPage/SignUpCooperative";
 import HomePage_Layout from "./pages/homepage_Layout";
+import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricultuer";
 
 function App() {
   return (
@@ -20,7 +21,10 @@ function App() {
           <Route path="/SignUp" element=<SignUp /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
-          {/* <Route path="/ajoutmateriel" element=<AjoutMateriel /> />   */}
+          <Route
+            path="/InscriptionAgriculteur"
+            element=<InscriptionAgriculteur />
+          />
         </Route>
         {/* <Route path="/" element=<PageProduit /> />   */}
         {/* <Route path="/" element = <PageProduit /> > */}
