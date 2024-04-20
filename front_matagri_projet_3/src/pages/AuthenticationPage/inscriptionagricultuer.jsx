@@ -63,7 +63,7 @@ function InscriptionAgriculteur() {
     })
     try {
       
-      const response = axios.post('http://localhost:8082/api/home/add_agriculteur', {
+      const response = axios.put('http://localhost:8082/api/home/add_agriculteur', {
         name:nameForm,
         lastname:lastnameForm,
         address:addressForm,

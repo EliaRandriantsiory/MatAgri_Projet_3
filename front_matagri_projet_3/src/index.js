@@ -5,12 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricultuer";
 import LabelwithInput from "./components/labelwithInputComponent";
+import DropdownInfoAuthUser from "./components/homepagecomponents/infoAuthUser";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <InscriptionAgriculteur />
+    <DropdownInfoAuthUser />
   </React.StrictMode>
 );
 

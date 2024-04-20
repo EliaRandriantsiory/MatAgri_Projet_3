@@ -917,8 +917,8 @@ function HomePage_Layout() {
         <div className="light-layout">
           <div className="container">
             <section className="small-section border-section border-top-0">
-              <div className="row">
-                <div className="col-lg-6">
+              <div hidden className="row">
+                <div  className="col-lg-6">
                   <div className="subscribe">
                     <div>
                       <h4>SAVEZ TOUT D'ABORD !</h4>
@@ -970,7 +970,7 @@ function HomePage_Layout() {
                 </div>
                 <div className="footer-contant">
                   <div className="footer-logo">
-                    <img src="../assets/images/icon/" alt="" />
+                    <img  src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

@@ -43,6 +43,7 @@ public class HomeRestController {
         
         return listmateriels;
     }
+    // insert into users(address,email,password,phone,region) values('analakely','rakoto@gmail.com','rakoto','03254215521','boeny');
 
     @GetMapping("listPersonnes")
     public List<Users> listUser() {
@@ -52,11 +53,8 @@ public class HomeRestController {
     }
 
     @PutMapping("add_agriculteur")
-    public ResponseEntity<String> addContact(@RequestBody Users userss) {
-        System.out.println(  userss.getName());
-        Users emptyUser = new Users();
-        userRepository.save(emptyUser);
-        // userService.addUsersAgriculteur(emptyUser);
+    public ResponseEntity<String> addContact(@RequestBody Users users) {
+        userService.addUsersAgriculteur(users);
         return ResponseEntity.ok("Données reçues avec succès !");
     }
     
