@@ -22,7 +22,7 @@ function HomeSlide({}) {
                     <div>
                       <h1 class="text-white">MatAgri</h1>
                       <h4 class="text-success">
-                      Gagnez en productivité grâce à notre
+                      Gagnez en productivité grâce à nos matériels agricoles
                       </h4>
                       <h4 class="fst-italic text-white">
                       application de mutualisation des matériels agricoles.
