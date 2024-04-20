@@ -6,7 +6,7 @@ function Navigation() {
       <div className="col-lg-3">
         <div className="profile-top">
           <div className="profile-image">
-            <img src="" alt="" className="img-fluid" />
+            <img src="/front_matagri_projet_3/public/assets/images/logos/17.png" alt="" className="img-fluid" />
           </div>
           <div className="profile-detail">
             <h5>Fashion Store</h5>
