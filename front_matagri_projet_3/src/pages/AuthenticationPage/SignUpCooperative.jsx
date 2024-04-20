@@ -138,6 +138,7 @@ function SignUpCooperative() {
                     <div className="col-md-6">
                       <label htmlFor="datepicker">Date de création</label>
                       <br />
+                      <div id="pic">
                       <DatePicker
                         id="datepicker"
                         selected={selectedDate}
@@ -145,6 +146,8 @@ function SignUpCooperative() {
                         className="form-control"
                         customInput={<CustomDatePickerInput/>}                       
                       />
+                      </div>
+                     
                     </div>
                   </div>
                 </form>
