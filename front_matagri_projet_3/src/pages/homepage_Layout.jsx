@@ -45,7 +45,7 @@ function HomePage_Layout() {
                           {/* <a href="#"></a> */}
                         </li>
                         <li className="mega" id="hover-cls">
-                          <a href="#">Matériel </a>
+                          <a href="#">A propos</a>
                           <ul className="mega-menu full-mega-menu">
                             <li>
                               <div className="container">
@@ -383,7 +383,7 @@ function HomePage_Layout() {
                           </ul>
                         </li>
                         <li>
-                          <a href="#">Contact</a>
+                          <a href="#">Matériels</a>
                           <ul>
                             <li>
                               <a href="category-page(vegetables).html">
@@ -445,7 +445,7 @@ function HomePage_Layout() {
                           </ul>
                         </li>
                         <li>
-                          <a href="#">Partenaire</a>
+                          <a href="#">Partenaires</a>
                           <ul>
                             <li>
                               <a href="product-page(360-view).html">
@@ -545,7 +545,7 @@ function HomePage_Layout() {
                           </ul>
                         </li>
                         <li>
-                          <a href="#">pages</a>
+                          <a href="#">Contacts</a>
                           <ul>
                             <li>
                               <a href="#">vendor</a>
@@ -684,25 +684,7 @@ function HomePage_Layout() {
                             </li>
                           </ul>
                         </li>
-                        <li>
-                          <a href="#">blog</a>
-                          <ul>
-                            <li>
-                              <a href="blog-page.html">left sidebar</a>
-                            </li>
-                            <li>
-                              <a href="blog(right-sidebar).html">
-                                right sidebar
-                              </a>
-                            </li>
-                            <li>
-                              <a href="blog(no-sidebar).html">no sidebar</a>
-                            </li>
-                            <li>
-                              <a href="blog-details.html">blog details</a>
-                            </li>
-                          </ul>
-                        </li>
+                        
                       </ul>
                     </nav>
                   </div>

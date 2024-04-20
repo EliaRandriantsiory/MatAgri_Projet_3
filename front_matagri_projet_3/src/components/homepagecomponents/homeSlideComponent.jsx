@@ -25,6 +25,7 @@ function HomeSlide({}) {
                       Gagnez en productivité grâce à nos matériels agricoles
                       </h4>
                       <h4 class="fst-italic text-white">
+
                       Application de location, livraison et mutualisation de matériels agricoles.
                         </h4>
                       <a href="#" class="btn btn-solid">
