@@ -15,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element=<HomePage_Layout />>
           <Route path="/" element=<HomePage /> />
+          <Route path="/home" element=<HomePage /> />
           <Route path="/Login" element=<Login /> />
           <Route path="/SignUp" element=<SignUp /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
