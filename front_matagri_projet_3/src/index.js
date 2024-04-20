@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricultuer";
 import LabelwithInput from "./components/labelwithInputComponent";
 import DropdownInfoAuthUser from "./components/homepagecomponents/infoAuthUser";
-
+import ReactDatePicker from "react-datepicker";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
