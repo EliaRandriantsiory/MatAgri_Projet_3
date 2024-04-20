@@ -1,3 +1,5 @@
+import "../assets/css/SignUpProvider/provider.css";
+
 function SignUpProvider() {
   return (
     <>
@@ -70,16 +72,6 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">email</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="email"
-                        placeholder="Votre adresse email"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
                       <label htmlFor="review">Confirmer mot de passe</label>
                       <input
                         type="password"
@@ -101,13 +93,23 @@ function SignUpProvider() {
                       </select>
                     </div>
                   </div>
+                  <div id="checkTermeCondition">
+                    <input
+                      type="checkbox"
+                      name="checkbox-button"
+                      value="value"
+                      id="checkPlus"
+                    ></input>
+                    <a id="addCheckboxBtn" href="#">
+                      Terme et contrat de location
+                    </a>
+                  </div>
+                  <a href="#" className="btn btn-solid w-auto">
+                    S'inscrire
+                  </a>
                 </form>
               </div>
               <div className="form-row row"></div>
-
-              <a href="#" className="btn btn-solid w-auto">
-                S'inscrire
-              </a>
             </div>
           </div>
         </div>
