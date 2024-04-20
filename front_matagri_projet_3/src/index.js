@@ -11,7 +11,7 @@ import DropdownInfoAuthUser from "./components/homepagecomponents/infoAuthUser";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <DropdownInfoAuthUser />
+    <App />
   </React.StrictMode>
 );
 

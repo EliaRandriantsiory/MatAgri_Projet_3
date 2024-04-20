@@ -68,7 +68,6 @@ function InscriptionAgriculteur() {
         lastname:lastnameForm,
         address:addressForm,
         phone:phoneForm,
-        // cin:cinForm,
         email:emailForm,
         region:regionForm,
         password:passwordForm,
@@ -77,8 +76,6 @@ function InscriptionAgriculteur() {
         stat: null,
         cin: null,
         companyName: null
-        
-        
       } );
       
       console.log(response.data);
@@ -88,13 +85,7 @@ function InscriptionAgriculteur() {
   }
   
   useEffect(( )=>{
-    // console.log("bonjour")
-    // console.log(form)
   },[form])
-//   useEffect(( )=>{
-//     return console.log("phase de démontage")
-// },[form])
-
   return (
     <>
       <section className="register-page section-b-space">
