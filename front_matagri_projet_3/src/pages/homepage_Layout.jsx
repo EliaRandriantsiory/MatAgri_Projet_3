@@ -41,7 +41,8 @@ function HomePage_Layout() {
                           </div>
                         </li>
                         <li>
-                          <a href="#">Accueil</a>
+                        <Link to={"/home"}>Accueil</Link>
+                          {/* <a href="#"></a> */}
                         </li>
                         <li className="mega" id="hover-cls">
                           <a href="#">Matériel </a>
@@ -444,7 +445,7 @@ function HomePage_Layout() {
                           </ul>
                         </li>
                         <li>
-                          <a href="#">product</a>
+                          <a href="#">Partenaire</a>
                           <ul>
                             <li>
                               <a href="product-page(360-view).html">

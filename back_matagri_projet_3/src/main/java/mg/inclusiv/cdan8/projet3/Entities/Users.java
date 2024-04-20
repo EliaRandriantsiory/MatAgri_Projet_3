@@ -1,7 +1,5 @@
 package mg.inclusiv.cdan8.projet3.Entities;
-
 import org.hibernate.validator.constraints.UniqueElements;
-
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
