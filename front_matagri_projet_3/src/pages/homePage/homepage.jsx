@@ -1,9 +1,19 @@
-function HomePage() {
+import { useState } from "react";
+
+function HomePage({listImage}) {
     
+    const [dataSection0, setDataSection0]=useState([
+        {
+            
+        }
+    ])
     
     return ( 
     <>
-        <section className="p-0">
+        
+        
+        
+        {/* <section className="p-0">
             <div className="slide-1 home-slider">
                 <div>
                 <div className="home text-start">
@@ -57,9 +67,9 @@ function HomePage() {
                 </div>
                 </div>
             </div>
-        </section>
+        </section> */}
         
-        <section className="banner-furniture ratio_45 banner-padding">
+        {/* <section className="banner-furniture ratio_45 banner-padding">
         <div className="container-fluid">
             <div className="row partition3">
             <div className="col-md-4">
@@ -109,9 +119,9 @@ function HomePage() {
             </div>
             </div>
         </div>
-        </section>
+        </section> */}
         
-        <section className="section-b-space pt-0 ratio_asos">
+        {/* <section className="section-b-space pt-0 ratio_asos">
         <div className="container">
             <div className="row">
             <div className="col">
@@ -750,9 +760,9 @@ function HomePage() {
             </div>
             </div>
         </div>
-        </section>
+        </section> */}
         
-        <section className="p-0">
+        {/* <section className="p-0">
         <div className="full-banner parallax text-center p-left">
             <img src="../assets/images/parallax/3.jpg" alt="" className="bg-img blur-up lazyload" />
             <div className="container">
@@ -850,7 +860,7 @@ function HomePage() {
             </div>
         </div>
         </section>
-            
+             */}
         
     
     </> 
