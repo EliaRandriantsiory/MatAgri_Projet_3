@@ -14,7 +14,7 @@ import cartProduitModel from "./components/Produitcomponents/cartesProduitCompne
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <cartProduitModel />
+    <App />
   </React.StrictMode>
 );
 
