@@ -60,34 +60,35 @@ function InscriptionAgriculteur() {
       password: passwordForm,
       confirmPassword: confirmPasswordForm,
     });
-  };
-  try {
-    const response = axios.post(
-      "http://localhost:8082/api/home/add_agriculteur",
-      {
-        name: nameForm,
-        lastname: lastnameForm,
-        address: addressForm,
-        phone: phoneForm,
-        // cin:cinForm,
-        email: emailForm,
-        region: regionForm,
-        password: passwordForm,
-        profile: 1,
-        nif: null,
-        stat: null,
-        cin: null,
-        companyName: null,
-      }
-    );
 
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }
+    try {
+      const response = axios.post(
+        "http://localhost:8082/api/home/add_agriculteur",
+        {
+          name: nameForm,
+          lastname: lastnameForm,
+          address: addressForm,
+          phone: phoneForm,
+          cin: cinForm,
+          email: emailForm,
+          region: regionForm,
+          password: passwordForm,
+          profile: 1,
+          nif: null,
+          stat: null,
+          companyName: null,
+        }
+      );
+
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    console.log("bonjour");
-    console.log(form);
+    // console.log("bonjour")
+    // console.log(form)
   }, [form]);
   //   useEffect(( )=>{
   //     return console.log("phase de démontage")
