@@ -78,6 +78,7 @@ function InscriptionAgriculteur() {
           },
           nif: null,
           stat: null,
+
           companyName: null,
         }
       );
@@ -93,6 +94,7 @@ function InscriptionAgriculteur() {
     // console.log(form)
   }, []);
   useEffect(() => {}, [form]);
+
   //   useEffect(( )=>{
   //     return console.log("phase de démontage")
   // },[form])
