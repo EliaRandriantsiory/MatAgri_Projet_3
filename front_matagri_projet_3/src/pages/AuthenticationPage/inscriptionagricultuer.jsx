@@ -73,7 +73,11 @@ function InscriptionAgriculteur() {
           email: emailForm,
           region: regionForm,
           password: passwordForm,
-          profile: 1,
+          profile: {
+            idprofile: 1,
+            profile: "agriculteur",
+            roles: [],
+          },
           nif: null,
           stat: null,
           companyName: null,
