@@ -1,6 +1,14 @@
+import { useState } from "react";
 import "../assets/css/SignUpProvider/provider.css";
+import Terme from "../Terme";
 
-function SignUpProvider() {
+function SignUpProvider({ terme }) {
+  const [contratview, setContratview] = useState("");
+
+  const handleTermeClick = () => {
+    setContratview(terme);
+  };
+
   return (
     <>
       <section className="register-page section-b-space">

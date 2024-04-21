@@ -8,6 +8,7 @@ import SignUp from "./pages/AuthenticationPage/SignupPage";
 import SignUpProvider from "./pages/AuthenticationPage/SignUpProvider";
 import SignUpCooperative from "./pages/AuthenticationPage/SignUpCooperative";
 import HomePage_Layout from "./pages/homepage_Layout";
+import Terme from "./pages/Terme";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/SignUp" element=<SignUp /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
+          <Route path="/Terme" element=<Terme /> />
           {/* <Route path="/ajoutmateriel" element=<AjoutMateriel /> />   */}
         </Route>
         {/* <Route path="/" element=<PageProduit /> />   */}
