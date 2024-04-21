@@ -23,9 +23,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-// insert into materiels(categorie_mat,autre_informationmat,image_path,information_mat) values('categoriecategorie_mat','autre_informationmat','image_path','information_mat');
-// 
-
 @RestController
 @CrossOrigin
 @RequestMapping("/api/home")
@@ -60,7 +57,6 @@ public class HomeRestController {
         return (Users)session.getAttribute("user");
     }
     
-
     @PostMapping("add_agriculteur")
     public ResponseEntity<String> addContact(@RequestBody Users users) {
         userService.addUsersAgriculteur(users);
