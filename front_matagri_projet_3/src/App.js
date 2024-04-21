@@ -33,6 +33,7 @@ function App() {
             element=<InscriptionAgriculteur />
           />
         </Route>
+
         {/* <Route path="/" element=<PageProduit /> />   */}
         {/* <Route path="/" element = <PageProduit /> > */}
         {/* </Route>  */}
