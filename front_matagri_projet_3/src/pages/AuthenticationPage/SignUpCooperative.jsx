@@ -1,8 +1,39 @@
 /* eslint-disable no-undef */
 
 import { Form } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
+import { ReactComponent as CalendarIcon } from "../assets/svg/calendar-icon.svg";
+import React from "react";
+import "../assets/css/calendar/calendar-icon.css";
+
+
 
 function SignUpCooperative() {
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  const CustomDatePickerInput = React.forwardRef(({ value, onClick }, ref) => (
+    <div className="custom-date-picker-input datepiker ">
+        <input
+          type="text"
+          value={value}
+          onClick={onClick}
+          onChange={() => {}}
+          ref={ref}
+          className="form-control"
+        />
+      <span className="calendar-icon-container">
+        <CalendarIcon className="calendar-icon" />
+      </span>
+    </div>
+  ));
+
+
   return (
     <>
       <section className="register-page section-b-space">
@@ -74,16 +105,6 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Nombre Agriculteteur</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="email"
-                        placeholder="Nombre agriculteur"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
                       <label htmlFor="review">Confirmer mot de passe</label>
                       <input
                         type="password"
@@ -94,8 +115,18 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
+                      <label htmlFor="email">Nombre Agriculteteur</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="email"
+                        placeholder="Nombre agriculteur"
+                        required
+                      />
+                    </div>
+                    <div className="col-md-6">
                       <label htmlFor="mon-menu">région :</label>
-                      <select id="region" class="form-control">
+                      <select id="region" className="form-control">
                         <option value="option1">Alaotra Mangoro</option>
                         <option value="option2">Analamanga</option>
                         <option value="option3">Atsimo Andrefana</option>
@@ -104,14 +135,42 @@ function SignUpCooperative() {
                         <option value="option7">Vakinakaratra</option>
                       </select>
                     </div>
+                    <div className="col-md-6">
+                      <label htmlFor="datepicker">Date de création</label>
+                      <br />
+                      <div id="pic">
+                      <DatePicker
+                        id="datepicker"
+                        selected={selectedDate}
+                        onChange={handleDateChange}
+                        className="form-control"
+                        customInput={<CustomDatePickerInput/>}                       
+                      />
+                      </div>
+                     
+                    </div>
                   </div>
                 </form>
-              </div>
-              <div className="form-row row"></div>
+                <div id="checkTermeCondition">
+                    <input
+                      type="checkbox"
+                      name="checkbox-button"
+                      value="value" id="checkPlus"
+                    ></input>
+                    <a id="addCheckboxBtn" href="#">
+                      Terme et contrat de location
+                    </a>
+                </div>
 
-              <a href="#" className="btn btn-solid w-auto">
-                S'inscrire
-              </a>
+
+                      
+               
+                 
+            <input type="submit" className="btn btn-solid w-auto" value={"S'inscrire"}/>
+
+
+              </div>
+              <div className="form-row row"></div>           
             </div>
           </div>
         </div>
