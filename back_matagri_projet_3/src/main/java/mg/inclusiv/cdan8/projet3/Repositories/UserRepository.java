@@ -11,8 +11,6 @@ import mg.inclusiv.cdan8.projet3.Entities.Users;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users,Long> {
-    // @Query("SELECT u.name, u.lastname, p.profile, r.role_user FROM User u JOIN u.profile p RIGHT JOIN p.roles r WHERE u.name = :name AND u.lastname = :lastname")
-    // List<Object[]> authUser(@Param("name") String name, @Param("lastname") String lastname);
-    // @Query("SELECT u.name, u.lastname FROM User u")
-    // List<Object[]> authUser();
+    Users findByEmail(String email);
+    
 }
