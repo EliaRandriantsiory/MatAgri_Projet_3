@@ -10,6 +10,7 @@ import SignUpCooperative from "./pages/AuthenticationPage/SignUpCooperative";
 import HomePage_Layout from "./pages/homepage_Layout";
 import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
+import Terme from "./pages/Terme";
 
 function App() {
   return (
