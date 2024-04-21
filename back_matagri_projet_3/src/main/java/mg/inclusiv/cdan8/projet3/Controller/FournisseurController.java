@@ -30,7 +30,7 @@ public class FournisseurController {
 
     // Endpoint pour récupérer un fournisseur par son ID
     @GetMapping("/{id}")
-    public List<Fournisseur> getFournisseurById(@PathVariable int id) {
+    public Fournisseur getFournisseurById(@PathVariable int id) {
         return fournisseurService.getFournisseurById(id);
     }
 
