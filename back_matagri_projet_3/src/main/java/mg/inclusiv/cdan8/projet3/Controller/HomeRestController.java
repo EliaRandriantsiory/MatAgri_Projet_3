@@ -52,7 +52,7 @@ public class HomeRestController {
         return listUtilisateur;
     }
 
-    @PutMapping("add_agriculteur")
+    @PostMapping("add_agriculteur")
     public ResponseEntity<String> addContact(@RequestBody Users users) {
         userService.addUsersAgriculteur(users);
         return ResponseEntity.ok("Données reçues avec succès !");
