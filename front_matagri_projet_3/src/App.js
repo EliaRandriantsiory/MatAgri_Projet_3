@@ -13,6 +13,7 @@ import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricu
 import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import SearchPage from "./pages/homePage/Search";
+import DashboardUser from "./pages/dasboard";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             element=<InscriptionAgriculteur />
           />
         </Route>
+        <Route path="/Dashboard" element=<DashboardUser /> />
 
         {/* <Route path="/" element=<PageProduit /> />   */}
         {/* <Route path="/" element = <PageProduit /> > */}

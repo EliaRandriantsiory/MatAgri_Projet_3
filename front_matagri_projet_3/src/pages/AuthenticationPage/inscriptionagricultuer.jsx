@@ -1,12 +1,16 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState  } from "react";
+import { useNavigate  } from 'react-router-dom';
+
 import axios from "axios";
 function InscriptionAgriculteur() {
+  const [inscriptionAgriculteurRedirect, setInscriptionAgriculteurRedirect] = useState(false)
   const [label, setLabel] = useState({
     type: "mail",
     content: "Votre mail",
     placeholder: "Entrer ici votre mail",
   });
+  const navigate = useNavigate();
   const [form, setForm] = useState({});
   const [nameForm, setName] = useState("");
   const [lastnameForm, setLastName] = useState("");
@@ -20,80 +24,94 @@ function InscriptionAgriculteur() {
 
   const handleOnChangeInputTextNom = (event) => {
     setName(event.target.value);
+    localStorage.setItem('nom',event.target.value)
   };
   const handleOnChangeInputTextLastName = (event) => {
     setLastName(event.target.value);
+    localStorage.setItem('prenom',event.target.value)
   };
   const handleOnChangeInputTextAddress = (event) => {
     setAddress(event.target.value);
+    localStorage.setItem('adresse',event.target.value)
   };
   const handleOnChangeInputTextPhone = (event) => {
     setPhone(event.target.value);
+    localStorage.setItem('phone',event.target.value)
   };
   const handleOnChangeInputTextCin = (event) => {
     setCin(event.target.value);
+    localStorage.setItem('cin',event.target.value)
   };
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
+    localStorage.setItem('email',event.target.value)
   };
   const handleOnChangeInputTextRegion = (event) => {
     setRegion(event.target.value);
+    localStorage.setItem('region',event.target.value)
   };
   const handleOnChangeInputTextPassword = (event) => {
     setPassword(event.target.value);
+
   };
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
   const handleOnclickSauvegarde = (event) => {
     event.preventDefault();
-    setForm({
-      name: nameForm,
-      lastname: lastnameForm,
-      address: addressForm,
-      phone: phoneForm,
-      cin: cinForm,
-      email: emailForm,
-      region: regionForm,
-      password: passwordForm,
-      confirmPassword: confirmPasswordForm,
-    });
-
-    try {
-      const response = axios.post(
-        "http://localhost:8082/api/home/add_agriculteur",
-        {
-          name: nameForm,
-          lastname: lastnameForm,
-          address: addressForm,
-          phone: phoneForm,
-          cin: cinForm,
-          email: emailForm,
-          region: regionForm,
-          password: passwordForm,
-          profile: {
-            idprofile: 1,
-            profile: "agriculteur",
-            roles: [],
-          },
-          nif: null,
-          stat: null,
-
-          companyName: null,
-        }
-      );
-
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
+    console.log(passwordForm+confirmPasswordForm)
+    if (passwordForm == confirmPasswordForm){
+      setInscriptionAgriculteurRedirect(true)
+      navigate("/Dashboard")
+    }else{
+      setPassword("")
+      setConfirmPassword("")
     }
+    
+
+    // try {
+    //   const response = axios.post(
+    //     "http://localhost:8082/api/home/add_agriculteur",
+    //     {
+    //       name: nameForm,
+    //       lastname: lastnameForm,
+    //       address: addressForm,
+    //       phone: phoneForm,
+    //       cin: cinForm,
+    //       email: emailForm,
+    //       region: regionForm,
+    //       password: passwordForm,
+    //       profile: {
+    //         idprofile: 1,
+    //         profile: "agriculteur",
+    //         roles: [],
+    //       },
+    //       nif: null,
+    //       stat: null,
+
+    //       companyName: null,
+    //     }
+    //   );
+
+    //   console.log(response.data);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
+ 
   useEffect(() => {
-    // console.log("bonjour")
-    // console.log(form)
+    
+    setName(localStorage.getItem("nom"))
+    setLastName(localStorage.getItem("prenom"))
+    setAddress(localStorage.getItem("adresse"))
+    setPhone(localStorage.getItem("phone"))
+    setCin(localStorage.getItem("cin"))
+    setEmail(localStorage.getItem("email"))
+    setRegion(localStorage.getItem("region"))
+    
   }, []);
-  useEffect(() => {}, [form]);
+  useEffect(() => {console.log(inscriptionAgriculteurRedirect)}, [inscriptionAgriculteurRedirect]);
 
   //   useEffect(( )=>{
   //     return console.log("phase de démontage")
@@ -117,17 +135,19 @@ function InscriptionAgriculteur() {
                         id="name"
                         placeholder="Votre nom"
                         required
+                        value={nameForm}
                         onChange={(event) => handleOnChangeInputTextNom(event)}
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">CIN</label>
+                      <label htmlFor="cin">CIN</label>
                       <input
                         type="text"
                         className="form-control"
                         id="cin"
                         placeholder="Votre numéro CIN"
                         required
+                        value={cinForm}
                         onChange={(event) => handleOnChangeInputTextCin(event)}
                       />
                     </div>
@@ -139,32 +159,35 @@ function InscriptionAgriculteur() {
                         id="email"
                         placeholder="Votre prénom"
                         required
+                        value={lastnameForm}
                         onChange={(event) =>
                           handleOnChangeInputTextLastName(event)
                         }
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Téléphone</label>
+                      <label htmlFor="telephone">Téléphone</label>
                       <input
                         type="text"
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
                         required
+                        value={phoneForm}
                         onChange={(event) =>
                           handleOnChangeInputTextPhone(event)
                         }
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Adresse</label>
+                      <label htmlFor="adresse">Adresse</label>
                       <input
                         type="text"
                         className="form-control"
                         id="address"
                         placeholder="Votre adresse"
                         required
+                        value={addressForm}
                         onChange={(event) =>
                           handleOnChangeInputTextAddress(event)
                         }
@@ -190,6 +213,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         placeholder="Votre adresse email"
                         required
+                        value={emailForm}
                         onChange={(event) =>
                           handleOnChangeInputTextEmail(event)
                         }

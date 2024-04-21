@@ -33,7 +33,6 @@ function SignUpCooperative() {
     </div>
   ));
 
-
   return (
     <>
       <section className="register-page section-b-space">
