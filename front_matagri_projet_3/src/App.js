@@ -1,12 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import logo from "./logo.svg";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import HomePage from "./pages/homePage/homepage";
 import Login from "./pages/AuthenticationPage/LoginPage";
-import SignUp from "./pages/AuthenticationPage/SignupPage";
-import SignUpProvider from "./pages/AuthenticationPage/SignUpProvider";
 import SignUpCooperative from "./pages/AuthenticationPage/SignUpCooperative";
+import SignUpProvider from "./pages/AuthenticationPage/SignUpProvider";
+import SignUp from "./pages/AuthenticationPage/SignupPage";
+import Dashboard from "./pages/Dashboard/Fournisseur/dashboardfour";
+import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
 import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricultuer";
 
@@ -27,9 +27,13 @@ function App() {
           <Route path="/contact" element=<ContactPage /> />
           <Route path="/search" element=<SearchPage /> />
           <Route path="/Login" element=<Login /> />
-          <Route path="/SignUp" element=<SignUp /> />
+          <Route
+            path="/InscriptionAgriculteur"
+            element=<InscriptionAgriculteur />
+          />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
+
           <Route
             path="/InscriptionAgriculteur"
             element=<InscriptionAgriculteur />
@@ -44,14 +48,9 @@ function App() {
             element=<DashBordAgriculteur />
           />
         </Route>
-
-        {/* <Route path="/" element=<PageProduit /> />   */}
-        {/* <Route path="/" element = <PageProduit /> > */}
-        {/* </Route>  */}
-        {/* <Route path="/ajoutmateriel" element=<AjoutMateriel /> /> */}
-
-        {/* <Route path="/article" element = <Articles/> />  */}
-        {/* <Routes path="/article" element = <Articles/> /> */}
+        <Route>
+          <Route path="/dashboard_fournisseur" element=<Dashboard /> />
+        </Route>
       </Routes>
       <></>
     </BrowserRouter>
