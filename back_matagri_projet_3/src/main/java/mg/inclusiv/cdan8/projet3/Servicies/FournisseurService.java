@@ -13,19 +13,16 @@ import mg.inclusiv.cdan8.projet3.Repositories.FournisseurRepository;
 @Service
 public class FournisseurService {
 
-    private final Fournisseur fournisseurRepository;
 
     @Autowired
-    public FournisseurService(FournisseurRepository fournisseurRepository) {
-        this.fournisseurRepository = (Fournisseur) fournisseurRepository;
-    }
+    private FournisseurRepository fournisseurRepository;
 
     public List<Fournisseur> getAllFournisseurs() {
         return fournisseurRepository.findAll();
     }
 
-    public List<Fournisseur> getFournisseurById(int id) {
-        return fournisseurRepository.findById(id);
+    public Fournisseur getFournisseurById(int id) {
+        return fournisseurRepository.findById(id).orElse(null);
     }
 
     public Fournisseur saveFournisseur(Fournisseur fournisseur) {
