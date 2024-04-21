@@ -1,9 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 function InscriptionAgriculteur() {
-  let history = useHistory();
   const [label, setLabel] = useState({
     type: "mail",
     content: "Votre mail",
