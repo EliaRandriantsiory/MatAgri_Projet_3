@@ -22,7 +22,7 @@ function App() {
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
         </Route>
         <Route>
-        <Route path="/dashboard-fournisseur" element=<Dashboard />/>
+          <Route path="/dashboard-fournisseur" element=<Dashboard /> />
         </Route>
       </Routes>
     </BrowserRouter>
