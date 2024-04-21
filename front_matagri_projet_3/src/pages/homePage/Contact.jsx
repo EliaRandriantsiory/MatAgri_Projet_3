@@ -39,30 +39,30 @@ function ContactPage() {
                             <li>
                                 <div class="contact-icon"><img src="../assets/images/icon/phone.png"
                                         alt="Generic placeholder image"/>
-                                    <h6>Contact Us</h6>
+                                    <h6>Contactez-nous</h6>
                                 </div>
                                 <div class="media-body">
-                                    <p>+91 123 - 456 - 7890</p>
-                                    <p>+86 163 - 451 - 7894</p>
+                                    <p>+261 34 25 125 43</p>
+                                    <p>+261 32 44 879 50</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="contact-icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <h6>Address</h6>
+                                    <h6>Adresse</h6>
                                 </div>
                                 <div class="media-body">
-                                    <p>ABC Complex,Near xyz, New York</p>
-                                    <p>USA 123456</p>
+                                    <p>Faravohitra, 101 Antananarivo</p>
+                                    <p>Madagascar</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="contact-icon"><img src="../assets/images/icon/email.png"
                                         alt="Generic placeholder image"/>
-                                    <h6>Address</h6>
+                                    <h6>Adresse</h6>
                                 </div>
                                 <div class="media-body">
-                                    <p>Support@Shopcart.com</p>
-                                    <p>info@shopcart.com</p>
+                                    <p>Support@matagri.com</p>
+                                    <p>info@matagri.com</p>
                                 </div>
                             </li>
                             <li>
@@ -70,8 +70,8 @@ function ContactPage() {
                                     <h6>Fax</h6>
                                 </div>
                                 <div class="media-body">
-                                    <p>Support@Shopcart.com</p>
-                                    <p>info@shopcart.com</p>
+                                    <p>Support@matagri.com</p>
+                                    <p>info@matagri.com</p>
                                 </div>
                             </li>
                         </ul>
@@ -83,16 +83,16 @@ function ContactPage() {
                     <form class="theme-form">
                         <div class="form-row row">
                             <div class="col-md-6">
-                                <label for="name">First Name</label>
+                                <label for="name">Prénom</label>
                                 <input type="text" class="form-control" id="name" placeholder="Enter Your name"
                                     required=""/>
                             </div>
                             <div class="col-md-6">
-                                <label for="email">Last Name</label>
+                                <label for="email">Nom</label>
                                 <input type="text" class="form-control" id="last-name" placeholder="Email" required=""/>
                             </div>
                             <div class="col-md-6">
-                                <label for="review">Phone number</label>
+                                <label for="review">Téléphone</label>
                                 <input type="text" class="form-control" id="review" placeholder="Enter your number"
                                     required=""/>
                             </div>
@@ -101,12 +101,12 @@ function ContactPage() {
                                 <input type="text" class="form-control" id="email" placeholder="Email" required=""/>
                             </div>
                             <div class="col-md-12">
-                                <label for="review">Write Your Message</label>
+                                <label for="review">Ecrivez ici votre message</label>
                                 <textarea class="form-control" placeholder="Write Your Message"
                                     id="exampleFormControlTextarea1" rows="6"></textarea>
                             </div>
                             <div class="col-md-12">
-                                <button class="btn btn-solid" type="submit">Send Your Message</button>
+                                <button class="btn btn-solid" type="submit">Soumettre</button>
                             </div>
                         </div>
                     </form>

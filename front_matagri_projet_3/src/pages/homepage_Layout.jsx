@@ -897,53 +897,6 @@ function HomePage_Layout() {
       </header>
       <Outlet />
       <footer className="footer-light">
-        <div className="light-layout">
-          <div className="container">
-            <section className="small-section border-section border-top-0">
-              <div hidden className="row">
-                <div  className="col-lg-6">
-                  <div className="subscribe">
-                    <div>
-                      <h4>SAVEZ TOUT D'ABORD !</h4>
-                      <p>
-                        Ne manquez rien de MatAgri en vous inscrivant à notre
-                        newsletter.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <form
-                    action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&id=082f74cbda"
-                    className="form-inline subscribe-form auth-form needs-validation"
-                    method="post"
-                    id="mc-embedded-subscribe-form"
-                    name="mc-embedded-subscribe-form"
-                    target="_blank"
-                  >
-                    <div className="form-group mx-sm-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="EMAIL"
-                        id="mce-EMAIL"
-                        placeholder="Entrer votre mail"
-                        required="required"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="btn btn-solid"
-                      id="mc-submit"
-                    >
-                      souscrire
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
         <section className="section-b-space light-layout">
           <div className="container">
             <div className="row footer-theme partition-f">
@@ -955,10 +908,8 @@ function HomePage_Layout() {
                   <div className="footer-logo">
                     <img  src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam,
+                  <p style={{ textAlign: "center" }}>
+                    Votre application de location, de livraison et mutualisation de matériels agricoles.
                   </p>
                   <div className="footer-social">
                     <ul>
@@ -994,24 +945,24 @@ function HomePage_Layout() {
               <div className="col offset-xl-1">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4>Mes comptes</h4>
+                    <h4>Liens utiles</h4>
                   </div>
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">mens</a>
+                        <a href="#">Louer du matériel agricole</a>
                       </li>
                       <li>
-                        <a href="#">womens</a>
+                        <a href="#">Déposer une demande de mutualisation</a>
                       </li>
                       <li>
-                        <a href="#">clothing</a>
+                        <a href="#">Consulter les demandes de matériels</a>
                       </li>
                       <li>
-                        <a href="#">accessories</a>
+                        <a href="#">Nous contacter</a>
                       </li>
                       <li>
-                        <a href="#">featured</a>
+                        <a href="#">xxxxx</a>
                       </li>
                     </ul>
                   </div>
@@ -1020,21 +971,21 @@ function HomePage_Layout() {
               <div className="col">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4>Pourquoi nous choisir</h4>
+                    <h4>Pourquoi nous choisir ?</h4>
                   </div>
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">shipping &amp; return</a>
+                        <a href="#">x1</a>
                       </li>
                       <li>
-                        <a href="#">secure shopping</a>
+                        <a href="#">x2</a>
                       </li>
                       <li>
-                        <a href="#">gallary</a>
+                        <a href="#">x3</a>
                       </li>
                       <li>
-                        <a href="#">affiliates</a>
+                        <a href="#">x4</a>
                       </li>
                       <li>
                         <a href="#">contacts</a>
@@ -1052,19 +1003,15 @@ function HomePage_Layout() {
                     <ul className="contact-list">
                       <li>
                         <i className="fa fa-map-marker" />
-                        Multikart Demo Store, Demo store India 345-659
+                        MatAgri, Faravohitra, 101 Antananarivo
                       </li>
                       <li>
                         <i className="fa fa-phone" />
-                        Call Us: 123-456-7898
+                        +261 20 34 20 125 43
                       </li>
                       <li>
                         <i className="fa fa-envelope" />
-                        Email Us: <a href="#">Support@Multikart.com</a>
-                      </li>
-                      <li>
-                        <i className="fa fa-fax" />
-                        Fax: 123456
+                        Email : <a href="#">matagri@gmail.com</a>
                       </li>
                     </ul>
                   </div>
@@ -1076,7 +1023,7 @@ function HomePage_Layout() {
         <div className="sub-footer">
           <div className="container">
             <div hidden className="row">
-              <div className="col-xl-6 col-md-6 col-sm-12">
+              <div className="col-xl-6 col-md-6 col-sm-12"> 
                 <div className="footer-end">
                   <p>
                     <i className="fa fa-copyright" aria-hidden="true" /> 2023-24
