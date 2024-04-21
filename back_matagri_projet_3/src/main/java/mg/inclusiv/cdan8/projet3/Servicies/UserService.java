@@ -21,5 +21,6 @@ public class UserService {
     public void addUsersAgriculteur(Users users){
         userRepository.save(users);
     }
+    
 }
 

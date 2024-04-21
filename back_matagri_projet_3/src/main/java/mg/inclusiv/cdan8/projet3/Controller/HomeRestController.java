@@ -57,6 +57,8 @@ public class HomeRestController {
         userService.addUsersAgriculteur(users);
         return ResponseEntity.ok("Données reçues avec succès !");
     }
+
+    
     
         
     
