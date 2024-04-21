@@ -92,7 +92,7 @@ function SignUp() {
                       </div>
                       <div className="col-md-6">
                         <label htmlFor="mon-menu">région :</label>
-                        <select id="region">
+                        <select id="region" className="form-control">
                           <option value="option1">Alaotra Mangoro</option>
                           <option value="option2">Analamanga</option>
                           <option value="option3">Atsimo Andrefana</option>

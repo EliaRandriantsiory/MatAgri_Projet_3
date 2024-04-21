@@ -213,6 +213,7 @@ function InscriptionAgriculteur() {
                       <select
                         id="region"
                         onChange={handleOnChangeInputTextRegion}
+                        className="form-control"
                       >
                         <option value="-------------">-------------</option>
                         <option value="Alaotra Mangoro">Alaotra Mangoro</option>
@@ -224,6 +225,17 @@ function InscriptionAgriculteur() {
                         <option value="Menabe">Menabe</option>
                         <option value="Vakinakaratra">Vakinakaratra</option>
                       </select>
+                    </div>
+                    <div id="checkTermeCondition">
+                      <input
+                        type="checkbox"
+                        name="checkbox-button"
+                        value="value"
+                        id="checkPlus"
+                      ></input>
+                      <a id="addCheckboxBtn" href="#">
+                        Terme et contrat de location
+                      </a>
                     </div>
                   </div>
                   <input

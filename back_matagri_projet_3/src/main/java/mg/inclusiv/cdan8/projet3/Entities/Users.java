@@ -1,4 +1,6 @@
 package mg.inclusiv.cdan8.projet3.Entities;
+import java.sql.Date;
+
 import org.hibernate.validator.constraints.UniqueElements;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
@@ -30,6 +32,7 @@ public class Users {
     private String address;
     
     private String phone;
+    private Date
     
     private String nif;
     

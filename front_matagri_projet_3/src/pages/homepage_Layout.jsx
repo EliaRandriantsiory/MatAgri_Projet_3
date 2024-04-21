@@ -562,7 +562,7 @@ function HomePage_Layout() {
                               </Link>
                             </li>
                             <li>
-                              <Link to="/SignUp" data-lng="es">
+                              <Link to="/InscriptionAgriculteur" data-lng="es">
                                 Agriculteur
                               </Link>
                             </li>
