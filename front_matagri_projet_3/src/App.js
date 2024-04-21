@@ -13,6 +13,8 @@ import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricu
 import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import SearchPage from "./pages/homePage/Search";
+import PageAccueilAgriculteur from "./pages/dashbords/pageaccueilagriculteur";
+import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
 
 function App() {
   return (
@@ -33,6 +35,15 @@ function App() {
             element=<InscriptionAgriculteur />
           />
         </Route>
+        <Route
+          path="/PageAccueilAgriculteur"
+          element=<PageAccueilAgriculteur />
+        >
+          <Route
+            path="/PageAccueilAgriculteur"
+            element=<DashBordAgriculteur />
+          />
+        </Route>
 
         {/* <Route path="/" element=<PageProduit /> />   */}
         {/* <Route path="/" element = <PageProduit /> > */}
@@ -42,6 +53,7 @@ function App() {
         {/* <Route path="/article" element = <Articles/> />  */}
         {/* <Routes path="/article" element = <Articles/> /> */}
       </Routes>
+      <></>
     </BrowserRouter>
   );
 }

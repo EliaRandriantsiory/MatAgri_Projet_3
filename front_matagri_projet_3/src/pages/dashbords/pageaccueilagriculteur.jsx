@@ -1,6 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import "./assets/css/homePage/homePage.css";
-function HomePage_Layout() {
+function PageAccueilAgriculteur() {
   return (
     <>
       <header className="header-2">
@@ -10,16 +9,7 @@ function HomePage_Layout() {
             <div className="col-sm-12">
               <div className="main-menu">
                 <div className="menu-left">
-                  <div className="brand-logo">
-                    <Link to="/">
-                      {" "}
-                      <img
-                        src="assets/images/icon/logo/Logo-_Mat_2.png"
-                        className="img-fluid blur-up lazyload logoHomePage"
-                        alt=""
-                      />
-                    </Link>
-                  </div>
+                  <div className="brand-logo"></div>
                 </div>
                 <div className="menu-right pull-right">
                   <div>
@@ -384,9 +374,165 @@ function HomePage_Layout() {
                         </li>
                         <li>
                           <a href="#">Matériels</a>
+                          <ul>
+                            <li>
+                              <a href="category-page(vegetables).html">
+                                tab style<span className="new-tag">new</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="category-page(top-filter).html">
+                                top filter
+                              </a>
+                            </li>
+                            <li>
+                              <a href="category-page(modern).html">modern</a>
+                            </li>
+                            <li>
+                              <a href="category-page.html">left sidebar</a>
+                            </li>
+                            <li>
+                              <a href="category-page(right).html">
+                                right sidebar
+                              </a>
+                            </li>
+                            <li>
+                              <a href="category-page(no-sidebar).html">
+                                no sidebar
+                              </a>
+                            </li>
+                            <li>
+                              <a href="category-page(sidebar-popup).html">
+                                sidebar popup
+                              </a>
+                            </li>
+                            <li>
+                              <a href="category-page(metro).html">metro</a>
+                            </li>
+                            <li>
+                              <a href="category-page(full-width).html">
+                                full width
+                              </a>
+                            </li>
+                            <li>
+                              <a href="category-page(infinite-scroll).html">
+                                infinite scroll
+                              </a>
+                            </li>
+                            <li>
+                              <a href="category-page(3-grid).html">
+                                three grid
+                              </a>
+                            </li>
+                            <li>
+                              <a href="category-page(6-grid).html">six grid</a>
+                            </li>
+                            <li>
+                              <a href="category-page(list-view).html">
+                                list view
+                              </a>
+                            </li>
+                          </ul>
                         </li>
                         <li>
                           <a href="#">Partenaires</a>
+                          <ul>
+                            <li>
+                              <a href="product-page(360-view).html">
+                                360 view <span className="new-tag">new</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="product-page(video-thumbnail).html">
+                                video thumbnail
+                                <span className="new-tag">new</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">sidebar</a>
+                              <ul>
+                                <li>
+                                  <a href="product-page.html">left sidebar</a>
+                                </li>
+                                <li>
+                                  <a href="product-page(right-sidebar).html">
+                                    right sidebar
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="product-page(no-sidebar).html">
+                                    no sidebar
+                                  </a>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <a href="#">thumbnail image</a>
+                              <ul>
+                                <li>
+                                  <a href="product-page(left-image).html">
+                                    left image
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="product-page(right-image).html">
+                                    right image
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="product-page(image-outside).html">
+                                    image outside
+                                  </a>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <a href="#">three column</a>
+                              <ul>
+                                <li>
+                                  <a href="product-page(3-col-left).html">
+                                    thumbnail left
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="product-page(3-col-right).html">
+                                    thumbnail right
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="product-page(3-column).html">
+                                    thubnail bottom
+                                  </a>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <a href="product-page(4-image).html">
+                                four image
+                              </a>
+                            </li>
+                            <li>
+                              <a href="product-page(sticky).html">sticky</a>
+                            </li>
+                            <li>
+                              <a href="product-page(accordian).html">
+                                accordian
+                              </a>
+                            </li>
+                            <li>
+                              <a href="product-page(bundle).html">bundle</a>
+                            </li>
+                            <li>
+                              <a href="product-page(image-swatch).html">
+                                image swatch{" "}
+                              </a>
+                            </li>
+                            <li>
+                              <a href="product-page(vertical-tab).html">
+                                vertical tab
+                              </a>
+                            </li>
+                          </ul>
                         </li>
                         <li>
                           <Link to={"/contact"}>Contacts</Link>
@@ -549,10 +695,10 @@ function HomePage_Layout() {
                             className="opacity-1"
                             alt=""
                           />
+                          <li>
+                            <Link to={"/authentification"}>Se connecter</Link>
+                          </li>
                           <ul className="onhover-show-div">
-                            <li>
-                              <Link to="/Login">Se connecter</Link>
-                            </li>
                             <li>
                               <h3>S'incrire</h3>
                             </li>
@@ -574,7 +720,7 @@ function HomePage_Layout() {
                           </ul>
                         </li>
                         <li className="onhover-div mobile-search">
-                          <Link to={"/search"}>
+                          <div>
                             <img
                               src="../assets/images/jewellery/icon/search.png"
                               onclick="openSearch()"
@@ -582,7 +728,40 @@ function HomePage_Layout() {
                               alt=""
                             />
                             <i className="ti-search" onclick="openSearch()" />
-                          </Link>
+                          </div>
+                          <div id="search-overlay" className="search-overlay">
+                            <div>
+                              <span
+                                className="closebtn"
+                                onclick="closeSearch()"
+                                title="Close Overlay"
+                              ></span>
+                              <div className="overlay-content">
+                                <div className="container">
+                                  <div className="row">
+                                    <div className="col-xl-12">
+                                      <form>
+                                        <div className="form-group">
+                                          <input
+                                            type="text"
+                                            className="form-control"
+                                            id="exampleInputPassword1"
+                                            placeholder="Search a Product"
+                                          />
+                                        </div>
+                                        <button
+                                          type="submit"
+                                          className="btn btn-primary"
+                                        >
+                                          <i className="fa fa-search" />
+                                        </button>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </li>
                         <li className="onhover-div mobile-setting">
                           <div>
@@ -594,7 +773,7 @@ function HomePage_Layout() {
                             <i className="ti-settings" />
                           </div>
                           <div className="show-div setting">
-                            <h6>langages</h6>
+                            <h6>langues</h6>
                             <ul>
                               <li>
                                 <a href="#">anglais</a>{" "}
@@ -711,6 +890,53 @@ function HomePage_Layout() {
       </header>
       <Outlet />
       <footer className="footer-light">
+        <div className="light-layout">
+          <div className="container">
+            <section className="small-section border-section border-top-0">
+              <div hidden className="row">
+                <div className="col-lg-6">
+                  <div className="subscribe">
+                    <div>
+                      <h4>SAVEZ TOUT D'ABORD !</h4>
+                      <p>
+                        Ne manquez rien de MatAgri en vous inscrivant à notre
+                        newsletter.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <form
+                    action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&id=082f74cbda"
+                    className="form-inline subscribe-form auth-form needs-validation"
+                    method="post"
+                    id="mc-embedded-subscribe-form"
+                    name="mc-embedded-subscribe-form"
+                    target="_blank"
+                  >
+                    <div className="form-group mx-sm-3">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="EMAIL"
+                        id="mce-EMAIL"
+                        placeholder="Entrer votre mail"
+                        required="required"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="btn btn-solid"
+                      id="mc-submit"
+                    >
+                      souscrire
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
         <section className="section-b-space light-layout">
           <div className="container">
             <div className="row footer-theme partition-f">
@@ -722,9 +948,10 @@ function HomePage_Layout() {
                   <div className="footer-logo">
                     <img src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
-                  <p style={{ textAlign: "center" }}>
-                    Votre application de location, de livraison et mutualisation
-                    de matériels agricoles.
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam,
                   </p>
                   <div className="footer-social">
                     <ul>
@@ -760,24 +987,24 @@ function HomePage_Layout() {
               <div className="col offset-xl-1">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4>Liens utiles</h4>
+                    <h4>Mes comptes</h4>
                   </div>
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">Louer du matériel agricole</a>
+                        <a href="#">mens</a>
                       </li>
                       <li>
-                        <a href="#">Déposer une demande de mutualisation</a>
+                        <a href="#">womens</a>
                       </li>
                       <li>
-                        <a href="#">Consulter les demandes de matériels</a>
+                        <a href="#">clothing</a>
                       </li>
                       <li>
-                        <a href="#">Nous contacter</a>
+                        <a href="#">accessories</a>
                       </li>
                       <li>
-                        <a href="#">xxxxx</a>
+                        <a href="#">featured</a>
                       </li>
                     </ul>
                   </div>
@@ -786,21 +1013,21 @@ function HomePage_Layout() {
               <div className="col">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4>Pourquoi nous choisir ?</h4>
+                    <h4>Pourquoi nous choisir</h4>
                   </div>
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">x1</a>
+                        <a href="#">shipping &amp; return</a>
                       </li>
                       <li>
-                        <a href="#">x2</a>
+                        <a href="#">secure shopping</a>
                       </li>
                       <li>
-                        <a href="#">x3</a>
+                        <a href="#">gallary</a>
                       </li>
                       <li>
-                        <a href="#">x4</a>
+                        <a href="#">affiliates</a>
                       </li>
                       <li>
                         <a href="#">contacts</a>
@@ -818,15 +1045,19 @@ function HomePage_Layout() {
                     <ul className="contact-list">
                       <li>
                         <i className="fa fa-map-marker" />
-                        MatAgri, Faravohitra, 101 Antananarivo
+                        Multikart Demo Store, Demo store India 345-659
                       </li>
                       <li>
                         <i className="fa fa-phone" />
-                        +261 20 34 20 125 43
+                        Call Us: 123-456-7898
                       </li>
                       <li>
                         <i className="fa fa-envelope" />
-                        Email : <a href="#">matagri@gmail.com</a>
+                        Email Us: <a href="#">Support@Multikart.com</a>
+                      </li>
+                      <li>
+                        <i className="fa fa-fax" />
+                        Fax: 123456
                       </li>
                     </ul>
                   </div>
@@ -2037,4 +2268,4 @@ function HomePage_Layout() {
   );
 }
 
-export default HomePage_Layout;
+export default PageAccueilAgriculteur;

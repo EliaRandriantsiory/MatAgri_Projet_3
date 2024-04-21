@@ -11,8 +11,7 @@ import ReactDatePicker from "react-datepicker";
 import HomeSlide from "./components/homepagecomponents/homeSlideComponent";
 import CardProduct from "./components/homepagecomponents/carteProduit";
 import cartProduitModel from "./components/Produitcomponents/cartesProduitCompnent";
-
-
+import Login from "./pages/AuthenticationPage/LoginPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +19,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
 
 reportWebVitals();
