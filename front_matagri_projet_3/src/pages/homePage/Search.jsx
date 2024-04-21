@@ -1,12 +1,55 @@
-import { Link } from "react-router-dom";
-function CardProduct() {
-    return (  
-    <>
-        <div class="title1 section-t-space">
-            <h4>exclusive products</h4>
-            <h2 class="title-inner1">special products</h2>
+function SearchPage() {
+    return ( 
+        <>
+            {/* <!-- breadcrumb start --> */}
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>search</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active">search</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
         </div>
-        {/* <!-- product section start --> */}
+    </div>
+    {/* <!-- breadcrumb End --> */}
+
+
+    {/* <!--section start--> */}
+    <section class="authentication-page">
+        <div class="container">
+            <section class="search-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 offset-lg-3">
+                            <form class="form-header">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                                        placeholder="Search Products......"/>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-solid"><i class="fa fa-search"></i>Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    {/* <!-- section end --> */}
+
+
+    {/* <!-- product section start --> */}
     <section class="section-b-space ratio_asos">
         <div class="container">
             <div class="row search-product">
@@ -229,11 +272,10 @@ function CardProduct() {
             </div>
         </div>
     </section>
-    
-    </>
-        
+    {/* <!-- product section end --> */}
 
+        </>
      );
 }
 
-export default CardProduct;
+export default SearchPage;

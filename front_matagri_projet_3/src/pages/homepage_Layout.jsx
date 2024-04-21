@@ -45,7 +45,7 @@ function HomePage_Layout() {
                           {/* <a href="#"></a> */}
                         </li>
                         <li className="mega" id="hover-cls">
-                          <a href="#">A propos</a>
+                          <Link to={"/about"}>A propos</Link>
                           <ul className="mega-menu full-mega-menu">
                             <li>
                               <div className="container">
@@ -545,7 +545,7 @@ function HomePage_Layout() {
                           </ul>
                         </li>
                         <li>
-                          <a href="#">Contacts</a>
+                          <Link to={"/contact"}>Contacts</Link>
                           <ul>
                             <li>
                               <a href="#">vendor</a>
