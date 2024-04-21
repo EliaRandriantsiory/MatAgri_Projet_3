@@ -93,7 +93,8 @@ function InscriptionAgriculteur() {
   useEffect(() => {
     // console.log("bonjour")
     // console.log(form)
-  }, [form]);
+  }, []);
+  useEffect(() => {}, [form]);
   //   useEffect(( )=>{
   //     return console.log("phase de démontage")
   // },[form])
