@@ -384,165 +384,11 @@ function HomePage_Layout() {
                         </li>
                         <li>
                           <a href="#">Matériels</a>
-                          <ul>
-                            <li>
-                              <a href="category-page(vegetables).html">
-                                tab style<span className="new-tag">new</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(top-filter).html">
-                                top filter
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(modern).html">modern</a>
-                            </li>
-                            <li>
-                              <a href="category-page.html">left sidebar</a>
-                            </li>
-                            <li>
-                              <a href="category-page(right).html">
-                                right sidebar
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(no-sidebar).html">
-                                no sidebar
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(sidebar-popup).html">
-                                sidebar popup
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(metro).html">metro</a>
-                            </li>
-                            <li>
-                              <a href="category-page(full-width).html">
-                                full width
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(infinite-scroll).html">
-                                infinite scroll
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(3-grid).html">
-                                three grid
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(6-grid).html">six grid</a>
-                            </li>
-                            <li>
-                              <a href="category-page(list-view).html">
-                                list view
-                              </a>
-                            </li>
-                          </ul>
+                          
                         </li>
                         <li>
                           <a href="#">Partenaires</a>
-                          <ul>
-                            <li>
-                              <a href="product-page(360-view).html">
-                                360 view <span className="new-tag">new</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="product-page(video-thumbnail).html">
-                                video thumbnail
-                                <span className="new-tag">new</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">sidebar</a>
-                              <ul>
-                                <li>
-                                  <a href="product-page.html">left sidebar</a>
-                                </li>
-                                <li>
-                                  <a href="product-page(right-sidebar).html">
-                                    right sidebar
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="product-page(no-sidebar).html">
-                                    no sidebar
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <a href="#">thumbnail image</a>
-                              <ul>
-                                <li>
-                                  <a href="product-page(left-image).html">
-                                    left image
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="product-page(right-image).html">
-                                    right image
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="product-page(image-outside).html">
-                                    image outside
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <a href="#">three column</a>
-                              <ul>
-                                <li>
-                                  <a href="product-page(3-col-left).html">
-                                    thumbnail left
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="product-page(3-col-right).html">
-                                    thumbnail right
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="product-page(3-column).html">
-                                    thubnail bottom
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <a href="product-page(4-image).html">
-                                four image
-                              </a>
-                            </li>
-                            <li>
-                              <a href="product-page(sticky).html">sticky</a>
-                            </li>
-                            <li>
-                              <a href="product-page(accordian).html">
-                                accordian
-                              </a>
-                            </li>
-                            <li>
-                              <a href="product-page(bundle).html">bundle</a>
-                            </li>
-                            <li>
-                              <a href="product-page(image-swatch).html">
-                                image swatch{" "}
-                              </a>
-                            </li>
-                            <li>
-                              <a href="product-page(vertical-tab).html">
-                                vertical tab
-                              </a>
-                            </li>
-                          </ul>
+                          
                         </li>
                         <li>
                           <Link to={"/contact"}>Contacts</Link>
@@ -725,7 +571,7 @@ function HomePage_Layout() {
                           </ul>
                         </li>
                         <li className="onhover-div mobile-search">
-                          <div>
+                          <Link to={"/search"}>
                             <img
                               src="../assets/images/jewellery/icon/search.png"
                               onclick="openSearch()"
@@ -733,42 +579,8 @@ function HomePage_Layout() {
                               alt=""
                             />
                             <i className="ti-search" onclick="openSearch()" />
-                          </div>
-                          <div id="search-overlay" className="search-overlay">
-                            <div>
-                              <span
-                                className="closebtn"
-                                onclick="closeSearch()"
-                                title="Close Overlay"
-                              >
-                                ×
-                              </span>
-                              <div className="overlay-content">
-                                <div className="container">
-                                  <div className="row">
-                                    <div className="col-xl-12">
-                                      <form>
-                                        <div className="form-group">
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="exampleInputPassword1"
-                                            placeholder="Search a Product"
-                                          />
-                                        </div>
-                                        <button
-                                          type="submit"
-                                          className="btn btn-primary"
-                                        >
-                                          <i className="fa fa-search" />
-                                        </button>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          </Link>
+                          
                         </li>
                         <li className="onhover-div mobile-setting">
                           <div>

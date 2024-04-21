@@ -10,6 +10,7 @@ import SignUpCooperative from "./pages/AuthenticationPage/SignUpCooperative";
 import HomePage_Layout from "./pages/homepage_Layout";
 import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
+import SearchPage from "./pages/homePage/Search";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/home" element=<HomePage /> />
           <Route path="/about" element=<AboutPage /> />
           <Route path="/contact" element=<ContactPage /> />
+          <Route path="/search" element=<SearchPage /> />
           <Route path="/Login" element=<Login /> />
           <Route path="/SignUp" element=<SignUp /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
