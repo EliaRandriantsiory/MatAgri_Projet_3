@@ -31,11 +31,10 @@ flex: 1;
  #checkPlus{
     width: 17px;
     height: 17px;
-    
  }
  #addCheckboxBtn{
     display: flexbox;
-    padding-left: 2;
+    padding-left: 6;
     padding-bottom: 0;
     padding-top: 0;
     position: absolute;
@@ -44,4 +43,13 @@ flex: 1;
     margin-top: 0rem;
     height: 3.3rem;
  }
+ .fondHomePage{
+    width: 1470px;
+    height: 550px;
+}
+.btn-hover:hover {
+    background-color: rgba(246, 246, 251, 0.719);
+    border-color: rgba(159, 10, 10, 0.296);
+    
+  }
 

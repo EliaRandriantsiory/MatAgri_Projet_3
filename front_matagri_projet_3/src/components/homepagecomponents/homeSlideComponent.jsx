@@ -1,3 +1,4 @@
+import logo from "./NH_T6_DC.jpg";
 function HomeSlide({}) {
     // console.log(homeSlideComponent.imageName)
     // console.log(homeSlideComponent.title)
@@ -9,11 +10,11 @@ function HomeSlide({}) {
         <div>
           <div className="home text-start">
             <img
-              src= '/front_matagri_projet_3/public/assets/images/home-banner/NH_T6_DC.jpg' 
-              alt=""
-              className="bg-img blur-up lazyload"
+               src={logo}
+               alt="Logo"
+              className="bg-img blur-up lazyload fondHomePage"
             />
-            <div className="container">
+            {/* <div className="container">
               <div className="row">
                 <div className="col">
                   {
@@ -38,7 +39,7 @@ function HomeSlide({}) {
                   
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
