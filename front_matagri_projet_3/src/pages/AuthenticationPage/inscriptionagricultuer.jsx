@@ -55,100 +55,15 @@ function InscriptionAgriculteur() {
     setConfirmPassword(event.target.value);
   };
 
-  // const fetchData = async () => {
-  //   // try {
-  //   //   const response = await axios.post(
-  //   //     "http://localhost:8082/api/home/add_agriculteur",
-  //   //     {
-  //   //       name: "rasoa",
-  //   //       lastname: "meva",
-  //   //       address: "analakely",
-  //   //       phone: "03254215521",
-  //   //       nif: null,
-  //   //       stat: null,
-  //   //       cin: null,
-  //   //       email: "rakoto@gmail.com",
-  //   //       region: "boeny",
-  //   //       companyName: null,
-  //   //       password: "rakoto",
-  //   //       profile: {
-  //   //               idprofile: 1,
-  //   //               profile: "agriculteur",
-  //   //               roles: []
-  //   //             }
-          
-  //   //     }
-  //   //   );
-
-  //   //   console.log(response.data);
-  //   // } catch (error) {
-  //   //   console.error(error);
-  //   // }
-    
-  // };
-
-  // const navigateToDashboard = () => {
-  //   const email = emailForm; // Récupérez la valeur de votre formulaire d'e-mail
-  //   const password = passwordForm; // Récupérez la valeur de votre formulaire de mot de passe
-  
-  //   navigate('/dashboard', { state: { email, pwd: password } });
-  // };
 
   const handleOnclickSauvegarde = (event) => {
     event.preventDefault();
-    // console.log(passwordForm+confirmPasswordForm)
-    if(passwordForm!==confirmPasswordForm){
-      navigate("/InscriptionAgriculteur")
-    }
-        // try {
-        //     const response = axios.post(
-        //       "http://localhost:8082/api/home/add_agriculteur",
-        //       {
-
-        //       }
-        //     );
-      
-        //     console.log(response.data);
-        //   } catch (error) {
-        //     console.error(error);
-        //   }
-
-        // navigate("/Dashboard")
-    
-    
-
-    // try {
-    //   const response = axios.post(
-    //     "http://localhost:8082/api/home/add_agriculteur",
-    //     {
-    //       name: nameForm,
-    //       lastname: lastnameForm,
-    //       address: addressForm,
-    //       phone: phoneForm,
-    //       cin: cinForm,
-    //       email: emailForm,
-    //       region: regionForm,
-    //       password: passwordForm,
-    //       profile: {
-    //         idprofile: 1,
-    //         profile: "agriculteur",
-    //         roles: [],
-    //       },
-    //       nif: null,
-    //       stat: null,
-
-    //       companyName: null,
-    //     }
-    //   );
-
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.error(error);
+    console.log(emailForm)
+    sessionStorage.setItem('email',emailForm)
+      navigate("/Dashboard")
+    // if(passwordForm!==confirmPasswordForm){
+    //   navigate("/InscriptionAgriculteur")
     // }
-
-    // navigate(<DashboardUser email={emailForm} pwd={passwordForm} />)
-    // navigate('/Dashboard', { state: { emailForm, pwd: passwordForm } });
-    // navigateToDashboard();
   };
 
  
@@ -164,10 +79,6 @@ function InscriptionAgriculteur() {
     
   }, []);
   useEffect(() => {console.log(inscriptionAgriculteurRedirect)}, [inscriptionAgriculteurRedirect]);
-
-  //   useEffect(( )=>{
-  //     return console.log("phase de démontage")
-  // },[form])
 
   return (
     <>
