@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Modification from "./modification";
 
 function Navigation() {
   return (
@@ -265,7 +266,6 @@ function Navigation() {
                             <th scope="col">categories</th>
                             <th scope="col">prix</th>
                             <th scope="col">stock</th>
-                            <th scope="col">ventes</th>
                             <th scope="col">editer/Supprimer</th>
                           </tr>
                         </thead>
@@ -282,14 +282,8 @@ function Navigation() {
                             <td>tracteur</td>
                             <td className="fw-bold text-theme">250 000 Ar</td>
                             <td>3</td>
-                            <td>2000</td>
                             <td>
-                              <a href="#">
-                                <i
-                                  className="fa fa-pencil-square-o me-1"
-                                  aria-hidden="true"
-                                />
-                              </a>
+                              <Modification/>
                               <a href="#">
                                 <i
                                   className="fa fa-trash-o ms-1 text-theme"
@@ -301,6 +295,7 @@ function Navigation() {
                           {/* Repeat this structure for other rows */}
                         </tbody>
                       </table>
+                      
                     </div>
                   </div>
                 </div>
@@ -472,6 +467,7 @@ function Navigation() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }
