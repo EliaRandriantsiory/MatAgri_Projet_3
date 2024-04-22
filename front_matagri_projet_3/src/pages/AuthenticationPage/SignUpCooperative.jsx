@@ -117,7 +117,7 @@ function SignUpCooperative() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>Inscription</h3>
+              <h3>VOUS ALLEZ VOUS INSCRIRE ENT TANT QUE COOPERATIVE</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">

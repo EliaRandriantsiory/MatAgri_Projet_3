@@ -15,6 +15,7 @@ import ContactPage from "./pages/homePage/Contact";
 import SearchPage from "./pages/homePage/Search";
 import PageAccueilAgriculteur from "./pages/dashbords/pageaccueilagriculteur";
 import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
+import Choiceusers from "./pages/AuthenticationPage/choiceusers";
 
 function App() {
   return (
@@ -27,17 +28,20 @@ function App() {
           <Route path="/contact" element=<ContactPage /> />
           <Route path="/search" element=<SearchPage /> />
           <Route path="/Login" element=<Login /> />
-          <Route
-            path="/InscriptionAgriculteur"
-            element=<InscriptionAgriculteur />
-          />
+          <Route path="/choiceusers" element=<Choiceusers /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
-
+          <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route
             path="/InscriptionAgriculteur"
             element=<InscriptionAgriculteur />
           />
+          <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
+
+          {/* <Route
+            path="/InscriptionAgriculteur"
+            element=<InscriptionAgriculteur />
+          /> */}
         </Route>
         <Route
           path="/PageAccueilAgriculteur"
