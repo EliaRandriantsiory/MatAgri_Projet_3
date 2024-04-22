@@ -11,6 +11,7 @@ import ReactDatePicker from "react-datepicker";
 import HomeSlide from "./components/homepagecomponents/homeSlideComponent";
 import CardProduct from "./components/homepagecomponents/carteProduit";
 import cartProduitModel from "./components/Produitcomponents/cartesProduitCompnent";
+import DashboardUser from "./pages/dasboard";
 
 
 

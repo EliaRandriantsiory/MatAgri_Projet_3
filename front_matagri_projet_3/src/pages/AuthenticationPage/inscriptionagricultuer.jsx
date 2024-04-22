@@ -1,15 +1,12 @@
 import React from "react";
 import { useEffect, useState  } from "react";
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate   } from 'react-router-dom';
 
 import axios from "axios";
+import DashboardUser from "../dasboard";
 function InscriptionAgriculteur() {
-  const [inscriptionAgriculteurRedirect, setInscriptionAgriculteurRedirect] = useState(false)
-  const [label, setLabel] = useState({
-    type: "mail",
-    content: "Votre mail",
-    placeholder: "Entrer ici votre mail",
-  });
+  const [inscriptionAgriculteurRedirect, setInscriptionAgriculteurRedirect] = useState()
+  
   const navigate = useNavigate();
   const [form, setForm] = useState({});
   const [nameForm, setName] = useState("");
@@ -57,16 +54,67 @@ function InscriptionAgriculteur() {
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
+
+  // const fetchData = async () => {
+  //   // try {
+  //   //   const response = await axios.post(
+  //   //     "http://localhost:8082/api/home/add_agriculteur",
+  //   //     {
+  //   //       name: "rasoa",
+  //   //       lastname: "meva",
+  //   //       address: "analakely",
+  //   //       phone: "03254215521",
+  //   //       nif: null,
+  //   //       stat: null,
+  //   //       cin: null,
+  //   //       email: "rakoto@gmail.com",
+  //   //       region: "boeny",
+  //   //       companyName: null,
+  //   //       password: "rakoto",
+  //   //       profile: {
+  //   //               idprofile: 1,
+  //   //               profile: "agriculteur",
+  //   //               roles: []
+  //   //             }
+          
+  //   //     }
+  //   //   );
+
+  //   //   console.log(response.data);
+  //   // } catch (error) {
+  //   //   console.error(error);
+  //   // }
+    
+  // };
+
+  // const navigateToDashboard = () => {
+  //   const email = emailForm; // Récupérez la valeur de votre formulaire d'e-mail
+  //   const password = passwordForm; // Récupérez la valeur de votre formulaire de mot de passe
+  
+  //   navigate('/dashboard', { state: { email, pwd: password } });
+  // };
+
   const handleOnclickSauvegarde = (event) => {
     event.preventDefault();
-    console.log(passwordForm+confirmPasswordForm)
-    if (passwordForm == confirmPasswordForm){
-      setInscriptionAgriculteurRedirect(true)
-      navigate("/Dashboard")
-    }else{
-      setPassword("")
-      setConfirmPassword("")
+    // console.log(passwordForm+confirmPasswordForm)
+    if(passwordForm!==confirmPasswordForm){
+      navigate("/InscriptionAgriculteur")
     }
+        // try {
+        //     const response = axios.post(
+        //       "http://localhost:8082/api/home/add_agriculteur",
+        //       {
+
+        //       }
+        //     );
+      
+        //     console.log(response.data);
+        //   } catch (error) {
+        //     console.error(error);
+        //   }
+
+        // navigate("/Dashboard")
+    
     
 
     // try {
@@ -97,6 +145,10 @@ function InscriptionAgriculteur() {
     // } catch (error) {
     //   console.error(error);
     // }
+
+    // navigate(<DashboardUser email={emailForm} pwd={passwordForm} />)
+    // navigate('/Dashboard', { state: { emailForm, pwd: passwordForm } });
+    // navigateToDashboard();
   };
 
  
@@ -134,7 +186,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="name"
                         placeholder="Votre nom"
-                        required
+                        
                         value={nameForm}
                         onChange={(event) => handleOnChangeInputTextNom(event)}
                       />
@@ -146,7 +198,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="cin"
                         placeholder="Votre numéro CIN"
-                        required
+                        
                         value={cinForm}
                         onChange={(event) => handleOnChangeInputTextCin(event)}
                       />
@@ -158,7 +210,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="email"
                         placeholder="Votre prénom"
-                        required
+                        
                         value={lastnameForm}
                         onChange={(event) =>
                           handleOnChangeInputTextLastName(event)
@@ -172,7 +224,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
-                        required
+                        
                         value={phoneForm}
                         onChange={(event) =>
                           handleOnChangeInputTextPhone(event)
@@ -186,7 +238,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="address"
                         placeholder="Votre adresse"
-                        required
+                        
                         value={addressForm}
                         onChange={(event) =>
                           handleOnChangeInputTextAddress(event)
@@ -200,7 +252,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="passeword"
                         placeholder=" votre mot de passe"
-                        required
+                        
                         onChange={(event) =>
                           handleOnChangeInputTextPassword(event)
                         }
@@ -212,7 +264,7 @@ function InscriptionAgriculteur() {
                         type="text"
                         className="form-control"
                         placeholder="Votre adresse email"
-                        required
+                        
                         value={emailForm}
                         onChange={(event) =>
                           handleOnChangeInputTextEmail(event)
@@ -226,7 +278,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="passConfirm"
                         placeholder=" Confirmer mot de passe"
-                        required
+                        
                         onChange={(event) =>
                           handleOnChangeInputTextConfirmPassword(event)
                         }
