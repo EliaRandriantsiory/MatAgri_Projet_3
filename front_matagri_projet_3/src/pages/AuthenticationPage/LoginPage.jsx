@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import "../assets/css/StyleLoginPage.css";
 import React, { useState } from 'react';
 
 // Importation des fichiers CSS pour les composants externes (font-awesome, slick, animate, themify-icons, etc.)
@@ -82,6 +84,5 @@ function Login() {
         </div>
     );
 }
-
 
 export default Login;

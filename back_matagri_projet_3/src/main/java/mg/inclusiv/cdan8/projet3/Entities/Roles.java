@@ -9,8 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,18 +17,19 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Profiles {
+//insert into users(address,email,password,phone,region) values('analakely','rakoto@gmail.com','rakoto','03254215521','boeny');
+public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idprofile;    
-    private String profile;
-    @OneToMany(mappedBy = "profile")
-    private List<Roles> roles;
+    private Long role_id;    
+    private String role_user;
     
-    @OneToMany (mappedBy = "profil")
-    private List<Users> user;
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profiles profile;
+    
 
-    @OneToOne(mappedBy = "profil")
-    private Fournisseur fournisseur;
+    // @ManyToOne
+    // @JoinColumn(name = "role_id")
+    // private Roles role;
 }

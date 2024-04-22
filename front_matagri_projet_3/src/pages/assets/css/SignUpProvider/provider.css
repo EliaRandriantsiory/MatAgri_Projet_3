@@ -1,0 +1,12 @@
+#addCheckboxBtn {
+  display: flexbox;
+  padding-left: 2;
+  padding-bottom: 0;
+  padding-top: 0;
+  position: absolute;
+}
+
+#region {
+  margin-top: 0rem;
+  height: 3.3rem;
+}

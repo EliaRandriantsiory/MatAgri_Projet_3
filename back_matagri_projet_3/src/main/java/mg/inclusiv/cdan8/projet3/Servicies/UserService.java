@@ -21,4 +21,14 @@ public class UserService {
     public void addUsersAgriculteur(Users users){
         userRepository.save(users);
     }
+    public Users authentUser(String emailUser, String password){
+        Users userFounded = userRepository.findByEmail(emailUser);
+        System.out.println(userFounded);
+        Users currentUser = null;
+        if (userFounded!=null && (userFounded.getPassword().equals(password))) {
+                return userFounded;
+        }
+        return currentUser;
+    }
 }
+
