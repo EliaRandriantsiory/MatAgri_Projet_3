@@ -1,6 +1,4 @@
 import { Form } from "react-router-dom";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { useEffect, useState } from "react";
 import { ReactComponent as CalendarIcon } from "../assets/svg/calendar-icon.svg";
 import React from "react";
@@ -9,7 +7,6 @@ import axios from "axios";
 import { create } from "lodash";
 
 function SignUpCooperative() {
-  const [selectedDate, setSelectedDate] = useState(null);
   const [form, setForm] = useState({});
   const [nameForm, setName] = useState("");
   const [lastnameForm, setLastName] = useState("");
@@ -26,9 +23,7 @@ function SignUpCooperative() {
     setName(event.target.value);
   };
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+
   const CustomDatePickerInput = React.forwardRef(({ value, onClick }, ref) => (
     <div className="custom-date-picker-input datepiker ">
       <input
@@ -78,7 +73,6 @@ function SignUpCooperative() {
       region: regionForm,
       password: passwordForm,
       confirmPassword: confirmPasswordForm,
-      create: DatePicker,
     });
     try {
       const response = axios.post(
@@ -90,7 +84,6 @@ function SignUpCooperative() {
           phone: phoneForm,
           email: emailForm,
           region: regionForm,
-          create: selectedDate,
           password: passwordForm,
           confirmpassword: confirmPasswordForm,
           name: null,
@@ -234,15 +227,7 @@ function SignUpCooperative() {
                     <div className="col-md-6">
                       <label htmlFor="datepicker">Date de création</label>
                       <br />
-                      <div id="pic">
-                        <DatePicker
-                          id="datepicker"
-                          selected={selectedDate}
-                          onChange={handleDateChange}
-                          className="form-control"
-                          customInput={<customDatePickerInput />}
-                        />
-                      </div>
+                    
                     </div>
                   </div>
                   <div id="checkTermeCondition">
