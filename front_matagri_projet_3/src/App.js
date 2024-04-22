@@ -8,6 +8,13 @@ import SignUp from "./pages/AuthenticationPage/SignupPage";
 import Dashboard from "./pages/Dashboard/Fournisseur/dashboardfour";
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
+import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricultuer";
+
+import AboutPage from "./pages/homePage/Aboutus";
+import ContactPage from "./pages/homePage/Contact";
+import SearchPage from "./pages/homePage/Search";
+import PageAccueilAgriculteur from "./pages/dashbords/pageaccueilagriculteur";
+import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
 
 function App() {
   return (
@@ -16,15 +23,36 @@ function App() {
         <Route path="/" element=<HomePage_Layout />>
           <Route path="/" element=<HomePage /> />
           <Route path="/home" element=<HomePage /> />
+          <Route path="/about" element=<AboutPage /> />
+          <Route path="/contact" element=<ContactPage /> />
+          <Route path="/search" element=<SearchPage /> />
           <Route path="/Login" element=<Login /> />
-          <Route path="/SignUp" element=<SignUp /> />
+          <Route
+            path="/InscriptionAgriculteur"
+            element=<InscriptionAgriculteur />
+          />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
+
+          <Route
+            path="/InscriptionAgriculteur"
+            element=<InscriptionAgriculteur />
+          />
+        </Route>
+        <Route
+          path="/PageAccueilAgriculteur"
+          element=<PageAccueilAgriculteur />
+        >
+          <Route
+            path="/PageAccueilAgriculteur"
+            element=<DashBordAgriculteur />
+          />
         </Route>
         <Route>
-          <Route path="/dashboard-fournisseur" element=<Dashboard /> />
+          <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         </Route>
       </Routes>
+      <></>
     </BrowserRouter>
   );
 }

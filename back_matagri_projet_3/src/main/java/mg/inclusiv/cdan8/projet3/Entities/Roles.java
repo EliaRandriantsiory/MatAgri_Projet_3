@@ -17,14 +17,19 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Profiles {
+//insert into users(address,email,password,phone,region) values('analakely','rakoto@gmail.com','rakoto','03254215521','boeny');
+public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idprofile;    
-    private String profile;
-    @OneToMany(mappedBy = "profile")
-    private List<Roles> roles;
+    private Long role_id;    
+    private String role_user;
+    
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profiles profile;
     
 
+    // @ManyToOne
+    // @JoinColumn(name = "role_id")
+    // private Roles role;
 }

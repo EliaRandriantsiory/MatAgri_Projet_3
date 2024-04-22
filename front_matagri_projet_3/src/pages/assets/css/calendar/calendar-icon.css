@@ -1,0 +1,47 @@
+.datepiker div {
+  background-color: aqua;
+  height: 20 px;
+}
+.datepiker span {
+  width: 30px;
+  height: 30px;
+  margin: 0px 0px 25px 0px;
+}
+#datepiker {
+  background-color: aqua;
+}
+.custom-date-picker-input {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  flex: 1;
+  /* Ajoutez d'autres styles selon vos besoins */
+}
+
+.calendar-icon-container {
+  margin-left: 8px; /* Ajustez la valeur en fonction de votre mise en page */
+}
+#checkTermeCondition {
+  margin: 0% 0% 2% 0%;
+}
+#checkPlus {
+  width: 17px;
+  height: 17px;
+}
+#addCheckboxBtn {
+  display: flexbox;
+  padding-left: 2;
+  padding-bottom: 0;
+  padding-top: 0;
+  position: absolute;
+}
+#region {
+  margin-top: 0rem;
+  height: 3.3rem;
+}
+.fondHomePage {
+  width: 1200px;
+  height: 420px;
+}

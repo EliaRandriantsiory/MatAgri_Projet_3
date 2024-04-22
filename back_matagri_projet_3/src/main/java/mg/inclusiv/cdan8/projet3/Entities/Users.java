@@ -1,13 +1,13 @@
 package mg.inclusiv.cdan8.projet3.Entities;
-import org.hibernate.validator.constraints.UniqueElements;
-import jakarta.annotation.Nullable;
+import java.sql.Date;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Null;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,24 +27,24 @@ public class Users {
     
     private String address;
     
-    
-    private String phone;
+    @Temporal(TemporalType.DATE)
+    private Date create;
     
     private String nif;
     
     private String stat;
     
     private String cin;
-    
-    
+
     private String email;
     
     private String region;
     private String companyName;
     
     private String password;
-    
-    private String profile;
+    @ManyToOne
+    @JoinColumn(name = "id_profile")
+    private Profiles profile;
     
     
     
