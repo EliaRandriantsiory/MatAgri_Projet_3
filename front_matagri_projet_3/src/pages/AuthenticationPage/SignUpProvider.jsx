@@ -53,15 +53,15 @@ function SignUpProvider() {
   };
   const handleOnChangeInputTextCin = (event) => {
     setCin(event.target.value);
-    sessionStorage.setItem('cin',event.target.value)
+    localStorage.setItem('cin',event.target.value)
   };
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
-    sessionStorage.setItem('email',event.target.value)
+    localStorage.setItem('email',event.target.value)
   };
   const handleOnChangeInputTextRegion = (event) => {
     setRegion(event.target.value);
-    sessionStorage.setItem('region',event.target.value)
+    localStorage.setItem('region',event.target.value)
   };
   const handleOnChangeInputTextPassword = (event) => {
     setPassword(event.target.value);
@@ -80,15 +80,15 @@ function SignUpProvider() {
     console.log(EtatCGV)
     navigate("/dashboard_fournisseur")
 
-    // sessionStorage.setItem('email',emailForm)
-      // navigate("/Dashboard")
-    // if(passwordForm!==confirmPasswordForm){
-    //   navigate("/InscriptionAgriculteur")
-    // }
+    localStorage.setItem('email_Current_User',emailForm)
+    
+    if(passwordForm!==confirmPasswordForm){
+      navigate("/InscriptionAgriculteur")
+    }
+    navigate("/Dashboard")
   };
 
   return (
-    <>
       <section className="register-page section-b-space">
         <div className="container">
           <div className="row">
@@ -216,7 +216,7 @@ function SignUpProvider() {
           </div>
         </div>
       </section>
-    </>
+    
   );
 }
 

@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-
+import axios from "axios";
 function Navigation() {
   const [currentUSer, setCurrentUser] = useState();
   const handleOnClickLogout = (event) => {
-    sessionStorage.clear()
+    localStorage.clear()
     Navigate("/home")
   };
+  
   useEffect(() => {
-    setCurrentUser(sessionStorage.getItem('email'))
+    setCurrentUser(localStorage.getItem('email_Current_User'))
+
   },[])
 
   return (
