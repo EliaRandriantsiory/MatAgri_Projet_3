@@ -554,7 +554,7 @@ function HomePage_Layout() {
                               <Link to="/Login">Se connecter</Link>
                             </li>
                             <li>
-                              <h3>S'incrire</h3>
+                              <h3>s'inscrire</h3>
                             </li>
                             <li>
                               <Link to="/SignUpProvider" data-lng="en">
@@ -562,7 +562,7 @@ function HomePage_Layout() {
                               </Link>
                             </li>
                             <li>
-                              <Link to="/InscriptionAgriculteur" data-lng="es">
+                              <Link to="/InscriptionAgriculteur" data-lng="en">
                                 Agriculteur
                               </Link>
                             </li>
@@ -594,7 +594,7 @@ function HomePage_Layout() {
                             <i className="ti-settings" />
                           </div>
                           <div className="show-div setting">
-                            <h6>langages</h6>
+                            <h6>langues</h6>
                             <ul>
                               <li>
                                 <a href="#">anglais</a>{" "}

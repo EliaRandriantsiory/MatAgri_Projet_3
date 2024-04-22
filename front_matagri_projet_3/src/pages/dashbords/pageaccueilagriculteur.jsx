@@ -10,20 +10,23 @@ function PageAccueilAgriculteur() {
               <div className="row">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h2>dashboard</h2>
+                    <h2>Tableau de bord</h2>
                   </div>
                 </div>
                 <div className="col-sm-6">
                   <nav aria-label="breadcrumb" className="theme-breadcrumb">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <a href="index.html">Accueil</a>
+                        <Link to="/home" data-lng="en">
+                          Acceuil
+                        </Link>
                       </li>
                       <li
                         className="breadcrumb-item active"
                         aria-current="page"
                       >
-                        dashboard Fournisseur
+                        <Link to={"/Login"}>Déconnexion</Link>
+                        {/* <a href="#"></a> */}
                       </li>
                     </ol>
                   </nav>

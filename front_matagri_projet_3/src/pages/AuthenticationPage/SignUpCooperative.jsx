@@ -9,14 +9,7 @@ import axios from "axios";
 import { create } from "lodash";
 
 function SignUpCooperative() {
-  const onClickHandler = () => {};
-  const onChangeHandler = () => {};
-
-  const [label, setLabel] = useState({
-    type: "mail",
-    content: "Votre mail",
-    placeholder: "Entrer ici votre mail",
-  });
+  const [selectedDate, setSelectedDate] = useState(null);
   const [form, setForm] = useState({});
   const [nameForm, setName] = useState("");
   const [lastnameForm, setLastName] = useState("");
@@ -32,11 +25,25 @@ function SignUpCooperative() {
   const handleOnChangeInputTextRaison = (event) => {
     setName(event.target.value);
   };
-  const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+  const CustomDatePickerInput = React.forwardRef(({ value, onClick }, ref) => (
+    <div className="custom-date-picker-input datepiker ">
+      <input
+        type="text"
+        value={value}
+        onClick={onClick}
+        onChange={() => {}}
+        ref={ref}
+        className="form-control"
+      />
+      <span className="calendar-icon-container">
+        <CalendarIcon className="calendar-icon" />
+      </span>
+    </div>
+  ));
   const handleOnChangeInputTextNbAgriculteur = (event) => {
     setNbAgriculteur(event.target.value);
   };
@@ -83,7 +90,7 @@ function SignUpCooperative() {
           phone: phoneForm,
           email: emailForm,
           region: regionForm,
-          create: DatePicker,
+          create: selectedDate,
           password: passwordForm,
           confirmpassword: confirmPasswordForm,
           name: null,
