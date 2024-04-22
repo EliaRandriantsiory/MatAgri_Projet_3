@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -23,12 +25,13 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long idUser;    
+    private Long idUser; 
+
     private String name;
+
     private String lastname;
     
     private String address;
-    
     
     private String phone;
     
@@ -38,25 +41,19 @@ public class Users {
     
     private String cin;
     
-    
     private String email;
     
     private String region;
+
     private String companyName;
     
     private String password;
     
     private String profile;
     
-    
-    
-    
-    
-    
-    
-    
-    
 
-    
+    @ManyToOne
+    @JoinColumn(name = "id_profil")
+    private Profiles profil;   
     
 }

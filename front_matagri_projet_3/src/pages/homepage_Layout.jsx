@@ -11,7 +11,7 @@ function HomePage_Layout() {
               <div className="main-menu">
                 <div className="menu-left">
                   <div className="brand-logo">
-                    <Link to="/">
+                    <Link to="/Login">
                       {" "}
                       <img
                         src="assets/images/icon/logo/Logo-_Mat_2.png"
