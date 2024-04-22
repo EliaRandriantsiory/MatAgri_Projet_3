@@ -3,6 +3,7 @@ package mg.inclusiv.cdan8.projet3.Servicies;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,9 @@ public class UserService {
     public void addUsersAgriculteur(Users users){
         userRepository.save(users);
     }
-    
+    public Users authenticateCoopérative(@Param("email") String email, @Param("password") String password){
+        return userRepository.findByEmailAndPassword(email, password);
+    }
+   
 }
 
