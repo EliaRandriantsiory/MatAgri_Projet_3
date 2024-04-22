@@ -1,0 +1,12 @@
+#LoginPageSection {
+}
+#LoginPageSection .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#LoginPageSection .container div h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
