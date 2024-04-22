@@ -7,7 +7,7 @@ function SignUpProvider() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>Inscription</h3>
+              <h3>VOUS ALLEZ VOUS INSCRIRE EN TANT QUE FOURNISSEUR</h3>
               <div className="theme-card">
                 <form className="theme-form">
                   <div className="form-row row">
