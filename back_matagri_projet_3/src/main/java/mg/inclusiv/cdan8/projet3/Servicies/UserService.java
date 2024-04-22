@@ -3,6 +3,7 @@ package mg.inclusiv.cdan8.projet3.Servicies;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,14 +22,6 @@ public class UserService {
     public void addUsersAgriculteur(Users users){
         userRepository.save(users);
     }
-    public Users authentUser(String emailUser, String password){
-        Users userFounded = userRepository.findByEmail(emailUser);
-        System.out.println(userFounded);
-        Users currentUser = null;
-        if (userFounded!=null && (userFounded.getPassword().equals(password))) {
-                return userFounded;
-        }
-        return currentUser;
-    }
+
 }
 
