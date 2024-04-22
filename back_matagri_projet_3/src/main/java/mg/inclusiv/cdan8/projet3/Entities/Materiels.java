@@ -17,9 +17,11 @@ public class Materiels {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long materielId;
     private String categorieMat;
-    private String informationMat;
-    private String autreInformationMAt;
-    private String informationComplMat;    
+    private String nomMat;
+    private double PrixMAt;
+    private int stockMat;  
+    private String descriptionMat;
+    private String techniqueMat;  
     private String imagePath;
     private String imageDetailsPath;
 

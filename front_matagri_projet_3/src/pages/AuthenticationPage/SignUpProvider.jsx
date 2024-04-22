@@ -1,4 +1,8 @@
+import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import React, { Button } from "react-bootstrap";
 import "../assets/css/SignUpProvider/provider.css";
+import TermeF from "./TermeF";
 
 function SignUpProvider() {
   return (
@@ -100,9 +104,7 @@ function SignUpProvider() {
                       value="value"
                       id="checkPlus"
                     ></input>
-                    <a id="addCheckboxBtn" href="#">
-                      Terme et contrat de location
-                    </a>
+                    <TermeF />
                   </div>
                   <a href="#" className="btn btn-solid w-auto">
                     S'inscrire
