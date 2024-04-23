@@ -10,13 +10,8 @@ function HomeSlide({}) {
         <div>
           <div className="home text-start">
             <img
-<<<<<<< HEAD
-               src={logo}
-               alt="Logo"
-=======
               src={logo}
               alt="Logo"
->>>>>>> origin/dev
               className="bg-img blur-up lazyload fondHomePage"
             />
             {/* <div className="container">
