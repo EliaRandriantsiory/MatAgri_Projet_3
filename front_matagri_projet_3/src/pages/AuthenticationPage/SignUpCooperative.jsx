@@ -36,9 +36,7 @@ function SignUpCooperative() {
         ref={ref}
         className="form-control"
       />
-      <span className="calendar-icon-container">
-        <CalendarIcon className="calendar-icon" />
-      </span>
+     
     </div>
   ));
   const handleOnChangeInputTextNbAgriculteur = (event) => {
