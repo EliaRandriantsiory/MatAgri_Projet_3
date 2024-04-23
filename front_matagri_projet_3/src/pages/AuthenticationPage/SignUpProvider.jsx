@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import React, { Button } from "react-bootstrap";
 import "../assets/css/SignUpProvider/provider.css";
 import TermeF from "./TermeF";
-import { useEffect, useState } from "react";
 import "../assets/css/SignUpProvider/provider.css";
 import { useNavigate } from "react-router-dom";
 
