@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -60,7 +61,7 @@ function Login() {
                     required
                   />
                 </div>
-                {error && <p className="error-message">{error}</p>} {/* Ajout de cette ligne */}
+                {error && <p className="error-message">{error}</p>}
                 <button type="submit" className="btn btn-solid">Login</button>
               </form>
             </div>
@@ -69,7 +70,6 @@ function Login() {
       </section>
     </>
   );
-  
 }
 
 export default Login;
