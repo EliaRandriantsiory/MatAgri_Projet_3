@@ -1,5 +1,5 @@
 import {Button, Modal} from 'react-bootstrap';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function AddProduit() {
@@ -12,6 +12,21 @@ function AddProduit() {
     const [stock, setStock] = useState('');
     const [description, setDescription] = useState('');
     const [isValid, setIsValid] = useState(true);
+    const [produits, setProduits] = useState([]);
+
+    useEffect(() => {
+        
+        const fetchProduits = async () => {
+            try {
+                const response = await axios.get('/api/produits');
+                setProduits(response.data);
+            } catch (error) {
+                console.error('Erreur lors de la récupération des produits:', error);
+               }
+        };
+
+        fetchProduits();
+    }, []);
     
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);

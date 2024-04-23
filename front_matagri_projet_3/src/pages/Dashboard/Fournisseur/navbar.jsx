@@ -298,20 +298,19 @@ function Navigation() {
                       <table className="table mb-0 product-table">
                         <thead>
                           <tr>
-                            <th scope="col">image</th>
-                            <th scope="col">Nom du Matériels </th>
-                            <th scope="col">categories</th>
-                            <th scope="col">prix</th>
-                            <th scope="col">stock</th>
-                            <th scope="col">ventes</th>
-                            <th scope="col">editer/Supprimer</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Nom du Matériel </th>
+                            <th scope="col">Catégorie</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <th scope="row">
                               <img
-                                src="/front_matagri_projet_3/public/assets/images/dashboard/product/1.jpg"
+                                src="/assets/images/about/vendor.jpg"
                                 alt=""
                                 className="blur-up lazyloaded"
                               />
@@ -320,7 +319,6 @@ function Navigation() {
                             <td>tracteur</td>
                             <td className="fw-bold text-theme">250 000 Ar</td>
                             <td>3</td>
-                            <td>2000</td>
                             <td>
                               <a href="#">
                                 <i
@@ -336,7 +334,6 @@ function Navigation() {
                               </a>
                             </td>
                           </tr>
-                          {/* Repeat this structure for other rows */}
                         </tbody>
                       </table>
                     </div>
@@ -494,8 +491,7 @@ function Navigation() {
                               </div>
                               <button
                                 type="button"
-                                className="btn btn-solid btn-xs"
-                              >
+                                className="btn btn-solid btn-xs">
                                 Delete Account
                               </button>
                             </div>
