@@ -89,15 +89,13 @@ public class HomeRestController {
         // System.out.println(authUser.getEmail()+", "+ authUser.getPassword());
         //Users newUser = (Users) userRepository.findByEmail(authUser.getEmail());
         Users currentUser = userService.authentUser(authUser.getEmail(), authUser.getPassword());
-        System.out.println(authUser.getEmail());
-        System.out.println(userRepository.findAll());
-        // session.setAttribute("user", currentUser); ResponseEntity.ok("Données reçues avec succès !");
+        
         return currentUser;
     }
     
     @PostMapping("getCurrentUser")
     public Users getCurrentUsers(@RequestBody AuthUser currentAuthUser ) {
-        // userService.findByEmail(currentAuthUser.getEmail())
+
         return userService.findByEmail(currentAuthUser.getEmail());
     }
 
