@@ -18,7 +18,6 @@ import PageAccueilAgriculteur from "./pages/dashbords/pageaccueilagriculteur";
 import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
 import Choiceusers from "./pages/AuthenticationPage/choiceusers";
 
-
 function App() {
   return (
     <BrowserRouter>
