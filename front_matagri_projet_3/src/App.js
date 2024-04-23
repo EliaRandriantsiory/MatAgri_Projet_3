@@ -16,6 +16,7 @@ import SearchPage from "./pages/homePage/Search";
 import DashboardUser from "./pages/dasboard";
 import PageAccueilAgriculteur from "./pages/dashbords/pageaccueilagriculteur";
 import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
+import Terme from "./pages/AuthenticationPage/Terme";
 import Choiceusers from "./pages/AuthenticationPage/choiceusers";
 
 function App() {
@@ -58,6 +59,8 @@ function App() {
         <Route>
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         </Route>
+
+        <Route path="/terme" element=<Terme /> />
 
       </Routes>
       <></>

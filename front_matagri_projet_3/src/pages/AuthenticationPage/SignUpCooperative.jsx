@@ -1,15 +1,14 @@
-import { Form } from "react-router-dom";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { Form, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ReactComponent as CalendarIcon } from "../assets/svg/calendar-icon.svg";
 import React from "react";
 import "../assets/css/calendar/calendar-icon.css";
 import axios from "axios";
 import { create } from "lodash";
+// atao import
+import Terme from "./Terme";
+
 
 function SignUpCooperative() {
-  const [selectedDate, setSelectedDate] = useState(null);
   const [form, setForm] = useState({});
   const [nameForm, setName] = useState("");
   const [lastnameForm, setLastName] = useState("");
@@ -26,24 +25,8 @@ function SignUpCooperative() {
     setName(event.target.value);
   };
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
-  const CustomDatePickerInput = React.forwardRef(({ value, onClick }, ref) => (
-    <div className="custom-date-picker-input datepiker ">
-      <input
-        type="text"
-        value={value}
-        onClick={onClick}
-        onChange={() => {}}
-        ref={ref}
-        className="form-control"
-      />
-      <span className="calendar-icon-container">
-        <CalendarIcon className="calendar-icon" />
-      </span>
-    </div>
-  ));
+
+
   const handleOnChangeInputTextNbAgriculteur = (event) => {
     setNbAgriculteur(event.target.value);
   };
@@ -78,7 +61,6 @@ function SignUpCooperative() {
       region: regionForm,
       password: passwordForm,
       confirmPassword: confirmPasswordForm,
-      create: DatePicker,
     });
     try {
       const response = axios.post(
@@ -90,7 +72,6 @@ function SignUpCooperative() {
           phone: phoneForm,
           email: emailForm,
           region: regionForm,
-          create: selectedDate,
           password: passwordForm,
           confirmpassword: confirmPasswordForm,
           name: null,
@@ -224,6 +205,7 @@ function SignUpCooperative() {
                     <div className="col-md-6">
                       <label htmlFor="mon-menu">région :</label>
                       <select id="region" className="form-control">
+                      <option value="option1">--------------------</option>
                         <option value="option1">Alaotra Mangoro</option>
                         <option value="option2">Analamanga</option>
                         <option value="option3">Atsimo Andrefana</option>
@@ -232,30 +214,19 @@ function SignUpCooperative() {
                         <option value="option7">Vakinakaratra</option>
                       </select>
                     </div>
-                    <div className="col-md-6">
-                      <label htmlFor="datepicker">Date de création</label>
-                      <br />
-                      <div id="pic">
-                        <DatePicker
-                          id="datepicker"
-                          selected={selectedDate}
-                          onChange={handleDateChange}
-                          className="form-control"
-                          customInput={<customDatePickerInput />}
-                        />
-                      </div>
-                    </div>
                   </div>
-                  <div id="checkTermeCondition">
+                  
+                  <div id="checkTermeCondition" className="mt-4">
                     <input
                       type="checkbox"
                       name="checkbox-button"
                       value="value"
                       id="checkPlus"
-                    ></input>
-                    <a id="addCheckboxBtn" href="#">
-                      Terme et contrat de location
-                    </a>
+                      className="mr-2"
+                    />
+                    {/* ito le terme */}
+                    <Terme/>
+                    {/* --------- */}
                   </div>
                   <div>
                     <input
