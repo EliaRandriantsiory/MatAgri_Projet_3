@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import "../assets/css/SignUpProvider/provider.css";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../assets/css/SignUpProvider/provider.css";
 
 function SignUpProvider() {
   const navigate = useNavigate();
@@ -122,7 +122,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Siège sociale</label>
+                      <label htmlFor="email">Siège social</label>
                       <input
                         type="text"
                         className="form-control"
