@@ -1,5 +1,6 @@
-import {Button, Modal} from 'react-bootstrap/Button';
+import {Button, Modal} from 'react-bootstrap';
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function AddProduit() {
     const [image, setImage] = useState([]);
@@ -51,10 +52,35 @@ function AddProduit() {
         setShowModal(false);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Formulaire soumis');
+    
+        try {
+            const formData = new FormData();
+            formData.append('nomMateriel', nomMateriel);
+            formData.append('categorie', categorie);
+            formData.append('prix', prix);
+            formData.append('stock', stock);
+            formData.append('description', description);
+            image.forEach((file) => {
+                formData.append('images', file);
+            });
+    
+            const response = await axios.post('/api/enregistrerProduit', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+    
+            console.log('Données envoyées avec succès:', response.data);
+            // Réinitialisez le formulaire après l'envoi des données avec succès
+            handleCloseModal();
+        } catch (error) {
+            console.error('Erreur lors de l\'envoi des données:', error);
+            // Gérez les erreurs d'envoi des données ici
+        }
     };
+    
 
     const handlePrixChange = (e) => {
         const value = e.target.value;
@@ -70,8 +96,7 @@ function AddProduit() {
     const handleClose = () => {
         setShowModal(false); // Ferme le modal lorsque cette fonction est appelée
       };
-
-   
+         
     return (
         <>
             <a href="#" className="btn btn-sm btn-solid" onClick={handleOpenModal}>
@@ -94,6 +119,7 @@ function AddProduit() {
                                     id="image"
                                     name="image"
                                     multiple
+                                    style={{ width: '425px' }} 
                                     required
                                     className="form-control"
                                     onChange={handleImageChange}
@@ -116,13 +142,13 @@ function AddProduit() {
                                 </div>
                             </div>
                             <div className="form-group mb-3 row">
-                                <label htmlFor="validationCustom01" className="col-xl-3 col-sm-4 mb-0">
+                                <label htmlFor="nommateriel" className="col-xl-3 col-sm-4 mb-0">
                                     Nom du matériel :
                                 </label>
                                 <div className="col-xl-8 col-sm-7">
                                     <input
                                         className="form-control"
-                                        id="validationCustom01"
+                                        id="nommateriel"
                                         type="text"
                                         required
                                         value={nomMateriel}
@@ -204,11 +230,11 @@ function AddProduit() {
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                <div className="offset-xl-3 offset-sm-4">
-      <button className="btn btn-primary" type="submit">
-        Ajouter
-      </button>
-      <Button variant="secondary" onClick={handleClose}>
+    <div className="offset-xl-3 offset-sm-4 d-flex justify-content-between">
+    <Button className="btn btn-primary" onClick={handleSubmit}>
+    Ajouter
+</Button>
+      <Button className="me-3" variant="secondary" onClick={handleClose}>
             Fermer
           </Button>
     </div>

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "../assets/css/StyleLoginPage.css";
 import React, { useState } from 'react';
 
@@ -18,71 +17,74 @@ function Login() {
     const handleLogin = (e) => {
         e.preventDefault();
     
-        // Vérification de la validité des données de connexion
-        if (email === '') {
-            setError('Veuillez saisir votre adresse e-mail.');
-        } else if (password === '') {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            window.alert('Veuillez saisir une adresse e-mail valide.');
+            return;
+        }
+        if (password === '') {
             setError('Veuillez saisir votre mot de passe.');
-        } else {
-            // Effectuer la logique de connexion
-            setError(''); // Réinitialiser l'erreur en cas de succès
+            return;
+        }else{
+            setError('');
     
             // Ajoutez ici votre code pour gérer la connexion
-            // Par exemple, vous pouvez utiliser une API pour vérifier les informations de connexion
-    
-            // Exemple fictif pour la gestion de connexion réussie
+
             const mockApiResponse = {
                 success: true,
                 message: 'Connexion réussie !'
             };
     
-            // Vérifier la réponse de l'API
             if (mockApiResponse.success) {
-                // Connexion réussie
                 alert(mockApiResponse.message);
-    
-                // Réinitialiser les champs du formulaire
                 setEmail('');
                 setPassword('');
             } else {
-                // Connexion échouée
                 setError(mockApiResponse.message);
             }
         }
     };
 
+    const handleForgotPassword = () => {
+        // Ajoutez ici votre code pour gérer le mot de passe oublié
+    };
+
     return (
         <div className="login-page section-b-space">
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-6">
-                        <h3>Login</h3>
-                        <div className="theme-card">
-                            {error && <div className="alert alert-danger">{error}</div>}
-                            <form className="theme-form">
-                                <div className="form-group">
-                                    <label htmlFor="email">Email</label>
-                                    <input type="text" className="form-control" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="review">Password</label>
-                                    <input type="password" className="form-control" id="review" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                                </div>
-                                <button type="submit" className="btn btn-solid" onClick={handleLogin}>Login</button>
-                            </form>
+    <div className="container">
+        <div className="row justify-content-center">
+            <div className="col-lg-6">
+                <h3>Login</h3>
+                <div className="theme-card">
+                    {error && <div className="alert alert-danger">{error}</div>}
+                    <form className="theme-form">
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="text" className="form-control" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                         </div>
-                    </div>
-                    <div className="col-lg-6 right-login">
-                        <h3>New Customer</h3>
-                        <div className="theme-card authentication-right">
-                            <h6 className="title-font">Créer un compte</h6>
-                            <a href="#" className="btn btn-solid">Créer un compte</a>
+                        <div className="form-group">
+    <label htmlFor="review">Password</label>
+    <div className="d-flex align-items-center">
+        <input type="password" className="form-control" id="review" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+    </div>
+    <div className="d-flex justify-content-end" style={{ marginTop: '-20px' }}>
+    <a href="#" className="forgot-password" onClick={handleForgotPassword}>Mot de passe oublié ?</a>
+</div>
+</div>
+
+                        <div className="d-flex justify-content-between">
+                            <button type="submit" className="btn btn-solid" onClick={handleLogin}>Login</button>
+                            <div className="authentication-right">
+                                <a href="#" className="btn btn-solid">Créer un compte</a>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-    );
+    </div>
+</div>
+);
 }
 
 export default Login;
