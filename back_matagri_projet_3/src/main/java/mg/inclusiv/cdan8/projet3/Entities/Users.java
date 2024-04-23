@@ -36,6 +36,7 @@ public class Users {
     private String email;
     
     private String region;
+
     private String companyName;
     
     private String password;
