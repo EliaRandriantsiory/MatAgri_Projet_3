@@ -553,22 +553,10 @@ function HomePage_Layout() {
                             <li>
                               <Link to="/Login">Se connecter</Link>
                             </li>
+
                             <li>
-                              <h3>s'inscrire</h3>
-                            </li>
-                            <li>
-                              <Link to="/SignUpProvider" data-lng="en">
-                                Fournisseur
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/InscriptionAgriculteur" data-lng="en">
-                                Agriculteur
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/SignUpCooperative" data-lng="es">
-                                Coopérative
+                              <Link to="/choiceusers" data-lng="en">
+                                s'inscrire
                               </Link>
                             </li>
                           </ul>
@@ -1003,7 +991,7 @@ function HomePage_Layout() {
       <div className="theme-settings">
         <ul>
           <li>
-            <div className="dark-btn">Dark</div>
+            <div className="dark-btn">Sombre</div>
           </li>
 
           <li className="input-picker">
@@ -1746,7 +1734,7 @@ function HomePage_Layout() {
                         />
                       </a>
                       <a href="light.html" className="demo-text">
-                        <h4>light</h4>
+                        <h4>claire</h4>
                       </a>
                     </div>
                   </div>
