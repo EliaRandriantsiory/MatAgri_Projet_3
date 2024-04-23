@@ -1,18 +1,65 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 function Navigation() {
-  const [currentUSer, setCurrentUser] = useState();
-  const handleOnClickLogout = (event) => {
-    localStorage.clear()
-    Navigate("/home")
-  };
-  
+
+  // const user={
+  //   idUser: 3,
+  //   name: null,
+  //   lastname: null,
+  //   address: null,
+  //   nif: null,
+  //   stat: null,
+  //   cin: null,
+  //   email: "rakoto@gmail.com",
+  //   region: null,
+  //   companyName: null,
+  //   password: "rakoto",
+  //   profile: {
+  //     idprofile: 1,
+  //     profile: "agriculteur",
+  //     roles: [],
+  //   },
+  // }
+  const [currentProfilUSer, setCurrentProfilUser] = useState({});
   useEffect(() => {
-    setCurrentUser(localStorage.getItem('email_Current_User'))
+    axios.post('http://localhost:8082/api/home/authentification',{
+      email:"rakoto@gmail.com",
+      password:"rakoton"
+    }
 
+    )
+  .then((response) => {
+    // Récupérer les données renvoyées par le backend
+    // setCurrentUser(response.data);
+     setCurrentProfilUser({...response.data}) 
+    
+  })
+  .catch((error) => {
+    // Gérer les erreurs de la requête
+    console.error(error);
+  });
+  
   },[])
+ 
+  const navigate = useNavigate();
+  
+  // const handleOnClickLogout = (event) => {
+  //   currentProfilUSer({})
+  //   Navigate("/home");
+  // };
+  // setCurrentProfilUser({...user})
+    console.log(currentProfilUSer)
+    if (Object.keys(currentProfilUSer).length !== 0) {
+        console.log("Bonjour");
+      } else {
+        navigate("/home");
+        console.log("Erreur");
+      }
 
+  
+  
+  // console.log(currentProfilUSer);
   return (
     <div className="row">
       <div className="col-lg-3">
@@ -27,7 +74,7 @@ function Navigation() {
           <div className="profile-detail">
             <h5>Fashion Store</h5>
             <h6>750 followers | 10 review</h6>
-            <h6>{currentUSer}</h6>
+            <h6>{currentProfilUSer.email}</h6>
           </div>
         </div>
         <div className="faq-tab">

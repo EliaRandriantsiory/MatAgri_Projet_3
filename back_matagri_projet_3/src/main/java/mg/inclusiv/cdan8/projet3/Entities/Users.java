@@ -27,9 +27,9 @@ public class Users {
     
     private String address;
     
-    @Temporal(TemporalType.DATE)
-    private Date create;
-    
+    // @Temporal(TemporalType.DATE)
+    // private Date create;
+
     private String nif;
     
     private String stat;
@@ -39,6 +39,7 @@ public class Users {
     private String email;
     
     private String region;
+
     private String companyName;
     
     private String password;

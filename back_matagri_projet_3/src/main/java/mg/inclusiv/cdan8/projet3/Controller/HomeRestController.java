@@ -58,16 +58,19 @@ public class HomeRestController {
         // List<Users> listUtilisateur = userService.getAllPers();
         // System.out.println(listUtilisateur);
         // ResponseEntity.ok("L'utilisateur est déconnecté test");
-        Users currentUser = userRepository.findByEmail(authuser.getEmail());
+        System.out.println(authuser.getEmail()+authuser.getPassword());
+         userRepository.findAll();
+        
         // return ['rakoto',"naivo"];
-        return currentUser;
+        return new Users();
     }
 
     @GetMapping("session_user")
     public Users  SessionUser() {
-        Users userSession = (Users)session.getAttribute("user");
+        //Users userSession = (Users)session.getAttribute("user");
         // System.out.println(userSession.getEmail());
-        return userSession;
+        Users currentUser = userRepository.findByEmail("authuser.getEmail()");
+        return currentUser;
     }
 
     @PostMapping("add_agriculteur")
@@ -86,6 +89,8 @@ public class HomeRestController {
         // System.out.println(authUser.getEmail()+", "+ authUser.getPassword());
         //Users newUser = (Users) userRepository.findByEmail(authUser.getEmail());
         Users currentUser = userService.authentUser(authUser.getEmail(), authUser.getPassword());
+        System.out.println(authUser.getEmail());
+        System.out.println(userRepository.findAll());
         // session.setAttribute("user", currentUser); ResponseEntity.ok("Données reçues avec succès !");
         return currentUser;
     }
