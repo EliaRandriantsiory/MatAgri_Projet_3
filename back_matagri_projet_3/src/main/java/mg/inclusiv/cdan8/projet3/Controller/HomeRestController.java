@@ -14,6 +14,7 @@ import mg.inclusiv.cdan8.projet3.Servicies.UserService;
 
 import java.util.List;
 
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/home")
 public class HomeRestController {
     @Autowired
@@ -52,28 +53,54 @@ public class HomeRestController {
         return listUtilisateur;
     }
 
+    @PostMapping("listPersonnesTest")
+    public Users listUserTest(@RequestBody AuthUser authuser) {
+        // List<Users> listUtilisateur = userService.getAllPers();
+        // System.out.println(listUtilisateur);
+        // ResponseEntity.ok("L'utilisateur est déconnecté test");
+        Users currentUser = userRepository.findByEmail(authuser.getEmail());
+        // return ['rakoto',"naivo"];
+        return currentUser;
+    }
+
     @GetMapping("session_user")
     public Users  SessionUser() {
-        return (Users)session.getAttribute("user");
+        Users userSession = (Users)session.getAttribute("user");
+        // System.out.println(userSession.getEmail());
+        return userSession;
     }
-    
+
     @PostMapping("add_agriculteur")
-    public ResponseEntity<String> addContact(@RequestBody Users users) {
-        userService.addUsersAgriculteur(users);
+    public ResponseEntity<String> addContact(@RequestBody Users newUser) {
+        userService.addUsersAgriculteur(newUser);
+        session.invalidate();
+        // Users new_User = userService.authentUser(newUser.getEmail(), newUser.getPassword());
+        // System.out.println(newUser);
+        session.setAttribute("user", newUser);
+        
         return ResponseEntity.ok("Données reçues avec succès !");
     }
     
     @PostMapping("authentification")
-    public ResponseEntity<String> authUser(@RequestBody AuthUser authUser ) {
+    public Users authUser(@RequestBody AuthUser authUser ) {
+        // System.out.println(authUser.getEmail()+", "+ authUser.getPassword());
+        //Users newUser = (Users) userRepository.findByEmail(authUser.getEmail());
         Users currentUser = userService.authentUser(authUser.getEmail(), authUser.getPassword());
-        session.setAttribute("user", currentUser);
-        return ResponseEntity.ok("Données reçues avec succès !");
+        // session.setAttribute("user", currentUser); ResponseEntity.ok("Données reçues avec succès !");
+        return currentUser;
     }
     
+    @PostMapping("getCurrentUser")
+    public Users getCurrentUsers(@RequestBody AuthUser currentAuthUser ) {
+        // userService.findByEmail(currentAuthUser.getEmail())
+        return userService.findByEmail(currentAuthUser.getEmail());
+    }
+
     @GetMapping("deconnexion")
     public ResponseEntity<String>deconnexionUser() {
         session.invalidate();
         return ResponseEntity.ok("L'utilisateur est déconnecté !");
     }
-    
+
 }
+

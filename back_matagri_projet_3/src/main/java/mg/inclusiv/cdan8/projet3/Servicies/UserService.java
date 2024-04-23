@@ -23,5 +23,19 @@ public class UserService {
         userRepository.save(users);
     }
 
+    public Users authentUser(String emailUser, String password){
+        Users userFounded = userRepository.findByEmail(emailUser);
+        System.out.println(userFounded);
+        Users currentUser = null;
+        if (userFounded!=null && (userFounded.getPassword().equals(password))) {
+                return userFounded;
+        }
+        return currentUser;
+    }
+
+    public Users findByEmail(String emailUser){
+        
+        return userRepository.findByEmail(emailUser);
+    }
 }
 

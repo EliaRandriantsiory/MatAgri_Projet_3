@@ -1,6 +1,18 @@
-import { Link } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 function Navigation() {
+  const [currentUSer, setCurrentUser] = useState();
+  const handleOnClickLogout = (event) => {
+    localStorage.clear()
+    Navigate("/home")
+  };
+  
+  useEffect(() => {
+    setCurrentUser(localStorage.getItem('email_Current_User'))
+
+  },[])
+
   return (
     <div className="row">
       <div className="col-lg-3">
@@ -15,7 +27,7 @@ function Navigation() {
           <div className="profile-detail">
             <h5>Fashion Store</h5>
             <h6>750 followers | 10 review</h6>
-            <h6>mark.enderess@mail.com</h6>
+            <h6>{currentUSer}</h6>
           </div>
         </div>
         <div className="faq-tab">
@@ -54,7 +66,8 @@ function Navigation() {
                 className="nav-link"
                 data-toggle="modal"
                 data-bs-target="#logout"
-                href
+                to={"/home"}
+                // onClick={(event) => handleOnClickLogout(event)}
               >
                 logout
               </Link>
