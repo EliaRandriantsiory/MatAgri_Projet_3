@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate,useNavigate } from "react-router-dom";
 import Modification from "./modification";
 function Navigation() {
 
@@ -30,7 +30,7 @@ function Navigation() {
   
   const handleOnClickLogout = (event) => {
      currentProfilUSer({})
-     useNavigate("/home");
+     Navigate("/home");
   };
   setCurrentProfilUser({...user})
     console.log(currentProfilUSer)
