@@ -16,7 +16,7 @@ function Login() {
         password: password
       });
       console.log(response.data);
-      navigate("/PageAccueilAgriculteur");
+      navigate("/PageAccueilAgriculteu");
     } catch (error) {
       console.error('Login failed:', error);
     }
