@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 function Navigation() {
-
   // const user={
   //   idUser: 3,
   //   name: null,
@@ -23,42 +22,37 @@ function Navigation() {
   // }
   const [currentProfilUSer, setCurrentProfilUser] = useState({});
   useEffect(() => {
-    axios.post('http://localhost:8082/api/home/authentification',{
-      email:"rakoto@gmail.com",
-      password:"rakoton"
-    }
+    axios
+      .post("http://localhost:8082/api/home/authentification", {
+        email: "rakoto@gmail.com",
+        password: "rakoto",
+      })
+      .then((response) => {
+        // Récupérer les données renvoyées par le backend
+        // setCurrentUser(response.data);
+        setCurrentProfilUser({ ...response.data });
+      })
+      .catch((error) => {
+        // Gérer les erreurs de la requête
+        console.error(error);
+      });
+  }, []);
 
-    )
-  .then((response) => {
-    // Récupérer les données renvoyées par le backend
-    // setCurrentUser(response.data);
-     setCurrentProfilUser({...response.data}) 
-    
-  })
-  .catch((error) => {
-    // Gérer les erreurs de la requête
-    console.error(error);
-  });
-  
-  },[])
- 
   const navigate = useNavigate();
-  
+
   // const handleOnClickLogout = (event) => {
   //   currentProfilUSer({})
   //   Navigate("/home");
   // };
   // setCurrentProfilUser({...user})
-    console.log(currentProfilUSer)
-    if (Object.keys(currentProfilUSer).length !== 0) {
-        console.log("Bonjour");
-      } else {
-        navigate("/home");
-        console.log("Erreur");
-      }
+  console.log(currentProfilUSer);
+  if (Object.keys(currentProfilUSer).length !== 0) {
+    console.log("Bonjour");
+  } else {
+    navigate("/home");
+    console.log("Erreur");
+  }
 
-  
-  
   // console.log(currentProfilUSer);
   return (
     <div className="row">

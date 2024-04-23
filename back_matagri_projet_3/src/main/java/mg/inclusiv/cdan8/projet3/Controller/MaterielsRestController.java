@@ -22,5 +22,7 @@ public class MaterielsRestController {
         Materiels nouveauMateriel = materielsService.addMateriel(materiel);
         return new ResponseEntity<>(nouveauMateriel, HttpStatus.CREATED);
     }
+
+    
     
 }
