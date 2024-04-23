@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Profiles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +24,4 @@ public class Profiles {
     private String profile;
     @OneToMany(mappedBy = "profile")
     private List<Roles> roles;
-    
-
 }
