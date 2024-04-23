@@ -27,9 +27,6 @@ public class Users {
     
     private String address;
     
-    @Temporal(TemporalType.DATE)
-    private Date create;
-    
     private String nif;
     
     private String stat;
