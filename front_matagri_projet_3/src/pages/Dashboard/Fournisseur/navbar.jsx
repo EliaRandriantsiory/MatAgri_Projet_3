@@ -28,11 +28,11 @@ function Navigation() {
  
   const navigate = useNavigate();
   
-  // const handleOnClickLogout = (event) => {
-  //   currentProfilUSer({})
-  //   Navigate("/home");
-  // };
-  // setCurrentProfilUser({...user})
+  const handleOnClickLogout = (event) => {
+     currentProfilUSer({})
+     useNavigate("/home");
+  };
+  setCurrentProfilUser({...user})
     console.log(currentProfilUSer)
     if (Object.keys(currentProfilUSer).length !== 0) {
         console.log("Bonjour");
