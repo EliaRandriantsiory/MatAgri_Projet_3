@@ -26,5 +26,4 @@ function Menu() {
     </div>
   );
 }
-
 export default Menu;

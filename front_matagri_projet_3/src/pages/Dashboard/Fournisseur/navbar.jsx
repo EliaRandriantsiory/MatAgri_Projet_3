@@ -1,7 +1,46 @@
 import { Link } from "react-router-dom";
 import AddProduit from "./AddProduit";
-
+import { useEffect, useState } from "react";
+import {Link, Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
 function Navigation() {
+  const navigate = useNavigate();
+  const [currentMailUSer, setCurrentMailUser] = useState();
+  const [currentProfilUSer, setCurrentProfilUser] = useState({});
+  const handleOnClickLogout = (event) => {
+    setCurrentProfilUser({})
+    Navigate("/home");
+  };
+
+  useEffect(() =>{
+    setCurrentProfilUser({
+      idUser: 3,
+      name: null,
+      lastname: null,
+      address: null,
+      nif: null,
+      stat: null,
+      cin: null,
+      email: "rakoto@gmail.com",
+      region: null,
+      companyName: null,
+      password: "rakoto",
+      profile: {
+        idprofile: 1,
+        profile: "agriculteur",
+        roles: [],
+      },
+    });
+    if (Object.keys(currentProfilUSer).length === 0) {
+      console.log("Bonjour");
+    } else {
+      navigate("/home");
+      console.log("Erreur");
+    }
+
+  },[])
+  
+  // console.log(currentProfilUSer);
   return (
     <div className="row">
       <div className="col-lg-3">
@@ -16,7 +55,7 @@ function Navigation() {
           <div className="profile-detail">
             <h5>Fashion Store</h5>
             <h6>750 followers | 10 review</h6>
-            <h6>mark.enderess@mail.com</h6>
+            <h6>{currentMailUSer}</h6>
           </div>
         </div>
         <div className="faq-tab">
@@ -55,7 +94,8 @@ function Navigation() {
                 className="nav-link"
                 data-toggle="modal"
                 data-bs-target="#logout"
-                href
+                to={"/home"}
+                // onClick={(event) => handleOnClickLogout(event)}
               >
                 logout
               </Link>

@@ -9,8 +9,11 @@ import DropdownInfoAuthUser from "./components/homepagecomponents/infoAuthUser";
 import HomeSlide from "./components/homepagecomponents/homeSlideComponent";
 import CardProduct from "./components/homepagecomponents/carteProduit";
 import cartProduitModel from "./components/Produitcomponents/cartesProduitCompnent";
+
+import DashboardUser from "./pages/dasboard";
 import Login from "./pages/AuthenticationPage/LoginPage";
 import SignUpCooperative from "./pages/AuthenticationPage/SignUpCooperative";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

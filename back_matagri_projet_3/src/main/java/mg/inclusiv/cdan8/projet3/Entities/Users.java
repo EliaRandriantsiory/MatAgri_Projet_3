@@ -43,6 +43,7 @@ public class Users {
     
     private String region;
 
+
     private String companyName;
     
     private String password;
