@@ -58,9 +58,11 @@ public class HomeRestController {
         // List<Users> listUtilisateur = userService.getAllPers();
         // System.out.println(listUtilisateur);
         // ResponseEntity.ok("L'utilisateur est déconnecté test");
-        Users currentUser = userRepository.findByEmail(authuser.getEmail());
+        System.out.println(authuser.getEmail()+authuser.getPassword());
+         userRepository.findAll();
+        
         // return ['rakoto',"naivo"];
-        return currentUser;
+        return new Users();
     }
 
     @GetMapping("session_user")

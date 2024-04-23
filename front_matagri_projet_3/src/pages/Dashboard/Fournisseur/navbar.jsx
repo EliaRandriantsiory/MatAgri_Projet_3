@@ -12,8 +12,12 @@ function Navigation() {
   
   useEffect(() => {
     try {
-              const response = axios.get("http://localhost:8082/api/home/getCurrentUser",{});
+              const response = axios.post("http://localhost:8082/api/home/listPersonnesTest",{
+                email:"rakotobe@gmail.com",
+                password:""
+              });
               currentProfilUSer(response.data);
+              
             } catch (error) {
               console.error(error);
             }
@@ -26,7 +30,7 @@ function Navigation() {
       console.log(currentProfilUSer)  
     
   },[])
-
+  console.log(currentProfilUSer)
   return (
     <div className="row">
       <div className="col-lg-3">
