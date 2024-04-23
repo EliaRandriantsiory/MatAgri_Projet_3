@@ -6,31 +6,40 @@ function Navigation() {
   const [currentMailUSer, setCurrentMailUser] = useState();
   const [currentProfilUSer, setCurrentProfilUser] = useState({});
   const handleOnClickLogout = (event) => {
-    localStorage.clear()
-    Navigate("/home")
+    setCurrentProfilUser({})
+    Navigate("/home");
   };
-  
-  useEffect(() => {
-    try {
-              const response = axios.post("http://localhost:8082/api/home/listPersonnesTest",{
-                email:"rakotobe@gmail.com",
-                password:""
-              });
-              currentProfilUSer(response.data);
-              
-            } catch (error) {
-              console.error(error);
-            }
-  
-    var etatAuth = "oui"
-    if(etatAuth !=="oui"){
-      navigate("/home")
+
+  useEffect(() =>{
+    setCurrentProfilUser({
+      idUser: 3,
+      name: null,
+      lastname: null,
+      address: null,
+      nif: null,
+      stat: null,
+      cin: null,
+      email: "rakoto@gmail.com",
+      region: null,
+      companyName: null,
+      password: "rakoto",
+      profile: {
+        idprofile: 1,
+        profile: "agriculteur",
+        roles: [],
+      },
+      
+    });
+    if (Object.keys(currentProfilUSer).length === 0) {
+      console.log("Bonjour");
+    } else {
+      navigate("/home");
+      console.log("Erreur");
     }
-    setCurrentMailUser(localStorage.getItem('email_Current_User'))
-      console.log(currentProfilUSer)  
-    
+
   },[])
-  console.log(currentProfilUSer)
+  
+  // console.log(currentProfilUSer);
   return (
     <div className="row">
       <div className="col-lg-3">
