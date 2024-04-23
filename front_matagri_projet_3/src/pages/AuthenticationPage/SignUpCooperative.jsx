@@ -1,9 +1,5 @@
-import { Form, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import React from "react";
-import "../assets/css/calendar/calendar-icon.css";
 import axios from "axios";
-import { create } from "lodash";
+import React, { useEffect, useState } from "react";
 // atao import
 import Terme from "./Terme";
 
@@ -225,11 +221,6 @@ function SignUpCooperative() {
                         <option value="option6">Menabe</option>
                         <option value="option7">Vakinakaratra</option>
                       </select>
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="datepicker">Date de création</label>
-                      <br />
-                    
                     </div>
                   </div>
                   
