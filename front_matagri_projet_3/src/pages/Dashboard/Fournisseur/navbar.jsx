@@ -28,7 +28,6 @@ function Navigation() {
         profile: "agriculteur",
         roles: [],
       },
-      
     });
     if (Object.keys(currentProfilUSer).length === 0) {
       console.log("Bonjour");
