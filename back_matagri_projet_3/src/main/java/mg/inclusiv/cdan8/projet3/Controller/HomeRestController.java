@@ -65,9 +65,10 @@ public class HomeRestController {
 
     @GetMapping("session_user")
     public Users  SessionUser() {
-        Users userSession = (Users)session.getAttribute("user");
+        //Users userSession = (Users)session.getAttribute("user");
         // System.out.println(userSession.getEmail());
-        return userSession;
+        Users currentUser = userRepository.findByEmail("authuser.getEmail()");
+        return currentUser;
     }
 
     @PostMapping("add_agriculteur")

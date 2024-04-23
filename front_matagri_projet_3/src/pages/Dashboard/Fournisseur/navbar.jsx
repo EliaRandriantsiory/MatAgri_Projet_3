@@ -1,16 +1,30 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 function Navigation() {
-  const [currentUSer, setCurrentUser] = useState();
+  const navigate = useNavigate();
+  const [currentMailUSer, setCurrentMailUser] = useState();
+  const [currentProfilUSer, setCurrentProfilUser] = useState({});
   const handleOnClickLogout = (event) => {
     localStorage.clear()
     Navigate("/home")
   };
   
   useEffect(() => {
-    setCurrentUser(localStorage.getItem('email_Current_User'))
-
+    try {
+              const response = axios.get("http://localhost:8082/api/home/getCurrentUser",{});
+              currentProfilUSer(response.data);
+            } catch (error) {
+              console.error(error);
+            }
+  
+    var etatAuth = "oui"
+    if(etatAuth !=="oui"){
+      navigate("/home")
+    }
+    setCurrentMailUser(localStorage.getItem('email_Current_User'))
+      console.log(currentProfilUSer)  
+    
   },[])
 
   return (
@@ -27,7 +41,7 @@ function Navigation() {
           <div className="profile-detail">
             <h5>Fashion Store</h5>
             <h6>750 followers | 10 review</h6>
-            <h6>{currentUSer}</h6>
+            <h6>{currentMailUSer}</h6>
           </div>
         </div>
         <div className="faq-tab">
