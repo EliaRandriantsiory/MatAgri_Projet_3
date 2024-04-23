@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,5 +26,9 @@ public class Materiels {
     private String techniqueMat;
     private String imagePath;
     private String imageDetailsPath;
+    @ManyToOne
+    @JoinColumn(name = "id_user", insertable = false, updatable = false)
+    private Users user;
+    
 
 }
