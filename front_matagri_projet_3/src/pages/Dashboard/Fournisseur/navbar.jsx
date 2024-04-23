@@ -28,6 +28,8 @@ function Navigation() {
 
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("password");
     setCurrentProfilUser({});
     navigate("/home");
   };

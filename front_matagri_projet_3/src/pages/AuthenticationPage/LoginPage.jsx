@@ -17,9 +17,9 @@ function Login() {
         password: password
       });
       const token = response.data.token;
-      sessionStorage.setItem('token', JSON.stringify(token));
-      sessionStorage.setItem('user', JSON.stringify(response.data.email));
-      sessionStorage.setItem('password', JSON.stringify(response.data.password));
+      localStorage.setItem('token', JSON.stringify(token));
+      localStorage.setItem('email', JSON.stringify(response.data.email));
+      localStorage.setItem('password', JSON.stringify(response.data.password));
       navigate("/dashboard_fournisseur");
       setEmail('');
       setPassword('');
