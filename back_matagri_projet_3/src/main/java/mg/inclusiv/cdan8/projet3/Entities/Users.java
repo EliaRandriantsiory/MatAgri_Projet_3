@@ -22,15 +22,20 @@ import lombok.NoArgsConstructor;
 
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
     private Long idUser;
 
     private String name;
+
     private String lastname;
     
     private String address;
     
+    private String phone;
+    
+    private Date create;
+
+
     private String nif;
     
     private String stat;
