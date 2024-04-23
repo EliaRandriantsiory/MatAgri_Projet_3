@@ -19,7 +19,6 @@ import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
 import Terme from "./pages/AuthenticationPage/Terme";
 import Choiceusers from "./pages/AuthenticationPage/choiceusers";
 
-
 function App() {
   return (
     <BrowserRouter>

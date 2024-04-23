@@ -3,52 +3,23 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 function Navigation() {
 
-  // const user={
-  //   idUser: 3,
-  //   name: null,
-  //   lastname: null,
-  //   address: null,
-  //   nif: null,
-  //   stat: null,
-  //   cin: null,
-  //   email: "rakoto@gmail.com",
-  //   region: null,
-  //   companyName: null,
-  //   password: "rakoto",
-  //   profile: {
-  //     idprofile: 1,
-  //     profile: "agriculteur",
-  //     roles: [],
-  //   },
-  // }
   const [currentProfilUSer, setCurrentProfilUser] = useState({});
   useEffect(() => {
     axios.post('http://localhost:8082/api/home/authentification',{
       email:"rakoto@gmail.com",
-      password:"rakoton"
+      password:"rakoto"
     }
-
     )
   .then((response) => {
-    // Récupérer les données renvoyées par le backend
-    // setCurrentUser(response.data);
      setCurrentProfilUser({...response.data}) 
     
   })
   .catch((error) => {
-    // Gérer les erreurs de la requête
     console.error(error);
   });
-  
   },[])
  
   const navigate = useNavigate();
-  
-  // const handleOnClickLogout = (event) => {
-  //   currentProfilUSer({})
-  //   Navigate("/home");
-  // };
-  // setCurrentProfilUser({...user})
     console.log(currentProfilUSer)
     if (Object.keys(currentProfilUSer).length !== 0) {
         console.log("Bonjour");
@@ -56,9 +27,6 @@ function Navigation() {
         navigate("/home");
         console.log("Erreur");
       }
-
-  
-  
   // console.log(currentProfilUSer);
   return (
     <div className="row">
