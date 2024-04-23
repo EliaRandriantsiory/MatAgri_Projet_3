@@ -27,9 +27,6 @@ function Navigation() {
         navigate("/home");
         console.log("Erreur");
       }
-
-  
-  
   // console.log(currentProfilUSer);
   return (
     <div className="row">
