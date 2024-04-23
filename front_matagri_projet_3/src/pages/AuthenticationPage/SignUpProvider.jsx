@@ -85,7 +85,7 @@ function SignUpProvider() {
     if(passwordForm!==confirmPasswordForm){
       navigate("/InscriptionAgriculteur")
     }
-    navigate("/Dashboard")
+    navigate("/dashboard_fournisseur")
   };
 
   return (
