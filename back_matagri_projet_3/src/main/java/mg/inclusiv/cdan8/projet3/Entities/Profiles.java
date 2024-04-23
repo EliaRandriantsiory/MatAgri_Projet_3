@@ -28,9 +28,5 @@ public class Profiles {
     @OneToMany(mappedBy = "profile")
     private List<Roles> roles;
     
-    @OneToMany (mappedBy = "profil")
-    private List<Users> user;
-
-    @OneToOne(mappedBy = "profil")
-    private Fournisseur fournisseur;
+    
 }
