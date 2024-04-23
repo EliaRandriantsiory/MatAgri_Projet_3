@@ -1,14 +1,10 @@
-import { Form, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import React from "react";
-import "../assets/css/calendar/calendar-icon.css";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { create } from "lodash";
-// atao import
 import Terme from "./Terme";
 
-
 function SignUpCooperative() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({});
   const [nameForm, setName] = useState("");
   const [lastnameForm, setLastName] = useState("");
@@ -20,12 +16,18 @@ function SignUpCooperative() {
   const [regionForm, setRegion] = useState("");
   const [passwordForm, setPassword] = useState("");
   const [confirmPasswordForm, setConfirmPassword] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
+
+  const handleOnChangecheckboxcgv = (event) => {
+    setIsChecked(event.target.checked);
+    setErrorMessage(false);
+  };
 
   const handleOnChangeInputTextRaison = (event) => {
     setName(event.target.value);
   };
-
-
 
   const handleOnChangeInputTextNbAgriculteur = (event) => {
     setNbAgriculteur(event.target.value);
@@ -34,36 +36,42 @@ function SignUpCooperative() {
   const handleOnChangeInputTextPhone = (event) => {
     setPhone(event.target.value);
   };
+
   const handleOnChangeInputTextNif = (event) => {
     setCin(event.target.value);
   };
+
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
   };
+
   const handleOnChangeInputTextRegion = (event) => {
     setRegion(event.target.value);
   };
+
   const handleOnChangeInputTextPassword = (event) => {
     setPassword(event.target.value);
   };
+
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
-  const handleOnclickSauvegarde = (event) => {
+
+  const handleOnclickSauvegarde = async (event) => {
     event.preventDefault();
-    setForm({
-      companyName: nameForm,
-      nif: lastnameForm,
-      seat: addressForm,
-      phone: phoneForm,
-      cin: cinForm,
-      email: emailForm,
-      region: regionForm,
-      password: passwordForm,
-      confirmPassword: confirmPasswordForm,
-    });
+
+    if (!isChecked) {
+      setErrorMessage("Veuillez accepter les termes et conditions de location");
+      return;
+    }
+
+    if (passwordForm !== confirmPasswordForm) {
+      setErrorPassword("Les mots de passe ne sont pas identiques");
+      return;
+    }
+
     try {
-      const response = axios.post(
+      const response = await axios.post(
         "http://localhost:8082/api/home/add_agriculteur",
         {
           companyName: nameForm,
@@ -86,12 +94,35 @@ function SignUpCooperative() {
       );
 
       console.log(response.data);
+      navigate("/dashboard_fournisseur");
     } catch (error) {
       console.error(error);
     }
   };
 
-  useEffect(() => {}, [form]);
+  useEffect(() => {
+    setForm({
+      companyName: nameForm,
+      nif: lastnameForm,
+      seat: addressForm,
+      phone: phoneForm,
+      cin: cinForm,
+      email: emailForm,
+      region: regionForm,
+      password: passwordForm,
+      confirmPassword: confirmPasswordForm,
+    });
+  }, [
+    nameForm,
+    lastnameForm,
+    addressForm,
+    phoneForm,
+    cinForm,
+    emailForm,
+    regionForm,
+    passwordForm,
+    confirmPasswordForm,
+  ]);
 
   return (
     <>
@@ -99,21 +130,19 @@ function SignUpCooperative() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>VOUS ALLEZ VOUS INSCRIRE ENT TANT QUE COOPERATIVE</h3>
+              <h3>VOUS ALLEZ VOUS INSCRIRE EN TANT QUE COOPERATIVE</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
                     <div className="col-md-6">
-                      <label htmlFor="email">Raison social</label>
+                      <label htmlFor="email">Raison sociale</label>
                       <input
                         type="text"
                         className="form-control"
                         id="name"
-                        placeholder=" nom de la société"
+                        placeholder="Nom de la société"
                         required
-                        onChange={(event) =>
-                          handleOnChangeInputTextRaison(event)
-                        }
+                        onChange={handleOnChangeInputTextRaison}
                       />
                     </div>
                     <div className="col-md-6">
@@ -124,6 +153,7 @@ function SignUpCooperative() {
                         id="cin"
                         placeholder="Votre numéro NIF"
                         required
+                        onChange={handleOnChangeInputTextNif}
                       />
                     </div>
                     <div className="col-md-6">
@@ -163,6 +193,33 @@ function SignUpCooperative() {
                         }
                       />
                     </div>
+                    <div className="col-md-6"style={{ marginBottom: '20px' }}>
+                      <label htmlFor="mon-menu">région :</label>
+                      <select id="region" className="form-control">
+                      <option value="option1">--------------------</option>
+                        <option value="option1">Alaotra Mangoro</option>
+                        <option value="option2">Analamanga</option>
+                        <option value="option3">Atsimo Andrefana</option>
+                        <option value="option5">Itasy</option>
+                        <option value="option6">Menabe</option>
+                        <option value="option7">Vakinakaratra</option>
+                      </select>
+                    </div>
+                    <div className="col-md-6">
+                      <label htmlFor="email">Nombre Agriculteur</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="NbAgriculteur"
+                        placeholder="Nombre agriculteur"
+                        required
+                        onChange={(event) =>
+                          handleOnChangeInputTextNbAgriculteur(event)
+                        }
+                      />
+                    </div>
+                    
+
                     <div className="col-md-6">
                       <label htmlFor="review">Mot de passe</label>
                       <input
@@ -189,31 +246,6 @@ function SignUpCooperative() {
                         }
                       />
                     </div>
-                    <div className="col-md-6">
-                      <label htmlFor="email">Nombre Agriculteur</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="NbAgriculteur"
-                        placeholder="Nombre agriculteur"
-                        required
-                        onChange={(event) =>
-                          handleOnChangeInputTextNbAgriculteur(event)
-                        }
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="mon-menu">région :</label>
-                      <select id="region" className="form-control">
-                      <option value="option1">--------------------</option>
-                        <option value="option1">Alaotra Mangoro</option>
-                        <option value="option2">Analamanga</option>
-                        <option value="option3">Atsimo Andrefana</option>
-                        <option value="option5">Itasy</option>
-                        <option value="option6">Menabe</option>
-                        <option value="option7">Vakinakaratra</option>
-                      </select>
-                    </div>
                   </div>
                   
                   <div id="checkTermeCondition" className="mt-4">
@@ -223,10 +255,18 @@ function SignUpCooperative() {
                       value="value"
                       id="checkPlus"
                       className="mr-2"
+                      checked={isChecked}
+                    onChange={handleOnChangecheckboxcgv}
+
                     />
                     {/* ito le terme */}
                     <Terme/>
                     {/* --------- */}
+                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                    {errorPassword && (
+                  <p style={{ color: "red" }}>{errorPassword}</p>
+                )}
+
                   </div>
                   <div>
                     <input
