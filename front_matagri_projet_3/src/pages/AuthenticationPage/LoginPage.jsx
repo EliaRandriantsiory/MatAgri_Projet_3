@@ -6,22 +6,28 @@ import "../assets/css/StyleLoginPage.css";
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8082/authentification', {
+      const response = await axios.post('http://localhost:8082/api/home/authentification', {
         email: email,
         password: password
       });
-      console.log(response.data);
-      navigate("/PageAccueilAgriculteu");
+      const token = response.data.token;
+      sessionStorage.setItem('token', JSON.stringify(token));
+      sessionStorage.setItem('user', JSON.stringify(response.data.email));
+      sessionStorage.setItem('password', JSON.stringify(response.data.password));
+      navigate("/dashboard_fournisseur");
+      setEmail('');
+      setPassword('');
     } catch (error) {
+      setError('Email ou mot de passe incorrect.');
       console.error('Login failed:', error);
     }
   };
-
   return (
     <>
       <section id="LoginPageSection" className="login-page section-b-space">
@@ -54,6 +60,7 @@ function Login() {
                     required
                   />
                 </div>
+                {error && <p className="error-message">{error}</p>} {/* Ajout de cette ligne */}
                 <button type="submit" className="btn btn-solid">Login</button>
               </form>
             </div>
@@ -62,6 +69,7 @@ function Login() {
       </section>
     </>
   );
+  
 }
 
 export default Login;
