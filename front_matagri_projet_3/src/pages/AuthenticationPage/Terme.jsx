@@ -14,11 +14,14 @@ function Terme(){
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title className="text-center">
-            <h4>
+          <Modal.Title>
+            <center className="text-center">
+              <h4 className="texte-center">
             CONDITIONS GENERALES DE LOCATION
                 <br/>MATERIELS AGRICOLES MatAgri
             </h4>
+            </center>
+            
         </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -61,7 +64,7 @@ function Terme(){
 </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}  style={{ color: "black" }} className="btn-hover">
-            Sortir
+            Accepter
           </Button>
         </Modal.Footer>
       </Modal>

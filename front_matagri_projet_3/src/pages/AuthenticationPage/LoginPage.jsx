@@ -29,6 +29,7 @@ function Login() {
       console.error('Login failed:', error);
     }
   };
+
   return (
     <>
       <section id="LoginPageSection" className="login-page section-b-space">
