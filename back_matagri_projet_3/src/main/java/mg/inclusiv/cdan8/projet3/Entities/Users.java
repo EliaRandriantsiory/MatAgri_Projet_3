@@ -52,15 +52,4 @@ public class Users {
     @JoinColumn(name = "id_profile")
     private Profiles profile;
     
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
 }
