@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Modal from 'react-bootstrap/Modal';
 import React, { Button } from "react-bootstrap";
-import "../assets/css/calendar/calendar-icon.css";
+import Modal from 'react-bootstrap/Modal';
 
 function Terme(){
     const [show, setShow] = useState(false);
