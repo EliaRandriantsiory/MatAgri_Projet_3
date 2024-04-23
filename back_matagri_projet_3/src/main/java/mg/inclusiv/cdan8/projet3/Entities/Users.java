@@ -29,7 +29,6 @@ public class Users {
 
     private String name;
 
-
     private String lastname;
     
     private String address;
@@ -46,6 +45,7 @@ public class Users {
     
     private String region;
 
+    private int nbFarme;
 
     private String companyName;
     

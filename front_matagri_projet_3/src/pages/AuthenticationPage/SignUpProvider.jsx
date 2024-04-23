@@ -1,18 +1,14 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/SignUpProvider/provider.css";
-
 function SignUpProvider() {
   const navigate = useNavigate();
-  const [nameForm, setName] = useState("");
-  const [lastnameForm, setLastName] = useState("");
   const [companyNameForm, setCompanyName] = useState("")
   const [createForm, setCreate] = useState("")
   const [nifForm, setNif] = useState("")
-  const [statForm, setStat] = useState("")
   const [addressForm, setAddress] = useState("");
   const [phoneForm, setPhone] = useState("");
-  const [cinForm, setCin] = useState("");
   const [emailForm, setEmail] = useState("");
   const [regionForm, setRegion] = useState("");
   const [EtatCGV, setEtatCgv] = useState("");
@@ -35,25 +31,9 @@ function SignUpProvider() {
     localStorage.setItem('nif',event.target.value)
   };
 
-  const handleOnChangeInputTextNom = (event) => {
-    setName(event.target.value);
-    localStorage.setItem('nom',event.target.value)
-  };
-  const handleOnChangeInputTextLastName = (event) => {
-    setLastName(event.target.value);
-    localStorage.setItem('prenom',event.target.value)
-  };
-  const handleOnChangeInputTextAddress = (event) => {
-    setAddress(event.target.value);
-    localStorage.setItem('adresse',event.target.value)
-  };
   const handleOnChangeInputTextPhone = (event) => {
     setPhone(event.target.value);
     localStorage.setItem('phone',event.target.value)
-  };
-  const handleOnChangeInputTextCin = (event) => {
-    setCin(event.target.value);
-    localStorage.setItem('cin',event.target.value)
   };
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
@@ -75,17 +55,41 @@ function SignUpProvider() {
     setCompanyName(event.target.value);
   };
 
-  const handleOnclickSauvegarde = (event) => {
+  const handleOnclickSauvegarde = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
+        companyName: companyNameForm,
+        nif: nifForm,
+        address: addressForm,
+        phone: phoneForm,
+        email: emailForm,
+        region: regionForm,
+        password: passwordForm,
+        confirmPassword: confirmPasswordForm,
+        profile: {
+          idprofile: 3,
+          profile: "fournisseur",
+          roles: []
+      }
+      });
+      console.log(response.data);
+      navigate("/dashboard_fournisseur");
+    } catch (error) {
+
+      console.error("Erreur lors de l'inscription :", error);
+    }
     event.preventDefault();
     console.log(EtatCGV)
     navigate("/dashboard_fournisseur")
 
-    localStorage.setItem('email_Current_User',emailForm)
+    localStorage.setItem('email', emailForm);
+    localStorage.setItem('password', passwordForm);
     
     if(passwordForm!==confirmPasswordForm){
       navigate("/InscriptionAgriculteur")
-    }
-    navigate("/dashboard_fournisseur")
+    }else{
+    navigate("/dashboard_fournisseur")}
   };
 
   return (
@@ -103,7 +107,7 @@ function SignUpProvider() {
                         type="text"
                         className="form-control"
                         id="name"
-                        placeholder="Votre nom"
+                        placeholder="Votre raison sociale"
                         required
                         value={companyNameForm}
                         onChange={(event) => handleOnChangeInputTextCompany(event)}
@@ -115,7 +119,7 @@ function SignUpProvider() {
                         type="text"
                         className="form-control"
                         id="cin"
-                        placeholder="Votre numéro CIN"
+                        placeholder="Votre numéro NIF"
                         required
                         value={nifForm}
                         onChange={(event) => handleOnChangeInputTextNif(event)}
@@ -127,7 +131,7 @@ function SignUpProvider() {
                         type="text"
                         className="form-control"
                         id="email"
-                        placeholder="Votre prénom"
+                        placeholder="Votre siège social"
                         required
                         value={addressForm}
                         onChange={(event) => handleOnChangeInputTextAdress(event)}
@@ -141,7 +145,7 @@ function SignUpProvider() {
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
                         required
-                        value={passwordForm}
+                        value={phoneForm}
                         onChange={(event) => handleOnChangeInputTextPhone(event)}
                       />
                     </div>
@@ -151,7 +155,7 @@ function SignUpProvider() {
                         type="text"
                         className="form-control"
                         id="address"
-                        placeholder="Votre adresse"
+                        placeholder="Votre adresse email"
                         required
                         value={emailForm}
                         onChange={(event) => handleOnChangeInputTextEmail(event)}
@@ -183,13 +187,14 @@ function SignUpProvider() {
                     </div>
                     <div className="col-md-6">
                       <label htmlFor="mon-menu">Région :</label>
-                      <select id="region" className="form-control" onChange={handleOnChangeInputTextRegion}>
-                        <option value="option1">Alaotra Mangoro</option>
-                        <option value="option2">Analamanga</option>
-                        <option value="option3">Atsimo Andrefana</option>
-                        <option value="option5">Itasy</option>
-                        <option value="option6">Menabe</option>
-                        <option value="option7">Vakinakaratra</option>
+                      <select id="region" value={regionForm} className="form-control" onChange={handleOnChangeInputTextRegion}>
+                        <option value="">-------------</option>
+                        <option value="Alaotra Mangoro">Alaotra Mangoro</option>
+                        <option value="Analamanga">Analamanga</option>
+                        <option value="Atsimo Andrefana">Atsimo Andrefana</option>
+                        <option value="Itasy">Itasy</option>
+                        <option value="Menabe">Menabe</option>
+                        <option value="Vakinakaratra">Vakinakaratra</option>
                       </select>
                     </div>
                   </div>
@@ -218,6 +223,7 @@ function SignUpProvider() {
       </section>
     
   );
-}
+  }
+
 
 export default SignUpProvider;
