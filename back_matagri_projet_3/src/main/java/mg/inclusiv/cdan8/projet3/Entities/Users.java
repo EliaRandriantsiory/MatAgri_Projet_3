@@ -35,7 +35,6 @@ public class Users {
     
     private Date create;
 
-
     private String nif;
     
     private String stat;
