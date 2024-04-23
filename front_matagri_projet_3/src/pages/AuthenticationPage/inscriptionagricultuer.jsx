@@ -1,12 +1,13 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState  } from "react";
+import { useNavigate   } from 'react-router-dom';
+
 import axios from "axios";
+import DashboardUser from "../dasboard";
 function InscriptionAgriculteur() {
-  const [label, setLabel] = useState({
-    type: "mail",
-    content: "Votre mail",
-    placeholder: "Entrer ici votre mail",
-  });
+  const [inscriptionAgriculteurRedirect, setInscriptionAgriculteurRedirect] = useState()
+  
+  const navigate = useNavigate();
   const [form, setForm] = useState({});
   const [nameForm, setName] = useState("");
   const [lastnameForm, setLastName] = useState("");
@@ -20,84 +21,64 @@ function InscriptionAgriculteur() {
 
   const handleOnChangeInputTextNom = (event) => {
     setName(event.target.value);
+    localStorage.setItem('nom',event.target.value)
   };
   const handleOnChangeInputTextLastName = (event) => {
     setLastName(event.target.value);
+    localStorage.setItem('prenom',event.target.value)
   };
   const handleOnChangeInputTextAddress = (event) => {
     setAddress(event.target.value);
+    localStorage.setItem('adresse',event.target.value)
   };
   const handleOnChangeInputTextPhone = (event) => {
     setPhone(event.target.value);
+    localStorage.setItem('phone',event.target.value)
   };
   const handleOnChangeInputTextCin = (event) => {
     setCin(event.target.value);
+    localStorage.setItem('cin',event.target.value)
   };
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
+    localStorage.setItem('email',event.target.value)
   };
   const handleOnChangeInputTextRegion = (event) => {
     setRegion(event.target.value);
+    localStorage.setItem('region',event.target.value)
   };
   const handleOnChangeInputTextPassword = (event) => {
     setPassword(event.target.value);
+
   };
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
+
+
   const handleOnclickSauvegarde = (event) => {
     event.preventDefault();
-    setForm({
-      name: nameForm,
-      lastname: lastnameForm,
-      address: addressForm,
-      phone: phoneForm,
-      cin: cinForm,
-      email: emailForm,
-      region: regionForm,
-      password: passwordForm,
-      confirmPassword: confirmPasswordForm,
-    });
-
-    try {
-      const response = axios.post(
-        "http://localhost:8082/api/home/add_agriculteur",
-        {
-          name: nameForm,
-          lastname: lastnameForm,
-          address: addressForm,
-          phone: phoneForm,
-          cin: cinForm,
-          email: emailForm,
-          region: regionForm,
-          password: passwordForm,
-          profile: {
-            idprofile: 1,
-            profile: "agriculteur",
-            roles: [],
-          },
-          nif: null,
-          stat: null,
-
-          companyName: null,
-        }
-      );
-
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+    console.log(emailForm)
+    sessionStorage.setItem('email',emailForm)
+      navigate("/Dashboard")
+    // if(passwordForm!==confirmPasswordForm){
+    //   navigate("/InscriptionAgriculteur")
+    // }
   };
 
+ 
   useEffect(() => {
-    // console.log("bonjour")
-    // console.log(form)
+    
+    setName(localStorage.getItem("nom"))
+    setLastName(localStorage.getItem("prenom"))
+    setAddress(localStorage.getItem("adresse"))
+    setPhone(localStorage.getItem("phone"))
+    setCin(localStorage.getItem("cin"))
+    setEmail(localStorage.getItem("email"))
+    setRegion(localStorage.getItem("region"))
+    
   }, []);
-  useEffect(() => {}, [form]);
-
-  //   useEffect(( )=>{
-  //     return console.log("phase de démontage")
-  // },[form])
+  useEffect(() => {console.log(inscriptionAgriculteurRedirect)}, [inscriptionAgriculteurRedirect]);
 
   return (
     <>
@@ -105,7 +86,7 @@ function InscriptionAgriculteur() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>Inscription</h3>
+              <h3>VOUS ALLEZ VOUS INSCRIRE EN TANT QU'AGRICULTEUR</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
@@ -116,18 +97,20 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="name"
                         placeholder="Votre nom"
-                        required
+                        
+                        value={nameForm}
                         onChange={(event) => handleOnChangeInputTextNom(event)}
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">CIN</label>
+                      <label htmlFor="cin">CIN</label>
                       <input
                         type="text"
                         className="form-control"
                         id="cin"
                         placeholder="Votre numéro CIN"
-                        required
+                        
+                        value={cinForm}
                         onChange={(event) => handleOnChangeInputTextCin(event)}
                       />
                     </div>
@@ -138,33 +121,36 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="email"
                         placeholder="Votre prénom"
-                        required
+                        
+                        value={lastnameForm}
                         onChange={(event) =>
                           handleOnChangeInputTextLastName(event)
                         }
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Téléphone</label>
+                      <label htmlFor="telephone">Téléphone</label>
                       <input
                         type="text"
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
-                        required
+                        
+                        value={phoneForm}
                         onChange={(event) =>
                           handleOnChangeInputTextPhone(event)
                         }
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Adresse</label>
+                      <label htmlFor="adresse">Adresse</label>
                       <input
                         type="text"
                         className="form-control"
                         id="address"
                         placeholder="Votre adresse"
-                        required
+                        
+                        value={addressForm}
                         onChange={(event) =>
                           handleOnChangeInputTextAddress(event)
                         }
@@ -177,7 +163,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="passeword"
                         placeholder=" votre mot de passe"
-                        required
+                        
                         onChange={(event) =>
                           handleOnChangeInputTextPassword(event)
                         }
@@ -189,7 +175,8 @@ function InscriptionAgriculteur() {
                         type="text"
                         className="form-control"
                         placeholder="Votre adresse email"
-                        required
+                        
+                        value={emailForm}
                         onChange={(event) =>
                           handleOnChangeInputTextEmail(event)
                         }
@@ -202,7 +189,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="passConfirm"
                         placeholder=" Confirmer mot de passe"
-                        required
+                        
                         onChange={(event) =>
                           handleOnChangeInputTextConfirmPassword(event)
                         }
