@@ -72,6 +72,10 @@ public class HomeRestController {
         Users currentUser = userRepository.findByEmail("authuser.getEmail()");
         return currentUser;
     }
+    @GetMapping("session_usertest")
+    public ResponseEntity<String>  SessionUsertest() {
+    return ResponseEntity.ok("Données reçues avec succès !");
+    }
 
     @PostMapping("add_agriculteur")
     public ResponseEntity<String> addContact(@RequestBody Users newUser) {

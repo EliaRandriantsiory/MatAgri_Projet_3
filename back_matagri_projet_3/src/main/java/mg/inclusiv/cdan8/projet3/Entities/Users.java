@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -22,19 +23,19 @@ import lombok.NoArgsConstructor;
 
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)    
-    private Long idUser;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private Long idUser; 
 
     private String name;
+
 
     private String lastname;
     
     private String address;
-    
+
     private String phone;
     
-    private Date create;
-
     private String nif;
     
     private String stat;
@@ -44,6 +45,7 @@ public class Users {
     private String email;
     
     private String region;
+
 
     private String companyName;
     
@@ -55,5 +57,5 @@ public class Users {
     @ManyToOne
     @JoinColumn(name = "id_profile")
     private Profiles profile;
-    
+
 }

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/jsx-no-undef */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
