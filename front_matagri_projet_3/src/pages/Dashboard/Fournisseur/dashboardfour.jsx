@@ -25,10 +25,10 @@ function Dashboard() {
           </div>
         </div>
       </div>
-
+      
       <section className="dashboard-section section-b-space">
         <div className="container">
-          <Navigation />
+          <Navigation/>
         </div>
       </section>
     </>

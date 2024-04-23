@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import AddProduit from "./AddProduit";
 
 function Navigation() {
   return (
@@ -252,9 +253,7 @@ function Navigation() {
                   <div className="card-body">
                     <div className="top-sec">
                       <h3>Tous les produits</h3>
-                      <a href="#" className="btn btn-sm btn-solid">
-                        + Ajouter Matériels
-                      </a>
+                      <AddProduit/>
                     </div>
                     <div className="table-responsive-md">
                       <table className="table mb-0 product-table">
