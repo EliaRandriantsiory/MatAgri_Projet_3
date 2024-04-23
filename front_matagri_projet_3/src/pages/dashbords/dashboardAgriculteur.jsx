@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function DashBordAgriculteur() {
   return (
     <div>
@@ -48,11 +50,6 @@ function DashBordAgriculteur() {
                       >
                         Profile
                       </a>
-                    </li>
-                    <li className="nav-item">
-                      <a href className="nav-link">
-                        Déconnexion
-                      </a>{" "}
                     </li>
                   </ul>
                 </div>

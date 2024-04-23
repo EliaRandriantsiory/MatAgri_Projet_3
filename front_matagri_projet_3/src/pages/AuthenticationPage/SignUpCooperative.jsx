@@ -8,19 +8,7 @@ import { create } from "lodash";
 import Terme from "./Terme";
 
 
-
-
-
-
 function SignUpCooperative() {
-  const onClickHandler = () => {};
-  const onChangeHandler = () => {};
-
-  const [label, setLabel] = useState({
-    type: "mail",
-    content: "Votre mail",
-    placeholder: "Entrer ici votre mail",
-  });
   const [form, setForm] = useState({});
   const [nameForm, setName] = useState("");
   const [lastnameForm, setLastName] = useState("");
@@ -36,7 +24,9 @@ function SignUpCooperative() {
   const handleOnChangeInputTextRaison = (event) => {
     setName(event.target.value);
   };
-  
+
+
+
   const handleOnChangeInputTextNbAgriculteur = (event) => {
     setNbAgriculteur(event.target.value);
   };
@@ -102,13 +92,14 @@ function SignUpCooperative() {
   };
 
   useEffect(() => {}, [form]);
+
   return (
     <>
       <section className="register-page section-b-space">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>Inscription</h3>
+              <h3>VOUS ALLEZ VOUS INSCRIRE ENT TANT QUE COOPERATIVE</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
