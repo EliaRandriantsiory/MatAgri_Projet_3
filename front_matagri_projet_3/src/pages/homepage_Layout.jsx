@@ -41,10 +41,11 @@ function HomePage_Layout() {
                           </div>
                         </li>
                         <li>
-                          <a href="#">Accueil</a>
+                          <Link to={"/home"}>Accueil</Link>
+                          {/* <a href="#"></a> */}
                         </li>
                         <li className="mega" id="hover-cls">
-                          <a href="#">Matériel </a>
+                          <Link to={"/about"}>A propos</Link>
                           <ul className="mega-menu full-mega-menu">
                             <li>
                               <div className="container">
@@ -382,169 +383,13 @@ function HomePage_Layout() {
                           </ul>
                         </li>
                         <li>
-                          <a href="#">Contact</a>
-                          <ul>
-                            <li>
-                              <a href="category-page(vegetables).html">
-                                tab style<span className="new-tag">new</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(top-filter).html">
-                                top filter
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(modern).html">modern</a>
-                            </li>
-                            <li>
-                              <a href="category-page.html">left sidebar</a>
-                            </li>
-                            <li>
-                              <a href="category-page(right).html">
-                                right sidebar
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(no-sidebar).html">
-                                no sidebar
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(sidebar-popup).html">
-                                sidebar popup
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(metro).html">metro</a>
-                            </li>
-                            <li>
-                              <a href="category-page(full-width).html">
-                                full width
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(infinite-scroll).html">
-                                infinite scroll
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(3-grid).html">
-                                three grid
-                              </a>
-                            </li>
-                            <li>
-                              <a href="category-page(6-grid).html">six grid</a>
-                            </li>
-                            <li>
-                              <a href="category-page(list-view).html">
-                                list view
-                              </a>
-                            </li>
-                          </ul>
+                          <a href="#">Matériels</a>
                         </li>
                         <li>
-                          <a href="#">product</a>
-                          <ul>
-                            <li>
-                              <a href="product-page(360-view).html">
-                                360 view <span className="new-tag">new</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="product-page(video-thumbnail).html">
-                                video thumbnail
-                                <span className="new-tag">new</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">sidebar</a>
-                              <ul>
-                                <li>
-                                  <a href="product-page.html">left sidebar</a>
-                                </li>
-                                <li>
-                                  <a href="product-page(right-sidebar).html">
-                                    right sidebar
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="product-page(no-sidebar).html">
-                                    no sidebar
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <a href="#">thumbnail image</a>
-                              <ul>
-                                <li>
-                                  <a href="product-page(left-image).html">
-                                    left image
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="product-page(right-image).html">
-                                    right image
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="product-page(image-outside).html">
-                                    image outside
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <a href="#">three column</a>
-                              <ul>
-                                <li>
-                                  <a href="product-page(3-col-left).html">
-                                    thumbnail left
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="product-page(3-col-right).html">
-                                    thumbnail right
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="product-page(3-column).html">
-                                    thubnail bottom
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <a href="product-page(4-image).html">
-                                four image
-                              </a>
-                            </li>
-                            <li>
-                              <a href="product-page(sticky).html">sticky</a>
-                            </li>
-                            <li>
-                              <a href="product-page(accordian).html">
-                                accordian
-                              </a>
-                            </li>
-                            <li>
-                              <a href="product-page(bundle).html">bundle</a>
-                            </li>
-                            <li>
-                              <a href="product-page(image-swatch).html">
-                                image swatch{" "}
-                              </a>
-                            </li>
-                            <li>
-                              <a href="product-page(vertical-tab).html">
-                                vertical tab
-                              </a>
-                            </li>
-                          </ul>
+                          <a href="#">Partenaires</a>
                         </li>
                         <li>
-                          <a href="#">pages</a>
+                          <Link to={"/contact"}>Contacts</Link>
                           <ul>
                             <li>
                               <a href="#">vendor</a>
@@ -683,25 +528,6 @@ function HomePage_Layout() {
                             </li>
                           </ul>
                         </li>
-                        <li>
-                          <a href="#">blog</a>
-                          <ul>
-                            <li>
-                              <a href="blog-page.html">left sidebar</a>
-                            </li>
-                            <li>
-                              <a href="blog(right-sidebar).html">
-                                right sidebar
-                              </a>
-                            </li>
-                            <li>
-                              <a href="blog(no-sidebar).html">no sidebar</a>
-                            </li>
-                            <li>
-                              <a href="blog-details.html">blog details</a>
-                            </li>
-                          </ul>
-                        </li>
                       </ul>
                     </nav>
                   </div>
@@ -725,24 +551,18 @@ function HomePage_Layout() {
                           />
                           <ul className="onhover-show-div">
                             <li>
-                              <Link to="/SignUpProvider" data-lng="en">
-                                Fournisseur
-                              </Link>
+                              <Link to="/Login">Se connecter</Link>
                             </li>
+
                             <li>
-                              <Link to="/SignUp" data-lng="es">
-                                Agriculteur
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/SignUpCooperative" data-lng="es">
-                                Coopérative
+                              <Link to="/choiceusers" data-lng="en">
+                                s'inscrire
                               </Link>
                             </li>
                           </ul>
                         </li>
                         <li className="onhover-div mobile-search">
-                          <div>
+                          <Link to={"/search"}>
                             <img
                               src="../assets/images/jewellery/icon/search.png"
                               onclick="openSearch()"
@@ -750,42 +570,7 @@ function HomePage_Layout() {
                               alt=""
                             />
                             <i className="ti-search" onclick="openSearch()" />
-                          </div>
-                          <div id="search-overlay" className="search-overlay">
-                            <div>
-                              <span
-                                className="closebtn"
-                                onclick="closeSearch()"
-                                title="Close Overlay"
-                              >
-                                ×
-                              </span>
-                              <div className="overlay-content">
-                                <div className="container">
-                                  <div className="row">
-                                    <div className="col-xl-12">
-                                      <form>
-                                        <div className="form-group">
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="exampleInputPassword1"
-                                            placeholder="Search a Product"
-                                          />
-                                        </div>
-                                        <button
-                                          type="submit"
-                                          className="btn btn-primary"
-                                        >
-                                          <i className="fa fa-search" />
-                                        </button>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          </Link>
                         </li>
                         <li className="onhover-div mobile-setting">
                           <div>
@@ -797,7 +582,7 @@ function HomePage_Layout() {
                             <i className="ti-settings" />
                           </div>
                           <div className="show-div setting">
-                            <h6>langages</h6>
+                            <h6>langues</h6>
                             <ul>
                               <li>
                                 <a href="#">anglais</a>{" "}
@@ -914,53 +699,6 @@ function HomePage_Layout() {
       </header>
       <Outlet />
       <footer className="footer-light">
-        <div className="light-layout">
-          <div className="container">
-            <section className="small-section border-section border-top-0">
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="subscribe">
-                    <div>
-                      <h4>SAVEZ TOUT D'ABORD !</h4>
-                      <p>
-                        Ne manquez rien de MatAgri en vous inscrivant à notre
-                        newsletter.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <form
-                    action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&id=082f74cbda"
-                    className="form-inline subscribe-form auth-form needs-validation"
-                    method="post"
-                    id="mc-embedded-subscribe-form"
-                    name="mc-embedded-subscribe-form"
-                    target="_blank"
-                  >
-                    <div className="form-group mx-sm-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="EMAIL"
-                        id="mce-EMAIL"
-                        placeholder="Entrer votre mail"
-                        required="required"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="btn btn-solid"
-                      id="mc-submit"
-                    >
-                      souscrire
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
         <section className="section-b-space light-layout">
           <div className="container">
             <div className="row footer-theme partition-f">
@@ -970,12 +708,11 @@ function HomePage_Layout() {
                 </div>
                 <div className="footer-contant">
                   <div className="footer-logo">
-                    <img src="../assets/images/icon/" alt="" />
+                    <img src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam,
+                  <p style={{ textAlign: "center" }}>
+                    Votre application de location, de livraison et mutualisation
+                    de matériels agricoles.
                   </p>
                   <div className="footer-social">
                     <ul>
@@ -1011,24 +748,24 @@ function HomePage_Layout() {
               <div className="col offset-xl-1">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4>Mes comptes</h4>
+                    <h4>Liens utiles</h4>
                   </div>
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">mens</a>
+                        <a href="#">Louer du matériel agricole</a>
                       </li>
                       <li>
-                        <a href="#">womens</a>
+                        <a href="#">Déposer une demande de mutualisation</a>
                       </li>
                       <li>
-                        <a href="#">clothing</a>
+                        <a href="#">Consulter les demandes de matériels</a>
                       </li>
                       <li>
-                        <a href="#">accessories</a>
+                        <a href="#">Nous contacter</a>
                       </li>
                       <li>
-                        <a href="#">featured</a>
+                        <a href="#">xxxxx</a>
                       </li>
                     </ul>
                   </div>
@@ -1037,21 +774,21 @@ function HomePage_Layout() {
               <div className="col">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4>Pourquoi nous choisir</h4>
+                    <h4>Pourquoi nous choisir ?</h4>
                   </div>
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">shipping &amp; return</a>
+                        <a href="#">x1</a>
                       </li>
                       <li>
-                        <a href="#">secure shopping</a>
+                        <a href="#">x2</a>
                       </li>
                       <li>
-                        <a href="#">gallary</a>
+                        <a href="#">x3</a>
                       </li>
                       <li>
-                        <a href="#">affiliates</a>
+                        <a href="#">x4</a>
                       </li>
                       <li>
                         <a href="#">contacts</a>
@@ -1069,19 +806,15 @@ function HomePage_Layout() {
                     <ul className="contact-list">
                       <li>
                         <i className="fa fa-map-marker" />
-                        Multikart Demo Store, Demo store India 345-659
+                        MatAgri, Faravohitra, 101 Antananarivo
                       </li>
                       <li>
                         <i className="fa fa-phone" />
-                        Call Us: 123-456-7898
+                        +261 20 34 20 125 43
                       </li>
                       <li>
                         <i className="fa fa-envelope" />
-                        Email Us: <a href="#">Support@Multikart.com</a>
-                      </li>
-                      <li>
-                        <i className="fa fa-fax" />
-                        Fax: 123456
+                        Email : <a href="#">matagri@gmail.com</a>
                       </li>
                     </ul>
                   </div>
@@ -1258,7 +991,7 @@ function HomePage_Layout() {
       <div className="theme-settings">
         <ul>
           <li>
-            <div className="dark-btn">Dark</div>
+            <div className="dark-btn">Sombre</div>
           </li>
 
           <li className="input-picker">
@@ -2001,7 +1734,7 @@ function HomePage_Layout() {
                         />
                       </a>
                       <a href="light.html" className="demo-text">
-                        <h4>light</h4>
+                        <h4>claire</h4>
                       </a>
                     </div>
                   </div>

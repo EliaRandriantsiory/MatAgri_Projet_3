@@ -1,0 +1,9 @@
+function cartProduitModel() {
+  return (
+    <div>
+        Bonjour
+    </div>
+  );
+}
+
+export default cartProduitModel;

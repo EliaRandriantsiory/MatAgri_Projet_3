@@ -1,8 +1,6 @@
 function SignUp() {
   return (
-    <>
-      <>
-        <section className="register-page section-b-space">
+    <section className="register-page section-b-space">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
@@ -92,7 +90,7 @@ function SignUp() {
                       </div>
                       <div className="col-md-6">
                         <label htmlFor="mon-menu">région :</label>
-                        <select id="region">
+                        <select id="region" className="form-control">
                           <option value="option1">Alaotra Mangoro</option>
                           <option value="option2">Analamanga</option>
                           <option value="option3">Atsimo Andrefana</option>
@@ -113,8 +111,6 @@ function SignUp() {
             </div>
           </div>
         </section>
-      </>
-    </>
   );
 }
 

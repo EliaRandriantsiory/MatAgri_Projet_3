@@ -1,132 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/Logo-_Mat_2.ico" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/Logo-_Mat_2.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
 
-    <link
-      rel="icon"
-      href="%PUBLIC_URL%/assets/images/favicon/Logo-_Mat_2.png"
-      type="image/x-icon"
-    />
-    <link
-      rel="shortcut icon"
-      href="%PUBLIC_URL%/assets/images/favicon/Logo-_Mat_2.ico"
-      type="image/x-icon"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/Logo-_Mat_2.ico" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/Logo-_Mat_2.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
 
-    <!--
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/assets/images/favicon/Logo-_Mat_2.png" />
+  <link rel="icon" href="%PUBLIC_URL%/assets/images/favicon/Logo-_Mat_2.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/assets/images/favicon/Logo-_Mat_2.png" type="image/x-icon" />
+  <title>MATAgri</title>
+
+  <!--Google font-->
+  <link href="%PUBLIC_URL%/assets/images/favicon/Logo-_Mat_2.ico" type="image/x-icon" />
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet" />
+
+
+  <!-- Icons -->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/font-awesome.css" />
+
+  <!--Slick slider css-->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/slick.css" />
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/slick-theme.css" />
+
+  <!-- Animate icon -->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/animate.css" />
+
+  <!-- Themify icon -->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/themify-icons.css" />
+
+  <!-- Bootstrap css -->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/bootstrap.css" />
+
+  <!-- Theme css -->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/style.css" />
+
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <!--Css personalisé-->
-    <link
-      rel="stylesheet"
-      href="%PUBLIC_URL%/assets/css\homePage\homePage.css"
-    />
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="%PUBLIC_URL%/assets/css/vendors/font-awesome.css"
-    />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <!--Slick slider css-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="%PUBLIC_URL%/assets/css/vendors/slick.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="%PUBLIC_URL%/assets/css/vendors/slick-theme.css"
-    />
+  <!--Css personalisé-->
+  <link rel="stylesheet" href="%PUBLIC_URL%/assets/css\homePage\homePage.css" />
+  <!-- Icons -->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/font-awesome.css" />
 
-    <!-- Animate icon -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="%PUBLIC_URL%/assets/css/vendors/animate.css"
-    />
+  <!--Slick slider css-->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/slick.css" />
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/slick-theme.css" />
 
-    <!-- Themify icon -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="%PUBLIC_URL%/assets/css/vendors/themify-icons.css"
-    />
+  <!-- Animate icon -->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/animate.css" />
 
-    <!-- Bootstrap css -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="%PUBLIC_URL%/assets/css/vendors/bootstrap.css"
-    />
+  <!-- Themify icon -->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/themify-icons.css" />
 
-    <!-- Theme css -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="%PUBLIC_URL%/assets/css/style.css"
-    />
-    <title>MatAgri - Plateforme</title>
-  </head>
-  <body id="root" class="theme-color-5">
-    <!-- latest jquery-->
-    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap css -->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/vendors/bootstrap.css" />
 
-    <!-- slick js-->
-    <script src="../assets/js/slick.js"></script>
+  <!-- Theme css -->
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/style.css" />
+  <title>MatAgri - Plateforme</title>
+</head>
 
-    <!-- menu js-->
-    <script src="../assets/js/menu.js"></script>
+<body>
+  <div id="root" class="theme-color-5"></div>
+  <!-- latest jquery-->
+  <script src="%PUBLIC_URL%/assets/js/jquery-3.3.1.min.js"></script>
 
-    <!-- lazyload js-->
-    <script src="../assets/js/lazysizes.min.js"></script>
+  <!-- slick js-->
+  <script src="%PUBLIC_URL%/assets/js/slick.js"></script>
 
-    <!-- Bootstrap js-->
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <!-- dare picker js -->
+  <script src="%PUBLIC_URL%/assets/js/date-picker.js"></script>
 
-    <!-- Bootstrap Notification js-->
-    <script src="../assets/js/bootstrap-notify.min.js"></script>
+  <!-- menu js-->
+  <script src="%PUBLIC_URL%/assets/js/menu.js"></script>
 
-    <!-- Theme js-->
-    <script src="../assets/js/theme-setting.js"></script>
-    <script src="../assets/js/script.js"></script>
+  <!-- lazyload js-->
+  <script src="%PUBLIC_URL%/assets/js/lazysizes.min.js"></script>
 
-    <script>
-      $(window).on("load", function () {
-        setTimeout(function () {
-          $("#exampleModal").modal("show");
-        }, 2500);
-      });
+  <!-- Bootstrap js-->
+  <script src="%PUBLIC_URL%/assets/js/bootstrap.bundle.min.js"></script>
 
-      function openSearch() {
-        document.getElementById("search-overlay").style.display = "block";
-      }
+  <!-- Bootstrap Notification js-->
+  <script src="%PUBLIC_URL%/assets/js/bootstrap-notify.min.js"></script>
 
-      function closeSearch() {
-        document.getElementById("search-overlay").style.display = "none";
-      }
-    </script>
-  </body>
+  <!-- Theme js-->
+  <script src="%PUBLIC_URL%/assets/js/theme-setting.js"></script>
+  <script src="%PUBLIC_URL%/assets/js/script.js"></script>
+
+  <!-- chart js -->
+  <script src="%PUBLIC_URL%/assets/js/chart/apex/apexcharts.js"></script>
+  <script src="%PUBLIC_URL%/assets/js/chart/apex/custom-chart.js"></script>
+
+  <script>
+    $(window).on("load", function () {
+      setTimeout(function () {
+        $("#exampleModal").modal("show");
+      }, 2500);
+    });
+
+    function openSearch() {
+      document.getElementById("search-overlay").style.display = "block";
+    }
+
+    function closeSearch() {
+      document.getElementById("search-overlay").style.display = "none";
+    }
+    $('#datepicker').datepicker({
+      uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker1').datepicker({
+      uiLibrary: 'bootstrap4'
+    });
+  </script>
+</body>
+
 </html>

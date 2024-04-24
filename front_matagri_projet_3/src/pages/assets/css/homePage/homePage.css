@@ -1,3 +1,10 @@
 .logoHomePage{
     width: 150px;
 }
+.footer-logo{
+    display: flex;
+    justify-content: center;
+}
+.footer-logo img{
+    width: 130px;
+}
