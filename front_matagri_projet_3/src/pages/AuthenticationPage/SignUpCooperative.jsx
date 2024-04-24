@@ -111,18 +111,18 @@ function SignUpCooperative() {
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
                     <div className="col-md-6">
-                      <label htmlFor="email">Raison sociale</label>
+                      <label htmlFor="raison">Raison sociale</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="name"
+                        id="raison"
                         placeholder="Nom de la société"
                         value={companyNameForm}
                         required
                         onChange={handleOnChangeInputTextRaison}/>
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">NIF</label>
+                      <label htmlFor="nif">NIF</label>
                       <input
                         type="text"
                         className="form-control"
@@ -134,11 +134,11 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Siège social</label>
+                      <label htmlFor="siege">Siège social</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="email"
+                        id="siege"
                         placeholder="votre siège"
                         value={addressForm}
                         required
@@ -146,9 +146,9 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Téléphone</label>
+                      <label htmlFor="telephone">Téléphone</label>
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
@@ -162,9 +162,9 @@ function SignUpCooperative() {
                     <div className="col-md-6">
                       <label htmlFor="email">Email</label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
-                        id="address"
+                        id="email"
                         placeholder="Votre adresse e-mail"
                         value={emailForm}
                         required
@@ -186,7 +186,7 @@ function SignUpCooperative() {
                       </select>
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Nombre Agriculteur</label>
+                      <label htmlFor="nb">Nombre Agriculteur</label>
                       <input
                         type="number"
                         className="form-control"

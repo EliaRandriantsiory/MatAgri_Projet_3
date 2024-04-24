@@ -129,7 +129,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">NIF</label>
+                      <label htmlFor="nif">NIF</label>
                       <input
                         type="text"
                         className="form-control"
@@ -141,11 +141,11 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Siège social</label>
+                      <label htmlFor="siege">Siège social</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="email"
+                        id="siege"
                         placeholder="Votre siège social"
                         required
                         value={addressForm}
@@ -153,9 +153,9 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Téléphone</label>
+                      <label htmlFor="telephone">Téléphone</label>
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
@@ -167,9 +167,9 @@ function SignUpProvider() {
                     <div className="col-md-6">
                       <label htmlFor="email">Email</label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
-                        id="address"
+                        id="email"
                         placeholder="Votre adresse email"
                         required
                         value={emailForm}

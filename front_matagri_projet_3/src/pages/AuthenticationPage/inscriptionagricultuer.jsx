@@ -118,7 +118,7 @@ function InscriptionAgriculteur() {
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
                     <div className="col-md-6">
-                      <label htmlFor="email">Nom</label>
+                      <label htmlFor="nom">Nom</label>
                       <input
                         type="text"
                         className="form-control"
@@ -141,11 +141,11 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Prénom</label>
+                      <label htmlFor="prenom">Prénom</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="email"
+                        id="prenom"
                         placeholder="Votre prénom"
                         value={lastnameForm}
                         onChange={(event) =>
@@ -156,7 +156,7 @@ function InscriptionAgriculteur() {
                     <div className="col-md-6">
                       <label htmlFor="telephone">Téléphone</label>
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
@@ -195,7 +195,7 @@ function InscriptionAgriculteur() {
                     <div className="col-md-6">
                       <label htmlFor="email">email</label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
                         placeholder="Votre adresse email"
                         value={emailForm}
