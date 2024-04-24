@@ -1,13 +1,11 @@
-import CardProduct from "../../components/homepagecomponents/carteProduit"
-import Carousell from "../carousell";
+import CardProduct from "../../components/homepagecomponents/carteProduit";
 
 function HomePage() {
-    return (
+  return (
     <>
-        <Carousell />
-        <CardProduct />
+      <CardProduct />
     </>
-    );
+  );
 }
 
 export default HomePage;
