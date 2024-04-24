@@ -67,11 +67,6 @@ function SignUpCooperative() {
       setErrorMessage("Veuillez accepter les termes et conditions de location");
       return;
     }
-
-    if (passwordForm !== confirmPasswordForm) {
-      setErrorPassword("Les mots de passe ne sont pas identiques");
-      return;
-    }
   
       try {
         const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
@@ -103,8 +98,8 @@ function SignUpCooperative() {
       localStorage.setItem('email', emailForm);
       localStorage.setItem('password', passwordForm);
       
-      if(passwordForm!==confirmPasswordForm){
-        navigate("/InscriptionAgriculteur")
+      if (passwordForm !== confirmPasswordForm) {
+        setErrorPassword("Les mots de passe ne sont pas identiques");
       }else{
       navigate("/PageAccueilAgriculteur")}
     };
@@ -247,7 +242,6 @@ function SignUpCooperative() {
                       className="mr-2"
                       checked={isChecked}
                     onChange={handleOnChangecheckboxcgv}
-
                     />
                     {/* ito le terme */}
                     <Terme/>
@@ -256,7 +250,6 @@ function SignUpCooperative() {
                     {errorPassword && (
                   <p style={{ color: "red" }}>{errorPassword}</p>
                 )}
-
                   </div>
                   <div>
                     <input
