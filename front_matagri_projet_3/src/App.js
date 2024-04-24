@@ -15,8 +15,8 @@ import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import SearchPage from "./pages/homePage/Search";
 import DashboardUser from "./pages/dasboard";
-import PageAccueilAgriculteur from "./pages/dashbords/pageaccueilagriculteur";
-import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
+import PageAccueilAgriculteur from "./pages/Dashboard/Agriculteur/pageaccueilagriculteur";
+import DashBordAgriculteur from "./pages/Dashboard/Agriculteur/dashboardAgriculteur";
 import Terme from "./pages/AuthenticationPage/Terme";
 
 import Choiceusers from "./pages/AuthenticationPage/choiceusers";

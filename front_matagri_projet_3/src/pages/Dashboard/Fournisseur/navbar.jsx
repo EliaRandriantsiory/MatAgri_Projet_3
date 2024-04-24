@@ -39,17 +39,17 @@ function Navigation() {
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8082/api/materiels/listMateriel")
-      .then((response) => {
-        setListMateriel(response.data);
-        // localStorage.setItem("email", response.data);
-        // setCurrentProfilUser(response.data.user);
-        // console.log(response.data)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // axios
+    //   .get("http://localhost:8082/api/materiels/listMateriel")
+    //   .then((response) => {
+    //     setListMateriel(response.data);
+    //     // localStorage.setItem("email", response.data);
+    //     // setCurrentProfilUser(response.data.user);
+    //     // console.log(response.data)
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
 
     if (email && password) {
       axios

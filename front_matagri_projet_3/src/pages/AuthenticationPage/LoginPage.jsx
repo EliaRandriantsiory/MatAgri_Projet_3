@@ -17,13 +17,23 @@ function Login() {
         email: email,
         password: password
       });
-      const token = response.data.token;
-      localStorage.setItem('token', JSON.stringify(token));
-      localStorage.setItem('email', JSON.stringify(response.data.email));
-      localStorage.setItem('password', JSON.stringify(response.data.password));
-      navigate("/dashboard_fournisseur");
+      if(response.data){
+        if(response.data.profile.profile==="fournisseur"){
+          navigate("/dashboard_fournisseur");
+        }else if(response.data.profile.profile==="coopérative"){
+          navigate("/PageAccueilAgriculteur");
+        }
+        else if(response.data.profile.profile==="agriculteur"){
+          navigate("/PageAccueilAgriculteur");
+        }
+        
+        // localStorage.setItem('token', JSON.stringify(response.data.token));
+      localStorage.setItem('email', response.data.email);
+      localStorage.setItem('pwd', response.data.password);
+      // localStorage.setItem('password', JSON.stringify(response.data.password));
       setEmail('');
       setPassword('');
+      }
     } catch (error) {
       setError('Email ou mot de passe incorrect.');
       console.error('Login failed:', error);
