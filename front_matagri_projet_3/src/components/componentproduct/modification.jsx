@@ -132,7 +132,7 @@ function Modification() {
         </div>
       </>
     );
-  }
+}
   
-  export default Modification;
+export default Modification;
   

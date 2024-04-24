@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Modification from "./modification";
+import Modification from "../../../components/componentproduct/modification";
+import SupprimerMateriel from "../../../components/componentproduct/suppressionMateriel";
+import TableRow from "../../../components/componentproduct/tableRowMat";
 function Navigation() {
   // const [listImage, setListImage] = useState([])
   const [nomMateriel, setNomMateriel] = useState("")
@@ -33,7 +35,6 @@ function Navigation() {
   const handleOnChangeDescriptionMateriel = (e)=>{
     setDescriptionMateriel(e.target.value)
   };
-
 
   useEffect(() => {
     if (email && password) {
@@ -100,6 +101,27 @@ function Navigation() {
     document.body.removeChild(input);
   };
 
+  const TableRow = () => {
+    return (
+      <tr>
+        <th scope="row">
+          <img
+            src="/front_matagri_projet_3/public/assets/images/dashboard/product/1.jpg"
+            alt=""
+            className="blur-up lazyloaded"
+          />
+        </th>
+        <td>Caterpillar</td>
+        <td>tracteur</td>
+        <td className="fw-bold text-theme">250 000 Ar</td>
+        <td>3</td>
+        <td>
+          <Modification />
+          <SupprimerMateriel />
+        </td>
+      </tr>
+    );
+  };
   const handleUpload = (file) => {
     // const file = fileInputRef.current.files[0];
     const formData = new FormData();
@@ -431,28 +453,8 @@ function Navigation() {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row">
-                                <img
-                                  src="/front_matagri_projet_3/public/assets/images/dashboard/product/1.jpg"
-                                  alt=""
-                                  className="blur-up lazyloaded"
-                                />
-                              </th>
-                              <td>Caterpillar</td>
-                              <td>tracteur</td>
-                              <td className="fw-bold text-theme">250 000 Ar</td>
-                              <td>3</td>
-                              <td>
-                                <Modification />
-                                <a href="#">
-                                  <i
-                                    className="fa fa-trash-o ms-1 text-theme"
-                                    aria-hidden="true"
-                                  />
-                                </a>
-                              </td>
-                            </tr>
+                            
+                            <TableRow/>
                             {/* Repeat this structure for other rows */}
                           </tbody>
                         </table>

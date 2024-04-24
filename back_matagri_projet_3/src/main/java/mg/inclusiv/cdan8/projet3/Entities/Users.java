@@ -27,7 +27,6 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser; 
     private String name;
-
     private String lastname;
     private String address;
     private String phone;
@@ -36,7 +35,7 @@ public class Users {
     private String cin;
     private String email;
     private String region;
-    private int nbFarme;
+    private Integer nbFarme;
     private String companyName;
     private String password;
     @ManyToOne
