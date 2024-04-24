@@ -33,8 +33,8 @@ public class Users {
     private Integer nbFarme;
     private String companyName;
     private String password;
-    
-    @OneToMany(mappedBy = "user")
+
+    @OneToMany(mappedBy = "id_user")
     private List<Materiels> materiels;
     @ManyToOne
     @JoinColumn(name = "id_profile")
