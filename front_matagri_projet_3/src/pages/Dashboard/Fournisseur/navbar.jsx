@@ -3,10 +3,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Modification from "./modification";
+import AddProduit from "./AddProduit";
 function Navigation() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [currentProfilUser, setCurrentProfilUser] = useState({});
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,6 +35,9 @@ function Navigation() {
     setCurrentProfilUser({});
     navigate("/home");
   };
+  const handleOpenModal = () => {
+    setShowModal(true);
+};
 
   return (
     <div className="row">
@@ -286,9 +291,7 @@ function Navigation() {
                   <div className="card-body">
                     <div className="top-sec">
                       <h3>Tous les produits</h3>
-                      <a href="#" className="btn btn-sm btn-solid">
-                        + Ajouter Matériels
-                      </a>
+                      <AddProduit/>
                     </div>
                     <div className="table-responsive-md">
                       <table className="table mb-0 product-table">

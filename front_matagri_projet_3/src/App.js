@@ -58,13 +58,15 @@ function App() {
             element=<DashBordAgriculteur />
           />
         </Route>
+        <Route path="/carouselImage" element=<homePage /> />
         <Route>
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         </Route>
+            <Route path="/terme" element=<Terme /> />
 
-        <Route path="/terme" element=<Terme /> />
-
-      </Routes>
+            
+        </Routes>
+        
       <></>
     </BrowserRouter>
   );
