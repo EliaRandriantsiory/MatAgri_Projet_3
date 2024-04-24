@@ -213,8 +213,9 @@ function SignUpProvider() {
                       value="Check"
                       id="checkPlus"
                       checked={isChecked}
+                      onChange={handleOnChangecheckboxcgv}
                     ></input>
-                    <a id="addCheckboxBtn" href="#" onChange={handleOnChangecheckboxcgv}>
+                    <a id="addCheckboxBtn" href="#">
                     <Terme/>
                     </a>
                   </div>
