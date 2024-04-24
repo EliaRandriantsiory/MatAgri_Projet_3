@@ -27,5 +27,10 @@ public class Profiles {
     private String profile;
     @OneToMany(mappedBy = "profile")
     private List<Roles> roles;
+<<<<<<< HEAD
 
+=======
+    
+    
+>>>>>>> rosotiana
 }
