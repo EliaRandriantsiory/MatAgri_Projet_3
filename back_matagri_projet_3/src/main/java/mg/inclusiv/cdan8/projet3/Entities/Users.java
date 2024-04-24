@@ -29,12 +29,10 @@ public class Users {
 
     private String name;
 
-
     private String lastname;
     
     private String address;
-    @Temporal(TemporalType.DATE)
-    private Date create;
+
     private String phone;
     
     private String nif;
@@ -47,6 +45,7 @@ public class Users {
     
     private String region;
 
+    private int nbFarme;
 
     private String companyName;
     
@@ -58,10 +57,5 @@ public class Users {
     @ManyToOne
     @JoinColumn(name = "id_profile")
     private Profiles profile;
-    
 
-    @ManyToOne
-    @JoinColumn(name = "id_profil")
-    private Profiles profil;   
-    
 }

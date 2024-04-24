@@ -1,34 +1,39 @@
-import AddProduit from "./AddProduit";
-import { useEffect, useState } from "react";
-import {Link, Navigate, useNavigate } from "react-router-dom";
-import axios from "axios";
-function Navigation() {
 
-  const [currentProfilUSer, setCurrentProfilUser] = useState({});
-  useEffect(() => {
-    axios.post('http://localhost:8082/api/home/authentification',{
-      email:"rakoto@gmail.com",
-      password:"rakoto"
-    }
-    )
-  .then((response) => {
-     setCurrentProfilUser({...response.data}) 
-    
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-  },[])
- 
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Modification from "./modification";
+function Navigation() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [currentProfilUser, setCurrentProfilUser] = useState({});
   const navigate = useNavigate();
-    console.log(currentProfilUSer)
-    if (Object.keys(currentProfilUSer).length !== 0) {
-        console.log("Bonjour");
-      } else {
-        navigate("/home");
-        console.log("Erreur");
-      }
-  // console.log(currentProfilUSer);
+
+  useEffect(() => {
+    if (email && password) {
+      axios
+        .post("http://localhost:8082/api/home/authentification", {
+          email: email,
+          password: password,
+        })
+        .then((response) => {
+          localStorage.setItem("email", JSON.stringify(response.data.email));
+          setCurrentProfilUser(response.data.user);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [email, password]);
+
+  const handleOnClickLogout = (event) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("password");
+    setCurrentProfilUser({});
+    navigate("/home");
+  };
+
   return (
     <div className="row">
       <div className="col-lg-3">
@@ -43,7 +48,7 @@ function Navigation() {
           <div className="profile-detail">
             <h5>Fashion Store</h5>
             <h6>750 followers | 10 review</h6>
-            <h6>{currentProfilUSer.email}</h6>
+            <h6>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h6>
           </div>
         </div>
         <div className="faq-tab">
@@ -83,7 +88,7 @@ function Navigation() {
                 data-toggle="modal"
                 data-bs-target="#logout"
                 to={"/home"}
-                // onClick={(event) => handleOnClickLogout(event)}
+                onClick={(event) => handleOnClickLogout(event)}
               >
                 logout
               </Link>
@@ -281,25 +286,27 @@ function Navigation() {
                   <div className="card-body">
                     <div className="top-sec">
                       <h3>Tous les produits</h3>
-                      <AddProduit/>
+                      <a href="#" className="btn btn-sm btn-solid">
+                        + Ajouter Matériels
+                      </a>
                     </div>
                     <div className="table-responsive-md">
                       <table className="table mb-0 product-table">
                         <thead>
                           <tr>
-                            <th scope="col">Image</th>
-                            <th scope="col">Nom du Matériel </th>
-                            <th scope="col">Catégorie</th>
-                            <th scope="col">Prix</th>
-                            <th scope="col">Stock</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">image</th>
+                            <th scope="col">Nom du Matériels </th>
+                            <th scope="col">categories</th>
+                            <th scope="col">prix</th>
+                            <th scope="col">stock</th>
+                            <th scope="col">editer/Supprimer</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <th scope="row">
                               <img
-                                src="/assets/images/about/vendor.jpg"
+                                src="/front_matagri_projet_3/public/assets/images/dashboard/product/1.jpg"
                                 alt=""
                                 className="blur-up lazyloaded"
                               />
@@ -309,12 +316,7 @@ function Navigation() {
                             <td className="fw-bold text-theme">250 000 Ar</td>
                             <td>3</td>
                             <td>
-                              <a href="#">
-                                <i
-                                  className="fa fa-pencil-square-o me-1"
-                                  aria-hidden="true"
-                                />
-                              </a>
+                              <Modification/>
                               <a href="#">
                                 <i
                                   className="fa fa-trash-o ms-1 text-theme"
@@ -323,8 +325,10 @@ function Navigation() {
                               </a>
                             </td>
                           </tr>
+                          {/* Repeat this structure for other rows */}
                         </tbody>
                       </table>
+                      
                     </div>
                   </div>
                 </div>
@@ -480,7 +484,8 @@ function Navigation() {
                               </div>
                               <button
                                 type="button"
-                                className="btn btn-solid btn-xs">
+                                className="btn btn-solid btn-xs"
+                              >
                                 Delete Account
                               </button>
                             </div>
@@ -495,8 +500,10 @@ function Navigation() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }
 
 export default Navigation;
+

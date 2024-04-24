@@ -1,12 +1,10 @@
-import React from "react";
-import { useEffect, useState  } from "react";
-import { useNavigate   } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import axios from "axios";
-import DashboardUser from "../dasboard";
 function InscriptionAgriculteur() {
   const [inscriptionAgriculteurRedirect, setInscriptionAgriculteurRedirect] = useState()
-  
+  const [EtatCGV, setEtatCgv] = useState("");
   const navigate = useNavigate();
   const [form, setForm] = useState({});
   const [nameForm, setName] = useState("");
@@ -56,14 +54,44 @@ function InscriptionAgriculteur() {
   };
 
 
-  const handleOnclickSauvegarde = (event) => {
+  const handleOnclickSauvegarde =  async (event) => {
     event.preventDefault();
     console.log(emailForm)
-    sessionStorage.setItem('email',emailForm)
-      navigate("/Dashboard")
-    // if(passwordForm!==confirmPasswordForm){
-    //   navigate("/InscriptionAgriculteur")
-    // }
+    try {
+      const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
+        address: addressForm,
+        phone: phoneForm,
+        cin: cinForm,
+        name: nameForm,
+        lastname: lastnameForm,
+        region: regionForm,
+        email: emailForm,
+        region: regionForm,
+        password: passwordForm,
+        confirmPassword: confirmPasswordForm,
+        profile: {
+          idprofile: 1,
+          profile: "agriculteur",
+          roles: []
+      }
+      });
+      console.log(response.data);
+      navigate("/PageAccueilAgriculteur");
+    } catch (error) {
+
+      console.error("Erreur lors de l'inscription :", error);
+    }
+    event.preventDefault();
+    console.log(EtatCGV)
+    navigate("/PageAccueilAgriculteur")
+
+    localStorage.setItem('email', emailForm);
+    localStorage.setItem('password', passwordForm);
+    
+    if(passwordForm!==confirmPasswordForm){
+      navigate("/InscriptionAgriculteur")
+    }else{
+    navigate("/PageAccueilAgriculteur")}
   };
 
  
@@ -97,7 +125,6 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="name"
                         placeholder="Votre nom"
-                        
                         value={nameForm}
                         onChange={(event) => handleOnChangeInputTextNom(event)}
                       />
@@ -121,7 +148,6 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="email"
                         placeholder="Votre prénom"
-                        
                         value={lastnameForm}
                         onChange={(event) =>
                           handleOnChangeInputTextLastName(event)
@@ -135,7 +161,6 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
-                        
                         value={phoneForm}
                         onChange={(event) =>
                           handleOnChangeInputTextPhone(event)
@@ -149,7 +174,6 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="address"
                         placeholder="Votre adresse"
-                        
                         value={addressForm}
                         onChange={(event) =>
                           handleOnChangeInputTextAddress(event)
@@ -163,7 +187,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="passeword"
                         placeholder=" votre mot de passe"
-                        
+                        value={passwordForm}
                         onChange={(event) =>
                           handleOnChangeInputTextPassword(event)
                         }
@@ -175,7 +199,6 @@ function InscriptionAgriculteur() {
                         type="text"
                         className="form-control"
                         placeholder="Votre adresse email"
-                        
                         value={emailForm}
                         onChange={(event) =>
                           handleOnChangeInputTextEmail(event)
@@ -189,7 +212,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="passConfirm"
                         placeholder=" Confirmer mot de passe"
-                        
+                        value={confirmPasswordForm}
                         onChange={(event) =>
                           handleOnChangeInputTextConfirmPassword(event)
                         }
@@ -200,8 +223,7 @@ function InscriptionAgriculteur() {
                       <select
                         id="region"
                         onChange={handleOnChangeInputTextRegion}
-                        className="form-control"
-                      >
+                        className="form-control" value={regionForm}>
                         <option value="-------------">-------------</option>
                         <option value="Alaotra Mangoro">Alaotra Mangoro</option>
                         <option value="Analamanga">Analamanga</option>
@@ -217,7 +239,7 @@ function InscriptionAgriculteur() {
                       <input
                         type="checkbox"
                         name="checkbox-button"
-                        value="value"
+                        value={EtatCGV}
                         id="checkPlus"
                       ></input>
                       <a id="addCheckboxBtn" href="#">

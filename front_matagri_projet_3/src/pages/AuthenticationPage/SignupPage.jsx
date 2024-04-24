@@ -1,8 +1,6 @@
 function SignUp() {
   return (
-    <>
-      <>
-        <section className="register-page section-b-space">
+    <section className="register-page section-b-space">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
@@ -113,8 +111,6 @@ function SignUp() {
             </div>
           </div>
         </section>
-      </>
-    </>
   );
 }
 
