@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/SignUpProvider/provider.css";
+import Terme from "./Terme";
 function SignUpProvider() {
   const navigate = useNavigate();
   const [companyNameForm, setCompanyName] = useState("")
@@ -14,11 +15,14 @@ function SignUpProvider() {
   const [EtatCGV, setEtatCgv] = useState("");
   const [passwordForm, setPassword] = useState("");
   const [confirmPasswordForm, setConfirmPassword] = useState("");
-
+  const [isChecked, setIsChecked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
 
   const handleOnChangecheckboxcgv = (event) => {
-    setEtatCgv(event.target.value);
-    console.log(event.target.value)
+    setEtatCgv(event.target.checked);
+    setIsChecked(event.target.checked);
+    setErrorMessage(false);
   };
 
   const handleOnChangeInputTextAdress = (event) => {
@@ -57,6 +61,10 @@ function SignUpProvider() {
 
   const handleOnclickSauvegarde = async (event) => {
     event.preventDefault();
+    if (!isChecked) {
+      setErrorMessage("Veuillez accepter les termes et conditions de location");
+      return;
+    }
     try {
       const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
         companyName: companyNameForm,
@@ -87,7 +95,7 @@ function SignUpProvider() {
     localStorage.setItem('password', passwordForm);
     
     if(passwordForm!==confirmPasswordForm){
-      navigate("/InscriptionAgriculteur")
+      setErrorPassword("Les mots de passe ne sont pas identiques");
     }else{
     navigate("/dashboard_fournisseur")}
   };
@@ -202,13 +210,20 @@ function SignUpProvider() {
                     <input
                       type="checkbox"
                       name="checkbox-button"
-                      value="value"
+                      value="Check"
                       id="checkPlus"
+                      checked={isChecked}
+                      onChange={handleOnChangecheckboxcgv}
                     ></input>
-                    <a id="addCheckboxBtn" href="#" onChange={handleOnChangecheckboxcgv}>
-                      Terme et contrat de location
+                    <a id="addCheckboxBtn" href="#">
+                    <Terme/>
                     </a>
                   </div>
+                    {/* --------- */}
+                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                    {errorPassword && (
+                  <p style={{ color: "red" }}>{errorPassword}</p>
+                )}
                   <input
                     className="btn btn-solid w-auto"
                     type="submit"
