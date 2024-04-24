@@ -4,9 +4,9 @@
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.ApexCharts = factory());
+  // typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  // typeof define === 'function' && define.amd ? define(factory) :
+  // (global = global || self, global.ApexCharts = factory());
 }(this, (function () { 'use strict';
 
   function _typeof(obj) {
@@ -22942,7 +22942,7 @@
       pathHandlers[mlhvqtcsa[i]] = function (i) {
         return function (c, p, p0) {
           if (i == 'H') c[0] = c[0] + p.x;else if (i == 'V') c[0] = c[0] + p.y;else if (i == 'A') {
-            c[5] = c[5] + p.x, c[6] = c[6] + p.y;
+             c[5] = c[5] + p.x, c[6] = c[6] + p.y;
           } else {
             for (var j = 0, jl = c.length; j < jl; ++j) {
               c[j] = c[j] + (j % 2 ? p.y : p.x);
