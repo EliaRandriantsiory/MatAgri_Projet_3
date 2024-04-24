@@ -37,8 +37,11 @@ function InscriptionAgriculteur() {
     setAddress(event.target.value);
   };
   const handleOnChangeInputTextPhone = (event) => {
-    setPhone(event.target.value);
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    setPhone(numericValue);
   };
+  
   const handleOnChangeInputTextCin = (event) => {
     setCin(event.target.value);
   };
@@ -156,11 +159,12 @@ function InscriptionAgriculteur() {
                     <div className="col-md-6">
                       <label htmlFor="telephone">Téléphone</label>
                       <input
-                        type="number"
+                        type="text"
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
                         value={phoneForm}
+                        inputMode="numeric"
                         onChange={(event) =>
                           handleOnChangeInputTextPhone(event)
                         }
@@ -234,7 +238,9 @@ function InscriptionAgriculteur() {
                         <option value="Vakinakaratra">Vakinakaratra</option>
                       </select>
                     </div>
+                    <br/>
                     <div id="checkTermeCondition">
+                    <br/>    
                       <input
                         type="checkbox"
                         name="checkbox-button"
