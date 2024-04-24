@@ -32,11 +32,7 @@ public class Users {
     private String lastname;
     
     private String address;
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> rosotiana
     private String phone;
     
     private String nif;
@@ -58,12 +54,10 @@ public class Users {
     @OneToMany(mappedBy = "user")
     private List<Materiels> materiels;
 
-<<<<<<< HEAD
+
     @ManyToOne
     @JoinColumn(name = "id_profile")
     private Profiles profile;
 
-=======
-    
->>>>>>> rosotiana
+
 }
