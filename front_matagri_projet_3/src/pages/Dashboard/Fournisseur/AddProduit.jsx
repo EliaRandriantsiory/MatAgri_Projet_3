@@ -109,7 +109,6 @@ function AddProduit() {
                 {imagePreviews.length > 0 && (
                   <div className="image-preview-container">
                     {" "}
-                    {/* Ajoutez une classe CSS pour le style */}
                     {imagePreviews.map((preview, index) => (
                       <div key={index} className="me-2 mb-2">
                         <img
