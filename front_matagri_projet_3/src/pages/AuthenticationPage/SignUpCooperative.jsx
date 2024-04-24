@@ -25,14 +25,16 @@ function SignUpCooperative() {
     setIsChecked(event.target.checked);
     setErrorMessage(false);
   };
+
   const handleOnChangeInputTextAdress = (event) => {
     setAddress(event.target.value);
-    localStorage.setItem('adress',event.target.value)
+    localStorage.setItem("adress", event.target.value);
   };
 
   const handleOnChangeInputTextRaison = (event) => {
     setCompanyName(event.target.value);
   };
+
   const handleOnChangeInputTextNbAgriculteur = (event) => {
     setNbAgriculteur(event.target.value);
   };
@@ -40,6 +42,7 @@ function SignUpCooperative() {
   const handleOnChangeInputTextPhone = (event) => {
     setPhone(event.target.value);
   };
+
   const handleOnChangeInputTextNif = (event) => {
     setNif(event.target.value);
   };
@@ -67,42 +70,37 @@ function SignUpCooperative() {
       setErrorMessage("Veuillez accepter les termes et conditions de location");
       return;
     }
-  
-      try {
-        const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
-          companyName: companyNameForm,
-          nif: nifForm,
-          address: addressForm,
-          phone: phoneForm,
-          email: emailForm,
-          region: regionForm,
-          nbFarme: NbAgriculteurForm,
-          password: passwordForm,
-          confirmPassword: confirmPasswordForm,
-          profile: {
-            idprofile: 2,
-            profile: "coopérative",
-            roles: []
-        }
-        });
-        console.log(response.data);
-        navigate("/PageAccueilAgriculteur");
-      } catch (error) {
-  
-        console.error("Erreur lors de l'inscription :", error);
-      }
-      event.preventDefault();
-      console.log(EtatCGV)
-      navigate("/PageAccueilAgriculteur")
-  
+
+    if (passwordForm !== confirmPasswordForm) {
+      setErrorPassword("Les mots de passe ne correspondent pas");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
+        companyName: companyNameForm,
+        nif: nifForm,
+        address: addressForm,
+        phone: phoneForm,
+        email: emailForm,
+        region: regionForm,
+        nbFarme: NbAgriculteurForm,
+        password: passwordForm,
+        confirmPassword: confirmPasswordForm,
+        profile: {
+          idprofile: 2,
+          profile: "coopérative",
+          roles: [],
+        },
+      });
+      console.log(response.data);
+      navigate("/PageAccueilAgriculteur");
       localStorage.setItem('email', emailForm);
       localStorage.setItem('password', passwordForm);
-      
-      if (passwordForm !== confirmPasswordForm) {
-        setErrorPassword("Les mots de passe ne sont pas identiques");
-      }else{
-      navigate("/PageAccueilAgriculteur")}
-    };
+    } catch (error) {
+      console.error("Erreur lors de l'inscription :", error);
+    }
+  };
   return (
       <section className="register-page section-b-space">
         <div className="container">

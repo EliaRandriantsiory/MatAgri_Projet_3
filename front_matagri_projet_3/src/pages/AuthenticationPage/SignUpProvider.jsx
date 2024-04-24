@@ -18,7 +18,6 @@ function SignUpProvider() {
   const [isChecked, setIsChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
-
   const handleOnChangecheckboxcgv = (event) => {
     setEtatCgv(event.target.checked);
     setIsChecked(event.target.checked);
@@ -27,30 +26,33 @@ function SignUpProvider() {
 
   const handleOnChangeInputTextAdress = (event) => {
     setAddress(event.target.value);
-    localStorage.setItem('adress',event.target.value)
+    localStorage.setItem('adress', event.target.value);
   };
 
   const handleOnChangeInputTextNif = (event) => {
     setNif(event.target.value);
-    localStorage.setItem('nif',event.target.value)
+    localStorage.setItem('nif', event.target.value);
   };
 
   const handleOnChangeInputTextPhone = (event) => {
     setPhone(event.target.value);
-    localStorage.setItem('phone',event.target.value)
+    localStorage.setItem('phone', event.target.value);
   };
+
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
-    localStorage.setItem('email',event.target.value)
+    localStorage.setItem('email', event.target.value);
   };
+
   const handleOnChangeInputTextRegion = (event) => {
     setRegion(event.target.value);
-    localStorage.setItem('region',event.target.value)
+    localStorage.setItem('region', event.target.value);
   };
+
   const handleOnChangeInputTextPassword = (event) => {
     setPassword(event.target.value);
-
   };
+
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
@@ -61,10 +63,19 @@ function SignUpProvider() {
 
   const handleOnclickSauvegarde = async (event) => {
     event.preventDefault();
+    
+    // Vérifier si les termes et conditions sont acceptés
     if (!isChecked) {
       setErrorMessage("Veuillez accepter les termes et conditions de location");
       return;
     }
+    
+    // Vérifier si les mots de passe correspondent
+    if (passwordForm !== confirmPasswordForm) {
+      setErrorPassword("Les mots de passe ne correspondent pas");
+      return;
+    }
+
     try {
       const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
         companyName: companyNameForm,
@@ -79,25 +90,21 @@ function SignUpProvider() {
           idprofile: 3,
           profile: "fournisseur",
           roles: []
-      }
+        }
       });
       console.log(response.data);
       navigate("/dashboard_fournisseur");
     } catch (error) {
-
       console.error("Erreur lors de l'inscription :", error);
     }
-    event.preventDefault();
-    console.log(EtatCGV)
-    navigate("/dashboard_fournisseur")
 
+    // Réinitialiser les messages d'erreur
+    setErrorMessage(false);
+    setErrorPassword(false);
+
+    // Enregistrer les informations dans le stockage local
     localStorage.setItem('email', emailForm);
     localStorage.setItem('password', passwordForm);
-    
-    if(passwordForm!==confirmPasswordForm){
-      setErrorPassword("Les mots de passe ne sont pas identiques");
-    }else{
-    navigate("/dashboard_fournisseur")}
   };
 
   return (

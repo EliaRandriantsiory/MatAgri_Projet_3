@@ -29,47 +29,45 @@ function InscriptionAgriculteur() {
 
   const handleOnChangeInputTextNom = (event) => {
     setName(event.target.value);
-    localStorage.setItem('nom',event.target.value)
   };
   const handleOnChangeInputTextLastName = (event) => {
     setLastName(event.target.value);
-    localStorage.setItem('prenom',event.target.value)
   };
   const handleOnChangeInputTextAddress = (event) => {
     setAddress(event.target.value);
-    localStorage.setItem('adresse',event.target.value)
   };
   const handleOnChangeInputTextPhone = (event) => {
     setPhone(event.target.value);
-    localStorage.setItem('phone',event.target.value)
   };
   const handleOnChangeInputTextCin = (event) => {
     setCin(event.target.value);
-    localStorage.setItem('cin',event.target.value)
   };
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
-    localStorage.setItem('email',event.target.value)
   };
   const handleOnChangeInputTextRegion = (event) => {
     setRegion(event.target.value);
-    localStorage.setItem('region',event.target.value)
   };
   const handleOnChangeInputTextPassword = (event) => {
     setPassword(event.target.value);
-
   };
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
 
-
-  const handleOnclickSauvegarde =  async (event) => {
+  const handleOnclickSauvegarde = async (event) => {
     event.preventDefault();
+    
     if (!isChecked) {
       setErrorMessage("Veuillez accepter les termes et conditions de location");
       return;
     }
+
+    if (passwordForm !== confirmPasswordForm) {
+      setErrorPassword("Les mots de passe ne sont pas identiques");
+      return;
+    }
+
     try {
       const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
         address: addressForm,
@@ -85,27 +83,16 @@ function InscriptionAgriculteur() {
           idprofile: 1,
           profile: "agriculteur",
           roles: []
-      }
+        }
       });
       console.log(response.data);
       navigate("/PageAccueilAgriculteur");
+      localStorage.setItem('email', emailForm);
+      localStorage.setItem('password', passwordForm);
     } catch (error) {
-
       console.error("Erreur lors de l'inscription :", error);
     }
-    event.preventDefault();
-    console.log(EtatCGV)
-    navigate("/PageAccueilAgriculteur")
-
-    localStorage.setItem('email', emailForm);
-    localStorage.setItem('password', passwordForm);
-    
-    if(passwordForm!==confirmPasswordForm){
-      setErrorPassword("Les mots de passe ne sont pas identiques");
-    }else{
-    navigate("/PageAccueilAgriculteur")}
   };
-
  
   useEffect(() => {
     
