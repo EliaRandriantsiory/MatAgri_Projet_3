@@ -1,11 +1,10 @@
-import { useState } from "react";
-import HomeSlide from "../../components/homepagecomponents/homeSlideComponent"
 import CardProduct from "../../components/homepagecomponents/carteProduit"
+import Carousell from "../carousell";
 
 function HomePage() {
     return (
     <>
-        <HomeSlide />
+        <Carousell />
         <CardProduct />
     </>
     );
