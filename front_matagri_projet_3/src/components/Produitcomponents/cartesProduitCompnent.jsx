@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
-function CardProduct() {
+function cartProduitModel() {
   return (
-    <>
-      <div className="title1 section-t-space">
-        <h4> produits exclusifs</h4>
-        <h2 className="title-inner1">Produits</h2>
-      </div>
-      {/* <!-- product section start --> */}
-      <section className="section-b-space ratio_asos">
+    <div>
+        <section className="section-b-space ratio_asos">
         <div className="container">
           <div className="row search-product">
             <div className="col-xl-2 col-md-4 col-6">
@@ -391,8 +386,8 @@ function CardProduct() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
-export default CardProduct;
+export default cartProduitModel;
