@@ -39,42 +39,41 @@ function Navigation() {
   };
 
   useEffect(() => {
-    // axios
-    //   .get("http://localhost:8082/api/materiels/listMateriel")
-    //   .then((response) => {
-    //     setListMateriel(response.data);
-    //     // localStorage.setItem("email", response.data);
-    //     // setCurrentProfilUser(response.data.user);
-    //     // console.log(response.data)
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+    
+    // INITIALISATION DATA MATERIEL
+    axios
+      .get("http://localhost:8082/api/materiels/listMateriel")
+      .then((response) => {
+        setListMateriel(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
-    if (email && password) {
-      axios
-        .post("http://localhost:8082/api/home/authentification", {
-          email: email,
-          password: password,
-        })
-        .then((response) => {
-          localStorage.setItem("email", response.data);
-          setCurrentProfilUser(response.data.user);
-          // console.log(response.data)
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+      // initialisation donnée current user
+    axios
+      .post("http://localhost:8082/api/home/authentification", {
+        email: localStorage.getItem("email"),
+        password: localStorage.getItem("pwd"),
+      })
+      .then((response) => {
+        setCurrentProfilUser(response.data)
+      });
+
   }, []);
-
-  console.log(listMateriel);
+  if(!currentProfilUser){
+    navigate("/home");
+  }
+  
+  // console.log(listMateriel);
 
   const handleOnClickLogout = (event) => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("email");
+    // localStorage.removeItem("password");
+    localStorage.clear()
     setCurrentProfilUser({});
+
     navigate("/home");
   };
 

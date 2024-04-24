@@ -8,21 +8,30 @@ function PageAccueilAgriculteur() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (email && password) {
-      axios
-        .post("http://localhost:8082/api/home/authentification", {
-          email: email,
-          password: password,
-        })
-        .then((response) => {
-          localStorage.setItem("email", JSON.stringify(response.data.email));
-          setCurrentProfilUser(response.data.user);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [email, password]);
+    
+    // INITIALISATION DATA MATERIEL
+    // axios
+    //   .get("http://localhost:8082/api/materiels/listMateriel")
+    //   .then((response) => {
+    //     setListMateriel(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+
+      // initialisation donnée current user
+    axios
+      .post("http://localhost:8082/api/home/authentification", {
+        email: localStorage.getItem("email"),
+        password: localStorage.getItem("pwd"),
+      })
+      .then((response) => {
+        setCurrentProfilUser(response.data)
+      });
+  }, []);
+  if(!currentProfilUser){
+    navigate("/home");
+  }
 
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
