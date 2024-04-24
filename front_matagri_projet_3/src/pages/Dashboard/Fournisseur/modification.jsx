@@ -124,9 +124,8 @@ function Modification() {
                 >
                   Close
                 </button>
-                <button type="button" className="btn btn-primary">
-                    Save Change
-                </button>
+                <input type="button" className="btn btn-primary" value={"Save Change"} data-bs-dismiss="modal"  />
+                
               </div>
             </div>
           </div>

@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,9 +27,9 @@ public class Materiels {
     private String techniqueMat;
     private String imagePath;
     private String imageDetailsPath;
-    @ManyToOne
-    @JoinColumn(name = "id_user", insertable = false, updatable = false)
-    private Users user;
+    // @ManyToOne
+    // @JoinColumn(name = "id_user")
+    // private Users user;
+    private Long id_user;
     
-
 }

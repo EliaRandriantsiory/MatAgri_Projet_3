@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
@@ -24,36 +25,20 @@ import lombok.NoArgsConstructor;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long idUser; 
-
     private String name;
-
-
     private String lastname;
-    
     private String address;
-
     private String phone;
-    
     private String nif;
-    
     private String stat;
-    
     private String cin;
-
     private String email;
-    
     private String region;
-
-
     private String companyName;
-    
     private String password;
-    
-    @OneToMany(mappedBy = "user")
-    private List<Materiels> materiels;
-
+    // @OneToMany(mappedBy = "user")
+    // private List<Materiels> materiels;
     @ManyToOne
     @JoinColumn(name = "id_profile")
     private Profiles profile;
