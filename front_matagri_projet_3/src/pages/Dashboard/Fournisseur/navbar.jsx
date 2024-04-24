@@ -6,11 +6,13 @@ import SupprimerMateriel from "../../../components/componentproduct/suppressionM
 import TableRow from "../../../components/componentproduct/tableRowMat";
 function Navigation() {
   // const [listImage, setListImage] = useState([])
-  const [nomMateriel, setNomMateriel] = useState("")
-  const [categorieMateriel, setCategorieMateriel] = useState("")
-  const [prixMateriel, setPrixMateriel] = useState()
-  const [stockMateriel, setStockMateriel] = useState()
-  const [descriptionMateriel, setDescriptionMateriel] = useState("")
+  const [nomMateriel, setNomMateriel] = useState("");
+  const [categorieMateriel, setCategorieMateriel] = useState("");
+  const [prixMateriel, setPrixMateriel] = useState();
+  const [stockMateriel, setStockMateriel] = useState();
+  const [descriptionMateriel, setDescriptionMateriel] = useState("");
+
+  const [listMateriel, setListMateriel] = useState([]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,25 +20,37 @@ function Navigation() {
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
-  const [listImage, setListImage] = useState([])
-  
-  const handleOnChangeNomMateriel = (e)=>{
-    setNomMateriel(e.target.value)
+  const [listImage, setListImage] = useState([]);
+
+  const handleOnChangeNomMateriel = (e) => {
+    setNomMateriel(e.target.value);
   };
-  const handleOnChangeCategorieMateriel = (e)=>{
-    setCategorieMateriel(e.target.value)
+  const handleOnChangeCategorieMateriel = (e) => {
+    setCategorieMateriel(e.target.value);
   };
-  const handleOnChangePrixMateriel = (e)=>{
-    setPrixMateriel(e.target.value)
+  const handleOnChangePrixMateriel = (e) => {
+    setPrixMateriel(e.target.value);
   };
-  const handleOnChangeStockMateriel = (e)=>{
-    setStockMateriel(e.target.value)
+  const handleOnChangeStockMateriel = (e) => {
+    setStockMateriel(e.target.value);
   };
-  const handleOnChangeDescriptionMateriel = (e)=>{
-    setDescriptionMateriel(e.target.value)
+  const handleOnChangeDescriptionMateriel = (e) => {
+    setDescriptionMateriel(e.target.value);
   };
 
   useEffect(() => {
+    axios
+      .get("http://localhost:8082/api/materiels/listMateriel")
+      .then((response) => {
+        setListMateriel(response.data);
+        // localStorage.setItem("email", response.data);
+        // setCurrentProfilUser(response.data.user);
+        // console.log(response.data)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     if (email && password) {
       axios
         .post("http://localhost:8082/api/home/authentification", {
@@ -54,6 +68,8 @@ function Navigation() {
     }
   }, []);
 
+  console.log(listMateriel);
+
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
@@ -64,12 +80,12 @@ function Navigation() {
 
   const handleImageChange = (e) => {
     // console.log(listImage)
-    
-    setListImage((prevList) => [...prevList, e.target.files[0]])
+
+    setListImage((prevList) => [...prevList, e.target.files[0]]);
     const files = Array.from(e.target.files);
-    
+
     files.forEach((file) => {
-      console.log(file.name)
+      console.log(file.name);
       // listImage.push(file)
       // console.log(file.name)
       const reader = new FileReader();
@@ -101,31 +117,31 @@ function Navigation() {
     document.body.removeChild(input);
   };
 
-  const TableRow = () => {
-    return (
-      <tr>
-        <th scope="row">
-          <img
-            src="/front_matagri_projet_3/public/assets/images/dashboard/product/1.jpg"
-            alt=""
-            className="blur-up lazyloaded"
-          />
-        </th>
-        <td>Caterpillar</td>
-        <td>tracteur</td>
-        <td className="fw-bold text-theme">250 000 Ar</td>
-        <td>3</td>
-        <td>
-          <Modification />
-          <SupprimerMateriel />
-        </td>
-      </tr>
-    );
-  };
+  // const TableRow = () => {
+  //   return (
+  //     <tr>
+  //       <th scope="row">
+  //         <img
+  //           src="/front_matagri_projet_3/public/assets/images/dashboard/product/1.jpg"
+  //           alt=""
+  //           className="blur-up lazyloaded"
+  //         />
+  //       </th>
+  //       <td>Caterpillar</td>
+  //       <td>tracteur</td>
+  //       <td className="fw-bold text-theme">250 000 Ar</td>
+  //       <td>3</td>
+  //       <td>
+  //         <Modification />
+  //         <SupprimerMateriel />
+  //       </td>
+  //     </tr>
+  //   );
+  // };
   const handleUpload = (file) => {
     // const file = fileInputRef.current.files[0];
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
 
     // axios.post('/upload', formData, {
     //   headers: {
@@ -139,35 +155,34 @@ function Navigation() {
     //     // Gérer les erreurs
     //   });
   };
-  const handleOnclickSaveAddProduct = () =>{
+  const handleOnclickSaveAddProduct = () => {
     // console.log(nomMateriel+categorieMateriel+prixMateriel+stockMateriel+descriptionMateriel)
-    console.log(localStorage.getItem(email))
+    console.log(localStorage.getItem(email));
     axios
-        .post("http://localhost:8082/api/materiels/ajouter", {
-          categorieMat: categorieMateriel,
-          nomMat: nomMateriel,
-          stockMat: stockMateriel,
-          descriptionMat: descriptionMateriel,
-          techniqueMat: null,
-          imagePath: null,
-          imageDetailsPath: null,
-          id_user: 1,
-          prixMAt: prixMateriel
-        })
-        .then((response) => {
-          // localStorage.setItem("email", response.data);
-          // setCurrentProfilUser(response.data.user);
-          // console.log(response.data)
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    listImage.forEach(element => {
-      handleUpload(element)
+      .post("http://localhost:8082/api/materiels/ajouter", {
+        categorieMat: categorieMateriel,
+        nomMat: nomMateriel,
+        stockMat: stockMateriel,
+        descriptionMat: descriptionMateriel,
+        techniqueMat: null,
+        imagePath: null,
+        imageDetailsPath: null,
+        id_user: 1,
+        prixMAt: prixMateriel,
+      })
+      .then((response) => {
+        // localStorage.setItem("email", response.data);
+        // setCurrentProfilUser(response.data.user);
+        // console.log(response.data)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    listImage.forEach((element) => {
+      handleUpload(element);
       // console.log(element.name)
     });
-
-  }
+  };
 
   return (
     <>
@@ -434,11 +449,14 @@ function Navigation() {
                     <div className="card-body">
                       <div className="top-sec">
                         <h3>Tous les produits</h3>
-                        <input type="button" className="btn btn-sm btn-solid"
+                        <input
+                          type="button"
+                          className="btn btn-sm btn-solid"
                           aria-hidden="true"
                           data-bs-toggle="modal"
-                          data-bs-target="#staticBackdropAddProduct" value={"+ Ajouter Matériels"} />
-                        
+                          data-bs-target="#staticBackdropAddProduct"
+                          value={"+ Ajouter Matériels"}
+                        />
                       </div>
                       <div className="table-responsive-md">
                         <table className="table mb-0 product-table">
@@ -453,9 +471,9 @@ function Navigation() {
                             </tr>
                           </thead>
                           <tbody>
-                            
-                            <TableRow/>
-                            {/* Repeat this structure for other rows */}
+                            {listMateriel.map((materiel) => (
+                              <TableRow materielItem={{ ...materiel }} />
+                            ))}
                           </tbody>
                         </table>
                       </div>
@@ -793,7 +811,13 @@ function Navigation() {
               >
                 Close
               </button>
-              <input type="button" className="btn btn-primary" value={"Ajouter Produit"} data-bs-dismiss="modal" onClick={handleOnclickSaveAddProduct} />
+              <input
+                type="button"
+                className="btn btn-primary"
+                value={"Ajouter Produit"}
+                data-bs-dismiss="modal"
+                onClick={handleOnclickSaveAddProduct}
+              />
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import Modification from "./modification";
 import SupprimerMateriel from "./suppressionMateriel";
 
 function TableRow  ({materielItem})  {
+  console.log(materielItem.PrixMAt)
     return (
       <tr>
         <th scope="row">
@@ -16,7 +17,7 @@ function TableRow  ({materielItem})  {
         <td className="fw-bold text-theme">{materielItem.PrixMAt} Ar</td>
         <td>{materielItem.stockMat}</td>
         <td>
-          <Modification />
+          <Modification materielItem={{...materielItem}} />
           <SupprimerMateriel />
         </td>
       </tr>
