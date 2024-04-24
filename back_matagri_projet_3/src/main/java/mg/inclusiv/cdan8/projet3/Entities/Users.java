@@ -54,8 +54,10 @@ public class Users {
     @OneToMany(mappedBy = "user")
     private List<Materiels> materiels;
 
+
     @ManyToOne
     @JoinColumn(name = "id_profile")
     private Profiles profile;
+
 
 }
