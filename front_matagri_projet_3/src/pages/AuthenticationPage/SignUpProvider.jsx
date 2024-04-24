@@ -35,8 +35,10 @@ function SignUpProvider() {
   };
 
   const handleOnChangeInputTextPhone = (event) => {
-    setPhone(event.target.value);
-    localStorage.setItem('phone', event.target.value);
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    localStorage.setItem('phone', enteredValue);
+    setPhone(numericValue);
   };
 
   const handleOnChangeInputTextEmail = (event) => {
@@ -155,7 +157,7 @@ function SignUpProvider() {
                     <div className="col-md-6">
                       <label htmlFor="telephone">Téléphone</label>
                       <input
-                        type="number"
+                        type="text"
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"

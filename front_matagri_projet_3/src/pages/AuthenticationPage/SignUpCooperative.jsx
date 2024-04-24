@@ -38,11 +38,11 @@ function SignUpCooperative() {
   const handleOnChangeInputTextNbAgriculteur = (event) => {
     setNbAgriculteur(event.target.value);
   };
-
   const handleOnChangeInputTextPhone = (event) => {
-    setPhone(event.target.value);
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    setPhone(numericValue);
   };
-
   const handleOnChangeInputTextNif = (event) => {
     setNif(event.target.value);
   };
@@ -148,7 +148,7 @@ function SignUpCooperative() {
                     <div className="col-md-6">
                       <label htmlFor="telephone">Téléphone</label>
                       <input
-                        type="number"
+                        type="text"
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
