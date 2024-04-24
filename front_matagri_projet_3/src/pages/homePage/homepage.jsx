@@ -1,11 +1,11 @@
 import CardProduct from "../../components/homepagecomponents/carteProduit";
 
 function HomePage() {
-    return (
+  return (
     <>
-        <CardProduct />
+      <CardProduct />
     </>
-    );
+  );
 }
 
 export default HomePage;
