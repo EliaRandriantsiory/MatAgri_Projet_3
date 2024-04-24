@@ -14,6 +14,11 @@ import mg.inclusiv.cdan8.projet3.Repositories.MaterielsRepository;
 public class MaterielsService {
     @Autowired
     MaterielsRepository materielsRepository;
+
+
+    public List<Materiels> getAllMatByMail(Long idUtilisateur){
+        return materielsRepository.findAllTachesByUtilisateurId(idUtilisateur);
+    }
     
     public List<Materiels> getAllMat(){
         return materielsRepository.findAll();

@@ -11,7 +11,6 @@ import Dashboard from "./pages/Dashboard/Fournisseur/dashboardfour";
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
 
-import Terme from "./pages/AuthenticationPage/Terme";
 import Choiceusers from "./pages/AuthenticationPage/choiceusers";
 import DashboardUser from "./pages/dasboard";
 import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
@@ -59,11 +58,10 @@ function App() {
             element=<DashBordAgriculteur />
           />
         </Route>
-        <Route>
+        <Route  path="/dashboard_fournisseur"
+          element=<PageAccueilAgriculteur /> >
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         </Route>
-
-        <Route path="/terme" element=<Terme /> />
 
       </Routes>
       <></>

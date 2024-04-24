@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-function Modification() {
+function SupprimerMateriel() {
     const [images, setImages] = useState([]);
     const [imagePreviews, setImagePreviews] = useState([]);
-  
+
     const handleImageChange = (e) => {
       const files = Array.from(e.target.files);
   
@@ -14,7 +14,7 @@ function Modification() {
         };
         reader.readAsDataURL(file);
       });
-  
+
       setImages(prevImages => [...prevImages, ...files]);
     };
   
@@ -38,7 +38,7 @@ function Modification() {
       <>
         <a href="#">
           <i
-            className="fa fa-pencil-square-o me-1"
+            className="fa fa-trash-o ms-1 text-theme"
             aria-hidden="true"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
@@ -124,16 +124,13 @@ function Modification() {
                 >
                   Close
                 </button>
-                <button type="button" className="btn btn-primary">
-                    Save Change
-                </button>
+                <input type="button" className="btn btn-primary" value={"Save Change"} data-bs-dismiss="modal"  />
+                
               </div>
             </div>
           </div>
         </div>
       </>
     );
-  }
-  
-  export default Modification;
-  
+  }  
+export default SupprimerMateriel;

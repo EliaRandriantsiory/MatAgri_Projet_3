@@ -15,7 +15,11 @@ import Login from "./pages/AuthenticationPage/LoginPage";
 import SignUpCooperative from "./pages/AuthenticationPage/SignUpCooperative";
 
 
+import AddProduct from "./components/componentproduct/addproduct";
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <App />
