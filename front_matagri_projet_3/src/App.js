@@ -10,7 +10,6 @@ import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricu
 import Dashboard from "./pages/Dashboard/Fournisseur/dashboardfour";
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
-
 import Choiceusers from "./pages/AuthenticationPage/choiceusers";
 import DashboardUser from "./pages/dasboard";
 import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
@@ -19,6 +18,8 @@ import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
+import TermeF from "./pages/AuthenticationPage/TermeF";
+import Terme from "./pages/AuthenticationPage/Terme";
 
 function App() {
   return (
@@ -42,10 +43,6 @@ function App() {
           />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
 
-          {/* <Route
-            path="/InscriptionAgriculteur"
-            element=<InscriptionAgriculteur />
-          /> */}
         </Route>
 
         <Route path="/Dashboard" element=<DashboardUser /> />
@@ -58,14 +55,17 @@ function App() {
             element=<DashBordAgriculteur />
           />
         </Route>
+
+        <Route>
+          <Route path="/TermeF" element=<TermeF /> />
+        </Route>
+
         <Route path="/carouselImage" element=<homePage /> />
         <Route  path="/dashboard_fournisseur"
           element=<PageAccueilAgriculteur /> >
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         </Route>
             <Route path="/terme" element=<Terme /> />
-
-            
         </Routes>
         
       <></>

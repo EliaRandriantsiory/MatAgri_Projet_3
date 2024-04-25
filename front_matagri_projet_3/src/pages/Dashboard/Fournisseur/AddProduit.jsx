@@ -14,30 +14,6 @@ function AddProduit() {
   const [prix, setPrix] = useState("");
   const [stock, setStock] = useState("");
   const [description, setDescription] = useState("");
-  const [isValid, setIsValid] = useState(true);
-  const [produits, setProduits] = useState([]);
-
-  useEffect(() => {
-    const fetchProduits = async () => {
-      try {
-        const response = await axios.get("/api/produits");
-        setProduits(response.data);
-      } catch (error) {
-        console.error("Erreur lors de la récupération des produits:", error);
-      }
-    };
-  useEffect(() => {
-    const fetchProduits = async () => {
-      try {
-        const response = await axios.get("/api/produits");
-        setProduits(response.data);
-      } catch (error) {
-        console.error("Erreur lors de la récupération des produits:", error);
-      }
-    };
-
-    fetchProduits();
-  }, []);
 
   const handleImageChange = (files) => {
     const selectedImages = Array.from(files);
@@ -75,7 +51,7 @@ function AddProduit() {
       formData.append("prix", prix);
       formData.append("stock", stock);
       formData.append("description", description);
-      image.forEach((file) => {
+      images.forEach((file) => { // Correction ici
         formData.append("images", file);
       });
 
@@ -88,37 +64,6 @@ function AddProduit() {
       console.log("Données envoyées avec succès:", response.data);
       // Réinitialisez le formulaire après l'envoi des données avec succès
       handleCloseModal();
-    } catch (error) {
-      console.error("Erreur lors de l'envoi des données:", error);
-      // Gérez les erreurs d'envoi des données ici
-    }
-  };
-
-  const handlePrixChange = (e) => {
-    const value = e.target.value;
-    if (/^\d+$/.test(value)) {
-      setPrix(value);
-      setIsValid(true);
-    } else {
-      setPrix(value);
-      setIsValid(false);
-    }
-  };
-
-  const handleClose = () => {
-    setShowModal(false); // Ferme le modal lorsque cette fonction est appelée
-  };
-
-  return (
-    <>
-      <a href="#" className="btn btn-sm btn-solid" onClick={handleOpenModal}>
-        + Ajouter Produit
-      </a>
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      // Votre code de gestion de soumission
     } catch (error) {
       console.error("Erreur lors de l'envoi des données:", error);
       // Gérez les erreurs d'envoi des données ici
@@ -144,7 +89,7 @@ function AddProduit() {
       </button>
 
       <Modal show={showModal} onHide={handleCloseModal} backdrop="static">
-        <Modal.Header>
+        <Modal.Header closeButton>
           <Modal.Title>Ajout Produit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -153,39 +98,36 @@ function AddProduit() {
             noValidate
             onSubmit={handleSubmit}
           >
-            <div className="form">
-              <div className="col-md-6">
-                <label htmlFor="image" className="form-label">
-                  Image:
-                </label>
-                <FileUploader
-                  handleChange={handleImageChange}
-                  name="file"
-                  types={fileTypes}
-                  multiple
-                />
-                {imagePreviews.length > 0 && (
-                  <div className="image-preview-container">
-                    {" "}
-                    {imagePreviews.map((preview, index) => (
-                      <div key={index} className="me-2 mb-2">
-                        <img
-                          src={preview}
-                          alt={`Preview ${index}`}
-                          style={{ width: "100px", marginRight: "5px" }}
-                        />
-                        <button
-                          type="button"
-                          className="btn btn-danger btn-sm"
-                          onClick={() => removeImage(index)}
-                        >
-                          <i className="fa fa-trash"></i>
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+            <div className="form-group">
+              <label htmlFor="image" className="form-label">
+                Image:
+              </label>
+              <FileUploader
+                handleChange={handleImageChange}
+                name="file"
+                types={fileTypes}
+                multiple
+              />
+              {imagePreviews.length > 0 && (
+                <div className="image-preview-container d-flex">
+                  {imagePreviews.map((preview, index) => (
+                    <div key={index} className="me-2 mb-2">
+                      <img
+                        src={preview}
+                        alt={`Preview ${index}`}
+                        style={{ width: "100px", marginRight: "5px" }}
+                      />
+                      <button
+                        type="button"
+                        className="btn btn-danger btn-sm"
+                        onClick={() => removeImage(index)}
+                      >
+                        <i className="fa fa-trash"></i>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="form-group">
               <label htmlFor="nomMateriel">Nom du matériel:</label>
@@ -197,12 +139,10 @@ function AddProduit() {
                 onChange={(e) => setNomMateriel(e.target.value)}
               />
             </div>
-            <div className="col-md-6">
-              <label htmlFor="categories" className="form-label">
-                Catégories:
-              </label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Choix de catégorie</option>
+            <div className="form-group">
+              <label htmlFor="categories">Catégories:</label>
+              <select className="form-select" id="categories">
+                <option>Choix de catégorie</option>
                 <option value="1">Motoculteur</option>
                 <option value="2">Tracteur</option>
                 <option value="3">Camion</option>
