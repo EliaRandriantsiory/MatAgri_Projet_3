@@ -1,6 +1,38 @@
-import { Link } from "react-router-dom";
 
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 function DashBordAgriculteur() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [currentProfilUser, setCurrentProfilUser] = useState({});
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (email && password) {
+      axios
+        .post("http://localhost:8082/api/home/authentification", {
+          email: email,
+          password: password,
+        })
+        .then((response) => {
+          localStorage.setItem("email", JSON.stringify(response.data.email));
+          setCurrentProfilUser(response.data.user);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [email, password]);
+
+  const handleOnClickLogout = (event) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("password");
+    setCurrentProfilUser({});
+    navigate("/home");
+  };
+
   return (
     <div>
       <section className="dashboard-section section-b-space user-dashboard-section">
@@ -18,7 +50,7 @@ function DashBordAgriculteur() {
                   </div>
                   <div className="profile-detail">
                     <h5>Mark Jecno</h5>
-                    <h6>mark.jecno@mail.com</h6>
+                    <h6>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h6>
                   </div>
                 </div>
                 <div className="faq-tab">

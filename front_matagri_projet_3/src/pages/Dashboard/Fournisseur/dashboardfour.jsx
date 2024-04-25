@@ -14,7 +14,7 @@ function Dashboard() {
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="index.html">Accueil</a>
+                    <a hrezf="index.html">Accueil</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
                     dashboard Fournisseur
@@ -25,10 +25,10 @@ function Dashboard() {
           </div>
         </div>
       </div>
-
+      
       <section className="dashboard-section section-b-space">
         <div className="container">
-          <Navigation />
+          <Navigation/>
         </div>
       </section>
     </>

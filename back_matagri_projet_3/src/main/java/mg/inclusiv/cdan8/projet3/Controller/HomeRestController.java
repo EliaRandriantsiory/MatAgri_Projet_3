@@ -72,32 +72,23 @@ public class HomeRestController {
         Users currentUser = userRepository.findByEmail("authuser.getEmail()");
         return currentUser;
     }
-
-    @PostMapping("add_agriculteur")
-    public ResponseEntity<String> addContact(@RequestBody Users newUser) {
-        userService.addUsersAgriculteur(newUser);
-        session.invalidate();
-        // Users new_User = userService.authentUser(newUser.getEmail(), newUser.getPassword());
-        // System.out.println(newUser);
-        session.setAttribute("user", newUser);
-        
-        return ResponseEntity.ok("Données reçues avec succès !");
+    @GetMapping("session_usertest")
+    public ResponseEntity<String>  SessionUsertest() {
+    return ResponseEntity.ok("Données reçues avec succès !");
     }
-    
+
     @PostMapping("authentification")
     public Users authUser(@RequestBody AuthUser authUser ) {
         // System.out.println(authUser.getEmail()+", "+ authUser.getPassword());
         //Users newUser = (Users) userRepository.findByEmail(authUser.getEmail());
         Users currentUser = userService.authentUser(authUser.getEmail(), authUser.getPassword());
-        System.out.println(authUser.getEmail());
-        System.out.println(userRepository.findAll());
-        // session.setAttribute("user", currentUser); ResponseEntity.ok("Données reçues avec succès !");
+        
         return currentUser;
     }
     
     @PostMapping("getCurrentUser")
     public Users getCurrentUsers(@RequestBody AuthUser currentAuthUser ) {
-        // userService.findByEmail(currentAuthUser.getEmail())
+
         return userService.findByEmail(currentAuthUser.getEmail());
     }
 
@@ -105,6 +96,11 @@ public class HomeRestController {
     public ResponseEntity<String>deconnexionUser() {
         session.invalidate();
         return ResponseEntity.ok("L'utilisateur est déconnecté !");
+    }
+    @PostMapping("ajoutUser")
+    public ResponseEntity<String>inscription(@RequestBody Users user){
+        userService.addUsers(user);
+        return ResponseEntity.ok("L'utilisateur est ajouté !");
     }
 
 }

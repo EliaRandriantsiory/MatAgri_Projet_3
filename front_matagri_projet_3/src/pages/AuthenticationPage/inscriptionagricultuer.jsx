@@ -1,12 +1,11 @@
-import React from "react";
-import { useEffect, useState  } from "react";
-import { useNavigate   } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import axios from "axios";
-import DashboardUser from "../dasboard";
+import Terme from "./Terme";
 function InscriptionAgriculteur() {
   const [inscriptionAgriculteurRedirect, setInscriptionAgriculteurRedirect] = useState()
-  
+  const [EtatCGV, setEtatCgv] = useState("");
   const navigate = useNavigate();
   const [form, setForm] = useState({});
   const [nameForm, setName] = useState("");
@@ -18,6 +17,15 @@ function InscriptionAgriculteur() {
   const [regionForm, setRegion] = useState("");
   const [passwordForm, setPassword] = useState("");
   const [confirmPasswordForm, setConfirmPassword] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
+
+  const handleOnChangecheckboxcgv = (event) => {
+    setEtatCgv(event.target.checked);
+    setIsChecked(event.target.checked);
+    setErrorMessage(false);
+  };
 
   const handleOnChangeInputTextNom = (event) => {
     setName(event.target.value);
@@ -56,14 +64,46 @@ function InscriptionAgriculteur() {
   };
 
 
-  const handleOnclickSauvegarde = (event) => {
+  const handleOnclickSauvegarde =  async (event) => {
     event.preventDefault();
-    console.log(emailForm)
-    sessionStorage.setItem('email',emailForm)
-      navigate("/Dashboard")
-    // if(passwordForm!==confirmPasswordForm){
-    //   navigate("/InscriptionAgriculteur")
-    // }
+    if (!isChecked) {
+      setErrorMessage("Veuillez accepter les termes et conditions de location");
+      return;
+    }
+    try {
+      const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
+        address: addressForm,
+        phone: phoneForm,
+        cin: cinForm,
+        name: nameForm,
+        lastname: lastnameForm,
+        region: regionForm,
+        email: emailForm,
+        password: passwordForm,
+        confirmPassword: confirmPasswordForm,
+        profile: {
+          idprofile: 1,
+          profile: "agriculteur",
+          roles: []
+      }
+      });
+      console.log(response.data);
+      navigate("/PageAccueilAgriculteur");
+    } catch (error) {
+
+      console.error("Erreur lors de l'inscription :", error);
+    }
+    event.preventDefault();
+    console.log(EtatCGV)
+    navigate("/PageAccueilAgriculteur")
+
+    localStorage.setItem('email', emailForm);
+    localStorage.setItem('password', passwordForm);
+    
+    if(passwordForm!==confirmPasswordForm){
+      setErrorPassword("Les mots de passe ne sont pas identiques");
+    }else{
+    navigate("/PageAccueilAgriculteur")}
   };
 
  
@@ -97,7 +137,6 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="name"
                         placeholder="Votre nom"
-                        
                         value={nameForm}
                         onChange={(event) => handleOnChangeInputTextNom(event)}
                       />
@@ -121,7 +160,6 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="email"
                         placeholder="Votre prénom"
-                        
                         value={lastnameForm}
                         onChange={(event) =>
                           handleOnChangeInputTextLastName(event)
@@ -135,7 +173,6 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
-                        
                         value={phoneForm}
                         onChange={(event) =>
                           handleOnChangeInputTextPhone(event)
@@ -149,7 +186,6 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="address"
                         placeholder="Votre adresse"
-                        
                         value={addressForm}
                         onChange={(event) =>
                           handleOnChangeInputTextAddress(event)
@@ -163,7 +199,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="passeword"
                         placeholder=" votre mot de passe"
-                        
+                        value={passwordForm}
                         onChange={(event) =>
                           handleOnChangeInputTextPassword(event)
                         }
@@ -175,7 +211,6 @@ function InscriptionAgriculteur() {
                         type="text"
                         className="form-control"
                         placeholder="Votre adresse email"
-                        
                         value={emailForm}
                         onChange={(event) =>
                           handleOnChangeInputTextEmail(event)
@@ -189,7 +224,7 @@ function InscriptionAgriculteur() {
                         className="form-control"
                         id="passConfirm"
                         placeholder=" Confirmer mot de passe"
-                        
+                        value={confirmPasswordForm}
                         onChange={(event) =>
                           handleOnChangeInputTextConfirmPassword(event)
                         }
@@ -200,8 +235,7 @@ function InscriptionAgriculteur() {
                       <select
                         id="region"
                         onChange={handleOnChangeInputTextRegion}
-                        className="form-control"
-                      >
+                        className="form-control" value={regionForm}>
                         <option value="-------------">-------------</option>
                         <option value="Alaotra Mangoro">Alaotra Mangoro</option>
                         <option value="Analamanga">Analamanga</option>
@@ -217,14 +251,21 @@ function InscriptionAgriculteur() {
                       <input
                         type="checkbox"
                         name="checkbox-button"
-                        value="value"
+                        value="Check"
                         id="checkPlus"
+                        checked={isChecked}
+                        onChange={handleOnChangecheckboxcgv}
                       ></input>
                       <a id="addCheckboxBtn" href="#">
-                        Terme et contrat de location
+                      <Terme/>
                       </a>
                     </div>
                   </div>
+                    {/* --------- */}
+                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                    {errorPassword && (
+                  <p style={{ color: "red" }}>{errorPassword}</p>
+                )}
                   <input
                     className="btn btn-solid w-auto"
                     type="submit"

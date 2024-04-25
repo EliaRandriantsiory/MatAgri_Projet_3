@@ -1,6 +1,46 @@
-import { Outlet, Link } from "react-router-dom";
-import Navigation from "../Dashboard/Fournisseur/navbar";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 function PageAccueilAgriculteur() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [currentProfilUser, setCurrentProfilUser] = useState({});
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    
+    // INITIALISATION DATA MATERIEL
+    // axios
+    //   .get("http://localhost:8082/api/materiels/listMateriel")
+    //   .then((response) => {
+    //     setListMateriel(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+
+      // initialisation donnée current user
+    axios
+      .post("http://localhost:8082/api/home/authentification", {
+        email: localStorage.getItem("email"),
+        password: localStorage.getItem("pwd"),
+      })
+      .then((response) => {
+        setCurrentProfilUser(response.data)
+      });
+  }, []);
+  if(!currentProfilUser){
+    navigate("/home");
+  }
+
+  const handleOnClickLogout = (event) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("password");
+    setCurrentProfilUser({});
+    navigate("/home");
+  };
+
   return (
     <>
       <header className="header-2">
@@ -25,7 +65,7 @@ function PageAccueilAgriculteur() {
                         className="breadcrumb-item active"
                         aria-current="page"
                       >
-                        <Link to={"/Login"}>Déconnexion</Link>
+                        <a href onClick={handleOnClickLogout}>Déconnexion</a>
                         {/* <a href="#"></a> */}
                       </li>
                     </ol>
