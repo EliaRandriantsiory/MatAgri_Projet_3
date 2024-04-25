@@ -5,62 +5,64 @@ function Modification({ materielItem }) {
   const [images, setImages] = useState([]);
 
   const [imagePreviews, setImagePreviews] = useState([]);
-  // const [nomMateriel, setNomMateriel] = useState("");
-  const nomMat=useRef(null);
-  const categorieMat=useRef(null);
-  const prixMAt=useRef(null);
-  const stockMat=useRef(null);
-  const descriptionMat=useRef(null);
-  // const [categorieMateriel, setCategorieMateriel] = useState("");
-  // const [prixMateriel, setPrixMateriel] = useState();
-  // const [stockMateriel, setStockMateriel] = useState();
-  // const [descriptionMateriel, setDescriptionMateriel] = useState("");
+  const [nomMateriel, setNomMateriel] = useState("");
+  const [categorieMateriel, setCategorieMateriel] = useState("");
+  const [prixMateriel, setPrixMateriel] = useState();
+  const [stockMateriel, setStockMateriel] = useState();
+  const [descriptionMateriel, setDescriptionMateriel] = useState("");
 
-  
-  // const handleOnChangeNomMateriel = (e) => {
-  //   setNomMateriel(e.target.value);
-  // };
-  // const handleOnChangeCategorieMateriel = (e) => {
-  //   setCategorieMateriel(e.target.value);
-  // };
-  // const handleOnChangePrixMateriel = (e) => {
-  //   setPrixMateriel(e.target.value);
-  // };
-  // const handleOnChangeStockMateriel = (e) => {
-  //   setStockMateriel(e.target.value);
-  // };
-  // const handleOnChangeDescriptionMateriel = (e) => {
-  //   setDescriptionMateriel(e.target.value);
-  // };
-  // console.log(materielItem)
+  useEffect(() => {
+    // INITIALISATION DATA MATERIEL
+    setNomMateriel(materielItem.nomMat)
+    setCategorieMateriel(materielItem.categorieMat)
+    setDescriptionMateriel(materielItem.descriptionMat)
+    setNomMateriel(materielItem.nomMat)
+    setPrixMateriel(materielItem.prixMAt)
+    setStockMateriel(materielItem.stockMat)
+    
+  }, []);
+
+  const handleOnChangeNomMateriel = (e) => {
+    setNomMateriel(e.target.value);
+    console.log(e.target.value)
+  };
+  const handleOnChangeCategorieMateriel = (e) => {
+    setCategorieMateriel(e.target.value);
+  };
+  const handleOnChangePrixMateriel = (e) => {
+    setPrixMateriel(e.target.value);
+  };
+  const handleOnChangeStockMateriel = (e) => {
+    setStockMateriel(e.target.value);
+  };
+  const handleOnChangeDescriptionMateriel = (e) => {
+    setDescriptionMateriel(e.target.value);
+  };
+  console.log(materielItem);
   useEffect(() => {});
-  
+
   const handleOnclickSauvegardeModifier = (e) => {
     e.preventDefault();
-    
-    console.log(nomMat.current.value+materielItem.materielId)
+
     axios
-    .post("http://localhost:8082/api/materiels/modifier",{
-      
+      .post("http://localhost:8082/api/materiels/modifier", {
         materielId: materielItem.materielId,
-        categorieMat: categorieMat,
-        nomMat: nomMat,
-        stockMat: stockMat,
-        descriptionMat: descriptionMat,
+        categorieMat: categorieMateriel,
+        nomMat: nomMateriel,
+        stockMat: stockMateriel,
+        descriptionMat: descriptionMateriel,
         techniqueMat: null,
         imagePath: null,
         imageDetailsPath: null,
         id_user: materielItem.id_user,
-        prixMAt: prixMAt
-    
-    })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-
+        prixMAt: prixMateriel,
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     // setForm({nomForm:nom,prenomForm:prenom})
     // console.log(form)
@@ -97,7 +99,7 @@ function Modification({ materielItem }) {
     document.body.appendChild(input);
     input.click();
     document.body.removeChild(input);
-  }; 
+  };
 
   return (
     <>
@@ -207,9 +209,9 @@ function Modification({ materielItem }) {
                     name="nom"
                     required
                     className="form-control"
-                    ref={nomMat}
-                    value={materielItem.nomMat}
-                    // onChange={handleOnChangeNomMateriel}
+                    
+                    value={nomMateriel}
+                    onChange={handleOnChangeNomMateriel}
                   />
                 </div>
                 <div className="col-md-6">
@@ -219,9 +221,8 @@ function Modification({ materielItem }) {
                   <select
                     class="form-select"
                     aria-label="Default select example"
-                    value={materielItem.categorieMat}
-                    ref={categorieMat}
-                    // onChange={handleOnChangeCategorieMateriel}
+                    value={categorieMateriel}
+                    onChange={handleOnChangeCategorieMateriel}
                   >
                     <option selected>Choix de catégorie</option>
                     <option value="1">Motoculteur</option>
@@ -241,9 +242,8 @@ function Modification({ materielItem }) {
                       name="prix"
                       required
                       className="form-control"
-                      value={materielItem.prixMAt}
-                      ref={prixMAt}
-                      // onChange={handleOnChangePrixMateriel}
+                      value={prixMateriel}
+                      onChange={handleOnChangePrixMateriel}
                     />
                   </div>
                 </div>
@@ -257,26 +257,25 @@ function Modification({ materielItem }) {
                     name="stock"
                     required
                     className="form-control"
-                    value={materielItem.stockMat}
-                    ref={stockMat}
-                    // onChange={handleOnChangeStockMateriel}
+                    value={stockMateriel}
+                    onChange={handleOnChangeStockMateriel}
                   />
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="description" className="form-label">
                     Description:
                   </label>
-                  
+
                   <textarea
                     id="description"
                     name="description"
                     required
                     className="form-control"
-                    value={materielItem.descriptionMat}
-                    ref={descriptionMat}
-                    // onChange={handleOnChangeDescriptionMateriel}
+                    value={descriptionMateriel}
+                    onChange={handleOnChangeDescriptionMateriel}
                   />
                 </div>
+                
               </form>
             </div>
             <div className="modal-footer">

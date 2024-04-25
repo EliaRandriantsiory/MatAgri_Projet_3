@@ -10,12 +10,25 @@ function TableRow() {
   const [categorieMateriel, setCategorieMateriel] = useState("");
   const [prixMateriel, setPrixMateriel] = useState();
   const [stockMateriel, setStockMateriel] = useState();
-  const [descriptionMateriel, setDescriptionMateriel] = useState("");
-
-  
+  const [descriptionMateriel, setDescriptionMateriel] = useState(""); 
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [currentProfilUser, setCurrentProfilUser] = useState({});
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:8082/api/home/authentification", {
+        email: localStorage.getItem("email"),
+        password: localStorage.getItem("pwd"),
+      })
+      .then((response) => {
+        setCurrentProfilUser(response.data)
+        localStorage.setItem("currentUser",JSON.stringify(response.data))
+      });
+
+  },[])
     
   const handleImageChange = (e) => {
     
@@ -63,6 +76,8 @@ function TableRow() {
     setDescriptionMateriel(e.target.value);
   };
 
+
+
   const addImage = () => {
     const input = document.createElement("input");
     input.type = "file";
@@ -76,6 +91,7 @@ function TableRow() {
   };
 
   
+
   const handleUpload = (file) => {
     // const file = fileInputRef.current.files[0];
     const formData = new FormData();
@@ -105,13 +121,11 @@ function TableRow() {
         techniqueMat: null,
         imagePath: null,
         imageDetailsPath: null,
-        id_user: 1,
+        id_user: currentProfilUser.id_user,
         prixMAt: prixMateriel,
       })
       .then((response) => {
-        // localStorage.setItem("email", response.data);
-        // setCurrentProfilUser(response.data.user);
-        // console.log(response.data)
+        
       })
       .catch((error) => {
         console.error(error);

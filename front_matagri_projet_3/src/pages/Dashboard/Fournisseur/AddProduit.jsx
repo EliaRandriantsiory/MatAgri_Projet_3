@@ -15,16 +15,16 @@ function AddProduit() {
   const [produits, setProduits] = useState([]);
 
   useEffect(() => {
-    const fetchProduits = async () => {
-      try {
-        const response = await axios.get("/api/produits");
-        setProduits(response.data);
-      } catch (error) {
-        console.error("Erreur lors de la récupération des produits:", error);
-      }
-    };
+    // const fetchProduits = async () => {
+    //   try {
+    //     const response = await axios.get("/api/produits");
+    //     setProduits(response.data);
+    //   } catch (error) {
+    //     console.error("Erreur lors de la récupération des produits:", error);
+    //   }
+    // };
 
-    fetchProduits();
+    // fetchProduits();
   }, []);
 
   const handleImageChange = (e) => {
@@ -79,7 +79,7 @@ function AddProduit() {
       formData.append("stock", stock);
       formData.append("description", description);
       image.forEach((file) => {
-        formData.append("images", file);
+      formData.append("images", file);
       });
 
       const response = await axios.post("/api/enregistrerProduit", formData, {

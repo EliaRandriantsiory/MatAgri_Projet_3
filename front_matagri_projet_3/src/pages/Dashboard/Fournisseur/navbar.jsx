@@ -9,6 +9,7 @@ import TabPaneDashboard from "./component/tabPaneDashboard";
 import TabPaneProducts from "./component/tabPaneProducts";
 import TabPaneOrders from "./component/tabPaneOrders";
 import TabPaneProfile from "./component/tabPaneProfile";
+
 function Navigation() {
   
   const [currentProfilUser, setCurrentProfilUser] = useState({});
@@ -16,9 +17,6 @@ function Navigation() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
-    
-
       // initialisation donnée current user
     axios
       .post("http://localhost:8082/api/home/authentification", {

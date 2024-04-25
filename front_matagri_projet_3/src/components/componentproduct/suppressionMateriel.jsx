@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 function SupprimerMateriel({ materielItem }) {
@@ -16,6 +17,20 @@ function SupprimerMateriel({ materielItem }) {
       });
 
       setImages(prevImages => [...prevImages, ...files]);
+    };
+    const handelOnClickSupprimerButton = (e) => {
+      
+      console.log("suppression matériels"+materielItem.materielId)
+      axios
+      .get("http://localhost:8082/api/materiels/supprimer?idMat="+materielItem.materielId)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.error(error);
+    });
+  
+      
     };
   
     const removeImage = (index) => {
@@ -47,7 +62,7 @@ function SupprimerMateriel({ materielItem }) {
         <div
           className="modal fade"
           id="staticBackdropSupprMat"
-          data-bs-backdrop="static"
+          // data-bs-backdrop="static"
           data-bs-keyboard="false"
           tabIndex={-1}
           aria-labelledby="staticBackdropLabel"
@@ -67,7 +82,13 @@ function SupprimerMateriel({ materielItem }) {
                 />
               </div>
               <div className="modal-body">
-                
+                <ul>
+                  <li>Nom : {materielItem.nomMat}</li><br/>
+                  <li>Description : {materielItem.descriptionMat}</li><br/>
+                  <li>Catégories : {materielItem.categorieMat}</li><br/>
+                  
+
+                </ul>
               </div>
               <div className="modal-footer">
                 <button
@@ -77,7 +98,7 @@ function SupprimerMateriel({ materielItem }) {
                 >
                   Annuler
                 </button>
-                <input type="button" className="btn btn-primary" value={"Supprimer Materiel"} data-bs-dismiss="modal"  />
+                <input type="button" className="btn btn-primary" value={"Supprimer Materiel"} onClick={handelOnClickSupprimerButton} data-bs-dismiss="modal"  />
                 
               </div>
             </div>
