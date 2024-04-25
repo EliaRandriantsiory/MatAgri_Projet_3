@@ -26,10 +26,6 @@ function AboutPage() {
             </div>
         </div>
     </div>
-    {/* <!-- breadcrumb end --> */}
-
-
-    {/* <!-- about section start --> */}
     <section class="about-page section-b-space">
         <div class="container">
             <div class="row">
@@ -38,12 +34,12 @@ function AboutPage() {
                             class="img-fluid blur-up lazyload" alt=""/></div>
                 </div>
                 <div class="col-sm-12">
-                    <h4>Pourquoi nous ?</h4>
-                    <p>Gagnez en productivité grâce à nos matériels agricoles,</p>
-                    <p>Notre plateforme est bien plus qu'un simple site de location et de livraison de matériels agricoles.
+                    <h2>Qui sommes-nous ?</h2>
+                    <h3>Gagnez en productivité grâce à notre application de mutualisation des matériels agricoles.</h3>
+                    <h6>Notre plateforme est bien plus qu'un simple site de location et de livraison de matériels agricoles.
                     Nous sommes engagés dans la résolution des défis cruciaux de l'autosuffisance alimentaire en favorisant
                     l'expansion des terres cultivées et en facilitant la logistique collaborative par la mutualisation des
-                    équipements agricoles.</p>
+                    équipements agricoles.</h6>
                     <p>En connectant les entreprises de location de matériels agricoles aux agriculteurs et coopératives,
                     notre objectif est d'optimiser l'utilisation des ressources et de favoriser une collaboration étroite.
                     Grâce à notre application intuitive, les agriculteurs peuvent accéder rapidement et efficacement aux

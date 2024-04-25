@@ -68,7 +68,6 @@ function App() {
             <Route path="/terme" element=<Terme /> />
         </Routes>
         
-      <></>
     </BrowserRouter>
   );
 }
