@@ -998,7 +998,7 @@ function HomePage_Layout() {
             <input
               id="ColorPicker1"
               type="color"
-              defaultValue="#d4b196"
+              defaultValue="#862b0d"
               name="Background"
             />
           </li>
