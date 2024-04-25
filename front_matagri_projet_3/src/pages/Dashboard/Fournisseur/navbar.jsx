@@ -12,6 +12,7 @@ import TabPaneProfile from "./component/tabPaneProfile";
 function Navigation() {
   
   const [currentProfilUser, setCurrentProfilUser] = useState({});
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +27,7 @@ function Navigation() {
       })
       .then((response) => {
         setCurrentProfilUser(response.data)
+        localStorage.setItem("currentUser",JSON.stringify(response.data))
       });
 
   }, []);

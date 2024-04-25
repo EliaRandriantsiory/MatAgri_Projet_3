@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,9 +32,9 @@ public class MaterielsRestController {
     @Autowired
     private MaterielsRepository materielsRepository;
 
-    @PostMapping("/listMaterielUser")
-    public List<Materiels> listMatUser(Users currentUser) {
-      return  materielsService.getAllMatByMail(currentUser.getIdUser());
+    @GetMapping("/listMaterielUser")
+    public List<Materiels> listMatUser(@RequestParam("idUser") Long idUSer ) {
+      return  materielsService.getAllMatByIdUser(idUSer);
     }
 
     @GetMapping("/listMateriel")
@@ -45,7 +46,7 @@ public class MaterielsRestController {
 
     @PostMapping("/listMaterielByUser")
     public List<Materiels> listMatByUser(@RequestBody Users currentUser) {
-        List<Materiels> listUtilisateur = materielsService.getAllMatByMail(currentUser.getIdUser());
+        List<Materiels> listUtilisateur = materielsService.getAllMatByIdUser(currentUser.getIdUser());
         System.out.println(listUtilisateur);
         return listUtilisateur;
     }
@@ -55,6 +56,26 @@ public class MaterielsRestController {
         Materiels nouveauMateriel = materielsService.addMateriel(materiel);
         return new ResponseEntity<>(nouveauMateriel, HttpStatus.CREATED);
     }
+
+    @GetMapping("/supprimer")
+    public ResponseEntity<String> supprimerMateriel(@RequestParam("idMat") Long materielId ) {
+        materielsService.deleteMateriel(materielId);
+        return  ResponseEntity.ok("suppression materiel réussi");
+    }
+
+    @PostMapping("/modifier")
+    public ResponseEntity<String> modifierMateriel(@RequestBody Materiels materiel ) {
+        Materiels currentMat = materielsService.getMatById(materiel.getMaterielId());
+        currentMat.setCategorieMat(materiel.getCategorieMat());
+        currentMat.setDescriptionMat(materiel.getDescriptionMat());
+        currentMat.setNomMat(materiel.getNomMat());
+        currentMat.setPrixMAt(materiel.getPrixMAt());
+        currentMat.setStockMat(materiel.getStockMat());
+        currentMat.setImagePath(materiel.getImagePath());
+        materielsService.saveMat(currentMat);
+        return  ResponseEntity.ok("modifier materiel réussi");
+    }
+
 
     // @PostMapping
     // public ResponseEntity<String> uploadFiles(@RequestPart("files") List<FileUpload> fileUploadRequests) {

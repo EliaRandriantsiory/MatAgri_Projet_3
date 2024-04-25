@@ -2,7 +2,7 @@ import Modification from "./modification";
 import SupprimerMateriel from "./suppressionMateriel";
 
 function TableRow  ({materielItem})  {
-  console.log(materielItem.PrixMAt)
+  console.log("affiche materiel item"+materielItem.materielId)
     return (
       <tr>
         <th scope="row">
@@ -18,7 +18,7 @@ function TableRow  ({materielItem})  {
         <td>{materielItem.stockMat}</td>
         <td>
           <Modification materielItem={{...materielItem}} />
-          <SupprimerMateriel />
+          <SupprimerMateriel materielItem={{...materielItem}} />
         </td>
       </tr>
     );

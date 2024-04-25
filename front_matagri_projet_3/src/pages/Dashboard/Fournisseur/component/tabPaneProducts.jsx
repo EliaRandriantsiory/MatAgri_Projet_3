@@ -4,10 +4,12 @@ import axios from "axios";
 
 function TabPaneProducts() {
     const [listMateriel, setListMateriel] = useState([]);
+    const currentUSer = JSON.parse(localStorage.getItem("currentUser"))
+    // console.log(currentUSer)
     useEffect(() => {
         // INITIALISATION DATA MATERIEL
     axios
-    .get("http://localhost:8082/api/materiels/listMaterielUser")
+    .get("http://localhost:8082/api/materiels/listMaterielUser?idUser="+currentUSer.idUser)
     .then((response) => {
       setListMateriel(response.data);
     })
