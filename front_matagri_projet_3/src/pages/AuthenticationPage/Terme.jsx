@@ -9,7 +9,7 @@ function Terme(){
     return(
         <>
       <a variant="Link" onClick={handleShow}>
-        <b>CGV</b>
+        <b>Termes et conditions d'utilisateurs</b>
       </a>
 
       <Modal show={show} onHide={handleClose}>
