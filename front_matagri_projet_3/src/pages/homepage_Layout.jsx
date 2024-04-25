@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "./assets/css/homePage/homePage.css";
 function HomePage_Layout() {
   return (
@@ -383,7 +383,7 @@ function HomePage_Layout() {
                           </ul>
                         </li>
                         <li>
-                          <a href="#">Matériels</a>
+                          <Link to={"/Material"}>Matériels</Link>
                         </li>
                         <li>
                           <a href="#">Partenaires</a>
@@ -711,8 +711,8 @@ function HomePage_Layout() {
                     <img src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
                   <p style={{ textAlign: "center" }}>
-                    Votre application de location, de livraison et mutualisation
-                    de matériels agricoles.
+                  Application de location, livraison et mutualisation de
+                    matériels agricoles.
                   </p>
                   <div className="footer-social">
                     <ul>
@@ -756,7 +756,7 @@ function HomePage_Layout() {
                         <a href="#">Louer du matériel agricole</a>
                       </li>
                       <li>
-                        <a href="#">Déposer une demande de mutualisation</a>
+                        <a href="#">Mutualisation</a>
                       </li>
                       <li>
                         <a href="#">Consulter les demandes de matériels</a>
@@ -998,7 +998,7 @@ function HomePage_Layout() {
             <input
               id="ColorPicker1"
               type="color"
-              defaultValue="#d4b196"
+              defaultValue="#862b0d"
               name="Background"
             />
           </li>

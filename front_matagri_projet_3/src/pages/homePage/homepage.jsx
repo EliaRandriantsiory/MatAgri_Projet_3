@@ -1,11 +1,14 @@
+import { useState } from "react";
+import HomeSlide from "../../components/homepagecomponents/homeSlideComponent"
 import CardProduct from "../../components/homepagecomponents/carteProduit"
-import Carousell from "../carousell";
+import ParallaxPub from "./parallaxPub";
 
 function HomePage() {
     return (
     <>
-        <Carousell />
+        <HomeSlide />
         <CardProduct />
+        <ParallaxPub/>
     </>
     );
 }
