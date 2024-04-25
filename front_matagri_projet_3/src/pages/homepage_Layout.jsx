@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "./assets/css/homePage/homePage.css";
 function HomePage_Layout() {
   return (
@@ -383,7 +383,7 @@ function HomePage_Layout() {
                           </ul>
                         </li>
                         <li>
-                          <a href="#">Matériels</a>
+                          <Link to={"/Material"}>Matériels</Link>
                         </li>
                         <li>
                           <a href="#">Partenaires</a>

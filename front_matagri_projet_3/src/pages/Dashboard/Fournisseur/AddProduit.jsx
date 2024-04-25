@@ -26,6 +26,15 @@ function AddProduit() {
         console.error("Erreur lors de la récupération des produits:", error);
       }
     };
+  useEffect(() => {
+    const fetchProduits = async () => {
+      try {
+        const response = await axios.get("/api/produits");
+        setProduits(response.data);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des produits:", error);
+      }
+    };
 
     fetchProduits();
   }, []);
@@ -56,6 +65,55 @@ function AddProduit() {
     setShowModal(false);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const formData = new FormData();
+      formData.append("nomMateriel", nomMateriel);
+      formData.append("categorie", categorie);
+      formData.append("prix", prix);
+      formData.append("stock", stock);
+      formData.append("description", description);
+      image.forEach((file) => {
+        formData.append("images", file);
+      });
+
+      const response = await axios.post("/api/enregistrerProduit", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      console.log("Données envoyées avec succès:", response.data);
+      // Réinitialisez le formulaire après l'envoi des données avec succès
+      handleCloseModal();
+    } catch (error) {
+      console.error("Erreur lors de l'envoi des données:", error);
+      // Gérez les erreurs d'envoi des données ici
+    }
+  };
+
+  const handlePrixChange = (e) => {
+    const value = e.target.value;
+    if (/^\d+$/.test(value)) {
+      setPrix(value);
+      setIsValid(true);
+    } else {
+      setPrix(value);
+      setIsValid(false);
+    }
+  };
+
+  const handleClose = () => {
+    setShowModal(false); // Ferme le modal lorsque cette fonction est appelée
+  };
+
+  return (
+    <>
+      <a href="#" className="btn btn-sm btn-solid" onClick={handleOpenModal}>
+        + Ajouter Produit
+      </a>
   const handleSubmit = async (e) => {
     e.preventDefault();
 
