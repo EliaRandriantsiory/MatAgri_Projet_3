@@ -20,6 +20,7 @@ import PageAccueilAgriculteur from "./pages/dashbords/pageaccueilagriculteur";
 import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
 import Terme from "./pages/AuthenticationPage/Terme";
 import Choiceusers from "./pages/AuthenticationPage/choiceusers";
+import Materiels from "./pages/homePage/materiels";
 
 function App() {
   return (
@@ -63,7 +64,7 @@ function App() {
         </Route>
 
         <Route path="/terme" element=<Terme /> />
-
+        <Route path="/materiels" element=<Materiels /> />
       </Routes>
       <></>
     </BrowserRouter>

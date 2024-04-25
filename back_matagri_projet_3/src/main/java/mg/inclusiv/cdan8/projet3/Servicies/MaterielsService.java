@@ -14,14 +14,15 @@ import mg.inclusiv.cdan8.projet3.Repositories.MaterielsRepository;
 public class MaterielsService {
     @Autowired
     MaterielsRepository materielsRepository;
-    
-    public List<Materiels> getAllMat(){
+
+    public List<Materiels> getAllMat() {
         return materielsRepository.findAll();
     }
-
     public Materiels addMateriel(Materiels materiel) {
         return materielsRepository.save(materiel);
     }
-   
-    
+    public List<String> getAllMatCat() {
+        return materielsRepository.findAllCategorieMat();
+    }
+  
 }

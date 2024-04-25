@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
 function CardProduct() {
+
+  const data = {
+    image : '/images/image.png'
+  }
+
   return (
     <>
       <div class="title1 section-t-space">
@@ -16,7 +21,7 @@ function CardProduct() {
                   <div class="front">
                     <a href="#">
                       <img
-                        src="../assets/images/pro3/33.jpg"
+                        src={data.image}
                         class="img-fluid blur-up lazyload bg-img"
                         alt=""
                       />
@@ -25,7 +30,7 @@ function CardProduct() {
                   <div class="back">
                     <a href="#">
                       <img
-                        src="../assets/images/pro3/34.jpg"
+                        src={data.image}
                         class="img-fluid blur-up lazyload bg-img"
                         alt=""
                       />
@@ -79,7 +84,7 @@ function CardProduct() {
                   <div class="front">
                     <a href="#">
                       <img
-                        src="../assets/images/pro3/1.jpg"
+                        src={data.image}
                         class="img-fluid blur-up lazyload bg-img"
                         alt=""
                       />
@@ -88,7 +93,7 @@ function CardProduct() {
                   <div class="back">
                     <a href="#">
                       <img
-                        src="../assets/images/pro3/2.jpg"
+                        src={data.image}
                         class="img-fluid blur-up lazyload bg-img"
                         alt=""
                       />
@@ -277,7 +282,7 @@ function CardProduct() {
                   <div class="back">
                     <a href="#">
                       <img
-                        src="../assets/images/pro3/1.jpg"
+                        src={data.image}
                         class="img-fluid blur-up lazyload bg-img"
                         alt=""
                       />

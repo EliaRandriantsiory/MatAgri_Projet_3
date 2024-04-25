@@ -1,6 +1,34 @@
 import { Outlet, Link } from "react-router-dom";
 import "./assets/css/homePage/homePage.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 function HomePage_Layout() {
+  const [selectedValue, setSelectedValue] = useState("");
+  const [materiels, setMateriels] = useState([]);
+  const [error, setError] = useState(null);
+
+// llll
+  const handleclick = (e) =>{
+     setSelectedValue(e.target.value)
+  }
+
+  useEffect(() => {
+    const fetchMateriels = async () => {
+      try {
+        const response = await axios.get("http://localhost:8082/api/materiels/filter");
+        setMateriels(response.data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    fetchMateriels();
+  }, []);
+
+  const filtrerMateriels = materiels.filter(
+    (materiels) => selectedValue === "" || materiels.categorieMat === selectedValue
+  );
+
   return (
     <>
       <header className="header-2">
@@ -382,9 +410,11 @@ function HomePage_Layout() {
                             </li>
                           </ul>
                         </li>
-                        <li>
-                          <a href="#">Matériels</a>
+                        {/* traitement debut */}
+                        <li className="onhover-div">
+                          <a href="materiel">Matériels</a>
                         </li>
+                        {/* traitement fin */}
                         <li>
                           <a href="#">Partenaires</a>
                         </li>
