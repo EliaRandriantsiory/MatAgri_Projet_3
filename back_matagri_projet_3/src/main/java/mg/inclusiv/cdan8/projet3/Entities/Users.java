@@ -41,7 +41,7 @@ public class Users {
     
     private String region;
 
-    private int nbFarme;
+    private Integer nbFarme;
 
     private String companyName;
     

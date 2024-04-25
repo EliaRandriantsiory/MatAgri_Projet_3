@@ -41,7 +41,7 @@ function AddProduit() {
     });
 
     setImages((prevImages) => [...prevImages, ...files]);
-
+  
   const handleImageChange = (files) => {
     const selectedImages = Array.from(files);
     setImages(selectedImages);

@@ -14,6 +14,7 @@ function TabPaneProducts() {
           currentUSer.idUser
       )
       .then((response) => {
+        console.log(response.data)
         setListMateriel(response.data);
       })
       .catch((error) => {

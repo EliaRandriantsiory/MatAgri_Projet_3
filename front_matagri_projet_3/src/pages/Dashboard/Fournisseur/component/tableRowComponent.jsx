@@ -110,8 +110,12 @@ function TableRow() {
     //   });
   };
   const handleOnclickSaveAddProduct = () => {
+
+
     // console.log(nomMateriel+categorieMateriel+prixMateriel+stockMateriel+descriptionMateriel)
-    console.log(localStorage.getItem(email));
+    // console.log(localStorage.getItem("email"));
+    // console.log(currentProfilUser.id_user)
+    
     axios
       .post("http://localhost:8082/api/materiels/ajouter", {
         categorieMat: categorieMateriel,
@@ -121,7 +125,7 @@ function TableRow() {
         techniqueMat: null,
         imagePath: null,
         imageDetailsPath: null,
-        id_user: currentProfilUser.id_user,
+        id_user: 2,
         prixMAt: prixMateriel,
       })
       .then((response) => {
@@ -150,7 +154,7 @@ function TableRow() {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                Modificaion Produits
+                Modification Produit
               </h1>
               <button
                 type="button"

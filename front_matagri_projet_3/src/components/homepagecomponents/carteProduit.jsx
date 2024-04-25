@@ -1,24 +1,19 @@
 import { Link } from "react-router-dom";
 import ProductBox from "../Produitcomponents/cartesProduitCompnent";
 import { useEffect, useState } from "react";
+
 function CardProduct({ listMateriels }) {
   const [listMateriel, setListMateriel] = useState([]);
   useEffect(() => {
     setListMateriel(listMateriels)
   })
-  
 
-function CardProduct() {
-
-}
   return (
     <>
-    {listMateriels.map((materialItem, index) => (
-      {/* <ProductBox key={index} materielItem={materialItem} /> */}
-    ))}
+    {/* {listMateriels.map((materialItem, index) => (
+      {/* <ProductBox key={index} materielItem={materialItem} /> 
+    ))} */}
     </>
-    
-    
   );
 };
 
