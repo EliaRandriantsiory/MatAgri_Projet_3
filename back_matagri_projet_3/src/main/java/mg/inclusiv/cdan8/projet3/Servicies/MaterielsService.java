@@ -23,5 +23,8 @@ public class MaterielsService {
         return materielsRepository.save(materiel);
     }
    
+    public void deleteMateriel(Long Idmaterie){
+        materielsRepository.deleteById(Idmaterie);
+    }
     
 }

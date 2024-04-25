@@ -53,7 +53,23 @@ function Navigation() {
     console.log("Erreur");
   }
 
-  // console.log(currentProfilUSer);
+  const handleOnClickBtnSuppr = (materielId) => {
+    axios
+      .delete(`/api/materiels/${materielId}`)
+      .then((response) => {
+        // Vérifier si la suppression a réussi
+        if (response.status === 200) {
+          // Gérer la mise à jour de l'interface utilisateur après la suppression
+          // Par exemple, recharger la liste des matériaux
+        } else {
+          throw new Error("Erreur lors de la suppression du matériel");
+        }
+      })
+      .catch((error) => {
+        // Gérer les erreurs
+        console.error("Erreur:", error);
+      });
+  };
   return (
     <div className="row">
       <div className="col-lg-3">
@@ -344,12 +360,16 @@ function Navigation() {
                                   aria-hidden="true"
                                 />
                               </a>
-                              <a href="#">
+                              <button
+                                onClick={(event) => {
+                                  handleOnClickBtnSuppr(event);
+                                }}
+                              >
                                 <i
                                   className="fa fa-trash-o ms-1 text-theme"
                                   aria-hidden="true"
                                 />
-                              </a>
+                              </button>
                             </td>
                           </tr>
                           {/* Repeat this structure for other rows */}

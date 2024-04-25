@@ -15,12 +15,12 @@ import cartProduitModel from "./components/Produitcomponents/cartesProduitCompne
 import DashboardUser from "./pages/dasboard";
 import Login from "./pages/AuthenticationPage/LoginPage";
 import SignUpCooperative from "./pages/AuthenticationPage/SignUpCooperative";
-
+import Navigation from "./pages/Dashboard/Fournisseur/navbar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Navigation />
   </React.StrictMode>
 );
 

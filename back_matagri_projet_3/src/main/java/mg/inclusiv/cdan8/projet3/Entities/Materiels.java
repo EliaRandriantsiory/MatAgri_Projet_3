@@ -24,5 +24,6 @@ public class Materiels {
     private String techniqueMat;
     private String imagePath;
     private String imageDetailsPath;
+    private Long id_user;
 
 }
