@@ -111,7 +111,6 @@ function InscriptionAgriculteur() {
   useEffect(() => {console.log(inscriptionAgriculteurRedirect)}, [inscriptionAgriculteurRedirect]);
 
   return (
-    <>
       <section className="register-page section-b-space">
         <div className="container">
           <div className="row">
@@ -238,9 +237,8 @@ function InscriptionAgriculteur() {
                         <option value="Vakinakaratra">Vakinakaratra</option>
                       </select>
                     </div>
-                    <br/>
+                    <br></br>
                     <div id="checkTermeCondition">
-                    <br/>    
                       <input
                         type="checkbox"
                         name="checkbox-button"
@@ -249,7 +247,7 @@ function InscriptionAgriculteur() {
                         checked={isChecked}
                         onChange={handleOnChangecheckboxcgv}
                       ></input>
-                      <a id="addCheckboxBtn" href="#">
+                      <a id="addCheckboxBtn" href>
                       <Terme/>
                       </a>
                     </div>
@@ -272,7 +270,6 @@ function InscriptionAgriculteur() {
           </div>
         </div>
       </section>
-    </>
   );
 }
 
