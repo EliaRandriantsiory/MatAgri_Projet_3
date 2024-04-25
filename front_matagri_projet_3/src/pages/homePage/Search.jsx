@@ -2,19 +2,19 @@ function SearchPage() {
     return ( 
         <>
             {/* <!-- breadcrumb start --> */}
-    <div class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="page-title">
+    <div className="breadcrumb-section">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-6">
+                    <div className="page-title">
                         <h2>search</h2>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">search</li>
+                <div className="col-sm-6">
+                    <nav aria-label="breadcrumb" className="theme-breadcrumb">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li className="breadcrumb-item active">search</li>
                         </ol>
                     </nav>
                 </div>
