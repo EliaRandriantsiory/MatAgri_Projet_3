@@ -34,6 +34,7 @@ function AboutPage() {
                             class="img-fluid blur-up lazyload" alt=""/></div>
                 </div>
                 <div class="col-sm-12">
+                <br/>
                     <h2>Qui sommes-nous ?</h2>
                     <h3>Gagnez en productivité grâce à notre application de mutualisation des matériels agricoles.</h3>
                     <h6>Notre plateforme est bien plus qu'un simple site de location et de livraison de matériels agricoles.
