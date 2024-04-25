@@ -4,8 +4,6 @@ function Material() {
     return ( 
         <>
            <CartProduitModel/>
-           <CartProduitModel/>
-           <CartProduitModel/>
         </>
      );
 }
