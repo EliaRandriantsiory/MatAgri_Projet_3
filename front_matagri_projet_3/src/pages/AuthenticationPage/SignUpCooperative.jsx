@@ -254,6 +254,7 @@ function SignUpCooperative() {
                       type="submit"
                       className="btn btn-solid w-auto"
                       value={"S'inscrire"}
+                      disabled={!isChecked}
                     />
                   </div>
                 </form>

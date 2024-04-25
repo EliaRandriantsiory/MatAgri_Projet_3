@@ -41,5 +41,4 @@ public class Users {
     @ManyToOne
     @JoinColumn(name = "id_profile")
     private Profiles profile;
-
 }
