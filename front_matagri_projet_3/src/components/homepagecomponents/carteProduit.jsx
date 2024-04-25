@@ -7,7 +7,10 @@ function CardProduct({ listMateriels }) {
     setListMateriel(listMateriels)
   })
   
-  
+
+function CardProduct() {
+
+}
   return (
     <>
     {listMateriels.map((materialItem, index) => (

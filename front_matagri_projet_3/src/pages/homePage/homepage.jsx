@@ -4,6 +4,9 @@ import CardProduct from "../../components/homepagecomponents/carteProduit"
 import axios from "axios";
 import ProductBox from "../../components/Produitcomponents/cartesProduitCompnent";
 
+import ParallaxPub from "./parallaxPub";
+
+
 function HomePage() {
     const [listMateriel, setListMateriel] = useState([]);
     useEffect(() => {
@@ -20,6 +23,7 @@ function HomePage() {
     return (
     <>
         <HomeSlide />
+
         <div className="title1 section-t-space">
         <h4> produits exclusifs</h4>
         <h2 className="title-inner1">Produits</h2>
@@ -34,6 +38,10 @@ function HomePage() {
         </div>
         </div></section>
         
+
+        <CardProduct />
+        <ParallaxPub/>
+
     </>
     );
 }

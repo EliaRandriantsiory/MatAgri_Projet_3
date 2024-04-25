@@ -1,47 +1,25 @@
-import logo from "./NH_T6_DC.jpg";
+import slide1 from '../../pages/assets/images/caroussel/Carousel2.png';
+import slide2 from '../../pages/assets/images/caroussel/Carousel4.png';
+import slide3 from '../../pages/assets/images/caroussel/Carousel5.png';
+import { Carousel } from 'react-bootstrap';
+
 function HomeSlide({}) {
   // console.log(homeSlideComponent.imageName)
   // console.log(homeSlideComponent.title)
   // console.log(homeSlideComponent.slogan)
   // console.log(homeSlideComponent.description)
-  return (
-    <section className="p-0">
-      <div className="slide-1 home-slider">
-        <div>
-          <div className="home text-start">
-            <img
-              src="{logo}"
-              alt="Logo"
-              className="bg-img blur-up lazyload fondHomePage"
-            />
-            {/* <div className="container">
-              <div className="row">
-                <div className="col">
-                  {
-                    <div className="slider-contain">
-                      <div>
-                        <h1 class="text-white">MatAgri</h1>
-                        <h4 class="text-success">
-                          Gagnez en productivité grâce à nos matériels agricoles
-                        </h4>
-                        <h4 class="fst-italic text-white">
-                          Application de location, livraison et mutualisation de
-                          matériels agricoles.
-                        </h4>
-                        <a href="#" class="btn btn-solid">
-                          Voir les matériels disponibles
-                        </a>
-                      </div>
-                    </div>
-                  }
-                </div>
-              </div>
-            </div> */}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
+    return (
+      <Carousel>
+        <Carousel.Item>
+          <img src={slide3} alt="" />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src={slide2} alt="" />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src={slide1} alt="" />
+        </Carousel.Item>
+      </Carousel>
+    );
+  }
 export default HomeSlide;
