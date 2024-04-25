@@ -1,13 +1,51 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Modification({ materielItem }) {
-  const [images, setImages] = useState([]);
-  const [imagePreviews, setImagePreviews] = useState([]);
+function TableRow() {
+    
+
+    // const [listImage, setListImage] = useState([])
   const [nomMateriel, setNomMateriel] = useState("");
   const [categorieMateriel, setCategorieMateriel] = useState("");
   const [prixMateriel, setPrixMateriel] = useState();
   const [stockMateriel, setStockMateriel] = useState();
   const [descriptionMateriel, setDescriptionMateriel] = useState("");
+
+  
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+    
+  const handleImageChange = (e) => {
+    
+    setListImage((prevList) => [...prevList, e.target.files[0]]);
+    const files = Array.from(e.target.files);
+
+    files.forEach((file) => {
+      console.log(file.name);
+      // listImage.push(file)
+      // console.log(file.name)
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreviews((prevPreviews) => [...prevPreviews, reader.result]);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    setImages((prevImages) => [...prevImages, ...files]);
+  };
+
+  const removeImage = (index) => {
+    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+    setImagePreviews((prevPreviews) =>
+      prevPreviews.filter((_, i) => i !== index)
+    );
+  };
+  const navigate = useNavigate();
+  const [images, setImages] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
+  const [listImage, setListImage] = useState([]);
 
   const handleOnChangeNomMateriel = (e) => {
     setNomMateriel(e.target.value);
@@ -25,36 +63,6 @@ function Modification({ materielItem }) {
     setDescriptionMateriel(e.target.value);
   };
 
-  useEffect(() => {});
-  console.log(materielItem)
-  const handleOnclickSauvegardeModifier = (e) => {
-    e.preventDefault();
-    console.log("bonjour modification")
-    // setForm({nomForm:nom,prenomForm:prenom})
-    // console.log(form)
-  };
-
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-
-    files.forEach((file) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreviews((prevPreviews) => [...prevPreviews, reader.result]);
-      };
-      reader.readAsDataURL(file);
-    });
-
-    setImages((prevImages) => [...prevImages, ...files]);
-  };
-
-  const removeImage = (index) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-    setImagePreviews((prevPreviews) =>
-      prevPreviews.filter((_, i) => i !== index)
-    );
-  };
-
   const addImage = () => {
     const input = document.createElement("input");
     input.type = "file";
@@ -67,21 +75,57 @@ function Modification({ materielItem }) {
     document.body.removeChild(input);
   };
 
-  console.log(materielItem)
+  
+  const handleUpload = (file) => {
+    // const file = fileInputRef.current.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
 
-  return (
-    <>
-      <a href="#">
-        <i
-          className="fa fa-pencil-square-o me-1"
-          aria-hidden="true"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-        />
-      </a>
-      <div
+    // axios.post('/upload', formData, {
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data'
+    //   }
+    // })
+    //   .then(response => {
+    //     // Gérer la réponse du serveur après le téléchargement
+    //   })
+    //   .catch(error => {
+    //     // Gérer les erreurs
+    //   });
+  };
+  const handleOnclickSaveAddProduct = () => {
+    // console.log(nomMateriel+categorieMateriel+prixMateriel+stockMateriel+descriptionMateriel)
+    console.log(localStorage.getItem(email));
+    axios
+      .post("http://localhost:8082/api/materiels/ajouter", {
+        categorieMat: categorieMateriel,
+        nomMat: nomMateriel,
+        stockMat: stockMateriel,
+        descriptionMat: descriptionMateriel,
+        techniqueMat: null,
+        imagePath: null,
+        imageDetailsPath: null,
+        id_user: 1,
+        prixMAt: prixMateriel,
+      })
+      .then((response) => {
+        // localStorage.setItem("email", response.data);
+        // setCurrentProfilUser(response.data.user);
+        // console.log(response.data)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    listImage.forEach((element) => {
+      handleUpload(element);
+      // console.log(element.name)
+    });
+  };
+
+    return ( 
+        <div
         className="modal fade"
-        id="staticBackdrop"
+        id="staticBackdropAddProduct"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabIndex={-1}
@@ -102,11 +146,7 @@ function Modification({ materielItem }) {
               />
             </div>
             <div className="modal-body">
-              <form
-                id="modificationForm"
-                className="row g-3"
-                onSubmit={handleOnclickSauvegardeModifier}
-              >
+              <form id="modificationForm" className="row g-3">
                 <div className="col-md-6">
                   <label htmlFor="image" className="form-label">
                     Image:
@@ -177,7 +217,6 @@ function Modification({ materielItem }) {
                     name="nom"
                     required
                     className="form-control"
-                    value={materielItem.nomMateriel}
                     onChange={handleOnChangeNomMateriel}
                   />
                 </div>
@@ -188,7 +227,6 @@ function Modification({ materielItem }) {
                   <select
                     class="form-select"
                     aria-label="Default select example"
-                    value={materielItem.categorieMat}
                     onChange={handleOnChangeCategorieMateriel}
                   >
                     <option selected>Choix de catégorie</option>
@@ -209,7 +247,6 @@ function Modification({ materielItem }) {
                       name="prix"
                       required
                       className="form-control"
-                      value={materielItem.prixMateriel}
                       onChange={handleOnChangePrixMateriel}
                     />
                   </div>
@@ -224,7 +261,6 @@ function Modification({ materielItem }) {
                     name="stock"
                     required
                     className="form-control"
-                    value={materielItem.stockMat}
                     onChange={handleOnChangeStockMateriel}
                   />
                 </div>
@@ -232,13 +268,11 @@ function Modification({ materielItem }) {
                   <label htmlFor="description" className="form-label">
                     Description:
                   </label>
-                  private String descriptionMat;
                   <textarea
                     id="description"
                     name="description"
                     required
                     className="form-control"
-                    value={materielItem.descriptionMat}
                     onChange={handleOnChangeDescriptionMateriel}
                   />
                 </div>
@@ -255,15 +289,15 @@ function Modification({ materielItem }) {
               <input
                 type="button"
                 className="btn btn-primary"
-                value={"Sauvegarde modification"}
+                value={"Ajouter Produit"}
                 data-bs-dismiss="modal"
+                onClick={handleOnclickSaveAddProduct}
               />
             </div>
           </div>
         </div>
       </div>
-    </>
-  );
+     );
 }
 
-export default Modification;
+export default TableRow;

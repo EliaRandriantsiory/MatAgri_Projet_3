@@ -15,6 +15,7 @@ public class MaterielsService {
     @Autowired
     MaterielsRepository materielsRepository;
 
+    
 
     public List<Materiels> getAllMatByMail(Long idUtilisateur){
         return materielsRepository.findAllTachesByUtilisateurId(idUtilisateur);

@@ -31,6 +31,11 @@ public class MaterielsRestController {
     @Autowired
     private MaterielsRepository materielsRepository;
 
+    @PostMapping("/listMaterielUser")
+    public List<Materiels> listMatUser(Users currentUser) {
+      return  materielsService.getAllMatByMail(currentUser.getIdUser());
+    }
+
     @GetMapping("/listMateriel")
     public List<Materiels> listMat() {
         List<Materiels> listMateriels = materielsService.getAllMat();
