@@ -27,9 +27,9 @@ public class Materiels {
     private String techniqueMat;
     private String imagePath;
     private String imageDetailsPath;
-    // @ManyToOne
-    // @JoinColumn(name = "id_user")
-    // private Users user;
+    //@ManyToOne
+    //@JoinColumn(name = "id_user")
+    //private Users user;
     private Long id_user;
     
 }

@@ -18,8 +18,8 @@ function ParallaxPub() {
             <div className="col">
               <div className="banner-contain">
                 {/* <h1 class="text-success">MATAgri</h1> */}
-                  <h3 class="text-success">
-                  Gagnez en productivité grâce à notre application de mutualisation des matériels agricoles.
+                  <h3 className="text-success">
+                    Gagnez en productivité grâce à notre application de mutualisation des matériels agricoles.
                   </h3>
               </div>
             </div>

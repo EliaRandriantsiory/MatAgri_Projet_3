@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60b00809-8457-44f2-bc0c-b7742fbe5b29" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_matagri_projet_3/src/main/java/mg/inclusiv/cdan8/projet3/Entities/Materiels.java" beforeDir="false" afterPath="$PROJECT_DIR$/back_matagri_projet_3/src/main/java/mg/inclusiv/cdan8/projet3/Entities/Materiels.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_matagri_projet_3/src/main/java/mg/inclusiv/cdan8/projet3/Entities/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/back_matagri_projet_3/src/main/java/mg/inclusiv/cdan8/projet3/Entities/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/components/homepagecomponents/carteProduit.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/SignUpProvider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/SignUpProvider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/homepage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/homepage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/parallaxPub.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/parallaxPub.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homepage_Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homepage_Layout.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
