@@ -101,6 +101,5 @@ public class HomeRestController {
         userService.addUsers(user);
         return ResponseEntity.ok("L'utilisateur est ajouté !");
     }
-
 }
 

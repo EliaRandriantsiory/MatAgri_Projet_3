@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/SignUpProvider/provider.css";
+import Terme from "./Terme";
 function SignUpProvider() {
   const navigate = useNavigate();
   const [companyNameForm, setCompanyName] = useState("")
@@ -14,39 +15,46 @@ function SignUpProvider() {
   const [EtatCGV, setEtatCgv] = useState("");
   const [passwordForm, setPassword] = useState("");
   const [confirmPasswordForm, setConfirmPassword] = useState("");
-
-
+  const [isChecked, setIsChecked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
   const handleOnChangecheckboxcgv = (event) => {
-    setEtatCgv(event.target.value);
-    console.log(event.target.value)
+    setEtatCgv(event.target.checked);
+    setIsChecked(event.target.checked);
+    setErrorMessage(false);
   };
 
   const handleOnChangeInputTextAdress = (event) => {
     setAddress(event.target.value);
-    localStorage.setItem('adress',event.target.value)
+    localStorage.setItem('adress', event.target.value);
   };
 
   const handleOnChangeInputTextNif = (event) => {
     setNif(event.target.value);
-    localStorage.setItem('nif',event.target.value)
+    localStorage.setItem('nif', event.target.value);
   };
 
   const handleOnChangeInputTextPhone = (event) => {
-    setPhone(event.target.value);
-    localStorage.setItem('phone',event.target.value)
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    localStorage.setItem('phone', enteredValue);
+    setPhone(numericValue);
   };
+
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
-    localStorage.setItem('email',event.target.value)
+    localStorage.setItem('email', event.target.value);
   };
+
   const handleOnChangeInputTextRegion = (event) => {
     setRegion(event.target.value);
-    localStorage.setItem('region',event.target.value)
+    localStorage.setItem('region', event.target.value);
   };
+
   const handleOnChangeInputTextPassword = (event) => {
     setPassword(event.target.value);
-
   };
+
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
@@ -57,6 +65,19 @@ function SignUpProvider() {
 
   const handleOnclickSauvegarde = async (event) => {
     event.preventDefault();
+    
+    // Vérifier si les termes et conditions sont acceptés
+    if (!isChecked) {
+      setErrorMessage("Veuillez accepter les termes et conditions de location");
+      return;
+    }
+    
+    // Vérifier si les mots de passe correspondent
+    if (passwordForm !== confirmPasswordForm) {
+      setErrorPassword("Les mots de passe ne correspondent pas");
+      return;
+    }
+
     try {
       const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
         companyName: companyNameForm,
@@ -71,25 +92,21 @@ function SignUpProvider() {
           idprofile: 3,
           profile: "fournisseur",
           roles: []
-      }
+        }
       });
       console.log(response.data);
       navigate("/dashboard_fournisseur");
     } catch (error) {
-
       console.error("Erreur lors de l'inscription :", error);
     }
-    event.preventDefault();
-    console.log(EtatCGV)
-    navigate("/dashboard_fournisseur")
 
+    // Réinitialiser les messages d'erreur
+    setErrorMessage(false);
+    setErrorPassword(false);
+
+    // Enregistrer les informations dans le stockage local
     localStorage.setItem('email', emailForm);
     localStorage.setItem('password', passwordForm);
-    
-    if(passwordForm!==confirmPasswordForm){
-      navigate("/InscriptionAgriculteur")
-    }else{
-    navigate("/dashboard_fournisseur")}
   };
 
   return (
@@ -114,7 +131,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">NIF</label>
+                      <label htmlFor="nif">NIF</label>
                       <input
                         type="text"
                         className="form-control"
@@ -126,11 +143,11 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Siège social</label>
+                      <label htmlFor="siege">Siège social</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="email"
+                        id="siege"
                         placeholder="Votre siège social"
                         required
                         value={addressForm}
@@ -138,7 +155,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Téléphone</label>
+                      <label htmlFor="telephone">Téléphone</label>
                       <input
                         type="text"
                         className="form-control"
@@ -152,9 +169,9 @@ function SignUpProvider() {
                     <div className="col-md-6">
                       <label htmlFor="email">Email</label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
-                        id="address"
+                        id="email"
                         placeholder="Votre adresse email"
                         required
                         value={emailForm}
@@ -202,17 +219,25 @@ function SignUpProvider() {
                     <input
                       type="checkbox"
                       name="checkbox-button"
-                      value="value"
+                      value="Check"
                       id="checkPlus"
+                      checked={isChecked}
+                      onChange={handleOnChangecheckboxcgv}
                     ></input>
-                    <a id="addCheckboxBtn" href="#" onChange={handleOnChangecheckboxcgv}>
-                      Terme et contrat de location
+                    <a id="addCheckboxBtn" href="#">
+                    <Terme/>
                     </a>
                   </div>
+                    {/* --------- */}
+                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                    {errorPassword && (
+                  <p style={{ color: "red" }}>{errorPassword}</p>
+                )}
                   <input
                     className="btn btn-solid w-auto"
                     type="submit"
                     value={"S'inscrire"}
+                    disabled={!isChecked}
                   />
                 </form>
               </div>

@@ -15,7 +15,16 @@ public class MaterielsService {
     @Autowired
     MaterielsRepository materielsRepository;
 
+<<<<<<< HEAD
     public List<Materiels> getAllMat() {
+=======
+
+    public List<Materiels> getAllMatByMail(Long idUtilisateur){
+        return materielsRepository.findAllTachesByUtilisateurId(idUtilisateur);
+    }
+    
+    public List<Materiels> getAllMat(){
+>>>>>>> origin/dev
         return materielsRepository.findAll();
     }
     public Materiels addMateriel(Materiels materiel) {

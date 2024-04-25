@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import axios from "axios";
+import Terme from "./Terme";
 function InscriptionAgriculteur() {
   const [inscriptionAgriculteurRedirect, setInscriptionAgriculteurRedirect] = useState()
   const [EtatCGV, setEtatCgv] = useState("");
@@ -16,47 +17,60 @@ function InscriptionAgriculteur() {
   const [regionForm, setRegion] = useState("");
   const [passwordForm, setPassword] = useState("");
   const [confirmPasswordForm, setConfirmPassword] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
+
+  const handleOnChangecheckboxcgv = (event) => {
+    setEtatCgv(event.target.checked);
+    setIsChecked(event.target.checked);
+    setErrorMessage(false);
+  };
 
   const handleOnChangeInputTextNom = (event) => {
     setName(event.target.value);
-    localStorage.setItem('nom',event.target.value)
   };
   const handleOnChangeInputTextLastName = (event) => {
     setLastName(event.target.value);
-    localStorage.setItem('prenom',event.target.value)
   };
   const handleOnChangeInputTextAddress = (event) => {
     setAddress(event.target.value);
-    localStorage.setItem('adresse',event.target.value)
   };
   const handleOnChangeInputTextPhone = (event) => {
-    setPhone(event.target.value);
-    localStorage.setItem('phone',event.target.value)
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    setPhone(numericValue);
   };
+  
   const handleOnChangeInputTextCin = (event) => {
     setCin(event.target.value);
-    localStorage.setItem('cin',event.target.value)
   };
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
-    localStorage.setItem('email',event.target.value)
   };
   const handleOnChangeInputTextRegion = (event) => {
     setRegion(event.target.value);
-    localStorage.setItem('region',event.target.value)
   };
   const handleOnChangeInputTextPassword = (event) => {
     setPassword(event.target.value);
-
   };
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
 
-
-  const handleOnclickSauvegarde =  async (event) => {
+  const handleOnclickSauvegarde = async (event) => {
     event.preventDefault();
-    console.log(emailForm)
+    
+    if (!isChecked) {
+      setErrorMessage("Veuillez accepter les termes et conditions de location");
+      return;
+    }
+
+    if (passwordForm !== confirmPasswordForm) {
+      setErrorPassword("Les mots de passe ne sont pas identiques");
+      return;
+    }
+
     try {
       const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
         address: addressForm,
@@ -66,34 +80,22 @@ function InscriptionAgriculteur() {
         lastname: lastnameForm,
         region: regionForm,
         email: emailForm,
-        region: regionForm,
         password: passwordForm,
         confirmPassword: confirmPasswordForm,
         profile: {
           idprofile: 1,
           profile: "agriculteur",
           roles: []
-      }
+        }
       });
       console.log(response.data);
       navigate("/PageAccueilAgriculteur");
+      localStorage.setItem('email', emailForm);
+      localStorage.setItem('password', passwordForm);
     } catch (error) {
-
       console.error("Erreur lors de l'inscription :", error);
     }
-    event.preventDefault();
-    console.log(EtatCGV)
-    navigate("/PageAccueilAgriculteur")
-
-    localStorage.setItem('email', emailForm);
-    localStorage.setItem('password', passwordForm);
-    
-    if(passwordForm!==confirmPasswordForm){
-      navigate("/InscriptionAgriculteur")
-    }else{
-    navigate("/PageAccueilAgriculteur")}
   };
-
  
   useEffect(() => {
     
@@ -109,7 +111,6 @@ function InscriptionAgriculteur() {
   useEffect(() => {console.log(inscriptionAgriculteurRedirect)}, [inscriptionAgriculteurRedirect]);
 
   return (
-    <>
       <section className="register-page section-b-space">
         <div className="container">
           <div className="row">
@@ -119,7 +120,7 @@ function InscriptionAgriculteur() {
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
                     <div className="col-md-6">
-                      <label htmlFor="email">Nom</label>
+                      <label htmlFor="nom">Nom</label>
                       <input
                         type="text"
                         className="form-control"
@@ -142,11 +143,11 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Prénom</label>
+                      <label htmlFor="prenom">Prénom</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="email"
+                        id="prenom"
                         placeholder="Votre prénom"
                         value={lastnameForm}
                         onChange={(event) =>
@@ -162,6 +163,7 @@ function InscriptionAgriculteur() {
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
                         value={phoneForm}
+                        inputMode="numeric"
                         onChange={(event) =>
                           handleOnChangeInputTextPhone(event)
                         }
@@ -196,7 +198,7 @@ function InscriptionAgriculteur() {
                     <div className="col-md-6">
                       <label htmlFor="email">email</label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
                         placeholder="Votre adresse email"
                         value={emailForm}
@@ -235,22 +237,31 @@ function InscriptionAgriculteur() {
                         <option value="Vakinakaratra">Vakinakaratra</option>
                       </select>
                     </div>
+                    <br></br>
                     <div id="checkTermeCondition">
                       <input
                         type="checkbox"
                         name="checkbox-button"
-                        value={EtatCGV}
+                        value="Check"
                         id="checkPlus"
+                        checked={isChecked}
+                        onChange={handleOnChangecheckboxcgv}
                       ></input>
-                      <a id="addCheckboxBtn" href="#">
-                        Terme et contrat de location
+                      <a id="addCheckboxBtn" href>
+                      <Terme/>
                       </a>
                     </div>
                   </div>
+                    {/* --------- */}
+                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                    {errorPassword && (
+                  <p style={{ color: "red" }}>{errorPassword}</p>
+                )}
                   <input
                     className="btn btn-solid w-auto"
                     type="submit"
                     value={"S'inscrire"}
+                    disabled={!isChecked}
                   />
                 </form>
               </div>
@@ -259,7 +270,6 @@ function InscriptionAgriculteur() {
           </div>
         </div>
       </section>
-    </>
   );
 }
 
