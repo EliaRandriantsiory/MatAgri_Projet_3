@@ -1,5 +1,4 @@
 package mg.inclusiv.cdan8.projet3.Entities;
-import java.sql.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -8,10 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -45,17 +41,17 @@ public class Users {
     
     private String region;
 
-    private int nbFarme;
+    private Integer nbFarme;
 
     private String companyName;
     
     private String password;
     
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "id_user")
     private List<Materiels> materiels;
 
     @ManyToOne
     @JoinColumn(name = "id_profile")
     private Profiles profile;
-
 }
+

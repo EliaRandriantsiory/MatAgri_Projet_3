@@ -167,24 +167,8 @@ function CartProduitModel() {
         {/* theme setting */}
         <div className="theme-settings">
           <ul>
-            <li className="demo-li">
-              <a href="javascript:void(0)" onclick="openSetting()">
-                <div className="setting-sidebar" id="setting-icon">
-                  <h5>50+ <br />demo</h5>
-                </div>
-              </a>
-            </li>
-            <li className="demo-li">
-              <div className="backend-btn"><a target="_blank" href="../back-end/index.html">Admin</a></div>
-            </li>
             <li>
               <div className="dark-btn">Dark</div>
-            </li>
-            <li>
-              <div className="rtl-btn">RTL</div>
-            </li>
-            <li className="input-picker">
-              <input id="ColorPicker1" type="color" defaultValue="#ff4c3b" name="Background" />
             </li>
           </ul>
         </div>

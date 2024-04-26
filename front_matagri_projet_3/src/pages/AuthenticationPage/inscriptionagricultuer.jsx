@@ -261,6 +261,7 @@ function InscriptionAgriculteur() {
                     className="btn btn-solid w-auto"
                     type="submit"
                     value={"S'inscrire"}
+                    disabled={!isChecked}
                   />
                 </form>
               </div>

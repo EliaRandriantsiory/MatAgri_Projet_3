@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AddProduit from "./AddProduit";
-import Modification from "../../../components/componentproduct/modification";
-import SupprimerMateriel from "../../../components/componentproduct/suppressionMateriel";
+import AddProduit from "../../../components/componentproduct/addproduct";
 import TableRow from "../../../components/componentproduct/tableRowMat";
 function Navigation() {
   // const [listImage, setListImage] = useState([])
