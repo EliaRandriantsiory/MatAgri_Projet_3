@@ -35,5 +35,4 @@ function ParallaxPub() {
     </section>
   );
 }
-
 export default ParallaxPub;
