@@ -22,8 +22,6 @@ function Navigation() {
 
   const navigate = useNavigate();
 
-
-  
   useEffect(() => {
     axios
       .post("http://localhost:8082/api/home/authentification", {
