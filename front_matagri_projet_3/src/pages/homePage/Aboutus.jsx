@@ -207,7 +207,7 @@ function AboutPage() {
                                 <h4>Agriculteur</h4>
                                 <p className="fs-6" style={{textAlign: "justify" ,fontSize: 14 }}>Optimisez votre exploitation et bénéficiez d'une remise de 12%
                                 en vous mutualisant pour la location du matériel de votre choix,
-                                profitez en !;</p>
+                                profitez-en !</p>
                             </div>
                         </div>
                     </div>
@@ -218,7 +218,7 @@ function AboutPage() {
                                 <h4>Coopérative</h4>
                                 <p className="fs-6" style={{textAlign: "justify" ,fontSize: 14 }}>Économisez jusqu'à 12% pour la location d'un matériel agricole
                                 en tant que coopérative ! Rejoignez notre plateforme pour profiter
-                                de cette offre.</p>
+                                de cette offre !</p>
                             </div>
                         </div>
                     </div>
@@ -329,7 +329,7 @@ function AboutPage() {
                             </g>
                         </svg> */}
                         <div class="media-body">
-                            <h4>24 X 7 service</h4>
+                            <h4>24 X 24 service</h4>
                             <p>online service for new customer</p>
                         </div>
                     </div>
