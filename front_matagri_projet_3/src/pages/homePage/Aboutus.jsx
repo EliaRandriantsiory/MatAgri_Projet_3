@@ -329,7 +329,7 @@ function AboutPage() {
                             </g>
                         </svg> */}
                         <div class="media-body">
-                            <h4>24 X 7 service</h4>
+                            <h4>24 X 24 service</h4>
                             <p>online service for new customer</p>
                         </div>
                     </div>

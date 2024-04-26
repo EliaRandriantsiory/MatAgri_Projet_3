@@ -51,9 +51,9 @@ function HomePage_Layout() {
                         <li>
                           <Link to={"/Material"}>Matériels</Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <a href="#">Partenaires</a>
-                        </li>
+                        </li> */}
                         <li>
                           <Link to={"/contact"}>Contacts</Link>
                         </li>
@@ -143,7 +143,8 @@ function HomePage_Layout() {
                             />
                             <i className="ti-shopping-cart" />
                           </div>
-                          <ul className="show-div shopping-cart">
+                              {/* Drop eo @ panier                           */}
+                          {/* <ul className="show-div shopping-cart">
                             <li>
                               <div className="media">
                                 <a href="#">
@@ -215,7 +216,7 @@ function HomePage_Layout() {
                                 </a>
                               </div>
                             </li>
-                          </ul>
+                          </ul> */}
                         </li>
                       </ul>
                     </div>
@@ -405,7 +406,7 @@ function HomePage_Layout() {
         </div>
       </footer>
 
-      <div
+      {/*<div
         className="modal fade bd-example-modal-lg theme-modal"
         id="quick-view"
         tabIndex={-1}
@@ -437,8 +438,8 @@ function HomePage_Layout() {
                   </div>
                 </div>
                 <div className="col-lg-6 rtl-text">
-                  <div className="product-right">
-                    <h2>Women Pink Shirt</h2>
+                   <div className="product-right">
+                    <h2>Eto zah</h2>
                     <h3>$32.96</h3>
                     <ul className="color-variant">
                       <li className="bg-light0" />
@@ -509,15 +510,15 @@ function HomePage_Layout() {
                         view detail
                       </a>
                     </div>
-                  </div>
+                  </div> 
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>*/}
 
-      <div className="theme-settings">
+      {/* <div className="theme-settings">
         <ul>
           <li>
             <div className="dark-btn"><img src={moon} alt="" style={{width:25}}/></div>
@@ -575,19 +576,17 @@ function HomePage_Layout() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="modal fade bd-example-modal-lg theme-modal cart-modal"
+      </div> */}
+      {/* <div className="modal fade bd-example-modal-lg theme-modal cart-modal"
         id="addtocart"
         tabIndex={-1}
         role="dialog"
-        aria-hidden="true"
-      >
-        <div
+        aria-hidden="true">
+          <div
           className="modal-dialog modal-lg modal-dialog-centered"
-          role="document"
-        >
-          <div className="modal-content">
-            <div className="modal-body modal1">
+          role="document">
+            <div className="modal-content">
+              <div className="modal-body modal1">
               <div className="container-fluid p-0">
                 <div className="row">
                   <div className="col-12">
@@ -743,7 +742,7 @@ function HomePage_Layout() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="tap-top">
         <div>
