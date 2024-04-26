@@ -32,17 +32,15 @@ function AjoutMateriel() {
   
   const handleImageChange = (e) => {
     imagefiles.push(Array.from(e.target.files))
-    // setImageFiles(Array.from(e.target.files));
-    // console.log(imagefiles)
-
-    // imagefiles.forEach((file) => {
-    //   console.log(file);
-    //   const reader = new FileReader();
-    //   reader.onloadend = () => {
-    //     setImagePreviews((prevPreviews) => [...prevPreviews, reader.result]);
-    //   };
-    //   reader.readAsDataURL(file);
-    // });
+    
+    imagefiles.forEach((file) => {
+      console.log(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreviews((prevPreviews) => [...prevPreviews, reader.result]);
+      };
+      reader.readAsDataURL(file);
+    });
 
     // setImages((prevImages) => [...prevImages, ...imagefiles]);
   };
@@ -89,25 +87,14 @@ function AjoutMateriel() {
   };
 
   const handleOnclickSauvegardeAjout = (e) => {
-    console.log(imagefiles)
-
-
     Array.from(imagefiles[0]).forEach(image => {
       handleUpload(image)
       images.push(image.name)
-      setImages([])
-      console.log(image)
+      
+      
     });
-    // console.log(images)
+    setImages([])
     
-    // e.preventDefault();
-    // console.log(imagefiles)
-    // files.forEach(file => {
-    //     console.log(file)
-    // });
-
-    // console.log(CurrentFournisseur.idUser);
-
     axios
       .post("http://localhost:8082/api/materiels/ajouter", {
         categorieMat: categorieMateriel,

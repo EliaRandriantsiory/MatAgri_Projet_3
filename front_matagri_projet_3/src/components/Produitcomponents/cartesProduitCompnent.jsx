@@ -17,7 +17,7 @@ function ProductBox({ materielItem }) {
           </div>
           <div className="back">
             <a href="#">
-            <img className="blur-up lazyloaded" src={`${process.env.PUBLIC_URL}/assets/images/materiels/${images[0]}`} width={350}/>
+            <img className="blur-up lazyloaded" src={`${process.env.PUBLIC_URL}/assets/images/materiels/${images[1]}`} width={350}/>
             </a>
           </div>
           <div className="cart-info cart-wrap">
