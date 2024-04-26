@@ -23,7 +23,6 @@ function AddProduit() {
     //     console.error("Erreur lors de la récupération des produits:", error);
     //   }
     // };
-
     // fetchProduits();
   }, []);
 
@@ -79,7 +78,7 @@ function AddProduit() {
       formData.append("stock", stock);
       formData.append("description", description);
       image.forEach((file) => {
-      formData.append("images", file);
+        formData.append("images", file);
       });
 
       const response = await axios.post("/api/enregistrerProduit", formData, {

@@ -17,12 +17,11 @@ import Navigation from "./pages/Dashboard/Fournisseur/navbar";
 
 import AddProduct from "./components/componentproduct/addproduct";
 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <Navigation />
+    <App />
   </React.StrictMode>
 );
 
