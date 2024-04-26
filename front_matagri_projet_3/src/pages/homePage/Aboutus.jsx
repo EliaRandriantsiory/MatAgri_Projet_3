@@ -206,7 +206,7 @@ function AboutPage() {
                                 <h4>Agriculteur</h4>
                                 <p>Optimisez votre exploitation et bénéficiez d'une remise de 12%
                                 en vous mutualisant pour la location du matériel de votre choix,
-                                profitez en !;</p>
+                                profitez-en !</p>
                             </div>
                         </div>
                     </div>
@@ -217,7 +217,7 @@ function AboutPage() {
                                 <h4>Coopérative</h4>
                                 <p>Économisez jusqu'à 12% pour la location d'un matériel agricole
                                 en tant que coopérative ! Rejoignez notre plateforme pour profiter
-                                de cette offre.</p>
+                                de cette offre !</p>
                             </div>
                         </div>
                     </div>

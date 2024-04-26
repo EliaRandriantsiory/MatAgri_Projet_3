@@ -5,7 +5,7 @@ function Menu() {
         <div className="row">
           <div className="col-sm-6">
             <div className="page-title">
-              <h2> dashboard</h2>
+              <h2> </h2>
             </div>
           </div>
           <div className="col-sm-6">

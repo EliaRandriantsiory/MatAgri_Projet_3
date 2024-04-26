@@ -10,7 +10,7 @@ function CardProduct() {
         <h4> produits exclusifs</h4>
         <h2 className="title-inner1">Produits</h2>
       </div>
-      {/* <!-- product section start --> */}
+      
       <section className="section-b-space ratio_asos">
         <div className="container">
           <div className="row search-product">
@@ -46,14 +46,14 @@ function CardProduct() {
                     <a href="javascript:void(0)" title="Add to Wishlist">
                       <i className="ti-heart" aria-hidden="true"></i>
                     </a>{" "}
-                    <a
-                      href="#"
-                      data-bs-toggle="modal"
-                      data-bs-target="#quick-view"
-                      title="Quick View"
+                    <Link
+                        to="/description"
+                        data-bs-toggle="modal"
+                        data-bs-target="#quick-view"
+                        title="Quick View"
                     >
                       <i className="ti-search" aria-hidden="true"></i>
-                    </a>{" "}
+                    </Link>{" "}
                     <a href="compare.html" title="Compare">
                       <i className="ti-reload" aria-hidden="true"></i>
                     </a>
