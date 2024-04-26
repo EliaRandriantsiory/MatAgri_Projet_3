@@ -38,41 +38,24 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
-          <Route
-            path="/InscriptionAgriculteur"
-            element=<InscriptionAgriculteur />
-          />
+          <Route path="/InscriptionAgriculteur" element=<InscriptionAgriculteur /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
-
-        </Route>
-
-        <Route path="/Dashboard" element=<DashboardUser /> />
-        <Route
-          path="/PageAccueilAgriculteur"
-          element=<PageAccueilAgriculteur />
-        >
-          <Route
-            path="/PageAccueilAgriculteur"
-            element=<DashBordAgriculteur />
-          />
-        </Route>
-        <Route>
+          </Route>
+          <Route path="/Dashboard" element=<DashboardUser /> />
+          <Route path="/PageAccueilAgriculteur" element=<PageAccueilAgriculteur /> >
+          <Route path="/PageAccueilAgriculteur" element=<DashBordAgriculteur /> />
+          </Route>
+          <Route>
           <Route path="/description" element=<DescriptionProduit /> />
-        </Route>
-
-        <Route>
+          </Route>
+          <Route>
           <Route path="/TermeF" element=<TermeF /> />
-        </Route>
-
-        <Route path="/carouselImage" element=<homePage /> />
-
+          </Route>
+          <Route path="/carouselImage" element=<homePage /> />
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
-        
-            <Route path="/terme" element=<Terme /> />
-        </Routes>
-        
+          <Route path="/terme" element=<Terme /> />
+          </Routes>
     </BrowserRouter>
   );
 }
-
 export default App;

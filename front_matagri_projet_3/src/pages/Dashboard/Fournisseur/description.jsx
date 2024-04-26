@@ -25,11 +25,6 @@ function Description() {
                 <div className="product-right">
                   <h2>Women Pink Shirt</h2>
                   <h3>$32.96</h3>
-                  <ul className="color-variant">
-                    <li className="bg-light0" />
-                    <li className="bg-light1" />
-                    <li className="bg-light2" />
-                  </ul>
                   <div className="border-product">
                     <h6 className="product-title">product details</h6>
                     <p>
@@ -38,22 +33,7 @@ function Description() {
                     </p>
                   </div>
                   <div className="product-description border-product">
-                    <div className="size-box">
-                      <ul>
-                        <li className="active">
-                          <a href="javascript:void(0)">s</a>
-                        </li>
-                        <li>
-                          <a href="javascript:void(0)">m</a>
-                        </li>
-                        <li>
-                          <a href="javascript:void(0)">l</a>
-                        </li>
-                        <li>
-                          <a href="javascript:void(0)">xl</a>
-                        </li>
-                      </ul>
-                    </div>
+                  
                     <h6 className="product-title">quantity</h6>
                     <div className="qty-box">
                       <div className="input-group">
