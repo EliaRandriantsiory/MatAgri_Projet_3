@@ -4,20 +4,16 @@ import { useEffect, useState } from "react";
 function CardProduct({ listMateriels }) {
   const [listMateriel, setListMateriel] = useState([]);
   useEffect(() => {
-    setListMateriel(listMateriels)
-  })
-  
-  
+    setListMateriel(listMateriels);
+  });
+
   return (
     <>
-    {listMateriels.map((materialItem, index) => (
-      {/* <ProductBox key={index} materielItem={materialItem} /> */}
-    ))}
+      {listMateriels.map((materialItem, index) => ({
+        /* <ProductBox key={index} materielItem={materialItem} /> */
+      }))}
     </>
-    
-    
   );
-};
+}
 
 export default CardProduct;
-

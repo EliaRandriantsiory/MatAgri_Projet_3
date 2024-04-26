@@ -1,9 +1,12 @@
-import { Button, Modal } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Button, Modal } from "react-bootstrap";
+import { FileUploader } from "react-drag-drop-files";
+
+const fileTypes = ["JPG", "PNG", "GIF"];
 
 function AddProduit() {
-  const [image, setImage] = useState([]);
+  const [images, setImages] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [nomMateriel, setNomMateriel] = useState("");
@@ -11,52 +14,23 @@ function AddProduit() {
   const [prix, setPrix] = useState("");
   const [stock, setStock] = useState("");
   const [description, setDescription] = useState("");
-  const [isValid, setIsValid] = useState(true);
-  const [produits, setProduits] = useState([]);
 
-  useEffect(() => {
-    // const fetchProduits = async () => {
-    //   try {
-    //     const response = await axios.get("/api/produits");
-    //     setProduits(response.data);
-    //   } catch (error) {
-    //     console.error("Erreur lors de la récupération des produits:", error);
-    //   }
-    // };
-    // fetchProduits();
-  }, []);
+  const handleImageChange = (files) => {
+    const selectedImages = Array.from(files);
+    setImages(selectedImages);
 
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-
-    files.forEach((file) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreviews((prevPreviews) => [...prevPreviews, reader.result]);
-      };
-      reader.readAsDataURL(file);
-    });
-
-    setImage((prevImages) => [...prevImages, ...files]);
+    const previews = selectedImages.map((file) => URL.createObjectURL(file));
+    setImagePreviews(previews);
   };
 
   const removeImage = (index) => {
-    setImage((prevImages) => prevImages.filter((_, i) => i !== index));
-    setImagePreviews((prevPreviews) =>
-      prevPreviews.filter((_, i) => i !== index)
-    );
-  };
+    const updatedImages = [...images];
+    updatedImages.splice(index, 1);
+    setImages(updatedImages);
 
-  const addImage = () => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.multiple = true;
-    input.accept = "image/*";
-    input.style.display = "none";
-    input.addEventListener("change", handleImageChange);
-    document.body.appendChild(input);
-    input.click();
-    document.body.removeChild(input);
+    const updatedPreviews = [...imagePreviews];
+    updatedPreviews.splice(index, 1);
+    setImagePreviews(updatedPreviews);
   };
 
   const handleOpenModal = () => {
@@ -77,7 +51,8 @@ function AddProduit() {
       formData.append("prix", prix);
       formData.append("stock", stock);
       formData.append("description", description);
-      image.forEach((file) => {
+      images.forEach((file) => {
+        // Correction ici
         formData.append("images", file);
       });
 
@@ -96,30 +71,27 @@ function AddProduit() {
     }
   };
 
-  const handlePrixChange = (e) => {
-    const value = e.target.value;
-    if (/^\d+$/.test(value)) {
-      setPrix(value);
-      setIsValid(true);
-    } else {
-      setPrix(value);
-      setIsValid(false);
-    }
+  const handlePrix = (event) => {
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    setPrix(numericValue);
   };
 
-  const handleClose = () => {
-    setShowModal(false); // Ferme le modal lorsque cette fonction est appelée
+  const handleStock = (event) => {
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    setStock(numericValue);
   };
 
   return (
     <>
-      <a href="#" className="btn btn-sm btn-solid" onClick={handleOpenModal}>
+      <button className="btn btn-sm btn-solid" onClick={handleOpenModal}>
         + Ajouter Produit
-      </a>
+      </button>
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header>
-          <Modal.Title>Ajouter Produit</Modal.Title>
+      <Modal show={showModal} onHide={handleCloseModal} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Ajout Produit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form
@@ -127,42 +99,24 @@ function AddProduit() {
             noValidate
             onSubmit={handleSubmit}
           >
-            <div className="form">
-              <div className="col-md-6">
-                <label htmlFor="image" className="form-label">
-                  Image:
-                </label>
-                <input
-                  type="file"
-                  id="image"
-                  name="image"
-                  multiple
-                  style={{ width: "425px" }}
-                  required
-                  className="form-control"
-                  onChange={handleImageChange}
-                />
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    marginTop: "10px",
-                  }}
-                >
+            <div className="form-group">
+              <label htmlFor="image" className="form-label">
+                Image:
+              </label>
+              <FileUploader
+                handleChange={handleImageChange}
+                name="file"
+                types={fileTypes}
+                multiple
+              />
+              {imagePreviews.length > 0 && (
+                <div className="image-preview-container d-flex">
                   {imagePreviews.map((preview, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginBottom: "5px",
-                        marginRight: "10px",
-                      }}
-                    >
+                    <div key={index} className="me-2 mb-2">
                       <img
                         src={preview}
                         alt={`Preview ${index}`}
-                        style={{ width: "80px", marginRight: "50px" }}
+                        style={{ width: "100px", marginRight: "5px" }}
                       />
                       <button
                         type="button"
@@ -173,127 +127,62 @@ function AddProduit() {
                       </button>
                     </div>
                   ))}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginBottom: "5px",
-                      marginRight: "10px",
-                    }}
-                  >
-                    <i
-                      className="fa fa-plus"
-                      style={{ color: "#ffc800", cursor: "pointer" }}
-                      onClick={addImage}
-                    ></i>
-                  </div>
+                </div>
+              )}
+            </div>
+            <div className="form-group">
+              <label htmlFor="nomMateriel">Nom du matériel:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="nomMateriel"
+                value={nomMateriel}
+                onChange={(e) => setNomMateriel(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="categories">Catégories:</label>
+              <select className="form-select" id="categories">
+                <option>Choix de catégorie</option>
+                <option value="1">Motoculteur</option>
+                <option value="2">Tracteur</option>
+                <option value="3">Camion</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="prix">Prix:</label>
+              <div className="input-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="prix"
+                  value={prix}
+                  onChange={handlePrix}
+                />
+                <div className="input-group-append">
+                  <span className="input-group-text">Ariary</span>
                 </div>
               </div>
-              <div className="form-group mb-3 row">
-                <label htmlFor="nommateriel" className="col-xl-3 col-sm-4 mb-0">
-                  Nom du matériel :
-                </label>
-                <div className="col-xl-8 col-sm-7">
-                  <input
-                    className="form-control"
-                    id="nommateriel"
-                    type="text"
-                    required
-                    value={nomMateriel}
-                    onChange={(e) => setNomMateriel(e.target.value)}
-                  />
-                  <div className="valid-feedback">Looks good!</div>
-                </div>
-              </div>
-              <div className="form-group mb-3 row">
-                <label htmlFor="categories" className="col-xl-3 col-sm-4 mb-0">
-                  Catégorie :
-                </label>
-                <div className="col-xl-8 col-sm-7">
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                    value={categorie}
-                    onChange={(e) => setCategorie(e.target.value)}
-                  >
-                    <option>Choix de catégorie</option>
-                    <option value="1">Motoculteur</option>
-                    <option value="2">Tracteur</option>
-                    <option value="3">Camion</option>
-                  </select>
-                  <div className="valid-feedback">Looks good!</div>
-                </div>
-              </div>
-              <div className="form-group mb-3 row">
-                <label htmlFor="prix" className="col-xl-3 col-sm-4 mb-0">
-                  Prix :
-                </label>
-                <div
-                  className={`col-xl-8 col-sm-7 ${
-                    isValid && prix !== "" ? "" : "has-error"
-                  }`}
-                >
-                  <div className="input-group">
-                    <input
-                      className="form-control"
-                      id="prix"
-                      type="number" // Modification ici
-                      min="0" // Optionnel : définir une valeur minimale
-                      step="any" // Optionnel : autoriser les valeurs décimales
-                      required
-                      value={prix}
-                      onChange={handlePrixChange}
-                    />
-                    <span className="input-group-text">Ariary</span>
-                  </div>
-                  {!isValid && prix !== "" && (
-                    <div className="error-message">
-                      Veuillez entrer un prix valide.
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="form-group mb-3 row">
-                <label
-                  htmlFor="validationCustom05"
-                  className="col-xl-3 col-sm-4 mb-0"
-                >
-                  Stock du matériel :
-                </label>
-                <div className="col-xl-8 col-sm-7">
-                  <input
-                    className="form-control"
-                    id="validationCustom05"
-                    type="number" // Modifier ici pour type="number"
-                    min="1" // Optionnel : définir une valeur minimale
-                    inputMode="number"
-                    required
-                    value={stock}
-                    onChange={(e) => setStock(e.target.value)}
-                  />
-                  {stock !== "" && stock <= 0 && (
-                    <div className="error-message">
-                      Veuillez entrer un stock valide.
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="form-group mb-3 row">
-                <label htmlFor="description" className="col-xl-3 col-sm-4 mb-0">
-                  Descriptions :
-                </label>
-                <div className="col-xl-8 col-sm-7">
-                  <textarea
-                    className="form-control"
-                    id="description"
-                    rows="5"
-                    required
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                  ></textarea>
-                  <div className="valid-feedback">Looks good!</div>
-                </div>
-              </div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="stock">Stock:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="stock"
+                value={stock}
+                onChange={handleStock}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Description:</label>
+              <textarea
+                className="form-control"
+                id="description"
+                rows="3"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              ></textarea>
             </div>
           </form>
         </Modal.Body>
@@ -302,7 +191,11 @@ function AddProduit() {
             <Button className="btn btn-primary" onClick={handleSubmit}>
               Ajouter
             </Button>
-            <Button className="me-3" variant="secondary" onClick={handleClose}>
+            <Button
+              className="me-3"
+              variant="secondary"
+              onClick={handleCloseModal}
+            >
               Fermer
             </Button>
           </div>
@@ -311,5 +204,4 @@ function AddProduit() {
     </>
   );
 }
-
 export default AddProduit;

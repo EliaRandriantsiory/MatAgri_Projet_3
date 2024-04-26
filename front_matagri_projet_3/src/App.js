@@ -11,9 +11,15 @@ import Dashboard from "./pages/Dashboard/Fournisseur/dashboardfour";
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
 
+import Choiceusers from "./pages/AuthenticationPage/choiceusers";
+import DashboardUser from "./pages/dasboard";
+import DashBordAgriculteur from "./pages/dashbords/dashboardAgriculteur";
+import PageAccueilAgriculteur from "./pages/dashbords/pageaccueilagriculteur";
+
 import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import SearchPage from "./pages/homePage/Search";
+
 import DashboardUser from "./pages/dasboard";
 import PageAccueilAgriculteur from "./pages/Dashboard/Agriculteur/pageaccueilagriculteur";
 import DashBordAgriculteur from "./pages/Dashboard/Agriculteur/dashboardAgriculteur";
@@ -27,6 +33,10 @@ import Choiceusers from "./pages/AuthenticationPage/choiceusers";
 // import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 // import SearchPage from "./pages/homePage/Search";
+
+import TermeF from "./pages/AuthenticationPage/TermeF";
+import Terme from "./pages/AuthenticationPage/Terme";
+import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
 
 function App() {
   return (
@@ -49,13 +59,7 @@ function App() {
             element=<InscriptionAgriculteur />
           />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
-
-          {/* <Route
-            path="/InscriptionAgriculteur"
-            element=<InscriptionAgriculteur />
-          /> */}
         </Route>
-
         <Route path="/Dashboard" element=<DashboardUser /> />
         <Route
           path="/PageAccueilAgriculteur"
@@ -66,15 +70,17 @@ function App() {
             element=<DashBordAgriculteur />
           />
         </Route>
-        <Route  path="/dashboard_fournisseur"
-          element=<PageAccueilAgriculteur /> >
-          <Route path="/dashboard_fournisseur" element=<Dashboard /> />
+        <Route>
+          <Route path="/description" element=<DescriptionProduit /> />
         </Route>
-
+        <Route>
+          <Route path="/TermeF" element=<TermeF /> />
+        </Route>
+        <Route path="/carouselImage" element=<homePage /> />
+        <Route path="/dashboard_fournisseur" element=<Dashboard /> />
+        <Route path="/terme" element=<Terme /> />
       </Routes>
-      <></>
     </BrowserRouter>
   );
 }
-
 export default App;
