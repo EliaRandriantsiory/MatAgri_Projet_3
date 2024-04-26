@@ -106,7 +106,7 @@ function SignUpCooperative() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>INSCRIPTION COOPERATIVE</h3>
+              <h3 style={{color: '#ffb000'}}>INSCRIPTION COOPERATIVE</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">

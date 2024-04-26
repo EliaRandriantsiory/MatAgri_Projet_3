@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60b00809-8457-44f2-bc0c-b7742fbe5b29" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/SignUpCooperative.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/SignUpCooperative.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/SignUpProvider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/SignUpProvider.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/Terme.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/Terme.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/TermeF.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/TermeF.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/choiceusers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/choiceusers.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/inscriptionagricultuer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/inscriptionagricultuer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/Aboutus.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/Aboutus.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/Contact.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/Contact.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/parallaxPub.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/parallaxPub.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homepage_Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homepage_Layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

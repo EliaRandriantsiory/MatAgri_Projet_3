@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import moon from "../pages/assets/moon_89402.png";
 import "./assets/css/homePage/homePage.css";
 function HomePage_Layout() {
+
   return (
     <>
       <header className="header-2">
@@ -72,23 +73,27 @@ function HomePage_Layout() {
                             />{" "}
                           </a>
                         </li>
-                        <li className="onhover-dropdown mobile-account">
+                        <li className="onhover-div mobile-account">
+                          <a href>
                           <img
                             src="../assets/images/jewellery/icon/avatar.png"
                             className="opacity-1"
                             alt=""
                           />
-                          <ul className="onhover-show-div">
+                          </a>
+                          <div className="show-div">
+                          <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>
                             <li>
-                              <Link to="/Login" style={{color : 'black', fontSize:'14px'}}>Se connecter</Link>
+                              <Link to="/Login" style={{color : 'black', fontSize:'18px', textAlign:'center'}}>Se connecter</Link>
                             </li>
-
+                            <br/>
                             <li>
-                              <Link to="/choiceusers" style={{color : 'black', fontSize:'14px'}} data-lng="en">
-                                S'inscrire
+                              <Link to="/choiceusers" style={{color : 'black', fontSize:'18px'}} data-lng="en">
+                                S' inscrire
                               </Link>
                             </li>
                           </ul>
+                          </div>
                         </li>
                         <li className="onhover-div mobile-search">
                           <Link to={"/search"}>
