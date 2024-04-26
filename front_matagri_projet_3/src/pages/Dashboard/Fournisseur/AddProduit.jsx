@@ -203,5 +203,4 @@ function AddProduit() {
     </>
   );
 }
-
 export default AddProduit;
