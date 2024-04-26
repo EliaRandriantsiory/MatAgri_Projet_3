@@ -115,7 +115,7 @@ function InscriptionAgriculteur() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>VOUS ALLEZ VOUS INSCRIRE EN TANT QU'AGRICULTEUR</h3>
+              <h3>INSCRIPTION AGRICULTEUR</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
@@ -238,7 +238,7 @@ function InscriptionAgriculteur() {
                       </select>
                     </div>
                     <br></br>
-                    <div id="checkTermeCondition">
+                    <div id="checkTermeCondition" className="mt-4">
                       <input
                         type="checkbox"
                         name="checkbox-button"
@@ -246,10 +246,11 @@ function InscriptionAgriculteur() {
                         id="checkPlus"
                         checked={isChecked}
                         onChange={handleOnChangecheckboxcgv}
+                        style={{ marginRight: '10px' }}
                       ></input>
-                      <a id="addCheckboxBtn" href>
-                      <Terme/>
-                      </a>
+                      <a id="addCheckboxBtn" href="#">
+                    <Terme onAccept={() => setIsChecked(true)}/>
+                    </a>
                     </div>
                   </div>
                     {/* --------- */}

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import logo from '../../pages/assets/images/caroussel/Background2.png';
 
@@ -13,14 +14,19 @@ function ParallaxPub() {
     <section className="p-0">
       <div className="full-banner parallax text-center p-left blur-up lazyloaded" style={bannerStyle}>
         <img src={logo} alt="" className="bg-img blur-up lazyload" style={{display: 'none'}} />
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
-            <div className="col">
-              <div className="banner-contain">
-                {/* <h1 class="text-success">MATAgri</h1> */}
-                  <h3 className="text-success">
-                    Gagnez en productivité grâce à notre application de mutualisation des matériels agricoles.
-                  </h3>
+            <div className="banner-contain">
+              <div className="row"> 
+                <div className="row">  
+                  <div className="col">
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 3 }}>
+                    <p className="text-success fs-1">" Augmentez vos récoltes,<br/><br/> mutualisez vos matériels agricoles ! "</p>
+                  </motion.div>
+                  </div>
+                  <div className="col">
+                  </div>
+                </div>
               </div>
             </div>
           </div>

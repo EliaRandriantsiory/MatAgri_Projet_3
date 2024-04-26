@@ -106,7 +106,7 @@ function SignUpCooperative() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>VOUS ALLEZ VOUS INSCRIRE EN TANT QUE COOPERATIVE</h3>
+              <h3>INSCRIPTION COOPERATIVE</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
@@ -231,7 +231,7 @@ function SignUpCooperative() {
                     </div>
                   </div>
                   
-                  <div id="checkTermeCondition" className="mt-4">
+                  <div id="checkTermeCondition" >
                     <input
                       type="checkbox"
                       name="checkbox-button"
@@ -240,9 +240,12 @@ function SignUpCooperative() {
                       className="mr-2"
                       checked={isChecked}
                     onChange={handleOnChangecheckboxcgv}
+                    style={{ marginRight: '10px' }}
                     />
                     {/* ito le terme */}
-                    <Terme/>
+                    <a id="addCheckboxBtn" href="#">
+                    <Terme onAccept={() => setIsChecked(true)}/>
+                    </a>
                     {/* --------- */}
                     {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
                     {errorPassword && (

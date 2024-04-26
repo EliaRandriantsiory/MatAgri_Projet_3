@@ -80,12 +80,12 @@ function HomePage_Layout() {
                           />
                           <ul className="onhover-show-div">
                             <li>
-                              <Link to="/Login">Se connecter</Link>
+                              <Link to="/Login" style={{color : 'black', fontSize:'14px'}}>Se connecter</Link>
                             </li>
 
                             <li>
-                              <Link to="/choiceusers" data-lng="en">
-                                s'inscrire
+                              <Link to="/choiceusers" style={{color : 'black', fontSize:'14px'}} data-lng="en">
+                                S'inscrire
                               </Link>
                             </li>
                           </ul>
@@ -239,7 +239,7 @@ function HomePage_Layout() {
                   <div className="footer-logo">
                     <img src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
-                  <p style={{ textAlign: "center" }}>
+                  <p style={{textAlign:'center' ,fontSize:'14px'}}>
                   Application de location, livraison et mutualisation de
                     matériels agricoles.
                   </p>
@@ -247,27 +247,22 @@ function HomePage_Layout() {
                     <ul>
                       <li>
                         <a href="#">
-                          <i className="fa fa-facebook-f" />
+                        <i className="fa-brands fa-facebook fa-lg" style={{color:'black'}}/>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="fa fa-google-plus" />
+                        <i className="fa-brands fa-google fa-lg" style={{color:'black'}}/>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="fa fa-twitter" />
+                          <i className="fa-brands fa-twitter fa-lg" style={{color:'black'}} />
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="fa fa-instagram" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-rss" aria-hidden="true" />
+                          <i className="fa-brands fa-instagram fa-lg" style={{color:'black'}} />
                         </a>
                       </li>
                     </ul>
@@ -282,19 +277,19 @@ function HomePage_Layout() {
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">Louer du matériel agricole</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Louer du matériel agricole</a>
                       </li>
                       <li>
-                        <a href="#">Mutualisation</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Mutualisation</a>
                       </li>
                       <li>
-                        <a href="#">Consulter les demandes de matériels</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Consulter les demandes de matériels</a>
                       </li>
                       <li>
-                        <a href="#">Nous contacter</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Nous contacter</a>
                       </li>
                       <li>
-                        <a href="#">xxxxx</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>xxxxx</a>
                       </li>
                     </ul>
                   </div>
@@ -308,19 +303,19 @@ function HomePage_Layout() {
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">x1</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>x1</a>
                       </li>
                       <li>
-                        <a href="#">x2</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>x2</a>
                       </li>
                       <li>
-                        <a href="#">x3</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>x3</a>
                       </li>
                       <li>
-                        <a href="#">x4</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>x4</a>
                       </li>
                       <li>
-                        <a href="#">contacts</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>contacts</a>
                       </li>
                     </ul>
                   </div>
@@ -334,15 +329,15 @@ function HomePage_Layout() {
                   <div className="footer-contant">
                     <ul className="contact-list">
                       <li>
-                        <i className="fa fa-map-marker" />
+                        <i className="fa fa-map-marker" style={{textAlign:'justify' ,fontSize:'14px'}}/>
                         MatAgri, Faravohitra, 101 Antananarivo
                       </li>
                       <li>
-                        <i className="fa fa-phone" />
+                        <i className="fa fa-phone" style={{textAlign:'justify' ,fontSize:'14px'}}/>
                         +261 20 34 20 125 43
                       </li>
                       <li>
-                        <i className="fa fa-envelope" />
+                        <i className="fa fa-envelope" style={{textAlign:'justify' ,fontSize:'14px'}}/>
                         Email : <a href="#">matagri@gmail.com</a>
                       </li>
                     </ul>

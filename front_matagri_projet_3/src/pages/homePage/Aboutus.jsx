@@ -1,5 +1,5 @@
-import Aprop from '../../pages/assets/images/about/Apropos1.png';
 import { Link } from 'react-router-dom';
+import Aprop from '../../pages/assets/images/about/Apropos1.png';
 import narindra from '../../pages/assets/images/team/narindra.png';
 import nasandratra from '../../pages/assets/images/team/nasandratra.png';
 
@@ -35,13 +35,13 @@ function AboutPage() {
                 </div>
                 <div class="col-sm-12">
                 <br/>
-                    <h2>Qui sommes-nous ?</h2>
-                    <h3>Gagnez en productivité grâce à notre application de mutualisation des matériels agricoles.</h3>
-                    <h6>Notre plateforme est bien plus qu'un simple site de location et de livraison de matériels agricoles.
+                    <h2>Qui sommes-nous ?</h2><br/> 
+                    <h3>Gagnez en productivité grâce à notre application de mutualisation des matériels agricoles.</h3><br/>
+                    <p className="fs-6" style={{textAlign: "justify" ,fontSize: 14 }}>Notre plateforme est bien plus qu'un simple site de location et de livraison de matériels agricoles.
                     Nous sommes engagés dans la résolution des défis cruciaux de l'autosuffisance alimentaire en favorisant
                     l'expansion des terres cultivées et en facilitant la logistique collaborative par la mutualisation des
-                    équipements agricoles.</h6>
-                    <p>En connectant les entreprises de location de matériels agricoles aux agriculteurs et coopératives,
+                    équipements agricoles.</p><br/>
+                    <p className="fs-6" style={{ textAlign: "justify",fontSize:14 }}>En connectant les entreprises de location de matériels agricoles aux agriculteurs et coopératives,
                     notre objectif est d'optimiser l'utilisation des ressources et de favoriser une collaboration étroite.
                     Grâce à notre application intuitive, les agriculteurs peuvent accéder rapidement et efficacement aux
                     équipements dont ils ont besoin, augmentant ainsi leur productivité tout en maximisant la rentabilité
@@ -205,7 +205,7 @@ function AboutPage() {
                             <div>
                                 <div class="steps">1</div>
                                 <h4>Agriculteur</h4>
-                                <p>Optimisez votre exploitation et bénéficiez d'une remise de 12%
+                                <p className="fs-6" style={{textAlign: "justify" ,fontSize: 14 }}>Optimisez votre exploitation et bénéficiez d'une remise de 12%
                                 en vous mutualisant pour la location du matériel de votre choix,
                                 profitez en !;</p>
                             </div>
@@ -216,7 +216,7 @@ function AboutPage() {
                             <div>
                                 <div class="steps">2</div>
                                 <h4>Coopérative</h4>
-                                <p>Économisez jusqu'à 12% pour la location d'un matériel agricole
+                                <p className="fs-6" style={{textAlign: "justify" ,fontSize: 14 }}>Économisez jusqu'à 12% pour la location d'un matériel agricole
                                 en tant que coopérative ! Rejoignez notre plateforme pour profiter
                                 de cette offre.</p>
                             </div>
@@ -227,7 +227,7 @@ function AboutPage() {
                             <div>
                                 <div class="steps">3</div>
                                 <h4>Fournisseur</h4>
-                                <p>Élargissez votre clientèle et maximisez vos revenus en proposant
+                                <p className="fs-6" style={{textAlign: "justify" ,fontSize: 14 }}>Élargissez votre clientèle et maximisez vos revenus en proposant
                                 votre matériel agricole à la location sur notre plateforme dès aujourd'hui !</p>
                             </div>
                         </div>
