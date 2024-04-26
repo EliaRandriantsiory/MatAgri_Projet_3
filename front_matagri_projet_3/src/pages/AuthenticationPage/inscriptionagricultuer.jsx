@@ -120,7 +120,7 @@ function InscriptionAgriculteur() {
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
                     <div className="col-md-6">
-                      <label htmlFor="nom">Nom</label>
+                      <label htmlFor="nom" style={{fontSize:'14px'}}>Nom</label>
                       <input
                         type="text"
                         className="form-control"
@@ -131,7 +131,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="cin">CIN</label>
+                      <label htmlFor="cin" style={{fontSize:'14px'}}>CIN</label>
                       <input
                         type="text"
                         className="form-control"
@@ -143,7 +143,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="prenom">Prénom</label>
+                      <label htmlFor="prenom" style={{fontSize:'14px'}}>Prénom</label>
                       <input
                         type="text"
                         className="form-control"
@@ -156,7 +156,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="telephone">Téléphone</label>
+                      <label htmlFor="telephone" style={{fontSize:'14px'}}>Téléphone</label>
                       <input
                         type="text"
                         className="form-control"
@@ -170,7 +170,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="adresse">Adresse</label>
+                      <label htmlFor="adresse" style={{fontSize:'14px'}}>Adresse</label>
                       <input
                         type="text"
                         className="form-control"
@@ -183,7 +183,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="review">Mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -196,7 +196,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">email</label>
+                      <label htmlFor="email" style={{fontSize:'14px'}}>email</label>
                       <input
                         type="email"
                         className="form-control"
@@ -208,7 +208,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="review">Confirmer mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Confirmer mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -221,7 +221,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="mon-menu">région :</label>
+                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>région :</label>
                       <select
                         id="region"
                         onChange={handleOnChangeInputTextRegion}
@@ -246,7 +246,8 @@ function InscriptionAgriculteur() {
                         id="checkPlus"
                         checked={isChecked}
                         onChange={handleOnChangecheckboxcgv}
-                        style={{ marginRight: '10px' }}
+                        style={{ marginRight: '10px', fontSize: '14px' }}
+
                       ></input>
                       <a id="addCheckboxBtn" href="#">
                     <Terme onAccept={() => setIsChecked(true)}/>
