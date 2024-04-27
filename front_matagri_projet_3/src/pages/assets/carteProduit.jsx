@@ -64,7 +64,7 @@ function CardProduct() {
                   <a href="product-page(no-sidebar).html">
                     <h6>Slim Fit Cotton Shirt</h6>
                   </a>
-                  <h4>$500.00</h4>
+                  <h4>Ar 500.00</h4>
                   <ul className="color-variant">
                     <li className="bg-light0"></li>
                     <li className="bg-light1"></li>
@@ -127,7 +127,7 @@ function CardProduct() {
                   <a href="product-page(no-sidebar).html">
                     <h6>Slim Fit Cotton Shirt</h6>
                   </a>
-                  <h4>$500.00</h4>
+                  <h4>Ar 500.00</h4>
                   <ul className="color-variant">
                     <li className="bg-light0"></li>
                     <li className="bg-light1"></li>
@@ -190,7 +190,7 @@ function CardProduct() {
                   <a href="product-page(no-sidebar).html">
                     <h6>Slim Fit Cotton Shirt</h6>
                   </a>
-                  <h4>$500.00</h4>
+                  <h4>Ar 500.00</h4>
                   <ul className="color-variant">
                     <li className="bg-light0"></li>
                     <li className="bg-light1"></li>
@@ -316,7 +316,7 @@ function CardProduct() {
                   <a href="product-page(no-sidebar).html">
                     <h6>Slim Fit Cotton Shirt</h6>
                   </a>
-                  <h4>$500.00</h4>
+                  <h4>Ar 500.00</h4>
                   <ul className="color-variant">
                     <li className="bg-light0"></li>
                     <li className="bg-light1"></li>
@@ -379,7 +379,7 @@ function CardProduct() {
                   <a href="product-page(no-sidebar).html">
                     <h6>Slim Fit Cotton Shirt</h6>
                   </a>
-                  <h4>$500.00</h4>
+                  <h4>Ar 500.00</h4>
                   <ul className="color-variant">
                     <li className="bg-light0"></li>
                     <li className="bg-light1"></li>

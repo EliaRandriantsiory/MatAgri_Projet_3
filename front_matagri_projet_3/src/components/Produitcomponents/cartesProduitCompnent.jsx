@@ -78,7 +78,7 @@ function CartProduitModel() {
                                     when an unknown printer took a galley
                                     of type and scrambled it to make a type specimen
                                     book</p>
-                                  <h4>$45.00</h4>
+                                  <h4>Ar 45 000.00</h4>
                                   <ul className="color-variant">
                                     <li className="bg-light0" />
                                     <li className="bg-light1" />
@@ -114,7 +114,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen book
                                 </p>
-                                <h4>$40.00</h4>
+                                <h4>Ar 40 000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />
@@ -149,7 +149,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen book
                                 </p>
-                                <h4>$65.00</h4>
+                                <h4>Ar 650 000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />
@@ -184,7 +184,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen book
                                 </p>
-                                <h4>$65.00</h4>
+                                <h4>Ar 65 000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />
@@ -219,7 +219,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen book
                                 </p>
-                                <h4>$40.00</h4>
+                                <h4>Ar 400 000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />
@@ -254,7 +254,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen
                                   book</p>
-                                <h4>$45.00</h4>
+                                <h4>Ar 450 000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />
@@ -289,7 +289,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen book
                                 </p>
-                                <h4>$40.00</h4>
+                                <h4>Ar 400 000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />
@@ -324,7 +324,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen book
                                 </p>
-                                <h4>$65.00</h4>
+                                <h4>Ar 650 000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />
@@ -359,7 +359,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen book
                                 </p>
-                                <h4>$40.00</h4>
+                                <h4>Ar400 000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />
@@ -394,7 +394,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen book
                                 </p>
-                                <h4>$65.00</h4>
+                                <h4>Ar 650 000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />
@@ -429,7 +429,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen book
                                 </p>
-                                <h4>$65.00</h4>
+                                <h4>Ar 65 000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />
@@ -464,7 +464,7 @@ function CartProduitModel() {
                                   when an unknown printer took a galley
                                   of type and scrambled it to make a type specimen book
                                 </p>
-                                <h4>$65.00</h4>
+                                <h4>Ar 65000.00</h4>
                                 <ul className="color-variant">
                                   <li className="bg-light0" />
                                   <li className="bg-light1" />

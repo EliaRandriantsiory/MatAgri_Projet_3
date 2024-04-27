@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b00809-8457-44f2-bc0c-b7742fbe5b29" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/assets/carteProduit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/assets/carteProduit.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="60b00809-8457-44f2-bc0c-b7742fbe5b29" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +62,7 @@
       <workItem from="1713851048478" duration="1388000" />
       <workItem from="1713856332165" duration="19468000" />
       <workItem from="1714116216770" duration="1617000" />
-      <workItem from="1714194625926" duration="2542000" />
+      <workItem from="1714194625926" duration="3197000" />
     </task>
     <servers />
   </component>
