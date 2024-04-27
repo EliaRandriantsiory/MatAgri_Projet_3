@@ -21,22 +21,7 @@ function Login() {
       localStorage.setItem('token', JSON.stringify(token));
       localStorage.setItem('email', JSON.stringify(response.data.email));
       localStorage.setItem('password', JSON.stringify(response.data.password));
-      // navigate("/dashboard_fournisseur");
-      const userType = response.data.userType;
-      
-      switch (userType) {
-        case 'agriculteur':
-          navigate("/PageAccueilAgriculteur");
-          break;
-        case 'coopérative':
-          navigate("/PageAccueilAgriculteur");
-          break;
-        case 'fournisseur':
-          navigate("/dashboard_fournisseur");
-          break;
-        default:
-          break;
-      }
+      navigate("/dashboard_fournisseur");
       setEmail('');
       setPassword('');
     } catch (error) {

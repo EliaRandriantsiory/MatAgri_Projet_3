@@ -3,7 +3,7 @@ function CardProduct() {
   return (
     <>
       <div className="title1 section-t-space">
-        <h4 style={{color: '#862b0d'}}> produits exclusifs</h4>
+        <h4 style={{color: '#862b0d'}}> Produits exclusifs</h4>
         <h2 className="title-inner1">Produits</h2>
       </div>
       {/* <!-- product section start --> */}
