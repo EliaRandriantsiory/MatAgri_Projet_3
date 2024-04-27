@@ -1,5 +1,4 @@
 import { Link, Outlet } from "react-router-dom";
-import moon from "../pages/assets/moon_89402.png";
 import "./assets/css/homePage/homePage.css";
 function HomePage_Layout() {
 
@@ -335,15 +334,15 @@ function HomePage_Layout() {
                   <div className="footer-contant">
                     <ul className="contact-list">
                       <li>
-                        <i className="fa fa-map-marker" style={{textAlign:'justify' ,fontSize:'14px'}}/>
-                        MatAgri, Faravohitra, 101 Antananarivo
+                        <i className="fa fa-map-marker" style={{textAlign:'justify' ,fontSize:'14px', paddingRight:'10px'}}/>
+                        MatAgri, Faravohitra, <br/>101 Antananarivo
                       </li>
                       <li>
-                        <i className="fa fa-phone" style={{textAlign:'justify' ,fontSize:'14px'}}/>
+                        <i className="fa fa-phone" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>
                         +261 20 34 20 125 43
                       </li>
                       <li>
-                        <i className="fa fa-envelope" style={{textAlign:'justify' ,fontSize:'14px'}}/>
+                        <i className="fa fa-envelope" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>
                         Email : <a href="#">matagri@gmail.com</a>
                       </li>
                     </ul>

@@ -38,38 +38,29 @@ function ContactPage() {
                         <ul>
                             <li>
                                 <div className="contact-icon"><i className="fa-solid fa-phone"></i>
-                                    <h6>Contactez-nous</h6>
+                                    <h6 style={{color :'#862b0d'}}>Contactez-nous</h6>
                                 </div>
                                 <div className="media-body">
-                                    <p>+261 34 25 125 43</p>
-                                    <p>+261 32 44 879 50</p>
+                                    <p style={{color :'#862b0d'}}>+261 34 25 125 43</p>
+                                    <p style={{color :'#862b0d'}}>+261 32 44 879 50</p>
                                 </div>
                             </li>
                             <li>
                                 <div className="contact-icon"><i className="fa fa-map-marker" aria-hidden="true"></i>
-                                    <h6>Adresse</h6>
+                                    <h6 style={{color :'#862b0d'}}>Adresse</h6>
                                 </div>
                                 <div className="media-body">
-                                    <p>Faravohitra, 101 Antananarivo</p>
-                                    <p>Madagascar</p>
+                                    <p style={{color :'#862b0d'}}>Faravohitra, 101 Antananarivo</p>
+                                    <p style={{color :'#862b0d'}}>Madagascar</p>
                                 </div>
                             </li>
                             <li>
                                 <div className="contact-icon"><i className="fa-solid fa-envelope"></i>
-                                    <h6>Email</h6>
+                                    <h6 style={{color :'#862b0d'}}>Email</h6>
                                 </div>
                                 <div className="media-body">
-                                    <p>Support@matagri.com</p>
-                                    <p>info@matagri.com</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="contact-icon"><i className="fa fa-fax" aria-hidden="true"></i>
-                                    <h6>Fax</h6>
-                                </div>
-                                <div className="media-body">
-                                    <p>Support@matagri.com</p>
-                                    <p>info@matagri.com</p>
+                                    <p style={{color :'#862b0d'}}>Support@matagri.com</p>
+                                    <p style={{color :'#862b0d'}}>info@matagri.com</p>
                                 </div>
                             </li>
                         </ul>
@@ -82,16 +73,16 @@ function ContactPage() {
                         <div className="form-row row">
                             <div className="col-md-6">
                                 <label for="name">Prénom</label>
-                                <input type="text" className="form-control" id="name" placeholder="Enter Your name"
+                                <input type="text" className="form-control" id="name" placeholder="Entrer votre prénom"
                                     required=""/>
                             </div>
                             <div className="col-md-6">
                                 <label for="email">Nom</label>
-                                <input type="text" className="form-control" id="last-name" placeholder="Email" required=""/>
+                                <input type="text" className="form-control" id="last-name" placeholder="Entrer votre nom" required=""/>
                             </div>
                             <div className="col-md-6">
                                 <label for="review">Téléphone</label>
-                                <input type="text" className="form-control" id="review" placeholder="Enter your number"
+                                <input type="text" className="form-control" id="review" placeholder="Entrer votre numéro"
                                     required=""/>
                             </div>
                             <div className="col-md-6">
@@ -100,7 +91,7 @@ function ContactPage() {
                             </div>
                             <div className="col-md-12">
                                 <label for="review">Ecrivez ici votre message</label>
-                                <textarea className="form-control" placeholder="Write Your Message"
+                                <textarea className="form-control" placeholder="Message"
                                     id="exampleFormControlTextarea1" rows="6"></textarea>
                             </div>
                             <div className="col-md-12">
