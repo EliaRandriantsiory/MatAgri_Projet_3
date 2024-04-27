@@ -20,26 +20,26 @@ function HomePage() {
     },[])
     return (
     <>
-        <HomeSlide />
+        <HomeSlide /> 
 
-        <div className="title1 section-t-space">
-        <h4> produits exclusifs</h4>
-        <h2 className="title-inner1">Produits</h2>
+      <div className="title1 section-t-space">
+      <h4> produits exclusifs</h4>
+      <h2 className="title-inner1">Produits</h2>
       </div>
       {/* <!-- product section start --> */}
       <section className="section-b-space ratio_asos">
-        <div className="container">
-          <div className="row search-product">
-        {listMateriel.map((materialItem, index) => (
+      <div className="container">
+        <div className="row search-product">
+      {listMateriel.map((materialItem, index) => (
             {/* <CartProduitModel key={index} materielItem={materialItem} /> */}
-        ))}
-        </div>
-        </div></section>
-        
-
-        <CardProduct />
-        <ParallaxPub/>
-
+      ))}
+      </div>
+      </div></section>
+      
+      
+      <CardProduct />
+      <ParallaxPub/>
+      
     </>
     );
 }

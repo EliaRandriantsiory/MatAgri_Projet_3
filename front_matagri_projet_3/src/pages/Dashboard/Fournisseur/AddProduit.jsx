@@ -87,7 +87,6 @@ function AddProduit() {
         formData.append("images", file);
 
       });
-
       const response = await axios.post("/api/enregistrerProduit", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
