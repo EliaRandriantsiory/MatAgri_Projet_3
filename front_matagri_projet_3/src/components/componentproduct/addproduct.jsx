@@ -10,7 +10,7 @@ function AddProduct() {
               <div className="row">
                 <div className="col-lg-6">
                   <div className="page-header-left">
-                    <h3>Add Products
+                    <h3>Ajout produit
                       <small>Multikart Admin panel</small>
                     </h3>
                   </div>
@@ -23,7 +23,7 @@ function AddProduct() {
                       </a>
                     </li>
                     <li className="breadcrumb-item">Physical</li>
-                    <li className="breadcrumb-item active">Add Product</li>
+                    <li className="breadcrumb-item active">Ajout Produit</li>
                   </ol>
                 </div>
               </div>
@@ -79,14 +79,14 @@ function AddProduct() {
                               <div className="valid-feedback">Looks good!</div>
                             </div>
                             <div className="form-group mb-3 row">
-                              <label htmlFor="validationCustom02" className="col-xl-3 col-sm-4 mb-0">Price :</label>
+                              <label htmlFor="validationCustom02" className="col-xl-3 col-sm-4 mb-0">Prix :</label>
                               <div className="col-xl-8 col-sm-7">
                                 <input className="form-control" id="validationCustom02" type="text" required />
                               </div>
                               <div className="valid-feedback">Looks good!</div>
                             </div>
                             <div className="form-group mb-3 row">
-                              <label htmlFor="validationCustomUsername" className="col-xl-3 col-sm-4 mb-0">Product Code :</label>
+                              <label htmlFor="validationCustomUsername" className="col-xl-3 col-sm-4 mb-0">Code Produit :</label>
                               <div className="col-xl-8 col-sm-7">
                                 <input className="form-control" id="validationCustomUsername" type="text" required />
                               </div>
@@ -120,8 +120,8 @@ function AddProduct() {
                                 <textarea id="editor1" name="editor1" cols={10} rows={4} defaultValue={""} />
                               </div>
                               <div className="offset-xl-3 offset-sm-4 mt-4">
-                                <button type="submit" className="btn btn-primary">Add</button>
-                                <button type="button" className="btn btn-light">Discard</button>
+                                <button type="submit" className="btn btn-primary">Ajouter</button>
+                                <button type="button" className="btn btn-light">Annuler</button>
                               </div>
                             </div>
                           </div>

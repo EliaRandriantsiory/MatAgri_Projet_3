@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60b00809-8457-44f2-bc0c-b7742fbe5b29" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/SignUpCooperative.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/SignUpCooperative.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/inscriptionagricultuer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/inscriptionagricultuer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homepage_Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homepage_Layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/components/Produitcomponents/cartesProduitCompnent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/components/Produitcomponents/cartesProduitCompnent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/components/componentproduct/addproduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/components/componentproduct/addproduct.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/components/componentproduct/modification.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/components/componentproduct/modification.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/components/componentproduct/suppressionMateriel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/components/componentproduct/suppressionMateriel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/assets/carteProduit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/assets/carteProduit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/dashbords/dashboardAgriculteur.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/dashbords/dashboardAgriculteur.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/dashbords/pageaccueilagriculteur.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/dashbords/pageaccueilagriculteur.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/Aboutus.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/Aboutus.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/parallaxPub.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homePage/parallaxPub.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +73,8 @@
       <updated>1713851047334</updated>
       <workItem from="1713851048478" duration="1388000" />
       <workItem from="1713856332165" duration="19468000" />
-      <workItem from="1714116216770" duration="1608000" />
+      <workItem from="1714116216770" duration="1617000" />
+      <workItem from="1714194625926" duration="1821000" />
     </task>
     <servers />
   </component>
