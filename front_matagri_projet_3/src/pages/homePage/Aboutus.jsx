@@ -34,6 +34,7 @@ function AboutPage() {
                             class="img-fluid blur-up lazyload" alt=""/></div>
                 </div>
                 <div class="col-sm-12">
+                <br/>
                     <h2>Qui sommes-nous ?</h2>
                     <h3>Gagnez en productivité grâce à notre application de mutualisation des matériels agricoles.</h3>
                     <h6>Notre plateforme est bien plus qu'un simple site de location et de livraison de matériels agricoles.
@@ -206,7 +207,7 @@ function AboutPage() {
                                 <h4>Agriculteur</h4>
                                 <p>Optimisez votre exploitation et bénéficiez d'une remise de 12%
                                 en vous mutualisant pour la location du matériel de votre choix,
-                                profitez en !;</p>
+                                profitez-en !</p>
                             </div>
                         </div>
                     </div>
@@ -217,7 +218,7 @@ function AboutPage() {
                                 <h4>Coopérative</h4>
                                 <p>Économisez jusqu'à 12% pour la location d'un matériel agricole
                                 en tant que coopérative ! Rejoignez notre plateforme pour profiter
-                                de cette offre.</p>
+                                de cette offre !</p>
                             </div>
                         </div>
                     </div>

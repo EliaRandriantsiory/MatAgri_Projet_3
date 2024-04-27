@@ -25,6 +25,7 @@ import DashboardUser from "./pages/dasboard";
 import PageAccueilAgriculteur from "./pages/Dashboard/Agriculteur/pageaccueilagriculteur";
 import DashBordAgriculteur from "./pages/Dashboard/Agriculteur/dashboardAgriculteur";
 import Terme from "./pages/AuthenticationPage/Terme";
+import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
 
 import Choiceusers from "./pages/AuthenticationPage/choiceusers";
 // import DashboardUser from "./pages/dasboard";
@@ -41,7 +42,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element=<HomePage_Layout />>
+        <Route path="/" element=<HomePage_Layout /> >
           <Route path="/" element=<HomePage /> />
           <Route path="/home" element=<HomePage /> />
           <Route path="/about" element=<AboutPage /> />
@@ -53,39 +54,24 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
-          <Route
-            path="/InscriptionAgriculteur"
-            element=<InscriptionAgriculteur />
-          />
+          <Route path="/InscriptionAgriculteur" element=<InscriptionAgriculteur /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
-
-        </Route>
-
-        <Route path="/Dashboard" element=<DashboardUser /> />
-        <Route
-          path="/PageAccueilAgriculteur"
-          element=<PageAccueilAgriculteur />
-        >
-          <Route
-            path="/PageAccueilAgriculteur"
-            element=<DashBordAgriculteur />
-          />
-        </Route>
-
-        <Route>
+          </Route>
+          <Route path="/Dashboard" element=<DashboardUser /> />
+          <Route path="/PageAccueilAgriculteur" element=<PageAccueilAgriculteur /> >
+          <Route path="/PageAccueilAgriculteur" element=<DashBordAgriculteur /> />
+          </Route>
+          <Route>
+          <Route path="/description" element=<DescriptionProduit /> />
+          </Route>
+          <Route>
           <Route path="/TermeF" element=<TermeF /> />
-        </Route>
-
-        <Route path="/carouselImage" element=<homePage /> />
-        <Route  path="/dashboard_fournisseur"
-          element=<PageAccueilAgriculteur /> >
+          </Route>
+          <Route path="/carouselImage" element=<homePage /> />
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
-        </Route>
-            <Route path="/terme" element=<Terme /> />
-        </Routes>
-        
+          <Route path="/terme" element=<Terme /> />
+          </Routes>
     </BrowserRouter>
   );
 }
-
 export default App;

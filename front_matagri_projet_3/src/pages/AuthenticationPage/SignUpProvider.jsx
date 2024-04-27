@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/SignUpProvider/provider.css";
-import Terme from "./Terme";
+import TermeF from "./TermeF";
 function SignUpProvider() {
   const navigate = useNavigate();
   const [companyNameForm, setCompanyName] = useState("")
@@ -225,7 +225,7 @@ function SignUpProvider() {
                       onChange={handleOnChangecheckboxcgv}
                     ></input>
                     <a id="addCheckboxBtn" href="#">
-                    <Terme/>
+                    <TermeF/>
                     </a>
                   </div>
                     {/* --------- */}

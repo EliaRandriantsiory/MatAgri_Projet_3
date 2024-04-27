@@ -235,6 +235,11 @@ function AddProduit() {
       </Modal>
     </>
   );
+// <<<<<<< HEAD
 }}
 
 export default AddProduit;
+// =======
+// }
+// export default AddProduit;
+// >>>>>>> dev

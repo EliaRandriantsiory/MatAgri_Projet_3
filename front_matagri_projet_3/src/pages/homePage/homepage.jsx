@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import HomeSlide from "../../components/homepagecomponents/homeSlideComponent"
-import CardProduct from "../../components/homepagecomponents/carteProduit"
-import axios from "axios";
-import ProductBox from "../../components/Produitcomponents/cartesProduitCompnent";
-
+import CardProduct from "../assets/carteProduit"
 import ParallaxPub from "./parallaxPub";
+import axios from "axios";
 
 
 function HomePage() {
@@ -33,7 +31,7 @@ function HomePage() {
         <div className="container">
           <div className="row search-product">
         {listMateriel.map((materialItem, index) => (
-            <ProductBox key={index} materielItem={materialItem} />
+            {/* <CartProduitModel key={index} materielItem={materialItem} /> */}
         ))}
         </div>
         </div></section>

@@ -30,6 +30,7 @@ public class Materiels {
     @Column(nullable = false)
     private String imagePath;
     private String imageDetailsPath;
+
     // @ManyToOne
     // @JoinColumn(name = "id_user")
     // private Users user;
