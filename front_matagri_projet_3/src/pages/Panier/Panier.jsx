@@ -4,6 +4,8 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
+import { Modal } from "@mui/material";
+import Reserver from "./Reserver";
 
 function Panier() {
   let datedebut = Date();
@@ -14,8 +16,10 @@ function Panier() {
 
   const [reserver, setReserver] = useState("");
 
-  const handleClickReserver = (event) => {
-    setReserver(event.target.value);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleClickReserver = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -74,7 +78,11 @@ function Panier() {
                             <td>1000000AR</td>
                             <td>
                               <div>
-                                <a href="#" className="btn btn-solid">
+                                <a
+                                  href="#"
+                                  className="btn btn-solid"
+                                  onClick={handleClickReserver}
+                                >
                                   Reserver
                                 </a>
                               </div>
@@ -113,6 +121,9 @@ function Panier() {
             </div>
           </div>
         </div>
+        <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <Reserver />
+        </Modal>
       </div>
     </div>
   );
