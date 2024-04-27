@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/SignUpProvider/provider.css";
-import Terme from "./Terme";
+import TermeF from "./TermeF";
 function SignUpProvider() {
   const navigate = useNavigate();
   const [companyNameForm, setCompanyName] = useState("")
@@ -18,7 +18,6 @@ function SignUpProvider() {
   const [isChecked, setIsChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
-
   const handleOnChangecheckboxcgv = (event) => {
     setEtatCgv(event.target.checked);
     setIsChecked(event.target.checked);
@@ -27,30 +26,35 @@ function SignUpProvider() {
 
   const handleOnChangeInputTextAdress = (event) => {
     setAddress(event.target.value);
-    localStorage.setItem('adress',event.target.value)
+    localStorage.setItem('adress', event.target.value);
   };
 
   const handleOnChangeInputTextNif = (event) => {
     setNif(event.target.value);
-    localStorage.setItem('nif',event.target.value)
+    localStorage.setItem('nif', event.target.value);
   };
 
   const handleOnChangeInputTextPhone = (event) => {
-    setPhone(event.target.value);
-    localStorage.setItem('phone',event.target.value)
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    localStorage.setItem('phone', enteredValue);
+    setPhone(numericValue);
   };
+
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
-    localStorage.setItem('email',event.target.value)
+    localStorage.setItem('email', event.target.value);
   };
+
   const handleOnChangeInputTextRegion = (event) => {
     setRegion(event.target.value);
-    localStorage.setItem('region',event.target.value)
+    localStorage.setItem('region', event.target.value);
   };
+
   const handleOnChangeInputTextPassword = (event) => {
     setPassword(event.target.value);
-
   };
+
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
@@ -61,10 +65,19 @@ function SignUpProvider() {
 
   const handleOnclickSauvegarde = async (event) => {
     event.preventDefault();
+    
+    // Vérifier si les termes et conditions sont acceptés
     if (!isChecked) {
       setErrorMessage("Veuillez accepter les termes et conditions de location");
       return;
     }
+    
+    // Vérifier si les mots de passe correspondent
+    if (passwordForm !== confirmPasswordForm) {
+      setErrorPassword("Les mots de passe ne correspondent pas");
+      return;
+    }
+
     try {
       const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
         companyName: companyNameForm,
@@ -79,25 +92,21 @@ function SignUpProvider() {
           idprofile: 3,
           profile: "fournisseur",
           roles: []
-      }
+        }
       });
       console.log(response.data);
       navigate("/dashboard_fournisseur");
     } catch (error) {
-
       console.error("Erreur lors de l'inscription :", error);
     }
-    event.preventDefault();
-    console.log(EtatCGV)
-    navigate("/dashboard_fournisseur")
 
+    // Réinitialiser les messages d'erreur
+    setErrorMessage(false);
+    setErrorPassword(false);
+
+    // Enregistrer les informations dans le stockage local
     localStorage.setItem('email', emailForm);
     localStorage.setItem('password', passwordForm);
-    
-    if(passwordForm!==confirmPasswordForm){
-      setErrorPassword("Les mots de passe ne sont pas identiques");
-    }else{
-    navigate("/dashboard_fournisseur")}
   };
 
   return (
@@ -105,12 +114,12 @@ function SignUpProvider() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>VOUS ALLEZ VOUS INSCRIRE EN TANT QUE FOURNISSEUR</h3>
+              <h3 style={{color:'#862b0d'}}>INSCRIPTION FOURNISSEUR</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
                     <div className="col-md-6">
-                      <label htmlFor="email">Raison sociale</label>
+                      <label htmlFor="email" style={{fontSize:'14px'}}>Raison sociale</label>
                       <input
                         type="text"
                         className="form-control"
@@ -122,7 +131,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">NIF</label>
+                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
                       <input
                         type="text"
                         className="form-control"
@@ -134,11 +143,11 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Siège social</label>
+                      <label htmlFor="siege" style={{fontSize:'14px'}}>Siège social</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="email"
+                        id="siege"
                         placeholder="Votre siège social"
                         required
                         value={addressForm}
@@ -146,7 +155,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Téléphone</label>
+                      <label htmlFor="telephone" style={{fontSize:'14px'}}>Téléphone</label>
                       <input
                         type="text"
                         className="form-control"
@@ -158,11 +167,11 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor="email" style={{fontSize:'14px'}}>Email</label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
-                        id="address"
+                        id="email"
                         placeholder="Votre adresse email"
                         required
                         value={emailForm}
@@ -170,7 +179,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="review">Mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -182,7 +191,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="review">Confirmer mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Confirmer mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -194,7 +203,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="mon-menu">Région :</label>
+                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>Région :</label>
                       <select id="region" value={regionForm} className="form-control" onChange={handleOnChangeInputTextRegion}>
                         <option value="">-------------</option>
                         <option value="Alaotra Mangoro">Alaotra Mangoro</option>
@@ -214,9 +223,10 @@ function SignUpProvider() {
                       id="checkPlus"
                       checked={isChecked}
                       onChange={handleOnChangecheckboxcgv}
+                      style={{marginRight: '10px'}}
                     ></input>
                     <a id="addCheckboxBtn" href="#">
-                    <Terme/>
+                    <TermeF onAccept={() => setIsChecked(true)}/>
                     </a>
                   </div>
                     {/* --------- */}
@@ -228,6 +238,7 @@ function SignUpProvider() {
                     className="btn btn-solid w-auto"
                     type="submit"
                     value={"S'inscrire"}
+                    disabled={!isChecked}
                   />
                 </form>
               </div>

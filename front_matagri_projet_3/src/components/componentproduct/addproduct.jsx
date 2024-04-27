@@ -1,34 +1,144 @@
-function AddProduct() {
-    return ( 
-        
-      <div className="page-wrapper">
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Button, Modal } from "react-bootstrap";
+import { FileUploader } from "react-drag-drop-files";
 
-        <div className="page-body">
-          {/* Container-fluid starts*/}
-          <div className="container-fluid">
-            <div className="page-header">
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="page-header-left">
-                    <h3>Add Products
-                      <small>Multikart Admin panel</small>
-                    </h3>
-                  </div>
+const fileTypes = ["JPG", "PNG", "GIF"];
+
+function AddProduit() {
+  const [images, setImages] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [nomMateriel, setNomMateriel] = useState("");
+  const [categorie, setCategorie] = useState("");
+  const [prix, setPrix] = useState("");
+  const [stock, setStock] = useState("");
+  const [description, setDescription] = useState("");
+
+  const handleImageChange = (files) => {
+    const selectedImages = Array.from(files);
+    setImages(selectedImages);
+
+    const previews = selectedImages.map((file) => URL.createObjectURL(file));
+    setImagePreviews(previews);
+  };
+
+  const removeImage = (index) => {
+    const updatedImages = [...images];
+    updatedImages.splice(index, 1);
+    setImages(updatedImages);
+
+    const updatedPreviews = [...imagePreviews];
+    updatedPreviews.splice(index, 1);
+    setImagePreviews(updatedPreviews);
+  };
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const formData = new FormData();
+      formData.append("nomMateriel", nomMateriel);
+      formData.append("categorie", categorie);
+      formData.append("prix", prix);
+      formData.append("stock", stock);
+      formData.append("description", description);
+      images.forEach((file) => { // Correction ici
+        formData.append("images", file);
+      });
+
+      const response = await axios.post("/api/enregistrerProduit", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      console.log("Données envoyées avec succès:", response.data);
+      // Réinitialisez le formulaire après l'envoi des données avec succès
+      handleCloseModal();
+    } catch (error) {
+      console.error("Erreur lors de l'envoi des données:", error);
+      // Gérez les erreurs d'envoi des données ici
+    }
+  };
+
+  const handlePrix = (event) => {
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    setPrix(numericValue);
+  };
+
+  const handleStock = (event) => {
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    setStock(numericValue);
+  };
+
+  return (
+    <>
+      <button className="btn btn-sm btn-solid" onClick={handleOpenModal}>
+        + Ajouter Produit
+      </button>
+
+      <Modal show={showModal} onHide={handleCloseModal} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Ajout Produit</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form
+            className="needs-validation add-product-form"
+            noValidate
+            onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="image" className="form-label">
+                Image:
+              </label>
+              <FileUploader
+                handleChange={handleImageChange}
+                name="file"
+                types={fileTypes}
+                multiple
+              />
+              {imagePreviews.length > 0 && (
+                <div className="image-preview-container d-flex">
+                  {imagePreviews.map((preview, index) => (
+                    <div key={index} className="me-2 mb-2">
+                      <img
+                        src={preview}
+                        alt={`Preview ${index}`}
+                        style={{ width: "100px", marginRight: "5px" }}
+                      />
+                      <button
+                        type="button"
+                        className="btn btn-danger btn-sm"
+                        onClick={() => removeImage(index)}
+                      >
+                        <i className="fa fa-trash"></i>
+                      </button>
+                    </div>
+                  ))}
                 </div>
-                <div className="col-lg-6">
-                  <ol className="breadcrumb pull-right">
-                    <li className="breadcrumb-item">
-                      <a href="index.html">
-                        <i data-feather="home" />
-                      </a>
-                    </li>
-                    <li className="breadcrumb-item">Physical</li>
-                    <li className="breadcrumb-item active">Add Product</li>
-                  </ol>
-                </div>
-              </div>
+              )}
             </div>
-          </div>
+            <div className="form-group">
+              <label htmlFor="nomMateriel">Nom du matÃ©riel:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="nomMateriel"
+                value={nomMateriel}
+                onChange={(e) => setNomMateriel(e.target.value)}
+              />
+            </div> 
+          </form>
           {/* Container-fluid Ends*/}
           {/* Container-fluid starts*/}
           <div className="container-fluid">
@@ -134,10 +244,10 @@ function AddProduct() {
             </div>
           </div>
           {/* Container-fluid Ends*/}
-        </div>
-        
-      </div>
-    
+        </Modal.Body>
+        </Modal>
+    </>
     )
+   
 }
-export default AddProduct;
+export default AddProduit;

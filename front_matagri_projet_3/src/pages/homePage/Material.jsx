@@ -1,9 +1,9 @@
-import CardProduct from "../../components/homepagecomponents/carteProduit";
+import CartProduitModel from "../../components/Produitcomponents/cartesProduitCompnent";
 
 function Material() {
     return ( 
         <>
-           <CardProduct/>
+           <CartProduitModel/>
         </>
      );
 }

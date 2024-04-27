@@ -32,21 +32,23 @@ function TableRow() {
     
   const handleImageChange = (e) => {
     
-    setListImage((prevList) => [...prevList, e.target.files[0]]);
-    const files = Array.from(e.target.files);
+    console.log("bonjour")
+    
+    // setListImage((prevList) => [...prevList, e.target.files[0]]);
+    // const files = Array.from(e.target.files);
 
-    files.forEach((file) => {
-      console.log(file.name);
-      // listImage.push(file)
-      // console.log(file.name)
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreviews((prevPreviews) => [...prevPreviews, reader.result]);
-      };
-      reader.readAsDataURL(file);
-    });
+    // files.forEach((file) => {
+    //   console.log(file.name);
+    //   // listImage.push(file)
+    //   // console.log(file.name)
+    //   const reader = new FileReader();
+    //   reader.onloadend = () => {
+    //     setImagePreviews((prevPreviews) => [...prevPreviews, reader.result]);
+    //   };
+    //   reader.readAsDataURL(file);
+    // });
 
-    setImages((prevImages) => [...prevImages, ...files]);
+    // setImages((prevImages) => [...prevImages, ...files]);
   };
 
   const removeImage = (index) => {
@@ -97,6 +99,7 @@ function TableRow() {
     const formData = new FormData();
     formData.append("file", file);
 
+    // console.log(formData)
     // axios.post('/upload', formData, {
     //   headers: {
     //     'Content-Type': 'multipart/form-data'
@@ -110,30 +113,34 @@ function TableRow() {
     //   });
   };
   const handleOnclickSaveAddProduct = () => {
+
+console.log("bonjour")
     // console.log(nomMateriel+categorieMateriel+prixMateriel+stockMateriel+descriptionMateriel)
-    console.log(localStorage.getItem(email));
-    axios
-      .post("http://localhost:8082/api/materiels/ajouter", {
-        categorieMat: categorieMateriel,
-        nomMat: nomMateriel,
-        stockMat: stockMateriel,
-        descriptionMat: descriptionMateriel,
-        techniqueMat: null,
-        imagePath: null,
-        imageDetailsPath: null,
-        id_user: currentProfilUser.id_user,
-        prixMAt: prixMateriel,
-      })
-      .then((response) => {
+    // console.log(localStorage.getItem("email"));
+    // console.log(currentProfilUser.id_user)
+    
+    // axios
+    //   .post("http://localhost:8082/api/materiels/ajouter", {
+    //     categorieMat: categorieMateriel,
+    //     nomMat: nomMateriel,
+    //     stockMat: stockMateriel,
+    //     descriptionMat: descriptionMateriel,
+    //     techniqueMat: null,
+    //     imagePath: null,
+    //     imageDetailsPath: null,
+    //     id_user: 2,
+    //     prixMAt: prixMateriel,
+    //   })
+    //   .then((response) => {
         
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    listImage.forEach((element) => {
-      handleUpload(element);
-      // console.log(element.name)
-    });
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+    // listImage.forEach((element) => {
+    //   handleUpload(element);
+    //   // console.log(element.name)
+    // });
   };
 
     return ( 
@@ -150,7 +157,7 @@ function TableRow() {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                Modificaion Produits
+                Modification Produit
               </h1>
               <button
                 type="button"

@@ -25,20 +25,23 @@ function SignUpCooperative() {
     setIsChecked(event.target.checked);
     setErrorMessage(false);
   };
+
   const handleOnChangeInputTextAdress = (event) => {
     setAddress(event.target.value);
-    localStorage.setItem('adress',event.target.value)
+    localStorage.setItem("adress", event.target.value);
   };
 
   const handleOnChangeInputTextRaison = (event) => {
     setCompanyName(event.target.value);
   };
+
   const handleOnChangeInputTextNbAgriculteur = (event) => {
     setNbAgriculteur(event.target.value);
   };
-
   const handleOnChangeInputTextPhone = (event) => {
-    setPhone(event.target.value);
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    setPhone(numericValue);
   };
   const handleOnChangeInputTextNif = (event) => {
     setNif(event.target.value);
@@ -67,64 +70,59 @@ function SignUpCooperative() {
       setErrorMessage("Veuillez accepter les termes et conditions de location");
       return;
     }
-  
-      try {
-        const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
-          companyName: companyNameForm,
-          nif: nifForm,
-          address: addressForm,
-          phone: phoneForm,
-          email: emailForm,
-          region: regionForm,
-          nbFarme: NbAgriculteurForm,
-          password: passwordForm,
-          confirmPassword: confirmPasswordForm,
-          profile: {
-            idprofile: 2,
-            profile: "coopérative",
-            roles: []
-        }
-        });
-        console.log(response.data);
-        navigate("/PageAccueilAgriculteur");
-      } catch (error) {
-  
-        console.error("Erreur lors de l'inscription :", error);
-      }
-      event.preventDefault();
-      console.log(EtatCGV)
-      navigate("/PageAccueilAgriculteur")
-  
+
+    if (passwordForm !== confirmPasswordForm) {
+      setErrorPassword("Les mots de passe ne correspondent pas");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
+        companyName: companyNameForm,
+        nif: nifForm,
+        address: addressForm,
+        phone: phoneForm,
+        email: emailForm,
+        region: regionForm,
+        nbFarme: NbAgriculteurForm,
+        password: passwordForm,
+        confirmPassword: confirmPasswordForm,
+        profile: {
+          idprofile: 2,
+          profile: "coopérative",
+          roles: [],
+        },
+      });
+      console.log(response.data);
+      navigate("/PageAccueilAgriculteur");
       localStorage.setItem('email', emailForm);
       localStorage.setItem('password', passwordForm);
-      
-      if (passwordForm !== confirmPasswordForm) {
-        setErrorPassword("Les mots de passe ne sont pas identiques");
-      }else{
-      navigate("/PageAccueilAgriculteur")}
-    };
+    } catch (error) {
+      console.error("Erreur lors de l'inscription :", error);
+    }
+  };
   return (
       <section className="register-page section-b-space">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>VOUS ALLEZ VOUS INSCRIRE EN TANT QUE COOPERATIVE</h3>
+              <h3 style={{color: '#ffb000'}}>INSCRIPTION COOPERATIVE</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
                     <div className="col-md-6">
-                      <label htmlFor="email">Raison sociale</label>
+                      <label htmlFor="raison">Raison sociale</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="name"
+                        id="raison"
                         placeholder="Nom de la société"
                         value={companyNameForm}
                         required
                         onChange={handleOnChangeInputTextRaison}/>
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">NIF</label>
+                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
                       <input
                         type="text"
                         className="form-control"
@@ -136,11 +134,11 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Siège social</label>
+                      <label htmlFor="siege" style={{fontSize:'14px'}}>Siège social</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="email"
+                        id="siege"
                         placeholder="votre siège"
                         value={addressForm}
                         required
@@ -148,7 +146,7 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Téléphone</label>
+                      <label htmlFor="telephone" style={{fontSize:'14px'}}>Téléphone</label>
                       <input
                         type="text"
                         className="form-control"
@@ -162,11 +160,11 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor="email" style={{fontSize:'14px'}}>Email</label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
-                        id="address"
+                        id="email"
                         placeholder="Votre adresse e-mail"
                         value={emailForm}
                         required
@@ -176,7 +174,7 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6"style={{ marginBottom: '20px' }}>
-                      <label htmlFor="mon-menu">région :</label>
+                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>région :</label>
                       <select id="region" className="form-control" value={regionForm} onChange={handleOnChangeInputTextRegion}>
                       <option value="">--------------------</option>
                         <option value="Alaotra Mangoro">Alaotra Mangoro</option>
@@ -188,7 +186,7 @@ function SignUpCooperative() {
                       </select>
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Nombre Agriculteur</label>
+                      <label htmlFor="nb" style={{fontSize:'14px'}}>Nombre Agriculteur</label>
                       <input
                         type="number"
                         className="form-control"
@@ -204,7 +202,7 @@ function SignUpCooperative() {
                     
 
                     <div className="col-md-6">
-                      <label htmlFor="review">Mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -218,7 +216,7 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="review">Confirmer mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Confirmer mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -233,7 +231,7 @@ function SignUpCooperative() {
                     </div>
                   </div>
                   
-                  <div id="checkTermeCondition" className="mt-4">
+                  <div id="checkTermeCondition" >
                     <input
                       type="checkbox"
                       name="checkbox-button"
@@ -242,9 +240,12 @@ function SignUpCooperative() {
                       className="mr-2"
                       checked={isChecked}
                     onChange={handleOnChangecheckboxcgv}
+                    style={{ marginRight: '10px' }}
                     />
                     {/* ito le terme */}
-                    <Terme/>
+                    <a id="addCheckboxBtn" href="#">
+                    <Terme onAccept={() => setIsChecked(true)}/>
+                    </a>
                     {/* --------- */}
                     {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
                     {errorPassword && (
@@ -256,6 +257,7 @@ function SignUpCooperative() {
                       type="submit"
                       className="btn btn-solid w-auto"
                       value={"S'inscrire"}
+                      disabled={!isChecked}
                     />
                   </div>
                 </form>

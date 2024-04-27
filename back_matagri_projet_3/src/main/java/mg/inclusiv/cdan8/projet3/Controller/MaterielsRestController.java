@@ -1,5 +1,9 @@
 package mg.inclusiv.cdan8.projet3.Controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import org.apache.tomcat.util.http.fileupload.FileUpload;
@@ -76,6 +80,62 @@ public class MaterielsRestController {
         return  ResponseEntity.ok("modifier materiel réussi");
     }
 
+    @PostMapping("/file/upload")
+    public ResponseEntity<String> handleFileUpload(@RequestPart("file") MultipartFile file) {
+        String currentDirectory = System.getProperty("user.dir");
+        String CURRENT_UPLOAD_DIR = currentDirectory+"/front_matagri_projet_3/public/assets/images/materiels";
+        
+        try {
+            // Créez le répertoire d'upload s'il n'existe pas4
+            // Path filePath =  Path.of(currentDirectory,CURRENT_UPLOAD_DIR, File_Folder);
+            Files.createDirectories(Path.of(CURRENT_UPLOAD_DIR));
+
+            // Générez un nom de fichier unique
+            String fileName = generateUniqueFileName(file.getOriginalFilename());
+
+            // Chemin complet du fichier sur le serveur
+            Path filePath =  Path.of(CURRENT_UPLOAD_DIR, fileName);
+            
+            // Enregistrez le fichier sur le serveur
+            Files.copy(file.getInputStream(), filePath,StandardCopyOption.REPLACE_EXISTING);//, StandardCopyOption.REPLACE_EXISTING
+
+            return ResponseEntity.ok("Le fichier a été téléchargé avec succès.");
+        } catch (IOException e) {
+            // Gestion des erreurs
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("Une erreur s'est produite lors de l'enregistrement du fichier sur le serveur.");
+        }
+    }
+    
+    // Tsy fafana fa ilaina au cas où
+    // @PostMapping("/file/upload")
+    // public ResponseEntity<String> handleFileUpload(@RequestPart("file") MultipartFile file,@RequestParam("folder") String folder) {
+    //     String currentDirectory = System.getProperty("user.dir");
+    //     String CURRENT_UPLOAD_DIR = currentDirectory+"/front_matagri_projet_3/public/assets/images/materiels/"+folder; 
+    //     try {
+    //         // Créez le répertoire d'upload s'il n'existe pas4
+    //         // Path filePath =  Path.of(currentDirectory,CURRENT_UPLOAD_DIR, File_Folder);
+    //         Files.createDirectories(Path.of(CURRENT_UPLOAD_DIR));
+    //         // Générez un nom de fichier unique
+    //         String fileName = generateUniqueFileName(file.getOriginalFilename());
+    //         // Chemin complet du fichier sur le serveur
+    //         Path filePath =  Path.of(CURRENT_UPLOAD_DIR, fileName);            
+    //         // Enregistrez le fichier sur le serveur
+    //         Files.copy(file.getInputStream(), filePath);//, StandardCopyOption.REPLACE_EXISTING
+    //         return ResponseEntity.ok("Le fichier a été téléchargé avec succès.");
+    //     } catch (IOException e) {
+    //         // Gestion des erreurs
+    //         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+    //                              .body("Une erreur s'est produite lors de l'enregistrement du fichier sur le serveur.");
+    //     }
+    // }
+
+    private String generateUniqueFileName(String originalFileName) {
+        // Implémentez votre logique pour générer un nom de fichier unique
+        // Par exemple, vous pouvez ajouter un timestamp ou utiliser un UUID
+
+        return originalFileName ;
+    }
 
     // @PostMapping
     // public ResponseEntity<String> uploadFiles(@RequestPart("files") List<FileUpload> fileUploadRequests) {

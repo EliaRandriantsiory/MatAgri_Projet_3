@@ -60,7 +60,6 @@ public class HomeRestController {
         // ResponseEntity.ok("L'utilisateur est déconnecté test");
         System.out.println(authuser.getEmail()+authuser.getPassword());
          userRepository.findAll();
-        
         // return ['rakoto',"naivo"];
         return new Users();
     }
@@ -88,7 +87,6 @@ public class HomeRestController {
     
     @PostMapping("getCurrentUser")
     public Users getCurrentUsers(@RequestBody AuthUser currentAuthUser ) {
-
         return userService.findByEmail(currentAuthUser.getEmail());
     }
 
@@ -102,6 +100,5 @@ public class HomeRestController {
         userService.addUsers(user);
         return ResponseEntity.ok("L'utilisateur est ajouté !");
     }
-
 }
 

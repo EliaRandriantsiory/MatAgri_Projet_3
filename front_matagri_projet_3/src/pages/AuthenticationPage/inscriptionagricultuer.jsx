@@ -29,47 +29,48 @@ function InscriptionAgriculteur() {
 
   const handleOnChangeInputTextNom = (event) => {
     setName(event.target.value);
-    localStorage.setItem('nom',event.target.value)
   };
   const handleOnChangeInputTextLastName = (event) => {
     setLastName(event.target.value);
-    localStorage.setItem('prenom',event.target.value)
   };
   const handleOnChangeInputTextAddress = (event) => {
     setAddress(event.target.value);
-    localStorage.setItem('adresse',event.target.value)
   };
   const handleOnChangeInputTextPhone = (event) => {
-    setPhone(event.target.value);
-    localStorage.setItem('phone',event.target.value)
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    setPhone(numericValue);
   };
+  
   const handleOnChangeInputTextCin = (event) => {
     setCin(event.target.value);
-    localStorage.setItem('cin',event.target.value)
   };
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
-    localStorage.setItem('email',event.target.value)
   };
   const handleOnChangeInputTextRegion = (event) => {
     setRegion(event.target.value);
-    localStorage.setItem('region',event.target.value)
   };
   const handleOnChangeInputTextPassword = (event) => {
     setPassword(event.target.value);
-
   };
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
 
-
-  const handleOnclickSauvegarde =  async (event) => {
+  const handleOnclickSauvegarde = async (event) => {
     event.preventDefault();
+    
     if (!isChecked) {
       setErrorMessage("Veuillez accepter les termes et conditions de location");
       return;
     }
+
+    if (passwordForm !== confirmPasswordForm) {
+      setErrorPassword("Les mots de passe ne sont pas identiques");
+      return;
+    }
+
     try {
       const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
         address: addressForm,
@@ -85,27 +86,16 @@ function InscriptionAgriculteur() {
           idprofile: 1,
           profile: "agriculteur",
           roles: []
-      }
+        }
       });
       console.log(response.data);
       navigate("/PageAccueilAgriculteur");
+      localStorage.setItem('email', emailForm);
+      localStorage.setItem('password', passwordForm);
     } catch (error) {
-
       console.error("Erreur lors de l'inscription :", error);
     }
-    event.preventDefault();
-    console.log(EtatCGV)
-    navigate("/PageAccueilAgriculteur")
-
-    localStorage.setItem('email', emailForm);
-    localStorage.setItem('password', passwordForm);
-    
-    if(passwordForm!==confirmPasswordForm){
-      setErrorPassword("Les mots de passe ne sont pas identiques");
-    }else{
-    navigate("/PageAccueilAgriculteur")}
   };
-
  
   useEffect(() => {
     
@@ -121,17 +111,16 @@ function InscriptionAgriculteur() {
   useEffect(() => {console.log(inscriptionAgriculteurRedirect)}, [inscriptionAgriculteurRedirect]);
 
   return (
-    <>
       <section className="register-page section-b-space">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>VOUS ALLEZ VOUS INSCRIRE EN TANT QU'AGRICULTEUR</h3>
+              <h3 style={{color: '#004225'}}>INSCRIPTION AGRICULTEUR</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
                     <div className="col-md-6">
-                      <label htmlFor="email">Nom</label>
+                      <label htmlFor="nom" style={{fontSize:'14px'}}>Nom</label>
                       <input
                         type="text"
                         className="form-control"
@@ -142,7 +131,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="cin">CIN</label>
+                      <label htmlFor="cin" style={{fontSize:'14px'}}>CIN</label>
                       <input
                         type="text"
                         className="form-control"
@@ -154,11 +143,11 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Prénom</label>
+                      <label htmlFor="prenom" style={{fontSize:'14px'}}>Prénom</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="email"
+                        id="prenom"
                         placeholder="Votre prénom"
                         value={lastnameForm}
                         onChange={(event) =>
@@ -167,20 +156,21 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="telephone">Téléphone</label>
+                      <label htmlFor="telephone" style={{fontSize:'14px'}}>Téléphone</label>
                       <input
                         type="text"
                         className="form-control"
                         id="tel"
                         placeholder="Votre numéro de tétéphone"
                         value={phoneForm}
+                        inputMode="numeric"
                         onChange={(event) =>
                           handleOnChangeInputTextPhone(event)
                         }
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="adresse">Adresse</label>
+                      <label htmlFor="adresse" style={{fontSize:'14px'}}>Adresse</label>
                       <input
                         type="text"
                         className="form-control"
@@ -193,7 +183,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="review">Mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -206,9 +196,9 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">email</label>
+                      <label htmlFor="email" style={{fontSize:'14px'}}>email</label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
                         placeholder="Votre adresse email"
                         value={emailForm}
@@ -218,7 +208,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="review">Confirmer mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Confirmer mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -231,7 +221,7 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="mon-menu">région :</label>
+                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>région :</label>
                       <select
                         id="region"
                         onChange={handleOnChangeInputTextRegion}
@@ -247,7 +237,8 @@ function InscriptionAgriculteur() {
                         <option value="Vakinakaratra">Vakinakaratra</option>
                       </select>
                     </div>
-                    <div id="checkTermeCondition">
+                    <br></br>
+                    <div id="checkTermeCondition" className="mt-4">
                       <input
                         type="checkbox"
                         name="checkbox-button"
@@ -255,10 +246,12 @@ function InscriptionAgriculteur() {
                         id="checkPlus"
                         checked={isChecked}
                         onChange={handleOnChangecheckboxcgv}
+                        style={{ marginRight: '10px', fontSize: '14px' }}
+
                       ></input>
                       <a id="addCheckboxBtn" href="#">
-                      <Terme/>
-                      </a>
+                    <Terme onAccept={() => setIsChecked(true)}/>
+                    </a>
                     </div>
                   </div>
                     {/* --------- */}
@@ -270,6 +263,7 @@ function InscriptionAgriculteur() {
                     className="btn btn-solid w-auto"
                     type="submit"
                     value={"S'inscrire"}
+                    disabled={!isChecked}
                   />
                 </form>
               </div>
@@ -278,7 +272,6 @@ function InscriptionAgriculteur() {
           </div>
         </div>
       </section>
-    </>
   );
 }
 

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import HomeSlide from "../../components/homepagecomponents/homeSlideComponent"
-import CardProduct from "../../components/homepagecomponents/carteProduit"
+import CardProduct from "../assets/carteProduit"
+import ParallaxPub from "./parallaxPub";
 import axios from "axios";
-import ProductBox from "../../components/Produitcomponents/cartesProduitCompnent";
+
 
 function HomePage() {
     const [listMateriel, setListMateriel] = useState([]);
@@ -20,6 +21,7 @@ function HomePage() {
     return (
     <>
         <HomeSlide />
+
         <div className="title1 section-t-space">
         <h4> produits exclusifs</h4>
         <h2 className="title-inner1">Produits</h2>
@@ -29,11 +31,15 @@ function HomePage() {
         <div className="container">
           <div className="row search-product">
         {listMateriel.map((materialItem, index) => (
-            <ProductBox key={index} materielItem={materialItem} />
+            {/* <CartProduitModel key={index} materielItem={materialItem} /> */}
         ))}
         </div>
         </div></section>
         
+
+        <CardProduct />
+        <ParallaxPub/>
+
     </>
     );
 }

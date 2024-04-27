@@ -18,9 +18,9 @@ function Choiceusers() {
                     en vous mutualisant pour la location du matériel de votre
                     choix, profitez en !";
                   </p>
-                  <button className="btn btn-solid rounded-2">
-                    <Link to={"/InscriptionAgriculteur"}>s'inscrire</Link>
-                  </button>
+                  <Link className="btn btn-solid" to={"/InscriptionAgriculteur"}>
+                    s'inscrire
+                  </Link>
                 </div>
               </div>
             </div>
@@ -39,9 +39,9 @@ function Choiceusers() {
                     agricole en tant que coopérative ! Rejoignez notre
                     plateforme pour profiter de cette offre."
                   </p>
-                  <button className="btn btn-solid rounded-2">
-                    <Link to={"/SignUpCooperative"}>s'inscrire</Link>
-                  </button>
+                  <Link className="btn btn-solid" to={"/SignUpCooperative"}>
+                    s'inscrire
+                  </Link>
                 </div>
               </div>
             </div>
@@ -60,9 +60,9 @@ function Choiceusers() {
                     proposant votre matériel agricole à la location sur notre
                     plateforme dès aujourd'hui !"
                   </p>
-                  <button className="btn btn-solid rounded-2">
-                    <Link to={"/SignUpProvider"}>s'inscrire</Link>
-                  </button>
+                  <Link to={"/SignUpProvider"} className="btn btn-solid" id="four">
+                    s'inscrire
+                  </Link>
                 </div>
               </div>
             </div>
