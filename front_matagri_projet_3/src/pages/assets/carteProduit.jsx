@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
+
 function CardProduct() {
-  
   return (
     <>
       <div className="title1 section-t-space">
         <h4> produits exclusifs</h4>
         <h2 className="title-inner1">Produits</h2>
       </div>
-      
+
       <section className="section-b-space ratio_asos">
         <div className="container">
           <div className="row search-product">
@@ -43,10 +44,10 @@ function CardProduct() {
                       <i className="ti-heart" aria-hidden="true"></i>
                     </a>{" "}
                     <Link
-                        to="/description"
-                        data-bs-toggle="modal"
-                        data-bs-target="#quick-view"
-                        title="Quick View"
+                      to="/description"
+                      data-bs-toggle="modal"
+                      data-bs-target="#quick-view"
+                      title="Quick View"
                     >
                       <i className="ti-search" aria-hidden="true"></i>
                     </Link>{" "}
@@ -57,8 +58,10 @@ function CardProduct() {
                 </div>
                 <div className="product-detail">
                   <div className="rating">
-                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>{" "}
-                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
                     <i className="fa fa-star"></i>
                   </div>
                   <a href="product-page(no-sidebar).html">
@@ -183,8 +186,10 @@ function CardProduct() {
                 </div>
                 <div className="product-detail">
                   <div className="rating">
-                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>{" "}
-                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
                     <i className="fa fa-star"></i>
                   </div>
                   <a href="product-page(no-sidebar).html">
@@ -246,8 +251,10 @@ function CardProduct() {
                 </div>
                 <div className="product-detail">
                   <div className="rating">
-                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>{" "}
-                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
                     <i className="fa fa-star"></i>
                   </div>
                   <a href="product-page(no-sidebar).html">
@@ -309,8 +316,10 @@ function CardProduct() {
                 </div>
                 <div className="product-detail">
                   <div className="rating">
-                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>{" "}
-                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
                     <i className="fa fa-star"></i>
                   </div>
                   <a href="product-page(no-sidebar).html">
@@ -372,8 +381,10 @@ function CardProduct() {
                 </div>
                 <div className="product-detail">
                   <div className="rating">
-                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>{" "}
-                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
+                    <i className="fa fa-star"></i>{" "}
                     <i className="fa fa-star"></i>
                   </div>
                   <a href="product-page(no-sidebar).html">
