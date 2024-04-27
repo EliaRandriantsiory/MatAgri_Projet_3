@@ -1,16 +1,29 @@
-function CartProduitModel() {
+
+
+
+import { Link } from "react-router-dom";
+function ProductBox({ materielItem }) {
+
   return (
     <div className="col-xl-3 col-6 col-grid-box">
       <div className="product-box">
         <div className="img-wrapper">
           <div className="front">
             <a href="#">
-            <img className="blur-up lazyloaded" src={`${process.env.PUBLIC_URL}/assets/images/materiels/${images[0]}`} width={350}/>
+              <img
+                src="../assets/images/pro3/35.jpg"
+                className="img-fluid blur-up lazyload bg-img"
+                alt=""
+              />
             </a>
           </div>
           <div className="back">
             <a href="#">
-            <img className="blur-up lazyloaded" src={`${process.env.PUBLIC_URL}/assets/images/materiels/${images[0]}`} width={350}/>
+              <img
+                src="../assets/images/pro3/36.jpg"
+                className="img-fluid blur-up lazyload bg-img"
+                alt=""
+              />
             </a>
           </div>
           <div className="cart-info cart-wrap">
@@ -570,4 +583,4 @@ function CartProduitModel() {
   );
 }
 
-export default CartProduitModel;
+export default ProductBox;

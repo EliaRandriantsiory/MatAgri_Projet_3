@@ -12,4 +12,5 @@ import mg.inclusiv.cdan8.projet3.Entities.Users;
 @Repository
 public interface UserRepository extends JpaRepository<Users,Long> {
     Users findByEmail(String email);
+    
 }

@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long idUser; 
     private String name;
     private String lastname;
@@ -34,9 +33,9 @@ public class Users {
     private Integer nbFarme;
     private String companyName;
     private String password;
-
     @OneToMany(mappedBy = "id_user")
     private List<Materiels> materiels;
+
     @ManyToOne
     @JoinColumn(name = "id_profile")
     private Profiles profile;

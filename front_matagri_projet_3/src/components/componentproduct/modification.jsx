@@ -9,10 +9,7 @@ function Modification({ materielItem }) {
   const [categorieMateriel, setCategorieMateriel] = useState("");
   const [prixMateriel, setPrixMateriel] = useState();
   const [stockMateriel, setStockMateriel] = useState();
-  const [descriptionMateriel, setDescriptionMateriel] = useState("");  
-  // const [image, setStockMateriel] = useState();
-
-
+  const [descriptionMateriel, setDescriptionMateriel] = useState("");
 
   useEffect(() => {
     // INITIALISATION DATA MATERIEL
@@ -22,18 +19,12 @@ function Modification({ materielItem }) {
     setNomMateriel(materielItem.nomMat)
     setPrixMateriel(materielItem.prixMAt)
     setStockMateriel(materielItem.stockMat)
-    setImages(materielItem.imagePath)
-
-    console.log(images)
-
     
-
-
   }, []);
 
   const handleOnChangeNomMateriel = (e) => {
     setNomMateriel(e.target.value);
-    // console.log(e.target.value)
+    console.log(e.target.value)
   };
   const handleOnChangeCategorieMateriel = (e) => {
     setCategorieMateriel(e.target.value);
@@ -47,7 +38,7 @@ function Modification({ materielItem }) {
   const handleOnChangeDescriptionMateriel = (e) => {
     setDescriptionMateriel(e.target.value);
   };
-  // console.log(materielItem);
+  console.log(materielItem);
   useEffect(() => {});
 
   const handleOnclickSauvegardeModifier = (e) => {
@@ -61,13 +52,13 @@ function Modification({ materielItem }) {
         stockMat: stockMateriel,
         descriptionMat: descriptionMateriel,
         techniqueMat: null,
-        imagePath: images,
+        imagePath: null,
         imageDetailsPath: null,
         id_user: materielItem.id_user,
         prixMAt: prixMateriel,
       })
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.error(error);
