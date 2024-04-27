@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60b00809-8457-44f2-bc0c-b7742fbe5b29" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/SignUpCooperative.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/SignUpCooperative.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/inscriptionagricultuer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/AuthenticationPage/inscriptionagricultuer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homepage_Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_matagri_projet_3/src/pages/homepage_Layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +63,8 @@
       <updated>1713851047334</updated>
       <workItem from="1713851048478" duration="1388000" />
       <workItem from="1713856332165" duration="19468000" />
-      <workItem from="1714116216770" duration="1608000" />
+      <workItem from="1714116216770" duration="1617000" />
+      <workItem from="1714194625926" duration="3785000" />
     </task>
     <servers />
   </component>

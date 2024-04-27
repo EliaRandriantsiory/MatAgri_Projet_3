@@ -21,7 +21,7 @@ function ParallaxPub() {
                 <div className="row">  
                   <div className="col">
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 3 }}>
-                    <p className="text-success fs-1">" Augmentez vos récoltes,<br/><br/> mutualisez vos matériels agricoles ! "</p>
+                  <p className="text-success fs-1">"Augmentez vos récoltes,<br/><br/>mutualisez vos matériels agricoles!"</p>
                   </motion.div>
                   </div>
                   <div className="col">

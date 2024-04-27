@@ -92,12 +92,12 @@ function DashBordAgriculteur() {
                 <div className="tab-pane fade show active" id="info">
                   <div className="counter-section">
                     <div className="welcome-msg">
-                      <h4>Hello, MARK JECNO !</h4>
+                    <h4>Bonjour, MARK JECNO !</h4>
                       <p>
-                        From your My Account Dashboard you have the ability to
-                        view a snapshot of your recent account activity and
-                        update your account information. Select a link below to
-                        view or edit information.
+                        À partir de votre tableau de bord de compte, vous avez la possibilité de
+                        consulter un aperçu de votre activité récente sur le compte et de mettre à
+                        jour vos informations de compte. Sélectionnez un lien ci-dessous pour
+                        afficher ou modifier les informations.
                       </p>
                     </div>
                     <div className="row">

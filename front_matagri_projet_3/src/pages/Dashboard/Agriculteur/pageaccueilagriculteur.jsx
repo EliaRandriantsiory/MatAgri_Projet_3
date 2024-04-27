@@ -58,7 +58,7 @@ function PageAccueilAgriculteur() {
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
                         <Link to="/home" data-lng="en">
-                          Acceuil
+                          Accueil
                         </Link>
                       </li>
                       <li
@@ -66,7 +66,6 @@ function PageAccueilAgriculteur() {
                         aria-current="page"
                       >
                         <a href onClick={handleOnClickLogout}>Déconnexion</a>
-                        {/* <a href="#"></a> */}
                       </li>
                     </ol>
                   </nav>

@@ -7,45 +7,38 @@ function AboutPage() {
     return ( 
         <>
             {/* <!-- breadcrumb start --> */}
-    <div class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="page-title">
+    <div className="breadcrumb-section">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-6">
+                    <div className="page-title">
                         <h2>A propos</h2>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div className="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><Link to="/home">Accueil</Link></li>
-                            <li class="breadcrumb-item active" aria-current="page">A propos</li>
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><Link to="/home">Accueil</Link></li>
+                            <li className="breadcrumb-item active" aria-current="page">A propos</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
     </div>
-    <section class="about-page section-b-space">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="banner-section"><img src={Aprop}
-                            class="img-fluid blur-up lazyload" alt=""/></div>
+    <section className="about-page section-b-space">
+        <div className="container">
+            <div className="row">
+                <div className="col-lg-12">
+                    <div className="banner-section"><img src={Aprop}
+                            className="img-fluid blur-up lazyload" alt=""/></div>
                 </div>
-                <div class="col-sm-12">
+                <div className="col-sm-12">
                 <br/>
-                    <h2>Qui sommes-nous ?</h2><br/> 
+                    <h2>Qui sommes-nous ?</h2><br/>
                     <h3>Gagnez en productivité grâce à notre application de mutualisation des matériels agricoles.</h3><br/>
-                    <p className="fs-6" style={{textAlign: "justify" ,fontSize: 14 }}>Notre plateforme est bien plus qu'un simple site de location et de livraison de matériels agricoles.
-                    Nous sommes engagés dans la résolution des défis cruciaux de l'autosuffisance alimentaire en favorisant
-                    l'expansion des terres cultivées et en facilitant la logistique collaborative par la mutualisation des
-                    équipements agricoles.</p><br/>
-                    <p className="fs-6" style={{ textAlign: "justify",fontSize:14 }}>En connectant les entreprises de location de matériels agricoles aux agriculteurs et coopératives,
-                    notre objectif est d'optimiser l'utilisation des ressources et de favoriser une collaboration étroite.
-                    Grâce à notre application intuitive, les agriculteurs peuvent accéder rapidement et efficacement aux
-                    équipements dont ils ont besoin, augmentant ainsi leur productivité tout en maximisant la rentabilité
-                    de leurs investissements.</p>
+                    <p className="fs-6" style={{textAlign: "justify", fontSize: 14}}>Notre plateforme est bien plus qu'un simple site de location et de livraison de matériels agricoles. Nous sommes engagés dans la résolution des défis cruciaux de l'autosuffisance alimentaire en favorisant l'expansion des terres cultivées et en facilitant la logistique collaborative par la mutualisation des équipements agricoles.</p><br/>
+                    <p className="fs-6" style={{textAlign: "justify", fontSize: 14}}>En connectant les entreprises de location de matériels agricoles aux agriculteurs et coopératives, notre objectif est d'optimiser l'utilisation des ressources et de favoriser une collaboration étroite. Grâce à notre application intuitive, les agriculteurs peuvent accéder rapidement et efficacement aux équipements dont ils ont besoin, augmentant ainsi leur productivité tout en maximisant la rentabilité de leurs investissements.</p>
                 </div>
             </div>
         </div>
@@ -53,10 +46,10 @@ function AboutPage() {
     {/* <!-- about section end --> */}
 
     {/* <!-- service section start --> */}
-    <div class="container">
-        <section class="service section-b-space pt-0 ">
-            <div class="row partition4 ">
-                <div class="col-lg-3 col-md-6 service-block1">
+    <div className="container">
+        <section className="service section-b-space pt-0 ">
+            <div className="row partition4 ">
+                <div className="col-lg-3 col-md-6 service-block1">
                     <svg viewBox="-29 0 487 487.71902" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="m220.867188 266.175781c-.902344-.195312-1.828126-.230469-2.742188-.09375-9.160156-1.066406-16.070312-8.816406-16.085938-18.035156 0-4.417969-3.582031-8-8-8-4.417968 0-8 3.582031-8 8 .023438 15.394531 10.320313 28.878906 25.164063 32.953125v8c0 4.417969 3.582031 8 8 8s8-3.582031 8-8v-7.515625c17.132813-3.585937 28.777344-19.542969 26.976563-36.953125-1.804688-17.410156-16.472657-30.640625-33.976563-30.644531-10.03125 0-18.164063-8.132813-18.164063-18.164063s8.132813-18.164062 18.164063-18.164062 18.164063 8.132812 18.164063 18.164062c0 4.417969 3.582031 8 8 8 4.417968 0 8-3.582031 8-8-.023438-16.164062-11.347657-30.105468-27.164063-33.441406v-7.28125c0-4.417969-3.582031-8-8-8s-8 3.582031-8 8v7.769531c-16.507813 4.507813-27.132813 20.535157-24.859375 37.496094s16.746094 29.621094 33.859375 29.617187c9.898437 0 17.972656 7.925782 18.152344 17.820313.183593 9.894531-7.597657 18.113281-17.488281 18.472656zm0 0" />
@@ -73,8 +66,8 @@ function AboutPage() {
                     </svg>
                     <h4>paiement</h4>
                 </div>
-                <div class="col-lg-3 col-md-6 service-block1 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" enable-background="new 0 0 512 512">
+                <div className="col-lg-3 col-md-6 service-block1 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" enableBackground="new 0 0 512 512">
                         <g>
                             <g>
                                 <path
@@ -88,7 +81,7 @@ function AboutPage() {
                     </svg>
                     <h4>rendement</h4>
                 </div>
-                <div class="col-lg-3 col-md-6 service-block1 border border-0">
+                <div className="col-lg-3 col-md-6 service-block1 border border-0">
                     <svg viewBox="0 -31 480 479" xmlns="http://www.w3.org/2000/svg">
                         <path d="m152 352.5h16v16h-16zm0 0" />
                         <path d="m376 352.5h16v16h-16zm0 0" />
@@ -110,7 +103,7 @@ function AboutPage() {
                     </svg>
                     <h4>livraison</h4>
                 </div>
-                <div class="col-lg-3 col-md-6 service-block1 border border-0">
+                <div className="col-lg-3 col-md-6 service-block1 border border-0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <g>
                             <g>
@@ -195,40 +188,41 @@ function AboutPage() {
 
 
     {/* <!-- how to start section start --> */}
-    <section class="section-b-space become-vendor">
-        <div class="container">
+    <section className="section-b-space become-vendor">
+        <div className="container">
             <h4>Nos acteurs</h4>
-            <div class="step-bg">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="step-box">
+            <div className="step-bg">
+                <div className="row">
+                    <div className="col-lg-4">
+                        <div className="step-box">
                             <div>
-                                <div class="steps">1</div>
+                                <div className="steps" style={{color: '#004225'}}>1</div>
                                 <h4>Agriculteur</h4>
-                                <p className="fs-6" style={{textAlign: "justify" ,fontSize: 14 }}>Optimisez votre exploitation et bénéficiez d'une remise de 12%
-                                en vous mutualisant pour la location du matériel de votre choix,
-                                profitez-en !</p>
+                                <p className="fs-6" style={{textAlign: "justify", fontSize: 14}}>
+                                    Optimisez votre exploitation et bénéficiez d'une remise de 12 % en vous mutualisant pour la location du matériel de votre choix, profitez-en !
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="step-box">
+                    <div className="col-lg-4">
+                        <div className="step-box">
                             <div>
-                                <div class="steps">2</div>
+                                <div className="steps" style={{color: '#ffb000'}}>2</div>
                                 <h4>Coopérative</h4>
-                                <p className="fs-6" style={{textAlign: "justify" ,fontSize: 14 }}>Économisez jusqu'à 12% pour la location d'un matériel agricole
-                                en tant que coopérative ! Rejoignez notre plateforme pour profiter
-                                de cette offre !</p>
+                                <p className="fs-6" style={{textAlign: "justify", fontSize: 14}}>
+                                    Économisez jusqu'à 12 % pour la location d'un matériel agricole en tant que coopérative ! Rejoignez notre plateforme pour profiter de cette offre.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="step-box">
+                    <div className="col-lg-4">
+                        <div className="step-box">
                             <div>
-                                <div class="steps">3</div>
+                                <div className="steps" style={{color: '#862b0d'}}>3</div>
                                 <h4>Fournisseur</h4>
-                                <p className="fs-6" style={{textAlign: "justify" ,fontSize: 14 }}>Élargissez votre clientèle et maximisez vos revenus en proposant
-                                votre matériel agricole à la location sur notre plateforme dès aujourd'hui !</p>
+                                <p className="fs-6" style={{textAlign: "justify", fontSize: 14}}>
+                                    Élargissez votre clientèle et maximisez vos revenus en proposant votre matériel agricole à la location sur notre plateforme dès aujourd'hui !
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -239,43 +233,43 @@ function AboutPage() {
     {/* <!-- how to start section end --> */}
 
     {/* <!--Team start--> */}
-    <section id="team" class="team section-b-space slick-default-margin ratio_asos">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
+    <section id="team" className="team section-b-space slick-default-margin ratio_asos">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-12">
                     <h2>notre equipe</h2>
-                    <div class="team-4">
+                    <div className="team-4">
                         <div>
                             <div>
-                                <img src={narindra} class="img-fluid blur-up lazyload bg-img" alt=""/>
+                                <img src={narindra} className="img-fluid blur-up lazyload bg-img" alt=""/>
                             </div>
                             <h3>RAKOTOARIVELO</h3>
                             <h3>Narindra</h3>
                         </div>
                         <div>
                             <div>
-                                <img src={nasandratra} class="img-fluid blur-up lazyload bg-img" alt=""/>
+                                <img src={nasandratra} className="img-fluid blur-up lazyload bg-img" alt=""/>
                             </div>
                             <h3>RAKOTOARISOA</h3>
                             <h3>Nasandratriniaina</h3>
                         </div>
                         <div>
                             <div>
-                                <img src="../assets/images/team/3.jpg" class="img-fluid blur-up lazyload bg-img" alt=""/>
+                                <img src="../assets/images/team/3.jpg" className="img-fluid blur-up lazyload bg-img" alt=""/>
                             </div>
                             <h4>Hileri Keol</h4>
                             <h6>CEo & Founder At Company</h6>
                         </div>
                         <div>
                             <div>
-                                <img src="../assets/images/team/4.jpg" class="img-fluid blur-up lazyload bg-img" alt=""/>
+                                <img src="../assets/images/team/4.jpg" className="img-fluid blur-up lazyload bg-img" alt=""/>
                             </div>
                             <h4>Hileri Keol</h4>
                             <h6>CEo & Founder At Company</h6>
                         </div>
                         <div>
                             <div>
-                                <img src="../assets/images/team/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""/>
+                                <img src="../assets/images/team/1.jpg" className="img-fluid blur-up lazyload bg-img" alt=""/>
                             </div>
                             <h4>Hileri Keol</h4>
                             <h6>CEo & Founder At Company</h6>
@@ -289,24 +283,24 @@ function AboutPage() {
 
 
     {/* <!-- service section --> */}
-    <div class="container about-cls section-b-space">
-        <section class="service border-section small-section">
-            <div class="row">
-                <div class="col-md-4 service-block">
-                    <div class="media">
+    <div className="container about-cls section-b-space">
+        <section className="service border-section small-section">
+            <div className="row">
+                <div className="col-md-4 service-block">
+                    <div className="media">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -117 679.99892 679">
                             <path
                                 d="m12.347656 378.382812h37.390625c4.371094 37.714844 36.316407 66.164063 74.277344 66.164063 37.96875 0 69.90625-28.449219 74.28125-66.164063h241.789063c4.382812 37.714844 36.316406 66.164063 74.277343 66.164063 37.96875 0 69.902344-28.449219 74.285157-66.164063h78.890624c6.882813 0 12.460938-5.578124 12.460938-12.460937v-352.957031c0-6.882813-5.578125-12.464844-12.460938-12.464844h-432.476562c-6.875 0-12.457031 5.582031-12.457031 12.464844v69.914062h-105.570313c-4.074218.011719-7.890625 2.007813-10.21875 5.363282l-68.171875 97.582031-26.667969 37.390625-9.722656 13.835937c-1.457031 2.082031-2.2421872 4.558594-2.24999975 7.101563v121.398437c-.09765625 3.34375 1.15624975 6.589844 3.47656275 9.003907 2.320312 2.417968 5.519531 3.796874 8.867187 3.828124zm111.417969 37.386719c-27.527344 0-49.851563-22.320312-49.851563-49.847656 0-27.535156 22.324219-49.855469 49.851563-49.855469 27.535156 0 49.855469 22.320313 49.855469 49.855469 0 27.632813-22.21875 50.132813-49.855469 50.472656zm390.347656 0c-27.53125 0-49.855469-22.320312-49.855469-49.847656 0-27.535156 22.324219-49.855469 49.855469-49.855469 27.539063 0 49.855469 22.320313 49.855469 49.855469.003906 27.632813-22.21875 50.132813-49.855469 50.472656zm140.710938-390.34375v223.34375h-338.375c-6.882813 0-12.464844 5.578125-12.464844 12.460938 0 6.882812 5.582031 12.464843 12.464844 12.464843h338.375v79.761719h-66.421875c-4.382813-37.710937-36.320313-66.15625-74.289063-66.15625-37.960937 0-69.898437 28.445313-74.277343 66.15625h-192.308594v-271.324219h89.980468c6.882813 0 12.464844-5.582031 12.464844-12.464843 0-6.882813-5.582031-12.464844-12.464844-12.464844h-89.980468v-31.777344zm-531.304688 82.382813h99.703125v245.648437h-24.925781c-4.375-37.710937-36.3125-66.15625-74.28125-66.15625-37.960937 0-69.90625 28.445313-74.277344 66.15625h-24.929687v-105.316406l3.738281-5.359375h152.054687c6.882813 0 12.460938-5.574219 12.460938-12.457031v-92.226563c0-6.882812-5.578125-12.464844-12.460938-12.464844h-69.796874zm-30.160156 43h74.777344v67.296875h-122.265625zm0 0"
                                 fill="#ff4c3b" />
                         </svg>
-                        <div class="media-body">
+                        <div className="media-body">
                             <h4>free shipping</h4>
                             <p>free shipping world wide</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 service-block">
-                    <div class="media">
+                <div className="col-md-4 service-block">
+                    <div className="media">
                         {/* <svg xmlns="http://www.w3.org/2000/svg"  version="1.1"
                             id="Capa_1" x="0px" y="0px" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480;" xml:space="preserve" width="512px" height="512px">
                             <g>
@@ -328,14 +322,14 @@ function AboutPage() {
                                 </g>
                             </g>
                         </svg> */}
-                        <div class="media-body">
-                            <h4>24 X 24 service</h4>
+                        <div className="media-body">
+                            <h4>24 X 7 service</h4>
                             <p>online service for new customer</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 service-block">
-                    <div class="media">
+                <div className="col-md-4 service-block">
+                    <div className="media">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -14 512.00001 512">
                             <path
                                 d="m136.964844 308.234375c4.78125-2.757813 6.417968-8.878906 3.660156-13.660156-2.761719-4.777344-8.878906-6.417969-13.660156-3.660157-4.78125 2.761719-6.421875 8.882813-3.660156 13.660157 2.757812 4.78125 8.878906 6.421875 13.660156 3.660156zm0 0"
@@ -356,7 +350,7 @@ function AboutPage() {
                                 d="m394.199219 7.414062-10.363281 38.640626c-1.429688 5.335937 1.734374 10.816406 7.070312 12.25 5.332031 1.425781 10.816406-1.730469 12.25-7.070313l10.359375-38.640625c1.429687-5.335938-1.734375-10.820312-7.070313-12.25-5.332031-1.429688-10.816406 1.734375-12.246093 7.070312zm0 0"
                                 fill="#ff4c3b" />
                         </svg>
-                        <div class="media-body">
+                        <div className="media-body">
                             <h4>festival offer</h4>
                             <p>new online special festival offer</p>
                         </div>
