@@ -20,7 +20,7 @@ import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
 import TermeF from "./pages/AuthenticationPage/TermeF";
 import Terme from "./pages/AuthenticationPage/Terme";
-import Materiels from "./pages/homePage/materiels";
+import CartProduitModel from "./components/Produitcomponents/cartesProduitCompnent";
 
 function App() {
   return (
@@ -43,6 +43,7 @@ function App() {
             element=<InscriptionAgriculteur />
           />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
+          <Route path="/materiel" element=<CartProduitModel/>/>
 
         </Route>
 
@@ -60,19 +61,14 @@ function App() {
         <Route>
           <Route path="/TermeF" element=<TermeF /> />
         </Route>
-
-
-        <Route path="/terme" element=<Terme /> />
-        <Route path="/materiels" element=<Materiels /> />
-      </Routes>
-      <></>
-
+        
         <Route path="/carouselImage" element=<homePage /> />
         <Route  path="/dashboard_fournisseur"
           element=<PageAccueilAgriculteur /> >
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         </Route>
             <Route path="/terme" element=<Terme /> />
+        </Routes>
         
     </BrowserRouter>
   );

@@ -413,7 +413,7 @@ function HomePage_Layout() {
 
                         {/* traitement debut */}
                         <li className="onhover-div">
-                          <a href="materiel">Matériels</a>
+                          <a href="/materiel">Matériels</a>
                         
                           {/* <Link to={"/Material"}>Matériels</Link> */}
 

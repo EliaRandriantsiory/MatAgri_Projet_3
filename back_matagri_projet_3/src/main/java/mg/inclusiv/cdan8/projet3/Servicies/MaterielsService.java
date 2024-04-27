@@ -18,6 +18,11 @@ public class MaterielsService {
     public List<Materiels> getAllMat() {
         return materielsRepository.findAll();
     }
+
+    public List<Materiels> getAllMatByMail(Long idUtilisateur){
+        return materielsRepository.findAllTachesByUtilisateurId(idUtilisateur);
+    }
+
     public Materiels addMateriel(Materiels materiel) {
         return materielsRepository.save(materiel);
     }

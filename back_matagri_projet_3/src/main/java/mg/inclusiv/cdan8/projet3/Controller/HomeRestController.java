@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpSession;
 import mg.inclusiv.cdan8.projet3.Entities.AuthUser;
 import mg.inclusiv.cdan8.projet3.Entities.Materiels;
 import mg.inclusiv.cdan8.projet3.Entities.Users;
-import mg.inclusiv.cdan8.projet3.Repositories.MaterielsRepository;
 import mg.inclusiv.cdan8.projet3.Repositories.UserRepository;
 import mg.inclusiv.cdan8.projet3.Servicies.MaterielsService;
 import mg.inclusiv.cdan8.projet3.Servicies.UserService;

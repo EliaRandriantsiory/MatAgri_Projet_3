@@ -47,7 +47,7 @@ public class Users {
     
     private String password;
     
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "id_user")
     private List<Materiels> materiels;
 
     @ManyToOne
