@@ -18,12 +18,18 @@ function DashBordAgriculteur() {
         .then((response) => {
           localStorage.setItem("email", JSON.stringify(response.data.email));
           setCurrentProfilUser(response.data.user);
+          
         })
         .catch((error) => {
           console.error(error);
         });
     }
   }, [email, password]);
+
+
+useEffect(() => {
+
+},[])
 
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
@@ -49,7 +55,7 @@ function DashBordAgriculteur() {
                     />
                   </div>
                   <div className="profile-detail">
-                    <h5>Mark Jecno</h5>
+                    <h5>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h5>
                     <h6>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h6>
                   </div>
                 </div>

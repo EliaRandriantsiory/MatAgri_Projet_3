@@ -24,6 +24,10 @@ function PageAccueilAgriculteur() {
     }
   }, [email, password]);
 
+  useEffect(() => {
+    console.log(currentProfilUser)
+  },[])
+
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
