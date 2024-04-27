@@ -96,8 +96,7 @@ function AddProduit() {
           <form
             className="needs-validation add-product-form"
             noValidate
-            onSubmit={handleSubmit}
-          >
+            onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="image" className="form-label">
                 Image:
@@ -130,7 +129,7 @@ function AddProduit() {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="nomMateriel">Nom du matériel:</label>
+              <label htmlFor="nomMateriel">Nom du matÃ©riel:</label>
               <input
                 type="text"
                 className="form-control"
@@ -138,8 +137,8 @@ function AddProduit() {
                 value={nomMateriel}
                 onChange={(e) => setNomMateriel(e.target.value)}
               />
-            </div>
-          </div>
+            </div> 
+          </form>
           {/* Container-fluid Ends*/}
           {/* Container-fluid starts*/}
           <div className="container-fluid">
@@ -245,10 +244,10 @@ function AddProduit() {
             </div>
           </div>
           {/* Container-fluid Ends*/}
-        </div>
-        
-      </div>
-    
+        </Modal.Body>
+        </Modal>
+    </>
     )
+   
 }
-export default AddProduct;
+export default AddProduit;
