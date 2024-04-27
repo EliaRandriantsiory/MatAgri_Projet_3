@@ -106,7 +106,7 @@ function SignUpCooperative() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>VOUS ALLEZ VOUS INSCRIRE EN TANT QUE COOPERATIVE</h3>
+              <h3 style={{color: '#ffb000'}}>INSCRIPTION COOPERATIVE</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
@@ -122,7 +122,7 @@ function SignUpCooperative() {
                         onChange={handleOnChangeInputTextRaison}/>
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="nif">NIF</label>
+                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
                       <input
                         type="text"
                         className="form-control"
@@ -134,7 +134,7 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="siege">Siège social</label>
+                      <label htmlFor="siege" style={{fontSize:'14px'}}>Siège social</label>
                       <input
                         type="text"
                         className="form-control"
@@ -146,7 +146,7 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="telephone">Téléphone</label>
+                      <label htmlFor="telephone" style={{fontSize:'14px'}}>Téléphone</label>
                       <input
                         type="text"
                         className="form-control"
@@ -160,7 +160,7 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor="email" style={{fontSize:'14px'}}>Email</label>
                       <input
                         type="email"
                         className="form-control"
@@ -174,7 +174,7 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6"style={{ marginBottom: '20px' }}>
-                      <label htmlFor="mon-menu">région :</label>
+                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>région :</label>
                       <select id="region" className="form-control" value={regionForm} onChange={handleOnChangeInputTextRegion}>
                       <option value="">--------------------</option>
                         <option value="Alaotra Mangoro">Alaotra Mangoro</option>
@@ -186,7 +186,7 @@ function SignUpCooperative() {
                       </select>
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="nb">Nombre Agriculteur</label>
+                      <label htmlFor="nb" style={{fontSize:'14px'}}>Nombre Agriculteur</label>
                       <input
                         type="number"
                         className="form-control"
@@ -202,7 +202,7 @@ function SignUpCooperative() {
                     
 
                     <div className="col-md-6">
-                      <label htmlFor="review">Mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -216,7 +216,7 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="review">Confirmer mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Confirmer mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -231,7 +231,7 @@ function SignUpCooperative() {
                     </div>
                   </div>
                   
-                  <div id="checkTermeCondition" className="mt-4">
+                  <div id="checkTermeCondition" >
                     <input
                       type="checkbox"
                       name="checkbox-button"
@@ -240,9 +240,12 @@ function SignUpCooperative() {
                       className="mr-2"
                       checked={isChecked}
                     onChange={handleOnChangecheckboxcgv}
+                    style={{ marginRight: '10px' }}
                     />
                     {/* ito le terme */}
-                    <Terme/>
+                    <a id="addCheckboxBtn" href="#">
+                    <Terme onAccept={() => setIsChecked(true)}/>
+                    </a>
                     {/* --------- */}
                     {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
                     {errorPassword && (

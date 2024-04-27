@@ -114,12 +114,12 @@ function SignUpProvider() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>VOUS ALLEZ VOUS INSCRIRE EN TANT QUE FOURNISSEUR</h3>
+              <h3 style={{color:'#862b0d'}}>INSCRIPTION FOURNISSEUR</h3>
               <div className="theme-card">
                 <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
                   <div className="form-row row">
                     <div className="col-md-6">
-                      <label htmlFor="email">Raison sociale</label>
+                      <label htmlFor="email" style={{fontSize:'14px'}}>Raison sociale</label>
                       <input
                         type="text"
                         className="form-control"
@@ -131,7 +131,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="nif">NIF</label>
+                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
                       <input
                         type="text"
                         className="form-control"
@@ -143,7 +143,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="siege">Siège social</label>
+                      <label htmlFor="siege" style={{fontSize:'14px'}}>Siège social</label>
                       <input
                         type="text"
                         className="form-control"
@@ -155,7 +155,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="telephone">Téléphone</label>
+                      <label htmlFor="telephone" style={{fontSize:'14px'}}>Téléphone</label>
                       <input
                         type="text"
                         className="form-control"
@@ -167,7 +167,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor="email" style={{fontSize:'14px'}}>Email</label>
                       <input
                         type="email"
                         className="form-control"
@@ -179,7 +179,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="review">Mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -191,7 +191,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="review">Confirmer mot de passe</label>
+                      <label htmlFor="review" style={{fontSize:'14px'}}>Confirmer mot de passe</label>
                       <input
                         type="password"
                         className="form-control"
@@ -203,7 +203,7 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="mon-menu">Région :</label>
+                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>Région :</label>
                       <select id="region" value={regionForm} className="form-control" onChange={handleOnChangeInputTextRegion}>
                         <option value="">-------------</option>
                         <option value="Alaotra Mangoro">Alaotra Mangoro</option>
@@ -223,9 +223,10 @@ function SignUpProvider() {
                       id="checkPlus"
                       checked={isChecked}
                       onChange={handleOnChangecheckboxcgv}
+                      style={{marginRight: '10px'}}
                     ></input>
                     <a id="addCheckboxBtn" href="#">
-                    <TermeF/>
+                    <TermeF onAccept={() => setIsChecked(true)}/>
                     </a>
                   </div>
                     {/* --------- */}

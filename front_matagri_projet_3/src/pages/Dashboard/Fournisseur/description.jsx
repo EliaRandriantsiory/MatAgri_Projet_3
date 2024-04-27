@@ -1,13 +1,27 @@
+import React, { useState } from 'react';
+import { Modal } from 'react-bootstrap';
+
 function Description() {
-    return (
-      <>
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  return (
+    <>
+      <Modal show={showModal} onHide={handleCloseModal} backdrop="static">
+      <Modal.Header closeButton>
+          <Modal.Title>Titre du Modal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
         <div className="modal-content quick-view-modal">
           <div className="modal-body">
             <button
               type="button"
               className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
+              onClick={handleCloseModal}
+              aria-hidden="true"
             >
               <span aria-hidden="true">×</span>
             </button>
@@ -23,7 +37,7 @@ function Description() {
               </div>
               <div className="col-lg-6 rtl-text">
                 <div className="product-right">
-                  <h2>Women Pink Shirt</h2>
+                  <h2>Tracteur</h2>
                   <h3>$32.96</h3>
                   <div className="border-product">
                     <h6 className="product-title">product details</h6>
@@ -33,7 +47,6 @@ function Description() {
                     </p>
                   </div>
                   <div className="product-description border-product">
-                  
                     <h6 className="product-title">quantity</h6>
                     <div className="qty-box">
                       <div className="input-group">
@@ -45,7 +58,7 @@ function Description() {
                             data-field
                           >
                             <i className="ti-angle-left" />
-                          </button>{" "}
+                          </button>
                         </span>
                         <input
                           type="text"
@@ -79,9 +92,13 @@ function Description() {
             </div>
           </div>
         </div>
-      </>
-    );
-  }
-  
-  export default Description;
-  
+          <button className="btn btn-secondary" onClick={handleCloseModal}>
+            Fermer
+          </button>
+        </Modal.Body>
+      </Modal>
+    </>
+  );
+}
+
+export default Description;
