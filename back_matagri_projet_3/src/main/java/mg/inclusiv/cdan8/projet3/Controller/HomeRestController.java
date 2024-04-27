@@ -49,7 +49,7 @@ public class HomeRestController {
     @GetMapping("listPersonnes")
     public List<Users> listUser() {
         List<Users> listUtilisateur = userService.getAllPers();
-        System.out.println(listUtilisateur);
+        //System.out.println(listUtilisateur);
         return listUtilisateur;
     }
 

@@ -20,11 +20,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Profiles {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idprofile;    
     private String profile;
     @OneToMany(mappedBy = "profile")
     private List<Roles> roles;
+    
 }
 

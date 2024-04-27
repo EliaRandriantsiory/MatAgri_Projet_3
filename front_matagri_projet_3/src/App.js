@@ -19,6 +19,7 @@ import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
+import Panier from "./pages/Panier/Panier";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
+          <Route path="/Panier" element=<Panier /> />
           <Route
             path="/InscriptionAgriculteur"
             element=<InscriptionAgriculteur />
@@ -58,11 +60,9 @@ function App() {
             element=<DashBordAgriculteur />
           />
         </Route>
-        <Route  path="/dashboard_fournisseur"
-          element=<PageAccueilAgriculteur /> >
+        <Route path="/dashboard_fournisseur" element=<PageAccueilAgriculteur />>
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         </Route>
-
       </Routes>
       <></>
     </BrowserRouter>

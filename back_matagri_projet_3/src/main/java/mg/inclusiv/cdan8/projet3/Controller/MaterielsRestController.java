@@ -1,13 +1,18 @@
 package mg.inclusiv.cdan8.projet3.Controller;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
+import mg.inclusiv.cdan8.projet3.Entities.Reservation;
 import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,6 +56,13 @@ public class MaterielsRestController {
         return new ResponseEntity<>(nouveauMateriel, HttpStatus.CREATED);
     }
 
+    @GetMapping("/listDispo/{idMateriel}")
+    public List<Reservation> etatDispo(@PathVariable Long idMateriel) {
+        
+        return materielsService.Materielreserver(idMateriel);
+    }
+}
+
     // @PostMapping
     // public ResponseEntity<String> uploadFiles(@RequestPart("files") List<FileUpload> fileUploadRequests) {
     //     for (FileUpload fileUploadRequest : fileUploadRequests) {
@@ -65,4 +77,4 @@ public class MaterielsRestController {
 
     
     
-}
+

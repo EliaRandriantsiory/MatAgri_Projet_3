@@ -678,7 +678,7 @@ function HomePage_Layout() {
                             </li>
                             <li>
                               <div className="buttons">
-                                <a href="cart.html" className="view-cart">
+                                <a href="Panier" className="view-cart">
                                   view cart
                                 </a>
                                 <a href="#" className="checkout">
@@ -991,7 +991,7 @@ function HomePage_Layout() {
       <div className="theme-settings">
         <ul>
           <li>
-            <div className="dark-btn">Sombre</div>
+            <div className="dark-btn">Dark</div>
           </li>
 
           <li className="input-picker">

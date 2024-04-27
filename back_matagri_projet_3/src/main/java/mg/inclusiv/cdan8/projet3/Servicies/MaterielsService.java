@@ -2,18 +2,22 @@ package mg.inclusiv.cdan8.projet3.Servicies;
 
 import java.util.List;
 
+import mg.inclusiv.cdan8.projet3.Entities.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import mg.inclusiv.cdan8.projet3.Entities.Materiels;
 import mg.inclusiv.cdan8.projet3.Repositories.MaterielsRepository;
+import mg.inclusiv.cdan8.projet3.Repositories.ReservationRepository;
 
 @Service
 @Transactional
 public class MaterielsService {
     @Autowired
     MaterielsRepository materielsRepository;
+    @Autowired
+    ReservationRepository reservationRepository;
 
 
     public List<Materiels> getAllMatByMail(Long idUtilisateur){
@@ -28,5 +32,9 @@ public class MaterielsService {
         return materielsRepository.save(materiel);
     }
    
-    
+    public List<Reservation> Materielreserver(Long idMateriel){
+        Materiels materiels = materielsRepository.findById(idMateriel).orElse(null);
+        //return reservationRepository.findAllByMateriel(materiels);
+        return reservationRepository.findAll();
+    }
 }
