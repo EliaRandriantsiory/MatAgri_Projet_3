@@ -1,17 +1,20 @@
-import React from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
+import React, { Button } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
 
-function TermeF() {
+function TermeF({ onAccept }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleAccept = () => {
+    onAccept(); // Appeler la fonction de mise à jour de l'état du checkbox
+    handleClose(); // Fermer le modal
+  };
   return (
     <>
-      <a variant="Link" onClick={handleShow}>
-        <b>Terme et condition de location</b>
+      <a variant="Link" onClick={handleShow} style={{color: 'black', fontSize:'14px'}}>
+        Terme et condition de location
       </a>
 
       <Modal show={show} onHide={handleClose}>
@@ -27,8 +30,8 @@ function TermeF() {
             </center>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <b>
+        <Modal.Body style={{textAlign:'justify' ,fontSize:'14px'}}><br/>
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>
             La prestation « Location de matériels » est fournie par LOCAMAT,
             ci-après le loueur. Les conditions de location font partie
             intégrante du contrat de location. Par sa signature, le
@@ -36,8 +39,10 @@ function TermeF() {
             accepté les conditions de location.
           </b>
           <br />
-          <b>1. Prise en charge de l’équipement</b>
+          <br/>
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>1. Prise en charge de l’équipement</b>
           <br />
+          
           Le preneur prend en charge le matériel en bon état de fonctionnement.
           Pour l'utilisation du matériel, le loueur s'engage à expliquer son
           fonctionnement pour que le preneur puisse l'utiliser en bonne et due
@@ -46,7 +51,8 @@ function TermeF() {
           responsable d'une défaillance ultérieure, qu'elle soit matérielle ou
           physique.
           <br />
-          <b>2. Restitution de l’équipement</b>
+          <br/>
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>2. Restitution de l’équipement</b>
           <br />
           Le preneur est tenu de restituer l’équipement au loueur au terme de la
           durée de location définie dans le contrat de location, et ce, pendant
@@ -57,29 +63,34 @@ function TermeF() {
           tenu d'en avertir le loueur, ceux-ci lui sont facturés. Les dommages
           matériels sont facturés aux tarifs publiés en magasin.
           <br />
-          <b>3. Prolongation de la durée de location</b>
+          <br />
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>3. Prolongation de la durée de location</b>
           <br />
           Une prolongation du contrat de location est uniquement possible avec
           l’assentiment du loueur avant la fin du contrat de location en cours.
           Le loueur peut refuser cette prolongation.
+          <br />
           <br />
           <b>4. Annulation de réservation</b>
           <br />
           Toute réservation se verra annulée deux heures après l'heure prévue de
           location si le preneur ne prévient pas de son retard.
           <br />
-          <b>5. Âge minimal du preneur</b>
+          <br />
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>5. Âge minimal du preneur</b>
           <br />
           Le preneur doit être majeur le jour de la prise de possession du
           matériel.
           <br />
-          <b>6. Prestations et prix</b>
+          <br />
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>6. Prestations et prix</b>
           <br />
           Les tarifs en vigueur valables sont ceux publiés chez le loueur, sur
           sa plateforme de réservation et dans ses prospectus de l'année en
           cours.
           <br />
-          <b>7. Assurance</b>
+          <br />
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>7. Assurance</b>
           <br />
           L’assurance est à la charge du preneur. Par sa signature du contrat de
           location, le preneur confirme avoir couvert de façon adéquate les
@@ -88,13 +99,15 @@ function TermeF() {
           présent contrat. Il appartient donc au preneur de se prémunir des
           risques en cas de dommage causé au matériel.
           <br />
-          <b>8. Casques</b>
+          <br />
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>8. Casques</b>
           <br />
           Un casque homologué est mis à disposition gratuitement à partir du
           3ème jour de location. En cas de chute, il est impératif au preneur de
           le signaler au loueur.
           <br />
-          <b>9. Responsabilité du preneur</b>
+          <br />
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>9. Responsabilité du preneur</b>
           <br />
           Le preneur s'engage à utiliser le matériel loué avec prudence, sans
           danger pour les tiers et conformément au code de la route et aux
@@ -110,12 +123,14 @@ function TermeF() {
           est responsable de la valeur de remplacement du matériel, celle-ci
           facturée conformément aux tarifs en vigueur et affichés en magasin.
           <br />
-          <b>10. Caution</b>
+          <br />
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>10. Caution</b>
           <br />
           Le loueur demande une empreinte de carte bancaire comme caution contre
           la perte, le vol ou l’endommagement du matériel.
           <br />
-          <b>11. Droit applicable</b>
+          <br />
+          <b style={{textAlign:'justify' ,fontSize:'14px'}}>11. Droit applicable</b>
           <br />
           Le contrat et les conditions générales de location sont exclusivement
           régis par le droit malgache. Préalablement à toute action en justice,
@@ -123,6 +138,12 @@ function TermeF() {
           s'engagent à régler le différend qui les opposerait à l'amiable, par
           le biais, notamment, d'une procédure de conciliation.
         </Modal.Body>
+        
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleAccept}  style={{ color: "black" }} className="btn-hover">
+            Accepter
+          </Button>
+        </Modal.Footer>
       </Modal>
     </>
   );

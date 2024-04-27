@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import moon from "../pages/assets/moon_89402.png";
 import "./assets/css/homePage/homePage.css";
 function HomePage_Layout() {
+
   return (
     <>
       <header className="header-2">
@@ -51,9 +52,9 @@ function HomePage_Layout() {
                         <li>
                           <Link to={"/Material"}>Matériels</Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <a href="#">Partenaires</a>
-                        </li>
+                        </li> */}
                         <li>
                           <Link to={"/contact"}>Contacts</Link>
                         </li>
@@ -72,23 +73,27 @@ function HomePage_Layout() {
                             />{" "}
                           </a>
                         </li>
-                        <li className="onhover-dropdown mobile-account">
+                        <li className="onhover-div mobile-account">
+                          <a href>
                           <img
                             src="../assets/images/jewellery/icon/avatar.png"
                             className="opacity-1"
                             alt=""
                           />
-                          <ul className="onhover-show-div">
+                          </a>
+                          <div className="show-div">
+                          <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>
                             <li>
-                              <Link to="/Login">Se connecter</Link>
+                              <Link to="/Login" style={{color : 'black', fontSize:'18px', textAlign:'center'}}>Se connecter</Link>
                             </li>
-
+                            <br/>
                             <li>
-                              <Link to="/choiceusers" data-lng="en">
-                                s'inscrire
+                              <Link to="/choiceusers" style={{color : 'black', fontSize:'18px'}} data-lng="en">
+                                S' inscrire
                               </Link>
                             </li>
                           </ul>
+                          </div>
                         </li>
                         <li className="onhover-div mobile-search">
                           <Link to={"/search"}>
@@ -143,7 +148,8 @@ function HomePage_Layout() {
                             />
                             <i className="ti-shopping-cart" />
                           </div>
-                          <ul className="show-div shopping-cart">
+                              {/* Drop eo @ panier                           */}
+                          {/* <ul className="show-div shopping-cart">
                             <li>
                               <div className="media">
                                 <a href="#">
@@ -215,7 +221,7 @@ function HomePage_Layout() {
                                 </a>
                               </div>
                             </li>
-                          </ul>
+                          </ul> */}
                         </li>
                       </ul>
                     </div>
@@ -239,7 +245,7 @@ function HomePage_Layout() {
                   <div className="footer-logo">
                     <img src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
-                  <p style={{ textAlign: "center" }}>
+                  <p style={{textAlign:'center' ,fontSize:'14px'}}>
                   Application de location, livraison et mutualisation de
                     matériels agricoles.
                   </p>
@@ -247,27 +253,22 @@ function HomePage_Layout() {
                     <ul>
                       <li>
                         <a href="#">
-                          <i className="fa fa-facebook-f" />
+                        <i className="fa-brands fa-facebook fa-lg" style={{color:'black'}}/>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="fa fa-google-plus" />
+                        <i className="fa-brands fa-google fa-lg" style={{color:'black'}}/>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="fa fa-twitter" />
+                          <i className="fa-brands fa-twitter fa-lg" style={{color:'black'}} />
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="fa fa-instagram" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-rss" aria-hidden="true" />
+                          <i className="fa-brands fa-instagram fa-lg" style={{color:'black'}} />
                         </a>
                       </li>
                     </ul>
@@ -282,19 +283,19 @@ function HomePage_Layout() {
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">Louer du matériel agricole</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Louer du matériel agricole</a>
                       </li>
                       <li>
-                        <a href="#">Mutualisation</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Mutualisation</a>
                       </li>
                       <li>
-                        <a href="#">Consulter les demandes de matériels</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Consulter les demandes de matériels</a>
                       </li>
                       <li>
-                        <a href="#">Nous contacter</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Nous contacter</a>
                       </li>
                       <li>
-                        <a href="#">xxxxx</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>xxxxx</a>
                       </li>
                     </ul>
                   </div>
@@ -308,19 +309,19 @@ function HomePage_Layout() {
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">x1</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>x1</a>
                       </li>
                       <li>
-                        <a href="#">x2</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>x2</a>
                       </li>
                       <li>
-                        <a href="#">x3</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>x3</a>
                       </li>
                       <li>
-                        <a href="#">x4</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>x4</a>
                       </li>
                       <li>
-                        <a href="#">contacts</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>contacts</a>
                       </li>
                     </ul>
                   </div>
@@ -334,15 +335,15 @@ function HomePage_Layout() {
                   <div className="footer-contant">
                     <ul className="contact-list">
                       <li>
-                        <i className="fa fa-map-marker" />
+                        <i className="fa fa-map-marker" style={{textAlign:'justify' ,fontSize:'14px'}}/>
                         MatAgri, Faravohitra, 101 Antananarivo
                       </li>
                       <li>
-                        <i className="fa fa-phone" />
+                        <i className="fa fa-phone" style={{textAlign:'justify' ,fontSize:'14px'}}/>
                         +261 20 34 20 125 43
                       </li>
                       <li>
-                        <i className="fa fa-envelope" />
+                        <i className="fa fa-envelope" style={{textAlign:'justify' ,fontSize:'14px'}}/>
                         Email : <a href="#">matagri@gmail.com</a>
                       </li>
                     </ul>
@@ -405,346 +406,7 @@ function HomePage_Layout() {
         </div>
       </footer>
 
-      <div
-        className="modal fade bd-example-modal-lg theme-modal"
-        id="quick-view"
-        tabIndex={-1}
-        role="dialog"
-        aria-hidden="true"
-      >
-        <div
-          className="modal-dialog modal-lg modal-dialog-centered"
-          role="document"
-        >
-          <div className="modal-content quick-view-modal">
-            <div className="modal-body">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">×</span>
-              </button>
-              <div className="row">
-                <div className="col-lg-6 col-xs-12">
-                  <div className="quick-view-img">
-                    <img
-                      src="../assets/images/pro3/1.jpg"
-                      alt=""
-                      className="img-fluid blur-up lazyload"
-                    />
-                  </div>
-                </div>
-                <div className="col-lg-6 rtl-text">
-                  <div className="product-right">
-                    <h2>Women Pink Shirt</h2>
-                    <h3>$32.96</h3>
-                    <ul className="color-variant">
-                      <li className="bg-light0" />
-                      <li className="bg-light1" />
-                      <li className="bg-light2" />
-                    </ul>
-                    <div className="border-product">
-                      <h6 className="product-title">product details</h6>
-                      <p>
-                        Sed ut perspiciatis, unde omnis iste natus error sit
-                        voluptatem accusantium doloremque laudantium
-                      </p>
-                    </div>
-                    <div className="product-description border-product">
-                      <div className="size-box">
-                        <ul>
-                          <li className="active">
-                            <a href="javascript:void(0)">s</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">m</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">l</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">xl</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <h6 className="product-title">quantity</h6>
-                      <div className="qty-box">
-                        <div className="input-group">
-                          <span className="input-group-prepend">
-                            <button
-                              type="button"
-                              className="btn quantity-left-minus"
-                              data-type="minus"
-                              data-field
-                            >
-                              <i className="ti-angle-left" />
-                            </button>{" "}
-                          </span>
-                          <input
-                            type="text"
-                            name="quantity"
-                            className="form-control input-number"
-                            defaultValue={1}
-                          />{" "}
-                          <span className="input-group-prepend">
-                            <button
-                              type="button"
-                              className="btn quantity-right-plus"
-                              data-type="plus"
-                              data-field
-                            >
-                              <i className="ti-angle-right" />
-                            </button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="product-buttons">
-                      <a href="#" className="btn btn-solid">
-                        add to cart
-                      </a>{" "}
-                      <a href="#" className="btn btn-solid">
-                        view detail
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="theme-settings">
-        <ul>
-          <li>
-            <div className="dark-btn"><img src={moon} alt="" style={{width:25}}/></div>
-          </li>
-        </ul>
-      </div>
-      <div className="scroll-setting-box">
-        <div id="setting_box" className="setting-box">
-          <a
-            href="javascript:void(0)"
-            className="overlay"
-            onclick="closeSetting()"
-          />
-          <div className="setting_box_body">
-            <div onclick="closeSetting()">
-              <div className="sidebar-back text-start">
-                <i className="fa fa-angle-left pe-2" aria-hidden="true" /> Back
-              </div>
-            </div>
-            <div className="setting-body">
-              <div className="setting-title">
-                <div>
-                  <img
-                    src="../assets/images/icon/logo.png"
-                    className="img-fluid"
-                    alt=""
-                  />
-                  <h3>
-                    50+ <span>demos</span> <br /> suit for any type of online
-                    store.
-                  </h3>
-                </div>
-              </div>
-              <div className="setting-contant">
-                <div className="row demo-section">
-                  <div className="col-md-4 col-6 text-center demo-effects">
-                    <div className="set-position">
-                      <a
-                        href="instagram-shop.html"
-                        className="layout-container"
-                      >
-                        <img
-                          src="../assets/images/landing-page/demo/instagram.jpg"
-                          className="img-fluid bg-img bg-top"
-                          alt=""
-                        />
-                      </a>
-                      <a href="instagram-shop.html" className="demo-text">
-                        <h4>instagram</h4>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="modal fade bd-example-modal-lg theme-modal cart-modal"
-        id="addtocart"
-        tabIndex={-1}
-        role="dialog"
-        aria-hidden="true"
-      >
-        <div
-          className="modal-dialog modal-lg modal-dialog-centered"
-          role="document"
-        >
-          <div className="modal-content">
-            <div className="modal-body modal1">
-              <div className="container-fluid p-0">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="modal-bg addtocart">
-                      <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">×</span>
-                      </button>
-                      <div className="media">
-                        <a href="#">
-                          <img
-                            className="img-fluid blur-up lazyload pro-img"
-                            src="../assets/images/fashion/product/43.jpg"
-                            alt=""
-                          />
-                        </a>
-                        <div className="media-body align-self-center text-center">
-                          <a href="#">
-                            <h6>
-                              <i className="fa fa-check" />
-                              Item
-                              <span>men full sleeves</span>
-                              <span> successfully added to your Cart</span>
-                            </h6>
-                          </a>
-                          <div className="buttons">
-                            <a href="#" className="view-cart btn btn-solid">
-                              Your cart
-                            </a>
-                            <a href="#" className="checkout btn btn-solid">
-                              Check out
-                            </a>
-                            <a href="#" className="continue btn btn-solid">
-                              Continue shopping
-                            </a>
-                          </div>
-                          <div className="upsell_payment">
-                            <img
-                              src="../assets/images/payment_cart.png"
-                              className="img-fluid blur-up lazyload"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="product-section">
-                        <div className="col-12 product-upsell text-center">
-                          <h4>Customers who bought this item also.</h4>
-                        </div>
-                        <div className="row" id="upsell_product">
-                          <div className="product-box col-sm-3 col-6">
-                            <div className="img-wrapper">
-                              <div className="front">
-                                <a href="#">
-                                  <img
-                                    src="../assets/images/fashion/product/1.jpg"
-                                    className="img-fluid blur-up lazyload mb-1"
-                                    alt="cotton top"
-                                  />
-                                </a>
-                              </div>
-                              <div className="product-detail">
-                                <h6>
-                                  <a href="#">
-                                    <span>cotton top</span>
-                                  </a>
-                                </h6>
-                                <h4>
-                                  <span>$25</span>
-                                </h4>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="product-box col-sm-3 col-6">
-                            <div className="img-wrapper">
-                              <div className="front">
-                                <a href="#">
-                                  <img
-                                    src="../assets/images/fashion/product/34.jpg"
-                                    className="img-fluid blur-up lazyload mb-1"
-                                    alt="cotton top"
-                                  />
-                                </a>
-                              </div>
-                              <div className="product-detail">
-                                <h6>
-                                  <a href="#">
-                                    <span>cotton top</span>
-                                  </a>
-                                </h6>
-                                <h4>
-                                  <span>$25</span>
-                                </h4>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="product-box col-sm-3 col-6">
-                            <div className="img-wrapper">
-                              <div className="front">
-                                <a href="#">
-                                  <img
-                                    src="../assets/images/fashion/product/13.jpg"
-                                    className="img-fluid blur-up lazyload mb-1"
-                                    alt="cotton top"
-                                  />
-                                </a>
-                              </div>
-                              <div className="product-detail">
-                                <h6>
-                                  <a href="#">
-                                    <span>cotton top</span>
-                                  </a>
-                                </h6>
-                                <h4>
-                                  <span>$25</span>
-                                </h4>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="product-box col-sm-3 col-6">
-                            <div className="img-wrapper">
-                              <div className="front">
-                                <a href="#">
-                                  <img
-                                    src="../assets/images/fashion/product/19.jpg"
-                                    className="img-fluid blur-up lazyload mb-1"
-                                    alt="cotton top"
-                                  />
-                                </a>
-                              </div>
-                              <div className="product-detail">
-                                <h6>
-                                  <a href="#">
-                                    <span>cotton top</span>
-                                  </a>
-                                </h6>
-                                <h4>
-                                  <span>$25</span>
-                                </h4>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      
       <div className="tap-top">
         <div>
           <i className="fa fa-angle-double-up" />
