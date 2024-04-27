@@ -24,7 +24,7 @@ function Modification({ materielItem }) {
     setStockMateriel(materielItem.stockMat)
     setImages(materielItem.imagePath)
 
-    // console.log(images)
+    console.log(images)
 
     
 

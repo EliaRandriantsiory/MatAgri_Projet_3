@@ -1,24 +1,40 @@
 function CartProduitModel() {
   return (
-    <div>
-        <div>
-        <div className="breadcrumb-section">
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-6">
-                <div className="page-title">
-                  <h2>Matériels</h2>
-                </div>
-              </div>
-              <div className="col-sm-6">
-                <nav aria-label="breadcrumb" className="theme-breadcrumb">
-                  <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html">home</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">Matériels</li>
-                  </ol>
-                </nav>
-              </div>
-            </div>
+    <div className="col-xl-3 col-6 col-grid-box">
+      <div className="product-box">
+        <div className="img-wrapper">
+          <div className="front">
+            <a href="#">
+            <img className="blur-up lazyloaded" src={`${process.env.PUBLIC_URL}/assets/images/materiels/${images[0]}`} width={350}/>
+            </a>
+          </div>
+          <div className="back">
+            <a href="#">
+            <img className="blur-up lazyloaded" src={`${process.env.PUBLIC_URL}/assets/images/materiels/${images[0]}`} width={350}/>
+            </a>
+          </div>
+          <div className="cart-info cart-wrap">
+            <button
+              data-bs-toggle="modal"
+              data-bs-target="#addtocart"
+              title="Add to cart"
+            >
+              <i className="ti-shopping-cart"></i>
+            </button>
+            <a href="javascript:void(0)" title="Add to Wishlist">
+              <i className="ti-heart" aria-hidden="true"></i>
+            </a>
+            <a
+              href="#"
+              data-bs-toggle="modal"
+              data-bs-target="#quick-view"
+              title="Quick View"
+            >
+              <i className="ti-search" aria-hidden="true"></i>
+            </a>
+            <a href="compare.html" title="Compare">
+              <i className="ti-reload" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
         {/* breadcrumb end */}
