@@ -51,7 +51,8 @@ function AddProduit() {
       formData.append("prix", prix);
       formData.append("stock", stock);
       formData.append("description", description);
-      images.forEach((file) => { // Correction ici
+      images.forEach((file) => {
+        // Correction ici
         formData.append("images", file);
       });
 
@@ -249,4 +250,4 @@ function AddProduit() {
     </>
     )
 }
-export default AddProduit;
+export default AddProduct;
