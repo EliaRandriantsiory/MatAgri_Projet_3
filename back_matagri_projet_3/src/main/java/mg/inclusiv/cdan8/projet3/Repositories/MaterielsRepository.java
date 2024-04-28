@@ -10,7 +10,7 @@ import mg.inclusiv.cdan8.projet3.Entities.Materiels;
 public interface MaterielsRepository extends JpaRepository<Materiels, Long>  {
     @Query("SELECT m FROM Materiels m WHERE m.id_user = :idUtilisateur")
     List<Materiels> findAllTachesByUtilisateurId(@Param("idUtilisateur") Long idUtilisateur);
-
+    
     
 }
 

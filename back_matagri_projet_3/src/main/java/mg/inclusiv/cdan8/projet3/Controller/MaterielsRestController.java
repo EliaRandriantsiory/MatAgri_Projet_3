@@ -1,7 +1,5 @@
 package mg.inclusiv.cdan8.projet3.Controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,6 @@ import mg.inclusiv.cdan8.projet3.Entities.Materiels;
 import mg.inclusiv.cdan8.projet3.Entities.Users;
 import mg.inclusiv.cdan8.projet3.Servicies.MaterielsService;
 
-
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/materiels")
@@ -26,7 +23,6 @@ public class MaterielsRestController {
 
     @Autowired
     private MaterielsService materielsService;
-
 
     @GetMapping("/listMateriel")
     public List<Materiels> listMat() {
@@ -49,25 +45,25 @@ public class MaterielsRestController {
     }
 
     @GetMapping("filter")
-    public List<Materiels> getAllmat(){
+    public List<Materiels> getAllmat() {
 
         return materielsService.getAllMat();
     }
 
-
     // @PostMapping
-    // public ResponseEntity<String> uploadFiles(@RequestPart("files") List<FileUpload> fileUploadRequests) {
-    //     for (FileUpload fileUploadRequest : fileUploadRequests) {
-    //         MultipartFile file = fileUploadRequest.getFileSizeMax();fileUploadRequest
-    //         // Effectuez les opérations nécessaires avec le fichier (par exemple, enregistrez-le dans un répertoire spécifique)
-    //         // Utilisez les autres propriétés de l'entité FileUploadRequest selon vos besoins
-    //     }
-
-    //     // Répondez avec une réponse appropriée
-    //     return new ResponseEntity<>("Fichiers téléchargés avec succès", HttpStatus.OK);
+    // public ResponseEntity<String> uploadFiles(@RequestPart("files")
+    // List<FileUpload> fileUploadRequests) {
+    // for (FileUpload fileUploadRequest : fileUploadRequests) {
+    // MultipartFile file = fileUploadRequest.getFileSizeMax();fileUploadRequest
+    // // Effectuez les opérations nécessaires avec le fichier (par exemple,
+    // enregistrez-le dans un répertoire spécifique)
+    // // Utilisez les autres propriétés de l'entité FileUploadRequest selon vos
+    // besoins
     // }
 
+    // // Répondez avec une réponse appropriée
+    // return new ResponseEntity<>("Fichiers téléchargés avec succès",
+    // HttpStatus.OK);
+    // }
 
-    
-    
 }

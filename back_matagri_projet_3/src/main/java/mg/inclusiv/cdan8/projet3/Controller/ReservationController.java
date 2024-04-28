@@ -18,8 +18,7 @@ import mg.inclusiv.cdan8.projet3.Servicies.ReservationService;
 
 @RestController
 @RequestMapping("/api/reservations")
-public class
-ReservationController {
+public class ReservationController {
 
     @Autowired
     ReservationRepository reservationRepository;
@@ -28,46 +27,48 @@ ReservationController {
     ReservationService reservationService;
 
     @GetMapping("listreservation")
-    public List<Reservation> ListReservation() {   
+    public List<Reservation> ListReservation() {
         return reservationService.getReservations();
     }
-    //api/reservations/reservationmateriel
-    //@RequestBody Reservation reservation
+
+    // api/reservations/reservationmateriel
+    // @RequestBody Reservation reservation
     @PostMapping("reservationmateriel")
     public ResponseEntity<String> reserve(@RequestBody Reservation reservation) {
         boolean statusReservation = false;
         List<List<LocalDate>> creneaux = new ArrayList<>();
         List<Reservation> current_reservations = reservationService.getReservations();
         for (Reservation current_reservation : current_reservations) {
-            //if (current_reservation.getStartDate().equals(reservation.getStartDate()) && current_reservation.getEndDate().equals(reservation.getEndDate())) {
-            //    return ResponseEntity.ok("Réservation impossible !");
-            //}
-            creneaux.add(reservationService.getDateRange(current_reservation.getStartDate(), current_reservation.getEndDate()));
-            System.out.println(current_reservation.getStartDate()+" "+current_reservation.getEndDate());
+            // if (current_reservation.getStartDate().equals(reservation.getStartDate()) &&
+            // current_reservation.getEndDate().equals(reservation.getEndDate())) {
+            // return ResponseEntity.ok("Réservation impossible !");
+            // }
+            creneaux.add(reservationService.getDateRange(current_reservation.getStartDate(),
+                    current_reservation.getEndDate()));
+            System.out.println(current_reservation.getStartDate() + " " + current_reservation.getEndDate());
             System.out.println(current_reservation.getStartDate());
             System.out.println(current_reservation.getEndDate());
         }
 
         for (List<LocalDate> creneau : creneaux) {
-            //System.out.println(creneau);
+            // System.out.println(creneau);
 
             // String joinedDates = String.join(", ", creneau.toString());
             // System.out.println(joinedDates);
             if (creneau.contains(reservation.getStartDate()) || creneau.contains(reservation.getEndDate())) {
                 System.out.println("reservation imposible");
-                statusReservation=true;
-                
+                statusReservation = true;
+
+            } else {
+
             }
-            else{
-                
-            }
-            
+
         }
-        
-        if (statusReservation==true) {
+
+        if (statusReservation == true) {
             return ResponseEntity.ok("Réservation impossible !");
         }
-        
+
         return ResponseEntity.ok("Réservation réussi !");
     }
 
@@ -76,5 +77,5 @@ ReservationController {
         System.out.println(reservation);
         return reservationService.addReservation(reservation);
     }
-    
+
 }
