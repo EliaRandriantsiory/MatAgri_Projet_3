@@ -55,7 +55,7 @@ function HomePage_Layout() {
                           <a href="#">Partenaires</a>
                         </li> */}
                         <li>
-                          <Link to={"/contact"}>Contacts</Link>
+                          <Link to={"/contact"}>Contact</Link>
                         </li>
                       </ul>
                     </nav>
