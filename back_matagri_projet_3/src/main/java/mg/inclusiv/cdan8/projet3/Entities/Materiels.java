@@ -30,10 +30,6 @@ public class Materiels {
     private String techniqueMat;
     @Column(nullable = false) 
     private String imagePath;
-
-    // @ManyToOne
-    // @JoinColumn(name = "id_user")
-    // private Users user;
-    private Integer id_user;
+    private Long id_user;
     
 }

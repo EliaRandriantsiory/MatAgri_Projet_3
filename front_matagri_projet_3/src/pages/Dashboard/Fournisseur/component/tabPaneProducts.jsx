@@ -2,32 +2,10 @@ import { useEffect, useState } from "react";
 import TableRow from "../../../../components/componentproduct/tableRowMat";
 import axios from "axios";
 
-function TabPaneProducts() {
-  const [listMateriel, setListMateriel] = useState([]);
-  const [currentUSer, setCurrentUser ] = useState({});
-  // console.log(currentUSer)
-  useEffect(() => {
-    // INITIALISATION DATA MATERIEL
-    // axios
-    //   .get(
-    //     "http://localhost:8082/api/materiels/listMaterielUser?idUser=" +
-    //       currentUSer.idUser
-    //   )
-    //   .then((response) => {
-    //     setListMateriel(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-
-      // INITIALISATION CURRENTUSER
-    setCurrentUser(JSON.parse(localStorage.getItem("currentUser")))
-
-  }, []);
-
-  
+function TabPaneProducts({ currentUserSession }) {
+  const [imagesList, setImagesList] = useState([]);
   const [images, setImages] = useState([]);
-
+  const [listImagesFile, setListImageFile] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [nomMateriel, setNomMateriel] = useState("");
   const [categorieMateriel, setCategorieMateriel] = useState("");
@@ -35,9 +13,86 @@ function TabPaneProducts() {
   const [stockMateriel, setStockMateriel] = useState();
   const [descriptionMateriel, setDescriptionMateriel] = useState("");
 
+
+  const [listMateriel, setListMateriel] = useState([]);
+  const [listMateriels, setListMateriels] = useState([]);
+  const [currentUSer, setCurrentUser] = useState({});
+
+  const initAuthentification = () =>{
+
+      // initialisation donnée current user
+      axios
+        .post("http://localhost:8082/api/home/authentification", {
+          email: localStorage.getItem("email"),
+          password: localStorage.getItem("pwd"),
+        })
+        .then((response) => {
+          localStorage.setItem("currentUser", JSON.stringify(response.data));
+          // setCurrentUser(response.data)
+          // setListMateriel(Array.from(response.data.materiels))
+
+          
+          // console.log(response.data)
+        }); 
+        initListMat()
+  }
+  const initListMat = () => {
+    axios
+        .get(
+          'http://localhost:8082/api/materiels/listMaterielByUser?param=2'
+          // "http://localhost:8082/api/materiels/listMateriel"
+        )
+        .then((response) => {
+          // setListMateriel(response.data);
+          var dataList = response.data
+          setListMateriels(dataList)
+          listMateriels.push(dataList)
+          console.log(listMateriels[0])
+          
+          // setListMateriel(response.data)
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    
+  };
+  
+  useEffect(()=>{
+    initAuthentification()    
+    console.log(listMateriels)
+  },[])
+
+  // const maPromesse = new Promise((resolve, reject) => {
+  //   initAuthentification()
+  //   resolve(
+  //     console.log(currentUSer)
+  //   );
+    
+  // })
+  
+  // useEffect(() => {
+
+  //   // console.log(currentUSer.idUser)
+  //   // INITIER LA LISTE DES MATERIELS
+  //   axios
+  //     .get(
+  //       'http://localhost:8082/api/materiels/listMaterielByUser?param=2'
+  //       // "http://localhost:8082/api/materiels/listMateriel"
+  //     )
+  //     .then((response) => {
+  //       setListMateriel(response.data);
+  //       console.log(listMateriel)
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
+
+  
+
   const handleOnChangeNomMateriel = (e) => {
     setNomMateriel(e.target.value);
-    console.log(e.target.value)
+    console.log(e.target.value);
   };
   const handleOnChangeCategorieMateriel = (e) => {
     setCategorieMateriel(e.target.value);
@@ -51,38 +106,65 @@ function TabPaneProducts() {
   const handleOnChangeDescriptionMateriel = (e) => {
     setDescriptionMateriel(e.target.value);
   };
-  
+
+  const handleUpload = (file) => {
+    // const file = fileInputRef.current.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+
+    // console.log(formData)
+    // console.log("bonjour")
+    axios
+      .post("http://localhost:8082/api/materiels/file/upload", formData)
+      .then((response) => {
+        // Gérer la réponse du serveur après le téléchargement
+      })
+      .catch((error) => {
+        // Gérer les erreurs
+      });
+  };
+
   const handleOnclickSauvegardeAjout = (e) => {
     e.preventDefault();
 
-    console.log("Ajout matériel")
-    console.log(currentUSer.idUser)
-
-    // axios
-    //   .post("http://localhost:8082/api/materiels/ajouter", {
-    //       categorieMat: categorieMateriel,
-    //       nomMat: nomMateriel,
-    //       stockMat: stockMateriel,
-    //       descriptionMat: descriptionMateriel,
-    //       techniqueMat: null,
-    //       imagePath: null,
-    //       imageDetailsPath: null,
-    //       // id_user: materielItem.id_user,
-    //       prixMAt: prixMateriel,
-    //   })
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-
-
+    // console.log("bonjour")
+    // console.log(listImagesFile)
+    listImagesFile.forEach((imagesFile) => {
+      Array.from(imagesFile).forEach((imageFile) => {
+        handleUpload(imageFile);
+        // console.log("bonjour"+imageFile.name)
+        // console.log(imageFile)
+        imagesList.push(imageFile.name);
+        // console.log(imageFile.name)
+      });
+    });
+    console.log(imagesList);
+    setImagesList([]);
+    // console.log("bonjour")
+    console.log(JSON.stringify(imagesList));
+    axios
+      .post("http://localhost:8082/api/materiels/ajouter", {
+        categorieMat: categorieMateriel,
+        nomMat: nomMateriel,
+        stockMat: stockMateriel,
+        descriptionMat: descriptionMateriel,
+        techniqueMat: null,
+        imagePath: JSON.stringify(imagesList),
+        id_user: localStorage.getItem("crntUser"),
+        prixMAt: prixMateriel,
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-
+    // console.log(files)
+    listImagesFile.push(files);
     files.forEach((file) => {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -143,9 +225,12 @@ function TabPaneProducts() {
                     </tr>
                   </thead>
                   <tbody>
-                    {listMateriel.map((materiel) => (
-                      <TableRow materielItem={{ ...materiel }} />
-                    ))}
+                    {
+                      
+                      listMateriels.map((materiel)=>(
+                        <TableRow materielItem={materiel} />
+                      ))
+                    }
                   </tbody>
                 </table>
               </div>
@@ -176,11 +261,7 @@ function TabPaneProducts() {
               />
             </div>
             <div className="modal-body">
-              <form
-                id="modificationForm"
-                className="row g-3"
-                
-              >
+              <form id="modificationForm" className="row g-3">
                 <div className="col-md-6">
                   <label htmlFor="image" className="form-label">
                     Image:
@@ -251,7 +332,6 @@ function TabPaneProducts() {
                     name="nom"
                     required
                     className="form-control"
-                    
                     value={nomMateriel}
                     onChange={handleOnChangeNomMateriel}
                   />
@@ -267,9 +347,9 @@ function TabPaneProducts() {
                     onChange={handleOnChangeCategorieMateriel}
                   >
                     <option selected>Choix de catégorie</option>
-                    <option value="1">Motoculteur</option>
-                    <option value="2">Tracteur</option>
-                    <option value="3">Camion</option>
+                    <option value="Motoculteur">Motoculteur</option>
+                    <option value="Tracteur">Tracteur</option>
+                    <option value="Camion">Camion</option>
                   </select>
                 </div>
                 <div className="col-md-6">
@@ -317,7 +397,6 @@ function TabPaneProducts() {
                     onChange={handleOnChangeDescriptionMateriel}
                   />
                 </div>
-                
               </form>
             </div>
             <div className="modal-footer">

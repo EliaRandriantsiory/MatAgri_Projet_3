@@ -11,7 +11,7 @@ function AddProduct() {
                 <div className="col-lg-6">
                   <div className="page-header-left">
                     <h3>Ajout produit
-                      <small>Multikart Admin panel</small>
+                      {/* <small>Multikart Admin panel</small> */}
                     </h3>
                   </div>
                 </div>

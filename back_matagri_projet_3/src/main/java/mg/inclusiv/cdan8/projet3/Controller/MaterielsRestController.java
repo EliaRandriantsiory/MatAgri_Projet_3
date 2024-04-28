@@ -1,9 +1,15 @@
 package mg.inclusiv.cdan8.projet3.Controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.data.jpa.domain.JpaSort.Path;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,12 +45,35 @@ public class MaterielsRestController {
         return listMateriels;
     }
 
-    @PostMapping("/listMaterielByUser")
-    public List<Materiels> listMatByUser(@RequestBody Users currentUser) {
-        List<Materiels> listUtilisateur = materielsService.getAllMatByMail(currentUser.getIdUser());
-        System.out.println(listUtilisateur);
+    @GetMapping("/listMaterielfilterBynameMat")
+    public List<Materiels> filtrlistMat(@RequestParam("paramFiltr") String paramFiltr) {
+        System.out.println(paramFiltr);
+        List<Materiels> listMatfilter = materielsService.getAllMatByfiltrNom(paramFiltr);
+
+        // System.out.println(materielsService.getAllMatByIdUser(param));
+        // List<> newList = new List<Materiels>;
+        return listMatfilter;
+    }
+
+    @GetMapping("/listMaterielByUser")
+    public List<Materiels> listMatByUser(@RequestParam("param") Long param) {
+        List<Materiels> listUtilisateur = materielsService.getAllMatByIdUser(param);
+
+        // System.out.println(materielsService.getAllMatByIdUser(param));
+        // List<> newList = new List<Materiels>;
         return listUtilisateur;
     }
+
+    @PostMapping("/listMaterielByUser")
+    public List<Materiels> postlistMatByUser(@RequestBody Users user) {
+
+        List<Materiels> listUtilisateur = materielsService.getAllMatByIdUser(user.getIdUser());
+
+        // System.out.println(materielsService.getAllMatByIdUser(param));
+        // List<> newList = new List<Materiels>;
+        return listUtilisateur;
+    }
+
 
     @PostMapping("/ajouter")
     public ResponseEntity<Materiels> ajouterMateriel(@RequestBody Materiels materiel) {
@@ -54,7 +84,7 @@ public class MaterielsRestController {
     // @PostMapping
     // public ResponseEntity<String> uploadFiles(@RequestPart("files") List<FileUpload> fileUploadRequests) {
     //     for (FileUpload fileUploadRequest : fileUploadRequests) {
-    //         MultipartFile file = fileUploadRequest.getFileSizeMax();fileUploadRequest
+    //         // MultipartFile file = fileUploadRequest.getFileSizeMax();
     //         // Effectuez les opérations nécessaires avec le fichier (par exemple, enregistrez-le dans un répertoire spécifique)
     //         // Utilisez les autres propriétés de l'entité FileUploadRequest selon vos besoins
     //     }
@@ -63,6 +93,31 @@ public class MaterielsRestController {
     //     return new ResponseEntity<>("Fichiers téléchargés avec succès", HttpStatus.OK);
     // }
 
-    
+    // C:\Users\inclu\Documents\Nouveau dossier\MatAgri_Projet_3\front_matagri_projet_3\public\assets\images\materiels
+    @PostMapping("/file/upload")
+    public ResponseEntity<String> handleFileUpload(@RequestPart("file") MultipartFile file) {
+        try {
+            String currentDirectory = System.getProperty("user.dir");
+            String UPLOAD_DIR = "/front_matagri_projet_3/public/assets/images/materiels";
+            String fileName = file.getOriginalFilename();
+            Path filePath = Path.of(currentDirectory,UPLOAD_DIR, fileName);
+            System.out.println(filePath);
+            Files.copy(file.getInputStream(),filePath,StandardCopyOption.REPLACE_EXISTING);
+            
+            return ResponseEntity.ok("Le fichier a été téléchargé avec succès.");        
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return ResponseEntity.ok("Le fichier n'a pas été téléchargé.");
+        }
+        
+
+        
+    }
+
+    private String generateUniqueFileName(String originalFileName) {
+        // Implémentez votre logique pour générer un nom de fichier unique
+        // Par exemple, vous pouvez ajouter un timestamp ou utiliser un UUID
+        return "uniqueFileName";
+    }
     
 }

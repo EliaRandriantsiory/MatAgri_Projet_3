@@ -30,7 +30,7 @@ function Navigation() {
 
   }, []);
   useEffect(() => {
-    console.log(currentProfilUser)
+    // console.log(currentProfilUser)
   },[currentProfilUser])
   if(!currentProfilUser){
     navigate("/home");
@@ -102,8 +102,8 @@ function Navigation() {
         </div>
         <div className="col-lg-9">
           <div className="faq-content tab-content" id="top-tabContent">
-            <div className="tab-pane fade  show active" id="products">
-            <TabPaneProducts  />
+            <div className="tab-pane fade   active" id="products">
+            <TabPaneProducts currentUserSession={currentProfilUser} />
             </div>
             <div className="tab-pane fade" id="orders">
               <TabPaneOrders />

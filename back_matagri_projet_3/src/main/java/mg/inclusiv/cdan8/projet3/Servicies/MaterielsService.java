@@ -15,9 +15,16 @@ public class MaterielsService {
     @Autowired
     MaterielsRepository materielsRepository;
 
+    // public List<Materiels> getAllMatByMail(Long idUtilisateur){
+        // return materielsRepository.findAllTachesByUtilisateurId(idUtilisateur);
+    // }
 
-    public List<Materiels> getAllMatByMail(Long idUtilisateur){
-        return materielsRepository.findAllTachesByUtilisateurId(idUtilisateur);
+    public List<Materiels> getAllMatByfiltrNom(String nameMat){
+        return materielsRepository.findByNomMat(nameMat);
+    }
+
+    public List<Materiels> getAllMatByIdUser(Long idUtilisateur){
+        return materielsRepository.findAllTachesByUtilisateurId(2);
     }
     
     public List<Materiels> getAllMat(){

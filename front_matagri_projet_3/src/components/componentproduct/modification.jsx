@@ -26,7 +26,7 @@ function Modification({ materielItem }) {
   };
 
   useEffect(() => {});
-  console.log(materielItem)
+  // console.log(materielItem)
   const handleOnclickSauvegardeModifier = (e) => {
     e.preventDefault();
     console.log("bonjour modification")

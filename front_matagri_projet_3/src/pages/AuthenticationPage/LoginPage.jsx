@@ -20,6 +20,8 @@ function Login() {
         }
       );
       if (response.data) {
+        localStorage.setItem("currentUser",JSON.stringify(response.data))
+        localStorage.setItem("crntUser",response.data.idUser)
         if (response.data.profile.profile === "fournisseur") {
           navigate("/dashboard_fournisseur");
         } else if (response.data.profile.profile === "cooperative") {
