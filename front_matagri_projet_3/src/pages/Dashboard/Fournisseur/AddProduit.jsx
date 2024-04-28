@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { FileUploader } from "react-drag-drop-files";
 
@@ -187,7 +187,7 @@ function AddProduit() {
         </Modal.Body>
         <Modal.Footer>
           <div className="offset-xl-3 offset-sm-4 d-flex justify-content-between">
-            <Button className="btn btn-primary" onClick={handleSubmit}>
+            <Button className="btn btn-solid" id="ajout"  onClick={handleSubmit}>
               Ajouter
             </Button>
             <Button

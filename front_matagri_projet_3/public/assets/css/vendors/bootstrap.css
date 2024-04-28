@@ -6198,7 +6198,7 @@ fieldset:disabled .btn {
     --bs-modal-bg: var(--bs-body-bg);
     --bs-modal-border-color: var(--bs-border-color-translucent);
     --bs-modal-border-width: var(--bs-border-width);
-    --bs-modal-border-radius: var(--bs-border-radius-lg);
+    --bs-modal-border-radius:0;
     --bs-modal-box-shadow: var(--bs-box-shadow-sm);
     --bs-modal-inner-border-radius: calc(var(--bs-border-radius-lg) - (var(--bs-border-width)));
     --bs-modal-header-padding-x: 1rem;
@@ -6278,7 +6278,7 @@ fieldset:disabled .btn {
     background-color: var(--bs-modal-bg);
     background-clip: padding-box;
     border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
-    border-radius: var(--bs-modal-border-radius);
+    border-radius: 0;
     outline: 0
 }
 
@@ -6339,8 +6339,8 @@ fieldset:disabled .btn {
     padding: calc(var(--bs-modal-padding) - var(--bs-modal-footer-gap) * .5);
     background-color: var(--bs-modal-footer-bg);
     border-top: var(--bs-modal-footer-border-width) solid var(--bs-modal-footer-border-color);
-    border-bottom-right-radius: var(--bs-modal-inner-border-radius);
-    border-bottom-left-radius: var(--bs-modal-inner-border-radius)
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0
 }
 
 .modal-footer>* {
