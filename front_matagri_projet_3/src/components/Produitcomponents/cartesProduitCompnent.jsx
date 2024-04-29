@@ -65,11 +65,6 @@ function ProductCard({ materialItem }) {
             <h4>
               <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
             </h4>
-            <ul className="color-variant">
-              <li className="bg-light0" />
-              <li className="bg-light1" />
-              <li className="bg-light2" />
-            </ul>
           </div>
         </div>
       </div>
