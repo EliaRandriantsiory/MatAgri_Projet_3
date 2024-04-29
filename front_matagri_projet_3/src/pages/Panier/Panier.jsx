@@ -15,8 +15,8 @@ function Panier() {
   const [totalproducts, setTotalproducts] = useState("");
 
   const handleTotalPChange = () => {
-    setTotal(quantity * prix);
-    setTotalproducts(quantity * prix);
+    const newTotal = parseFloat(totalproducts) + parseFloat(total);
+    setTotalproducts(newTotal);
   };
 
   const handleQuantityChange = (event) => {
@@ -34,7 +34,7 @@ function Panier() {
     setPrix(event.target.value);
   };
   const handleTotalChange = (event) => {
-    setTotal(event.target.value);
+    setTotal(quantity * prix);
   };
 
   const handleClickReserver = () => {
@@ -89,7 +89,10 @@ function Panier() {
                         <tbody>
                           <tr>
                             <td onChange={handleimageChange} />
-                            <td onChange={handleNomproductsChange} />
+                            <td
+                              onChange={handleNomproductsChange}
+                              value={nomproducts}
+                            />
                             <td>
                               <div class="qty-box">
                                 <div class="input-group">
