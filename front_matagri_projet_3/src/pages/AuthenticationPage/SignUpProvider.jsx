@@ -121,7 +121,7 @@ function SignUpProvider() {
                     <div className="col-md-6">
                       <label htmlFor="email" style={{fontSize:'14px'}}>Raison sociale</label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
                         id="name"
                         placeholder="Votre raison sociale"

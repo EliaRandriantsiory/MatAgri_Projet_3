@@ -160,6 +160,7 @@ function HomePage_Layout() {
                           </div>
                         </li>
                         <li className="onhover-div mobile-cart">
+                        <Link to={"/Panier"}>
                           <div>
                             <img
                               src="../assets/images/jewellery/icon/cart.png"
@@ -168,7 +169,8 @@ function HomePage_Layout() {
                             />
                             <i className="ti-shopping-cart" />
                           </div>
-                        </li>
+                          </Link>
+                        </li>j
                       </ul>
                     </div>
                   </div>

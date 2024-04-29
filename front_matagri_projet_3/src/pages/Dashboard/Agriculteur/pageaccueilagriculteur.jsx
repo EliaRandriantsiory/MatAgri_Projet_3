@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
@@ -60,7 +61,7 @@ function PageAccueilAgriculteur() {
                         className="breadcrumb-item active"
                         aria-current="page"
                       >
-                        <a href onClick={handleOnClickLogout}>Déconnexion</a>
+                        <a href="#" onClick={handleOnClickLogout}>Déconnexion</a>
                       </li>
                     </ol>
                   </nav>
@@ -83,35 +84,30 @@ function PageAccueilAgriculteur() {
                   <div className="footer-logo">
                     <img src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
-                  <p style={{ textAlign: "center" }}>
-                    Votre application de location, de livraison et mutualisation
-                    de matériels agricoles.
+                  <p style={{textAlign:'center' ,fontSize:'14px'}}>
+                  Application de location, livraison et mutualisation de
+                    matériels agricoles.
                   </p>
-                  <div className="footer-social">
+                  <div className="footer-social" style={{ marginLeft: '127px'}}>
                     <ul>
                       <li>
                         <a href="#">
-                          <i className="fa fa-facebook-f" />
+                        <FontAwesomeIcon icon="fa-brands fa-facebook-f " style={{ color: '#004225'}} />
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="fa fa-google-plus" />
+                        <FontAwesomeIcon icon="fa-brands fa-google" style={{color:'#004225'}}/>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="fa fa-twitter" />
+                          <FontAwesomeIcon icon="fa-brands fa-x-twitter" style={{ color: '#004225' }} />
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="fa fa-instagram" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-rss" aria-hidden="true" />
+                        <FontAwesomeIcon icon="fa-brands fa-instagram" style={{color:'#004225'}}/>
                         </a>
                       </li>
                     </ul>
@@ -121,24 +117,24 @@ function PageAccueilAgriculteur() {
               <div className="col offset-xl-1">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4>Liens utiles</h4>
+                    <h4 style={{ fontSize: '14px' }}>Nos catégories</h4>
                   </div>
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">Louer du matériel agricole</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Tracteurs</a>
                       </li>
                       <li>
-                        <a href="#">Déposer une demande de mutualisation</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Motoculteurs</a>
                       </li>
                       <li>
-                        <a href="#">Consulter les demandes de matériels</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Charrues</a>
                       </li>
                       <li>
-                        <a href="#">Nous contacter</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Moissonneuses</a>
                       </li>
                       <li>
-                        <a href="#">xxxxx</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Décompactateur</a>
                       </li>
                     </ul>
                   </div>
@@ -147,24 +143,21 @@ function PageAccueilAgriculteur() {
               <div className="col">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4>Pourquoi nous choisir ?</h4>
+                  <h4 style={{ fontSize: '14px' }}>Pourquoi nous choisir ?</h4>
                   </div>
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#">x1</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Louer du matériel agricole</a>
                       </li>
                       <li>
-                        <a href="#">x2</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Mutualisation</a>
                       </li>
                       <li>
-                        <a href="#">x3</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Mes produits que j'adore</a>
                       </li>
                       <li>
-                        <a href="#">x4</a>
-                      </li>
-                      <li>
-                        <a href="#">contacts</a>
+                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Nous contacter</a>
                       </li>
                     </ul>
                   </div>
@@ -173,20 +166,20 @@ function PageAccueilAgriculteur() {
               <div className="col">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4>Nos informations</h4>
+                    <h4 style={{ fontSize: '14px', marginLeft: '25px' }}>Nos informations</h4>
                   </div>
                   <div className="footer-contant">
                     <ul className="contact-list">
                       <li>
-                        <i className="fa fa-map-marker" />
-                        MatAgri, Faravohitra, 101 Antananarivo
+                        <i className="fa fa-map-marker" style={{textAlign:'justify' ,fontSize:'14px', paddingRight:'10px'}}/>
+                        MatAgri, Faravohitra, <br/>101 Antananarivo
                       </li>
                       <li>
-                        <i className="fa fa-phone" />
-                        +261 20 34 20 125 43
+                        <i className="fa fa-phone" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>
+                        +261 34 20 125 43
                       </li>
                       <li>
-                        <i className="fa fa-envelope" />
+                        <i className="fa fa-envelope" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>
                         Email : <a href="#">matagri@gmail.com</a>
                       </li>
                     </ul>
@@ -248,6 +241,7 @@ function PageAccueilAgriculteur() {
           </div>
         </div>
       </footer>
+
 
       <div
         className="modal fade bd-example-modal-lg theme-modal"
