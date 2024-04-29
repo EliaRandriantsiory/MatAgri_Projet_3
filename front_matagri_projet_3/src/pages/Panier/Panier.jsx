@@ -12,6 +12,12 @@ function Panier() {
   const [nomproducts, setNomproducts] = useState("");
   const [prix, setPrix] = useState("");
   const [total, setTotal] = useState("");
+  const [totalproducts, setTotalproducts] = useState("");
+
+  const handleTotalPChange = () => {
+    setTotal(quantity * prix);
+    setTotalproducts(quantity * prix);
+  };
 
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
@@ -118,6 +124,13 @@ function Panier() {
                           <table className="table cart-table "></table>
                         </div>
                       </div>
+                    </div>
+                    <div className="row">
+                      <div
+                        className="col-4"
+                        style={{ marginLeft: "810px", marginTop: "10px" }}
+                        onChange={handleTotalPChange}
+                      />
                     </div>
                     <div className="row cart-buttons">
                       <div className="col-6">

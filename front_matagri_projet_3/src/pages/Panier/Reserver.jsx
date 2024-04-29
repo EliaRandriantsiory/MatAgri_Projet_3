@@ -11,13 +11,9 @@ function Reserver({ open, onClose }) {
   const [date_f, setDate_f] = React.useState(dayjs(datefin));
   return (
     <>
-      <button
-        className="btn btn-solid"
-        data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop"
-      >
+      <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Reserver
-      </button>
+      </a>
       <div
         class="modal fade"
         id="staticBackdrop"
