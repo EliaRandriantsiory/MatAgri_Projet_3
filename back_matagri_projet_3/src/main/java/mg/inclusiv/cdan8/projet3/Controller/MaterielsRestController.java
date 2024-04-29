@@ -1,13 +1,10 @@
 package mg.inclusiv.cdan8.projet3.Controller;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.data.jpa.domain.JpaSort.Path;
 import org.springframework.http.HttpStatus;
@@ -24,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import mg.inclusiv.cdan8.projet3.Entities.Materiels;
 import mg.inclusiv.cdan8.projet3.Entities.Users;
-import mg.inclusiv.cdan8.projet3.Repositories.MaterielsRepository;
 import mg.inclusiv.cdan8.projet3.Servicies.MaterielsService;
 
 @RestController
@@ -34,9 +30,6 @@ public class MaterielsRestController {
 
     @Autowired
     private MaterielsService materielsService;
-
-    @Autowired
-    private MaterielsRepository materielsRepository;
 
     @GetMapping("/listMateriel")
     public List<Materiels> listMat() {

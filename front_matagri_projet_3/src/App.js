@@ -21,6 +21,7 @@ import SearchPage from "./pages/homePage/Search";
 import TermeF from "./pages/AuthenticationPage/TermeF";
 import Terme from "./pages/AuthenticationPage/Terme";
 import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
+// import DevisComponents from "./components/textComponent/DevisComponents";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route path="/carouselImage" element=<homePage /> />
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
           <Route path="/terme" element=<Terme /> />
+          // <Route path="/DevisComponents" element=<DevisComponents /> />
           </Routes>
     </BrowserRouter>
   );
