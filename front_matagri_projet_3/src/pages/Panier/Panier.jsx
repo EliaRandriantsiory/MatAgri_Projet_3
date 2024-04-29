@@ -6,20 +6,46 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { Modal } from "@mui/material";
 import Reserver from "./Reserver";
+import axios from "axios";
 
 function Panier() {
-  let datedebut = Date();
-  let datefin = Date();
-
-  const [date_d, setDate_d] = React.useState(dayjs(datedebut));
-  const [date_f, setDate_f] = React.useState(dayjs(datefin));
-
-  const [reserver, setReserver] = useState("");
-
+  const [data, setData] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [image, setImage] = useState("");
+  const [imagePreviews, setImagePreviews] = useState([]);
+  const [nomproducts, setNomproducts] = useState("");
+  const [prix, setPrix] = useState("");
+  const [total, setTotal] = useState("");
+
+  const handleQuantityChange = (event) => {
+    setQuantity(event.target.value);
+  };
+
+  const handleimageChange = (event) => {
+    setImage(event.target.value);
+  };
+
+  const handleNomproductsChange = (event) => {
+    setNomproducts(event.target.value);
+  };
+  const handlePrixChange = (event) => {
+    setPrix(event.target.value);
+  };
+  const handleTotalChange = (event) => {
+    setTotal(event.target.value);
+  };
 
   const handleClickReserver = () => {
-    setIsModalOpen(true);
+    axios
+      .get("/api/data")
+      .then((response) => {
+        setData(response.data);
+        setIsModalOpen(true);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   };
 
   return (
@@ -61,8 +87,8 @@ function Panier() {
                         </thead>
                         <tbody>
                           <tr>
-                            <td>image</td>
-                            <td>tracteur</td>
+                            <td onChange={handleimageChange} />
+                            <td onChange={handleNomproductsChange} />
                             <td>
                               <div class="qty-box">
                                 <div class="input-group">
@@ -70,24 +96,19 @@ function Panier() {
                                     type="number"
                                     name="quantity"
                                     class="form-control input-number"
-                                    value="1"
+                                    value={quantity}
+                                    onChange={handleQuantityChange}
                                   />
                                 </div>
                               </div>
                             </td>
-                            <td>1000000AR</td>
+                            <td onChange={handlePrixChange} />
                             <td>
                               <div>
-                                <a
-                                  href="#"
-                                  className="btn btn-solid"
-                                  onClick={handleClickReserver}
-                                >
-                                  Reserver
-                                </a>
+                                <Reserver />
                               </div>
                             </td>
-                            <td>LAFO BE</td>
+                            <td on onChange={handleTotalChange} />
                             <td>
                               <a href="#" class="icon">
                                 <i class="ti-close"></i>
@@ -115,15 +136,21 @@ function Panier() {
                         </a>
                       </div>
                     </div>
+                    <Modal
+                      open={isModalOpen}
+                      onClose={() => setIsModalOpen(false)}
+                    >
+                      <Reserver
+                        open={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}
+                      />
+                    </Modal>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <Reserver />
-        </Modal>
       </div>
     </div>
   );
