@@ -140,7 +140,7 @@ function TermeF({ onAccept }) {
         </Modal.Body>
         
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleAccept}  style={{ color: "black" }} className="btn-hover">
+          <Button variant="secondary" onClick={handleAccept}  style={{ color: "black" }} className="btn-solid">
             Accepter
           </Button>
         </Modal.Footer>

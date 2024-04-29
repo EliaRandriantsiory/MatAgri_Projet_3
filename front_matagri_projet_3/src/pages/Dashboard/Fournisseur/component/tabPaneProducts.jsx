@@ -1,6 +1,6 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import TableRow from "../../../../components/componentproduct/tableRowMat";
-import axios from "axios";
 
 function TabPaneProducts({ currentUserSession }) {
   const [imagesList, setImagesList] = useState([]);
@@ -402,14 +402,15 @@ function TabPaneProducts({ currentUserSession }) {
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-solid"
                 data-bs-dismiss="modal"
+                id="ajout" 
               >
                 Annuler
               </button>
               <input
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-solid"
                 value={"Ajouter Produit"}
                 data-bs-dismiss="modal"
                 onClick={handleOnclickSauvegardeAjout}
