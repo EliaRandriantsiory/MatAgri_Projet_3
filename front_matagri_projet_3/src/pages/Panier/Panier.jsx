@@ -99,6 +99,7 @@ function Panier() {
                                     class="form-control input-number"
                                     value={quantity}
                                     onChange={handleQuantityChange}
+                                    min={1}
                                   />
                                 </div>
                               </div>
