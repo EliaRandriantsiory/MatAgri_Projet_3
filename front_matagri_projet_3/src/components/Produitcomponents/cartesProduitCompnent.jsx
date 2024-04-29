@@ -1,6 +1,9 @@
 import PrintTextPrix from "../textComponent/printPrix";
 
 function ProductCard({ materialItem }) {
+  const handleOnClickAddCard = (event) => {
+    console.log(materialItem);
+  };
   return (
     <div className="col-xl-3 col-6 col-grid-box">
       <div className="product-box">
@@ -28,13 +31,9 @@ function ProductCard({ materialItem }) {
             </a>
           </div>
           <div className="cart-info cart-wrap">
-            <button
-              data-bs-toggle="modal"
-              data-bs-target="#addtocart"
-              title="Add to cart"
-            >
+            <button onClick={handleOnClickAddCard}>
               <i className="ti-shopping-cart" />
-            </button>{" "}
+            </button>
             <a href="javascript:void(0)" title="Add to Wishlist">
               <i className="ti-heart" aria-hidden="true" />
             </a>{" "}

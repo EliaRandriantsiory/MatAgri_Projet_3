@@ -1,53 +1,27 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal } from "@mui/material";
 import Reserver from "./Reserver";
+import RowPanierComponent from "./composant/rowPanier";
+import { Link } from "react-router-dom";
+import PrintTextPrix from "../../components/textComponent/printPrix";
 
 function Panier() {
-  const [data, setData] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [quantity, setQuantity] = useState(1);
-  const [image, setImage] = useState("");
-  const [imagePreviews, setImagePreviews] = useState([]);
-  const [nomproducts, setNomproducts] = useState("");
-  const [prix, setPrix] = useState("");
-  const [total, setTotal] = useState("");
-  const [totalproducts, setTotalproducts] = useState("");
-
-  const handleTotalPChange = () => {
-    setTotal(quantity * prix);
-    setTotalproducts(quantity * prix);
-  };
-
-  const handleQuantityChange = (event) => {
-    setQuantity(event.target.value);
-  };
-
-  const handleimageChange = (event) => {
-    setImage(event.target.value);
-  };
-
-  const handleNomproductsChange = (event) => {
-    setNomproducts(event.target.value);
-  };
-  const handlePrixChange = (event) => {
-    setPrix(event.target.value);
-  };
-  const handleTotalChange = (event) => {
-    setTotal(event.target.value);
-  };
-
-  const handleClickReserver = () => {
+  const [listMateriel, setListMateriel] = useState([]);
+  useEffect(() => {
     axios
-      .get("/api/data")
+      .get("http://localhost:8082/api/materiels/listMateriel")
       .then((response) => {
-        setData(response.data);
-        setIsModalOpen(true);
+        console.log(response.data);
+        setListMateriel(response.data);
+        console.log("bonjour");
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error(error);
       });
-  };
+  }, []);
+  // setTotal(quantity * prix);
+  // setTotalproducts(quantity * prix);
 
   return (
     <div>
@@ -87,36 +61,15 @@ function Panier() {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td onChange={handleimageChange} />
-                            <td onChange={handleNomproductsChange} />
-                            <td>
-                              <div class="qty-box">
-                                <div class="input-group">
-                                  <input
-                                    type="number"
-                                    name="quantity"
-                                    class="form-control input-number"
-                                    value={quantity}
-                                    onChange={handleQuantityChange}
-                                    min={1}
-                                  />
-                                </div>
-                              </div>
-                            </td>
-                            <td onChange={handlePrixChange} />
-                            <td>
-                              <div>
-                                <Reserver />
-                              </div>
-                            </td>
-                            <td on onChange={handleTotalChange} />
-                            <td>
-                              <a href="#" class="icon">
-                                <i class="ti-close"></i>
-                              </a>
-                            </td>
-                          </tr>
+                          {listMateriel.map((matHomePage) => (
+                            <>
+                              <RowPanierComponent materielItem_={matHomePage} />
+                              {/* <PrintTextPrix
+                                TextPrix={matHomePage.prixMAt}
+                                monnai={"MLG"}
+                              /> */}
+                            </>
+                          ))}
                         </tbody>
                       </table>
                       <div className="table-responsive-md">
@@ -130,14 +83,14 @@ function Panier() {
                       <div
                         className="col-4"
                         style={{ marginLeft: "810px", marginTop: "10px" }}
-                        onChange={handleTotalPChange}
                       />
                     </div>
+
                     <div className="row cart-buttons">
                       <div className="col-6">
-                        <a href="#" className="btn btn-solid">
-                          continue shopping
-                        </a>
+                        <Link to={"/Material"} className="btn btn-solid">
+                          Continuer l'achat
+                        </Link>
                       </div>
                       <div className="col-4">
                         <a href="#" className="btn btn-solid">
@@ -145,7 +98,7 @@ function Panier() {
                         </a>
                       </div>
                     </div>
-                    <Modal
+                    {/* <Modal
                       open={isModalOpen}
                       onClose={() => setIsModalOpen(false)}
                     >
@@ -153,7 +106,7 @@ function Panier() {
                         open={isModalOpen}
                         onClose={() => setIsModalOpen(false)}
                       />
-                    </Modal>
+                    </Modal> */}
                   </div>
                 </div>
               </div>
@@ -164,5 +117,4 @@ function Panier() {
     </div>
   );
 }
-
 export default Panier;
