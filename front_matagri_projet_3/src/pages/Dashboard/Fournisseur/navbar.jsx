@@ -95,7 +95,7 @@ function Navigation() {
       </div>
       <div className="col-lg-9">
         <div className="faq-content tab-content" id="top-tabContent">
-          <div className="tab-pane fade   active" id="products">
+          <div className="tab-pane active" id="products">
             <TabPaneProducts currentUserSession={currentProfilUser} />
           </div>
           <div className="tab-pane fade" id="orders">

@@ -4,6 +4,7 @@ import { Modal } from "@mui/material";
 import Reserver from "./Reserver";
 import RowPanierComponent from "./composant/rowPanier";
 import { Link, json } from "react-router-dom";
+import PrintTextPrix from "../../components/textComponent/printPrix";
 
 function Panier() {
   const [listMateriel, setListMateriel] = useState([]);
@@ -83,6 +84,7 @@ function Panier() {
                         <tbody>
                           {listMateriel.map((matHomePage) => (
                             <>
+                            {/* {matHomePage.prixMAt} */}
                               {/* <RowPanierComponent materielItem_={matHomePage} /> */}
                               {/* <PrintTextPrix
                                 TextPrix={matHomePage.prixMAt}
