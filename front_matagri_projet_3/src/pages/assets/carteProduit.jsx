@@ -1,4 +1,5 @@
 import { json } from "react-router-dom";
+import PrintTextPrix from "../../components/textComponent/printPrix";
 
 function CardProduct({ listmatHomePage }) {
   console.log(listmatHomePage);
@@ -71,7 +72,7 @@ function CardProduct({ listmatHomePage }) {
                     <a href="product-page(no-sidebar).html">
                       <h6>{matHomePage.nomMat}</h6>
                     </a>
-                    <h4>Ar {matHomePage.prixMAt}</h4>
+                    <h4><PrintTextPrix TextPrix={matHomePage.prixMAt} monnai={"MLG"} /></h4>
                     {/* <ul className="color-variant">
                     <li className="bg-light0"></li>
                     <li className="bg-light1"></li>
