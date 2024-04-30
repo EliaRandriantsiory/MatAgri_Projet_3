@@ -67,7 +67,7 @@ function Terme({onAccept}){
 <br/>2.	Si le locataire n'est pas propriétaire de l'immeuble où se trouve le matériel loué ou s'il cesse d'en être propriétaire pendant la durée du bail, il s'oblige à notifier au propriétaire de cet immeuble que le matériel loué ne lui appartient pas et ne peut être compris dans le privilège mentionné de l'art. 20 1° de la loi du 6 décembre 1851. La même notification devra être faite au titulaire d'un gage sur le fond de commerce ou d'un privilège agricole. Le locataire devra justifier à l'égard de la bailleresse de l'accomplissement de ces obligations.
 </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleAccept}  style={{ color: "black" }} className="btn-hover">
+          <Button variant="secondary" onClick={handleAccept}  style={{ color: "black" }} className="btn-solid">
             Accepter
           </Button>
         </Modal.Footer>

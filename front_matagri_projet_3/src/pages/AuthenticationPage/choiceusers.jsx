@@ -13,10 +13,9 @@ function Choiceusers() {
               <div className="invoice-wrapper">
                 <div className="invoice-header">
                   <h3>Agriculteur</h3>
-                  <p>
-                    "Optimisez votre exploitation et bénéficiez d'une remise 12%
-                    en vous mutualisant pour la location du matériel de votre
-                    choix, profitez en !";
+                  <p style={{textAlign: "justify"}}>
+                    "Optimisez votre exploitation et bénéficiez d'une remise de 12%
+                    en vous mutualisant pour la location du matériel de votre choix. Profitez-en !"
                   </p>
                   <Link className="btn btn-solid" to={"/InscriptionAgriculteur"}>
                     s'inscrire
@@ -34,10 +33,8 @@ function Choiceusers() {
               <div className="invoice-wrapper">
                 <div className="invoice-header">
                   <h3>Coopérative</h3>
-                  <p>
-                    "Économisez jusqu'à 12% pour la location d'un matériel
-                    agricole en tant que coopérative ! Rejoignez notre
-                    plateforme pour profiter de cette offre."
+                  <p style={{textAlign: "justify"}}>
+                    "Économisez jusqu'à 12% sur la location d'un matériel agricole en tant que coopérative ! Rejoignez notre plateforme pour profiter de cette offre."
                   </p>
                   <Link className="btn btn-solid" to={"/SignUpCooperative"}>
                     s'inscrire
@@ -55,10 +52,8 @@ function Choiceusers() {
               <div className="invoice-wrapper">
                 <div className="invoice-header">
                   <h3>Fournisseur</h3>
-                  <p>
-                    "Élargissez votre clientèle et maximisez vos revenus en
-                    proposant votre matériel agricole à la location sur notre
-                    plateforme dès aujourd'hui !"
+                  <p style={{textAlign: "justify"}}>
+                    "Élargissez votre clientèle et maximisez vos revenus en proposant votre matériel agricole à la location sur notre plateforme dès aujourd'hui !"
                   </p>
                   <Link to={"/SignUpProvider"} className="btn btn-solid" id="four">
                     s'inscrire
