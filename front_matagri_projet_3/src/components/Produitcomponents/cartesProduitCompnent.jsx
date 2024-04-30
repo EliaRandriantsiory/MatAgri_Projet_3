@@ -49,9 +49,12 @@ function ProductCard({ materialItem }) {
     // listPanierMat.push(panierMAt);
   };
   useEffect(() => {
-    setListPanierMat([...listPanierMat, panierMAt]);
-
-    localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+    if(Object.keys(panierMAt).length!==0){
+      const cmd = listPanierMat.push(panierMAt)
+      setListPanierMat([...listPanierMat, panierMAt]);
+      localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+      console.log(listPanierMat)
+    }
     // console.log(listPanierMat);
   }, [panierMAt]);
   // localStorage.setItem("listpanier", listPanierMat);

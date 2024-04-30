@@ -44,6 +44,8 @@ function Panier() {
   // setTotal(quantity * prix);
   // setTotalproducts(quantity * prix);
 
+
+
   return (
     <div>
       <div className="cart-section section-b-space">
@@ -84,7 +86,7 @@ function Panier() {
                         <tbody>
                           {listMateriel.map((matHomePage) => (
                             <>
-                              <RowPanierComponent materielItem_={matHomePage} />
+                              {/* <RowPanierComponent materielItem_={matHomePage} /> */}
                               {/* <PrintTextPrix
                                 TextPrix={matHomePage.prixMAt}
                                 monnai={"MLG"}
