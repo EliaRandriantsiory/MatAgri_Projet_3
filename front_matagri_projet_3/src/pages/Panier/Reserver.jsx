@@ -8,11 +8,14 @@ function Reserver({ open, onClose }) {
   let datefin = Date();
 
   const [date_d, setDate_d] = React.useState(dayjs(datedebut));
+
   const [date_f, setDate_f] = React.useState(dayjs(datefin));
+
+  console.log(date_d, date_f)
   return (
     <>
       <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Réserver
+        bonjour
       </a>
       <div
         class="modal fade"
@@ -39,20 +42,16 @@ function Reserver({ open, onClose }) {
             <div class="modal-body">
               <div className="row">
                 <div className="col-md-6">
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
-                      value={date_d}
-                      onChange={(newValue) => setDate_d(newValue)}
-                    />
-                  </LocalizationProvider>
+                
                 </div>
                 <div className="col-md-6">
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <input type="date" class="form-control" id="date"/>
+                  {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
-                      value={date_f}
+                      // value={date_f}
                       onChange={(newValue) => setDate_f(newValue)}
                     />
-                  </LocalizationProvider>
+                  </LocalizationProvider> */}
                 </div>
               </div>
               <div class="modal-footer">

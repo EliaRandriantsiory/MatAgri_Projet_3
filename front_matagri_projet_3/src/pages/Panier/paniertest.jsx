@@ -2,21 +2,17 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Modal } from "@mui/material";
 import Reserver from "./Reserver";
-import RowPanierComponent from "./composant/rowPanier";
+
 import { Link, json } from "react-router-dom";
 import PrintTextPrix from "../../components/textComponent/printPrix";
+import RowPanierComponent from "./composant/rowPanierTest";
 
-function Panier() {
+function PanierTest() {
   const [listMateriel, setListMateriel] = useState([]);
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    console.log(listMateriel);
+    // console.log(listMateriel);
 
-    // if (listMateriel) {
-    //   localStorage.getItem("listpanier").forEach((element) => {
-    //     console.log(element);
-    //   });
-    // }
   }, []);
   useEffect(() => {
     // console.log(localStorage.getItem("listpanier"));
@@ -27,20 +23,7 @@ function Panier() {
     }
     // setListMateriel(localStorage.getItem("listpanier"));
   }, [localStorage.getItem("listpanier")]);
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8082/api/materiels/listMateriel")
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setListMateriel(response.data);
-  //       console.log("bonjour");
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
-  // setTotal(quantity * prix);
-  // setTotalproducts(quantity * prix);
+  
 
 
 
@@ -82,11 +65,12 @@ function Panier() {
                           </tr>
                         </thead>
                         <tbody>
-                          {listMateriel.map((matHomePage) => (
+                          {listMateriel.map((matHomePage) =>
                             <>
-                            {/* {matHomePage.prixMAt} */}
+                            
                           <RowPanierComponent materielItem_={matHomePage} /> </>
-                          ))}
+                          
+                          )}
                         </tbody>
                       </table>
                       <div className="table-responsive-md">
@@ -101,17 +85,12 @@ function Panier() {
                         className="col-4"
                         style={{ marginLeft: "810px", marginTop: "10px" }}
                       />
-                      
-                      
                     </div>
 
                     <div className="row cart-buttons">
-                    
                       <div className="col-6">
-                      
                         <Link to={"/Material"} className="btn btn-solid">
-                        
-                          Continuer l'achataaa
+                          Continuer l'achat
                         </Link>
                       </div>
                       <div className="col-4">
@@ -139,4 +118,4 @@ function Panier() {
     </div>
   );
 }
-export default Panier;
+export default PanierTest;

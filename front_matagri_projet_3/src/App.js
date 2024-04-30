@@ -22,6 +22,7 @@ import TermeF from "./pages/AuthenticationPage/TermeF";
 import Terme from "./pages/AuthenticationPage/Terme";
 import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
 import Panier from "./pages/Panier/Panier";
+import PanierTest from "./pages/Panier/paniertest";
 
 function App() {
   return (
@@ -39,7 +40,8 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
-          <Route path="/Panier" element=<Panier /> />
+          {/* <Route path="/Panier" element=<Panier /> /> */}
+          <Route path="/Panier" element=<PanierTest /> />
           <Route
             path="/InscriptionAgriculteur"
             element=<InscriptionAgriculteur />

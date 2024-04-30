@@ -3,28 +3,34 @@ import Reserver from "../Reserver";
 import PrintTextPrix from "../../../components/textComponent/printPrix";
 
 function RowPanierComponent({ materielItem_ }) {
+
+    
   const [materielItem, setMaterielItem] = useState({});
   const [prixTotal, setPrixTotal] = useState();
   const [qt, setQt] = useState();
   const [matPanier, setMatPanier] = useState({})
   const [nomMat, setNomMat] = useState()
 
-
-
+//   useEffect(() => {
+//     if (materielItem_ !== null) {
+//       setMaterielItem(materielItem_);
+//     } else {
+//     }
+//   }, []);
   useEffect(() => {
-    if (materielItem_ !== null) {
-      setMaterielItem(materielItem_);
-    } else {
-    }
-  }, []);
-  useEffect(() => {
-    setQt("materielItem.quantity")
-    setMatPanier("materielItem.materiel")
-    setNomMat("materielItem.nomMat")
+    // console.log(materielItem)
+    // console.log("bonjour")
+    setQt(materielItem_.quantity)
+    setMatPanier(materielItem_.materiel)
+    setNomMat(materielItem_.nomMat)
+    setPrixTotal((materielItem_.materiel.prixMAt)*materielItem_.quantity)
+    console.log(materielItem_)
+    
+    // console.log(materielItem_.materiel)
   },[])
-  useEffect(() => {
-    console.log(materielItem.quantity);
-  }, [materielItem]);
+//   useEffect(() => {
+//     // console.log(materielItem.quantity);
+//   }, [materielItem]);
   //   console.log(materielItem);
 
   const handleNomProductsChange = (event) => {
@@ -32,7 +38,7 @@ function RowPanierComponent({ materielItem_ }) {
   };
   const handleQuantityChange = (event) => {
     let qtt = event.target.value;
-    setPrixTotal(qtt * materielItem.prixMAt);
+    setPrixTotal(qtt * materielItem_.materiel.prixMAt);
   };
   const handlePrixChange = (event) => {
     console.log(event.target.value);
@@ -41,19 +47,19 @@ function RowPanierComponent({ materielItem_ }) {
     console.log(event.target.value);
   };
   // console.log(materielItem.imagePath);
-  console.log(nomMat)
+  //console.log(nomMat)
   return (
     <tr>
       <td>
-        {/* <img
+        <img
           src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
-            JSON.parse(materielItem.imagePath)[0]
+            JSON.parse(materielItem_.materiel.imagePath)[0]
           }`}
-          width={250}
+          width={150}
           className="img-fluid blur-up lazyload bg-img"
-        /> */}
+        />
       </td>
-      <td>Bonjour {nomMat} </td>
+      <td>{materielItem_.materiel.nomMat}</td>
       <td>
         <div className="qty-box">
           <div className="input-group">
@@ -61,7 +67,7 @@ function RowPanierComponent({ materielItem_ }) {
               type="number"
               name="quantity"
               className="form-control input-number"
-              defaultValue={materielItem.stockMat}
+              defaultValue={materielItem_.quantity}
               onChange={handleQuantityChange}
               min={1}
             />
@@ -69,13 +75,14 @@ function RowPanierComponent({ materielItem_ }) {
         </div>
       </td>
       <td>
-        {materielItem.prixMAt}
+        {prixTotal}
 
         {/* <PrintTextPrix TextPrix={materielItem.prixMAt} monnai={"MLG"} /> */}
       </td>
       <td>
         <div>
-          <Reserver />
+          {/* <Reserver /> */}
+          2 jour
         </div>
       </td>
       <td>
