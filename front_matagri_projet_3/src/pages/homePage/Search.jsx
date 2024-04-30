@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import PrintTextPrix from "../../components/textComponent/printPrix";
 
 function SearchPage() {
   const [listMateriel, setListMateriel] = useState([]);
@@ -165,7 +166,7 @@ function SearchPage() {
                     <a href="product-page(no-sidebar).html">
                       <h6>{matHomePage.nomMat}</h6>
                     </a>
-                    <h4>Ar {matHomePage.prixMAt}</h4>
+                    <h4><PrintTextPrix TextPrix={matHomePage.prixMAt} monnai={"MLG"} /></h4>
                     {/* <ul className="color-variant">
                     <li className="bg-light0"></li>
                     <li className="bg-light1"></li>

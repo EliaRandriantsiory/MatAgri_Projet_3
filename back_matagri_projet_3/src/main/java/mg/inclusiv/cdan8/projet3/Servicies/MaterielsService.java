@@ -24,7 +24,9 @@ public class MaterielsService {
     }
 
     public List<Materiels> getAllMatByIdUser(Long idUtilisateur){
-        return materielsRepository.findAllTachesByUtilisateurId(2);
+        System.out.println(idUtilisateur.toString());
+        // System.out.println(parseInt(idUtilisateur.toString(),10));
+        return materielsRepository.findAllTachesByUtilisateurId(idUtilisateur);
     }
     
     public List<Materiels> getAllMat(){
