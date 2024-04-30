@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, Outlet } from "react-router-dom";
 import "./assets/css/homePage/homePage.css";
 
+import { useEffect, useState } from "react";
 function HomePage_Layout() {
     const [isVisible, setIsVisible] = useState(false);
 
@@ -23,6 +24,17 @@ function HomePage_Layout() {
 
     window.addEventListener('scroll', toggleVisibility);
 
+  const [listPanier, setListPanier] = useState([]);
+  const [countPanier, setCountPanier] = useState();
+  useEffect(() => {
+    setListPanier(localStorage.getItem("listpanier"));
+    console.log(localStorage.getItem("listpanier"));
+    // console.log(listPanier.length);
+    if (listPanier) {
+      console.log(listPanier.length);
+      setCountPanier(listPanier.length);
+    }
+  }, [localStorage.getItem("listPanier")]);
   return (
     <>
       <header className="header-2">
@@ -160,14 +172,97 @@ function HomePage_Layout() {
                           </div>
                         </li>
                         <li className="onhover-div mobile-cart">
-                          <div>
-                            <img
-                              src="../assets/images/jewellery/icon/cart.png"
-                              className="img-fluid blur-up lazyload"
-                              alt=""
-                            />
-                            <i className="ti-shopping-cart" />
-                          </div>
+                          <Link to={"/Panier"}>
+                            <div className="position-relative">
+                              <img
+                                src="../assets/images/jewellery/icon/cart.png"
+                                className="img-fluid blur-up lazyload"
+                                alt=""
+                              />
+
+                              <i className="ti-shopping-cart" />
+                              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {countPanier}
+                                <span class="visually-hidden">
+                                  unread messages
+                                </span>
+                              </span>
+                            </div>
+                          </Link>
+                          {/* Drop eo @ panier                           */}
+                          {/* <ul className="show-div shopping-cart">
+                            <li>
+                              <div className="media">
+                                <a href="#">
+                                  <img
+                                    alt=""
+                                    className="me-3"
+                                    src="../assets/images/fashion/product/1.jpg"
+                                  />
+                                </a>
+                                <div className="media-body">
+                                  <a href="#">
+                                    <h4>item name</h4>
+                                  </a>
+                                  <h4>
+                                    <span>1 x $ 299.00</span>
+                                  </h4>
+                                </div>
+                              </div>
+                              <div className="close-circle">
+                                <a href="#">
+                                  <i
+                                    className="fa fa-times"
+                                    aria-hidden="true"
+                                  />
+                                </a>
+                              </div>
+                            </li>
+                            <li>
+                              <div className="media">
+                                <a href="#">
+                                  <img
+                                    alt=""
+                                    className="me-3"
+                                    src="../assets/images/fashion/product/2.jpg"
+                                  />
+                                </a>
+                                <div className="media-body">
+                                  <a href="#">
+                                    <h4>item name</h4>
+                                  </a>
+                                  <h4>
+                                    <span>1 x $ 299.00</span>
+                                  </h4>
+                                </div>
+                              </div>
+                              <div className="close-circle">
+                                <a href="#">
+                                  <i
+                                    className="fa fa-times"
+                                    aria-hidden="true"
+                                  />
+                                </a>
+                              </div>
+                            </li>
+                            <li>
+                              <div className="total">
+                                <h5>
+                                  subtotal : <span>$299.00</span>
+                                </h5>
+                              </div>
+                            </li>
+                            <li>
+                              <div className="buttons">
+                                <a href="cart.html" className="view-cart">
+                                  view cart
+                                </a>
+                                <a href="#" className="checkout">
+                                  checkout
+                                </a>
+                              </div>
+                            </li>
+                          </ul> */}
                         </li>
                       </ul>
                     </div>

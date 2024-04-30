@@ -12,7 +12,7 @@ function Reserver({ open, onClose }) {
   return (
     <>
       <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Reserver
+        Réserver
       </a>
       <div
         class="modal fade"

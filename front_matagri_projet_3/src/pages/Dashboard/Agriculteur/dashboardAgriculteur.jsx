@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,7 +17,6 @@ function DashBordAgriculteur() {
         .then((response) => {
           localStorage.setItem("email", JSON.stringify(response.data.email));
           setCurrentProfilUser(response.data.user);
-          
         })
         .catch((error) => {
           console.error(error);
@@ -26,10 +24,7 @@ function DashBordAgriculteur() {
     }
   }, [email, password]);
 
-
-useEffect(() => {
-
-},[])
+  useEffect(() => {}, []);
 
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
@@ -55,8 +50,16 @@ useEffect(() => {
                     />
                   </div>
                   <div className="profile-detail">
-                    <h5>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h5>
-                    <h6>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h6>
+                    <h5>
+                      {localStorage.getItem("email")
+                        ? localStorage.getItem("email")
+                        : "Email non disponible"}
+                    </h5>
+                    <h6>
+                      {localStorage.getItem("email")
+                        ? localStorage.getItem("email")
+                        : "Email non disponible"}
+                    </h6>
                   </div>
                 </div>
                 <div className="faq-tab">
@@ -98,12 +101,13 @@ useEffect(() => {
                 <div className="tab-pane fade show active" id="info">
                   <div className="counter-section">
                     <div className="welcome-msg">
-                    <h4>Bonjour, MARK JECNO !</h4>
+                      <h4>Bonjour, MARK JECNO !</h4>
                       <p>
-                        À partir de votre tableau de bord de compte, vous avez la possibilité de
-                        consulter un aperçu de votre activité récente sur le compte et de mettre à
-                        jour vos informations de compte. Sélectionnez un lien ci-dessous pour
-                        afficher ou modifier les informations.
+                        À partir de votre tableau de bord de compte, vous avez
+                        la possibilité de consulter un aperçu de votre activité
+                        récente sur le compte et de mettre à jour vos
+                        informations de compte. Sélectionnez un lien ci-dessous
+                        pour afficher ou modifier les informations.
                       </p>
                     </div>
                     <div className="row">
