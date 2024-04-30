@@ -30,7 +30,7 @@ import mg.inclusiv.cdan8.projet3.Servicies.MaterielsService;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/materiels")
-public class MaterielsRestController {
+public class MaterielsRestController { 
 
     @Autowired
     private MaterielsService materielsService;
