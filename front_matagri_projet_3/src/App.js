@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-no-undef */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-
 import Login from "./pages/AuthenticationPage/LoginPage";
 import SignUpCooperative from "./pages/AuthenticationPage/SignUpCooperative";
 import SignUpProvider from "./pages/AuthenticationPage/SignUpProvider";
@@ -22,6 +21,7 @@ import TermeF from "./pages/AuthenticationPage/TermeF";
 import Terme from "./pages/AuthenticationPage/Terme";
 import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
 import Panier from "./pages/Panier/Panier";
+import Description from "./pages/Dashboard/Fournisseur/description";
 
 function App() {
   return (
@@ -57,7 +57,7 @@ function App() {
           />
         </Route>
         <Route>
-          <Route path="/description" element=<DescriptionProduit /> />
+          <Route path="/description" element=<Description /> />
         </Route>
         <Route>
           <Route path="/TermeF" element=<TermeF /> />

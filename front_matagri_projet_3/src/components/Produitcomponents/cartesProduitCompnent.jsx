@@ -1,6 +1,19 @@
+import { Link } from "react-router-dom";
 import PrintTextPrix from "../textComponent/printPrix";
+import React, { useState } from 'react';
+import Description from "../../pages/Dashboard/Fournisseur/description";
 
-function ProductCard({ materialItem }) {
+function ProductCard  ({ materialItem }) {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
   return (
     <div className="col-xl-3 col-6 col-grid-box">
       <div className="product-box">
@@ -28,29 +41,27 @@ function ProductCard({ materialItem }) {
             </a>
           </div>
           <div className="cart-info cart-wrap">
-            <button
+            {/* <a className="btn btn-primary"
+              href="#"
               data-bs-toggle="modal"
-              data-bs-target="#addtocart"
+              data-bs-target="#description"
               title="Add to cart"
             >
               <i className="ti-shopping-cart" />
-            </button>{" "}
+            </a>{" "} 
+
             <a href="javascript:void(0)" title="Add to Wishlist">
               <i className="ti-heart" aria-hidden="true" />
             </a>{" "}
-            <a
-              href="#"
-              data-bs-toggle="modal"
-              data-bs-target="#quick-view"
-              title="Quick View"
-            >
+            {/* <Link to="description" onClick={handleOpenModal} title="Quick View">
               <i className="ti-search" aria-hidden="true" />
-            </a>{" "}
+            </Link> */}
             <a href="compare.html" title="Compare">
               <i className="ti-reload" aria-hidden="true" />
             </a>
           </div>
         </div>
+        <Description/>
         <div className="product-detail">
           <div>
             <div className="rating">
@@ -58,6 +69,7 @@ function ProductCard({ materialItem }) {
               <i className="fa fa-star" /> <i className="fa fa-star" />{" "}
               <i className="fa fa-star" />
             </div>
+            
             <a href="product-page(no-sidebar).html">
               <h6>{materialItem.nomMat}</h6>
             </a>
