@@ -56,7 +56,7 @@ function ProductCard({ materialItem }) {
   }, [panierMAt]);
   // localStorage.setItem("listpanier", listPanierMat);
   useEffect(() => {
-    console.log(listPanierMat.length);
+    // console.log(listPanierMat.length);
   }, [localStorage.getItem("listpanier")]);
   return (
     <>
@@ -119,11 +119,6 @@ function ProductCard({ materialItem }) {
               <h4>
                 {/* <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} /> */}
               </h4>
-              <ul className="color-variant">
-                <li className="bg-light0" />
-                <li className="bg-light1" />
-                <li className="bg-light2" />
-              </ul>
             </div>
           </div>
         </div>
@@ -174,8 +169,7 @@ function ProductCard({ materialItem }) {
                     <div className="border-product">
                       <h6 className="product-title">Details materiels</h6>
                       <p>
-                        Sed ut perspiciatis, unde omnis iste natus error sit
-                        voluptatem accusantium doloremque laudantium
+                        {materialItem.descriptionMat}
                       </p>
                     </div>
                     <div className="product-description border-product">
