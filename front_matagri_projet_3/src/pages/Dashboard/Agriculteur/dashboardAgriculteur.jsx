@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function DashBordAgriculteur() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -146,18 +146,18 @@ useEffect(() => {
                     </div>
                     <div className="box-account box-info">
                       <div className="box-head">
-                        <h4>Account Information</h4>
+                        <h4>Information sur le compte</h4>
                       </div>
                       <div className="row">
                         <div className="col-sm-6">
                           <div className="box">
                             <div className="box-title">
-                              <h3>Contact Information</h3>
+                              <h3>Information contact</h3>
                               <a href="#">Éditer</a>
                             </div>
                             <div className="box-content">
                               <h6>Mark Jecno</h6>
-                              <h6>mark-jecno@gmail.com</h6>
+                              <h6>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h6>
                               <h6>
                                 <a href="#">Changer le mot de passe</a>
                               </h6>
@@ -168,12 +168,11 @@ useEffect(() => {
                           <div className="box">
                             <div className="box-title">
                               <h3>Newsletters</h3>
-                              <a href="#">Edit</a>
+                              <a href="#">Éditer</a>
                             </div>
                             <div className="box-content">
                               <p>
-                                You are currently not subscribed to any
-                                newsletter.
+                                Vous n'êtes actuellement abonné à aucune newsletter.
                               </p>
                             </div>
                           </div>
@@ -181,115 +180,25 @@ useEffect(() => {
                       </div>
                       <div className="box mt-3">
                         <div className="box-title">
-                          <h3>Address Book</h3>
-                          <a href="#">Manage Addresses</a>
+                          <h3>Carnet d'adresses</h3>
+                          <a href="#">Gérer les adresses</a>
                         </div>
                         <div className="row">
                           <div className="col-sm-6">
-                            <h6>Default Billing Address</h6>
+                            <h6>Adresse de facturation par défaut</h6>
                             <address>
-                              You have not set a default billing address.
+                              Vous n'avez pas défini d'adresse de facturation par défaut.
                               <br />
-                              <a href="#">Edit Address</a>
+                              <a href="#">Modifier l'adresse de facturation</a>
                             </address>
                           </div>
                           <div className="col-sm-6">
-                            <h6>Default Shipping Address</h6>
+                            <h6>Adresse de livraison par défaut</h6>
                             <address>
-                              You have not set a default shipping address.
+                              Vous n'avez pas défini d'adresse de livraison par défaut.
                               <br />
-                              <a href="#">Edit Address</a>
+                              <a href="#">Modifier l'adresse de livraison</a>
                             </address>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="tab-pane fade" id="address">
-                  <div className="row">
-                    <div className="col-12">
-                      <div className="card mt-0">
-                        <div className="card-body">
-                          <div className="top-sec">
-                            <h3>Address Book</h3>
-                            <a href="#" className="btn btn-sm btn-solid">
-                              + add new
-                            </a>
-                          </div>
-                          <div className="address-book-section">
-                            <div className="row g-4">
-                              <div className="select-box active col-xl-4 col-md-6">
-                                <div className="address-box">
-                                  <div className="top">
-                                    <h6>
-                                      mark jecno <span>home</span>
-                                    </h6>
-                                  </div>
-                                  <div className="middle">
-                                    <div className="address">
-                                      <p>549 Sulphur Springs Road</p>
-                                      <p>Downers Grove, IL</p>
-                                      <p>60515</p>
-                                    </div>
-                                    <div className="number">
-                                      <p>
-                                        mobile:{" "}
-                                        <span>+91 123 - 456 - 7890</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <div className="bottom">
-                                    <a
-                                      href="javascript:void(0)"
-                                      data-bs-target="#edit-address"
-                                      data-bs-toggle="modal"
-                                      className="bottom_btn"
-                                    >
-                                      edit
-                                    </a>
-                                    <a href="#" className="bottom_btn">
-                                      remove
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="select-box col-xl-4 col-md-6">
-                                <div className="address-box">
-                                  <div className="top">
-                                    <h6>
-                                      mark jecno <span>office</span>
-                                    </h6>
-                                  </div>
-                                  <div className="middle">
-                                    <div className="address">
-                                      <p>549 Sulphur Springs Road</p>
-                                      <p>Downers Grove, IL</p>
-                                      <p>60515</p>
-                                    </div>
-                                    <div className="number">
-                                      <p>
-                                        mobile:{" "}
-                                        <span>+91 123 - 456 - 7890</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <div className="bottom">
-                                    <a
-                                      href="javascript:void(0)"
-                                      data-bs-target="#edit-address"
-                                      data-bs-toggle="modal"
-                                      className="bottom_btn"
-                                    >
-                                      edit
-                                    </a>
-                                    <a href="#" className="bottom_btn">
-                                      remove
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>
@@ -863,7 +772,7 @@ useEffect(() => {
                                       <h6>email address</h6>
                                     </div>
                                     <div className="right">
-                                      <h6>mark.jecno@gmail.com</h6>
+                                      <h6>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h6>
                                     </div>
                                   </div>
                                 </li>

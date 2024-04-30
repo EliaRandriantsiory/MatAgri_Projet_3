@@ -70,12 +70,9 @@ function Modification({ materielItem }) {
   return (
     <>
       <a href="#">
-        <i
-          className="fa fa-pencil-square-o me-1"
-          aria-hidden="true"
+      <i class="fa-solid fa-pen-to-square" 
           data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-        />
+          data-bs-target="#staticBackdrop"></i>
       </a>
       <div
         className="modal fade"
