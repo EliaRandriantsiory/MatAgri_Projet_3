@@ -172,21 +172,20 @@ function HomePage_Layout() {
                         </li>
                         <li className="onhover-div mobile-cart">
                           <Link to={"/Panier"}>
-                            <div>
+                            <div className="position-relative">
                               <img
                                 src="../assets/images/jewellery/icon/cart.png"
                                 className="img-fluid blur-up lazyload"
                                 alt=""
                               />
 
-                              <i className="ti-shopping-cart">
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                  {countPanier}
-                                  <span class="visually-hidden">
-                                    unread messages
-                                  </span>
+                              <i className="ti-shopping-cart" />
+                              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {countPanier}
+                                <span class="visually-hidden">
+                                  unread messages
                                 </span>
-                              </i>
+                              </span>
                             </div>
                           </Link>
                           {/* Drop eo @ panier                           */}
