@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { Modal } from "@mui/material";
 import Reserver from "./Reserver";
+import Devis from "../../components/textComponent/Devis";
+import { Link } from "react-router-dom";
 
 function Panier() {
   const [data, setData] = useState("");
@@ -89,10 +91,7 @@ function Panier() {
                         <tbody>
                           <tr>
                             <td onChange={handleimageChange} />
-                            <td
-                              onChange={handleNomproductsChange}
-                              value={nomproducts}
-                            />
+                            <td onChange={handleNomproductsChange} />
                             <td>
                               <div class="qty-box">
                                 <div class="input-group">
@@ -142,7 +141,12 @@ function Panier() {
                           continue shopping
                         </a>
                       </div>
-                      <div className="col-4">
+                      <div className="col-3">
+                        <Link to="/devis" className="btn btn-solid">
+                          Aller au devis
+                        </Link>
+                      </div>
+                      <div className="col-3">
                         <a href="#" className="btn btn-solid">
                           Commander
                         </a>

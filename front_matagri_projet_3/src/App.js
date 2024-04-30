@@ -22,6 +22,7 @@ import TermeF from "./pages/AuthenticationPage/TermeF";
 import Terme from "./pages/AuthenticationPage/Terme";
 import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
 import Panier from "./pages/Panier/Panier";
+import Devis from "./components/textComponent/Devis";
 
 function App() {
   return (
@@ -40,6 +41,8 @@ function App() {
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/Panier" element=<Panier /> />
+          <Route path="/Devis" element=<Devis /> />
+
           <Route
             path="/InscriptionAgriculteur"
             element=<InscriptionAgriculteur />
