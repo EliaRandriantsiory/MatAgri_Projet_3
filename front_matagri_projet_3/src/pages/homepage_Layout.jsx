@@ -178,14 +178,15 @@ function HomePage_Layout() {
                                 className="img-fluid blur-up lazyload"
                                 alt=""
                               />
-                              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                {countPanier}
-                                <span class="visually-hidden">
-                                  unread messages
-                                </span>
-                              </span>
 
-                              <i className="ti-shopping-cart" />
+                              <i className="ti-shopping-cart">
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                  {countPanier}
+                                  <span class="visually-hidden">
+                                    unread messages
+                                  </span>
+                                </span>
+                              </i>
                             </div>
                           </Link>
                           {/* Drop eo @ panier                           */}
