@@ -25,8 +25,8 @@ function PageAccueilAgriculteur() {
   }, [email, password]);
 
   useEffect(() => {
-    console.log(currentProfilUser)
-  },[])
+    console.log(currentProfilUser);
+  }, []);
 
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
@@ -60,7 +60,9 @@ function PageAccueilAgriculteur() {
                         className="breadcrumb-item active"
                         aria-current="page"
                       >
-                        <a href onClick={handleOnClickLogout}>Déconnexion</a>
+                        <a href onClick={handleOnClickLogout}>
+                          Déconnexion
+                        </a>
                       </li>
                     </ol>
                   </nav>

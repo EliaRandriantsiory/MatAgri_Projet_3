@@ -1,6 +1,18 @@
 import { Link, Outlet } from "react-router-dom";
 import "./assets/css/homePage/homePage.css";
+import { useEffect, useState } from "react";
 function HomePage_Layout() {
+  const [listPanier, setListPanier] = useState([]);
+  const [countPanier, setCountPanier] = useState();
+  useEffect(() => {
+    setListPanier(localStorage.getItem("listpanier"));
+    console.log(localStorage.getItem("listpanier"));
+    // console.log(listPanier.length);
+    if (listPanier) {
+      console.log(listPanier.length);
+      setCountPanier(listPanier.length);
+    }
+  }, [localStorage.getItem("listPanier")]);
   return (
     <>
       <header className="header-2">
@@ -166,6 +178,12 @@ function HomePage_Layout() {
                                 className="img-fluid blur-up lazyload"
                                 alt=""
                               />
+                              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {countPanier}
+                                <span class="visually-hidden">
+                                  unread messages
+                                </span>
+                              </span>
 
                               <i className="ti-shopping-cart" />
                             </div>

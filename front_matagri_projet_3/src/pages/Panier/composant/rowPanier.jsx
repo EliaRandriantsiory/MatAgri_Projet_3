@@ -5,11 +5,17 @@ import PrintTextPrix from "../../../components/textComponent/printPrix";
 function RowPanierComponent({ materielItem_ }) {
   const [materielItem, setMaterielItem] = useState({});
   const [prixTotal, setPrixTotal] = useState();
+
   useEffect(() => {
-    setMaterielItem(materielItem_);
-    setPrixTotal(materielItem_.stockMat * materielItem_.prixMAt);
+    if (materielItem_ !== null) {
+      setMaterielItem(materielItem_);
+    } else {
+      console.log("bonjour Null");
+    }
   }, []);
-  useEffect(() => {}, [materielItem]);
+  useEffect(() => {
+    console.log(materielItem.quantity);
+  }, [materielItem]);
   //   console.log(materielItem);
 
   const handleNomProductsChange = (event) => {
@@ -25,7 +31,7 @@ function RowPanierComponent({ materielItem_ }) {
   const handleTotalChange = (event) => {
     console.log(event.target.value);
   };
-  console.log(materielItem.imagePath);
+  // console.log(materielItem.imagePath);
   return (
     <tr>
       <td>
@@ -37,7 +43,7 @@ function RowPanierComponent({ materielItem_ }) {
           className="img-fluid blur-up lazyload bg-img"
         /> */}
       </td>
-      <td>{materielItem.nomMat}</td>
+      <td>{}</td>
       <td>
         <div className="qty-box">
           <div className="input-group">
@@ -54,6 +60,7 @@ function RowPanierComponent({ materielItem_ }) {
       </td>
       <td>
         {materielItem.prixMAt}
+
         {/* <PrintTextPrix TextPrix={materielItem.prixMAt} monnai={"MLG"} /> */}
       </td>
       <td>
