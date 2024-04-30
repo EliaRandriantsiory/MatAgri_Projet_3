@@ -23,6 +23,7 @@ import Terme from "./pages/AuthenticationPage/Terme";
 import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
 import Panier from "./pages/Panier/Panier";
 import Devis from "./components/textComponent/Devis";
+import Paiement from "./components/Payement/Paiement";
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/Panier" element=<Panier /> />
           <Route path="/Devis" element=<Devis /> />
-
+          <Route path="/Paiement" element=<Paiement /> />
           <Route
             path="/InscriptionAgriculteur"
             element=<InscriptionAgriculteur />

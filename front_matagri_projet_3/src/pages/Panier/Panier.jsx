@@ -147,9 +147,9 @@ function Panier() {
                         </Link>
                       </div>
                       <div className="col-3">
-                        <a href="#" className="btn btn-solid">
+                        <Link to="/paiement" className="btn btn-solid">
                           Commander
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <Modal
