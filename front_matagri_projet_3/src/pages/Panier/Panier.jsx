@@ -4,14 +4,11 @@ import { Modal } from "@mui/material";
 import Reserver from "./Reserver";
 import RowPanierComponent from "./composant/rowPanier";
 import { Link, json } from "react-router-dom";
-// import PrintTextPrix from "../../components/textComponent/printPrix";
 
 function Panier() {
   const [listMateriel, setListMateriel] = useState([]);
   useEffect(() => {
-    // console.log(localStorage.getItem("listpanier"));
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    // console.log("bonjour PAnier" + listMateriel[0]);
     console.log(listMateriel);
 
     // if (listMateriel) {
@@ -21,11 +18,11 @@ function Panier() {
     // }
   }, []);
   useEffect(() => {
-    console.log(localStorage.getItem("listpanier"));
+    // console.log(localStorage.getItem("listpanier"));
     if (listMateriel) {
       setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-      console.log(localStorage.getItem("listpanier"));
-      console.log("bonjour" + listMateriel.length);
+      // console.log(localStorage.getItem("listpanier"));
+      // console.log("bonjour" + listMateriel.length);
     }
     // setListMateriel(localStorage.getItem("listpanier"));
   }, [localStorage.getItem("listpanier")]);
