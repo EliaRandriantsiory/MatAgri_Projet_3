@@ -21,6 +21,7 @@ import SearchPage from "./pages/homePage/Search";
 import TermeF from "./pages/AuthenticationPage/TermeF";
 import Terme from "./pages/AuthenticationPage/Terme";
 import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
+// import DevisForm from "./pages/CalculDevis";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/InscriptionAgriculteur" element=<InscriptionAgriculteur /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
+          {/* <Route path="/CalculDevis" element=<DevisForm /> /> */}
           </Route>
           <Route path="/Dashboard" element=<DashboardUser /> />
           <Route path="/PageAccueilAgriculteur" element=<PageAccueilAgriculteur /> >
