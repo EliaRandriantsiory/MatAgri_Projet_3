@@ -1,9 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Outlet } from "react-router-dom";
 import "./assets/css/homePage/homePage.css";
-
-import { useEffect, useState } from "react";
 function HomePage_Layout() {
     const [isVisible, setIsVisible] = useState(false);
 

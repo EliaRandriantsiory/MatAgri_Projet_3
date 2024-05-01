@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import PrintTextPrix from "../textComponent/printPrix";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ReserverPanier from "../../pages/Panier/reserverAddPanier";
 import Description from "../../pages/Dashboard/Fournisseur/description";
 
 function ProductCard({ materialItem }) {

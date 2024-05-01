@@ -66,7 +66,7 @@ function App() {
         </Route>
         <Route path="/carouselImage" element=<homePage /> />
         <Route path="/dashboard_fournisseur" element=<Dashboard /> />
-        <Route path="/reserverAddPanier" element=<Reserver /> />
+        <Route path="/reserverAddPanier" element=<ReserverPanier /> />
         <Route path="/terme" element=<Terme /> />
       </Routes>
     </BrowserRouter>
