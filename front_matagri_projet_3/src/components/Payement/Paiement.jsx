@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Paiement() {
+  const [prixapayer, SetPrixapayer] = useState();
+  const [nomproduit, SetNomproduit] = useState();
   return (
     <div>
       <div className="container text-center">
@@ -12,45 +14,17 @@ function Paiement() {
         <div className="row">
           <div className="col-md-6 col-lg-6 col-xl-6">
             <div md="7" lg="7" xl="6" className="mb-4 mb-md-0">
-              <h5 className="mb-0 text-success">$85.00</h5>
-              <h5 className="mb-3">Diabites Pump &amp; Supplies</h5>
+              <div className="mb-0 text-success" value={prixapayer}>
+                lala
+              </div>
+              <div className="mb-3" value={nomproduit}>
+                lolo
+              </div>
               <div>
-                <div className="d-flex justify-content-between">
-                  <div className="d-flex flex-row mt-1">
-                    <h6>Insurance Responsibility</h6>
-                    <h6 className="fw-bold text-success ms-1">$71.76</h6>
-                  </div>
-                  <div className="d-flex flex-row align-items-center text-primary">
-                    <span className="ms-1">Add Insurer card</span>
-                  </div>
-                </div>
-                <p>
-                  Insurance claim and all neccessary dependencies will be
-                  submitted to your insurer for the covered portion of this
-                  order.
-                </p>
-                <div
-                  className="p-2 d-flex justify-content-between align-items-center"
-                  style={{ backgroundColor: "#eee" }}
-                >
-                  <span>Aetna - Open Access</span>
-                  <span>Aetna - OAP</span>
-                </div>
                 <hr />
                 <div className="d-flex justify-content-between align-items-center">
-                  <div className="d-flex flex-row mt-1">
-                    <h6>Patient Balance</h6>
-                    <h6 className="fw-bold text-success ms-1">$13.24</h6>
-                  </div>
-                  <div className="d-flex flex-row align-items-center text-primary">
-                    <span className="ms-1">Add Payment card</span>
-                  </div>
+                  <div className="d-flex flex-row mt-1"></div>
                 </div>
-                <p>
-                  Insurance claim and all neccessary dependencies will be
-                  submitted to your insurer for the covered portion of this
-                  order.
-                </p>
                 <div class="d-flex flex-column mb-3">
                   <div
                     classname="btn-group"
@@ -93,7 +67,7 @@ function Paiement() {
                     </label>
                   </div>
                 </div>
-                <button type="btn btn-solid">Proccéder au paiement</button>
+                <button classname="btn btn-solid">Proccéder au paiement</button>
               </div>
             </div>
           </div>
@@ -101,45 +75,40 @@ function Paiement() {
           <div className="col col-lg-6 col-xl-6">
             <div md="5" lg="4" xl="4" offsetLg="1" offsetXl="2">
               <div className="p-3" style={{ backgroundColor: "#eee" }}>
-                <span className="fw-bold">Order Recap</span>
+                <span className="fw-bold">Récapitulation de la commande</span>
                 <div className="d-flex justify-content-between mt-2">
-                  <span>contracted Price</span> <span>$186.86</span>
+                  <span>Prix journalier</span> <span>180000Ar</span>
                 </div>
                 <div className="d-flex justify-content-between mt-2">
-                  <span>Amount Deductible</span> <span>$0.0</span>
+                  <span>quantité</span> <span>3</span>
                 </div>
                 <div className="d-flex justify-content-between mt-2">
-                  <span>Coinsurance(0%)</span> <span>+ $0.0</span>
+                  <span>Distance</span> <span>120km</span>
                 </div>
                 <div className="d-flex justify-content-between mt-2">
-                  <span>Copayment </span> <span>+ 40.00</span>
+                  <span>Frais de transport (Km)</span> <span>240000Ar</span>
+                </div>
+                <div className="d-flex justify-content-between mt-2">
+                  <span>Mutualisation (-12%)</span> <span>+</span>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between mt-2">
                   <span className="lh-sm">
-                    Total Deductible,
+                    Total du frais de transport avec Mutualisation
                     <br />
-                    Coinsurance and copay
                   </span>
-                  <span>$40.00</span>
+                  <span>20000Ar</span>
                 </div>
                 <div className="d-flex justify-content-between mt-2">
                   <span className="lh-sm">
-                    Maximum out-of-pocket <br />
-                    on insurance policy
+                    Total de la location du materiel
                   </span>
-                  <span>$40.00</span>
+                  <span>540000Ar</span>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between mt-2">
-                  <span>Insurance Responsibility </span> <span>$71.76</span>
-                </div>
-                <div className="d-flex justify-content-between mt-2">
-                  <span>Patient Balance </span> <span>$13.24</span>
-                </div>
-                <hr />
-                <div className="d-flex justify-content-between mt-2">
-                  <span>Total </span> <span class="text-success">$85.00</span>
+                  <span>Total du sevice</span>{" "}
+                  <span class="text-success">740000ar</span>
                 </div>
               </div>
             </div>
