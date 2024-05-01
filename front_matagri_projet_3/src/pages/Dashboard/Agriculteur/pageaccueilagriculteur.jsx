@@ -60,7 +60,7 @@ function PageAccueilAgriculteur() {
                         className="breadcrumb-item active"
                         aria-current="page"
                       >
-                        <a href onClick={handleOnClickLogout}>
+                        <a onClick={handleOnClickLogout}>
                           Déconnexion
                         </a>
                       </li>
