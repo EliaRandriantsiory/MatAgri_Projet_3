@@ -53,13 +53,13 @@ function ProductCard({ materialItem }) {
       const cmd = listPanierMat.push(panierMAt)
       setListPanierMat([...listPanierMat, panierMAt]);
       localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-      console.log(listPanierMat)
+      // console.log(listPanierMat)
     }
     // console.log(listPanierMat);
   }, [panierMAt]);
   // localStorage.setItem("listpanier", listPanierMat);
   useEffect(() => {
-    // console.log(listPanierMat.length);
+    console.log(listPanierMat.length);
   }, [localStorage.getItem("listpanier")]);
   return (
     <>
@@ -120,7 +120,7 @@ function ProductCard({ materialItem }) {
               </a>
               <p>{materialItem.descriptionMat} </p>
               <h4>
-                {/* <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} /> */}
+                <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
               </h4>
             </div>
           </div>

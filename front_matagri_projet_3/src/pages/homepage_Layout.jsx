@@ -12,7 +12,7 @@ function HomePage_Layout() {
       console.log(listPanier.length);
       setCountPanier(listPanier.length);
     }
-  }, [localStorage.getItem("listPanier")]);
+  }, [localStorage.getItem("listpanier")]);
   return (
     <>
       <header className="header-2">

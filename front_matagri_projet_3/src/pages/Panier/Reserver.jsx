@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import moment from 'moment';
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -6,16 +7,68 @@ import dayjs from "dayjs";
 function Reserver({ open, onClose }) {
   let datedebut = Date();
   let datefin = Date();
+  const [dateDebut, setDateDebut] = useState(new Date());
+  const [dateFin, setDateFin] = useState(new Date());
+  const [nbJoursLocation, setNbJoursLocation] = useState(0);
+  const [creneau, setCreneau] = useState()
+  
 
-  const [date_d, setDate_d] = React.useState(dayjs(datedebut));
+  // console.log(`Bonjour, je m'appelle ${name} et j'ai ${age} ans. ${age} `)
+  // console.log(date_d, date_f)
+  const handelOnClickVAlidateCreneau = () =>{
+    console.log("bonjour"+dateFin)
+    let strDateDebut = moment(dateDebut, 'ddd MMM DD YYYY HH:mm:ss').format('DD-MMMM-YYYY')
+    let strDateFin = moment(dateFin, 'ddd MMM DD YYYY HH:mm:ss').format('DD-MMMM-YYYY')
+    let dateCreneau = strDateDebut+' - '+strDateFin
+    setCreneau(dateCreneau)
+    // const diffInMs = Math.abs(dateFin - dateDebut);
+    // const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+    // setNbJoursLocation(Math.ceil(diffInDays));
+    console.log(creneau)
+    console.log(nbJoursLocation)
 
-  const [date_f, setDate_f] = React.useState(dayjs(datefin));
+  }
+  useEffect(() => {
+    const diffInMs = Math.abs(dateFin - dateDebut);
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+    setNbJoursLocation(Math.ceil(diffInDays));
+  }, [dateDebut, dateFin]);
 
-  console.log(date_d, date_f)
+  const handleChangeDateFin =(event)=>{
+
+    setDateFin(event.target.value)
+  }
+  const handleChangeDateDebut =(event)=>{
+
+    setDateDebut(event.target.value)
+  }
+  const handleChange = (event) => {
+    const target = event.target;
+    const value = target.type === 'number' ? parseFloat(target.value) : target.value;
+    const name = target.name;
+
+    switch (name) {
+      // case 'prixLocationParJour':
+      //   setPrixLocationParJour(value);
+      //   break;
+      case 'dateDebut':
+        setDateDebut(new Date(value));
+        console.log(dateDebut)
+        break;
+      case 'dateFin':
+        setDateFin(new Date(value));
+        console.log(dateFin)
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <>
       <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        bonjour
+        {creneau}
+        --
+        {/* {nbJoursLocation} */}
       </a>
       <div
         class="modal fade"
@@ -45,7 +98,14 @@ function Reserver({ open, onClose }) {
                 
                 </div>
                 <div className="col-md-6">
-                <input type="date" class="form-control" id="date"/>
+                <label>
+          Date de début :
+          <input type="date" name="dateDebut" value={dateDebut.toISOString().split('T')[0]} onChange={handleChange} />
+        </label>
+        <label>
+          Date de fin :
+          <input type="date" name="dateFin" value={dateFin instanceof Date ? dateFin.toISOString().split('T')[0] : ''} onChange={handleChange} />
+        </label>
                   {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
                       // value={date_f}
@@ -63,7 +123,7 @@ function Reserver({ open, onClose }) {
                 >
                   Annuler
                 </button>
-                <button type="button" class="btn btn-solid">
+                <button type="button" class="btn btn-solid" data-bs-dismiss="modal" onClick={handelOnClickVAlidateCreneau}>
                   Confirmer
                 </button>
               </div>

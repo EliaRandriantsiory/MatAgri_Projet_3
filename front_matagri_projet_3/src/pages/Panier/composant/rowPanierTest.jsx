@@ -6,7 +6,7 @@ function RowPanierComponent({ materielItem_ }) {
 
     
   const [materielItem, setMaterielItem] = useState({});
-  const [prixTotal, setPrixTotal] = useState();
+  const [prixTotal, setPrixTotal] = useState(0);
   const [qt, setQt] = useState();
   const [matPanier, setMatPanier] = useState({})
   const [nomMat, setNomMat] = useState()
@@ -24,7 +24,7 @@ function RowPanierComponent({ materielItem_ }) {
     setMatPanier(materielItem_.materiel)
     setNomMat(materielItem_.nomMat)
     setPrixTotal((materielItem_.materiel.prixMAt)*materielItem_.quantity)
-    console.log(materielItem_)
+    // console.log(materielItem_)
     
     // console.log(materielItem_.materiel)
   },[])
@@ -46,10 +46,13 @@ function RowPanierComponent({ materielItem_ }) {
   const handleTotalChange = (event) => {
     console.log(event.target.value);
   };
+  const CheckCommande = () =>{
+    console.log(materielItem_)
+  }
   // console.log(materielItem.imagePath);
   //console.log(nomMat)
   return (
-    <tr>
+    <tr onClick={CheckCommande}>
       <td>
         <img
           src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
@@ -75,19 +78,19 @@ function RowPanierComponent({ materielItem_ }) {
         </div>
       </td>
       <td>
-        {prixTotal}
+        {/* {prixTotal} */}
 
-        {/* <PrintTextPrix TextPrix={materielItem.prixMAt} monnai={"MLG"} /> */}
+        <PrintTextPrix TextPrix={materielItem_.materiel.prixMAt} monnai={"MLG"} />
       </td>
       <td>
         <div>
-          {/* <Reserver /> */}
-          2 jour
+          <Reserver />
+          {/* 2 jour */}
         </div>
       </td>
       <td>
-        {prixTotal}
-        {/* <PrintTextPrix TextPrix={prixTotal} monnai={"MLG"} /> */}
+        {/* {prixTotal} */}
+        <PrintTextPrix TextPrix={prixTotal} monnai={"MLG"} />
       </td>
       <td>
         <a href="#" className="icon">

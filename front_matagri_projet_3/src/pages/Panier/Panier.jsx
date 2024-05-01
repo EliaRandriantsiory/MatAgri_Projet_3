@@ -8,9 +8,15 @@ import PrintTextPrix from "../../components/textComponent/printPrix";
 
 function Panier() {
   const [listMateriel, setListMateriel] = useState([]);
+  const [prixTotal, setPrixTotal] = useState();
+
+
+  
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    console.log(listMateriel);
+    // console.log(localStorage.getItem("listpanier"));
+
+    
 
     // if (listMateriel) {
     //   localStorage.getItem("listpanier").forEach((element) => {
@@ -18,6 +24,14 @@ function Panier() {
     //   });
     // }
   }, []);
+
+  useEffect(() => {
+
+    console.log("bonjour")
+    listMateriel.forEach(mat => {
+      console.log(mat)
+    });
+  },[listMateriel])
   useEffect(() => {
     // console.log(localStorage.getItem("listpanier"));
     if (listMateriel) {

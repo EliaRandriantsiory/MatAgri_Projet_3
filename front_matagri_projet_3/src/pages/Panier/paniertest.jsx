@@ -11,7 +11,7 @@ function PanierTest() {
   const [listMateriel, setListMateriel] = useState([]);
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    // console.log(listMateriel);
+    console.log(listMateriel);
 
   }, []);
   useEffect(() => {
