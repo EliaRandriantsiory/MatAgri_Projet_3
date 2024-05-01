@@ -4,9 +4,18 @@ import React, { useState } from 'react';
 import Description from "../../pages/Dashboard/Fournisseur/description";
 
 function ProductCard({ materialItem }) {
+  const [quantity, setQuantity] = useState(1);
   const [listPanierMat, setListPanierMat] = useState([]);
   const [panierMAt, setPanierMat] = useState({});
-  const [quantity, setQuantity] = useState();
+
+  const incrementQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(prevQuantity => prevQuantity - 1);
+    }
+  };
 
   const handleOnClickAddCard = (event) => {
     // console.log(materialItem);
@@ -128,6 +137,7 @@ function ProductCard({ materialItem }) {
           </div>
         </div>
       </div>
+      {/* Description pour addproduit */}
       <div
         className="modal fade bd-example-modal-lg theme-modal"
         id="quick-view"
@@ -149,6 +159,8 @@ function ProductCard({ materialItem }) {
               >
                 <span aria-hidden="true">×</span>
               </button>
+              <br />
+
               <div className="row">
                 <div className="col-lg-6 col-xs-12">
                   <div className="quick-view-img">
@@ -164,46 +176,32 @@ function ProductCard({ materialItem }) {
                 </div>
                 <div className="col-lg-6 rtl-text">
                   <div className="product-right">
-                    <h2>{materialItem.name}</h2>
-                    <h3></h3>
-                    <ul hidden className="color-variant">
-                      <li className="bg-light0" />
-                      <li className="bg-light1" />
-                      <li className="bg-light2" />
-                    </ul>
+                   <h2 className="product-title">Infos supplémentaire</h2>
                     <div className="border-product">
-                      <h6 className="product-title">Details materiels</h6>
-                      <p>
-                        {materialItem.descriptionMat}
-                      </p>
+                      <h2>{materialItem.name}</h2>
+                      <p>{materialItem.descriptionMat}</p>
                     </div>
+                    <label className=""> Entrer votre plage de date :</label>
+                    <ReserverPanier />
+                    <br />
+                    <label className="">Entrer votre lieu d'exploitation :</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Lieu d'exploitation"
+                      style={{ opacity: 0.7, fontSize: '0.9rem' }}
+                    />
+                    <br />
+                    {/* Quantité */}
                     <div className="product-description border-product">
-                      <div className="size-box">
-                        <ul>
-                          <li className="active">
-                            <a href="javascript:void(0)">s</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">m</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">l</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">xl</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <h6 className="product-title">quantity</h6>
+                      <h6 className="product-title">Quantité</h6>
                       <div className="qty-box">
                         <div className="input-group">
                           <span className="input-group-prepend">
                             <button
                               type="button"
                               className="btn quantity-left-minus"
-                              data-type="minus"
-                              data-field
-                            >
+                              onClick={decrementQuantity}>
                               <i className="ti-angle-left" />
                             </button>{" "}
                           </span>
@@ -211,15 +209,15 @@ function ProductCard({ materialItem }) {
                             type="text"
                             name="quantity"
                             className="form-control input-number"
+                            value={quantity}
                             defaultValue={1}
+                            readOnly
                           />{" "}
                           <span className="input-group-prepend">
                             <button
                               type="button"
                               className="btn quantity-right-plus"
-                              data-type="plus"
-                              data-field
-                            >
+                              onClick={incrementQuantity}>
                               <i className="ti-angle-right" />
                             </button>
                           </span>
@@ -233,10 +231,6 @@ function ProductCard({ materialItem }) {
                       >
                         Ajouter au panier
                       </button>
-
-                      <a href="#" className="btn btn-solid">
-                        view detail
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -248,5 +242,4 @@ function ProductCard({ materialItem }) {
     </>
   );
 }
-
 export default ProductCard;

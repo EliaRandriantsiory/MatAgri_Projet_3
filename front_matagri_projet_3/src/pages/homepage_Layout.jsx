@@ -374,7 +374,7 @@ function HomePage_Layout() {
                     <ul className="contact-list">
                       <li>
                         <i className="fa fa-map-marker" style={{textAlign:'justify' ,fontSize:'14px', paddingRight:'10px'}}/>
-                        MatAgri, Faravohitra, <br/>101 Antananarivo
+                        MATAgri, Faravohitra, <br/>101 Antananarivo
                       </li>
                       <li>
                         <i className="fa fa-phone" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>

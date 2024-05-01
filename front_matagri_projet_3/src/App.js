@@ -22,6 +22,8 @@ import Terme from "./pages/AuthenticationPage/Terme";
 import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
 import Panier from "./pages/Panier/Panier";
 import Description from "./pages/Dashboard/Fournisseur/description";
+import Reserver from "./pages/Panier/Reserver";
+import ReserverPanier from "./pages/Panier/reserverAddPanier";
 
 function App() {
   return (
@@ -64,6 +66,7 @@ function App() {
         </Route>
         <Route path="/carouselImage" element=<homePage /> />
         <Route path="/dashboard_fournisseur" element=<Dashboard /> />
+        <Route path="/reserverAddPanier" element=<Reserver /> />
         <Route path="/terme" element=<Terme /> />
       </Routes>
     </BrowserRouter>
