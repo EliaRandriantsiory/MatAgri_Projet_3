@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +26,7 @@ function DashBordAgriculteur() {
         .then((response) => {
           localStorage.setItem("email", JSON.stringify(response.data.email));
           setCurrentProfilUser(response.data.user);
+
           axios.get("http://localhost:8082/api/home/listPersonnes",{
   name: name,
   lastname: lastname,
@@ -40,12 +40,17 @@ function DashBordAgriculteur() {
         localStorage.setItem("region", JSON.stringify(response.data.region))
         localStorage.setItem("address", JSON.stringify(response.data.adress))
         localStorage.setItem("phone", JSON.stringify(response.data.phone))
+
         })
         .catch((error) => {
           console.error(error);
         });
     }
   }, [email, password]);
+
+
+  useEffect(() => {}, []);
+
 
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
@@ -73,8 +78,21 @@ function DashBordAgriculteur() {
                   <i className="fa-solid fa-circle-user img-fluid" style={{color: '#FFB000', height:"250px", marginLeft:'20px'}}></i>
                   </div>
                   <div className="profile-detail">
+
+                    {/* <h5>
+                      {localStorage.getItem("email")
+                        ? localStorage.getItem("email")
+                        : "Email non disponible"}
+                    </h5>
+                    <h6>
+                      {localStorage.getItem("email")
+                        ? localStorage.getItem("email")
+                        : "Email non disponible"}
+                    </h6> */}
+
                     <h5>{localStorage.getItem("name")}</h5>
                     <h6>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h6>
+
                   </div>
                 </div>
                 <div className="faq-tab">
@@ -113,9 +131,11 @@ function DashBordAgriculteur() {
             </div>
             <div className="col-lg-9">
               <div className="faq-content tab-content" id="top-tabContent">
+
                 <Wishlist/>
                 <Commande/>
                 <Profile/>
+
               </div>
             </div>
           </div>

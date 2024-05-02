@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import TableRow from "../../../../components/componentproduct/tableRowMat";
 
-function TabPaneProducts({ currentUserSession }) {
+function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
   const [imagesList, setImagesList] = useState([]);
   const [images, setImages] = useState([]);
   const [listImagesFile, setListImageFile] = useState([]);
@@ -28,7 +28,7 @@ function TabPaneProducts({ currentUserSession }) {
         })
         .then((response) => {
           localStorage.setItem("currentUser", JSON.stringify(response.data));
-          // setCurrentUser(response.data)
+          setCurrentUser(response.data)
           // setListMateriel(Array.from(response.data.materiels))
 
           
@@ -37,17 +37,18 @@ function TabPaneProducts({ currentUserSession }) {
         initListMat()
   }
   const initListMat = () => {
+    // console.log(localStorage.getItem("crntUser"))
     axios
         .get(
-          'http://localhost:8082/api/materiels/listMaterielByUser?param=2'
+          'http://localhost:8082/api/materiels/listMaterielByUser?param='+localStorage.getItem("crntUser")
           // "http://localhost:8082/api/materiels/listMateriel"
         )
         .then((response) => {
           // setListMateriel(response.data);
           var dataList = response.data
           setListMateriels(dataList)
-          listMateriels.push(dataList)
-          console.log(listMateriels[0])
+          // listMateriels.push(dataList)
+          // console.log(listMateriels)
           
           // setListMateriel(response.data)
         })
@@ -59,8 +60,10 @@ function TabPaneProducts({ currentUserSession }) {
   
   useEffect(()=>{
     initAuthentification()    
-    console.log(listMateriels)
+    // console.log(listMateriels)
   },[])
+
+  useEffect(()=>{console.log("bonjour test assync")},[setImagesList])
 
   // const maPromesse = new Promise((resolve, reject) => {
   //   initAuthentification()
@@ -141,7 +144,7 @@ function TabPaneProducts({ currentUserSession }) {
     console.log(imagesList);
     setImagesList([]);
     // console.log("bonjour")
-    console.log(JSON.stringify(imagesList));
+    // console.log(JSON.stringify(imagesList));
     axios
       .post("http://localhost:8082/api/materiels/ajouter", {
         categorieMat: categorieMateriel,
@@ -159,6 +162,7 @@ function TabPaneProducts({ currentUserSession }) {
       .catch((error) => {
         console.error(error);
       });
+      setStateCrudProduct()
   };
 
   const handleImageChange = (e) => {

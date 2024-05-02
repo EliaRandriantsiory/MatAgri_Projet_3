@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-no-undef */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-
 import Login from "./pages/AuthenticationPage/LoginPage";
 import SignUpCooperative from "./pages/AuthenticationPage/SignUpCooperative";
 import SignUpProvider from "./pages/AuthenticationPage/SignUpProvider";
@@ -20,8 +19,24 @@ import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
+
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
+
+import PanierTest from "./pages/Panier/paniertest";
+
+import Description from "./pages/Dashboard/Fournisseur/description";
+import Reserver from "./pages/Panier/Reserver";
+import ReserverPanier from "./pages/Panier/reserverAddPanier";
+
+
+
+
+
+
+import Devis from "./components/textComponent/Devis";
+import Paiement from "./components/Payement/Paiement";
+
 
 function App() {
   return (
@@ -39,9 +54,11 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
+
           <Route path="/InscriptionAgriculteur" element=<InscriptionAgriculteur /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/Panier" element=<Panier /> />
+
           </Route>
           <Route path="/Dashboard" element=<DashboardUser /> />
           <Route path="/PageAccueilAgriculteur" element=<PageAccueilAgriculteur /> >
@@ -57,6 +74,43 @@ function App() {
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
           <Route path="/terme" element=<Terme /> />
           </Routes>
+          {/* <Route path="/Panier" element=<Panier /> />
+          <Route path="/Panier" element=<PanierTest /> />
+
+          <Route path="/Devis" element=<Devis /> />
+          <Route path="/Paiement" element=<Paiement /> />
+
+          <Route
+            path="/InscriptionAgriculteur"
+            element=<InscriptionAgriculteur />
+          />
+          <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
+        </Route>
+        <Route path="/Dashboard" element=<DashboardUser /> />
+        <Route
+          path="/PageAccueilAgriculteur"
+          element=<PageAccueilAgriculteur />
+        >
+          <Route
+            path="/PageAccueilAgriculteur"
+            element=<DashBordAgriculteur />
+          />
+        </Route>
+        <Route>
+          <Route path="/description" element=<Description /> />
+        </Route>
+        <Route>
+          <Route path="/TermeF" element=<TermeF /> />
+        </Route>
+        <Route path="/carouselImage" element=<homePage /> />
+        <Route path="/dashboard_fournisseur" element=<Dashboard /> />
+        <Route path="/reserverAddPanier" element=<ReserverPanier /> />
+        <Route path="/terme" element=<Terme /> />
+      </Routes> */}
+
+
+
+
     </BrowserRouter>
   );
 }

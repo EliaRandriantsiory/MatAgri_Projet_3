@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AddProduct from "./components/componentproduct/addproduct";
 import CartProduitModel from "./components/Produitcomponents/cartesProduitCompnent";
+import DevisForm from "./pages/Panier/composant/getdate";
+import Reserver from "./pages/Panier/Reserver";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

@@ -1,9 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { Link, Outlet } from "react-router-dom";
+import "./assets/css/homePage/homePage.css";
 import { ToastContainer } from 'react-toastify';
 import "./assets/css/homePage/homePage.css";
 import Avatar from './avatar';
+
 
 function HomePage_Layout() {
     const [isVisible, setIsVisible] = useState(false);
@@ -24,6 +27,19 @@ function HomePage_Layout() {
     };
 
     window.addEventListener('scroll', toggleVisibility);
+
+
+  const [listPanier, setListPanier] = useState([]);
+  const [countPanier, setCountPanier] = useState();
+  useEffect(() => {
+    setListPanier(localStorage.getItem("listpanier"));
+    console.log(localStorage.getItem("listpanier"));
+    // console.log(listPanier.length);
+    if (listPanier) {
+      console.log(listPanier.length);
+      setCountPanier(listPanier.length);
+    }
+  }, [localStorage.getItem("listpanier")]);
 
   return (
     <>
@@ -95,7 +111,10 @@ function HomePage_Layout() {
                             />{" "}
                           </a>
                         </li>
+
+
                         <Avatar/>
+
                         <li className="onhover-div mobile-search">
                           <Link to={"/search"}>
                             <img
@@ -141,7 +160,103 @@ function HomePage_Layout() {
                           </div>
                         </li>
                         <li className="onhover-div mobile-cart">
-                        <Link to={"/Panier"}>
+
+
+                          <Link to={"/Panier"}>
+                            <div className="position-relative">
+
+                              <img
+                                src="../assets/images/jewellery/icon/cart.png"
+                                className="img-fluid blur-up lazyload"
+                                alt=""
+                              />
+
+
+                              <i className="ti-shopping-cart" />
+                              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {countPanier}
+                                <span class="visually-hidden">
+                                  unread messages
+                                </span>
+                              </span>
+                            </div>
+                          </Link>
+                          {/* Drop eo @ panier                           */}
+                          {/* <ul className="show-div shopping-cart">
+                            <li>
+                              <div className="media">
+                                <a href="#">
+                                  <img
+                                    alt=""
+                                    className="me-3"
+                                    src="../assets/images/fashion/product/1.jpg"
+                                  />
+                                </a>
+                                <div className="media-body">
+                                  <a href="#">
+                                    <h4>item name</h4>
+                                  </a>
+                                  <h4>
+                                    <span>1 x $ 299.00</span>
+                                  </h4>
+                                </div>
+                              </div>
+                              <div className="close-circle">
+                                <a href="#">
+                                  <i
+                                    className="fa fa-times"
+                                    aria-hidden="true"
+                                  />
+                                </a>
+                              </div>
+                            </li>
+                            <li>
+                              <div className="media">
+                                <a href="#">
+                                  <img
+                                    alt=""
+                                    className="me-3"
+                                    src="../assets/images/fashion/product/2.jpg"
+                                  />
+                                </a>
+                                <div className="media-body">
+                                  <a href="#">
+                                    <h4>item name</h4>
+                                  </a>
+                                  <h4>
+                                    <span>1 x $ 299.00</span>
+                                  </h4>
+                                </div>
+                              </div>
+                              <div className="close-circle">
+                                <a href="#">
+                                  <i
+                                    className="fa fa-times"
+                                    aria-hidden="true"
+                                  />
+                                </a>
+                              </div>
+                            </li>
+                            <li>
+                              <div className="total">
+                                <h5>
+                                  subtotal : <span>$299.00</span>
+                                </h5>
+                              </div>
+                            </li>
+                            <li>
+                              <div className="buttons">
+                                <a href="cart.html" className="view-cart">
+                                  view cart
+                                </a>
+                                <a href="#" className="checkout">
+                                  checkout
+                                </a>
+                              </div>
+                            </li>
+                          </ul> */}
+
+                        {/* <Link to={"/Panier"}>
                           <div>
                             <img
                               src="../assets/images/jewellery/icon/cart.png"
@@ -150,7 +265,10 @@ function HomePage_Layout() {
                             />
                             <i className="ti-shopping-cart" />
                           </div>
-                          </Link>
+                          </Link> */}
+
+
+
                         </li>
                       </ul>
                     </div>
@@ -174,6 +292,7 @@ function HomePage_Layout() {
                   <div className="footer-logo">
                     <img src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
+
                   <p style={{textAlign:'center' ,fontSize:'14px'}}>
                   Application de location, livraison et mutualisation de
                     matériels agricoles.
@@ -183,21 +302,45 @@ function HomePage_Layout() {
                       <li>
                         <a href="#">
                         <FontAwesomeIcon icon="fa-brands fa-facebook-f " style={{ color: '#004225'}} />
+{/* 
+                  <p style={{ textAlign: "center", fontSize: "14px" }}>
+                    Application de location, livraison et mutualisation de
+                    matériels agricoles.
+                  </p>
+                  <div
+                    className="footer-social"
+                    style={{ marginLeft: "127px" }}
+                  >
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <FontAwesomeIcon
+                            icon="fa-brands fa-facebook-f "
+                            style={{ color: "#004225" }} */}
+                          {/* /> */}
+
+
                         </a>
                       </li>
                       <li>
                         <a href="#">
+
                         <FontAwesomeIcon icon="fa-brands fa-google" style={{color:'#004225'}}/>
+
                         </a>
                       </li>
                       <li>
                         <a href="#">
+
                           <FontAwesomeIcon icon="fa-brands fa-x-twitter" style={{ color: '#004225' }} />
+
                         </a>
                       </li>
                       <li>
                         <a href="#">
+
                         <FontAwesomeIcon icon="fa-brands fa-instagram" style={{color:'#004225'}}/>
+
                         </a>
                       </li>
                     </ul>
@@ -262,7 +405,12 @@ function HomePage_Layout() {
                     <ul className="contact-list">
                       <li>
                         <i className="fa fa-map-marker" style={{textAlign:'justify' ,fontSize:'14px', paddingRight:'10px'}}/>
-                        MatAgri, Faravohitra, <br/>101 Antananarivo
+
+                        MATAgri, Faravohitra, <br/>
+                        <p style={{ marginLeft:'20px'}}>101 Antananarivo</p>
+
+                        {/* MatAgri, Faravohitra, <br/>101 Antananarivo */}
+
                       </li>
                       <li>
                         <i className="fa fa-phone" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>
@@ -270,7 +418,11 @@ function HomePage_Layout() {
                       </li>
                       <li>
                         <i className="fa fa-envelope" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>
+{/* <<<<<<< HEAD
+                        <a href="#">matagri@gmail.com</a>
+======= */}
                         Email : <a href="#">matagri@gmail.com</a>
+
                       </li>
                     </ul>
                   </div>
@@ -331,7 +483,9 @@ function HomePage_Layout() {
           </div>
         </div>
       </footer>
+
       <ToastContainer/>
+
       <div className={`tap-top ${isVisible ? 'visible' : ''}`} onClick={scrollToTop}>
       <div>
         <i className="fa fa-angle-double-up" />

@@ -1,143 +1,109 @@
-function AddProduct() {
-    return ( 
-        
-      <div className="page-wrapper">
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Button, Modal } from 'react-bootstrap';
+import { FileUploader } from 'react-drag-drop-files';
 
-        <div className="page-body">
-          {/* Container-fluid starts*/}
-          <div className="container-fluid">
-            <div className="page-header">
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="page-header-left">
-                    <h3>Ajout produit
-                      {/* <small>Multikart Admin panel</small> */}
-                    </h3>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <ol className="breadcrumb pull-right">
-                    <li className="breadcrumb-item">
-                      <a href="index.html">
-                        <i data-feather="home" />
-                      </a>
-                    </li>
-                    <li className="breadcrumb-item">Physical</li>
-                    <li className="breadcrumb-item active">Ajout Produit</li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Container-fluid Ends*/}
-          {/* Container-fluid starts*/}
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-sm-12">
-                <div className="card">
-                  <div className="card-body">
-                    <div className="row product-adding">
-                      <div className="col-xl-5">
-                        <div className="add-product">
-                          <div className="row">
-                            <div className="col-xl-9 xl-50 col-sm-6 col-9">
-                              <img src="assets/images/pro3/1.jpg" alt="" className="img-fluid image_zoom_1 blur-up lazyloaded" />
+const fileTypes = ['JPG', 'PNG', 'GIF'];
+
+function AddProduit() {
+    const [image, setImage] = useState([]);
+    const [imagePreviews, setImagePreviews] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [nomMateriel, setNomMateriel] = useState('');
+    const [categorie, setCategorie] = useState('');
+    const [prix, setPrix] = useState('');
+    const [stock, setStock] = useState('');
+    const [description, setDescription] = useState('');
+    const [isValid, setIsValid] = useState(true);
+    const [produits, setProduits] = useState([]);
+
+    useEffect(() => {
+        const fetchProduits = async () => {
+            try {
+                const response = await axios.get('/api/produits');
+                setProduits(response.data);
+            } catch (error) {
+                console.error('Erreur lors de la récupération des produits:', error);
+            }
+        };
+
+        fetchProduits();
+    }, []);
+
+    const handleImageChange = (file) => {
+        setImage([file]);
+        setImagePreviews([URL.createObjectURL(file)]);
+    };
+
+    const removeImage = () => {
+        setImage([]);
+        setImagePreviews([]);
+    };
+
+    const handleOpenModal = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            // Votre code de gestion de soumission
+        } catch (error) {
+            console.error('Erreur lors de l\'envoi des données:', error);
+            // Gérez les erreurs d'envoi des données ici
+        }
+    };
+
+    // Autres fonctions de gestion des champs et des événements
+
+    return (
+        <>
+            <a href="#" className="btn btn-sm btn-solid" onClick={handleOpenModal}>
+                + Ajouter Produit
+            </a>
+
+            <Modal show={showModal} onHide={handleCloseModal}>
+                <Modal.Header>
+                    <Modal.Title>Ajouter Produit</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form className="needs-validation add-product-form" noValidate onSubmit={handleSubmit}>
+                        <div className="form">
+                            <div className="col-md-6">
+                                <label htmlFor="image" className="form-label">
+                                    Image:
+                                </label>
+                                <FileUploader handleChange={handleImageChange} name="file" types={fileTypes} />
+                                {imagePreviews.length > 0 && (
+                                    <div style={{ marginTop: '10px' }}>
+                                        <img src={imagePreviews[0]} alt="Preview" style={{ width: '100px', marginRight: '10px' }} />
+                                        <button type="button" className="btn btn-danger btn-sm" onClick={removeImage}>
+                                            <i className="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                )}
                             </div>
-                            <div className="col-xl-3 xl-50 col-sm-6 col-3">
-                              <ul className="file-upload-product">
-                                <li>
-                                  <div className="box-input-file"><input className="upload" type="file" /><i className="fa fa-plus" /></div>
-                                </li>
-                                <li>
-                                  <div className="box-input-file"><input className="upload" type="file" /><i className="fa fa-plus" /></div>
-                                </li>
-                                <li>
-                                  <div className="box-input-file"><input className="upload" type="file" /><i className="fa fa-plus" /></div>
-                                </li>
-                                <li>
-                                  <div className="box-input-file"><input className="upload" type="file" /><i className="fa fa-plus" /></div>
-                                </li>
-                                <li>
-                                  <div className="box-input-file"><input className="upload" type="file" /><i className="fa fa-plus" /></div>
-                                </li>
-                                <li>
-                                  <div className="box-input-file"><input className="upload" type="file" /><i className="fa fa-plus" /></div>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
+                            {/* Autres champs de formulaire */}
                         </div>
-                      </div>
-                      <div className="col-xl-7">
-                        <form className="needs-validation add-product-form" noValidate>
-                          <div className="form">
-                            <div className="form-group mb-3 row">
-                              <label htmlFor="validationCustom01" className="col-xl-3 col-sm-4 mb-0">Title :</label>
-                              <div className="col-xl-8 col-sm-7">
-                                <input className="form-control" id="validationCustom01" type="text" required />
-                              </div>
-                              <div className="valid-feedback">Looks good!</div>
-                            </div>
-                            <div className="form-group mb-3 row">
-                              <label htmlFor="validationCustom02" className="col-xl-3 col-sm-4 mb-0">Prix :</label>
-                              <div className="col-xl-8 col-sm-7">
-                                <input className="form-control" id="validationCustom02" type="text" required />
-                              </div>
-                              <div className="valid-feedback">Looks good!</div>
-                            </div>
-                            <div className="form-group mb-3 row">
-                              <label htmlFor="validationCustomUsername" className="col-xl-3 col-sm-4 mb-0">Code Produit :</label>
-                              <div className="col-xl-8 col-sm-7">
-                                <input className="form-control" id="validationCustomUsername" type="text" required />
-                              </div>
-                              <div className="invalid-feedback offset-sm-4 offset-xl-3">Please
-                                choose Valid Code.</div>
-                            </div>
-                          </div>
-                          <div className="form">
-                            <div className="form-group row">
-                              <label htmlFor="exampleFormControlSelect1" className="col-xl-3 col-sm-4 mb-0">Select Size :</label>
-                              <div className="col-xl-8 col-sm-7">
-                                <select className="form-control digits" id="exampleFormControlSelect1">
-                                  <option>Small</option>
-                                  <option>Medium</option>
-                                  <option>Large</option>
-                                  <option>Extra Large</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="form-group row">
-                              <label className="col-xl-3 col-sm-4 mb-0">Total Products :</label>
-                              <fieldset className="qty-box col-xl-9 col-xl-8 col-sm-7">
-                                <div className="input-group">
-                                  <input className="touchspin" type="text" defaultValue={1} />
-                                </div>
-                              </fieldset>
-                            </div>
-                            <div className="form-group row">
-                              <label className="col-xl-3 col-sm-4">Add Description :</label>
-                              <div className="col-xl-8 col-sm-7 description-sm">
-                                <textarea id="editor1" name="editor1" cols={10} rows={4} defaultValue={""} />
-                              </div>
-                              <div className="offset-xl-3 offset-sm-4 mt-4">
-                                <button type="submit" className="btn btn-primary">Ajouter</button>
-                                <button type="button" className="btn btn-light">Annuler</button>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
+                    </form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="offset-xl-3 offset-sm-4 d-flex justify-content-between">
+                        <Button className="btn btn-primary" onClick={handleSubmit}>
+                            Ajouter
+                        </Button>
+                        <Button className="me-3" variant="secondary" onClick={handleCloseModal}>
+                            Fermer
+                        </Button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Container-fluid Ends*/}
-        </div>
-        
-      </div>
-    
-    )
+                </Modal.Footer>
+            </Modal>
+        </>
+    );
 }
-export default AddProduct;
+export default AddProduit;
