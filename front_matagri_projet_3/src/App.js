@@ -19,7 +19,7 @@ import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
-<<<<<<< HEAD
+
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
 
@@ -29,14 +29,14 @@ import Description from "./pages/Dashboard/Fournisseur/description";
 import Reserver from "./pages/Panier/Reserver";
 import ReserverPanier from "./pages/Panier/reserverAddPanier";
 
-=======
-import TermeF from "./pages/AuthenticationPage/TermeF";
-import Terme from "./pages/AuthenticationPage/Terme";
-import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
-import Panier from "./pages/Panier/Panier";
+
+
+
+
+
 import Devis from "./components/textComponent/Devis";
 import Paiement from "./components/Payement/Paiement";
->>>>>>> roso
+
 
 function App() {
   return (
@@ -58,7 +58,7 @@ function App() {
           <Route path="/InscriptionAgriculteur" element=<InscriptionAgriculteur /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/Panier" element=<Panier /> />
-<<<<<<< HEAD
+
           </Route>
           <Route path="/Dashboard" element=<DashboardUser /> />
           <Route path="/PageAccueilAgriculteur" element=<PageAccueilAgriculteur /> >
@@ -74,18 +74,12 @@ function App() {
           <Route path="/dashboard_fournisseur" element=<Dashboard /> />
           <Route path="/terme" element=<Terme /> />
           </Routes>
-
-
-
-
-
-
           {/* <Route path="/Panier" element=<Panier /> />
           <Route path="/Panier" element=<PanierTest /> />
-=======
+
           <Route path="/Devis" element=<Devis /> />
           <Route path="/Paiement" element=<Paiement /> />
->>>>>>> roso
+
           <Route
             path="/InscriptionAgriculteur"
             element=<InscriptionAgriculteur />
