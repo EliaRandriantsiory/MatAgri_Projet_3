@@ -182,15 +182,7 @@ function SignUpCooperative() {
                     </div>
                     <div className="col-md-6"style={{ marginBottom: '20px' }}>
                       <label htmlFor="mon-menu" style={{fontSize:'14px'}}>Région :</label>
-                      <select id="region" className="form-control" value={regionForm} onChange={handleOnChangeInputTextRegion}>
-                      <option value="">--------------------</option>
-                        <option value="Alaotra Mangoro">Alaotra Mangoro</option>
-                        <option value="Analamanga">Analamanga</option>
-                        <option value="Atsimo Andrefana">Atsimo Andrefana</option>
-                        <option value="Itasy">Itasy</option>
-                        <option value="Menabe">Menabe</option>
-                        <option value="Vakinakaratra">Vakinakaratra</option>
-                      </select>
+                      <input type="text" id="region" className="form-control" value={regionForm} onChange={handleOnChangeInputTextRegion}/>
                     </div>
                     <div className="col-md-6">
                       <label htmlFor="nb" style={{fontSize:'14px'}}>Nombre Agriculteur</label>

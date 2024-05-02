@@ -1,16 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
 
-import axios from "axios";
-import { ToastContainer } from "react-bootstrap";
-import { toast } from "react-toastify";
-import Terme from "./Terme";
-function InscriptionAgriculteur() {
-  const [inscriptionAgriculteurRedirect, setInscriptionAgriculteurRedirect] = useState()
-  const [EtatCGV, setEtatCgv] = useState("");
-  const navigate = useNavigate();
-  const [form, setForm] = useState({});
-  const [nameForm, setName] = useState("");
+function EditPersonne() {
+    const [nameForm, setName] = useState("");
   const [lastnameForm, setLastName] = useState("");
   const [addressForm, setAddress] = useState("");
   const [phoneForm, setPhone] = useState("");
@@ -23,11 +14,6 @@ function InscriptionAgriculteur() {
   const [errorMessage, setErrorMessage] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
 
-  const handleOnChangecheckboxcgv = (event) => {
-    setEtatCgv(event.target.checked);
-    setIsChecked(event.target.checked);
-    setErrorMessage(false);
-  };
 
   const handleOnChangeInputTextNom = (event) => {
     setName(event.target.value);
@@ -64,75 +50,20 @@ function InscriptionAgriculteur() {
   const handleOnChangeInputTextConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
-
-  const handleOnclickSauvegarde = async (event) => {
-    event.preventDefault();
-    
-    if (!isChecked) {
-      setErrorMessage("Veuillez accepter les termes et conditions de location");
-      return;
-    }
-
-    if (passwordForm !== confirmPasswordForm) {
-      setErrorPassword("Les mots de passe ne sont pas identiques");
-      return;
-    }
-
-    try {
-      const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
-        address: addressForm,
-        phone: phoneForm,
-        cin: cinForm,
-        name: nameForm,
-        lastname: lastnameForm,
-        region: regionForm,
-        email: emailForm,
-        password: passwordForm,
-        confirmPassword: confirmPasswordForm,
-        profile: {
-          idprofile: 1,
-          profile: "agriculteur",
-          roles: []
-        }
-      });
-      console.log(response.data);
-      
-      toast.success('Inscription réussie !');
-      navigate("/PageAccueilAgriculteur");
-      localStorage.setItem('name', nameForm);
-      localStorage.setItem('lastname', lastnameForm);
-      localStorage.setItem('address', addressForm);
-      localStorage.setItem('phone', phoneForm);
-      localStorage.setItem('cin', cinForm);
-      localStorage.setItem('region', regionForm);
-      localStorage.setItem('email', emailForm);
-      localStorage.setItem('password', passwordForm);
-    } catch (error) {
-      console.error("Erreur lors de l'inscription :", error);
-    }
-  };
- 
-  useEffect(() => {
-    
-    setName(localStorage.getItem("nom"))
-    setLastName(localStorage.getItem("prenom"))
-    setAddress(localStorage.getItem("adresse"))
-    setPhone(localStorage.getItem("phone"))
-    setCin(localStorage.getItem("cin"))
-    setEmail(localStorage.getItem("email"))
-    setRegion(localStorage.getItem("region"))
-    
-  }, []);
-  useEffect(() => {console.log(inscriptionAgriculteurRedirect)}, [inscriptionAgriculteurRedirect]);
-
-  return (
-      <section className="register-page section-b-space">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <h3 style={{color: '#004225'}}>INSCRIPTION AGRICULTEUR</h3>
-              <div className="theme-card">
-                <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
+    return ( 
+        <>
+            <a style={{color: "yellow"}} href data-bs-target="#exampleModal" data-bs-toggle="modal">
+                edit
+            </a>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modification</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form className="theme-form">
                   <div className="form-row row">
                     <div className="col-md-6">
                       <label htmlFor="nom" style={{fontSize:'14px'}}>Nom</label>
@@ -213,6 +144,7 @@ function InscriptionAgriculteur() {
                       <label htmlFor="mon-menu" style={{fontSize:'14px'}}>Région :</label>
                       <input type="text"
                         id="region"
+                        placeholder="votre region"
                         onChange={handleOnChangeInputTextRegion}
                         className="form-control" value={regionForm}/>
                     </div>
@@ -242,43 +174,18 @@ function InscriptionAgriculteur() {
                         }
                       />
                     </div>
-                    <br></br>
-                    <div id="checkTermeCondition" className="mt-4">
-                      <input
-                        type="checkbox"
-                        name="checkbox-button"
-                        value="Check"
-                        id="checkPlus"
-                        checked={isChecked}
-                        onChange={handleOnChangecheckboxcgv}
-                        style={{ marginRight: '10px', fontSize: '14px' }}
-
-                      ></input>
-                      <a id="addCheckboxBtn" href="#">
-                    <Terme onAccept={() => setIsChecked(true)}/>
-                    </a>
                     </div>
-                  </div>
-                    {/* --------- */}
-                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-                    {errorPassword && (
-                  <p style={{ color: "red" }}>{errorPassword}</p>
-                )}
-                  <input
-                    className="btn btn-solid w-auto"
-                    type="submit"
-                    value={"S'inscrire"}
-                    disabled={!isChecked}
-                  />
-                </form>
-              </div>
-              <div className="form-row row"></div>
+                    </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-solid" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-solid">Save changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <ToastContainer/>
-      </section>
-  );
+        </>
+     );
 }
 
-export default InscriptionAgriculteur;
+export default EditPersonne;

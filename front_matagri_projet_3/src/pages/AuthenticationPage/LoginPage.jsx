@@ -31,11 +31,11 @@ function Login() {
         } else if (response.data.profile.profile === "cooperative") {
           toast.success("Authentification réussi!!")
           setIsConnected(true);
-          navigate("/");
+          navigate("/PageAccueilAgriculteur");
         } else if (response.data.profile.profile === "agriculteur") {
           toast.success("Authentification réussi!!")
           setIsConnected(true);
-          navigate("/");
+          navigate("/PageAccueilAgricutleur");
         }
 
         // localStorage.setItem('token', JSON.stringify(response.data.token));
