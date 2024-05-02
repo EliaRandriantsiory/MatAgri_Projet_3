@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "../assets/css/SignUpProvider/provider.css";
 import TermeF from "./TermeF";
 function SignUpProvider() {
@@ -30,17 +32,19 @@ function SignUpProvider() {
   };
 
   const handleOnChangeInputTextNif = (event) => {
-    setNif(event.target.value);
-    localStorage.setItem('nif', event.target.value);
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    const trimmedValue = numericValue.slice(0, 10);
+    localStorage.setItem('nif', enteredValue);
+    setNif(trimmedValue);
   };
-
   const handleOnChangeInputTextPhone = (event) => {
     const enteredValue = event.target.value;
     const numericValue = enteredValue.replace(/\D/g, "");
+    const trimmedValue = numericValue.slice(0, 10);
     localStorage.setItem('phone', enteredValue);
-    setPhone(numericValue);
+    setPhone(trimmedValue);
   };
-
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
     localStorage.setItem('email', event.target.value);
@@ -95,6 +99,7 @@ function SignUpProvider() {
         }
       });
       console.log(response.data);
+      toast.success('Inscription réussie !');
       navigate("/dashboard_fournisseur");
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error);
@@ -121,25 +126,13 @@ function SignUpProvider() {
                     <div className="col-md-6">
                       <label htmlFor="email" style={{fontSize:'14px'}}>Raison sociale</label>
                       <input
-                        type="email"
+                        type="text"
                         className="form-control"
                         id="name"
                         placeholder="Votre raison sociale"
                         required
                         value={companyNameForm}
                         onChange={(event) => handleOnChangeInputTextCompany(event)}
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="cin"
-                        placeholder="Votre numéro NIF"
-                        required
-                        value={nifForm}
-                        onChange={(event) => handleOnChangeInputTextNif(event)}
                       />
                     </div>
                     <div className="col-md-6">
@@ -152,6 +145,18 @@ function SignUpProvider() {
                         required
                         value={addressForm}
                         onChange={(event) => handleOnChangeInputTextAdress(event)}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="cin"
+                        placeholder="Votre numéro NIF"
+                        required
+                        value={nifForm}
+                        onChange={(event) => handleOnChangeInputTextNif(event)}
                       />
                     </div>
                     <div className="col-md-6">
@@ -245,7 +250,8 @@ function SignUpProvider() {
               <div className="form-row row"></div>
             </div>
           </div>
-        </div>
+        </div>        
+    <ToastContainer />
       </section>
     
   );

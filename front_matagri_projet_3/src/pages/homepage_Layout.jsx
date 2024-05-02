@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Link, Outlet } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 import "./assets/css/homePage/homePage.css";
+import Avatar from './avatar';
 
 function HomePage_Layout() {
     const [isVisible, setIsVisible] = useState(false);
@@ -93,28 +95,7 @@ function HomePage_Layout() {
                             />{" "}
                           </a>
                         </li>
-                        <li className="onhover-div mobile-account">
-                          <a href>
-                          <img
-                            src="../assets/images/jewellery/icon/avatar.png"
-                            className="opacity-1"
-                            alt=""
-                          />
-                          </a>
-                          <div className="show-div">
-                          <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>
-                            <li>
-                              <Link to="/Login" style={{color : 'black', fontSize:'18px', textAlign:'center'}}>Se connecter</Link>
-                            </li>
-                            <br/>
-                            <li>
-                              <Link to="/choiceusers" style={{color : 'black', fontSize:'18px'}} data-lng="en">
-                                S' inscrire
-                              </Link>
-                            </li>
-                          </ul>
-                          </div>
-                        </li>
+                        <Avatar/>
                         <li className="onhover-div mobile-search">
                           <Link to={"/search"}>
                             <img
@@ -170,7 +151,7 @@ function HomePage_Layout() {
                             <i className="ti-shopping-cart" />
                           </div>
                           </Link>
-                        </li>j
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -350,6 +331,7 @@ function HomePage_Layout() {
           </div>
         </div>
       </footer>
+      <ToastContainer/>
       <div className={`tap-top ${isVisible ? 'visible' : ''}`} onClick={scrollToTop}>
       <div>
         <i className="fa fa-angle-double-up" />

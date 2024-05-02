@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import axios from "axios";
+import { ToastContainer } from "react-bootstrap";
+import { toast } from "react-toastify";
 import Terme from "./Terme";
 function InscriptionAgriculteur() {
   const [inscriptionAgriculteurRedirect, setInscriptionAgriculteurRedirect] = useState()
@@ -39,11 +41,16 @@ function InscriptionAgriculteur() {
   const handleOnChangeInputTextPhone = (event) => {
     const enteredValue = event.target.value;
     const numericValue = enteredValue.replace(/\D/g, "");
-    setPhone(numericValue);
+    const trimmedValue = numericValue.slice(0, 10);
+    setPhone(trimmedValue);
   };
   
+  
   const handleOnChangeInputTextCin = (event) => {
-    setCin(event.target.value);
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    const trimmedValue = numericValue.slice(0, 12);
+    setCin(trimmedValue);
   };
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
@@ -89,7 +96,9 @@ function InscriptionAgriculteur() {
         }
       });
       console.log(response.data);
-      navigate("/PageAccueilAgriculteur");
+      
+      toast.success('Inscription réussie !');
+      navigate("/");
       localStorage.setItem('email', emailForm);
       localStorage.setItem('password', passwordForm);
     } catch (error) {
@@ -131,18 +140,6 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="cin" style={{fontSize:'14px'}}>CIN</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="cin"
-                        placeholder="Votre numéro CIN"
-                        
-                        value={cinForm}
-                        onChange={(event) => handleOnChangeInputTextCin(event)}
-                      />
-                    </div>
-                    <div className="col-md-6">
                       <label htmlFor="prenom" style={{fontSize:'14px'}}>Prénom</label>
                       <input
                         type="text"
@@ -153,6 +150,18 @@ function InscriptionAgriculteur() {
                         onChange={(event) =>
                           handleOnChangeInputTextLastName(event)
                         }
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <label htmlFor="cin" style={{fontSize:'14px'}}>CIN</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="cin"
+                        placeholder="Votre numéro CIN"
+                        
+                        value={cinForm}
+                        onChange={(event) => handleOnChangeInputTextCin(event)}
                       />
                     </div>
                     <div className="col-md-6">
@@ -183,6 +192,35 @@ function InscriptionAgriculteur() {
                       />
                     </div>
                     <div className="col-md-6">
+                      <label htmlFor="email" style={{fontSize:'14px'}}>Email</label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        placeholder="Votre adresse email"
+                        value={emailForm}
+                        onChange={(event) =>
+                          handleOnChangeInputTextEmail(event)
+                        }
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>Région :</label>
+                      <select
+                        id="region"
+                        onChange={handleOnChangeInputTextRegion}
+                        className="form-control" value={regionForm}>
+                        <option value="-------------">-------------</option>
+                        <option value="Alaotra Mangoro">Alaotra Mangoro</option>
+                        <option value="Analamanga">Analamanga</option>
+                        <option value="Atsimo Andrefana">
+                          Atsimo Andrefana
+                        </option>
+                        <option value="Itasy">Itasy</option>
+                        <option value="Menabe">Menabe</option>
+                        <option value="Vakinakaratra">Vakinakaratra</option>
+                      </select>
+                    </div>
+                    <div className="col-md-6">
                       <label htmlFor="review" style={{fontSize:'14px'}}>Mot de passe</label>
                       <input
                         type="password"
@@ -192,18 +230,6 @@ function InscriptionAgriculteur() {
                         value={passwordForm}
                         onChange={(event) =>
                           handleOnChangeInputTextPassword(event)
-                        }
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="email" style={{fontSize:'14px'}}>email</label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Votre adresse email"
-                        value={emailForm}
-                        onChange={(event) =>
-                          handleOnChangeInputTextEmail(event)
                         }
                       />
                     </div>
@@ -219,23 +245,6 @@ function InscriptionAgriculteur() {
                           handleOnChangeInputTextConfirmPassword(event)
                         }
                       />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>région :</label>
-                      <select
-                        id="region"
-                        onChange={handleOnChangeInputTextRegion}
-                        className="form-control" value={regionForm}>
-                        <option value="-------------">-------------</option>
-                        <option value="Alaotra Mangoro">Alaotra Mangoro</option>
-                        <option value="Analamanga">Analamanga</option>
-                        <option value="Atsimo Andrefana">
-                          Atsimo Andrefana
-                        </option>
-                        <option value="Itasy">Itasy</option>
-                        <option value="Menabe">Menabe</option>
-                        <option value="Vakinakaratra">Vakinakaratra</option>
-                      </select>
                     </div>
                     <br></br>
                     <div id="checkTermeCondition" className="mt-4">
@@ -271,6 +280,7 @@ function InscriptionAgriculteur() {
             </div>
           </div>
         </div>
+        <ToastContainer/>
       </section>
   );
 }

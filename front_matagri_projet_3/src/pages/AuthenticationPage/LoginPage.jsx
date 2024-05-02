@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import "../assets/css/StyleLoginPage.css";
+import Avatar from "../avatar";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isConnected, setIsConnected] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -24,10 +27,15 @@ function Login() {
         localStorage.setItem("crntUser",response.data.idUser)
         if (response.data.profile.profile === "fournisseur") {
           navigate("/dashboard_fournisseur");
+          toast.success("Authentification réussi!!")
         } else if (response.data.profile.profile === "cooperative") {
-          navigate("/PageAccueilAgriculteur");
+          toast.success("Authentification réussi!!")
+          setIsConnected(true);
+          navigate("/");
         } else if (response.data.profile.profile === "agriculteur") {
-          navigate("/PageAccueilAgriculteur");
+          toast.success("Authentification réussi!!")
+          setIsConnected(true);
+          navigate("/");
         }
 
         // localStorage.setItem('token', JSON.stringify(response.data.token));
@@ -84,6 +92,8 @@ function Login() {
           </div>
         </div>
       </div>
+      <ToastContainer/>
+      <Avatar isConnected={isConnected} />
     </section>
   );
 }

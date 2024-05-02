@@ -1,13 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Modification from "../../../components/componentproduct/modification";
-import SupprimerMateriel from "../../../components/componentproduct/suppressionMateriel";
-import TableRow from "../../../components/componentproduct/tableRowMat";
-import TabPaneSetting from "./component/tabPaneSettings";
-import TabPaneDashboard from "./component/tabPaneDashboard";
-import TabPaneProducts from "./component/tabPaneProducts";
+import { ToastContainer } from "react-toastify";
 import TabPaneOrders from "./component/tabPaneOrders";
+import TabPaneProducts from "./component/tabPaneProducts";
 import TabPaneProfile from "./component/tabPaneProfile";
 
 function Navigation() {
@@ -70,7 +66,7 @@ function Navigation() {
               <li className="nav-item">
                 <Link
                   data-bs-toggle="tab"
-                  className="nav-link"
+                  className="nav-link" 
                   to={"#products"}
                 >
                   Materiels
@@ -114,6 +110,7 @@ function Navigation() {
             
           </div>
         </div>
+        <ToastContainer/>
       </div>
   );
 }

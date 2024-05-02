@@ -24,7 +24,7 @@ function TermeF({ onAccept }) {
               <h4 className="texte-center">
                 CONDITIONS GENERALES DE LOCATION - LOUEUR (FOURNISSEUR) DE
                 MATERIELS AGRICOLES
-                <br />
+                <br/>
                 MATERIELS AGRICOLES MatAgri
               </h4>
             </center>
