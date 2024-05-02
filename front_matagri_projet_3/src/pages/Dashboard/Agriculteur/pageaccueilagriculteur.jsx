@@ -5,6 +5,11 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 function PageAccueilAgriculteur() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const  [lastname, setLastname] = useState("");
+  const [region, setRegion] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
   const [currentProfilUser, setCurrentProfilUser] = useState({});
   const navigate = useNavigate();
 
@@ -33,6 +38,12 @@ function PageAccueilAgriculteur() {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
     localStorage.removeItem("password");
+    localStorage.removeItem("name");
+    localStorage.removeItem("lastname");
+    localStorage.removeItem("region");
+    localStorage.removeItem("address");
+    localStorage.removeItem("phone");
+    localStorage.removeItem("cin");
     setCurrentProfilUser({});
     navigate("/home");
   };

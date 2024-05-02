@@ -13,6 +13,7 @@ function DashBordAgriculteur() {
   const [region, setRegion] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+  const [cin, setCin] = useState("");
   const [currentProfilUser, setCurrentProfilUser] = useState({});
   const navigate = useNavigate();
 
@@ -32,6 +33,7 @@ function DashBordAgriculteur() {
   region: region,
   address: address,
   phone: phone,
+  cin: cin,
 })
         localStorage.setItem("name", JSON.stringify(response.data.name))
         localStorage.setItem("lastname", JSON.stringify(response.data.lastname))
@@ -54,6 +56,7 @@ function DashBordAgriculteur() {
     localStorage.removeItem("region");
     localStorage.removeItem("address");
     localStorage.removeItem("phone");
+    localStorage.removeItem("cin");
     setCurrentProfilUser({});
     navigate("/home");
   };
@@ -70,7 +73,7 @@ function DashBordAgriculteur() {
                   <i className="fa-solid fa-circle-user img-fluid" style={{color: '#FFB000', height:"250px", marginLeft:'20px'}}></i>
                   </div>
                   <div className="profile-detail">
-                    <h5>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h5>
+                    <h5>{localStorage.getItem("name")}</h5>
                     <h6>{localStorage.getItem("email") ? localStorage.getItem("email") : "Email non disponible"}</h6>
                   </div>
                 </div>

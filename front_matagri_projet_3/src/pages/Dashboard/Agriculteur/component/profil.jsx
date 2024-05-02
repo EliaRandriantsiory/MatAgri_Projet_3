@@ -37,6 +37,16 @@ function Profile() {
                                 <li>
                                   <div className="details">
                                     <div className="left">
+                                      <h6>CIN</h6>
+                                    </div>
+                                    <div className="right">
+                                      <h6>{localStorage.getItem("cin")}</h6>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div className="details">
+                                    <div className="left">
                                       <h6>Adresse Email</h6>
                                     </div>
                                     <div className="right">
