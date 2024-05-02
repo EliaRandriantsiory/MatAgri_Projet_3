@@ -112,6 +112,7 @@ function HomePage_Layout() {
                           </a>
                         </li>
 
+
                         <Avatar/>
 
                         <li className="onhover-div mobile-search">
@@ -160,13 +161,16 @@ function HomePage_Layout() {
                         </li>
                         <li className="onhover-div mobile-cart">
 
+
                           <Link to={"/Panier"}>
                             <div className="position-relative">
+
                               <img
                                 src="../assets/images/jewellery/icon/cart.png"
                                 className="img-fluid blur-up lazyload"
                                 alt=""
                               />
+
 
                               <i className="ti-shopping-cart" />
                               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -263,6 +267,8 @@ function HomePage_Layout() {
                           </div>
                           </Link> */}
 
+
+
                         </li>
                       </ul>
                     </div>
@@ -286,6 +292,7 @@ function HomePage_Layout() {
                   <div className="footer-logo">
                     <img src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
+
                   <p style={{textAlign:'center' ,fontSize:'14px'}}>
                   Application de location, livraison et mutualisation de
                     matériels agricoles.
@@ -295,21 +302,45 @@ function HomePage_Layout() {
                       <li>
                         <a href="#">
                         <FontAwesomeIcon icon="fa-brands fa-facebook-f " style={{ color: '#004225'}} />
+{/* 
+                  <p style={{ textAlign: "center", fontSize: "14px" }}>
+                    Application de location, livraison et mutualisation de
+                    matériels agricoles.
+                  </p>
+                  <div
+                    className="footer-social"
+                    style={{ marginLeft: "127px" }}
+                  >
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <FontAwesomeIcon
+                            icon="fa-brands fa-facebook-f "
+                            style={{ color: "#004225" }} */}
+                          {/* /> */}
+
+
                         </a>
                       </li>
                       <li>
                         <a href="#">
+
                         <FontAwesomeIcon icon="fa-brands fa-google" style={{color:'#004225'}}/>
+
                         </a>
                       </li>
                       <li>
                         <a href="#">
+
                           <FontAwesomeIcon icon="fa-brands fa-x-twitter" style={{ color: '#004225' }} />
+
                         </a>
                       </li>
                       <li>
                         <a href="#">
+
                         <FontAwesomeIcon icon="fa-brands fa-instagram" style={{color:'#004225'}}/>
+
                         </a>
                       </li>
                     </ul>

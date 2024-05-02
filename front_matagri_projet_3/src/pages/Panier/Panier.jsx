@@ -5,10 +5,19 @@ import Reserver from "./Reserver";
 import RowPanierComponent from "./composant/rowPanier";
 import { Link, json } from "react-router-dom";
 import PrintTextPrix from "../../components/textComponent/printPrix";
+import Devis from "../../components/textComponent/Devis";
+
+
 
 function Panier() {
   const [listMateriel, setListMateriel] = useState([]);
   const [prixTotal, setPrixTotal] = useState();
+
+
+  const handleTotalPChange = () => {
+    // const newTotal = parseFloat(totalproducts) + parseFloat(total);
+    // setTotalproducts(newTotal);
+  };
 
 
   
@@ -55,6 +64,17 @@ function Panier() {
   // }, []);
   // setTotal(quantity * prix);
   // setTotalproducts(quantity * prix);
+
+
+  // const handleNomproductsChange = (event) => {
+  //   setNomproducts(event.target.value);
+  // };
+  // const handlePrixChange = (event) => {
+  //   setPrix(event.target.value);
+  // };
+  // const handleTotalChange = (event) => {
+  //   setTotal(quantity * prix);
+  // };
 
 
 
@@ -121,17 +141,22 @@ function Panier() {
 
                     <div className="row cart-buttons">
                     
-                      <div className="col-6">
-                      
+                      <div className="col-6">                      
                         <Link to={"/Material"} className="btn btn-solid">
                         
-                          Continuer l'achataaa
+                          Continuer l'achat
+                        </Link>
+
+                      </div>
+                      <div className="col-3">
+                        <Link to="/devis" className="btn btn-xs btn-solid">
+                          Aller au devis
                         </Link>
                       </div>
-                      <div className="col-4">
-                        <a href="#" className="btn btn-solid">
+                      <div className="col-3">
+                        <Link to="/paiement" className="btn btn-xs btn-solid">
                           Commander
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     {/* <Modal
