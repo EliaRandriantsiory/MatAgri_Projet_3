@@ -19,12 +19,10 @@ function Terme({onAccept}){
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            <center className="text-center">
-              <h4 className="texte-center">
-            CONDITIONS GENERALES DE LOCATION
-                <br/>MATERIELS AGRICOLES MatAgri
-            </h4>
-            </center>
+              <h4 className="texte-center" style={{textAlign:'center'}}>
+              CONDITIONS GENERALES DE LOCATION
+                MATERIELS AGRICOLES MatAgri
+              </h4>
             
         </Modal.Title>
         </Modal.Header>

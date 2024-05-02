@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import Terme from "./Terme";
 
 function SignUpCooperative() {
@@ -41,10 +42,15 @@ function SignUpCooperative() {
   const handleOnChangeInputTextPhone = (event) => {
     const enteredValue = event.target.value;
     const numericValue = enteredValue.replace(/\D/g, "");
-    setPhone(numericValue);
+    const trimmedValue = numericValue.slice(0, 10);
+    setPhone(trimmedValue);
   };
   const handleOnChangeInputTextNif = (event) => {
-    setNif(event.target.value);
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    const trimmedValue = numericValue.slice(0, 10);
+    localStorage.setItem('nif', enteredValue);
+    setNif(trimmedValue);
   };
 
   const handleOnChangeInputTextEmail = (event) => {
@@ -94,7 +100,8 @@ function SignUpCooperative() {
         },
       });
       console.log(response.data);
-      navigate("/PageAccueilAgriculteur");
+      toast.success('Inscription réussie !');
+      navigate("/");
       localStorage.setItem('email', emailForm);
       localStorage.setItem('password', passwordForm);
     } catch (error) {
@@ -122,18 +129,6 @@ function SignUpCooperative() {
                         onChange={handleOnChangeInputTextRaison}/>
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="nif"
-                        value={nifForm}
-                        placeholder="Votre numéro NIF"
-                        required
-                        onChange={handleOnChangeInputTextNif}
-                      />
-                    </div>
-                    <div className="col-md-6">
                       <label htmlFor="siege" style={{fontSize:'14px'}}>Siège social</label>
                       <input
                         type="text"
@@ -143,6 +138,18 @@ function SignUpCooperative() {
                         value={addressForm}
                         required
                         onChange={(event) => handleOnChangeInputTextAdress(event)}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="nif"
+                        value={nifForm}
+                        placeholder="Votre numéro NIF"
+                        required
+                        onChange={handleOnChangeInputTextNif}
                       />
                     </div>
                     <div className="col-md-6">
@@ -174,16 +181,8 @@ function SignUpCooperative() {
                       />
                     </div>
                     <div className="col-md-6"style={{ marginBottom: '20px' }}>
-                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>région :</label>
-                      <select id="region" className="form-control" value={regionForm} onChange={handleOnChangeInputTextRegion}>
-                      <option value="">--------------------</option>
-                        <option value="Alaotra Mangoro">Alaotra Mangoro</option>
-                        <option value="Analamanga">Analamanga</option>
-                        <option value="Atsimo Andrefana">Atsimo Andrefana</option>
-                        <option value="Itasy">Itasy</option>
-                        <option value="Menabe">Menabe</option>
-                        <option value="Vakinakaratra">Vakinakaratra</option>
-                      </select>
+                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>Région :</label>
+                      <input type="text" id="region" className="form-control" value={regionForm} onChange={handleOnChangeInputTextRegion}/>
                     </div>
                     <div className="col-md-6">
                       <label htmlFor="nb" style={{fontSize:'14px'}}>Nombre Agriculteur</label>
@@ -266,6 +265,7 @@ function SignUpCooperative() {
             </div>
           </div>
         </div>
+        <ToastContainer/>
       </section>
   );
 }

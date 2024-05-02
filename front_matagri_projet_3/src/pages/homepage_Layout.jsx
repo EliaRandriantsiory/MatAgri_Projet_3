@@ -1,7 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet } from "react-router-dom";
 import "./assets/css/homePage/homePage.css";
+import { ToastContainer } from 'react-toastify';
+import "./assets/css/homePage/homePage.css";
+import Avatar from './avatar';
+
+
 function HomePage_Layout() {
     const [isVisible, setIsVisible] = useState(false);
 
@@ -22,6 +28,7 @@ function HomePage_Layout() {
 
     window.addEventListener('scroll', toggleVisibility);
 
+
   const [listPanier, setListPanier] = useState([]);
   const [countPanier, setCountPanier] = useState();
   useEffect(() => {
@@ -33,6 +40,7 @@ function HomePage_Layout() {
       setCountPanier(listPanier.length);
     }
   }, [localStorage.getItem("listpanier")]);
+
   return (
     <>
       <header className="header-2">
@@ -103,6 +111,7 @@ function HomePage_Layout() {
                             />{" "}
                           </a>
                         </li>
+
                         <li className="onhover-div mobile-account">
                           <a href>
                           <img
@@ -125,6 +134,9 @@ function HomePage_Layout() {
                           </ul>
                           </div>
                         </li>
+
+                        <Avatar/>
+
                         <li className="onhover-div mobile-search">
                           <Link to={"/search"}>
                             <img
@@ -170,6 +182,7 @@ function HomePage_Layout() {
                           </div>
                         </li>
                         <li className="onhover-div mobile-cart">
+
                           <Link to={"/Panier"}>
                             <div className="position-relative">
                               <img
@@ -261,6 +274,18 @@ function HomePage_Layout() {
                               </div>
                             </li>
                           </ul> */}
+=======
+                        <Link to={"/Panier"}>
+                          <div>
+                            <img
+                              src="../assets/images/jewellery/icon/cart.png"
+                              className="img-fluid blur-up lazyload"
+                              alt=""
+                            />
+                            <i className="ti-shopping-cart" />
+                          </div>
+                          </Link>
+
                         </li>
                       </ul>
                     </div>
@@ -372,8 +397,12 @@ function HomePage_Layout() {
                     <ul className="contact-list">
                       <li>
                         <i className="fa fa-map-marker" style={{textAlign:'justify' ,fontSize:'14px', paddingRight:'10px'}}/>
+
                         MATAgri, Faravohitra, <br/>
                         <p style={{ marginLeft:'20px'}}>101 Antananarivo</p>
+
+                        {/* MatAgri, Faravohitra, <br/>101 Antananarivo */}
+
                       </li>
                       <li>
                         <i className="fa fa-phone" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>
@@ -381,7 +410,11 @@ function HomePage_Layout() {
                       </li>
                       <li>
                         <i className="fa fa-envelope" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>
+{/* <<<<<<< HEAD
                         <a href="#">matagri@gmail.com</a>
+======= */}
+                        Email : <a href="#">matagri@gmail.com</a>
+
                       </li>
                     </ul>
                   </div>
@@ -442,6 +475,9 @@ function HomePage_Layout() {
           </div>
         </div>
       </footer>
+
+      <ToastContainer/>
+
       <div className={`tap-top ${isVisible ? 'visible' : ''}`} onClick={scrollToTop}>
       <div>
         <i className="fa fa-angle-double-up" />

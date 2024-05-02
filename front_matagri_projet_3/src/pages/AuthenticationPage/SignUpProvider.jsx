@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "../assets/css/SignUpProvider/provider.css";
 import TermeF from "./TermeF";
 function SignUpProvider() {
@@ -30,17 +32,19 @@ function SignUpProvider() {
   };
 
   const handleOnChangeInputTextNif = (event) => {
-    setNif(event.target.value);
-    localStorage.setItem('nif', event.target.value);
+    const enteredValue = event.target.value;
+    const numericValue = enteredValue.replace(/\D/g, "");
+    const trimmedValue = numericValue.slice(0, 10);
+    localStorage.setItem('nif', enteredValue);
+    setNif(trimmedValue);
   };
-
   const handleOnChangeInputTextPhone = (event) => {
     const enteredValue = event.target.value;
     const numericValue = enteredValue.replace(/\D/g, "");
+    const trimmedValue = numericValue.slice(0, 10);
     localStorage.setItem('phone', enteredValue);
-    setPhone(numericValue);
+    setPhone(trimmedValue);
   };
-
   const handleOnChangeInputTextEmail = (event) => {
     setEmail(event.target.value);
     localStorage.setItem('email', event.target.value);
@@ -95,6 +99,7 @@ function SignUpProvider() {
         }
       });
       console.log(response.data);
+      toast.success('Inscription réussie !');
       navigate("/dashboard_fournisseur");
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error);
@@ -131,18 +136,6 @@ function SignUpProvider() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="cin"
-                        placeholder="Votre numéro NIF"
-                        required
-                        value={nifForm}
-                        onChange={(event) => handleOnChangeInputTextNif(event)}
-                      />
-                    </div>
-                    <div className="col-md-6">
                       <label htmlFor="siege" style={{fontSize:'14px'}}>Siège social</label>
                       <input
                         type="text"
@@ -152,6 +145,18 @@ function SignUpProvider() {
                         required
                         value={addressForm}
                         onChange={(event) => handleOnChangeInputTextAdress(event)}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="cin"
+                        placeholder="Votre numéro NIF"
+                        required
+                        value={nifForm}
+                        onChange={(event) => handleOnChangeInputTextNif(event)}
                       />
                     </div>
                     <div className="col-md-6">
@@ -204,15 +209,7 @@ function SignUpProvider() {
                     </div>
                     <div className="col-md-6">
                       <label htmlFor="mon-menu" style={{fontSize:'14px'}}>Région :</label>
-                      <select id="region" value={regionForm} className="form-control" onChange={handleOnChangeInputTextRegion}>
-                        <option value="">-------------</option>
-                        <option value="Alaotra Mangoro">Alaotra Mangoro</option>
-                        <option value="Analamanga">Analamanga</option>
-                        <option value="Atsimo Andrefana">Atsimo Andrefana</option>
-                        <option value="Itasy">Itasy</option>
-                        <option value="Menabe">Menabe</option>
-                        <option value="Vakinakaratra">Vakinakaratra</option>
-                      </select>
+                      <input type="text" id="region" value={regionForm} className="form-control" onChange={handleOnChangeInputTextRegion}/>
                     </div>
                   </div>
                   <div id="checkTermeCondition">
@@ -245,7 +242,8 @@ function SignUpProvider() {
               <div className="form-row row"></div>
             </div>
           </div>
-        </div>
+        </div>        
+    <ToastContainer />
       </section>
     
   );

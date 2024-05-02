@@ -153,4 +153,6 @@ function Panier() {
     </div>
   );
 }
+
 export default Panier;
+
