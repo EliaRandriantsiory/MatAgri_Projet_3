@@ -3,112 +3,129 @@ import React, { useState } from "react";
 function Paiement() {
   const [prixapayer, SetPrixapayer] = useState();
   const [nomproduit, SetNomproduit] = useState();
+  const [quantite, SetQuantite] = useState();
+  const [nbredejour, SetNbredejour] = useState();
+  const [mutualisation, SetMutualisation] = useState();
+  const [montant, SetMontant] = useState();
+
+  const handleNomproductsChange = (e) => {
+    SetNomproduit(e.target.value);
+  };
+  const handlePrixChange = (e) => {
+    SetPrixapayer(e.target.value);
+  };
+  const handleQuantityChange = (e) => {
+    SetQuantite(e.target.value);
+  };
+  const handleNbredejourChange = (e) => {
+    SetNbredejour(e.target.value);
+  };
+  const handleMutualisationChange = (e) => {
+    SetMutualisation(e.target.value);
+  };
+  const handleMontantChange = (e) => {
+    SetMontant(e.target.value);
+  };
   return (
     <div>
-      <div className="container text-center">
-        <div className="d-flex justify-content-between align-items-center mb-5">
-          <div className="d-flex flex-row align-items-center">
-            <h4 className="text-uppercase mt-1">Paiement</h4>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6 col-lg-6 col-xl-6">
-            <div md="7" lg="7" xl="6" className="mb-4 mb-md-0">
-              <div className="mb-0 text-success" value={prixapayer}>
-                lala
-              </div>
-              <div className="mb-3" value={nomproduit}>
-                lolo
-              </div>
-              <div>
-                <hr />
-                <div className="d-flex justify-content-between align-items-center">
-                  <div className="d-flex flex-row mt-1"></div>
-                </div>
-                <div class="d-flex flex-column mb-3">
-                  <div
-                    classname="btn-group"
-                    vertical
-                    aria-label="Vertical button group"
-                  >
-                    <input
-                      type="radio"
-                      className="btn-check"
-                      name="options"
-                      id="option1"
-                      autocomplete="off"
-                    />
-                    <label
-                      className="btn btn-outline-primary btn-lg"
-                      for="option1"
-                    >
-                      <div className="d-flex justify-content-between">
-                        <span>VISA </span>
-                        <span>**** 5436</span>
-                      </div>
-                    </label>
+      <div className="cart-section section-b-space">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="title1 section-t-space">
+                <h2 className="title-inner1">Paiement</h2>
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-sm-12"></div>
+                    <div className="col-sm-12 table-responsive-xs">
+                      <table className="table cart-table">
+                        <thead>
+                          <tr className="table-head">
+                            <th scope="col" style={{ fontSize: "12px" }}>
+                              Nom du produit
+                            </th>
+                            <th scope="col" style={{ fontSize: "12px" }}>
+                              Quantité
+                            </th>
+                            <th scope="col" style={{ fontSize: "12px" }}>
+                              Prix
+                            </th>
+                            <th scope="col" style={{ fontSize: "12px" }}>
+                              Nombre de jour
+                            </th>
+                            <th scope="col" style={{ fontSize: "12px" }}>
+                              Mutualisation
+                            </th>
+                            <th scope="col" style={{ fontSize: "12px" }}>
+                              Montant
+                            </th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td onChange={handleNomproductsChange} />
+                            <td onChange={handleQuantityChange} />
+                            <td onChange={handlePrixChange} />
+                            <td onChange={handleNbredejourChange} />
+                            <td on onChange={handleMutualisationChange} />
+                            <td on onChange={handleMontantChange}></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="d-flex justify-content-end">
+                      <table style={{ border: "none" }}>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <label style={{ fontWeight: "bold" }}>
+                                Frais de transport
+                              </label>
+                            </td>
+                            <td>
+                              <label
+                                style={{
+                                  textAlign: "left",
+                                  marginRight: "75px",
+                                }}
+                              >
+                                1 000,00 Ar
+                              </label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label
+                                style={{
+                                  fontWeight: "bold",
+                                  marginRight: "27px",
+                                }}
+                              >
+                                Montant total à payer
+                              </label>
+                            </td>
+                            <td>
+                              <label
+                                style={{
+                                  textAlign: "left",
+                                  marginRight: "75px",
+                                }}
+                              >
+                                24 000 000 Ar
+                              </label>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
 
-                    <input
-                      type="radio"
-                      className="btn-check"
-                      name="options"
-                      id="option2"
-                      autocomplete="off"
-                      checked
-                    />
-                    <label
-                      className="btn btn-outline-primary btn-lg"
-                      for="option2"
-                    >
-                      <div className="d-flex justify-content-between">
-                        <span>MASTER CARD </span>
-                        <span>**** 5038</span>
+                    <div className="row cart-buttons">
+                      <div className="col-7" style={{ marginLeft: "490px" }}>
+                        <a className="btn btn-xs btn-solid">Payer</a>
                       </div>
-                    </label>
+                    </div>
                   </div>
-                </div>
-                <button classname="btn btn-solid">Proccéder au paiement</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="col col-lg-6 col-xl-6">
-            <div md="5" lg="4" xl="4" offsetLg="1" offsetXl="2">
-              <div className="p-3" style={{ backgroundColor: "#eee" }}>
-                <span className="fw-bold">Récapitulation de la commande</span>
-                <div className="d-flex justify-content-between mt-2">
-                  <span>Prix journalier</span> <span>180000Ar</span>
-                </div>
-                <div className="d-flex justify-content-between mt-2">
-                  <span>quantité</span> <span>3</span>
-                </div>
-                <div className="d-flex justify-content-between mt-2">
-                  <span>Distance</span> <span>120km</span>
-                </div>
-                <div className="d-flex justify-content-between mt-2">
-                  <span>Frais de transport (Km)</span> <span>240000Ar</span>
-                </div>
-                <div className="d-flex justify-content-between mt-2">
-                  <span>Mutualisation (-12%)</span> <span>+</span>
-                </div>
-                <hr />
-                <div className="d-flex justify-content-between mt-2">
-                  <span className="lh-sm">
-                    Total du frais de transport avec Mutualisation
-                    <br />
-                  </span>
-                  <span>20000Ar</span>
-                </div>
-                <div className="d-flex justify-content-between mt-2">
-                  <span className="lh-sm">
-                    Total de la location du materiel
-                  </span>
-                  <span>540000Ar</span>
-                </div>
-                <hr />
-                <div className="d-flex justify-content-between mt-2">
-                  <span>Total du sevice</span>{" "}
-                  <span class="text-success">740000ar</span>
                 </div>
               </div>
             </div>

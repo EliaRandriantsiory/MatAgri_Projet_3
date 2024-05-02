@@ -137,17 +137,17 @@ function Panier() {
                     </div>
                     <div className="row cart-buttons">
                       <div className="col-6">
-                        <a href="#" className="btn btn-solid">
+                        <a href="#" className="btn btn-xs btn-solid">
                           continue shopping
                         </a>
                       </div>
                       <div className="col-3">
-                        <Link to="/devis" className="btn btn-solid">
+                        <Link to="/devis" className="btn btn-xs btn-solid">
                           Aller au devis
                         </Link>
                       </div>
                       <div className="col-3">
-                        <Link to="/paiement" className="btn btn-solid">
+                        <Link to="/paiement" className="btn btn-xs btn-solid">
                           Commander
                         </Link>
                       </div>
