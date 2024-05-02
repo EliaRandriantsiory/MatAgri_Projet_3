@@ -135,14 +135,14 @@ function ProductCard({ materialItem }) {
                 <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
               </h4>
             </div>
-
+{/* 
             <a href="product-page(no-sidebar).html">
               <h6>{materialItem.nomMat}</h6>
             </a>
             <p>{materialItem.descriptionMat} </p>
             <h4>
               <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
-            </h4>
+            </h4> */}
 
           </div>
         </div>

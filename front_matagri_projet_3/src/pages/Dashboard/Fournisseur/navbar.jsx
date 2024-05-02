@@ -57,8 +57,38 @@ function Navigation() {
           {/* <div className="profile-detail">
             <h5>{currentProfilUser.companyName}</h5>
             <h6>{currentProfilUser.email}</h6> */}
+            <div className="faq-tab">
+          <ul className="nav nav-tabs" id="top-tab" role="tablist">
+            <li className="nav-item">
+              <Link data-bs-toggle="tab" className="nav-link" to={"#products"}>
+                Materiels
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link data-bs-toggle="tab" className="nav-link" to={"#orders"}>
+                Etat du matériel
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link data-bs-toggle="tab" className="nav-link" to={"#profile"}>
+                Profile
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                data-toggle="modal"
+                data-bs-target="#logout"
+                to={"/home"}
+                onClick={(event) => handleOnClickLogout(event)}
+              >
+                Logout
+              </Link>
+            </li>
+          </ul>
+        </div>
 
-          <div className="faq-tab">
+          {/* <div className="faq-tab">
             <ul className="nav nav-tabs" id="top-tab" role="tablist">
               
               <li className="nav-item">
@@ -93,38 +123,9 @@ function Navigation() {
               </li>
             </ul>
 
-          </div>
+          </div> */}
         </div>
-        <div className="faq-tab">
-          <ul className="nav nav-tabs" id="top-tab" role="tablist">
-            <li className="nav-item">
-              <Link data-bs-toggle="tab" className="nav-link" to={"#products"}>
-                Materiels
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link data-bs-toggle="tab" className="nav-link" to={"#orders"}>
-                Etat du matériel
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link data-bs-toggle="tab" className="nav-link" to={"#profile"}>
-                Profile
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                data-toggle="modal"
-                data-bs-target="#logout"
-                to={"/home"}
-                onClick={(event) => handleOnClickLogout(event)}
-              >
-                Logout
-              </Link>
-            </li>
-          </ul>
-        </div>
+        
       </div>
       <div className="col-lg-9">
         <div className="faq-content tab-content" id="top-tabContent">
