@@ -3,6 +3,7 @@ import PrintTextPrix from "../textComponent/printPrix";
 import React, { useState, useEffect } from 'react';
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
 import Description from "../../pages/Dashboard/Fournisseur/description";
+import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 
 function ProductCard({ materialItem }) {
   const [quantity, setQuantity] = useState(1);
@@ -19,7 +20,7 @@ function ProductCard({ materialItem }) {
   };
 
   const handleOnClickAddCard = (event) => {
-    // console.log(materialItem);
+    
     setPanierMat({
       materiel: {
         materielId: materialItem.materielId,
@@ -130,7 +131,7 @@ function ProductCard({ materialItem }) {
               <a href="product-page(no-sidebar).html">
                 <h6>{materialItem.nomMat}</h6>
               </a>
-              <p>{materialItem.descriptionMat} </p>
+              <p> <PrintDetailTechMat desctechMat={materialItem.techniqueMat} /> </p>
               <h4>
                 <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
               </h4>

@@ -7,6 +7,7 @@ import AddProduct from "./components/componentproduct/addproduct";
 import CartProduitModel from "./components/Produitcomponents/cartesProduitCompnent";
 import DevisForm from "./pages/Panier/composant/getdate";
 import Reserver from "./pages/Panier/Reserver";
+import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricultuer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
