@@ -236,6 +236,11 @@ function SignUpProvider() {
                     type="submit"
                     value={"S'inscrire"}
                     disabled={!isChecked}
+                    style={{
+                      backgroundColor: isChecked ? '#004225' : '#ccc',
+                      color: '#fff', 
+                      cursor: isChecked ? 'pointer' : 'not-allowed'
+                    }}
                   />
                 </form>
               </div>

@@ -257,6 +257,11 @@ function SignUpCooperative() {
                       className="btn btn-solid w-auto"
                       value={"S'inscrire"}
                       disabled={!isChecked}
+                      style={{
+                      backgroundColor: isChecked ? '#004225' : '#ccc',
+                      color: '#fff', 
+                      cursor: isChecked ? 'pointer' : 'not-allowed'
+                    }}
                     />
                   </div>
                 </form>

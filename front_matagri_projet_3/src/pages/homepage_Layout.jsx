@@ -1,8 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from "react-router-dom";
-import "./assets/css/homePage/homePage.css";
 import { ToastContainer } from 'react-toastify';
 import "./assets/css/homePage/homePage.css";
 import Avatar from './avatar';
@@ -102,15 +101,6 @@ function HomePage_Layout() {
                   <div>
                     <div className="icon-nav">
                       <ul>
-                        <li className="mobile-wishlist">
-                          <a href="#">
-                            <img
-                              src="../assets/images/jewellery/icon/heart.png"
-                              className="opacity-1"
-                              alt=""
-                            />{" "}
-                          </a>
-                        </li>
 
 
                         <Avatar/>

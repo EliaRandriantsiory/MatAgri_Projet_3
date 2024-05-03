@@ -237,7 +237,7 @@ function AboutPage() {
         <div className="container">
             <div className="row">
                 <div className="col-sm-12">
-                    <h2>notre equipe</h2>
+                    <h2>Notre Equipe</h2>
                     <div className="team-4">
                         <div>
                             <div>
@@ -301,8 +301,8 @@ function AboutPage() {
                 </div>
                 <div className="col-md-4 service-block">
                     <div className="media">
-                        {/* <svg xmlns="http://www.w3.org/2000/svg"  version="1.1"
-                            id="Capa_1" x="0px" y="0px" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480;" xml:space="preserve" width="512px" height="512px">
+                        <svg xmlns="http://www.w3.org/2000/svg"  version="1.1"
+                            id="Capa_1" x="0px" y="0px" viewBox="0 0 480 480" style={{enableBackground:"new 0 0 480 480"}} width="512px" height="512px">
                             <g>
                                 <g>
                                     <g>
@@ -321,7 +321,7 @@ function AboutPage() {
                                     </g>
                                 </g>
                             </g>
-                        </svg> */}
+                        </svg> 
                         <div className="media-body">
                             <h4>24 X 7 service</h4>
                             <p>online service for new customer</p>

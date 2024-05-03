@@ -100,16 +100,6 @@ function DashBordAgriculteur() {
                     <li className="nav-item">
                       <a
                         data-bs-toggle="tab"
-                        data-bs-target="#info"
-                        className="nav-link active"
-                      >
-                        Mon wishlist
-                      </a>
-                    </li>
-
-                    <li className="nav-item">
-                      <a
-                        data-bs-toggle="tab"
                         data-bs-target="#orders"
                         className="nav-link"
                       >
@@ -131,8 +121,6 @@ function DashBordAgriculteur() {
             </div>
             <div className="col-lg-9">
               <div className="faq-content tab-content" id="top-tabContent">
-
-                <Wishlist/>
                 <Commande/>
                 <Profile/>
 

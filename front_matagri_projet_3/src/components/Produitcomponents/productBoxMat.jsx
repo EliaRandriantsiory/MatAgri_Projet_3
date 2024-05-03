@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const ProductBox = ({ materialItem }) => {
   // const [materialItem,setMatItem] = useState({...materialItem})
@@ -28,9 +28,6 @@ const ProductBox = ({ materialItem }) => {
             <button>
               <i className="ti-shopping-cart" />
             </button>{" "}
-            <a href="javascript:void(0)" title="Add to Wishlist">
-              <i className="ti-heart" aria-hidden="true" />
-            </a>{" "}
             <a
               href="#"
               data-bs-toggle="modal"

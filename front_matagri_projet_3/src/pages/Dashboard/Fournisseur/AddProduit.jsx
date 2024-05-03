@@ -304,7 +304,7 @@ function AddProduit() {
                   onChange={(e) => setPrixMateriel(e.target.value)}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">Ariary</span>
+                  <span className="input-group-text">Ar/Jour</span>
                 </div>
               </div>
             </div>
