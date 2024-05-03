@@ -211,7 +211,6 @@ const [listMateriel, setListMateriel] = useState([]);
                     <tr>
                       <td>
                       <Link to={"/Material"} className="btn btn-solid">
-                        
                         Continuer l'achat
                       </Link>  
                       </td>
