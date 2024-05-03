@@ -25,6 +25,12 @@ function Avatar({isConnected}) {
               S' inscrire
             </Link>
           </li>
+          <br/>
+          <li>
+            <Link to="/PageAccueilAgriculteur" style={{color : 'black', fontSize:'18px'}} data-lng="en">
+              Profile
+            </Link>
+          </li>
         </ul>
         {isConnected && (
                 <Link to="/">

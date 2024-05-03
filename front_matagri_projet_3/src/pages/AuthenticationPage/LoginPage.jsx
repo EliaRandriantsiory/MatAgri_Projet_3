@@ -35,7 +35,11 @@ function Login() {
         } else if (response.data.profile.profile === "agriculteur") {
           toast.success("Authentification réussi!!")
           setIsConnected(true);
-          navigate("/Dashboard");
+
+          // navigate("/Dashboard");
+
+          navigate("/");
+
         }
 
         // localStorage.setItem('token', JSON.stringify(response.data.token));
