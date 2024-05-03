@@ -1,262 +1,132 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { Button, Modal } from "react-bootstrap";
+import { FileUploader } from "react-drag-drop-files";
+
+const fileTypes = ["JPG", "PNG", "GIF"];
 
 function Modification({ materielItem }) {
-  const [images, setImages] = useState([]);
+  const [image, setImage] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const [nomMateriel, setNomMateriel] = useState("");
-  const [categorieMateriel, setCategorieMateriel] = useState("");
-  const [prixMateriel, setPrixMateriel] = useState();
-  const [stockMateriel, setStockMateriel] = useState();
-  const [descriptionMateriel, setDescriptionMateriel] = useState("");
+  const [categorie, setCategorie] = useState("");
+  const [prix, setPrix] = useState("");
+  const [stock, setStock] = useState("");
+  const [description, setDescription] = useState("");
+  const [isValid, setIsValid] = useState(true);
+  const [produits, setProduits] = useState([]);
 
-  const handleOnChangeNomMateriel = (e) => {
-    setNomMateriel(e.target.value);
-  };
-  const handleOnChangeCategorieMateriel = (e) => {
-    setCategorieMateriel(e.target.value);
-  };
-  const handleOnChangePrixMateriel = (e) => {
-    setPrixMateriel(e.target.value);
-  };
-  const handleOnChangeStockMateriel = (e) => {
-    setStockMateriel(e.target.value);
-  };
-  const handleOnChangeDescriptionMateriel = (e) => {
-    setDescriptionMateriel(e.target.value);
+  useEffect(() => {
+    const fetchProduits = async () => {
+      try {
+        const response = await axios.get("/api/produits");
+        setProduits(response.data);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des produits:", error);
+      }
+    };
+
+    fetchProduits();
+  }, []);
+
+  const handleImageChange = (file) => {
+    setImage([file]);
+    setImagePreviews([URL.createObjectURL(file)]);
   };
 
-  useEffect(() => {});
-  // console.log(materielItem)
-  const handleOnclickSauvegardeModifier = (e) => {
+  const removeImage = () => {
+    setImage([]);
+    setImagePreviews([]);
+  };
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("bonjour modification")
-    // setForm({nomForm:nom,prenomForm:prenom})
-    // console.log(form)
-  };
 
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-
-    files.forEach((file) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreviews((prevPreviews) => [...prevPreviews, reader.result]);
-      };
-      reader.readAsDataURL(file);
-    });
-
-    setImages((prevImages) => [...prevImages, ...files]);
-  };
-
-  const removeImage = (index) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-    setImagePreviews((prevPreviews) =>
-      prevPreviews.filter((_, i) => i !== index)
-    );
-  };
-
-  const addImage = () => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.multiple = true;
-    input.accept = "image/*";
-    input.style.display = "none";
-    input.addEventListener("change", handleImageChange);
-    document.body.appendChild(input);
-    input.click();
-    document.body.removeChild(input);
+    try {
+      // Votre code de gestion de soumission
+    } catch (error) {
+      console.error("Erreur lors de l'envoi des données:", error);
+      // Gérez les erreurs d'envoi des données ici
+    }
   };
 
   return (
     <>
-      <a href="#">
-      <i class="fa-solid fa-pen-to-square" 
+      <a href="#" onClick={handleOpenModal}>
+        <i
+          className="fa fa-pencil-square-o me-1"
+          aria-hidden="true"
           data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"></i>
+          data-bs-target="#staticBackdrop"
+        />
+        modifier
       </a>
-      <div
-        className="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabIndex={-1}
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                Modification Produits
-              </h1>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              />
-            </div>
-            <div className="modal-body">
-              <form
-                id="modificationForm"
-                className="row g-3"
-                onSubmit={handleOnclickSauvegardeModifier}
-              >
-                <div className="col-md-6">
-                  <label htmlFor="image" className="form-label">
-                    Image:
-                  </label>
-                  <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    multiple
-                    required
-                    className="form-control"
-                    onChange={handleImageChange}
-                  />
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      marginTop: "10px",
-                    }}
-                  >
-                    {imagePreviews.map((preview, index) => (
-                      <div
-                        key={index}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          marginBottom: "5px",
-                          marginRight: "10px",
-                        }}
-                      >
-                        <img
-                          src={preview}
-                          alt={`Preview ${index}`}
-                          style={{ width: "80px", marginRight: "50px" }}
-                        />
-                        <button
-                          type="button"
-                          className="btn btn-danger btn-sm"
-                          onClick={() => removeImage(index)}
-                        >
-                          <i className="fa fa-trash"></i>
-                        </button>
-                      </div>
-                    ))}
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginBottom: "5px",
-                        marginRight: "10px",
-                      }}
-                    >
-                      <i
-                        className="fa fa-plus"
-                        style={{ color: "#ffc800", cursor: "pointer" }}
-                        onClick={addImage}
-                      ></i>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="nom" className="form-label">
-                    Nom du matériel:
-                  </label>
-                  <input
-                    type="text"
-                    id="nom"
-                    name="nom"
-                    required
-                    className="form-control"
-                    value={materielItem.nomMateriel}
-                    onChange={handleOnChangeNomMateriel}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="categories" className="form-label">
-                    Catégories:
-                  </label>
-                  <select
-                    class="form-select"
-                    aria-label="Default select example"
-                    value={materielItem.categorieMat}
-                    onChange={handleOnChangeCategorieMateriel}
-                  >
-                    <option selected>Choix de catégorie</option>
-                    <option value="1">Motoculteur</option>
-                    <option value="2">Tracteur</option>
-                    <option value="3">Camion</option>
-                  </select>
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="prix" className="form-label">
-                    Prix:
-                  </label>
-                  <div className="input-group">
-                    <span className="input-group-text">Ar</span>
-                    <input
-                      type="text"
-                      id="prix"
-                      name="prix"
-                      required
-                      className="form-control"
-                      value={materielItem.prixMateriel}
-                      onChange={handleOnChangePrixMateriel}
+
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header>
+          <Modal.Title>Ajouter Produit</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form
+            className="needs-validation add-product-form"
+            noValidate
+            onSubmit={handleSubmit}
+          >
+            <div className="form">
+              <div className="col-md-6">
+                <label htmlFor="image" className="form-label">
+                  Image:
+                </label>
+                <FileUploader
+                  handleChange={handleImageChange}
+                  name="file"
+                  types={fileTypes}
+                />
+                {imagePreviews.length > 0 && (
+                  <div style={{ marginTop: "10px" }}>
+                    <img
+                      src={imagePreviews[0]}
+                      alt="Preview"
+                      style={{ width: "100px", marginRight: "10px" }}
                     />
+                    <button
+                      type="button"
+                      className="btn btn-danger btn-sm"
+                      onClick={removeImage}
+                    >
+                      <i className="fa fa-trash"></i>
+                    </button>
                   </div>
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="stock" className="form-label">
-                    Stock:
-                  </label>
-                  <input
-                    type="number"
-                    id="stock"
-                    name="stock"
-                    required
-                    className="form-control"
-                    value={materielItem.stockMat}
-                    onChange={handleOnChangeStockMateriel}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="description" className="form-label">
-                    Description:
-                  </label>
-                  private String descriptionMat;
-                  <textarea
-                    id="description"
-                    name="description"
-                    required
-                    className="form-control"
-                    value={materielItem.descriptionMat}
-                    onChange={handleOnChangeDescriptionMateriel}
-                  />
-                </div>
-              </form>
+                )}
+              </div>
+              {/* Autres champs de formulaire */}
             </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <input
-                type="button"
-                className="btn btn-primary"
-                value={"Sauvegarde modification"}
-                data-bs-dismiss="modal"
-              />
-            </div>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <div className="offset-xl-3 offset-sm-4 d-flex justify-content-between">
+            <Button className="btn btn-primary" onClick={handleSubmit}>
+              Ajouter
+            </Button>
+            <Button
+              className="me-3"
+              variant="secondary"
+              onClick={handleCloseModal}
+            >
+              Fermer
+            </Button>
           </div>
-        </div>
-      </div>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

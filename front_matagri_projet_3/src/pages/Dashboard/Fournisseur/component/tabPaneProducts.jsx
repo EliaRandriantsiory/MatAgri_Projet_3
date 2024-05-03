@@ -116,7 +116,7 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
     const formData = new FormData();
     formData.append("file", file);
 
-    // console.log(formData)
+    console.log(formData)
     // console.log("bonjour")
     axios
       .post("http://localhost:8082/api/materiels/file/upload", formData)
@@ -216,7 +216,7 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
                   data-bs-target="#staticBackdropAddProduct"
                   value={"+ Ajouter Matériels"}
                 /> */}
-                <AddProduit />
+                <AddProduit setStateCrudProduct={setStateCrudProduct} />
               </div>
               <div className="table-responsive-md">
                 <table className="table mb-0 product-table">

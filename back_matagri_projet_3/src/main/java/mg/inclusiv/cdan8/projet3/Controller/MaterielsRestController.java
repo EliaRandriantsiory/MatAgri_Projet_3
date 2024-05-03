@@ -101,7 +101,7 @@ public class MaterielsRestController {
             String UPLOAD_DIR = "/front_matagri_projet_3/public/assets/images/materiels";
             String fileName = file.getOriginalFilename();
             Path filePath = Path.of(currentDirectory,UPLOAD_DIR, fileName);
-            System.out.println(filePath);
+            // System.out.println(filePath);
             Files.copy(file.getInputStream(),filePath,StandardCopyOption.REPLACE_EXISTING);
             
             return ResponseEntity.ok("Le fichier a été téléchargé avec succès.");        

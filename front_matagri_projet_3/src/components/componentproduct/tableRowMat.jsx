@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import Modification from "./modification";
 import SupprimerMateriel from "./suppressionMateriel";
+import PrintTextPrix from "../textComponent/printPrix";
+import AddProduit from "../../pages/Dashboard/Fournisseur/AddProduit";
 
 function TableRow({ materielItem }) {
   const [currentMAt, setCurrentMat] = useState({});
@@ -11,11 +13,7 @@ function TableRow({ materielItem }) {
     setCurrentMat(materielItem);
     // setListImage(JSON.parse(currentMAt.imagePath))
   });
-
-  // const maPromesse = new Promise((resolve, reject) => {
-  //   setCurrentMat(materielItem)
-  //   resolve(setListImage(JSON.parse(currentMAt.imagePath)))
-  // })
+console.log(materielItem)
   return (
     <tr>
       <th scope="row">
@@ -32,11 +30,13 @@ function TableRow({ materielItem }) {
       </th>
       <td>{currentMAt.nomMat}</td>
       <td>{currentMAt.categorieMat} </td>
-      <td className="fw-bold text-theme">Ar {currentMAt.prixMAt}</td>
+      <td className="fw-bold text-theme"> /> </td>
       <td>{currentMAt.stockMat} pcs</td>
       <td>
-        <Modification materielItem={{ materielItem }} />
-        <SupprimerMateriel />
+        {/* <Modification materielItem={{ materielItem }} /> */}
+        <Modification setStateCrudProduct={materielItem} />
+
+        {/* <SupprimerMateriel materielItem={{ materielItem }} /> */}
       </td>
     </tr>
   );

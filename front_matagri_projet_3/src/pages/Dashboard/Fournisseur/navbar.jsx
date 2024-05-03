@@ -23,6 +23,7 @@ function Navigation() {
         localStorage.setItem("currentUser", JSON.stringify(response.data));
       });
   }, []);
+
   useEffect(() => {
     // console.log(currentProfilUser)
   }, [currentProfilUser]);
@@ -48,45 +49,59 @@ function Navigation() {
         <div className="profile-top">
           <div className="profile-image">
             <img
-              src="../assets/images/logos/17.png"
+              src={`${process.env.PUBLIC_URL}/assets/images/logos/user-picture.png`}
               alt=""
               className="img-fluid"
+              width={150}
             />
           </div>
 
-          {/* <div className="profile-detail">
+          <div className="profile-detail"></div>
             <h5>{currentProfilUser.companyName}</h5>
-            <h6>{currentProfilUser.email}</h6> */}
-            <div className="faq-tab">
-          <ul className="nav nav-tabs" id="top-tab" role="tablist">
-            <li className="nav-item">
-              <Link data-bs-toggle="tab" className="nav-link" to={"#products"}>
-                Materiels
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link data-bs-toggle="tab" className="nav-link" to={"#orders"}>
-                Etat du matériel
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link data-bs-toggle="tab" className="nav-link" to={"#profile"}>
-                Profile
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                data-toggle="modal"
-                data-bs-target="#logout"
-                to={"/home"}
-                onClick={(event) => handleOnClickLogout(event)}
-              >
-                Logout
-              </Link>
-            </li>
-          </ul>
-        </div>
+            <h6>{currentProfilUser.email}</h6>
+          <div className="faq-tab">
+            <ul className="nav nav-tabs" id="top-tab" role="tablist">
+              {/* <li class="nav-item">
+                <Link
+                  data-bs-toggle="tab"
+                  className="nav-link active"
+                  to={"#dashboard"}
+                >
+                  dashboard
+                </Link>
+              </li> */}
+              <li className="nav-item">
+                <Link
+                  data-bs-toggle="tab"
+                  className="nav-link active"
+                  to={"#products"}
+                >
+                  Materiels
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link data-bs-toggle="tab" className="nav-link" to={"#orders"}>
+                  Etat du matériel
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link data-bs-toggle="tab" className="nav-link" to={"#profile"}>
+                  Profile
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  data-toggle="modal"
+                  data-bs-target="#logout"
+                  to={"/home"}
+                  onClick={(event) => handleOnClickLogout(event)}
+                >
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          </div>
 
           {/* <div className="faq-tab">
             <ul className="nav nav-tabs" id="top-tab" role="tablist">
@@ -125,11 +140,11 @@ function Navigation() {
 
           </div> */}
         </div>
-        
       </div>
       <div className="col-lg-9">
         <div className="faq-content tab-content" id="top-tabContent">
-          <div className="tab-pane active" id="products">
+        
+          <div className="tab-pane fade show active" id="products">
             <TabPaneProducts currentUserSession={currentProfilUser} />
           </div>
           <div className="tab-pane fade" id="orders">
@@ -139,7 +154,7 @@ function Navigation() {
             <TabPaneProfile />
           </div>
         </div>
-        <ToastContainer/>
+        <ToastContainer />
       </div>
     </div>
   );

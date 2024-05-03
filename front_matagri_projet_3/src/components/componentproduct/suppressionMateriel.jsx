@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
-function SupprimerMateriel() {
+function SupprimerMateriel({materielItem}) {
   const [images, setImages] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
+
+
+  console.log("bonjour suppression")
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);

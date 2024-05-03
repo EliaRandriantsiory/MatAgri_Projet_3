@@ -16,7 +16,7 @@ function PrintTextPrix(TextPrix, monnai) {
     return groups.join(" ");
   };
 
-  const transformedSum = transformSum(TextPrix.TextPrix);
+  const transformedSum = transformSum((TextPrix.TextPrix));
   // console.log(transformedSum);
 
   return <>{"Ar " + transformedSum + ",00"}</>;
