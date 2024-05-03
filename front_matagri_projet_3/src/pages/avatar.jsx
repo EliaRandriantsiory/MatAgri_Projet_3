@@ -27,7 +27,7 @@ function Avatar({isConnected}) {
           </li>
           <br/>
           <li>
-            <Link to="/PageAccueilAgriculteur" style={{color : 'black', fontSize:'18px'}} data-lng="en">
+            <Link to="/ProfileAgriculteur" style={{color : 'black', fontSize:'18px'}} data-lng="en">
               Profile
             </Link>
           </li>
