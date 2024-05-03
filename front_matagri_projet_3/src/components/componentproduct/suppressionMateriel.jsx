@@ -46,22 +46,13 @@ function SupprimerMateriel({materielItem}) {
         <i
           className="fas fa-trash-alt ms-1 text-theme"
           aria-hidden="true"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
+          data-bs-toggle="modal" data-bs-target="#exampleModal"
         />
       </a>
-      <div
-        className="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabIndex={-1}
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
               <h1 className="modal-title fs-5" id="staticBackdropLabel">
                 Suppression de Produits
               </h1>

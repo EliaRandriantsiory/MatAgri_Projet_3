@@ -98,7 +98,7 @@ function InscriptionAgriculteur() {
       console.log(response.data);
       
       toast.success('Inscription réussie !');
-      navigate("/PageAccueilAgriculteur");
+      navigate("/");
       localStorage.setItem('name', nameForm);
       localStorage.setItem('lastname', lastnameForm);
       localStorage.setItem('address', addressForm);
