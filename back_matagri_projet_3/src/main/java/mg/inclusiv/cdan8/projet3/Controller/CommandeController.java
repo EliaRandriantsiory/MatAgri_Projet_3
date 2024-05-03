@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import mg.inclusiv.cdan8.projet3.Entities.Commande;
+import mg.inclusiv.cdan8.projet3.Entities.Mutualisation;
 import mg.inclusiv.cdan8.projet3.Servicies.CommandeService;
 
 
@@ -24,5 +27,9 @@ public class CommandeController {
     public List<Commande> detailPannier(){
         List<Commande> DetailPannier = commandeService.getPannier();
         return DetailPannier;
+    }
+    @PostMapping("/mutual")
+    public void mutualisation(@RequestBody Mutualisation commande){
+        commandeService.saveMutualisation(commande);
     }
 }

@@ -1,5 +1,5 @@
-import { distance } from 'framer-motion';
-import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const TAUX_MUTUALISATION = -12;
 
@@ -12,7 +12,7 @@ function DevisForm() {
   const [distance, setDistance] = useState(0);
   const [nbMateriels, setNbMateriels] = useState(0);
 
-  // Charger les données sauvegardées dans le Local Storage au montage du composant
+
   useEffect(() => {
     const savedData = localStorage.getItem('devisForm');
     if (savedData) {
@@ -23,18 +23,40 @@ function DevisForm() {
     }
   }, []);
 
-  // Sauvegarder les données dans le Local Storage lors de chaque modification
   useEffect(() => {
     const dataToSave = { prixLocationParJour, dateDebut, dateFin };
     localStorage.setItem('devisForm', JSON.stringify(dataToSave));
   }, [prixLocationParJour, dateDebut, dateFin]);
 
-  // Calculer le nombre de jours de location
   useEffect(() => {
     const diffInMs = Math.abs(dateFin - dateDebut);
     const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
     setNbJoursLocation(Math.ceil(diffInDays));
   }, [dateDebut, dateFin]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent default form submission
+    const coutLocationTotal = (prixLocationParJour * nbJoursLocation) * nbMateriels;
+    const coutTransportTotal = distance * 2000;
+    const coutTransportMutualise = coutTransportTotal * (1 + TAUX_MUTUALISATION / 100);
+    const devis = coutLocationTotal + coutTransportMutualise;
+
+    setDevisFinal(devis);
+
+    try {
+      const response = await axios.post('http://localhost:8082/api/panier/mutual', {
+        distance: distance,
+        totalPrice_mutualisation: devis,
+        // Include other required fields for your Mutualisation entity here (refer to your backend API documentation)
+      });
+
+      console.log('Devis submitted successfully:', response.data);
+      // Handle successful response (e.g., display a confirmation message)
+    } catch (error) {
+      console.error('Error submitting devis:', error);
+      // Handle errors (e.g., display an error message)
+    }
+  };
 
   const handleChange = (event) => {
     const target = event.target;
@@ -51,33 +73,15 @@ function DevisForm() {
       case 'dateFin':
         setDateFin(new Date(value));
         break;
-        case 'distance':
-            setDistance(value);
-            break;
-          case 'nbMateriels':
-            setNbMateriels(value);
-            break;
+      case 'distance':
+        setDistance(value);
+        break;
+      case 'nbMateriels':
+        setNbMateriels(value);
+        break;
       default:
         break;
     }
-
-    if (prixLocationParJour !== "" && nbMateriels !== "" && distance !== "") {
-      handleSubmit();
-    }
-  };
-
-  const handleSubmit = () => {
-    const coutLocationTotal = (prixLocationParJour * nbJoursLocation) * nbMateriels;
-    const coutTransportTotal = distance * 2000;
-    const coutTransportMutualise = coutTransportTotal * (1 + TAUX_MUTUALISATION / 100);
-    const devis = coutLocationTotal + coutTransportMutualise;
-
-    setDevisFinal(devis);
-    // setPrixLocationParJour(""); // Reset values after submit (optional)
-    // setDateDebut(new Date()); // Reset values after submit (optional)
-    // setDateFin(new Date()); // Reset values after submit (optional)
-    // setNbMateriels(""); // Assuming nbMateriels remains after submit
-    // setDistance("");
   };
 
   return (
@@ -109,9 +113,9 @@ function DevisForm() {
           Distance (km) :
           <input type="number" name="distance" value={distance} onChange={handleChange} />
         </label>
+        <button type="submit">Soumettre le devis</button>
       </form>
-      {devisFinal > 0 && <p>Le devis final est de : {devisFinal} Ariary
-</p>}
+      {devisFinal > 0 && <p>Le devis final est de : {devisFinal} Ariary</p>}
     </div>
   );
 }
