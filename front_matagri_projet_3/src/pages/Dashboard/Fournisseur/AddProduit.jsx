@@ -14,6 +14,7 @@ function AddProduit() {
   const [prix, setPrix] = useState("");
   const [stock, setStock] = useState("");
   const [description, setDescription] = useState("");
+  const [descriptionTech, setDescriptionTech] = useState("");
 
   const handleImageChange = (files) => {
     const selectedImages = Array.from(files);
@@ -172,6 +173,16 @@ function AddProduit() {
                 value={stock}
                 onChange={handleStock}
               />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Description Technique:</label>
+              <textarea
+                className="form-control"
+                id="descriptionTech"
+                rows="3"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              ></textarea>
             </div>
             <div className="form-group">
               <label htmlFor="description">Description:</label>

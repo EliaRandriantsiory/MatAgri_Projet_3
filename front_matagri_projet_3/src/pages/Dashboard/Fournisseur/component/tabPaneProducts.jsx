@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import TableRow from "../../../../components/componentproduct/tableRowMat";
+import AddProduit from "../AddProduit";
 
 function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
   const [imagesList, setImagesList] = useState([]);
@@ -207,14 +208,15 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
             <div className="card-body">
               <div className="top-sec">
                 <h3>Tous les produits</h3>
-                <input
+                {/* <input
                   type="button"
                   className="btn btn-sm btn-solid"
                   aria-hidden="true"
                   data-bs-toggle="modal"
                   data-bs-target="#staticBackdropAddProduct"
                   value={"+ Ajouter Matériels"}
-                />
+                /> */}
+                <AddProduit />
               </div>
               <div className="table-responsive-md">
                 <table className="table mb-0 product-table">
