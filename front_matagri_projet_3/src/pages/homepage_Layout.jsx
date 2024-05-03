@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet } from "react-router-dom";
 import "./assets/css/homePage/homePage.css";
+import ServiceSection from './homePage/sectionService';
+import LogoSection from './homePage/sectionLogo';
 function HomePage_Layout() {
     const [isVisible, setIsVisible] = useState(false);
 
@@ -187,80 +189,6 @@ function HomePage_Layout() {
                               </span>
                             </div>
                           </Link>
-                          {/* Drop eo @ panier                           */}
-                          {/* <ul className="show-div shopping-cart">
-                            <li>
-                              <div className="media">
-                                <a href="#">
-                                  <img
-                                    alt=""
-                                    className="me-3"
-                                    src="../assets/images/fashion/product/1.jpg"
-                                  />
-                                </a>
-                                <div className="media-body">
-                                  <a href="#">
-                                    <h4>item name</h4>
-                                  </a>
-                                  <h4>
-                                    <span>1 x $ 299.00</span>
-                                  </h4>
-                                </div>
-                              </div>
-                              <div className="close-circle">
-                                <a href="#">
-                                  <i
-                                    className="fa fa-times"
-                                    aria-hidden="true"
-                                  />
-                                </a>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="media">
-                                <a href="#">
-                                  <img
-                                    alt=""
-                                    className="me-3"
-                                    src="../assets/images/fashion/product/2.jpg"
-                                  />
-                                </a>
-                                <div className="media-body">
-                                  <a href="#">
-                                    <h4>item name</h4>
-                                  </a>
-                                  <h4>
-                                    <span>1 x $ 299.00</span>
-                                  </h4>
-                                </div>
-                              </div>
-                              <div className="close-circle">
-                                <a href="#">
-                                  <i
-                                    className="fa fa-times"
-                                    aria-hidden="true"
-                                  />
-                                </a>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="total">
-                                <h5>
-                                  subtotal : <span>$299.00</span>
-                                </h5>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="buttons">
-                                <a href="cart.html" className="view-cart">
-                                  view cart
-                                </a>
-                                <a href="#" className="checkout">
-                                  checkout
-                                </a>
-                              </div>
-                            </li>
-                          </ul> */}
                         </li>
                       </ul>
                     </div>
@@ -272,6 +200,12 @@ function HomePage_Layout() {
         </div>
       </header>
       <Outlet />
+      <br />
+      <ServiceSection/>
+      <br/>
+      <h3 style={{marginLeft:"839px",marginTop:"-60px", position:"absolute"}}>Nos partenaires :</h3>
+      <br />
+      <LogoSection />
       <footer className="footer-light">
         <section className="section-b-space light-layout">
           <div className="container">

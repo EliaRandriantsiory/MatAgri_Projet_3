@@ -28,14 +28,22 @@ const ReserverPanier = () => {
     setShowCalendar(false);
   };
 
+  const calculateNumberOfDays = (startDate, endDate) => {
+    const oneDay = 24 * 60 * 60 * 1000; // Convert one day to milliseconds
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const diffDays = Math.round(Math.abs((start - end) / oneDay) + 1);
+    return diffDays;
+  };
+
   return (
     <div>
       <Button
         className="btn-solid btn-xs"
-        style={{ border: "none", textTransform: "none"}}
+        style={{ border: "none", textTransform: "none" }}
         onClick={handleOpenCalendar}
       >
-        <CalendarTodayIcon style={{paddingRight: "5px"}}/>
+        <CalendarTodayIcon style={{ paddingRight: "5px" }} />
         Sélectionner une date
       </Button>
 
@@ -58,10 +66,10 @@ const ReserverPanier = () => {
               showSelectionPreview={false}
               showMonthAndYearPickers={false}
               showDateDisplay={false}
-              showPreview={false}
+              showPreview={true}
               staticRanges={[]}
               inputRanges={[]}
-              style={{width:'470px', height:'250px'}}
+              style={{ width: "470px", height: "250px" }}
             />
           </div>
         </Modal.Body>
@@ -81,6 +89,22 @@ const ReserverPanier = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      {selectedDates[0] && (
+        <div>
+          <p>
+            Intervalle de dates sélectionné :{" "}
+            {selectedDates[0].startDate.toLocaleDateString()} -{" "}
+            {selectedDates[0].endDate.toLocaleDateString()}
+          </p>
+          <p>
+            Nombre de jours :{" "}
+            {calculateNumberOfDays(
+              selectedDates[0].startDate,
+              selectedDates[0].endDate
+            )}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

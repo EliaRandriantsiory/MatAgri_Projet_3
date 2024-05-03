@@ -19,11 +19,12 @@ import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
 import TermeF from "./pages/AuthenticationPage/TermeF";
 import Terme from "./pages/AuthenticationPage/Terme";
-import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
 import Panier from "./pages/Panier/Panier";
 import Description from "./pages/Dashboard/Fournisseur/description";
-import Reserver from "./pages/Panier/Reserver";
 import ReserverPanier from "./pages/Panier/reserverAddPanier";
+import ServiceSection from "./pages/homePage/sectionService";
+import LogoSection from "./pages/homePage/sectionLogo";
+import Distance from "./pages/Panier/calculDistance";
 
 function App() {
   return (
@@ -68,6 +69,8 @@ function App() {
         <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         <Route path="/reserverAddPanier" element=<ReserverPanier /> />
         <Route path="/terme" element=<Terme /> />
+        <Route path="/sectionService" element=<ServiceSection /> />
+        <Route path="/sectionLogo" element=<LogoSection /> />
       </Routes>
     </BrowserRouter>
   );
