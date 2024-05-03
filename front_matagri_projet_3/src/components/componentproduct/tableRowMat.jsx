@@ -30,7 +30,8 @@ console.log(materielItem)
       </th>
       <td>{currentMAt.nomMat}</td>
       <td>{currentMAt.categorieMat} </td>
-      <td className="fw-bold text-theme"> /> </td>
+      {/* <PrintTextPrix TextPrix={currentMAt.prixMAt} monnai={"MLG"} /> */}
+      <td className="fw-bold text-theme">{currentMAt.prixMAt} </td>
       <td>{currentMAt.stockMat} pcs</td>
       <td>
         {/* <Modification materielItem={{ materielItem }} /> */}

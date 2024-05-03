@@ -62,7 +62,7 @@ function App() {
           </Route>
           <Route path="/Dashboard" element=<DashboardUser /> />
           <Route path="/PageAccueilAgriculteur" element=<PageAccueilAgriculteur /> >
-          <Route path="/PageAccueilAgriculteur" element=<DashBordAgriculteur /> />
+          {/* <Route path="/PageAccueilAgriculteur" element=<DashBordAgriculteur /> /> */}
           </Route>
           <Route>
           <Route path="/description" element=<DescriptionProduit /> />

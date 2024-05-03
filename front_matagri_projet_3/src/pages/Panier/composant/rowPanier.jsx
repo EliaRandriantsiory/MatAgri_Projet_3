@@ -67,7 +67,13 @@ function RowPanierComponent({ materielItem_,index,updatePanierMat,handleCloseRow
         className="img-fluid blur-up lazyload bg-img"
       />
     </td>
-    <td>{materielItem_.materiel.nomMat}</td>
+    <td>
+    
+    {materielItem_.materiel.nomMat}
+    {materielItem_.materiel.techniqueMat}
+
+    
+    </td>
     <td>
       <div className="qty-box">
         <div className="input-group">
