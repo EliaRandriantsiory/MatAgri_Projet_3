@@ -1,45 +1,47 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./assets/css/homePage/homePage.css";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 import "./assets/css/homePage/homePage.css";
-import Avatar from './avatar';
-
+import Avatar from "./avatar";
+import Panier from "./Panier/Panier";
 
 function HomePage_Layout() {
-    const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
 
-    window.addEventListener('scroll', toggleVisibility);
-
+  window.addEventListener("scroll", toggleVisibility);
 
   const [listPanier, setListPanier] = useState([]);
-  const [countPanier, setCountPanier] = useState();
+  const [countPanier, setCountPanier] = useState(0);
+
   useEffect(() => {
-    setListPanier(localStorage.getItem("listpanier"));
-    console.log(localStorage.getItem("listpanier"));
-    // console.log(listPanier.length);
-    if (listPanier) {
-      console.log(listPanier.length);
-      setCountPanier(listPanier.length);
+    const storedListPanier = JSON.parse(localStorage.getItem("listpanier"));
+    if (storedListPanier) {
+      setListPanier(storedListPanier);
+      setCountPanier(storedListPanier.length);
     }
-  }, [localStorage.getItem("listpanier")]);
+  }, []);
+
+  useEffect(() => {
+    setCountPanier(listPanier.length);
+  }, [listPanier]);
 
   return (
     <>
@@ -112,8 +114,7 @@ function HomePage_Layout() {
                           </a>
                         </li>
 
-
-                        <Avatar/>
+                        <Avatar />
 
                         <li className="onhover-div mobile-search">
                           <Link to={"/search"}>
@@ -160,21 +161,18 @@ function HomePage_Layout() {
                           </div>
                         </li>
                         <li className="onhover-div mobile-cart">
-
-
                           <Link to={"/Panier"}>
                             <div className="position-relative">
-
                               <img
                                 src="../assets/images/jewellery/icon/cart.png"
                                 className="img-fluid blur-up lazyload"
                                 alt=""
                               />
 
-
                               <i className="ti-shopping-cart" />
                               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {countPanier}
+                                <carteProduitCompnent></carteProduitCompnent>
                                 <span class="visually-hidden">
                                   unread messages
                                 </span>
@@ -256,7 +254,7 @@ function HomePage_Layout() {
                             </li>
                           </ul> */}
 
-                        {/* <Link to={"/Panier"}>
+                          {/* <Link to={"/Panier"}>
                           <div>
                             <img
                               src="../assets/images/jewellery/icon/cart.png"
@@ -266,9 +264,6 @@ function HomePage_Layout() {
                             <i className="ti-shopping-cart" />
                           </div>
                           </Link> */}
-
-
-
                         </li>
                       </ul>
                     </div>
@@ -293,16 +288,22 @@ function HomePage_Layout() {
                     <img src="assets/images/icon/logo/Logo-_Mat_2.png" alt="" />
                   </div>
 
-                  <p style={{textAlign:'center' ,fontSize:'14px'}}>
-                  Application de location, livraison et mutualisation de
+                  <p style={{ textAlign: "center", fontSize: "14px" }}>
+                    Application de location, livraison et mutualisation de
                     matériels agricoles.
                   </p>
-                  <div className="footer-social" style={{ marginLeft: '127px'}}>
+                  <div
+                    className="footer-social"
+                    style={{ marginLeft: "127px" }}
+                  >
                     <ul>
                       <li>
                         <a href="#">
-                        <FontAwesomeIcon icon="fa-brands fa-facebook-f " style={{ color: '#004225'}} />
-{/* 
+                          <FontAwesomeIcon
+                            icon="fa-brands fa-facebook-f "
+                            style={{ color: "#004225" }}
+                          />
+                          {/* 
                   <p style={{ textAlign: "center", fontSize: "14px" }}>
                     Application de location, livraison et mutualisation de
                     matériels agricoles.
@@ -318,29 +319,30 @@ function HomePage_Layout() {
                             icon="fa-brands fa-facebook-f "
                             style={{ color: "#004225" }} */}
                           {/* /> */}
-
-
                         </a>
                       </li>
                       <li>
                         <a href="#">
-
-                        <FontAwesomeIcon icon="fa-brands fa-google" style={{color:'#004225'}}/>
-
+                          <FontAwesomeIcon
+                            icon="fa-brands fa-google"
+                            style={{ color: "#004225" }}
+                          />
                         </a>
                       </li>
                       <li>
                         <a href="#">
-
-                          <FontAwesomeIcon icon="fa-brands fa-x-twitter" style={{ color: '#004225' }} />
-
+                          <FontAwesomeIcon
+                            icon="fa-brands fa-x-twitter"
+                            style={{ color: "#004225" }}
+                          />
                         </a>
                       </li>
                       <li>
                         <a href="#">
-
-                        <FontAwesomeIcon icon="fa-brands fa-instagram" style={{color:'#004225'}}/>
-
+                          <FontAwesomeIcon
+                            icon="fa-brands fa-instagram"
+                            style={{ color: "#004225" }}
+                          />
                         </a>
                       </li>
                     </ul>
@@ -350,24 +352,49 @@ function HomePage_Layout() {
               <div className="col offset-xl-1">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4 style={{ fontSize: '14px' }}>Nos catégories</h4>
+                    <h4 style={{ fontSize: "14px" }}>Nos catégories</h4>
                   </div>
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Tracteurs</a>
+                        <a
+                          href="#"
+                          style={{ textAlign: "justify", fontSize: "14px" }}
+                        >
+                          Tracteurs
+                        </a>
                       </li>
                       <li>
-                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Motoculteurs</a>
+                        <a
+                          href="#"
+                          style={{ textAlign: "justify", fontSize: "14px" }}
+                        >
+                          Motoculteurs
+                        </a>
                       </li>
                       <li>
-                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Charrues</a>
+                        <a
+                          href="#"
+                          style={{ textAlign: "justify", fontSize: "14px" }}
+                        >
+                          Charrues
+                        </a>
                       </li>
                       <li>
-                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Moissonneuses</a>
+                        <a
+                          href="#"
+                          style={{ textAlign: "justify", fontSize: "14px" }}
+                        >
+                          Moissonneuses
+                        </a>
                       </li>
                       <li>
-                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Décompactateur</a>
+                        <a
+                          href="#"
+                          style={{ textAlign: "justify", fontSize: "14px" }}
+                        >
+                          Décompactateur
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -376,21 +403,43 @@ function HomePage_Layout() {
               <div className="col">
                 <div className="sub-title">
                   <div className="footer-title">
-                  <h4 style={{ fontSize: '14px' }}>Pourquoi nous choisir ?</h4>
+                    <h4 style={{ fontSize: "14px" }}>
+                      Pourquoi nous choisir ?
+                    </h4>
                   </div>
                   <div className="footer-contant">
                     <ul>
                       <li>
-                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Louer du matériel agricole</a>
+                        <a
+                          href="#"
+                          style={{ textAlign: "justify", fontSize: "14px" }}
+                        >
+                          Louer du matériel agricole
+                        </a>
                       </li>
                       <li>
-                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Mutualisation</a>
+                        <a
+                          href="#"
+                          style={{ textAlign: "justify", fontSize: "14px" }}
+                        >
+                          Mutualisation
+                        </a>
                       </li>
                       <li>
-                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Mes produits que j'adore</a>
+                        <a
+                          href="#"
+                          style={{ textAlign: "justify", fontSize: "14px" }}
+                        >
+                          Mes produits que j'adore
+                        </a>
                       </li>
                       <li>
-                        <a href="#" style={{textAlign:'justify' ,fontSize:'14px'}}>Nous contacter</a>
+                        <a
+                          href="#"
+                          style={{ textAlign: "justify", fontSize: "14px" }}
+                        >
+                          Nous contacter
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -399,30 +448,49 @@ function HomePage_Layout() {
               <div className="col">
                 <div className="sub-title">
                   <div className="footer-title">
-                    <h4 style={{ fontSize: '14px', marginLeft: '25px' }}>Nos informations</h4>
+                    <h4 style={{ fontSize: "14px", marginLeft: "25px" }}>
+                      Nos informations
+                    </h4>
                   </div>
                   <div className="footer-contant">
                     <ul className="contact-list">
                       <li>
-                        <i className="fa fa-map-marker" style={{textAlign:'justify' ,fontSize:'14px', paddingRight:'10px'}}/>
-
-                        MATAgri, Faravohitra, <br/>
-                        <p style={{ marginLeft:'20px'}}>101 Antananarivo</p>
-
+                        <i
+                          className="fa fa-map-marker"
+                          style={{
+                            textAlign: "justify",
+                            fontSize: "14px",
+                            paddingRight: "10px",
+                          }}
+                        />
+                        MATAgri, Faravohitra, <br />
+                        <p style={{ marginLeft: "20px" }}>101 Antananarivo</p>
                         {/* MatAgri, Faravohitra, <br/>101 Antananarivo */}
-
                       </li>
                       <li>
-                        <i className="fa fa-phone" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>
+                        <i
+                          className="fa fa-phone"
+                          style={{
+                            textAlign: "justify",
+                            fontSize: "14px",
+                            paddingRight: "10px",
+                          }}
+                        />
                         +261 34 20 125 43
                       </li>
                       <li>
-                        <i className="fa fa-envelope" style={{textAlign:'justify' ,fontSize:'14px' , paddingRight:'10px'}}/>
-{/* <<<<<<< HEAD
+                        <i
+                          className="fa fa-envelope"
+                          style={{
+                            textAlign: "justify",
+                            fontSize: "14px",
+                            paddingRight: "10px",
+                          }}
+                        />
+                        {/* <<<<<<< HEAD
                         <a href="#">matagri@gmail.com</a>
 ======= */}
                         Email : <a href="#">matagri@gmail.com</a>
-
                       </li>
                     </ul>
                   </div>
@@ -484,13 +552,16 @@ function HomePage_Layout() {
         </div>
       </footer>
 
-      <ToastContainer/>
+      <ToastContainer />
 
-      <div className={`tap-top ${isVisible ? 'visible' : ''}`} onClick={scrollToTop}>
-      <div>
-        <i className="fa fa-angle-double-up" />
+      <div
+        className={`tap-top ${isVisible ? "visible" : ""}`}
+        onClick={scrollToTop}
+      >
+        <div>
+          <i className="fa fa-angle-double-up" />
+        </div>
       </div>
-    </div>
     </>
   );
 }

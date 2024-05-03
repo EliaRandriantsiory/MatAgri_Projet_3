@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PrintTextPrix from "../textComponent/printPrix";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
 import Description from "../../pages/Dashboard/Fournisseur/description";
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
@@ -9,18 +9,18 @@ function ProductCard({ materialItem }) {
   const [quantity, setQuantity] = useState(1);
   const [listPanierMat, setListPanierMat] = useState([]);
   const [panierMAt, setPanierMat] = useState({});
+  const [notif, setNotif] = useState();
 
   const incrementQuantity = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
+    setQuantity((prevQuantity) => prevQuantity + 1);
   };
   const decrementQuantity = () => {
     if (quantity > 1) {
-      setQuantity(prevQuantity => prevQuantity - 1);
+      setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
 
   const handleOnClickAddCard = (event) => {
-    
     setPanierMat({
       materiel: {
         materielId: materialItem.materielId,
@@ -54,7 +54,7 @@ function ProductCard({ materialItem }) {
         //   roles: [],
         // },
       },
-      quantity: 2,
+      quantity: 1,
       startDate: "2024-11-15",
       endDate: "2024-11-05",
     });
@@ -62,8 +62,8 @@ function ProductCard({ materialItem }) {
     // listPanierMat.push(panierMAt);
   };
   useEffect(() => {
-    if(Object.keys(panierMAt).length!==0){
-      const cmd = listPanierMat.push(panierMAt)
+    if (Object.keys(panierMAt).length !== 0) {
+      const cmd = listPanierMat.push(panierMAt);
       setListPanierMat([...listPanierMat, panierMAt]);
       localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
       // console.log(listPanierMat)
@@ -131,12 +131,17 @@ function ProductCard({ materialItem }) {
               <a href="product-page(no-sidebar).html">
                 <h6>{materialItem.nomMat}</h6>
               </a>
-              <p> <PrintDetailTechMat desctechMat={materialItem.techniqueMat} /> </p>
+              <p>
+                {" "}
+                <PrintDetailTechMat
+                  desctechMat={materialItem.techniqueMat}
+                />{" "}
+              </p>
               <h4>
                 <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
               </h4>
             </div>
-{/* 
+            {/* 
             <a href="product-page(no-sidebar).html">
               <h6>{materialItem.nomMat}</h6>
             </a>
@@ -144,7 +149,6 @@ function ProductCard({ materialItem }) {
             <h4>
               <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
             </h4> */}
-
           </div>
         </div>
       </div>
@@ -187,7 +191,7 @@ function ProductCard({ materialItem }) {
                 </div>
                 <div className="col-lg-6 rtl-text">
                   <div className="product-right">
-                   <h2 className="product-title">Infos supplémentaire</h2>
+                    <h2 className="product-title">Infos supplémentaire</h2>
                     <div className="border-product">
                       <h2>{materialItem.name}</h2>
                       <p>{materialItem.descriptionMat}</p>
@@ -195,12 +199,14 @@ function ProductCard({ materialItem }) {
                     <label className=""> Entrer votre plage de date :</label>
                     <ReserverPanier />
                     <br />
-                    <label className="">Entrer votre lieu d'exploitation :</label>
+                    <label className="">
+                      Entrer votre lieu d'exploitation :
+                    </label>
                     <input
                       type="text"
                       className="form-control"
                       placeholder="Lieu d'exploitation"
-                      style={{ opacity: 0.7, fontSize: '0.9rem' }}
+                      style={{ opacity: 0.7, fontSize: "0.9rem" }}
                     />
                     <br />
                     {/* Quantité */}
@@ -212,7 +218,8 @@ function ProductCard({ materialItem }) {
                             <button
                               type="button"
                               className="btn quantity-left-minus"
-                              onClick={decrementQuantity}>
+                              onClick={decrementQuantity}
+                            >
                               <i className="ti-angle-left" />
                             </button>{" "}
                           </span>
@@ -228,7 +235,8 @@ function ProductCard({ materialItem }) {
                             <button
                               type="button"
                               className="btn quantity-right-plus"
-                              onClick={incrementQuantity}>
+                              onClick={incrementQuantity}
+                            >
                               <i className="ti-angle-right" />
                             </button>
                           </span>
