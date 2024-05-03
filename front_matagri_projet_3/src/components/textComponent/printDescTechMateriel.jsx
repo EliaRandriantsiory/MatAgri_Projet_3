@@ -1,25 +1,12 @@
 import { useEffect, useState } from "react";
 
-function PrintDetailTechMat(desctechMat) {
-    // console.log(desctechMat)
-
-    const transformDesc =(StringDescMat)=>{
-        Array.from(StringDescMat.Array)
-    }
-    const [descTechMat_, setDescTechMat] = useState()
-    useEffect(() => {
-        // setDescTechMat(desctechMat)
-
-    },[])
-
-
-    console.log(desctechMat.desctechMat)
-    // const transformedDesc = desctechMat
-    return ( 
-        <>
-            {desctechMat.desctechMat}
-        </>
-     );
+function PrintDetailTechMat({ desctechMat }) {
+  //   let descTable = String(desctechMat.desctechMat).split("\n");
+  //   console.log(descTable);
+  //   descTable.forEach((element) => {
+  //     console.log(element);
+  //   });
+  return <>{desctechMat}</>;
 }
 
 export default PrintDetailTechMat;

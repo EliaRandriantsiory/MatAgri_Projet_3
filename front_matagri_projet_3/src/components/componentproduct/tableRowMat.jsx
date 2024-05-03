@@ -4,16 +4,20 @@ import Modification from "./modification";
 import SupprimerMateriel from "./suppressionMateriel";
 import PrintTextPrix from "../textComponent/printPrix";
 import AddProduit from "../../pages/Dashboard/Fournisseur/AddProduit";
+import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
+import PrintPrixUser from "../textComponent/printPrixUser";
 
 function TableRow({ materielItem }) {
   const [currentMAt, setCurrentMat] = useState({});
   const [listImage, setListImage] = useState([]);
+  const [descriptionTech, setDescriptionTech] = useState([]);
 
   useEffect(() => {
     setCurrentMat(materielItem);
+
     // setListImage(JSON.parse(currentMAt.imagePath))
-  });
-console.log(materielItem)
+  }, []);
+  console.log(materielItem);
   return (
     <tr>
       <th scope="row">
@@ -28,11 +32,27 @@ console.log(materielItem)
             ))
           : null}
       </th>
-      <td>{currentMAt.nomMat}</td>
+      <td>
+        <div>
+          <div> {currentMAt.nomMat}</div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              textAlign: "left",
+            }}
+          >
+            {currentMAt.techniqueMat}
+          </div>
+          {/* <PrintDetailTechMat desctechMat={currentMAt.techniqueMat} /> */}
+        </div>
+      </td>
       <td>{currentMAt.categorieMat} </td>
-      {/* <PrintTextPrix TextPrix={currentMAt.prixMAt} monnai={"MLG"} /> */}
-      <td className="fw-bold text-theme">{currentMAt.prixMAt} </td>
-      <td>{currentMAt.stockMat} pcs</td>
+
+      <td className="fw-bold text-theme">
+        <PrintPrixUser TextPrix={currentMAt.prixMAt} monnai={"MLG"} />
+      </td>
+      <td>{currentMAt.stockMat} unité(s)</td>
       <td>
         {/* <Modification materielItem={{ materielItem }} /> */}
         <Modification setStateCrudProduct={materielItem} />

@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Reserver from "../Reserver";
 import PrintTextPrix from "../../../components/textComponent/printPrix";
+import PrintPrixUser from "../../../components/textComponent/printPrixUser";
 
-function RowPanierComponent({ materielItem_,index,updatePanierMat,handleCloseRowPanier}) {
+function RowPanierComponent({
+  materielItem_,
+  index,
+  updatePanierMat,
+  handleCloseRowPanier,
+}) {
   const [materielItem, setMaterielItem] = useState({});
   const [qt, setQt] = useState();
   const [matPanier, setMatPanier] = useState({});
   const [nomMat, setNomMat] = useState();
-  const [prixTotal, setPrixTotal] = useState(0)
-  const [nombreJourLocation, setNombreJourLocation] = useState(1)
-
+  const [prixTotal, setPrixTotal] = useState(0);
+  const [nombreJourLocation, setNombreJourLocation] = useState(1);
 
   // const [sommePrix,setsommePrix] = useState(0)
   useEffect(() => {
@@ -17,7 +22,7 @@ function RowPanierComponent({ materielItem_,index,updatePanierMat,handleCloseRow
       setQt(materielItem_.quantity);
       setMatPanier(materielItem_.materiel);
       setNomMat(materielItem_.nomMat);
-      
+
       setPrixTotal(materielItem_.materiel.prixMAt * materielItem_.quantity);
       // setsommePrix(sommePrix+prixTotal)
       // console.log(sommePrix+prixTotal)
@@ -27,25 +32,22 @@ function RowPanierComponent({ materielItem_,index,updatePanierMat,handleCloseRow
   useEffect(() => {
     // materielItem_=materielItem_.quantity=qt
     // console.log(materielItem_)
-    updatePanierMat(index,materielItem_,prixTotal,nombreJourLocation)
-  },[prixTotal])
+    updatePanierMat(index, materielItem_, prixTotal, nombreJourLocation);
+  }, [prixTotal]);
 
   const handleNbrJourChange = (event) => {
     setNombreJourLocation(event.target.value);
-    setPrixTotal(qt * materielItem_.materiel.prixMAt*nombreJourLocation);
+    setPrixTotal(qt * materielItem_.materiel.prixMAt * nombreJourLocation);
   };
 
   const handleNomProductsChange = (event) => {
     console.log(event.target.value);
-    
   };
-
-  
 
   const handleQuantityChange = (event) => {
     let qtt = event.target.value;
-    setQt(qt)
-    setPrixTotal(qtt * materielItem_.materiel.prixMAt*nombreJourLocation);
+    setQt(qt);
+    setPrixTotal(qtt * materielItem_.materiel.prixMAt * nombreJourLocation);
   };
   const handlePrixChange = (event) => {
     console.log(event.target.value);
@@ -57,69 +59,77 @@ function RowPanierComponent({ materielItem_,index,updatePanierMat,handleCloseRow
     // console.log(materielItem_);
   };
   if (materielItem_ !== null) {
-    return <tr onClick={CheckCommande}>
-    <td>
-      <img
-        src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
-          JSON.parse(materielItem_.materiel.imagePath)[0]
-        }`}
-        width={150}
-        className="img-fluid blur-up lazyload bg-img"
-      />
-    </td>
-    <td>
-    
-    {materielItem_.materiel.nomMat}
-    {materielItem_.materiel.techniqueMat}
-
-    
-    </td>
-    <td>
-      <div className="qty-box">
-        <div className="input-group">
-          <input
-            type="number"
-            name="quantity"
-            className="form-control input-number"
-            defaultValue={materielItem_.quantity}
-            onChange={handleQuantityChange}
-            min={1}
+    return (
+      <tr onClick={CheckCommande}>
+        <td>
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
+              JSON.parse(materielItem_.materiel.imagePath)[0]
+            }`}
+            width={150}
+            className="img-fluid blur-up lazyload bg-img"
           />
-        </div>
-      </div>
-    </td>
-    <td>
-      {/* {prixTotal} */}
+        </td>
+        <td>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              flexDirection: "column",
+            }}
+          >
+            <b className="text-capitalize">{materielItem_.materiel.nomMat}</b>
+            <br />
+            <label>{materielItem_.materiel.techniqueMat}</label>
+          </div>
+        </td>
+        <td>
+          <div className="qty-box">
+            <div className="input-group">
+              <input
+                type="number"
+                name="quantity"
+                className="form-control input-number"
+                defaultValue={materielItem_.quantity}
+                onChange={handleQuantityChange}
+                min={1}
+              />
+            </div>
+          </div>
+        </td>
+        <td>
+          {/* {prixTotal} */}
 
-      <PrintTextPrix
-        TextPrix={materielItem_.materiel.prixMAt}
-        monnai={"MLG"}
-      />
-    </td>
-    <td>
-      <div>
-        {/* <Reserver /> */}
-        <input
-            type="number"
-            name="quantity"
-            className="form-control input-number"
-            defaultValue={nombreJourLocation}
-            onChange={handleNbrJourChange}
-            min={1}
+          <PrintPrixUser
+            TextPrix={materielItem_.materiel.prixMAt}
+            monnai={"MLG"}
           />
-      </div>
-    </td>
-    <td>
-      {/* {prixTotal} */}
-      <PrintTextPrix TextPrix={prixTotal} monnai={"MLG"} />
-    </td>
-    <td>
-        {/* <input className="icon ti-close" onClick={handleCloseRowPanier} /> */}
-      <a className="icon" onClick={() => handleCloseRowPanier(index)}>
-        <i className="ti-close"></i>
-      </a>
-    </td>
-  </tr>;
+        </td>
+        <td>
+          <div>
+            {/* <Reserver /> */}
+            <input
+              type="number"
+              name="quantity"
+              className="form-control input-number"
+              defaultValue={nombreJourLocation}
+              onChange={handleNbrJourChange}
+              min={1}
+            />
+          </div>
+        </td>
+        <td>
+          {/* {prixTotal} */}
+          <PrintPrixUser TextPrix={prixTotal} monnai={"MLG"} />
+        </td>
+        <td>
+          {/* <input className="icon ti-close" onClick={handleCloseRowPanier} /> */}
+          <a className="icon" onClick={() => handleCloseRowPanier(index)}>
+            <i className="ti-close"></i>
+          </a>
+        </td>
+      </tr>
+    );
   } else {
     return <></>;
   }

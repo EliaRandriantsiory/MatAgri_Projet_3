@@ -13,11 +13,16 @@ function Choiceusers() {
               <div className="invoice-wrapper">
                 <div className="invoice-header">
                   <h3>Agriculteur</h3>
-                  <p style={{textAlign: "justify"}}>
-                    "Optimisez votre exploitation et bénéficiez d'une remise de 12%
-                    en vous mutualisant pour la location du matériel de votre choix. Profitez-en !"
+                  <p style={{ textAlign: "justify" }}>
+                    "Optimisez votre exploitation et bénéficiez d'une remise de
+                    <b> 12% </b>
+                    en vous mutualisant pour la location du matériel de votre
+                    choix. Profitez-en !"
                   </p>
-                  <Link className="btn btn-solid" to={"/InscriptionAgriculteur"}>
+                  <Link
+                    className="btn btn-solid"
+                    to={"/InscriptionAgriculteur"}
+                  >
                     s'inscrire
                   </Link>
                 </div>
@@ -33,8 +38,12 @@ function Choiceusers() {
               <div className="invoice-wrapper">
                 <div className="invoice-header">
                   <h3>Coopérative</h3>
-                  <p style={{textAlign: "justify"}}>
-                    "Économisez jusqu'à 12% sur la location d'un matériel agricole en tant que coopérative ! Rejoignez notre plateforme pour profiter de cette offre."
+                  <p style={{ textAlign: "justify" }}>
+                    "Économisez systématiquement jusqu'à <b>12%</b> sur la
+                    location d'un matériel agricole en tant que coopérative !
+                    Rejoignez notre plateforme pour profiter de cette offre !"
+                    <br></br>
+                    <br></br>
                   </p>
                   <Link className="btn btn-solid" to={"/SignUpCooperative"}>
                     s'inscrire
@@ -52,10 +61,16 @@ function Choiceusers() {
               <div className="invoice-wrapper">
                 <div className="invoice-header">
                   <h3>Fournisseur</h3>
-                  <p style={{textAlign: "justify"}}>
-                    "Élargissez votre clientèle et maximisez vos revenus en proposant votre matériel agricole à la location sur notre plateforme dès aujourd'hui !"
+                  <p style={{ textAlign: "justify" }}>
+                    "Élargissez votre clientèle et maximisez vos revenus en
+                    proposant votre matériel agricole à la location sur notre
+                    plateforme dès aujourd'hui !"
                   </p>
-                  <Link to={"/SignUpProvider"} className="btn btn-solid" id="four">
+                  <Link
+                    to={"/SignUpProvider"}
+                    className="btn btn-solid"
+                    id="four"
+                  >
                     s'inscrire
                   </Link>
                 </div>

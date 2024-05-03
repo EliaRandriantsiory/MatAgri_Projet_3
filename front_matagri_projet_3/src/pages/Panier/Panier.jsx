@@ -6,16 +6,16 @@ import RowPanierComponent from "./composant/rowPanier";
 import { Link, json } from "react-router-dom";
 import PrintTextPrix from "../../components/textComponent/printPrix";
 import Devis from "../../components/textComponent/Devis";
-
+import PrintPrixUser from "../../components/textComponent/printPrixUser";
 
 function Panier() {
-const [listMateriel, setListMateriel] = useState([]);
+  const [listMateriel, setListMateriel] = useState([]);
   const [updated, setUpdated] = useState();
   const [sommePrix, setsommePrix] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
-  const [sommePrixTotal,setsommePrixTotal] = useState()
+  const [sommePrixTotal, setsommePrixTotal] = useState();
 
-  function calculeDifferenceDate (startDateString, endDateString) {
+  function calculeDifferenceDate(startDateString, endDateString) {
     const startDateParts = startDateString.split("/");
     const startDate = new Date(
       parseInt(startDateParts[2]),
@@ -38,19 +38,24 @@ const [listMateriel, setListMateriel] = useState([]);
     );
     // console.log(differenceInDays)
     return differenceInDays;
-  };
+  }
   const CalculeSommePrixTotal = () => {
     JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
-      const differenceDate = calculeDifferenceDate(commande.startDate,commande.endDate)
-      setsommePrixTotal(commande.quantity*differenceDate*commande.materiel.prixMAt);
-      console.log(sommePrixTotal)
-      console.log(commande.quantity*differenceDate*commande.materiel.prixMAt)
-      
+      console.log(commande);
+      // const differenceDate = calculeDifferenceDate(
+      //   commande.startDate,
+      //   commande.endDate
+      // );
+      // setsommePrixTotal(
+      //   commande.quantity * differenceDate * commande.materiel.prixMAt
+      // );
+      // console.log(sommePrixTotal);
+      // console.log(
+      //   commande.quantity * differenceDate * commande.materiel.prixMAt
+      // );
       // console.log(commande.startDate)
       // console.log(commande.endDate)
-      
       // console.log(differenceDate)
-      
     });
   };
 
@@ -114,21 +119,20 @@ const [listMateriel, setListMateriel] = useState([]);
                               image
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              nom du produit
+                              Designation
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               quantité
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              prix
+                              Prix journalier
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              action
+                              Dates
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               total
                             </th>
-                            <th scope="col"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -149,101 +153,110 @@ const [listMateriel, setListMateriel] = useState([]);
                           ))}
                         </tbody>
                       </table>
-                      <div className="table-responsive-md">
+                      {/* <div className="table-responsive-md">
                         <table className="table cart-table "></table>
                         <div className="table-responsive-md">
                           <table className="table cart-table "></table>
                         </div>
-                      </div>
-                    </div>
-                    <div className="d-flex justify-content-end">
-                      <table style={{ border: "none" }}>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <label style={{ fontWeight: "bold" }}>
-                                Frais de transport
-                              </label>
-                            </td>
-                            <td>
-                              <label
-                                style={{
-                                  textAlign: "left",
-                                  marginRight: "75px",
-                                }}
-                              >
-                                1 000,00 Ar
-                              </label>
-                            </td><td>
-
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label
-                                style={{
-                                  fontWeight: "bold",
-                                  marginRight: "27px",
-                                }}
-                              >
-                                Montant total à payer
-                              </label>
-                            </td>
-                            <td>
-                              <label
-                                style={{
-                                  textAlign: "left",
-                                  marginRight: "75px",
-                                }}
-                              >
-                                24 000 000 Ar
-                              </label>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <div className="d-flex justify-content-end">
-                    <table style={{ border: "none" }}>
-                    <tbody>
-                    <tr>
-                      <td>
-                      <Link to={"/Material"} className="btn btn-solid">
-                        Continuer l'achat
-                      </Link>  
-                      </td>
-                      <td>
-
-                      </td>
-                      <td></td>
-                      <td></td>
-                      <td><Link to="/devis" className="btn btn-xs btn-solid">
-                          Aller au devis
-                        </Link></td>
-                      <td><Link to="/paiement" className="btn btn-xs btn-solid">
-                          Commander
-                        </Link></td>
-                        <td></td>
-                        
-                    </tr>
-                    </tbody>
-                    </table>
-                      
-                      {/* <div className="col-6">                      
-                        <Link to={"/Material"} className="btn btn-solid">
-                        
-                          Continuer l'achat
-                        </Link>
-
-                      </div>
-                      <div className="col-3">
-                        
-                      </div>
-                      <div className="col-3">
-                        
                       </div> */}
                     </div>
+                    <div
+                      className="d-flex justify-content-end"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-end",
+                        // background: "#f2f2f2",
+                        width: "82vw",
+                        height: "20vh",
+                      }}
+                    >
+                      <div>
+                        <div>
+                          <label style={{ fontWeight: "bold" }}>
+                            Frais de transport
+                          </label>
+                          <label
+                            style={{
+                              textAlign: "right",
+                              marginLeft: "5px",
+                              width: "15vw",
+                              // background: "red",
+                            }}
+                          >
+                            <PrintPrixUser TextPrix={14000} monnai={"MLG"} />
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            style={{
+                              fontWeight: "bold",
+                              marginleft: "27px",
+                            }}
+                          >
+                            Montant total à payer
+                          </label>
+                          <label
+                            style={{
+                              textAlign: "right",
+                              marginLeft: "5px",
+                              width: "15vw",
+                              // background: "red",
+                            }}
+                          >
+                            <PrintPrixUser TextPrix={24000000} monnai={"MLG"} />
+                          </label>
+                        </div>
+                      </div>
+                      <div
+                        className="col-sm-12 table-responsive-xs"
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "flex-end",
+                          width: "82vw",
+                        }}
+                      >
+                        <ul
+                          style={{
+                            display: "flex",
+                            width: "82vw",
+                            height: "3vh",
+                          }}
+                        >
+                          <li>
+                            <Link
+                              to={"/Material"}
+                              className="btn btn-solid"
+                              style={{}}
+                            >
+                              Continuer l'achat
+                            </Link>
+                          </li>
+                          <li
+                            style={{
+                              position: "absolute",
+                              right: 165,
+                            }}
+                          >
+                            <Link to="/devis" className="btn  btn-solid">
+                              Aller au devis
+                            </Link>
+                          </li>
+                          <li
+                            style={{
+                              position: "absolute",
+                              right: 0,
+                            }}
+                          >
+                            <Link to="/paiement" className="btn  btn-solid">
+                              Commander
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
                     {/* <Modal
                       open={isModalOpen}
                       onClose={() => setIsModalOpen(false)}
@@ -265,4 +278,3 @@ const [listMateriel, setListMateriel] = useState([]);
 }
 
 export default Panier;
-
