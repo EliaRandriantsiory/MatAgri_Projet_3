@@ -4,7 +4,7 @@ function PrintDetailTechMat(desctechMat) {
     // console.log(desctechMat)
 
     const transformDesc =(StringDescMat)=>{
-        
+        Array.from(StringDescMat.Array)
     }
     const [descTechMat_, setDescTechMat] = useState()
     useEffect(() => {

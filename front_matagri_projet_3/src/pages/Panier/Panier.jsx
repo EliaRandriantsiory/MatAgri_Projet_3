@@ -102,7 +102,6 @@ const [listMateriel, setListMateriel] = useState([]);
           <div className="row">
             <div className="col-lg-12">
               <div className="title1 section-t-space">
-                <h4>Panier</h4>
                 <h2 className="title-inner1">Panier</h2>
                 <div className="container-fluid">
                   <div className="row">
