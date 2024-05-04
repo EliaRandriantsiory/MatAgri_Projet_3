@@ -6,7 +6,9 @@ import "./assets/css/homePage/homePage.css";
 import { ToastContainer } from "react-toastify";
 import "./assets/css/homePage/homePage.css";
 import Avatar from "./avatar";
+
 import Panier from "./Panier/Panier";
+
 
 function HomePage_Layout() {
   const [isVisible, setIsVisible] = useState(false);
@@ -361,7 +363,9 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-                          Tracteurs
+
+                          Motoculteur
+
                         </a>
                       </li>
                       <li>
@@ -369,7 +373,9 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-                          Motoculteurs
+
+                          Tracteur/Charrue
+
                         </a>
                       </li>
                       <li>
@@ -377,7 +383,9 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-                          Charrues
+
+                          Dechaumeur/Pulverisation
+
                         </a>
                       </li>
                       <li>
@@ -385,15 +393,9 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-                          Moissonneuses
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          style={{ textAlign: "justify", fontSize: "14px" }}
-                        >
-                          Décompactateur
+
+                          Semoir/moissonneuseBatteuse
+
                         </a>
                       </li>
                     </ul>

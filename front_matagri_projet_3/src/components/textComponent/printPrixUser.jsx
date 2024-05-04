@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-
-function PrintTextPrix(TextPrix, monnai) {
+function PrintPrixUser(TextPrix, monnai) {
   if (monnai === "MLG") {
     const monnaisPrix = "Ar";
   }
@@ -23,7 +21,7 @@ function PrintTextPrix(TextPrix, monnai) {
   const transformedSum = transformSum(TextPrix.TextPrix);
   // console.log(transformedSum);
 
-  return <>{"Ar " + transformedSum + ",00 / jour"}</>;
+  return <>{"Ar " + transformedSum + ",00"}</>;
 }
 
-export default PrintTextPrix;
+export default PrintPrixUser;

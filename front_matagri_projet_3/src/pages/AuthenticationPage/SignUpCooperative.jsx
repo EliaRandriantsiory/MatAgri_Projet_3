@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -7,9 +6,9 @@ import Terme from "./Terme";
 
 function SignUpCooperative() {
   const navigate = useNavigate();
-  const [companyNameForm, setCompanyName] = useState("")
+  const [companyNameForm, setCompanyName] = useState("");
   const [EtatCGV, setEtatCgv] = useState("");
-  const [nifForm, setNif] = useState("")
+  const [nifForm, setNif] = useState("");
   const [NbAgriculteurForm, setNbAgriculteur] = useState("");
   const [addressForm, setAddress] = useState("");
   const [phoneForm, setPhone] = useState("");
@@ -49,7 +48,7 @@ function SignUpCooperative() {
     const enteredValue = event.target.value;
     const numericValue = enteredValue.replace(/\D/g, "");
     const trimmedValue = numericValue.slice(0, 10);
-    localStorage.setItem('nif', enteredValue);
+    localStorage.setItem("nif", enteredValue);
     setNif(trimmedValue);
   };
 
@@ -83,190 +82,215 @@ function SignUpCooperative() {
     }
 
     try {
-      const response = await axios.post("http://localhost:8082/api/home/ajoutUser", {
-        companyName: companyNameForm,
-        nif: nifForm,
-        address: addressForm,
-        phone: phoneForm,
-        email: emailForm,
-        region: regionForm,
-        nbFarme: NbAgriculteurForm,
-        password: passwordForm,
-        confirmPassword: confirmPasswordForm,
-        profile: {
-          idprofile: 2,
-          profile: "coopérative",
-          roles: [],
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:8082/api/home/ajoutUser",
+        {
+          companyName: companyNameForm,
+          nif: nifForm,
+          address: addressForm,
+          phone: phoneForm,
+          email: emailForm,
+          region: regionForm,
+          nbFarme: NbAgriculteurForm,
+          password: passwordForm,
+          confirmPassword: confirmPasswordForm,
+          profile: {
+            idprofile: 2,
+            profile: "coopérative",
+            roles: [],
+          },
+        }
+      );
       console.log(response.data);
-      toast.success('Inscription réussie !');
+      toast.success("Inscription réussie !");
       navigate("/");
-      localStorage.setItem('email', emailForm);
-      localStorage.setItem('password', passwordForm);
+      localStorage.setItem("email", emailForm);
+      localStorage.setItem("password", passwordForm);
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error);
     }
   };
   return (
-      <section className="register-page section-b-space">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <h3 style={{color: '#ffb000'}}>INSCRIPTION COOPERATIVE</h3>
-              <div className="theme-card">
-                <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
-                  <div className="form-row row">
-                    <div className="col-md-6">
-                      <label htmlFor="raison">Raison sociale</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="raison"
-                        placeholder="Nom de la société"
-                        value={companyNameForm}
-                        required
-                        onChange={handleOnChangeInputTextRaison}/>
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="siege" style={{fontSize:'14px'}}>Siège social</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="siege"
-                        placeholder="votre siège"
-                        value={addressForm}
-                        required
-                        onChange={(event) => handleOnChangeInputTextAdress(event)}
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="nif" style={{fontSize:'14px'}}>NIF</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="nif"
-                        value={nifForm}
-                        placeholder="Votre numéro NIF"
-                        required
-                        onChange={handleOnChangeInputTextNif}
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="telephone" style={{fontSize:'14px'}}>Téléphone</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="tel"
-                        placeholder="Votre numéro de tétéphone"
-                        value={phoneForm}
-                        required
-                        onChange={(event) =>
-                          handleOnChangeInputTextPhone(event)
-                        }
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="email" style={{fontSize:'14px'}}>Email</label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        placeholder="Votre adresse e-mail"
-                        value={emailForm}
-                        required
-                        onChange={(event) =>
-                          handleOnChangeInputTextEmail(event)
-                        }
-                      />
-                    </div>
-                    <div className="col-md-6"style={{ marginBottom: '20px' }}>
-                      <label htmlFor="mon-menu" style={{fontSize:'14px'}}>Région :</label>
-                      <input type="text" id="region" className="form-control" value={regionForm} onChange={handleOnChangeInputTextRegion}/>
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="nb" style={{fontSize:'14px'}}>Nombre Agriculteur</label>
-                      <input
-                        type="number"
-                        className="form-control"
-                        id="NbAgriculteur"
-                        placeholder="Nombre agriculteur"
-                        value={NbAgriculteurForm}
-                        required
-                        onChange={(event) =>
-                          handleOnChangeInputTextNbAgriculteur(event)
-                        }
-                      />
-                    </div>
-                    
+    <section className="register-page section-b-space">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <h3 style={{ color: "#ffb000" }}>INSCRIPTION COOPERATIVE</h3>
+            <div className="theme-card">
+              <form className="theme-form" onSubmit={handleOnclickSauvegarde}>
+                <div className="form-row row">
+                  <div className="col-md-6">
+                    <label htmlFor="raison">Raison sociale</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="raison"
+                      placeholder="Nom de la coopérative"
+                      value={companyNameForm}
+                      required
+                      onChange={handleOnChangeInputTextRaison}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label htmlFor="siege" style={{ fontSize: "14px" }}>
+                      Siège social
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="siege"
+                      placeholder="votre siège"
+                      value={addressForm}
+                      required
+                      onChange={(event) => handleOnChangeInputTextAdress(event)}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label htmlFor="nif" style={{ fontSize: "14px" }}>
+                      NIF
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="nif"
+                      value={nifForm}
+                      placeholder="Votre numéro NIF"
+                      required
+                      onChange={handleOnChangeInputTextNif}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label htmlFor="telephone" style={{ fontSize: "14px" }}>
+                      Téléphone
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="tel"
+                      placeholder="Votre numéro de tétéphone"
+                      value={phoneForm}
+                      required
+                      onChange={(event) => handleOnChangeInputTextPhone(event)}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label htmlFor="email" style={{ fontSize: "14px" }}>
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="email"
+                      placeholder="Votre adresse e-mail"
+                      value={emailForm}
+                      required
+                      onChange={(event) => handleOnChangeInputTextEmail(event)}
+                    />
+                  </div>
+                  <div className="col-md-6" style={{ marginBottom: "20px" }}>
+                    <label htmlFor="mon-menu" style={{ fontSize: "14px" }}>
+                      Région
+                    </label>
+                    <input
+                      type="text"
+                      id="region"
+                      placeholder="Votre région"
+                      className="form-control"
+                      value={regionForm}
+                      onChange={handleOnChangeInputTextRegion}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label htmlFor="nb" style={{ fontSize: "14px" }}>
+                      Nombre Agriculteurs
+                    </label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="NbAgriculteur"
+                      placeholder="Nombre agriculteurs"
+                      value={NbAgriculteurForm}
+                      required
+                      onChange={(event) =>
+                        handleOnChangeInputTextNbAgriculteur(event)
+                      }
+                    />
+                  </div>
 
-                    <div className="col-md-6">
-                      <label htmlFor="review" style={{fontSize:'14px'}}>Mot de passe</label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        placeholder=" votre mot de passe"
-                        value={passwordForm}
-                        required
-                        onChange={(event) =>
-                          handleOnChangeInputTextPassword(event)
-                        }
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="review" style={{fontSize:'14px'}}>Confirmer mot de passe</label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="passConfirm"
-                        placeholder=" Confirmer mot de passe"
-                        value={confirmPasswordForm}
-                        required
-                        onChange={(event) =>
-                          handleOnChangeInputTextConfirmPassword(event)
-                        }
-                      />
-                    </div>
-                  </div>
-                  
-                  <div id="checkTermeCondition" >
+                  <div className="col-md-6">
+                    <label htmlFor="review" style={{ fontSize: "14px" }}>
+                      Mot de passe
+                    </label>
                     <input
-                      type="checkbox"
-                      name="checkbox-button"
-                      value="value"
-                      id="checkPlus"
-                      className="mr-2"
-                      checked={isChecked}
+                      type="password"
+                      className="form-control"
+                      id="password"
+                      placeholder=" votre mot de passe"
+                      value={passwordForm}
+                      required
+                      onChange={(event) =>
+                        handleOnChangeInputTextPassword(event)
+                      }
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label htmlFor="review" style={{ fontSize: "14px" }}>
+                      Confirmer mot de passe
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="passConfirm"
+                      placeholder=" Confirmer mot de passe"
+                      value={confirmPasswordForm}
+                      required
+                      onChange={(event) =>
+                        handleOnChangeInputTextConfirmPassword(event)
+                      }
+                    />
+                  </div>
+                </div>
+
+                <div id="checkTermeCondition">
+                  <input
+                    type="checkbox"
+                    name="checkbox-button"
+                    value="value"
+                    id="checkPlus"
+                    className="mr-2"
+                    checked={isChecked}
                     onChange={handleOnChangecheckboxcgv}
-                    style={{ marginRight: '10px' }}
-                    />
-                    {/* ito le terme */}
-                    <a id="addCheckboxBtn" href="#">
-                    <Terme onAccept={() => setIsChecked(true)}/>
-                    </a>
-                    {/* --------- */}
-                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-                    {errorPassword && (
-                  <p style={{ color: "red" }}>{errorPassword}</p>
-                )}
-                  </div>
-                  <div>
-                    <input
-                      type="submit"
-                      className="btn btn-solid w-auto"
-                      value={"S'inscrire"}
-                      disabled={!isChecked}
-                    />
-                  </div>
-                </form>
-              </div>
-              <div className="form-row row"></div>
+                    style={{ marginRight: "10px" }}
+                  />
+                  {/* ito le terme */}
+                  <a id="addCheckboxBtn" href="#">
+                    <Terme onAccept={() => setIsChecked(true)} />
+                  </a>
+                  {/* --------- */}
+                  {errorMessage && (
+                    <p style={{ color: "red" }}>{errorMessage}</p>
+                  )}
+                  {errorPassword && (
+                    <p style={{ color: "red" }}>{errorPassword}</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    type="submit"
+                    className="btn btn-solid w-auto"
+                    value={"S'inscrire"}
+                    disabled={!isChecked}
+                    style={{ color: "white" }}
+                  />
+                </div>
+              </form>
             </div>
+            <div className="form-row row"></div>
           </div>
         </div>
-        <ToastContainer/>
-      </section>
+      </div>
+      <ToastContainer />
+    </section>
   );
 }
 export default SignUpCooperative;

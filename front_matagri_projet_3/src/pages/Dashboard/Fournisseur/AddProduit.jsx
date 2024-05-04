@@ -11,66 +11,63 @@ function AddProduit() {
   const [showModal, setShowModal] = useState(false);
   const [nomMateriel, setNomMateriel] = useState("");
   const [categorie, setCategorie] = useState("");
-    
+
   const [imagesList, setImagesList] = useState([]);
-  
+
   const [listImagesFile, setListImageFile] = useState([]);
-  
+
   // const [categorieMateriel, setCategorieMateriel] = useState("");
   const [prixMateriel, setPrixMateriel] = useState();
   const [stockMateriel, setStockMateriel] = useState();
   const [descriptionMateriel, setDescriptionMateriel] = useState("");
   const [descriptionTechMateriel, setDescriptionTechMateriel] = useState("");
 
-
   const [listMateriel, setListMateriel] = useState([]);
   const [listMateriels, setListMateriels] = useState([]);
   const [currentUSer, setCurrentUser] = useState({});
 
-  const initAuthentification = () =>{
+  const initAuthentification = () => {
+    // initialisation donnée current user
+    axios
+      .post("http://localhost:8082/api/home/authentification", {
+        email: localStorage.getItem("email"),
+        password: localStorage.getItem("pwd"),
+      })
+      .then((response) => {
+        localStorage.setItem("currentUser", JSON.stringify(response.data));
+        setCurrentUser(response.data);
+        // setListMateriel(Array.from(response.data.materiels))
 
-      // initialisation donnée current user
-      axios
-        .post("http://localhost:8082/api/home/authentification", {
-          email: localStorage.getItem("email"),
-          password: localStorage.getItem("pwd"),
-        })
-        .then((response) => {
-          localStorage.setItem("currentUser", JSON.stringify(response.data));
-          setCurrentUser(response.data)
-          // setListMateriel(Array.from(response.data.materiels))
-
-          
-          // console.log(response.data)
-        }); 
-        initListMat()
-  }
+        // console.log(response.data)
+      });
+    initListMat();
+  };
   const initListMat = () => {
     // console.log(localStorage.getItem("crntUser"))
     axios
-        .get(
-          'http://localhost:8082/api/materiels/listMaterielByUser?param='+localStorage.getItem("crntUser")
-          // "http://localhost:8082/api/materiels/listMateriel"
-        )
-        .then((response) => {
-          // setListMateriel(response.data);
-          var dataList = response.data
-          setListMateriels(dataList)
-          // listMateriels.push(dataList)
-          // console.log(listMateriels)
-          
-          // setListMateriel(response.data)
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    
+      .get(
+        "http://localhost:8082/api/materiels/listMaterielByUser?param=" +
+          localStorage.getItem("crntUser")
+        // "http://localhost:8082/api/materiels/listMateriel"
+      )
+      .then((response) => {
+        // setListMateriel(response.data);
+        var dataList = response.data;
+        setListMateriels(dataList);
+        // listMateriels.push(dataList)
+        // console.log(listMateriels)
+
+        // setListMateriel(response.data)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
-  
-  useEffect(()=>{
-    initAuthentification()    
+
+  useEffect(() => {
+    initAuthentification();
     // console.log(listMateriels)
-  },[])
+  }, []);
 
   // useEffect(()=>{console.log("bonjour test assync")},[setImagesList])
 
@@ -99,7 +96,6 @@ function AddProduit() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  
 
   const handleOnclickSauvegardeAjout = (e) => {
     e.preventDefault();
@@ -107,9 +103,9 @@ function AddProduit() {
     // console.log("bonjour")
     // console.log(listImagesFile)
     images.forEach((imagesFile) => {
-      imagesList.push(imagesFile.name)
-      console.log(imagesFile)
-      handleUpload(imagesFile)
+      imagesList.push(imagesFile.name);
+      console.log(imagesFile);
+      handleUpload(imagesFile);
       // console.log(imagesFile.name)
       // Array.from(imagesFile).forEach((imageFile) => {
       //   handleUpload(imageFile);
@@ -120,8 +116,7 @@ function AddProduit() {
       // });
     });
     console.log(imagesList);
-    
-    
+
     // // console.log(JSON.stringify(imagesList));
     axios
       .post("http://localhost:8082/api/materiels/ajouter", {
@@ -140,10 +135,9 @@ function AddProduit() {
       .catch((error) => {
         console.error(error);
       });
-    setImagesList([]);  
-    setImages([])
+    setImagesList([]);
+    setImages([]);
   };
-  
 
   const handlePrix = (event) => {
     const enteredValue = event.target.value;
@@ -189,10 +183,6 @@ function AddProduit() {
   //   setDescriptionMateriel(e.target.value);
   // };
 
-  
-
-  
-
   // const handleImageChange = (e) => {
   //   const files = Array.from(e.target.files);
   //   // console.log(files)
@@ -230,12 +220,12 @@ function AddProduit() {
   return (
     <>
       <button className="btn btn-sm btn-solid" onClick={handleOpenModal}>
-        + Ajouter Produit
+        + Ajouter Matériel
       </button>
 
       <Modal show={showModal} onHide={handleCloseModal} backdrop="static">
         <Modal.Header closeButton>
-          <Modal.Title>Ajout Produit</Modal.Title>
+          <Modal.Title>Ajout Matériel</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form
@@ -252,6 +242,7 @@ function AddProduit() {
                 name="file"
                 types={fileTypes}
                 multiple
+                labelText="Sélectionnez un fichier"
               />
               {imagePreviews.length > 0 && (
                 <div className="image-preview-container d-flex">
@@ -275,7 +266,7 @@ function AddProduit() {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="nomMateriel">Nom du matériel:</label>
+              <label htmlFor="nomMateriel">Designation</label>
               <input
                 type="text"
                 className="form-control"
@@ -285,16 +276,26 @@ function AddProduit() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="categories">Catégories:</label>
-              <select className="form-select" id="categories" onChange={(e) => setCategorie(e.target.value)} value={categorie}>
+              <label htmlFor="categories">Catégorie</label>
+              <select
+                className="form-select"
+                id="categories"
+                onChange={(e) => setCategorie(e.target.value)}
+                value={categorie}
+              >
                 <option>Choix de catégorie</option>
                 <option value="Motoculteur">Motoculteur</option>
-                <option value="Tracteur">Tracteur</option>
-                <option value="Camion">Camion</option>
+                <option value="Tracteur/Charrue">Tracteur / Charrue</option>
+                <option value="Dechaumeur/Pulverisation">
+                  Déchaumeur / Pulvérisateur
+                </option>
+                <option value="Semoir/moissonneuseBatteuse">
+                  Semoir / Moissonneuse batteuse
+                </option>
               </select>
             </div>
             <div className="form-group">
-              <label htmlFor="prix">Prix:</label>
+              <label htmlFor="prix">Prix journalier</label>
               <div className="input-group">
                 <input
                   type="text"
@@ -309,7 +310,7 @@ function AddProduit() {
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="stock">Stock:</label>
+              <label htmlFor="stock">Quantité</label>
               <input
                 type="text"
                 className="form-control"
@@ -319,7 +320,7 @@ function AddProduit() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="description">Description Technique:</label>
+              <label htmlFor="description">Spécifications techniques</label>
               <textarea
                 className="form-control"
                 id="descriptionTech"
@@ -329,7 +330,7 @@ function AddProduit() {
               ></textarea>
             </div>
             <div className="form-group">
-              <label htmlFor="description">Description:</label>
+              <label htmlFor="description">Description</label>
               <textarea
                 className="form-control"
                 id="description"
@@ -341,14 +342,20 @@ function AddProduit() {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <div className="offset-xl-3 offset-sm-4 d-flex justify-content-between">
-            <Button className="btn btn-solid" id="ajout"  onClick={handleOnclickSauvegardeAjout}>
+          <div className="offset-xl-3 offset-sm-4 d-flex ">
+            <Button
+              className="btn btn-solid "
+              id="ajout"
+              onClick={handleOnclickSauvegardeAjout}
+              style={{ marginLeft: "20px" }}
+            >
               Ajouter
             </Button>
             <Button
-              className="me-3"
+              className="btn btn-solid"
               variant="secondary"
               onClick={handleCloseModal}
+              style={{ marginLeft: "20px", width: "120px" }}
             >
               Fermer
             </Button>

@@ -6,13 +6,15 @@ import RowPanierComponent from "./composant/rowPanier";
 import { Link, json } from "react-router-dom";
 import PrintTextPrix from "../../components/textComponent/printPrix";
 import Devis from "../../components/textComponent/Devis";
+import PrintPrixUser from "../../components/textComponent/printPrixUser";
 
 function Panier() {
   const [listMateriel, setListMateriel] = useState([]);
   const [updated, setUpdated] = useState();
   const [sommePrix, setsommePrix] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
-  const [sommePrixTotal, setsommePrixTotal] = useState();
+  const [sommePrixTotal, setsommePrixTotal] = useState(0);
+  const prixLivraison = 14000;
 
   function calculeDifferenceDate(startDateString, endDateString) {
     const startDateParts = startDateString.split("/");
@@ -39,29 +41,43 @@ function Panier() {
     return differenceInDays;
   }
   const CalculeSommePrixTotal = () => {
+    let prxTotal = 0;
     JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
-      const differenceDate = calculeDifferenceDate(
-        commande.startDate,
-        commande.endDate
-      );
-      setsommePrixTotal(
-        commande.quantity * differenceDate * commande.materiel.prixMAt
-      );
-      console.log(sommePrixTotal);
-      console.log(
-        commande.quantity * differenceDate * commande.materiel.prixMAt
-      );
+      console.log(commande);
+      console.log(commande.quantity);
+      // console.log(new Date())
+      // console.log(calculeDifferenceDate("22/04/2024","25/05/2024"))
+      // console.log(commande.materiel.prixMAt);
+      let prixlocationMat =
+        commande.quantity *
+        calculeDifferenceDate(commande.startDate, commande.endDate) *
+        commande.materiel.prixMAt;
+      prxTotal += prixlocationMat;
+      // setsommePrixTotal(sommePrixTotal+prixlocationMat)
+      // console.log(sommePrixTotal+prixlocationMat)
 
+      // const differenceDate = calculeDifferenceDate(
+      //   commande.startDate,
+      //   commande.endDate
+      // );
+      // setsommePrixTotal(
+      //   commande.quantity * differenceDate * commande.materiel.prixMAt
+      // );
+      // console.log(sommePrixTotal);
+      // console.log(
+      //   commande.quantity * differenceDate * commande.materiel.prixMAt
+      // );
       // console.log(commande.startDate)
       // console.log(commande.endDate)
 
       // console.log(differenceDate)
     });
+    setsommePrixTotal(prxTotal + prixLivraison);
   };
 
   const handleCloseRowPanier = (index) => {
     let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
-    console.log(currentPanierMat);
+    // console.log(currentPanierMat);
     currentPanierMat.splice(index, 1);
     localStorage.setItem("listpanier", JSON.stringify(currentPanierMat));
     // console.log(JSON.stringify(currentPanierMat.splice(index, 1)));
@@ -71,32 +87,27 @@ function Panier() {
     // setListMateriel([])
     // console.log(index)
   };
-  const updatePanierMat = (
+
+  const updatePanierMatData = (
     index,
     materielItem_,
+    qt,
     prixTotal,
     nombreJourLocation
   ) => {
     let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
-    // console.log(materielItem_)
-    // console.log(index, materielItem_, prixTotal,nombreJourLocation);
-
-    // sommePrixTotal()
+    currentPanierMat[index].quantity = qt;
+    localStorage.setItem("listpanier", JSON.stringify(currentPanierMat));
   };
+
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    // console.log(sommePrix);
-    // sommePrixTotal();
   }, [updated]);
 
-  useEffect(() => {
-    // console.log(localStorage.getItem("listpanier")+"bonjour")
-  }, [localStorage.getItem("listpanier")]);
+  useEffect(() => {}, [localStorage.getItem("listpanier")]);
 
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    // console.log("bonjour update")
-    // console.log(sommePrix);
     CalculeSommePrixTotal();
   }, []);
 
@@ -119,21 +130,21 @@ function Panier() {
                               image
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              nom du produit
+                              Designation
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               quantité
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              prix
+                              Prix journalier
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              action
+                              Dates
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               total
                             </th>
-                            <th scope="col"></th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -147,114 +158,123 @@ function Panier() {
                               <RowPanierComponent
                                 materielItem_={matHomePage}
                                 index={index}
-                                updatePanierMat={updatePanierMat}
+                                updatePanierMatData={updatePanierMatData}
                                 handleCloseRowPanier={handleCloseRowPanier}
                               />
                             </>
                           ))}
                         </tbody>
                       </table>
-                      <div className="table-responsive-md">
+                      {/* <div className="table-responsive-md">
                         <table className="table cart-table "></table>
                         <div className="table-responsive-md">
                           <table className="table cart-table "></table>
                         </div>
-                      </div>
-                    </div>
-                    <div className="d-flex justify-content-end">
-                      <table style={{ border: "none" }}>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <label style={{ fontWeight: "bold" }}>
-                                Frais de transport
-                              </label>
-                            </td>
-                            <td>
-                              <label
-                                style={{
-                                  textAlign: "left",
-                                  marginRight: "75px",
-                                }}
-                              >
-                                1 000,00 Ar
-                              </label>
-                            </td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label
-                                style={{
-                                  fontWeight: "bold",
-                                  marginRight: "27px",
-                                }}
-                              >
-                                Montant total à payer
-                              </label>
-                            </td>
-                            <td>
-                              <label
-                                style={{
-                                  textAlign: "left",
-                                  marginRight: "75px",
-                                }}
-                              >
-                                24 000 000 Ar
-                              </label>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <div className="d-flex justify-content-end">
-                      <table style={{ border: "none" }}>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <Link to={"/Material"} className="btn btn-solid">
-                                Continuer l'achat
-                              </Link>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                              <Link
-                                to="/devis"
-                                className="btn btn-xs btn-solid"
-                              >
-                                Aller au devis
-                              </Link>
-                            </td>
-                            <td>
-                              <Link
-                                to="/paiement"
-                                className="btn btn-xs btn-solid"
-                              >
-                                Commander
-                              </Link>
-                            </td>
-                            <td></td>
-                          </tr>
-                        </tbody>
-                      </table>
-
-                      {/* <div className="col-6">                      
-                        <Link to={"/Material"} className="btn btn-solid">
-                        
-                          Continuer l'achat
-                        </Link>
-
-                      </div>
-                      <div className="col-3">
-                        
-                      </div>
-                      <div className="col-3">
-                        
                       </div> */}
                     </div>
+                    <div
+                      className="d-flex justify-content-end"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-end",
+                        // background: "#f2f2f2",
+                        width: "82vw",
+                        height: "20vh",
+                      }}
+                    >
+                      <div>
+                        <div>
+                          <label style={{ fontWeight: "bold" }}>
+                            Frais de transport
+                          </label>
+                          <label
+                            style={{
+                              textAlign: "right",
+                              marginLeft: "5px",
+                              width: "15vw",
+                              // background: "red",
+                            }}
+                          >
+                            <PrintPrixUser
+                              TextPrix={prixLivraison}
+                              monnai={"MLG"}
+                            />
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            style={{
+                              fontWeight: "bold",
+                              marginleft: "27px",
+                            }}
+                          >
+                            Montant total à payer
+                          </label>
+                          <label
+                            style={{
+                              textAlign: "right",
+                              marginLeft: "5px",
+                              width: "15vw",
+                              // background: "red",
+                            }}
+                          >
+                            <PrintPrixUser
+                              TextPrix={sommePrixTotal}
+                              monnai={"MLG"}
+                            />
+                          </label>
+                        </div>
+                      </div>
+                      <div
+                        className="col-sm-12 table-responsive-xs"
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "flex-end",
+                          width: "82vw",
+                        }}
+                      >
+                        <ul
+                          style={{
+                            display: "flex",
+                            width: "82vw",
+                            height: "3vh",
+                          }}
+                        >
+                          <li>
+                            <Link
+                              to={"/Material"}
+                              className="btn btn-solid"
+                              style={{}}
+                            >
+                              Continuer l'achat
+                            </Link>
+                          </li>
+                          <li
+                            style={{
+                              position: "absolute",
+                              right: 165,
+                            }}
+                          >
+                            <Link to="/devis" className="btn  btn-solid">
+                              Aller au devis
+                            </Link>
+                          </li>
+                          <li
+                            style={{
+                              position: "absolute",
+                              right: 0,
+                            }}
+                          >
+                            <Link to="/paiement" className="btn  btn-solid">
+                              Commander
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
                     {/* <Modal
                       open={isModalOpen}
                       onClose={() => setIsModalOpen(false)}

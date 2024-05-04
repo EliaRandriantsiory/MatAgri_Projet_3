@@ -54,9 +54,10 @@ function ProductCard({ materialItem }) {
         //   roles: [],
         // },
       },
-      quantity: 1,
-      startDate: "2024-11-15",
-      endDate: "2024-11-05",
+      quantity: 2,
+      startDate: "15/11/2024",
+      endDate: "25/11/2024",
+
     });
 
     // listPanierMat.push(panierMAt);
@@ -77,7 +78,13 @@ function ProductCard({ materialItem }) {
   return (
     <>
       <div className="col-xl-3 col-6 col-grid-box">
-        <div className="product-box">
+        <div
+          className="product-box"
+          style={{
+            minHeight: "500px",
+            minWidth: "200px",
+          }}
+        >
           <div className="img-wrapper">
             <div className="front">
               <a href="#">
@@ -129,14 +136,18 @@ function ProductCard({ materialItem }) {
                 <i className="fa fa-star" />
               </div>
               <a href="product-page(no-sidebar).html">
-                <h6>{materialItem.nomMat}</h6>
+                <h6>
+                  <b>{materialItem.nomMat}</b>
+                </h6>
               </a>
+
               <p>
                 {" "}
                 <PrintDetailTechMat
                   desctechMat={materialItem.techniqueMat}
                 />{" "}
               </p>
+
               <h4>
                 <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
               </h4>

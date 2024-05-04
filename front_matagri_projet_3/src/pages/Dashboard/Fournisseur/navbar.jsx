@@ -57,8 +57,8 @@ function Navigation() {
           </div>
 
           <div className="profile-detail"></div>
-            <h5>{currentProfilUser.companyName}</h5>
-            <h6>{currentProfilUser.email}</h6>
+          <h5>{currentProfilUser.companyName}</h5>
+          <h6>{currentProfilUser.email}</h6>
           <div className="faq-tab">
             <ul className="nav nav-tabs" id="top-tab" role="tablist">
               {/* <li class="nav-item">
@@ -76,7 +76,7 @@ function Navigation() {
                   className="nav-link active"
                   to={"#products"}
                 >
-                  Materiels
+                  Matériel
                 </Link>
               </li>
               <li className="nav-item">
@@ -86,7 +86,7 @@ function Navigation() {
               </li>
               <li className="nav-item">
                 <Link data-bs-toggle="tab" className="nav-link" to={"#profile"}>
-                  Profile
+                  Profil
                 </Link>
               </li>
               <li className="nav-item">
@@ -97,7 +97,7 @@ function Navigation() {
                   to={"/home"}
                   onClick={(event) => handleOnClickLogout(event)}
                 >
-                  Logout
+                  Déconnexion
                 </Link>
               </li>
             </ul>
@@ -143,7 +143,6 @@ function Navigation() {
       </div>
       <div className="col-lg-9">
         <div className="faq-content tab-content" id="top-tabContent">
-        
           <div className="tab-pane fade show active" id="products">
             <TabPaneProducts currentUserSession={currentProfilUser} />
           </div>
