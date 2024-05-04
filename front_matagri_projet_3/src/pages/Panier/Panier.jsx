@@ -7,15 +7,14 @@ import { Link, json } from "react-router-dom";
 import PrintTextPrix from "../../components/textComponent/printPrix";
 import Devis from "../../components/textComponent/Devis";
 
-
 function Panier() {
-const [listMateriel, setListMateriel] = useState([]);
+  const [listMateriel, setListMateriel] = useState([]);
   const [updated, setUpdated] = useState();
   const [sommePrix, setsommePrix] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
-  const [sommePrixTotal,setsommePrixTotal] = useState()
+  const [sommePrixTotal, setsommePrixTotal] = useState();
 
-  function calculeDifferenceDate (startDateString, endDateString) {
+  function calculeDifferenceDate(startDateString, endDateString) {
     const startDateParts = startDateString.split("/");
     const startDate = new Date(
       parseInt(startDateParts[2]),
@@ -38,19 +37,25 @@ const [listMateriel, setListMateriel] = useState([]);
     );
     // console.log(differenceInDays)
     return differenceInDays;
-  };
+  }
   const CalculeSommePrixTotal = () => {
     JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
-      const differenceDate = calculeDifferenceDate(commande.startDate,commande.endDate)
-      setsommePrixTotal(commande.quantity*differenceDate*commande.materiel.prixMAt);
-      console.log(sommePrixTotal)
-      console.log(commande.quantity*differenceDate*commande.materiel.prixMAt)
-      
+      const differenceDate = calculeDifferenceDate(
+        commande.startDate,
+        commande.endDate
+      );
+      setsommePrixTotal(
+        commande.quantity * differenceDate * commande.materiel.prixMAt
+      );
+      console.log(sommePrixTotal);
+      console.log(
+        commande.quantity * differenceDate * commande.materiel.prixMAt
+      );
+
       // console.log(commande.startDate)
       // console.log(commande.endDate)
-      
+
       // console.log(differenceDate)
-      
     });
   };
 
@@ -174,9 +179,8 @@ const [listMateriel, setListMateriel] = useState([]);
                               >
                                 1 000,00 Ar
                               </label>
-                            </td><td>
-
                             </td>
+                            <td></td>
                           </tr>
                           <tr>
                             <td>
@@ -205,31 +209,38 @@ const [listMateriel, setListMateriel] = useState([]);
                     </div>
 
                     <div className="d-flex justify-content-end">
-                    <table style={{ border: "none" }}>
-                    <tbody>
-                    <tr>
-                      <td>
-                      <Link to={"/Material"} className="btn btn-solid">
-                        Continuer l'achat
-                      </Link>  
-                      </td>
-                      <td>
+                      <table style={{ border: "none" }}>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <Link to={"/Material"} className="btn btn-solid">
+                                Continuer l'achat
+                              </Link>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <Link
+                                to="/devis"
+                                className="btn btn-xs btn-solid"
+                              >
+                                Aller au devis
+                              </Link>
+                            </td>
+                            <td>
+                              <Link
+                                to="/paiement"
+                                className="btn btn-xs btn-solid"
+                              >
+                                Commander
+                              </Link>
+                            </td>
+                            <td></td>
+                          </tr>
+                        </tbody>
+                      </table>
 
-                      </td>
-                      <td></td>
-                      <td></td>
-                      <td><Link to="/devis" className="btn btn-xs btn-solid">
-                          Aller au devis
-                        </Link></td>
-                      <td><Link to="/paiement" className="btn btn-xs btn-solid">
-                          Commander
-                        </Link></td>
-                        <td></td>
-                        
-                    </tr>
-                    </tbody>
-                    </table>
-                      
                       {/* <div className="col-6">                      
                         <Link to={"/Material"} className="btn btn-solid">
                         
@@ -265,4 +276,3 @@ const [listMateriel, setListMateriel] = useState([]);
 }
 
 export default Panier;
-
