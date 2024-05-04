@@ -52,12 +52,13 @@ function App() {
           <Route path="/InscriptionAgriculteur" element=<InscriptionAgriculteur /> />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/Panier" element=<Panier /> />
-
+          <Route path="/ProfileAgriculteur" element=<DashBordAgriculteur /> />
+          <Route path="/ProfileAgriculteur" element=<PageAccueilAgriculteur /> >
+           
+           </Route>
           </Route>
           <Route path="/Dashboard" element=<DashboardUser /> />
-          <Route path="/ProfileAgriculteur" element=<PageAccueilAgriculteur /> >
-           <Route path="/ProfileAgriculteur" element=<DashBordAgriculteur /> />
-           </Route>
+          
           <Route>
           <Route path="/description" element=<DescriptionProduit /> />
           </Route>

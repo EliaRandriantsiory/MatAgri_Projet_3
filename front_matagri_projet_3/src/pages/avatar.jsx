@@ -1,19 +1,16 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-function Avatar({isConnected}) {
+function Avatar() {
     return ( 
         
         <li className="onhover-div mobile-account">
-         {!isConnected && (
-        <a href>
+        <div>
         <img
           src="../assets/images/jewellery/icon/avatar.png"
           className="opacity-1"
           alt=""
         />
-        </a>
-        )}
+        </div>
         <div className="show-div">
         <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>
           <li>
@@ -25,18 +22,7 @@ function Avatar({isConnected}) {
               S' inscrire
             </Link>
           </li>
-          <br/>
-          <li>
-            <Link to="/ProfileAgriculteur" style={{color : 'black', fontSize:'18px'}} data-lng="en">
-              Profile
-            </Link>
-          </li>
         </ul>
-        {isConnected && (
-                <Link to="/">
-                    <FontAwesomeIcon icon="fa-user" />
-                </Link>
-            )}
         </div>
       </li>
     );

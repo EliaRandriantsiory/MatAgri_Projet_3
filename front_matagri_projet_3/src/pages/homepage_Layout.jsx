@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import "./assets/css/homePage/homePage.css";
 import Avatar from './avatar';
@@ -9,6 +9,7 @@ import Avatar from './avatar';
 
 function HomePage_Layout() {
     const [isVisible, setIsVisible] = useState(false);
+    const [isConnected, setIsConnected] = useState(false);
 
     const scrollToTop = () => {
       window.scrollTo({
@@ -30,6 +31,8 @@ function HomePage_Layout() {
 
   const [listPanier, setListPanier] = useState([]);
   const [countPanier, setCountPanier] = useState();
+  const [currentUser, setCurrentUser] = useState({});
+  const navigate = useNavigate();
   useEffect(() => {
     setListPanier(localStorage.getItem("listpanier"));
     console.log(localStorage.getItem("listpanier"));
@@ -39,7 +42,21 @@ function HomePage_Layout() {
       setCountPanier(listPanier.length);
     }
   }, [localStorage.getItem("listpanier")]);
-
+  localStorage.getItem("currentUser")
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('currentUser'))){
+      const userData = JSON.parse(localStorage.getItem('currentUser')) || {};
+      setIsConnected(true);
+      setCurrentUser(userData);
+    }
+    
+  }, []);
+  const handleOnClickLogout = (event) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentUser");
+    setCurrentUser({});
+    navigate("/home");
+  };
   return (
     <>
       <header className="header-2">
@@ -101,10 +118,26 @@ function HomePage_Layout() {
                   <div>
                     <div className="icon-nav">
                       <ul>
-
-
-                        <Avatar/>
-
+                      {isConnected ? (
+                      <li className="onhover-div mobile-account">
+                          <h4 >{currentUser.lastname}</h4>
+                      <div className="show-div">
+                        <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>
+                          <li>
+                            <Link to={"/ProfileAgriculteur"} style={{color : 'black', fontSize:'18px', textAlign:'center'}}>Mon Profile</Link>
+                          </li>
+                          <br/>
+                          <li>
+                            <a href="#" onClick={handleOnClickLogout} style={{color : 'black', fontSize:'18px'}} data-lng="en">
+                              Se déconnecter
+                            </a>
+                          </li>
+                        </ul>
+                        </div>
+                      </li>): (
+                        <Avatar />
+                      )}
+                      
                         <li className="onhover-div mobile-search">
                           <Link to={"/search"}>
                             <img
@@ -160,8 +193,6 @@ function HomePage_Layout() {
                                 className="img-fluid blur-up lazyload"
                                 alt=""
                               />
-
-
                               <i className="ti-shopping-cart" />
                               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {countPanier}
@@ -171,94 +202,6 @@ function HomePage_Layout() {
                               </span>
                             </div>
                           </Link>
-                          {/* Drop eo @ panier                           */}
-                          {/* <ul className="show-div shopping-cart">
-                            <li>
-                              <div className="media">
-                                <a href="#">
-                                  <img
-                                    alt=""
-                                    className="me-3"
-                                    src="../assets/images/fashion/product/1.jpg"
-                                  />
-                                </a>
-                                <div className="media-body">
-                                  <a href="#">
-                                    <h4>item name</h4>
-                                  </a>
-                                  <h4>
-                                    <span>1 x $ 299.00</span>
-                                  </h4>
-                                </div>
-                              </div>
-                              <div className="close-circle">
-                                <a href="#">
-                                  <i
-                                    className="fa fa-times"
-                                    aria-hidden="true"
-                                  />
-                                </a>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="media">
-                                <a href="#">
-                                  <img
-                                    alt=""
-                                    className="me-3"
-                                    src="../assets/images/fashion/product/2.jpg"
-                                  />
-                                </a>
-                                <div className="media-body">
-                                  <a href="#">
-                                    <h4>item name</h4>
-                                  </a>
-                                  <h4>
-                                    <span>1 x $ 299.00</span>
-                                  </h4>
-                                </div>
-                              </div>
-                              <div className="close-circle">
-                                <a href="#">
-                                  <i
-                                    className="fa fa-times"
-                                    aria-hidden="true"
-                                  />
-                                </a>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="total">
-                                <h5>
-                                  subtotal : <span>$299.00</span>
-                                </h5>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="buttons">
-                                <a href="cart.html" className="view-cart">
-                                  view cart
-                                </a>
-                                <a href="#" className="checkout">
-                                  checkout
-                                </a>
-                              </div>
-                            </li>
-                          </ul> */}
-
-                        {/* <Link to={"/Panier"}>
-                          <div>
-                            <img
-                              src="../assets/images/jewellery/icon/cart.png"
-                              className="img-fluid blur-up lazyload"
-                              alt=""
-                            />
-                            <i className="ti-shopping-cart" />
-                          </div>
-                          </Link> */}
-
-
-
                         </li>
                       </ul>
                     </div>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "../assets/css/StyleLoginPage.css";
 import Avatar from "../avatar";
+import Connect from "../profiles";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -34,11 +35,11 @@ function Login() {
         } else if (response.data.profile.profile === "cooperative") {
           toast.success("Authentification réussie!!");
           setIsConnected(true);
-          navigate("/ProfileAgriculteur");
+          navigate("/");
         } else if (response.data.profile.profile === "agriculteur") {
           toast.success("Authentification réussie!!");
           setIsConnected(true);
-          navigate("/ProfileAgriculteur");
+          navigate("/");
         }
   
         // Réinitialiser les champs email et password après soumission du formulaire
@@ -91,7 +92,11 @@ function Login() {
         </div>
       </div>
       <ToastContainer/>
-      <Avatar isConnected={isConnected} />
+      {isConnected ? (
+    <Connect isConnected={isConnected} />
+  ) : (
+    <Avatar />
+  )}
     </section>
   );
 }
