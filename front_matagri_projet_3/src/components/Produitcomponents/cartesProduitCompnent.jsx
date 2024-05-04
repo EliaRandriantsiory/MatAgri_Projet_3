@@ -7,6 +7,8 @@ import Description from "../../pages/Dashboard/Fournisseur/description";
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 
 import axios from "axios";
+import MyComponent from "../textComponent/testsaisiautomatique";
+import AjoutPanier from "./printDescMateriel";
 
 
 function ProductCard({ materialItem }) {
@@ -129,14 +131,15 @@ function ProductCard({ materialItem }) {
               <a href="javascript:void(0)" title="Add to Wishlist">
                 <i className="ti-heart" aria-hidden="true" />
               </a>{" "}
-              <a
+              <AjoutPanier materialItem={materialItem} />
+              {/* <a
                 href="#"
                 data-bs-toggle="modal"
                 data-bs-target="#quick-view"
                 title="Quick View"
               >
                 <i className="ti-search" aria-hidden="true" />
-              </a>{" "}
+              </a>{" "} */}
               <a href="compare.html" title="Compare">
                 <i className="ti-reload" aria-hidden="true" />
               </a>
@@ -240,6 +243,7 @@ function ProductCard({ materialItem }) {
                         Entrer votre lieu d'exploitation :
                       </label>
                       <div className="d-flex">
+                      <MyComponent handleLieuExploitationChange={handleLieuExploitationChange} />
                         <input
                           type="text"
                           className="form-control"
