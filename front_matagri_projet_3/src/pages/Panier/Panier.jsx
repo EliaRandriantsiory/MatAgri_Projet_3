@@ -13,7 +13,8 @@ function Panier() {
   const [updated, setUpdated] = useState();
   const [sommePrix, setsommePrix] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
-  const [sommePrixTotal, setsommePrixTotal] = useState();
+  const [sommePrixTotal, setsommePrixTotal] = useState(0);
+  const prixLivraison = 14000;
 
   function calculeDifferenceDate(startDateString, endDateString) {
     const startDateParts = startDateString.split("/");
@@ -40,8 +41,21 @@ function Panier() {
     return differenceInDays;
   }
   const CalculeSommePrixTotal = () => {
+    let prxTotal = 0;
     JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
       console.log(commande);
+      console.log(commande.quantity);
+      // console.log(new Date())
+      // console.log(calculeDifferenceDate("22/04/2024","25/05/2024"))
+      // console.log(commande.materiel.prixMAt);
+      let prixlocationMat =
+        commande.quantity *
+        calculeDifferenceDate(commande.startDate, commande.endDate) *
+        commande.materiel.prixMAt;
+      prxTotal += prixlocationMat;
+      // setsommePrixTotal(sommePrixTotal+prixlocationMat)
+      // console.log(sommePrixTotal+prixlocationMat)
+
       // const differenceDate = calculeDifferenceDate(
       //   commande.startDate,
       //   commande.endDate
@@ -57,11 +71,12 @@ function Panier() {
       // console.log(commande.endDate)
       // console.log(differenceDate)
     });
+    setsommePrixTotal(prxTotal + prixLivraison);
   };
 
   const handleCloseRowPanier = (index) => {
     let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
-    console.log(currentPanierMat);
+    // console.log(currentPanierMat);
     currentPanierMat.splice(index, 1);
     localStorage.setItem("listpanier", JSON.stringify(currentPanierMat));
     // console.log(JSON.stringify(currentPanierMat.splice(index, 1)));
@@ -71,32 +86,28 @@ function Panier() {
     // setListMateriel([])
     // console.log(index)
   };
-  const updatePanierMat = (
+
+  const updatePanierMatData = (
     index,
     materielItem_,
+    qt,
     prixTotal,
     nombreJourLocation
   ) => {
     let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
-    // console.log(materielItem_)
-    // console.log(index, materielItem_, prixTotal,nombreJourLocation);
-
-    // sommePrixTotal()
+    currentPanierMat[index].quantity=qt
+    localStorage.setItem("listpanier",JSON.stringify(currentPanierMat))
   };
+
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    // console.log(sommePrix);
-    // sommePrixTotal();
   }, [updated]);
 
   useEffect(() => {
-    // console.log(localStorage.getItem("listpanier")+"bonjour")
   }, [localStorage.getItem("listpanier")]);
 
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    // console.log("bonjour update")
-    // console.log(sommePrix);
     CalculeSommePrixTotal();
   }, []);
 
@@ -133,6 +144,7 @@ function Panier() {
                             <th scope="col" style={{ fontSize: "12px" }}>
                               total
                             </th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -146,7 +158,7 @@ function Panier() {
                               <RowPanierComponent
                                 materielItem_={matHomePage}
                                 index={index}
-                                updatePanierMat={updatePanierMat}
+                                updatePanierMatData={updatePanierMatData}
                                 handleCloseRowPanier={handleCloseRowPanier}
                               />
                             </>
@@ -184,7 +196,10 @@ function Panier() {
                               // background: "red",
                             }}
                           >
-                            <PrintPrixUser TextPrix={14000} monnai={"MLG"} />
+                            <PrintPrixUser
+                              TextPrix={prixLivraison}
+                              monnai={"MLG"}
+                            />
                           </label>
                         </div>
                         <div>
@@ -204,7 +219,10 @@ function Panier() {
                               // background: "red",
                             }}
                           >
-                            <PrintPrixUser TextPrix={24000000} monnai={"MLG"} />
+                            <PrintPrixUser
+                              TextPrix={sommePrixTotal}
+                              monnai={"MLG"}
+                            />
                           </label>
                         </div>
                       </div>

@@ -54,8 +54,8 @@ function ProductCard({ materialItem }) {
         // },
       },
       quantity: 2,
-      startDate: "2024-11-15",
-      endDate: "2024-11-05",
+      startDate: "15/11/2024",
+      endDate: "25/11/2024",
     });
 
     // listPanierMat.push(panierMAt);

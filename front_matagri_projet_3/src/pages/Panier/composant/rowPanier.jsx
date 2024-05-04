@@ -6,8 +6,9 @@ import PrintPrixUser from "../../../components/textComponent/printPrixUser";
 function RowPanierComponent({
   materielItem_,
   index,
-  updatePanierMat,
+  updatePanierMatData,
   handleCloseRowPanier,
+  // handleQuantityChange
 }) {
   const [materielItem, setMaterielItem] = useState({});
   const [qt, setQt] = useState();
@@ -32,7 +33,7 @@ function RowPanierComponent({
   useEffect(() => {
     // materielItem_=materielItem_.quantity=qt
     // console.log(materielItem_)
-    updatePanierMat(index, materielItem_, prixTotal, nombreJourLocation);
+    updatePanierMatData(index, materielItem_,qt , prixTotal, nombreJourLocation);
   }, [prixTotal]);
 
   const handleNbrJourChange = (event) => {
@@ -44,11 +45,7 @@ function RowPanierComponent({
     console.log(event.target.value);
   };
 
-  const handleQuantityChange = (event) => {
-    let qtt = event.target.value;
-    setQt(qt);
-    setPrixTotal(qtt * materielItem_.materiel.prixMAt * nombreJourLocation);
-  };
+
   const handlePrixChange = (event) => {
     console.log(event.target.value);
   };
@@ -57,6 +54,12 @@ function RowPanierComponent({
   };
   const CheckCommande = () => {
     // console.log(materielItem_);
+  };
+  const handleQuantityChange = (event) => {
+    let qtt = event.target.value;
+    // console.log(qtt)
+    setQt(qtt);
+    setPrixTotal(qtt * materielItem_.materiel.prixMAt * nombreJourLocation);
   };
   if (materielItem_ !== null) {
     return (

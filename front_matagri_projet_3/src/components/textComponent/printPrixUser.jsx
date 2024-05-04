@@ -5,7 +5,7 @@ function PrintPrixUser(TextPrix, monnai) {
   // console.log(TextPrix.TextPrix);
 
   const transformSum = (sum) => {
-    console.log(typeof sum);
+    // console.log(typeof sum);
     if (typeof variable !== "string") {
       // const strSum = sum.toString();
       const strSum = String(sum);
