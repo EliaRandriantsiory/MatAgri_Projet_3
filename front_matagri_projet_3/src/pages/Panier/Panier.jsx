@@ -14,7 +14,7 @@ function Panier() {
   const [sommePrix, setsommePrix] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
   const [sommePrixTotal, setsommePrixTotal] = useState(0);
-  const prixLivraison = 14000;
+  const prixLivraison = 2000;
 
   function calculeDifferenceDate(startDateString, endDateString) {
     const startDateParts = startDateString.split("/");
@@ -126,9 +126,9 @@ function Panier() {
                       <table className="table cart-table">
                         <thead>
                           <tr className="table-head">
-                            <th scope="col" style={{ fontSize: "12px" }}>
+                            {/* <th scope="col" style={{ fontSize: "12px" }}>
                               image
-                            </th>
+                            </th> */}
                             <th scope="col" style={{ fontSize: "12px" }}>
                               Designation
                             </th>
@@ -142,9 +142,12 @@ function Panier() {
                               Dates
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
+                                  Lieu d'exploitation
+                            </th>
+                            <th scope="col" style={{ fontSize: "12px" }}>
                               total
                             </th>
-                            <th></th>
+                            <th scope="col" style={{ fontSize: "12px" }}>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -199,7 +202,7 @@ function Panier() {
                             <PrintPrixUser
                               TextPrix={prixLivraison}
                               monnai={"MLG"}
-                            />
+                            /> / km
                           </label>
                         </div>
                         <div>
@@ -246,7 +249,7 @@ function Panier() {
                             <Link
                               to={"/Material"}
                               className="btn btn-solid"
-                              style={{}}
+                              style={{ marginLeft: "5vw"}}
                             >
                               Continuer l'achat
                             </Link>
