@@ -10,7 +10,6 @@ function CardProduct({ listmatHomePage }) {
         {/* <h4 style={{ color: "#862b0d" }}> Produits exclusifs</h4> */}
         <h2 className="title-inner1">Les Matériels disponibles</h2>
       </div>
-      {/* <!-- product section start --> */}
       <section className="section-b-space ratio_asos">
         <div className="container">
           <div className="row search-product">

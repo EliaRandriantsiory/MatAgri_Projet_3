@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import ProductsCard from "../../components/Produitcomponents/cartesProduitCompnent";
-import CartProduitModel from "../../components/Produitcomponents/cartesProduitCompnent";
 import axios from "axios";
 import ProductCard from "../../components/Produitcomponents/cartesProduitCompnent";
+
 
 function Material({}) {
   const [listMateriel, setListMateriel] = useState([]);

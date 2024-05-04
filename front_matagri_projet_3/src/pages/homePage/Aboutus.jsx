@@ -6,7 +6,7 @@ import nasandratra from "../../pages/assets/images/team/nasandratra.png";
 function AboutPage() {
   return (
     <>
-      {/* <!-- breadcrumb start --> */}
+
       <div className="breadcrumb-section">
         <div className="container">
           <div className="row">
@@ -17,7 +17,9 @@ function AboutPage() {
             </div>
             <div className="col-sm-6">
               <nav aria-label="breadcrumb" class="theme-breadcrumb">
+
                 <ol hidden className="breadcrumb">
+
                   <li className="breadcrumb-item">
                     <Link to="/home">Accueil</Link>
                   </li>
@@ -78,9 +80,7 @@ function AboutPage() {
           </div>
         </div>
       </section>
-      {/* <!-- about section end --> */}
 
-      {/* <!-- service section start --> */}
       <div className="container">
         <section className="service section-b-space pt-0 ">
           <div className="row partition4 ">
@@ -229,6 +229,7 @@ function AboutPage() {
           </div>
         </section>
       </div>
+
       {/* <!-- service section end --> */}
 
       {/* <!-- how to start section start --> */}
@@ -289,12 +290,142 @@ function AboutPage() {
                       plateforme dès aujourd'hui !
                     </p>
                   </div>
+{/* 
+      <section className="section-b-space become-vendor">
+        <div className="container">
+          <h4>Nos acteurs</h4>
+          <div className="step-bg">
+            <div className="row">
+              <div className="col-lg-4">
+                <div className="step-box">
+                  <div>
+                    <div className="steps" style={{ color: "#004225" }}>
+                      1
+                    </div>
+                    <h4>Agriculteur</h4>
+                    <p
+                      className="fs-6"
+                      style={{ textAlign: "justify", fontSize: 14 }}
+                    >
+                      Optimisez votre exploitation et bénéficiez d'une remise de
+                      12 % en vous mutualisant pour la location du matériel de
+                      votre choix, profitez-en !
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="step-box">
+                  <div>
+                    <div className="steps" style={{ color: "#ffb000" }}>
+                      2
+                    </div>
+                    <h4>Coopérative</h4>
+                    <p
+                      className="fs-6"
+                      style={{ textAlign: "justify", fontSize: 14 }}
+                    >
+                      Économisez jusqu'à 12 % pour la location d'un matériel
+                      agricole en tant que coopérative ! Rejoignez notre
+                      plateforme pour profiter de cette offre.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="step-box">
+                  <div>
+                    <div className="steps" style={{ color: "#862b0d" }}>
+                      3
+                    </div>
+                    <h4>Fournisseur</h4>
+                    <p
+                      className="fs-6"
+                      style={{ textAlign: "justify", fontSize: 14 }}
+                    >
+                      Élargissez votre clientèle et maximisez vos revenus en
+                      proposant votre matériel agricole à la location sur notre
+                      plateforme dès aujourd'hui !
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <section
+        id="team"
+        className="team section-b-space slick-default-margin ratio_asos"
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12">
+              <h2>notre equipe</h2>
+              <div className="team-4">
+                <div>
+                  <div>
+                    <img
+                      src={narindra}
+                      className="img-fluid blur-up lazyload bg-img"
+                      alt=""
+                    />
+                  </div>
+                  <h3>RAKOTOARIVELO</h3>
+                  <h3>Narindra</h3>
+                </div>
+                <div>
+                  <div>
+                    <img
+                      src={nasandratra}
+                      className="img-fluid blur-up lazyload bg-img"
+                      alt=""
+                    />
+                  </div>
+                  <h3>RAKOTOARISOA</h3>
+                  <h3>Nasandratriniaina</h3>
+                </div>
+                <div>
+                  <div>
+                    <img
+                      src="../assets/images/team/3.jpg"
+                      className="img-fluid blur-up lazyload bg-img"
+                      alt=""
+                    />
+                  </div>
+                  <h4>Hileri Keol</h4>
+                  <h6>CEo & Founder At Company</h6>
+                </div>
+                <div>
+                  <div>
+                    <img
+                      src="../assets/images/team/4.jpg"
+                      className="img-fluid blur-up lazyload bg-img"
+                      alt=""
+                    />
+                  </div>
+                  <h4>Hileri Keol</h4>
+                  <h6>CEo & Founder At Company</h6>
+                </div>
+                <div>
+                  <div>
+                    <img
+                      src="../assets/images/team/1.jpg"
+                      className="img-fluid blur-up lazyload bg-img"
+                      alt=""
+                    />
+                  </div>
+                  <h4>Hileri Keol</h4>
+                  <h6>CEo & Founder At Company</h6> */}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* <!-- how to start section end --> */}
 
       {/* <!--Team start--> */}
@@ -460,6 +591,7 @@ function AboutPage() {
         </section>
       </div>
       {/* <!-- service section end --> */}
+
     </>
   );
 }
