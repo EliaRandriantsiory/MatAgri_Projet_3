@@ -14,7 +14,7 @@ function Panier() {
   const [sommePrix, setsommePrix] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
   const [sommePrixTotal, setsommePrixTotal] = useState(0);
-  const prixLivraison = 14000;
+  const prixLivraison = 2000;
 
   function calculeDifferenceDate(startDateString, endDateString) {
     const startDateParts = startDateString.split("/");
@@ -30,10 +30,10 @@ function Panier() {
       parseInt(endDateParts[0])
     );
 
-    // Calculer la différence en millisecondes
+    // Calculer la diffÃ©rence en millisecondes
     const differenceInMilliseconds = endDate.getTime() - startDate.getTime();
 
-    // Convertir la différence en jours
+    // Convertir la diffÃ©rence en jours
     const differenceInDays = Math.floor(
       differenceInMilliseconds / (1000 * 60 * 60 * 24)
     );
@@ -69,7 +69,6 @@ function Panier() {
       // );
       // console.log(commande.startDate)
       // console.log(commande.endDate)
-
       // console.log(differenceDate)
     });
     setsommePrixTotal(prxTotal + prixLivraison);
@@ -126,14 +125,14 @@ function Panier() {
                       <table className="table cart-table">
                         <thead>
                           <tr className="table-head">
-                            <th scope="col" style={{ fontSize: "12px" }}>
+                            {/* <th scope="col" style={{ fontSize: "12px" }}>
                               image
-                            </th>
+                            </th> */}
                             <th scope="col" style={{ fontSize: "12px" }}>
                               Designation
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              quantité
+                              quantitÃ©
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               Prix journalier
@@ -142,9 +141,14 @@ function Panier() {
                               Dates
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
+                              Lieu d'exploitation
+                            </th>
+                            <th scope="col" style={{ fontSize: "12px" }}>
                               total
                             </th>
-                            <th></th>
+                            <th scope="col" style={{ fontSize: "12px" }}>
+                              Action
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -199,7 +203,8 @@ function Panier() {
                             <PrintPrixUser
                               TextPrix={prixLivraison}
                               monnai={"MLG"}
-                            />
+                            />{" "}
+                            / km
                           </label>
                         </div>
                         <div>
@@ -209,7 +214,7 @@ function Panier() {
                               marginleft: "27px",
                             }}
                           >
-                            Montant total à payer
+                            Montant total Ã  payer
                           </label>
                           <label
                             style={{
@@ -246,7 +251,7 @@ function Panier() {
                             <Link
                               to={"/Material"}
                               className="btn btn-solid"
-                              style={{}}
+                              style={{ marginLeft: "5vw" }}
                             >
                               Continuer l'achat
                             </Link>
