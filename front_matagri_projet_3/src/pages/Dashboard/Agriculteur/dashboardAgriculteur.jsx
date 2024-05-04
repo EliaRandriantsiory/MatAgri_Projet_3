@@ -13,6 +13,7 @@ function DashBordAgriculteur() {
         // Ici, vous devez récupérer les données de l'utilisateur depuis le localStorage ou l'API
         const userData = JSON.parse(localStorage.getItem('currentUser'));
         setCurrentUser(userData);
+        console.log(userData);
       } catch (error) {
         console.error('Erreur lors de la récupération des données de l\'utilisateur:', error);
       }

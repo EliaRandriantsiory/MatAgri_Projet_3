@@ -1,28 +1,24 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 function Profile() {
-  const [userDetails, setUserDetails] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUserDetails = async () => {
+    const fetchData = async () => {
       try {
-        // Récupérer l'ID utilisateur depuis le local storage
-        const userId = localStorage.getItem('currentUser');
-        setUserDetails(userId)
-        if (userId) {
-          // Récupérer les détails de l'utilisateur depuis l'API
-          const response = await axios.get(`http://localhost:8082/api/home/listPersonnes/${userId}`);
-          setUserDetails(response.data);
-        }
+        // Ici, vous devez récupérer les données de l'utilisateur depuis le localStorage ou l'API
+        const userData = JSON.parse(localStorage.getItem('currentUser'));
+        setCurrentUser(userData);
+        console.log(userData);
       } catch (error) {
-        console.error('Erreur lors de la récupération des détails de l\'utilisateur:', error);
+        console.error('Erreur lors de la récupération des données de l\'utilisateur:', error);
       }
     };
 
-    fetchUserDetails();
+    fetchData();
   }, []);
-
   return (
     <>
       <div className="tab-pane fade" id="profile">
@@ -42,7 +38,7 @@ function Profile() {
                             <h6>Nom</h6>
                           </div>
                           <div className="right">
-                            <h6>{userDetails.name}</h6>
+                            <h6>{currentUser.name}</h6>
                           </div>
                         </div>
                       </li>
@@ -52,7 +48,7 @@ function Profile() {
                             <h6>Prénom</h6>
                           </div>
                           <div className="right">
-                            <h6>{userDetails.lastname}</h6>
+                            <h6>{currentUser.lastname}</h6>
                           </div>
                         </div>
                       </li>
@@ -62,7 +58,7 @@ function Profile() {
                             <h6>CIN</h6>
                           </div>
                           <div className="right">
-                            <h6>{userDetails.cin}</h6>
+                            <h6>{currentUser.cin}</h6>
                           </div>
                         </div>
                       </li>
@@ -72,7 +68,7 @@ function Profile() {
                             <h6>Adresse Email</h6>
                           </div>
                           <div className="right">
-                            <h6>{userDetails.email ? userDetails.email : "Email non disponible"}</h6>
+                            <h6>{currentUser.email ? currentUser.email : "Email non disponible"}</h6>
                           </div>
                         </div>
                       </li>
@@ -82,7 +78,7 @@ function Profile() {
                             <h6>Région</h6>
                           </div>
                           <div className="right">
-                            <h6>{userDetails.region}</h6>
+                            <h6>{currentUser.region}</h6>
                           </div>
                         </div>
                       </li>
@@ -92,7 +88,7 @@ function Profile() {
                             <h6>Adresse</h6>
                           </div>
                           <div className="right">
-                            <h6>{userDetails.address}</h6>
+                            <h6>{currentUser.address}</h6>
                           </div>
                         </div>
                       </li>
@@ -102,7 +98,7 @@ function Profile() {
                             <h6>Téléphone</h6>
                           </div>
                           <div className="right">
-                            <h6>{userDetails.phone}</h6>
+                            <h6>{currentUser.phone}</h6>
                           </div>
                         </div>
                       </li>

@@ -36,14 +36,7 @@ function PageAccueilAgriculteur() {
 
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
-    localStorage.removeItem("name");
-    localStorage.removeItem("lastname");
-    localStorage.removeItem("region");
-    localStorage.removeItem("address");
-    localStorage.removeItem("phone");
-    localStorage.removeItem("cin");
+    localStorage.removeItem("currentUser");
     setCurrentProfilUser({});
     navigate("/home");
   };
