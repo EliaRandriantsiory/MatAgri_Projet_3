@@ -2,25 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Commande from './component/commande';
 import Profile from './component/profil';
+import axios from 'axios';
 
 function DashBordAgriculteur() {
   const [currentUser, setCurrentUser] = useState({});
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Ici, vous devez récupérer les données de l'utilisateur depuis le localStorage ou l'API
-        const userData = JSON.parse(localStorage.getItem('currentUser'));
-        setCurrentUser(userData);
-        console.log(userData);
-      } catch (error) {
-        console.error('Erreur lors de la récupération des données de l\'utilisateur:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+    console.log(localStorage.getItem("currentUser"))
+  },[])
 
   const handleOnClickLogout = () => {
     localStorage.clear();
@@ -40,7 +32,7 @@ function DashBordAgriculteur() {
                     <i className="fa-solid fa-circle-user img-fluid" style={{ color: '#FFB000', height: '250px', marginLeft: '20px' }}></i>
                   </div>
                   <div className="profile-detail">
-                    <h5>{currentUser.name} {currentUser.lastname}</h5>
+                    <h5> {currentUser.lastname}</h5>
                     <h6>{currentUser.email ? currentUser.email : 'Email non disponible'}</h6>
                   </div>
                 </div>

@@ -20,7 +20,7 @@ function SignUpProvider() {
   const [isChecked, setIsChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
-  const handleOnChangecheckboxcgv = (event) => {
+  const handleOnChangecheckboxcgv = (event) => {  
     setEtatCgv(event.target.checked);
     setIsChecked(event.target.checked);
     setErrorMessage(false);
@@ -98,7 +98,8 @@ function SignUpProvider() {
           roles: []
         }
       });
-      console.log(response.data);
+      // console.log(response.data);
+
       toast.success('Inscription réussie !');
       navigate("/dashboard_fournisseur");
     } catch (error) {
@@ -250,7 +251,6 @@ function SignUpProvider() {
         </div>        
     <ToastContainer />
       </section>
-    
   );
   }
 

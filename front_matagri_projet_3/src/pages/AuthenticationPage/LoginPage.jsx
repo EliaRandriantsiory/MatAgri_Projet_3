@@ -26,7 +26,7 @@ function Login() {
       if (response.data) {
         // Stocker les informations de l'utilisateur dans le local storage
         localStorage.setItem("currentUser", JSON.stringify(response.data));
-        localStorage.setItem("idUser", response.data.idUser); // Ajouter l'idUser
+        // localStorage.setItem("idUser", response.data.idUser); // Ajouter l'idUser
         
         // Gérer la redirection en fonction du profil de l'utilisateur
         if (response.data.profile.profile === "fournisseur") {
