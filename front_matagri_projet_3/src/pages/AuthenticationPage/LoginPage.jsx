@@ -38,7 +38,7 @@ function Login() {
         } else if (response.data.profile.profile === "agriculteur") {
           toast.success("Authentification réussie!!");
           setIsConnected(true);
-          navigate("/");
+          navigate("/ProfileAgriculteur");
         }
   
         // Réinitialiser les champs email et password après soumission du formulaire

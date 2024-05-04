@@ -7,13 +7,13 @@ function ContactPage() {
             <div className="row">
                 <div className="col-sm-6">
                     <div className="page-title">
-                        <h2>contact</h2>
+                        <h2>Contact</h2>
                     </div>
                 </div>
                 <div className="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li className="breadcrumb-item"><a href="index.html">Accueil</a></li>
                             <li className="breadcrumb-item active">contact</li>
                         </ol>
                     </nav>

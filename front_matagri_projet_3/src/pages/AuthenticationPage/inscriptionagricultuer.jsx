@@ -68,6 +68,7 @@ function InscriptionAgriculteur() {
   const handleOnclickSauvegarde = async (event) => {
     event.preventDefault();
     
+    
     if (!isChecked) {
       setErrorMessage("Veuillez accepter les termes et conditions de location");
       return;
@@ -96,9 +97,6 @@ function InscriptionAgriculteur() {
         }
       });
       console.log(response.data);
-      
-      toast.success('Inscription réussie !');
-      navigate("/");
       localStorage.setItem('name', nameForm);
       localStorage.setItem('lastname', lastnameForm);
       localStorage.setItem('address', addressForm);
@@ -106,23 +104,26 @@ function InscriptionAgriculteur() {
       localStorage.setItem('cin', cinForm);
       localStorage.setItem('region', regionForm);
       localStorage.setItem('email', emailForm);
-      localStorage.setItem('password', passwordForm);
+      toast.success('Inscription réussie !');
+      navigate("/");
+      
+      // localStorage.setItem('password', passwordForm);
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error);
     }
   };
  
-  useEffect(() => {
-    
-    setName(localStorage.getItem("nom"))
-    setLastName(localStorage.getItem("prenom"))
-    setAddress(localStorage.getItem("adresse"))
-    setPhone(localStorage.getItem("phone"))
-    setCin(localStorage.getItem("cin"))
-    setEmail(localStorage.getItem("email"))
-    setRegion(localStorage.getItem("region"))
-    
-  }, []);
+  // useEffect(() => {
+  //   
+  //   setName(localStorage.getItem("nom"))
+  //   setLastName(localStorage.getItem("prenom"))
+  //   setAddress(localStorage.getItem("adresse"))
+  //   setPhone(localStorage.getItem("phone"))
+  //   setCin(localStorage.getItem("cin"))
+  //   setEmail(localStorage.getItem("email"))
+  //   setRegion(localStorage.getItem("region"))
+  //   
+  // }, []);
   useEffect(() => {console.log(inscriptionAgriculteurRedirect)}, [inscriptionAgriculteurRedirect]);
 
   return (

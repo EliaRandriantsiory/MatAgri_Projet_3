@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import ProductsCard from "../../components/Produitcomponents/cartesProduitCompnent";
-import CartProduitModel from "../../components/Produitcomponents/cartesProduitCompnent";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import ProductCard from "../../components/Produitcomponents/cartesProduitCompnent";
 
 function Material({}) {
@@ -35,7 +33,7 @@ function Material({}) {
             <div className="col-sm-6">
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
                 <ol className="breadcrumb">
-                  <li className="breadcrumb-item"><a href="index.html">home</a></li>
+                  <li className="breadcrumb-item"><a href="index.html">Accueil</a></li>
                   <li className="breadcrumb-item active" aria-current="page">Matériels</li>
                 </ol>
               </nav>
