@@ -7,6 +7,9 @@ import { ToastContainer } from "react-toastify";
 import "./assets/css/homePage/homePage.css";
 import Avatar from "./avatar";
 
+import Panier from "./Panier/Panier";
+
+
 function HomePage_Layout() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -28,16 +31,19 @@ function HomePage_Layout() {
   window.addEventListener("scroll", toggleVisibility);
 
   const [listPanier, setListPanier] = useState([]);
-  const [countPanier, setCountPanier] = useState();
+  const [countPanier, setCountPanier] = useState(0);
+
   useEffect(() => {
-    setListPanier(localStorage.getItem("listpanier"));
-    console.log(localStorage.getItem("listpanier"));
-    // console.log(listPanier.length);
-    if (listPanier) {
-      console.log(listPanier.length);
-      setCountPanier(listPanier.length);
+    const storedListPanier = JSON.parse(localStorage.getItem("listpanier"));
+    if (storedListPanier) {
+      setListPanier(storedListPanier);
+      setCountPanier(storedListPanier.length);
     }
-  }, [localStorage.getItem("listpanier")]);
+  }, []);
+
+  useEffect(() => {
+    setCountPanier(listPanier.length);
+  }, [listPanier]);
 
   return (
     <>
@@ -168,6 +174,7 @@ function HomePage_Layout() {
                               <i className="ti-shopping-cart" />
                               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {countPanier}
+                                <carteProduitCompnent></carteProduitCompnent>
                                 <span class="visually-hidden">
                                   unread messages
                                 </span>
@@ -356,7 +363,9 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
+
                           Motoculteur
+
                         </a>
                       </li>
                       <li>
@@ -364,7 +373,9 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
+
                           Tracteur/Charrue
+
                         </a>
                       </li>
                       <li>
@@ -372,7 +383,9 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
+
                           Dechaumeur/Pulverisation
+
                         </a>
                       </li>
                       <li>
@@ -380,7 +393,9 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
+
                           Semoir/moissonneuseBatteuse
+
                         </a>
                       </li>
                     </ul>

@@ -9,6 +9,7 @@ function ProductCard({ materialItem }) {
   const [quantity, setQuantity] = useState(1);
   const [listPanierMat, setListPanierMat] = useState([]);
   const [panierMAt, setPanierMat] = useState({});
+  const [notif, setNotif] = useState();
 
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -56,6 +57,7 @@ function ProductCard({ materialItem }) {
       quantity: 2,
       startDate: "15/11/2024",
       endDate: "25/11/2024",
+
     });
 
     // listPanierMat.push(panierMAt);
@@ -139,7 +141,12 @@ function ProductCard({ materialItem }) {
                 </h6>
               </a>
 
-              <label>{materialItem.techniqueMat}</label>
+              <p>
+                {" "}
+                <PrintDetailTechMat
+                  desctechMat={materialItem.techniqueMat}
+                />{" "}
+              </p>
 
               <h4>
                 <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
