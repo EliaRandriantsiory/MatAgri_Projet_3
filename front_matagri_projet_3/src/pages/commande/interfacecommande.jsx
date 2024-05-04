@@ -1,65 +1,57 @@
 import React, { useState } from "react";
-import { GoogleMap, DistanceMatrixService } from "@react-google-maps/api";
 
-const GoogleMapsDistance = () => {
+function Distance() {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [distance, setDistance] = useState("");
 
-  const calculateDistance = () => {
-    if (!window.google || !window.google.maps) {
-      console.error("L'API Google Maps n'est pas encore chargée.");
-      return;
-    }
+  const handleCalculateDistance = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ origin: origin, destination: destination }),
+    };
 
-    const service = new window.google.maps.DistanceMatrixService();
-    service.getDistanceMatrix(
-      {
-        origins: [origin],
-        destinations: [destination],
-        travelMode: "DRIVING",
-        unitSystem: window.google.maps.UnitSystem.METRIC,
-      },
-      (response, status) => {
-        if (status === "OK") {
-          const distanceValue = response.rows[0].elements[0].distance.value;
-          const distanceInKm = distanceValue / 1000;
-          setDistance(distanceInKm);
-        } else {
-          console.error(
-            "Une erreur est survenue lors du calcul de la distance : ",
-            status
-          );
-        }
-      }
-    );
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/Distance/calculate",
+        requestOptions
+      );
+      const data = await response.text();
+      setDistance(data);
+    } catch (error) {
+      console.error("Error calculating distance:", error);
+      setDistance("Error calculating distance");
+    }
   };
 
   return (
     <div>
-      <h1>Calcul de Distance</h1>
+      <h2>Distance Calculator</h2>
       <div>
-        <label htmlFor="origin">Origine :</label>
+        <label>Origin:</label>
         <input
           type="text"
-          id="origin"
           value={origin}
           onChange={(e) => setOrigin(e.target.value)}
         />
       </div>
       <div>
-        <label htmlFor="destination">Destination :</label>
+        <label>Destination:</label>
         <input
           type="text"
-          id="destination"
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
         />
       </div>
-      <button onClick={calculateDistance}>Calculer</button>
-      {distance !== "" && <p>Distance : {distance} km</p>}
+      <button onClick={handleCalculateDistance}>Calculate Distance</button>
+      {distance && (
+        <p>
+          The driving distance between {origin} and {destination} is {distance}.
+        </p>
+      )}
     </div>
   );
-};
+}
 
-export default GoogleMapsDistance;
+export default Distance;
