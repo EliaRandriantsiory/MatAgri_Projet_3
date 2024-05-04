@@ -23,15 +23,6 @@ import SearchPage from "./pages/homePage/Search";
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
 
-
-
-
-
-
-
-
-
-
 function App() {
   return (
     <BrowserRouter>

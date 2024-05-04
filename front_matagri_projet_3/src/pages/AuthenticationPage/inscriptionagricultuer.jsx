@@ -96,14 +96,9 @@ function InscriptionAgriculteur() {
           roles: []
         }
       });
-      console.log(response.data);
-      localStorage.setItem('name', nameForm);
-      localStorage.setItem('lastname', lastnameForm);
-      localStorage.setItem('address', addressForm);
-      localStorage.setItem('phone', phoneForm);
-      localStorage.setItem('cin', cinForm);
-      localStorage.setItem('region', regionForm);
+      // console.log(response.data);
       localStorage.setItem('email', emailForm);
+      localStorage.setItem('password', passwordForm);
       toast.success('Inscription réussie !');
       navigate("/");
       

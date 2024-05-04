@@ -100,12 +100,13 @@ function SignUpCooperative() {
         },
       });
       console.log(response.data);
-      toast.success('Inscription réussie !');
-      navigate("/");
       localStorage.setItem('email', emailForm);
       localStorage.setItem('password', passwordForm);
+      toast.success('Inscription réussie !');
+      navigate("/ProfileAgriculteur");
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error);
+
     }
   };
   return (
