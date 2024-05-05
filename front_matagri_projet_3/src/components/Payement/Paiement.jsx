@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Paye from "./Paye";
 
 function Paiement() {
   const [prixapayer, SetPrixapayer] = useState();
@@ -122,7 +124,9 @@ function Paiement() {
 
                     <div className="row cart-buttons">
                       <div className="col-7" style={{ marginLeft: "490px" }}>
-                        <a className="btn btn-xs btn-solid">Payer</a>
+                        <Link to="/paye" className="btn btn-xs btn-solid">
+                          Payer
+                        </Link>
                       </div>
                     </div>
                   </div>
