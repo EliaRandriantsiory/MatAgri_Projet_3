@@ -20,6 +20,7 @@ import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
 import Mutualisation from "./components/Mutualisation/InterfaceMutu";
+import Paye from "./pages/homePage/Paye";
 
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
@@ -51,6 +52,7 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/Paiement" element=<Paiement /> />
           <Route path="/Mutualisation" element=<Mutualisation /> />
+          <Route path="/paye" element=<Paye /> />
 
           <Route
             path="/InscriptionAgriculteur"
