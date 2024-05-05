@@ -243,7 +243,7 @@ function ProductCard({ materialItem }) {
                         Entrer votre lieu d'exploitation :
                       </label>
                       <div className="d-flex">
-                      <MyComponent handleLieuExploitationChange={handleLieuExploitationChange} />
+                      {/* <MyComponent handleLieuExploitationChange={handleLieuExploitationChange} /> */}
                         <input
                           type="text"
                           className="form-control"

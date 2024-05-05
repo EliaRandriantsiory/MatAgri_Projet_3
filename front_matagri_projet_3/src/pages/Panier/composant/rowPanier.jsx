@@ -3,6 +3,7 @@ import Reserver from "../Reserver";
 import PrintTextPrix from "../../../components/textComponent/printPrix";
 import PrintPrixUser from "../../../components/textComponent/printPrixUser";
 import ReserverPanier from "../reserverAddPanier";
+import PrintDetailTechMat from "../../../components/textComponent/printDescTechMateriel";
 
 function RowPanierComponent({
   materielItem_,
@@ -71,8 +72,9 @@ function RowPanierComponent({
           <div
             style={{
               display: "flex",
-              justifyContent: "flex-end",
-              flexDirection: "column",
+              width:"20vw",
+              flexDirection: "row",
+              alignItems:"start"
             }}
           >
           <img
@@ -82,9 +84,15 @@ function RowPanierComponent({
             width={150}
             className="img-fluid blur-up lazyload bg-img"
           /><br />
-            <b className="text-capitalize">{materielItem_.materiel.nomMat}</b>
+          <div>
+          <b className="text-capitalize">{materielItem_.materiel.nomMat}</b>
             <br />
-            <label>{materielItem_.materiel.techniqueMat}</label>
+            <PrintDetailTechMat
+                  desctechMat={materielItem_.materiel.techniqueMat}
+                />
+            
+          </div>
+            
           </div>
         </td>
         <td>

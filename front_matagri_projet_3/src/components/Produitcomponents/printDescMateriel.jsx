@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CheckIcon from "@mui/icons-material/Check";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { DateRange, DateRangePicker } from "react-date-range";
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
 import MyComponent from "../textComponent/testsaisiautomatique";
 import axios from "axios";
+import PrintPrixUser from "../textComponent/printPrixUser";
+import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 function AjoutPanier({ materialItem }) {
   const [quantity, setQuantity] = useState(1);
   const [distance, setDistance] = useState("");
@@ -23,17 +26,17 @@ function AjoutPanier({ materialItem }) {
       key: "selection",
     },
   ]);
-  const [showCalendar, setShowCalendar] = useState(false);
+  const [showDescMat, setShowDescMat] = useState(false);
 
   const handleOpenCalendar = () => {
-    setShowCalendar(true);
+    setShowDescMat(true);
   };
-  const handleCloseCalendar = () => {
-    setShowCalendar(false);
+  const handleCloseDescMat = () => {
+    setShowDescMat(false);
   };
 
   const handleConfirmSelection = () => {
-    setShowCalendar(false);
+    setShowDescMat(false);
   };
 
   const handleLieuExploitationChange = (event) => {
@@ -49,6 +52,7 @@ function AjoutPanier({ materialItem }) {
     }
   };
 
+  
   const handleOnClickAddCard = (event) => {
     setPanierMat({
       materiel: {
@@ -66,35 +70,22 @@ function AjoutPanier({ materialItem }) {
       quantity: 2,
       startDate: "15/11/2024",
       endDate: "25/11/2024",
-
     });
   };
   const handleValidationClick = async () => {
-    try {
-      const response = await axios.post(
-        `http://localhost:8082/distance/calculate/${materialItem?.materielId}`,
-        {
-          destination: lieuExploitation,
-        }
-      );
-      if (response.status === 200) {
-        setDistance(response.data);
-        return response.data;
-      }
-    } catch (error) {
-      return "Une erreur s'est produite lors du calcul de la distance";
-    }
+    handleCloseDescMat()
+    
   };
-
+// console.log(materialItem)
   return (
-    <div >
+    <div>
       <a onClick={handleOpenCalendar}>
         <i className="ti-search" aria-hidden="true" />
       </a>
 
       <Modal
-        show={showCalendar}
-        onHide={handleCloseCalendar}
+        show={showDescMat}
+        onHide={handleCloseDescMat}
         backdrop="static"
         keyboard={false}
         className="modal-xl"
@@ -104,121 +95,80 @@ function AjoutPanier({ materialItem }) {
           <Modal.Title>Sélectionner une plage de dates</Modal.Title>
         </Modal.Header> */}
         <Modal.Body>
-          {/* <div className="modal-body">
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-            <br /> */}
+          <div
+            className="row"
+            style={{ display: "flex", flexDirection: "column" }}
+          >
+            <div style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} >
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
+                  JSON.parse(materialItem.imagePath)[0]
+                }`}
+                style={{ width: "35vw", height: "50vh" }}
+                className="img-fluid blur-up lazyload bg-img"
+              />
+            </div>
+<br/>
+            <div className="product-right">
+            <h2><b>{materialItem.nomMat}</b></h2>
+              <h2 className="product-title">Déscription</h2>
+                <p>{materialItem.descriptionMat}</p>
+                {/* <br/> */}
+                <h2 className="product-title">Déscription technique matériel</h2>
+                {/* <p>{materialItem.techniqueMat}</p>
+                 */}
+                 <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
+                {/* <br/> */}
+                <h2 className="product-title">Taux journalière : <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} /></h2>
+                <br/>
 
-            <div className="row" >
-            <img hidden
-                    src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
-                      JSON.parse(materialItem.imagePath)[0]
-                    }`}
-                    width={700}
-                    height={10}
-                    className="img-fluid blur-up lazyload bg-img"
-                  />
-                  <br />
-
-<div className="product-right">
-                  <h2 className="product-title">Infos supplémentaire</h2>
-                  <div className="border-product">
-                    <h2>{materialItem.name}</h2>
-                    <p>{materialItem.descriptionMat}</p>
-                  </div>
-                  <label className=""> Entrer votre plage de date :</label>
-                  <ReserverPanier />
-                  <br />
-
-                  {/* <label className="">
-                      Entrer votre lieu d'exploitation :
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Lieu d'exploitation"
-                      style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                    /> */}
-
-                  <div className="d-flex align-items-start">
-                    <label className="d-block mb-2">
-                      Entrer votre lieu d'exploitation :
-                    </label>
-                    <div className="d-flex">
-                      {/* <MyComponent
+                <div className="border-product">
+              
+              <div>
+              <label hidden className=""> Entrer votre plage de date : </label>
+              <ReserverPanier />
+              </div>
+              <br />
+              <div className="d-flex align-items-start"  >
+                <label className="d-block mb-2" >
+                {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} */}
+                  Entrer votre lieu d'exploitation :
+                </label>
+                <div className="d-flex">
+                  {/* <MyComponent
                         handleLieuExploitationChange={
                           handleLieuExploitationChange
                         }
                       /> */}
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Lieu d'exploitation"
-                        style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                        value={lieuExploitation}
-                        onChange={handleLieuExploitationChange}
-                      />
-                      <button
-                        className="btn btn-solid"
-                        disabled={
-                          lieuExploitation === "" ||
-                          lieuExploitation.length === 0
-                            ? true
-                            : false
-                        }
-                        onClick={() => handleValidationClick()}
-                        style={{ border: "none" }}
-                      >
-                        Valider
-                      </button>
-                    </div>
-                  </div>
-                  <label className="d-block mb-2">
-                    Votre distance est de :{distance ? distance : ""}
-                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Lieu d'exploitation"
+                    style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                    value={lieuExploitation}
+                    onChange={handleLieuExploitationChange}
+                  />
+                  <button
+                    className="btn btn-solid"
+                    disabled={
+                      lieuExploitation === "" || lieuExploitation.length === 0
+                        ? true
+                        : false
+                    }
+                    onClick={() => handleValidationClick()}
+                    style={{ border: "none" }}
+                  >
+                    Valider
+                  </button>
+                </div>
+              </div>
+              <label className="d-block mb-2">
+                Votre distance est de :{distance ? distance : ""}
+              </label>
 
-                  <br />
-                  {/* Quantité */}
-                  <div className="product-description border-product">
-                    <h6 className="product-title">Quantité</h6>
-                    <div className="qty-box">
-                      <div className="input-group">
-                        <span className="input-group-prepend">
-                          <button
-                            type="button"
-                            className="btn quantity-left-minus"
-                            onClick={decrementQuantity}
-                          >
-                            <i className="ti-angle-left" />
-                          </button>{" "}
-                        </span>
-                        <input
-                          type="text"
-                          name="quantity"
-                          className="form-control input-number"
-                          value={quantity}
-                          defaultValue={1}
-                          readOnly
-                        />{" "}
-                        <span className="input-group-prepend">
-                          <button
-                            type="button"
-                            className="btn quantity-right-plus"
-                            onClick={incrementQuantity}
-                          >
-                            <i className="ti-angle-right" />
-                          </button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  {/* <div className="product-buttons">
+              <br />
+              </div>
+              {/* <div className="product-buttons">
                     <button
                       onClick={handleOnClickAddCard}
                       className="btn btn-solid"
@@ -226,130 +176,15 @@ function AjoutPanier({ materialItem }) {
                       Ajouter au panier
                     </button>
                   </div> */}
-                </div>
-
-              {/* <div className="col-lg-6 col-xs-12">
-                <div className="quick-view-img">
-                  <img
-                    src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
-                      JSON.parse(materialItem.imagePath)[0]
-                    }`}
-                    width={700}
-                    height={1000}
-                    className="img-fluid blur-up lazyload bg-img"
-                  />
-                </div>
-              </div>
-              <div className="col-lg-6 rtl-text">
-                <div className="product-right">
-                  <h2 className="product-title">Infos supplémentaire</h2>
-                  <div className="border-product">
-                    <h2>{materialItem.name}</h2>
-                    <p>{materialItem.descriptionMat}</p>
-                  </div>
-                  <label className=""> Entrer votre plage de date :</label>
-                  <ReserverPanier />
-                  <br />
-
-                  <label className="">
-                      Entrer votre lieu d'exploitation :
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Lieu d'exploitation"
-                      style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                    />
-
-                  <div className="d-flex align-items-start">
-                    <label className="d-block mb-2">
-                      Entrer votre lieu d'exploitation :
-                    </label>
-                    <div className="d-flex">
-                       <MyComponent
-                        handleLieuExploitationChange={
-                          handleLieuExploitationChange
-                        }
-                      /> 
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Lieu d'exploitation"
-                        style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                        value={lieuExploitation}
-                        onChange={handleLieuExploitationChange}
-                      />
-                      <button
-                        className="btn btn-solid"
-                        disabled={
-                          lieuExploitation === "" ||
-                          lieuExploitation.length === 0
-                            ? true
-                            : false
-                        }
-                        onClick={() => handleValidationClick()}
-                        style={{ border: "none" }}
-                      >
-                        Valider
-                      </button>
-                    </div>
-                  </div>
-                  <label className="d-block mb-2">
-                    Votre distance est de :{distance ? distance : ""}
-                  </label>
-
-                  <br />
-                  
-                  <div className="product-description border-product">
-                    <h6 className="product-title">Quantité</h6>
-                    <div className="qty-box">
-                      <div className="input-group">
-                        <span className="input-group-prepend">
-                          <button
-                            type="button"
-                            className="btn quantity-left-minus"
-                            onClick={decrementQuantity}
-                          >
-                            <i className="ti-angle-left" />
-                          </button>{" "}
-                        </span>
-                        <input
-                          type="text"
-                          name="quantity"
-                          className="form-control input-number"
-                          value={quantity}
-                          defaultValue={1}
-                          readOnly
-                        />{" "}
-                        <span className="input-group-prepend">
-                          <button
-                            type="button"
-                            className="btn quantity-right-plus"
-                            onClick={incrementQuantity}
-                          >
-                            <i className="ti-angle-right" />
-                          </button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="product-buttons">
-                    <button
-                      onClick={handleOnClickAddCard}
-                      className="btn btn-solid"
-                    >
-                      Ajouter au panier
-                    </button>
-                  </div>
-                </div>
-              </div> */}
             </div>
-          
+
+            
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
             style={{ backgroundColor: "brown", border: "none" }}
-            onClick={handleCloseCalendar}
+            onClick={handleCloseDescMat}
           >
             Fermer
           </Button>
@@ -359,7 +194,7 @@ function AjoutPanier({ materialItem }) {
             onClick={() => handleValidationClick()}
             // onClick={handleConfirmSelection}
           >
-            <CheckIcon /> Confirmer la sélection
+            <ShoppingCartIcon /> Ajouter au panier
           </Button>
         </Modal.Footer>
       </Modal>

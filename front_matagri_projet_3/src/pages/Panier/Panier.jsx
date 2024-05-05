@@ -175,6 +175,7 @@ function Panier() {
                         </div>
                       </div> */}
                     </div>
+                    
                     <div
                       className="d-flex justify-content-end"
                       style={{
@@ -182,7 +183,7 @@ function Panier() {
                         flexDirection: "column",
                         alignItems: "flex-end",
                         // background: "#f2f2f2",
-                        width: "82vw",
+                        width: "84.8vw",
                         height: "20vh",
                       }}
                     >
@@ -195,7 +196,7 @@ function Panier() {
                             style={{
                               textAlign: "right",
                               marginLeft: "5px",
-                              width: "15vw",
+                              width: "20.5vw",
                               // background: "red",
                             }}
                           >
@@ -277,16 +278,6 @@ function Panier() {
                         </ul>
                       </div>
                     </div>
-
-                    {/* <Modal
-                      open={isModalOpen}
-                      onClose={() => setIsModalOpen(false)}
-                    >
-                      <Reserver
-                        open={isModalOpen}
-                        onClose={() => setIsModalOpen(false)}
-                      />
-                    </Modal> */}
                   </div>
                 </div>
               </div>
