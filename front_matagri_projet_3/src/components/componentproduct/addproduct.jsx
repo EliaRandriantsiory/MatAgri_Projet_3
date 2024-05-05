@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { FileUploader } from 'react-drag-drop-files';
 
@@ -78,7 +78,7 @@ function AddProduit() {
                                 <label htmlFor="image" className="form-label">
                                     Image:
                                 </label>
-                                <FileUploader handleChange={handleImageChange} name="file" types={fileTypes} />
+                                <FileUploader text="Séléctionner vos images" className="file" handleChange={handleImageChange} name="file" types={fileTypes} />
                                 {imagePreviews.length > 0 && (
                                     <div style={{ marginTop: '10px' }}>
                                         <img src={imagePreviews[0]} alt="Preview" style={{ width: '100px', marginRight: '10px' }} />

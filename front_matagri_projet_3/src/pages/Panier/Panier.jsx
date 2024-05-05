@@ -141,14 +141,16 @@ function Panier() {
                               Dates
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              Lieu d'exploitation
+
+                                  Lieu d'exploitation
+
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               total
                             </th>
-                            <th scope="col" style={{ fontSize: "12px" }}>
-                              Action
-                            </th>
+
+                            <th scope="col" style={{ fontSize: "12px" }}>Action</th>
+
                           </tr>
                         </thead>
                         <tbody>
@@ -176,6 +178,7 @@ function Panier() {
                         </div>
                       </div> */}
                     </div>
+                    
                     <div
                       className="d-flex justify-content-end"
                       style={{
@@ -183,7 +186,7 @@ function Panier() {
                         flexDirection: "column",
                         alignItems: "flex-end",
                         // background: "#f2f2f2",
-                        width: "82vw",
+                        width: "84.8vw",
                         height: "20vh",
                       }}
                     >
@@ -196,15 +199,16 @@ function Panier() {
                             style={{
                               textAlign: "right",
                               marginLeft: "5px",
-                              width: "15vw",
+                              width: "20.5vw",
                               // background: "red",
                             }}
                           >
                             <PrintPrixUser
                               TextPrix={prixLivraison}
                               monnai={"MLG"}
-                            />{" "}
-                            / km
+
+                            /> / km
+
                           </label>
                         </div>
                         <div>
@@ -251,7 +255,9 @@ function Panier() {
                             <Link
                               to={"/Material"}
                               className="btn btn-solid"
-                              style={{ marginLeft: "5vw" }}
+
+                              style={{ marginLeft: "5vw"}}
+
                             >
                               Continuer l'achat
                             </Link>
@@ -279,16 +285,6 @@ function Panier() {
                         </ul>
                       </div>
                     </div>
-
-                    {/* <Modal
-                      open={isModalOpen}
-                      onClose={() => setIsModalOpen(false)}
-                    >
-                      <Reserver
-                        open={isModalOpen}
-                        onClose={() => setIsModalOpen(false)}
-                      />
-                    </Modal> */}
                   </div>
                 </div>
               </div>

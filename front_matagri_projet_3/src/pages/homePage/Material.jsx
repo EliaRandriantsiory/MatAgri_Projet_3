@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import ProductsCard from "../../components/Produitcomponents/cartesProduitCompnent";
-import CartProduitModel from "../../components/Produitcomponents/cartesProduitCompnent";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import ProductCard from "../../components/Produitcomponents/cartesProduitCompnent";
+
 
 function Material({}) {
   const [listMateriel, setListMateriel] = useState([]);
@@ -40,6 +39,7 @@ function Material({}) {
                   </ol>
                 </nav>
               </div>
+
             </div>
           </div>
         </div>

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Reserver from "../Reserver";
 import PrintTextPrix from "../../../components/textComponent/printPrix";
 import PrintPrixUser from "../../../components/textComponent/printPrixUser";
+import ReserverPanier from "../reserverAddPanier";
+import PrintDetailTechMat from "../../../components/textComponent/printDescTechMateriel";
 
 function RowPanierComponent({
   materielItem_,
@@ -64,26 +66,33 @@ function RowPanierComponent({
   if (materielItem_ !== null) {
     return (
       <tr onClick={CheckCommande}>
+        
         <td>
+      
+          <div
+            style={{
+              display: "flex",
+              width:"20vw",
+              flexDirection: "row",
+              alignItems:"start"
+            }}
+          >
           <img
             src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
               JSON.parse(materielItem_.materiel.imagePath)[0]
             }`}
             width={150}
             className="img-fluid blur-up lazyload bg-img"
-          />
-        </td>
-        <td>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              flexDirection: "column",
-            }}
-          >
-            <b className="text-capitalize">{materielItem_.materiel.nomMat}</b>
+          /><br />
+          <div>
+          <b className="text-capitalize">{materielItem_.materiel.nomMat}</b>
             <br />
-            <label>{materielItem_.materiel.techniqueMat}</label>
+            <PrintDetailTechMat
+                  desctechMat={materielItem_.materiel.techniqueMat}
+                />
+            
+          </div>
+            
           </div>
         </td>
         <td>
@@ -110,16 +119,20 @@ function RowPanierComponent({
         </td>
         <td>
           <div>
+          <ReserverPanier />
             {/* <Reserver /> */}
-            <input
+            {/* <input
               type="number"
               name="quantity"
               className="form-control input-number"
               defaultValue={nombreJourLocation}
               onChange={handleNbrJourChange}
               min={1}
-            />
+            /> */}
           </div>
+        </td>
+        <td>
+          manakara
         </td>
         <td>
           {/* {prixTotal} */}
