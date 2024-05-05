@@ -102,12 +102,15 @@ function SignUpCooperative() {
         }
       );
       console.log(response.data);
-      toast.success("Inscription réussie !");
-      navigate("/");
-      localStorage.setItem("email", emailForm);
-      localStorage.setItem("password", passwordForm);
+
+      localStorage.setItem('email', emailForm);
+      localStorage.setItem('password', passwordForm);
+      toast.success('Inscription réussie !');
+      navigate("/ProfileAgriculteur");
+
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error);
+
     }
   };
   return (
@@ -260,35 +263,41 @@ function SignUpCooperative() {
                     className="mr-2"
                     checked={isChecked}
                     onChange={handleOnChangecheckboxcgv}
-                    style={{ marginRight: "10px" }}
-                  />
-                  {/* ito le terme */}
-                  <a id="addCheckboxBtn" href="#">
-                    <Terme onAccept={() => setIsChecked(true)} />
-                  </a>
-                  {/* --------- */}
-                  {errorMessage && (
-                    <p style={{ color: "red" }}>{errorMessage}</p>
-                  )}
-                  {errorPassword && (
-                    <p style={{ color: "red" }}>{errorPassword}</p>
-                  )}
-                </div>
-                <div>
-                  <input
-                    type="submit"
-                    className="btn btn-solid w-auto"
-                    value={"S'inscrire"}
-                    disabled={!isChecked}
-                    style={{ color: "white" }}
-                  />
-                </div>
-              </form>
+
+                    style={{ marginRight: '10px' }}
+                    />
+                    {/* ito le terme */}
+                    <a id="addCheckboxBtn" href="#">
+                    <Terme onAccept={() => setIsChecked(true)}/>
+                    </a>
+                    {/* --------- */}
+                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                    {errorPassword && (
+                  <p style={{ color: "red" }}>{errorPassword}</p>
+                )}
+                  </div>
+                  <div>
+                    <input
+                      type="submit"
+                      className="btn btn-solid w-auto"
+                      value={"S'inscrire"}
+                      disabled={!isChecked}
+                      style={{
+                      backgroundColor: isChecked ? '#004225' : '#ccc',
+                      color: '#fff', 
+                      cursor: isChecked ? 'pointer' : 'not-allowed'
+                    }}
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="form-row row"></div>
+
             </div>
             <div className="form-row row"></div>
           </div>
         </div>
-      </div>
+     
       <ToastContainer />
     </section>
   );

@@ -20,7 +20,7 @@ function SignUpProvider() {
   const [isChecked, setIsChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
-  const handleOnChangecheckboxcgv = (event) => {
+  const handleOnChangecheckboxcgv = (event) => {  
     setEtatCgv(event.target.checked);
     setIsChecked(event.target.checked);
     setErrorMessage(false);
@@ -100,9 +100,12 @@ function SignUpProvider() {
             roles: [],
           },
         }
+
       );
-      console.log(response.data);
-      toast.success("Inscription réussie !");
+      // console.log(response.data);
+
+      toast.success('Inscription réussie !');
+
       navigate("/dashboard_fournisseur");
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error);
@@ -263,21 +266,30 @@ function SignUpProvider() {
                 {errorPassword && (
                   <p style={{ color: "red" }}>{errorPassword}</p>
                 )}
-                <input
-                  className="btn btn-solid w-auto"
-                  type="submit"
-                  value={"S'inscrire"}
-                  disabled={!isChecked}
-                  style={{ color: "white" }}
-                />
-              </form>
+
+                  <input
+                    className="btn btn-solid w-auto"
+                    type="submit"
+                    value={"S'inscrire"}
+                    disabled={!isChecked}
+                    style={{
+                      backgroundColor: isChecked ? '#004225' : '#ccc',
+                      color: '#fff', 
+                      cursor: isChecked ? 'pointer' : 'not-allowed'
+                    }}
+                  />
+                </form>
+              </div>
+              <div className="form-row row"></div>
+
             </div>
             <div className="form-row row"></div>
           </div>
-        </div>
-      </div>
-      <ToastContainer />
-    </section>
+
+        </div>        
+    <ToastContainer />
+      </section>
+
   );
 }
 

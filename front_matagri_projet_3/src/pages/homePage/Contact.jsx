@@ -4,11 +4,22 @@ function ContactPage() {
       {/* <!-- breadcrumb start --> */}
       <div className="breadcrumb-section">
         <div className="container">
-          <div className="row">
-            <div className="col-sm-6">
-              <div className="page-title">
-                <h2>Contact</h2>
-              </div>
+
+            <div className="row">
+                <div className="col-sm-6">
+                    <div className="page-title">
+                        <h2>Contact</h2>
+                    </div>
+                </div>
+                <div className="col-sm-6">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="index.html">Accueil</a></li>
+                            <li className="breadcrumb-item active">contact</li>
+                        </ol>
+                    </nav>
+                </div>
+
             </div>
             <div className="col-sm-6">
               <nav aria-label="breadcrumb" class="theme-breadcrumb">
@@ -22,7 +33,7 @@ function ContactPage() {
             </div>
           </div>
         </div>
-      </div>
+      
       {/* <!-- breadcrumb End --> */}
 
       {/* <!--section start--> */}

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { FileUploader } from "react-drag-drop-files";
 
@@ -68,7 +68,6 @@ function Modification({ materielItem }) {
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
         />
-        modifier
       </a>
 
       <Modal show={showModal} onHide={handleCloseModal}>
