@@ -1,12 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 import React, { useState, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import "./assets/css/homePage/homePage.css";
+import Avatar from './avatar';
+
 import "./assets/css/homePage/homePage.css";
 
-import { ToastContainer } from "react-toastify";
-import "./assets/css/homePage/homePage.css";
-import Avatar from "./avatar";
 
 import Panier from "./Panier/Panier";
 
@@ -16,7 +19,10 @@ import ServiceSection from './homePage/sectionService';
 import LogoSection from './homePage/sectionLogo';
 
 function HomePage_Layout() {
-  const [isVisible, setIsVisible] = useState(false);
+
+    const [isVisible, setIsVisible] = useState(false);
+    const [isConnected, setIsConnected] = useState(false);
+
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -36,7 +42,10 @@ function HomePage_Layout() {
   window.addEventListener("scroll", toggleVisibility);
 
   const [listPanier, setListPanier] = useState([]);
+
   const [countPanier, setCountPanier] = useState(0);
+  const [currentUser, setCurrentUser] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedListPanier = JSON.parse(localStorage.getItem("listpanier"));
@@ -44,11 +53,23 @@ function HomePage_Layout() {
       setListPanier(storedListPanier);
       setCountPanier(storedListPanier.length);
     }
-  }, []);
 
+  }, [localStorage.getItem("listpanier")]);
+  localStorage.getItem("currentUser")
   useEffect(() => {
-    setCountPanier(listPanier.length);
-  }, [listPanier]);
+    if (JSON.parse(localStorage.getItem('currentUser'))){
+      const userData = JSON.parse(localStorage.getItem('currentUser')) || {};
+      setIsConnected(true);
+      setCurrentUser(userData);
+    }
+    
+  }, []);
+  const handleOnClickLogout = (event) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentUser");
+    setCurrentUser({});
+    navigate("/home");
+  };
 
   return (
     <>
@@ -111,17 +132,27 @@ function HomePage_Layout() {
                   <div>
                     <div className="icon-nav">
                       <ul>
-                        <li className="mobile-wishlist">
-                          <a href="#">
-                            <img
-                              src="../assets/images/jewellery/icon/heart.png"
-                              className="opacity-1"
-                              alt=""
-                            />{" "}
-                          </a>
-                        </li>
 
+                      {isConnected ? (
+                      <li className="onhover-div mobile-account">
+                          <h4 >{currentUser.lastname}</h4>
+                      <div className="show-div">
+                        <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>
+                          <li>
+                            <Link to={"/ProfileAgriculteur"} style={{color : 'black', fontSize:'18px', textAlign:'center'}}>Mon Profile</Link>
+                          </li>
+                          <br/>
+                          <li>
+                            <a href="#" onClick={handleOnClickLogout} style={{color : 'black', fontSize:'18px'}} data-lng="en">
+                              Se déconnecter
+                            </a>
+                          </li>
+                        </ul>
+                        </div>
+                      </li>): (
                         <Avatar />
+                      )}
+                      
 
                         <li className="onhover-div mobile-search">
                           <Link to={"/search"}>

@@ -40,6 +40,7 @@ import Distance from "./pages/Panier/calculDistance";
 import Devis from "./components/textComponent/Devis";
 import Paiement from "./components/Payement/Paiement";
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -64,15 +65,26 @@ function App() {
           />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/Panier" element=<Panier /> />
+{/* 
         </Route>
         <Route path="/Dashboard" element=<DashboardUser /> />
         <Route
           path="/PageAccueilAgriculteur"
           element=<PageAccueilAgriculteur />
         >
-          {/* <Route path="/PageAccueilAgriculteur" element=<DashBordAgriculteur /> /> */}
+          <Route path="/PageAccueilAgriculteur" element=<DashBordAgriculteur /> />
         </Route>
-        <Route>
+        <Route> */}
+
+          <Route path="/ProfileAgriculteur" element=<DashBordAgriculteur /> />
+          <Route path="/ProfileAgriculteur" element=<PageAccueilAgriculteur /> >
+           
+           </Route>
+          </Route>
+          <Route path="/Dashboard" element=<DashboardUser /> />
+          
+          <Route>
+
           <Route path="/description" element=<DescriptionProduit /> />
         </Route>
         <Route>

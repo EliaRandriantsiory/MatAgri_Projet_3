@@ -97,36 +97,35 @@ function InscriptionAgriculteur() {
             roles: [],
           },
         }
-      );
-      console.log(response.data);
 
-      toast.success("Inscription réussie !");
+      );
+      // console.log(response.data);
+      localStorage.setItem('email', emailForm);
+      localStorage.setItem('password', passwordForm);
+      toast.success('Inscription réussie !');
       navigate("/");
-      localStorage.setItem("name", nameForm);
-      localStorage.setItem("lastname", lastnameForm);
-      localStorage.setItem("address", addressForm);
-      localStorage.setItem("phone", phoneForm);
-      localStorage.setItem("cin", cinForm);
-      localStorage.setItem("region", regionForm);
-      localStorage.setItem("email", emailForm);
-      localStorage.setItem("password", passwordForm);
+      
+      // localStorage.setItem('password', passwordForm);
+
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error);
     }
   };
 
-  useEffect(() => {
-    setName(localStorage.getItem("nom"));
-    setLastName(localStorage.getItem("prenom"));
-    setAddress(localStorage.getItem("adresse"));
-    setPhone(localStorage.getItem("phone"));
-    setCin(localStorage.getItem("cin"));
-    setEmail(localStorage.getItem("email"));
-    setRegion(localStorage.getItem("region"));
-  }, []);
-  useEffect(() => {
-    console.log(inscriptionAgriculteurRedirect);
-  }, [inscriptionAgriculteurRedirect]);
+ 
+  // useEffect(() => {
+  //   
+  //   setName(localStorage.getItem("nom"))
+  //   setLastName(localStorage.getItem("prenom"))
+  //   setAddress(localStorage.getItem("adresse"))
+  //   setPhone(localStorage.getItem("phone"))
+  //   setCin(localStorage.getItem("cin"))
+  //   setEmail(localStorage.getItem("email"))
+  //   setRegion(localStorage.getItem("region"))
+  //   
+  // }, []);
+  useEffect(() => {console.log(inscriptionAgriculteurRedirect)}, [inscriptionAgriculteurRedirect]);
+
 
   return (
     <section className="register-page section-b-space">
@@ -282,19 +281,27 @@ function InscriptionAgriculteur() {
                 {errorPassword && (
                   <p style={{ color: "red" }}>{errorPassword}</p>
                 )}
-                <input
-                  className="btn btn-solid w-auto"
-                  type="submit"
-                  value={"S'inscrire"}
-                  disabled={!isChecked}
-                  style={{ color: "white" }}
-                />
-              </form>
+
+                  <input
+                    className="btn btn-solid w-auto"
+                    type="submit"
+                    value={"S'inscrire"}
+                    disabled={!isChecked}
+                    style={{
+                      backgroundColor: isChecked ? '#004225' : '#ccc',
+                      color: '#fff', 
+                      cursor: isChecked ? 'pointer' : 'not-allowed'
+                    }}
+                  />
+                </form>
+              </div>
+              <div className="form-row row"></div>
+
             </div>
             <div className="form-row row"></div>
           </div>
         </div>
-      </div>
+      
       <ToastContainer />
     </section>
   );

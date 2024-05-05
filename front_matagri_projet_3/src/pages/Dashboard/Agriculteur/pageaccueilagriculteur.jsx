@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+
 function PageAccueilAgriculteur() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,37 +14,37 @@ function PageAccueilAgriculteur() {
   const [currentProfilUser, setCurrentProfilUser] = useState({});
   const navigate = useNavigate();
 
+
+  // useEffect(() => {
+  //   setEmail(localStorage.getItem("email"))
+  //   setPassword(localStorage.getItem("password"))
+  // }, []);
+
   useEffect(() => {
-    if (email && password) {
+    
+    
       axios
         .post("http://localhost:8082/api/home/authentification", {
-          email: email,
-          password: password,
+          email: localStorage.getItem("email"),
+          password: localStorage.getItem("password"),
         })
         .then((response) => {
-          localStorage.setItem("email", JSON.stringify(response.data.email));
-          setCurrentProfilUser(response.data.user);
+          setCurrentProfilUser(response.data);
+          localStorage.setItem("currentUser",JSON.stringify(response.data))
+          
         })
         .catch((error) => {
           console.error(error);
+          navigate("/home");
         });
-    }
-  }, [email, password]);
-
-  useEffect(() => {
-    console.log(currentProfilUser);
+    
   }, []);
+
+  
 
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
-    localStorage.removeItem("name");
-    localStorage.removeItem("lastname");
-    localStorage.removeItem("region");
-    localStorage.removeItem("address");
-    localStorage.removeItem("phone");
-    localStorage.removeItem("cin");
+    localStorage.removeItem("currentUser");
     setCurrentProfilUser({});
     navigate("/home");
   };
