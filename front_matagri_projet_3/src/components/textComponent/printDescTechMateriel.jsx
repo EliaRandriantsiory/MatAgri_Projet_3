@@ -18,9 +18,9 @@ const PrintDetailTechMat = ({ desctechMat }) => {
   let descTable = String(desctechMat).split("\n");
   // console.log(descTable)
   return (
-    <ul className="list" style={{marginLeft: "20px"}}>
+    <ul className="list" style={{listStyle: 'square'}}>
       {descTable.map((item, index) => (
-        <><b><li key={index} className="list-item">{item}</li></b><br/></>
+        <><li key={index} className="list-item">{item}</li><br/></>
       ))}
     </ul>
   );

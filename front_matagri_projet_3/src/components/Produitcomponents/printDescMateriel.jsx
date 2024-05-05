@@ -111,14 +111,14 @@ function AjoutPanier({ materialItem }) {
 <br/>
             <div className="product-right">
             <h2><b>{materialItem.nomMat}</b></h2>
-              <h2 className="product-title">Déscription</h2>
+              <h2 className="product-title">Description</h2>
                 <p>{materialItem.descriptionMat}</p>
-                {/* <br/> */}
-                <h2 className="product-title">Déscription technique matériel</h2>
+                <br/>
+                <h2 className="product-title">Description technique matériel</h2>
                 {/* <p>{materialItem.techniqueMat}</p>
                  */}
                  <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
-                {/* <br/> */}
+                <br/>
                 <h2 className="product-title">Taux journalière : <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} /></h2>
                 <br/>
 
