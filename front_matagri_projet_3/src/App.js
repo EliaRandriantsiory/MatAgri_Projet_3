@@ -19,6 +19,7 @@ import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
+<<<<<<< HEAD
 
 
 import HomePage from "./pages/homePage/homepage";
@@ -40,6 +41,12 @@ import Distance from "./pages/Panier/calculDistance";
 import Devis from "./components/textComponent/Devis";
 import Paiement from "./components/Payement/Paiement";
 
+=======
+import TermeF from "./pages/AuthenticationPage/TermeF";
+import Terme from "./pages/AuthenticationPage/Terme";
+import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
+// import DevisForm from "./pages/CalculDevis";
+>>>>>>> 9e5d11938a6c91176cf0bd420ecc792e8998dac9
 
 function App() {
   return (
@@ -64,6 +71,7 @@ function App() {
             element=<InscriptionAgriculteur />
           />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
+<<<<<<< HEAD
           <Route path="/Panier" element=<Panier /> />
 {/* 
         </Route>
@@ -80,6 +88,9 @@ function App() {
           <Route path="/ProfileAgriculteur" element=<PageAccueilAgriculteur /> >
            
            </Route>
+=======
+          {/* <Route path="/CalculDevis" element=<DevisForm /> /> */}
+>>>>>>> 9e5d11938a6c91176cf0bd420ecc792e8998dac9
           </Route>
           <Route path="/Dashboard" element=<DashboardUser /> />
           
