@@ -72,10 +72,32 @@ function AjoutPanier({ materialItem }) {
       endDate: "25/11/2024",
     });
   };
+
   const handleValidationClick = async () => {
-    handleCloseDescMat()
-    
+    try {
+      const response = await axios.post(
+        `http://localhost:8082/distance/calculate/${materialItem?.materielId}`,
+        {
+          destination: lieuExploitation,
+        }
+      );
+      if (response.status === 200) {
+        setDistance(response.data);
+        return response.data;
+      }
+    } catch (error) {
+      return "Une erreur s'est produite lors du calcul de la distance";
+    }
+    // handleCloseDescMat()
+
   };
+
+  useEffect(() => {
+    if (lieuExploitation === "") {
+      setDistance("");
+    }
+  }, [lieuExploitation]);
+
 // console.log(materialItem)
   return (
     <div>
