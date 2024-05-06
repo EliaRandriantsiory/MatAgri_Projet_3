@@ -91,6 +91,13 @@ function App() {
         <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         <Route path="/terme" element=<Terme /> />
         <Route path="/Devis" element=<Devis /> />
+
+        
+
+
+
+
+
       </Routes>
       {/* <Route path="/Devis" element=<Devis /> /> */}
       {/* <Route path="/Panier" element=<Panier /> />
