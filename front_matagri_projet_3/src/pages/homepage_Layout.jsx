@@ -155,22 +155,24 @@ function HomePage_Layout() {
 
                         <li className="onhover-div mobile-search">
                           <Link to={"/search"}>
-                            <img
+                            {/* <img
                               src="../assets/images/jewellery/icon/search.png"
                               onclick="openSearch()"
                               className="img-fluid blur-up lazyload"
                               alt=""
-                            />
+                            /> */}
+                            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" size="2xl" style={{color: "#000000",}} />
                             <i className="ti-search" onclick="openSearch()" />
                           </Link>
                         </li>
                         <li className="onhover-div mobile-setting">
                           <div>
-                            <img
+                            {/* <img
                               src="../assets/images/jewellery/icon/controls.png"
                               className="img-fluid blur-up lazyload"
                               alt=""
-                            />
+                            /> */}
+                            <FontAwesomeIcon icon="fa-solid fa-gear" size="2xl" style={{color: "#000000",}} />
                             <i className="ti-settings" />
                           </div>
                           <div className="show-div setting">
@@ -200,12 +202,12 @@ function HomePage_Layout() {
                         <li className="onhover-div mobile-cart">
                           <Link to={"/Panier"}>
                             <div className="position-relative">
-                              <img
+                              {/* <img
                                 src="../assets/images/jewellery/icon/cart.png"
                                 className="img-fluid blur-up lazyload"
                                 alt=""
-                              />
-
+                              /> */}
+                              <FontAwesomeIcon icon="fa-solid fa-basket-shopping" size="2xl" style={{color: "#000000",}} />
                               <i className="ti-shopping-cart" />
                               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {countPanier}
