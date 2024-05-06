@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PrintPrixUser from "../textComponent/printPrixUser";
 import { convertToMeridiem } from "@mui/x-date-pickers/internals/utils/time-utils";
+import { Payement } from "../../pages/Payment";
+import Payment from "../../pages/Payment";
 
+import { Link } from "react-router-dom";
 function Paiement() {
   const [prixapayer, SetPrixapayer] = useState();
   const [nomproduit, SetNomproduit] = useState();
@@ -14,26 +17,27 @@ function Paiement() {
   const [sommePrix, setsommePrix] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
   const [sommePrixTotal, setsommePrixTotal] = useState(0);
+  // const [testGetPrix, setTestGetPrix] = useState();
   const prixLivraison = 2000;
 
-
-  const sommeMontantTotal = () =>{
-    let sommeMontant =0
-    listMateriel.forEach(materiel => {
-      sommeMontant += materiel.quantity*materiel.materiel.prixMAt
-    });    
-    return sommeMontant+prixLivraison
-  }
+  const sommeMontantTotal = () => {
+    let sommeMontant = 0;
+    listMateriel.forEach((materiel) => {
+      sommeMontant += materiel.quantity * materiel.materiel.prixMAt;
+    });
+    // setTestGetPrix(sommeMontant + prixLivraison);
+    return sommeMontant + prixLivraison;
+  };
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    CalculeSommePrixTotal()
-    console.log(sommePrixTotal)
-  },[])
+    CalculeSommePrixTotal();
+    console.log(sommePrixTotal);
+  }, []);
 
   function calculeDifferenceDate(startDateString, endDateString) {
-    let differenceInDays=1
-    if(startDateString.trim() && endDateString.trim() ==="" ){
-      return differenceInDays
+    let differenceInDays = 1;
+    if (startDateString.trim() && endDateString.trim() === "") {
+      return differenceInDays;
     }
     const startDateParts = startDateString.split("/");
     const startDate = new Date(
@@ -56,6 +60,7 @@ function Paiement() {
       differenceInMilliseconds / (1000 * 60 * 60 * 24)
     );
     // console.log(differenceInDays)
+
     return differenceInDays;
   }
 
@@ -72,8 +77,8 @@ function Paiement() {
         calculeDifferenceDate(commande.startDate, commande.endDate) *
         commande.materiel.prixMAt;
       prxTotal += prixlocationMat;
-      
-    });    setsommePrixTotal(prxTotal + prixLivraison);
+    });
+    setsommePrixTotal(prxTotal + prixLivraison);
   };
 
   return (
@@ -113,24 +118,29 @@ function Paiement() {
                           </tr>
                         </thead>
                         <tbody>
-                        {listMateriel.map((matHomePage, index) => (
-                          <tr>
-                            <td>{matHomePage.materiel.nomMat} </td>
-                            <td>{matHomePage.quantity}</td>
-                            <td><PrintPrixUser
-                              TextPrix={matHomePage.materiel.prixMAt}
-                              monnai={"MLG"}
-                            /></td>
-                            <td>{matHomePage.quantity}</td>
-                            <td>Non mutualiser</td>
-                            <td><PrintPrixUser
-                              TextPrix={
-                              matHomePage.quantity*matHomePage.materiel.prixMAt
-                            }
-                              monnai={"MLG"}
-                            /> </td>
-                          </tr>
-                        ))}
+                          {listMateriel.map((matHomePage, index) => (
+                            <tr>
+                              <td>{matHomePage.materiel.nomMat} </td>
+                              <td>{matHomePage.quantity}</td>
+                              <td>
+                                <PrintPrixUser
+                                  TextPrix={matHomePage.materiel.prixMAt}
+                                  monnai={"MLG"}
+                                />
+                              </td>
+                              <td>{matHomePage.quantity}</td>
+                              <td>Non mutualiser</td>
+                              <td>
+                                <PrintPrixUser
+                                  TextPrix={
+                                    matHomePage.quantity *
+                                    matHomePage.materiel.prixMAt
+                                  }
+                                  monnai={"MLG"}
+                                />{" "}
+                              </td>
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
                     </div>
@@ -150,10 +160,10 @@ function Paiement() {
                                   marginRight: "75px",
                                 }}
                               >
-                               <PrintPrixUser
-                              TextPrix={prixLivraison}
-                              monnai={"MLG"}
-                            />
+                                <PrintPrixUser
+                                  TextPrix={prixLivraison}
+                                  monnai={"MLG"}
+                                />
                               </label>
                             </td>
                           </tr>
@@ -176,9 +186,9 @@ function Paiement() {
                                 }}
                               >
                                 <PrintPrixUser
-                              TextPrix={sommeMontantTotal()}
-                              monnai={"MLG"}
-                            />
+                                  TextPrix={sommeMontantTotal()}
+                                  monnai={"MLG"}
+                                />
                               </label>
                             </td>
                           </tr>
@@ -188,7 +198,10 @@ function Paiement() {
 
                     <div className="row cart-buttons">
                       <div className="col-7" style={{ marginLeft: "490px" }}>
-                        <a className="btn btn-xs btn-solid">Payer</a>
+                        {/* <Link to={"/Payment"} className="btn btn-xs btn-solid">
+                          Payer
+                        </Link> */}
+                        <Payment sommeMontantTotal={sommeMontantTotal} />
                       </div>
                     </div>
                   </div>

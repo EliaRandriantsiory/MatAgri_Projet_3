@@ -17,9 +17,9 @@ function SearchPage() {
       .catch((error) => {
         console.error(error);
       });
-  },[]);
+  }, []);
   useEffect(() => {
-    if (requestUser==="") {
+    if (requestUser === "") {
       axios
         .get(
           "http://localhost:8082/api/materiels/listMaterielfilterBynameMat?paramFiltr=" +
@@ -47,18 +47,18 @@ function SearchPage() {
         <div className="container">
           <div className="row">
             <div className="col-sm-6">
-              <div className="page-title">
-                <h2>search</h2>
-              </div>
+              {/* <div className="page-title">
+                <h2>rechercher</h2>
+              </div> */}
             </div>
             <div className="col-sm-6">
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
-                <ol className="breadcrumb">
+                {/* <ol className="breadcrumb">
                   <li className="breadcrumb-item">
                     <a href="index.html">Home</a>
                   </li>
-                  <li className="breadcrumb-item active">search</li>
-                </ol>
+                  <li className="breadcrumb-item active">rechercher</li>
+                </ol> */}
               </nav>
             </div>
           </div>
@@ -79,12 +79,12 @@ function SearchPage() {
                         type="text"
                         class="form-control"
                         aria-label="Amount (to the nearest dollar)"
-                        placeholder="Search Products......"
+                        placeholder="recherche materièls......"
                         onChange={handleOnChangeSearchMat}
                       />
                       <div class="input-group-append">
                         <button class="btn btn-solid">
-                          <i class="fa fa-search"></i>Search
+                          <i class="fa fa-search"></i>rechercher
                         </button>
                       </div>
                     </div>

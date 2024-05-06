@@ -20,7 +20,7 @@ import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
 import Mutualisation from "./components/Mutualisation/InterfaceMutu";
-
+import Payment from "./pages/Payment";
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
 
@@ -57,6 +57,7 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/Paiement" element=<Paiement /> />
           <Route path="/Mutualisation" element=<Mutualisation /> />
+          <Route path="/Payment" element=<Payment /> />
 
           <Route
             path="/InscriptionAgriculteur"
@@ -93,13 +94,6 @@ function App() {
         <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         <Route path="/terme" element=<Terme /> />
         <Route path="/Devis" element=<Devis /> />
-
-        
-
-
-
-
-
       </Routes>
       {/* <Route path="/Devis" element=<Devis /> /> */}
       {/* <Route path="/Panier" element=<Panier /> />
