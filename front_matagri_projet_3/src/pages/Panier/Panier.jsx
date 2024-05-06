@@ -15,7 +15,6 @@ function Panier() {
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
   const [sommePrixTotal, setsommePrixTotal] = useState(0);
   const prixLivraison = 2000;
-  
 
   function calculeDifferenceDate(startDateString, endDateString) {
     const startDateParts = startDateString.split("/");
@@ -47,16 +46,18 @@ function Panier() {
       console.log(commande);
       console.log(commande.quantity);
       // console.log(new Date())
-      console.log(calculeDifferenceDate(commande.startDate,commande.endDate)+1)
+      console.log(
+        calculeDifferenceDate(commande.startDate, commande.endDate) + 1
+      );
       // console.log(commande.materiel.prixMAt);
-      console.log(commande.quantity+commande.materiel.prixMAt)
+      console.log(commande.quantity + commande.materiel.prixMAt);
       let prixlocationMat =
         commande.quantity *
-        (calculeDifferenceDate(commande.startDate, commande.endDate)+1) *
+        (calculeDifferenceDate(commande.startDate, commande.endDate) + 1) *
         commande.materiel.prixMAt;
       prxTotal += prixlocationMat;
 
-      setsommePrixTotal(sommePrixTotal+prixlocationMat)
+      setsommePrixTotal(sommePrixTotal + prixlocationMat);
       // console.log("prix Total: "+sommePrixTotal+prixlocationMat)
 
       // const differenceDate = calculeDifferenceDate(
@@ -95,27 +96,27 @@ function Panier() {
     materielItem_,
     qt,
     prixTotal,
-    startDateCrenau, endDateCrenau
+    startDateCrenau,
+    endDateCrenau
   ) => {
     let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
-    currentPanierMat[index].quantity=qt
-    currentPanierMat[index].startDate=startDateCrenau
-    currentPanierMat[index].endDate=endDateCrenau
-    localStorage.setItem("listpanier",JSON.stringify(currentPanierMat))
-    console.log(currentPanierMat)
+    currentPanierMat[index].quantity = qt;
+    currentPanierMat[index].startDate = startDateCrenau;
+    currentPanierMat[index].endDate = endDateCrenau;
+    localStorage.setItem("listpanier", JSON.stringify(currentPanierMat));
+    console.log(currentPanierMat);
   };
 
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
   }, [updated]);
 
-  useEffect(() => {
-  }, [localStorage.getItem("listpanier")]);
+  useEffect(() => {}, [localStorage.getItem("listpanier")]);
 
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    console.log(JSON.parse(localStorage.getItem("listpanier")))
-    CalculeSommePrixTotal();
+    console.log(JSON.parse(localStorage.getItem("listpanier")));
+    // CalculeSommePrixTotal();
   }, []);
 
   return (
@@ -149,12 +150,14 @@ function Panier() {
                               Dates
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                                  Lieu d'exploitation
+                              Lieu d'exploitation
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               total
                             </th>
-                            <th scope="col" style={{ fontSize: "12px" }}>Action</th>
+                            <th scope="col" style={{ fontSize: "12px" }}>
+                              Action
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -182,7 +185,7 @@ function Panier() {
                         </div>
                       </div> */}
                     </div>
-                    
+
                     <div
                       className="d-flex justify-content-end"
                       style={{
@@ -210,7 +213,8 @@ function Panier() {
                             <PrintPrixUser
                               TextPrix={prixLivraison}
                               monnai={"MLG"}
-                            /> / km
+                            />{" "}
+                            / km
                           </label>
                         </div>
                         <div>
@@ -257,7 +261,7 @@ function Panier() {
                             <Link
                               to={"/Material"}
                               className="btn btn-solid"
-                              style={{ marginLeft: "5vw"}}
+                              style={{ marginLeft: "5vw" }}
                             >
                               Continuer l'achat
                             </Link>
@@ -268,9 +272,7 @@ function Panier() {
                               right: 165,
                             }}
                           >
-                            <Link to="/devis" >
-                              Aller au devis
-                            </Link>
+                            <Link to="/devis">Aller au devis</Link>
                           </li>
                           <li
                             style={{

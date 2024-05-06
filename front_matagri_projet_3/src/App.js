@@ -55,6 +55,7 @@ function App() {
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/Paiement" element=<Paiement /> />
+          <Route path="/payment" element=<Payment /> />
 
           <Route
             path="/InscriptionAgriculteur"
@@ -62,6 +63,7 @@ function App() {
           />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/Panier" element=<Panier /> />
+
           {/* 
         </Route>
         <Route path="/Dashboard" element=<DashboardUser /> />

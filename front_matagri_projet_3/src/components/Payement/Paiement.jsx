@@ -122,7 +122,12 @@ function Paiement() {
 
                     <div className="row cart-buttons">
                       <div className="col-7" style={{ marginLeft: "490px" }}>
-                        <a className="btn btn-xs btn-solid">Payer</a>
+                        <a
+                          className="btn btn-xs btn-solid"
+                          onClick={handleClick}
+                        >
+                          Payer
+                        </a>
                       </div>
                     </div>
                   </div>

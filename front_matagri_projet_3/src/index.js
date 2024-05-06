@@ -9,6 +9,7 @@ import DevisForm from "./pages/Panier/composant/getdate";
 import Reserver from "./pages/Panier/Reserver";
 import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricultuer";
 import PrintDetailTechMat from "./components/textComponent/printDescTechMateriel";
+import Payment from "./pages/Payment";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

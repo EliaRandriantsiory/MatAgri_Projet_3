@@ -10,10 +10,10 @@ import axios from "axios";
 import MyComponent from "../textComponent/testsaisiautomatique";
 import AjoutPanier from "./printDescMateriel";
 
-function ProductCard({ materialItem,addPanier, updateAddPanier }) {
+function ProductCard({ materialItem, addPanier, updateAddPanier }) {
   // const [quantity, setQuantity] = useState(1);
   const [distance, setDistance] = useState("");
-  
+
   const [listPanierMat, setListPanierMat] = useState([]);
 
   const [lieuExploitation, setLieuExploitation] = useState("");
@@ -25,13 +25,16 @@ function ProductCard({ materialItem,addPanier, updateAddPanier }) {
   }, []);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("listpanier"))[0] === null) {
+    if (JSON.parse(localStorage.getItem("listpanier")) === null) {
       setListPanierMat([panierMAt]);
       localStorage.setItem("listpanier", JSON.stringify([panierMAt]));
       // console.log("bonjour");
     } else {
-      setListPanierMat([...JSON.parse(localStorage.getItem("listpanier")), panierMAt]);
-      
+      setListPanierMat([
+        ...JSON.parse(localStorage.getItem("listpanier")),
+        panierMAt,
+      ]);
+
       // console.log(panierMAt);
       // console.log("non");
     }

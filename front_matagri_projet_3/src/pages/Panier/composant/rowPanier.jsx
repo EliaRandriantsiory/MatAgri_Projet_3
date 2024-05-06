@@ -10,18 +10,18 @@ function RowPanierComponent({
   index,
   updatePanierMatData,
   handleCloseRowPanier,
-  
+
   // handleQuantityChange
 }) {
   const [materielItem, setMaterielItem] = useState({});
   const [qt, setQt] = useState(1);
-  const [prixMat, setPrixMat] = useState()
+  const [prixMat, setPrixMat] = useState();
   const [matPanier, setMatPanier] = useState({});
   const [nomMat, setNomMat] = useState();
   const [prixTotal, setPrixTotal] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
-  const [startDateCrenau, setStartDateCrenau] = useState("")
-  const [endDateCrenau, setEndDateCrenau] = useState("")
+  const [startDateCrenau, setStartDateCrenau] = useState("");
+  const [endDateCrenau, setEndDateCrenau] = useState("");
 
   // const [sommePrix,setsommePrix] = useState(0)
   useEffect(() => {
@@ -29,28 +29,40 @@ function RowPanierComponent({
       setQt(materielItem_.quantity);
       setMatPanier(materielItem_.materiel);
       setNomMat(materielItem_.nomMat);
-      setMatPanier(materielItem_)
-      setPrixMat(materielItem_.materiel.prixMAt)
-      setStartDateCrenau(materielItem_.startDate)
-      setEndDateCrenau(materielItem_.endDate)
+      setMatPanier(materielItem_);
+      setPrixMat(materielItem_.materiel.prixMAt);
+      setStartDateCrenau(materielItem_.startDate);
+      setEndDateCrenau(materielItem_.endDate);
 
-      setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
+      setPrixTotal(
+        prixMat *
+          qt *
+          (calculeDifferenceDate(startDateCrenau, endDateCrenau) + 1)
+      );
       // setsommePrix(sommePrix+prixTotal)
-      
+
       // console.log(sommePrix+prixTotal)
     }
   }, []);
 
   useEffect(() => {
-
-    setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
-  },[endDateCrenau,startDateCrenau])
+    setPrixTotal(
+      prixMat * qt * (calculeDifferenceDate(startDateCrenau, endDateCrenau) + 1)
+    );
+  }, [endDateCrenau, startDateCrenau]);
 
   useEffect(() => {
-    console.log(qt)
+    console.log(qt);
     // materielItem_.quantity=qt
     // console.log(materielItem_)
-    updatePanierMatData(index, materielItem_,qt , prixTotal,startDateCrenau, endDateCrenau);
+    // updatePanierMatData(
+    //   index,
+    //   materielItem_,
+    //   qt,
+    //   prixTotal,
+    //   startDateCrenau,
+    //   endDateCrenau
+    // );
   }, [prixTotal]);
 
   function calculeDifferenceDate(startDateString, endDateString) {
@@ -80,14 +92,15 @@ function RowPanierComponent({
 
   const handleNbrJourChange = (event) => {
     setNombreJourLocation(event.target.value);
-    console.log(calculeDifferenceDate(materielItem_.startDate,materielItem_.endDate)+1)
+    console.log(
+      calculeDifferenceDate(materielItem_.startDate, materielItem_.endDate) + 1
+    );
     setPrixTotal(qt * materielItem_.materiel.prixMAt * nombreJourLocation);
   };
 
   const handleNomProductsChange = (event) => {
     console.log(event.target.value);
   };
-
 
   const handlePrixChange = (event) => {
     console.log(event.target.value);
@@ -103,45 +116,45 @@ function RowPanierComponent({
 
     setQt(qtt);
 
-    
     //console.log(materielItem_)
     // console.log(materielItem_.materiel.prixMAt)
-    const {prixMAt} = {...materielItem_.materiel}
-    console.log(startDateCrenau+endDateCrenau)
-    console.log( calculeDifferenceDate(startDateCrenau,endDateCrenau)+1)
+    const { prixMAt } = { ...materielItem_.materiel };
+    console.log(startDateCrenau + endDateCrenau);
+    console.log(calculeDifferenceDate(startDateCrenau, endDateCrenau) + 1);
 
-    setPrixTotal(qtt * materielItem_.materiel.prixMAt * (calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
+    setPrixTotal(
+      qtt *
+        materielItem_.materiel.prixMAt *
+        (calculeDifferenceDate(startDateCrenau, endDateCrenau) + 1)
+    );
   };
   if (materielItem_ !== null) {
     return (
       <tr onClick={CheckCommande}>
-        
         <td>
-      
           <div
             style={{
               display: "flex",
-              width:"20vw",
+              width: "20vw",
               flexDirection: "row",
-              alignItems:"start"
+              alignItems: "start",
             }}
           >
-          <img
-            src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
-              JSON.parse(materielItem_.materiel.imagePath)[0]
-            }`}
-            width={150}
-            className="img-fluid blur-up lazyload bg-img"
-          /><br />
-          <div>
-          <b className="text-capitalize">{materielItem_.materiel.nomMat}</b>
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
+                JSON.parse(materielItem_.materiel.imagePath)[0]
+              }`}
+              width={150}
+              className="img-fluid blur-up lazyload bg-img"
+            />
             <br />
-            <PrintDetailTechMat
-                  desctechMat={materielItem_.materiel.techniqueMat}
-                />
-            
-          </div>
-            
+            <div>
+              <b className="text-capitalize">{materielItem_.materiel.nomMat}</b>
+              <br />
+              <PrintDetailTechMat
+                desctechMat={materielItem_.materiel.techniqueMat}
+              />
+            </div>
           </div>
         </td>
         <td>
@@ -168,7 +181,10 @@ function RowPanierComponent({
         </td>
         <td>
           <div>
-          <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau} />
+            <ReserverPanier
+              setStartDateCrenau={setStartDateCrenau}
+              setEndDateCrenau={setEndDateCrenau}
+            />
             {/* <Reserver /> */}
             {/* <input
               type="number"
@@ -180,9 +196,7 @@ function RowPanierComponent({
             /> */}
           </div>
         </td>
-        <td>
-          manakara
-        </td>
+        <td>manakara</td>
         <td>
           {/* {prixTotal} */}
           <PrintPrixUser TextPrix={prixTotal} monnai={"MLG"} />
