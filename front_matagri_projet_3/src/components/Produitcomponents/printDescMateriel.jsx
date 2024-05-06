@@ -1,14 +1,9 @@
-import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import CheckIcon from "@mui/icons-material/Check";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { DateRange, DateRangePicker } from "react-date-range";
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
-import MyComponent from "../textComponent/testsaisiautomatique";
-import axios from "axios";
-import PrintPrixUser from "../textComponent/printPrixUser";
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
+import PrintPrixUser from "../textComponent/printPrixUser";
 function AjoutPanier({ materialItem }) {
   const [quantity, setQuantity] = useState(1);
   const [distance, setDistance] = useState("");
@@ -132,7 +127,7 @@ function AjoutPanier({ materialItem }) {
               <div className="d-flex align-items-start"  >
                 <label className="d-block mb-2" >
                 {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} */}
-                  Entrer votre lieu d'exploitation :
+                  Entrer votre lieu d'exploitation&nbsp;&nbsp;
                 </label>
                 <div className="d-flex">
                   {/* <MyComponent

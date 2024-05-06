@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
@@ -11,12 +11,11 @@ import Avatar from './avatar';
 import "./assets/css/homePage/homePage.css";
 
 
-import Panier from "./Panier/Panier";
 
 
 
-import ServiceSection from './homePage/sectionService';
 import LogoSection from './homePage/sectionLogo';
+import ServiceSection from './homePage/sectionService';
 
 function HomePage_Layout() {
 
@@ -139,7 +138,7 @@ function HomePage_Layout() {
                       <div className="show-div">
                         <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>
                           <li>
-                            <Link to={"/ProfileAgriculteur"} style={{color : 'black', fontSize:'18px', textAlign:'center'}}>Mon Profile</Link>
+                            <Link to={"/ProfileAgriculteur"} style={{color : 'black', fontSize:'18px', textAlign:'center'}}>Mon profil</Link>
                           </li>
                           <br/>
                           <li>

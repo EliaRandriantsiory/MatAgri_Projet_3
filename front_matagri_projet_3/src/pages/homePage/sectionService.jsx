@@ -13,7 +13,7 @@ function ServiceSection() {
                         </svg>
                         <div className="media-body">
                             <h4>Livraison</h4>
-                            <p style={{textAlign:"left", textTransform:"none", fontSize:"14px"}}>"Votre satisfaction est notre engagement : Livraison sûre, rapide et fiable à chaque commande !"</p>
+                            <p style={{textAlign:"left", textTransform:"none", textAlign:"justify", fontSize:"14px"}}>"Votre satisfaction est notre engagement : Livraison sûre, rapide et fiable à chaque commande !"</p>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@ function ServiceSection() {
                         </svg>
                         <div className="media-body">
                             <h4>24 X 7 service</h4>
-                            <p style={{textAlign:"left", textTransform:"none", fontSize:"14px"}}>"Votre tranquillité d'esprit, notre priorité : Un service fiable et de qualité, à chaque étape de votre parcours dans notre application !"</p>
+                            <p style={{textAlign:"left", textTransform:"none", textAlign:"justify",fontSize:"14px"}}>"Votre tranquillité d'esprit, notre priorité : Un service fiable et de qualité, à chaque étape de votre parcours dans notre application !"</p>
                         </div> 
                     </div>
                 </div>
@@ -70,7 +70,7 @@ function ServiceSection() {
                         </svg>
                         <div className="media-body">
                             <h4>offre</h4>
-                            <p style={{textAlign:"left", textTransform:"none", fontSize:"14px"}}>"Mutualisation : Ensemble, économisons ! Profitez d'une remise de -12% sur vos frais de transport, pour des économies partagées sans souci."</p>
+                            <p style={{textAlign:"left", textTransform:"none", textAlign:"justify", fontSize:"14px"}}>"Mutualisation : Ensemble, économisons ! Profitez d'une remise de -12% sur vos frais de transport, pour des économies partagées sans souci."</p>
                         </div>
                     </div>
                 </div>

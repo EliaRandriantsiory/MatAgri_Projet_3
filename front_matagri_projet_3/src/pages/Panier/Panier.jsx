@@ -1,12 +1,8 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { Modal } from "@mui/material";
-import Reserver from "./Reserver";
-import RowPanierComponent from "./composant/rowPanier";
-import { Link, json } from "react-router-dom";
-import PrintTextPrix from "../../components/textComponent/printPrix";
-import Devis from "../../components/textComponent/Devis";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PrintPrixUser from "../../components/textComponent/printPrixUser";
+import RowPanierComponent from "./composant/rowPanier";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Panier() {
   const [listMateriel, setListMateriel] = useState([]);
@@ -132,7 +128,7 @@ function Panier() {
                               Designation
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              quantitÃ©
+                              quantité
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               Prix journalier
@@ -192,7 +188,7 @@ function Panier() {
                     >
                       <div>
                         <div>
-                          <label style={{ fontWeight: "bold" }}>
+                          <label style={{ fontWeight: "bold", marginLeft:"-50" }}>
                             Frais de transport
                           </label>
                           <label
@@ -215,15 +211,15 @@ function Panier() {
                           <label
                             style={{
                               fontWeight: "bold",
-                              marginleft: "27px",
+                              marginLeft: "0",
                             }}
                           >
-                            Montant total Ã  payer
+                            Montant total à payer
                           </label>
                           <label
                             style={{
                               textAlign: "right",
-                              marginLeft: "5px",
+                              marginLeft: "77px",
                               width: "15vw",
                               // background: "red",
                             }}
@@ -235,6 +231,7 @@ function Panier() {
                           </label>
                         </div>
                       </div>
+                      <br/>
                       <div
                         className="col-sm-12 table-responsive-xs"
                         style={{
@@ -263,13 +260,18 @@ function Panier() {
                             </Link>
                           </li>
                           <li
+                            className="sub-title"
                             style={{
                               position: "absolute",
                               right: 165,
+                              top: 12,
+                              fontSize: 16,
+                              fontWeight: "bold"
                             }}
                           >
-                            <Link to="/devis" className="btn  btn-solid">
-                              Aller au devis
+                            <Link to="/devis" style={{color:"black"}}>
+                            <FontAwesomeIcon icon="fa-solid fa-arrow-right" style={{color: "#000000",}} />&nbsp;
+                            Demande de devis &nbsp; &nbsp;
                             </Link>
                           </li>
                           <li

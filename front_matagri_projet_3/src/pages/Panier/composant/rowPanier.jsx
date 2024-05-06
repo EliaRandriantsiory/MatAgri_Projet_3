@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Reserver from "../Reserver";
-import PrintTextPrix from "../../../components/textComponent/printPrix";
+import PrintDetailTechMat from "../../../components/textComponent/printDescTechMateriel";
 import PrintPrixUser from "../../../components/textComponent/printPrixUser";
 import ReserverPanier from "../reserverAddPanier";
-import PrintDetailTechMat from "../../../components/textComponent/printDescTechMateriel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function RowPanierComponent({
   materielItem_,
@@ -85,7 +84,8 @@ function RowPanierComponent({
             className="img-fluid blur-up lazyload bg-img"
           /><br />
           <div>
-          <b className="text-capitalize">{materielItem_.materiel.nomMat}</b>
+          <br/>
+          <b className="text-capitalize" style={{textAlign:'left'}}>{materielItem_.materiel.nomMat}</b>
             <br />
             <PrintDetailTechMat
                   desctechMat={materielItem_.materiel.techniqueMat}
@@ -119,7 +119,7 @@ function RowPanierComponent({
         </td>
         <td>
           <div>
-          <ReserverPanier />
+          <ReserverPanier/>
             {/* <Reserver /> */}
             {/* <input
               type="number"
@@ -132,7 +132,7 @@ function RowPanierComponent({
           </div>
         </td>
         <td>
-          manakara
+          Manakara
         </td>
         <td>
           {/* {prixTotal} */}
@@ -140,6 +140,7 @@ function RowPanierComponent({
         </td>
         <td>
           {/* <input className="icon ti-close" onClick={handleCloseRowPanier} /> */}
+          <FontAwesomeIcon icon="fa-solid fa-pen-to-square" style={{color: "#000000",}} />&nbsp;&nbsp;
           <a className="icon" onClick={() => handleCloseRowPanier(index)}>
             <i className="ti-close"></i>
           </a>

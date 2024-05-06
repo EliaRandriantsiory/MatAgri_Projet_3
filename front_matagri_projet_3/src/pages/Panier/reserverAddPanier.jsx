@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
-import { DateRange, DateRangePicker } from "react-date-range";
-import "react-date-range/dist/styles.css";
-import "react-date-range/dist/theme/default.css";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CheckIcon from "@mui/icons-material/Check";
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import { DateRange } from "react-date-range";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 
 const ReserverPanier = () => {
   const [selectedDates, setSelectedDates] = useState([
@@ -89,10 +89,11 @@ const ReserverPanier = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <br/>
       {selectedDates[0] && (
         <div>
+        <br/>
           <p>
-            Intervalle de dates sélectionné :{" "}
             {selectedDates[0].startDate.toLocaleDateString()} -{" "}
             {selectedDates[0].endDate.toLocaleDateString()}
           </p>

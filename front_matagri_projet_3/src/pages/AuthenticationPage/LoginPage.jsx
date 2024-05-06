@@ -92,11 +92,7 @@ function Login() {
         </div>
       </div>
       <ToastContainer/>
-      {isConnected ? (
-    <Connect isConnected={isConnected} />
-  ) : (
-    <Avatar />
-  )}
+      
     </section>
   );
 }
