@@ -19,6 +19,7 @@ import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
+import Mutualisation from "./components/Mutualisation/InterfaceMutu";
 
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
@@ -55,7 +56,10 @@ function App() {
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/Paiement" element=<Paiement /> />
+
           <Route path="/payment" element=<Payment /> />
+
+          <Route path="/Mutualisation" element=<Mutualisation /> />
 
           <Route
             path="/InscriptionAgriculteur"
