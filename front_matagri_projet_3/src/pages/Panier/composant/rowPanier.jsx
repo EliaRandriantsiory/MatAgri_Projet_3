@@ -10,14 +10,17 @@ function RowPanierComponent({
   index,
   updatePanierMatData,
   handleCloseRowPanier,
+  
   // handleQuantityChange
 }) {
   const [materielItem, setMaterielItem] = useState({});
-  const [qt, setQt] = useState();
+  const [qt, setQt] = useState(1);
   const [matPanier, setMatPanier] = useState({});
   const [nomMat, setNomMat] = useState();
   const [prixTotal, setPrixTotal] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
+  const [startDateCrenau, setStartDateCrenau] = useState("")
+  const [endDateCrenau, setEndDateCrenau] = useState("")
 
   // const [sommePrix,setsommePrix] = useState(0)
   useEffect(() => {
@@ -35,7 +38,7 @@ function RowPanierComponent({
   useEffect(() => {
     // materielItem_=materielItem_.quantity=qt
     // console.log(materielItem_)
-    updatePanierMatData(index, materielItem_,qt , prixTotal, nombreJourLocation);
+    // updatePanierMatData(index, materielItem_,qt , prixTotal,startDateCrenau, endDateCrenau);
   }, [prixTotal]);
 
   const handleNbrJourChange = (event) => {
@@ -119,7 +122,7 @@ function RowPanierComponent({
         </td>
         <td>
           <div>
-          <ReserverPanier />
+          <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau} />
             {/* <Reserver /> */}
             {/* <input
               type="number"

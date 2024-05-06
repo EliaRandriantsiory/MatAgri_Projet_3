@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { DateRange, DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
@@ -6,7 +6,7 @@ import "react-date-range/dist/theme/default.css";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CheckIcon from "@mui/icons-material/Check";
 
-const ReserverPanier = () => {
+function  ReserverPanier ({setStartDateCrenau,setEndDateCrenau}) {
   const [selectedDates, setSelectedDates] = useState([
     {
       startDate: new Date(),
@@ -14,6 +14,15 @@ const ReserverPanier = () => {
       key: "selection",
     },
   ]);
+
+  useEffect(() => {
+    // console.log(setTestStartDate)
+    setStartDateCrenau(selectedDates[0].startDate.toLocaleDateString())
+    setEndDateCrenau(selectedDates[0].endDate.toLocaleDateString())
+    // setEndDate(selectedDates[0].endDate.toLocaleDateString())
+    // setStartDate(selectedDates[0].startDate.toLocaleDateString())
+  },[selectedDates])
+
   const [showCalendar, setShowCalendar] = useState(false);
 
   const handleOpenCalendar = () => {

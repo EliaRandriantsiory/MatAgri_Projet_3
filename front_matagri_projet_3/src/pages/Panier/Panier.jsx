@@ -9,12 +9,13 @@ import Devis from "../../components/textComponent/Devis";
 import PrintPrixUser from "../../components/textComponent/printPrixUser";
 
 function Panier() {
-  const [listMateriel, setListMateriel] = useState([]);
+  const [listMateriel, setListMateriel] = useState([null]);
   const [updated, setUpdated] = useState();
   const [sommePrix, setsommePrix] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
   const [sommePrixTotal, setsommePrixTotal] = useState(0);
   const prixLivraison = 2000;
+  
 
   function calculeDifferenceDate(startDateString, endDateString) {
     const startDateParts = startDateString.split("/");
@@ -48,11 +49,13 @@ function Panier() {
       // console.log(new Date())
       // console.log(calculeDifferenceDate("22/04/2024","25/05/2024"))
       // console.log(commande.materiel.prixMAt);
+      
       let prixlocationMat =
         commande.quantity *
         calculeDifferenceDate(commande.startDate, commande.endDate) *
         commande.materiel.prixMAt;
       prxTotal += prixlocationMat;
+
       // setsommePrixTotal(sommePrixTotal+prixlocationMat)
       // console.log(sommePrixTotal+prixlocationMat)
 
@@ -92,10 +95,12 @@ function Panier() {
     materielItem_,
     qt,
     prixTotal,
-    nombreJourLocation
+    startDateCrenau, endDateCrenau
   ) => {
     let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
     currentPanierMat[index].quantity=qt
+    currentPanierMat[index].startDate=startDateCrenau
+    currentPanierMat[index].endDate=endDateCrenau
     localStorage.setItem("listpanier",JSON.stringify(currentPanierMat))
   };
 
@@ -108,7 +113,8 @@ function Panier() {
 
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    CalculeSommePrixTotal();
+    console.log(JSON.parse(localStorage.getItem("listpanier")))
+    // CalculeSommePrixTotal();
   }, []);
 
   return (
@@ -261,7 +267,7 @@ function Panier() {
                               right: 165,
                             }}
                           >
-                            <Link to="/devis" className="btn  btn-solid">
+                            <Link to="/devis" >
                               Aller au devis
                             </Link>
                           </li>

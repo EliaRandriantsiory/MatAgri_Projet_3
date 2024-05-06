@@ -42,6 +42,7 @@ function HomePage_Layout() {
   window.addEventListener("scroll", toggleVisibility);
 
   const [listPanier, setListPanier] = useState([]);
+  const [listPanierMat, setListPanierMat] = useState([null]);
 
   const [countPanier, setCountPanier] = useState(0);
   const [currentUser, setCurrentUser] = useState({});
@@ -62,6 +63,7 @@ function HomePage_Layout() {
       setIsConnected(true);
       setCurrentUser(userData);
     }
+    localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
     
   }, []);
   const handleOnClickLogout = (event) => {

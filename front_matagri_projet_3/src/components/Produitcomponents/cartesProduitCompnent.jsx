@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useAsyncError } from "react-router-dom";
 import PrintTextPrix from "../textComponent/printPrix";
 import React, { useState, useEffect } from "react";
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
@@ -10,17 +10,17 @@ import axios from "axios";
 import MyComponent from "../textComponent/testsaisiautomatique";
 import AjoutPanier from "./printDescMateriel";
 
-
-function ProductCard({ materialItem }) {
+function ProductCard({ materialItem,setPanierMat }) {
   const [quantity, setQuantity] = useState(1);
   const [distance, setDistance] = useState("");
-  const [listPanierMat, setListPanierMat] = useState([]);
-  const [panierMAt, setPanierMat] = useState({});
-
+  
+  
+  const [startDateCrenau, setStartDateCrenau] = useState();
+  const [endDateCrenau, setEndDateCrenau] = useState();
   const [notif, setNotif] = useState();
+  // const [testStartDate, setTestStartDate] = useState()
 
   const [lieuExploitation, setLieuExploitation] = useState("");
-
 
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -31,39 +31,137 @@ function ProductCard({ materialItem }) {
     }
   };
 
-  const handleOnClickAddCard = (event) => {
-    setPanierMat({
-      materiel: {
-        materielId: materialItem.materielId,
-        categorieMat: materialItem.categorieMat,
-        nomMat: materialItem.nomMat,
-        stockMat: materialItem.stockMat,
-        descriptionMat: materialItem.descriptionMat,
-        techniqueMat: materialItem.techniqueMat,
-        imagePath: materialItem.imagePath,
-        id_user: materialItem.id_user,
-        prixMAt: materialItem.prixMAt,
-      },
-      users: {},
-      quantity: 2,
-      startDate: "15/11/2024",
-      endDate: "25/11/2024",
+  const handleOnChangeCheckBox = () => {};
 
-    });
-  };
-  useEffect(() => {
-    if (Object.keys(panierMAt).length !== 0) {
-      const cmd = listPanierMat.push(panierMAt);
-      setListPanierMat([...listPanierMat, panierMAt]);
-      localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+  // const handleOnClickAddCard = (event) => {
+  //   setPanierMat({
+  //     materiel: {
+  //       materielId: materialItem.materielId,
+  //       categorieMat: materialItem.categorieMat,
+  //       nomMat: materialItem.nomMat,
+  //       stockMat: materialItem.stockMat,
+  //       descriptionMat: materialItem.descriptionMat,
+  //       techniqueMat: materialItem.techniqueMat,
+  //       imagePath: materialItem.imagePath,
+  //       id_user: materialItem.id_user,
+  //       prixMAt: materialItem.prixMAt,
+  //     },
+  //     users: {},
+  //     quantity: 2,
+  //     startDate: startDateCrenau,
+  //     endDate: endDateCrenau,
+  //   });
+  // };
 
-    }
-    // console.log(listPanierMat);
-  }, [panierMAt]);
+
+
+  // useEffect(() => {
+  //   // console.log(Object.keys(listPanierMat).length)
+
+  //   console.log(listPanierMat);
+  //   console.log(panierMAt);
+  //   if (listPanierMat[0] === null) {
+  //     setListPanierMat([panierMAt]);
+  //     localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+  //     console.log("bonjour");
+  //   } else {
+  //     setListPanierMat([...listPanierMat, panierMAt]);
+  //     // listPanierMat.push(panierMAt)
+  //     // console.log(listPanierMat)
+  //     console.log(panierMAt);
+  //     console.log("non");
+  //   }
+  //   //   else if(Object.keys(listPanierMat).length===0){
+  //   //     setListPanierMat([panierMAt])
+  //   //     // console.log("oui")
+  //   //   }
+  //   //
+
+  //   // console.log(listPanierMat)
+  //   // console.log("bonjour")
+  //   // console.log(panierMAt)
+  //   // // console.log(JSON.parse(localStorage.getItem("listpanier")))
+  //   // // setListPanierMat(JSON.parse(localStorage.getItem("listpanier")))
+  //   // // JSON.parse(localStorage.getItem("listpanier"))[0]===null? console.log("oui"):console.log("non")
+  //   // if (listPanierMat[0]===null){
+  //   //   setListPanierMat([panierMAt])
+  //   // }
+  //   // else if(Object.keys(listPanierMat).length===0){
+  //   //   setListPanierMat([panierMAt])
+  //   //   // console.log("oui")
+  //   // }
+  //   // else{
+  //   //   // setListPanierMat(...listPanierMat,panierMAt)
+  //   //   // listPanierMat.push(panierMAt)
+  //   //   // console.log(listPanierMat)
+  //   //   console.log(panierMAt)
+  //   //   console.log("non")
+  //   // }
+  //   // console.log(listPanierMat)
+
+  //   // console.log(Object.keys(JSON.parse(localStorage.getItem("listpanier"))[0]).length)
+
+  //   // console.log("bonjour panier")
+  //   // if(panierMAt!==null){
+  //   //   console.log("panier not null")
+  //   //   if(!(JSON.parse(localStorage.getItem("listpanier")))){
+  //   //     console.log("panier localstorage non exsistant")
+  //   //     setListPanierMat(panierMAt)
+  //   //     // console.log(panierMAt)
+  //   //     localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+  //   //   }
+  //   //   else{
+  //   //     console.log(JSON.parse(localStorage.getItem("listpanier")))
+  //   //     setListPanierMat(JSON.parse(localStorage.getItem("listpanier")),panierMAt)
+  //   //     // setListPanierMat([...listPanierMat, panierMAt]);
+  //   //     localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+  //   //     console.log("panier exsistant")
+  //   //   }
+  //   // }
+  //   // else{console.log("pannier  null")}
+
+  //   // if(panierMAt)
+  //   // console.log(Object.keys(listPanierMat[0]).length)
+
+  //   // console.log(JSON.parse(localStorage.getItem("listpanier"))[0]===null ? console.log("oui"):console.log("non"))
+  //   // if (Object.keys(JSON.parse(localStorage.getItem("listpanier"))).length===0){
+  //   //   // console.log("oui")
+  //   //    console.log(panierMAt)
+  //   //   console.log("nouveau panier")
+  //   //   setListPanierMat([panierMAt]);
+  //   //   localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+  //   // }
+  //   // else{
+  //   //   // console.log("non")
+  //   //   console.log("ajout panier")
+  //   //   const cmd = listPanierMat.push(panierMAt);
+  //   //   setListPanierMat([...listPanierMat, panierMAt]);
+  //   //   localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+  //   // }
+  //   // console.log(listPanierMat)
+
+  //   // if (Object.keys(listPanierMat[0]).length === 0) {
+
+  //   //   // console.log(panierMAt)
+  //   //   console.log("nouveau panier")
+  //   //   setListPanierMat([panierMAt]);
+  //   //   localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+
+  //   // }
+  //   // else{
+  //   //   console.log("ajout panier")
+  //   //   const cmd = listPanierMat.push(panierMAt);
+  //   //   setListPanierMat([...listPanierMat, panierMAt]);
+  //   //   localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+
+  //   // }
+  // }, [panierMAt]);
+
+ 
   // localStorage.setItem("listpanier", listPanierMat);
-  useEffect(() => {
-    console.log(listPanierMat.length);
-  }, [localStorage.getItem("listpanier")]);
+  // useEffect(() => {
+  //   console.log(listPanierMat.length);
+  // }, [localStorage.getItem("listpanier")]);
 
   const handleLieuExploitationChange = (event) => {
     setLieuExploitation(event.target.value);
@@ -125,13 +223,16 @@ function ProductCard({ materialItem }) {
               </a>
             </div>
             <div className="cart-info cart-wrap">
-              <button onClick={handleOnClickAddCard}>
+              <button >
                 <i className="ti-shopping-cart" />
               </button>
               <a href="javascript:void(0)" title="Add to Wishlist">
                 <i className="ti-heart" aria-hidden="true" />
               </a>{" "}
-              <AjoutPanier materialItem={materialItem} />
+              <AjoutPanier
+                materialItem={materialItem}
+                setPanierMat={setPanierMat}
+              />
               {/* <a
                 href="#"
                 data-bs-toggle="modal"
@@ -225,7 +326,9 @@ function ProductCard({ materialItem }) {
                       <p>{materialItem.descriptionMat}</p>
                     </div>
                     <label className=""> Entrer votre plage de date :</label>
-                    <ReserverPanier />
+                    {/* <ReserverPanier setTestStartDate={setTestStartDate}/> */}
+
+                    {/* <Testfonction setTestStartDate={setTestStartDate}/> */}
                     <br />
 
                     {/* <label className="">
@@ -243,21 +346,25 @@ function ProductCard({ materialItem }) {
                         Entrer votre lieu d'exploitation :
                       </label>
                       <div className="d-flex">
-                      {/* <MyComponent handleLieuExploitationChange={handleLieuExploitationChange} /> */}
+                        {/* <MyComponent handleLieuExploitationChange={handleLieuExploitationChange} /> */}
                         <input
                           type="text"
                           className="form-control"
                           placeholder="Lieu d'exploitation"
-                          style={{ opacity: 0.7, fontSize: "0.9rem",}}
+                          style={{ opacity: 0.7, fontSize: "0.9rem" }}
                           value={lieuExploitation}
                           onChange={handleLieuExploitationChange}
                         />
                         <button
                           className="btn btn-solid"
                           disabled={
-                            lieuExploitation === "" || lieuExploitation.length === 0 ? true : false}
+                            lieuExploitation === "" ||
+                            lieuExploitation.length === 0
+                              ? true
+                              : false
+                          }
                           onClick={() => handleValidationClick()}
-                          style={{border: "none"}}
+                          style={{ border: "none" }}
                         >
                           Valider
                         </button>
@@ -304,7 +411,7 @@ function ProductCard({ materialItem }) {
                     </div>
                     <div className="product-buttons">
                       <button
-                        onClick={handleOnClickAddCard}
+                        // onClick={handleOnClickAddCard}
                         className="btn btn-solid"
                       >
                         Ajouter au panier
