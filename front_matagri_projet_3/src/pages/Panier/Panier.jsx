@@ -5,58 +5,110 @@ import Reserver from "./Reserver";
 import RowPanierComponent from "./composant/rowPanier";
 import { Link, json } from "react-router-dom";
 import PrintTextPrix from "../../components/textComponent/printPrix";
+import Devis from "../../components/textComponent/Devis";
+import PrintPrixUser from "../../components/textComponent/printPrixUser";
 
 function Panier() {
   const [listMateriel, setListMateriel] = useState([]);
-  const [prixTotal, setPrixTotal] = useState();
+  const [updated, setUpdated] = useState();
+  const [sommePrix, setsommePrix] = useState(0);
+  const [nombreJourLocation, setNombreJourLocation] = useState(1);
+  const [sommePrixTotal, setsommePrixTotal] = useState(0);
+  const prixLivraison = 2000;
 
+  function calculeDifferenceDate(startDateString, endDateString) {
+    const startDateParts = startDateString.split("/");
+    const startDate = new Date(
+      parseInt(startDateParts[2]),
+      parseInt(startDateParts[1]) - 1,
+      parseInt(startDateParts[0])
+    );
+    const endDateParts = endDateString.split("/");
+    const endDate = new Date(
+      parseInt(endDateParts[2]),
+      parseInt(endDateParts[1]) - 1,
+      parseInt(endDateParts[0])
+    );
 
-  
+    // Calculer la diffÃ©rence en millisecondes
+    const differenceInMilliseconds = endDate.getTime() - startDate.getTime();
+
+    // Convertir la diffÃ©rence en jours
+    const differenceInDays = Math.floor(
+      differenceInMilliseconds / (1000 * 60 * 60 * 24)
+    );
+    // console.log(differenceInDays)
+    return differenceInDays;
+  }
+  const CalculeSommePrixTotal = () => {
+    let prxTotal = 0;
+    JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
+      console.log(commande);
+      console.log(commande.quantity);
+      // console.log(new Date())
+      // console.log(calculeDifferenceDate("22/04/2024","25/05/2024"))
+      // console.log(commande.materiel.prixMAt);
+      let prixlocationMat =
+        commande.quantity *
+        calculeDifferenceDate(commande.startDate, commande.endDate) *
+        commande.materiel.prixMAt;
+      prxTotal += prixlocationMat;
+      // setsommePrixTotal(sommePrixTotal+prixlocationMat)
+      // console.log(sommePrixTotal+prixlocationMat)
+
+      // const differenceDate = calculeDifferenceDate(
+      //   commande.startDate,
+      //   commande.endDate
+      // );
+      // setsommePrixTotal(
+      //   commande.quantity * differenceDate * commande.materiel.prixMAt
+      // );
+      // console.log(sommePrixTotal);
+      // console.log(
+      //   commande.quantity * differenceDate * commande.materiel.prixMAt
+      // );
+      // console.log(commande.startDate)
+      // console.log(commande.endDate)
+      // console.log(differenceDate)
+    });
+    setsommePrixTotal(prxTotal + prixLivraison);
+  };
+
+  const handleCloseRowPanier = (index) => {
+    let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
+    // console.log(currentPanierMat);
+    currentPanierMat.splice(index, 1);
+    localStorage.setItem("listpanier", JSON.stringify(currentPanierMat));
+    // console.log(JSON.stringify(currentPanierMat.splice(index, 1)));
+    setUpdated(true);
+    console.log("bonjour");
+    // localStorage.setItem("listpanier", JSON.stringify(currentPanierMat.splice(index,1)))
+    // setListMateriel([])
+    // console.log(index)
+  };
+
+  const updatePanierMatData = (
+    index,
+    materielItem_,
+    qt,
+    prixTotal,
+    nombreJourLocation
+  ) => {
+    let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
+    currentPanierMat[index].quantity = qt;
+    localStorage.setItem("listpanier", JSON.stringify(currentPanierMat));
+  };
+
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    // console.log(localStorage.getItem("listpanier"));
+  }, [updated]);
 
-    
+  useEffect(() => {}, [localStorage.getItem("listpanier")]);
 
-    // if (listMateriel) {
-    //   localStorage.getItem("listpanier").forEach((element) => {
-    //     console.log(element);
-    //   });
-    // }
+  useEffect(() => {
+    setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
+    CalculeSommePrixTotal();
   }, []);
-
-  useEffect(() => {
-
-    console.log("bonjour")
-    listMateriel.forEach(mat => {
-      console.log(mat)
-    });
-  },[listMateriel])
-  useEffect(() => {
-    // console.log(localStorage.getItem("listpanier"));
-    if (listMateriel) {
-      setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-      // console.log(localStorage.getItem("listpanier"));
-      // console.log("bonjour" + listMateriel.length);
-    }
-    // setListMateriel(localStorage.getItem("listpanier"));
-  }, [localStorage.getItem("listpanier")]);
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8082/api/materiels/listMateriel")
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setListMateriel(response.data);
-  //       console.log("bonjour");
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
-  // setTotal(quantity * prix);
-  // setTotalproducts(quantity * prix);
-
-
 
   return (
     <div>
@@ -65,7 +117,6 @@ function Panier() {
           <div className="row">
             <div className="col-lg-12">
               <div className="title1 section-t-space">
-                <h4>Panier</h4>
                 <h2 className="title-inner1">Panier</h2>
                 <div className="container-fluid">
                   <div className="row">
@@ -74,75 +125,166 @@ function Panier() {
                       <table className="table cart-table">
                         <thead>
                           <tr className="table-head">
-                            <th scope="col" style={{ fontSize: "12px" }}>
+                            {/* <th scope="col" style={{ fontSize: "12px" }}>
                               image
+                            </th> */}
+                            <th scope="col" style={{ fontSize: "12px" }}>
+                              Designation
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              nom du produit
+                              quantitÃ©
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              quantité
+                              Prix journalier
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              prix
+                              Dates
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              action
+
+                                  Lieu d'exploitation
+
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               total
                             </th>
-                            <th scope="col"></th>
+
+                            <th scope="col" style={{ fontSize: "12px" }}>Action</th>
+
                           </tr>
                         </thead>
                         <tbody>
-                          {listMateriel.map((matHomePage) => (
+                          {/* {listMateriel.map((matHomePage) => (
                             <>
-                            {/* {matHomePage.prixMAt} */}
+                            {matHomePage.prixMAt}
                           <RowPanierComponent materielItem_={matHomePage} /> </>
+                          ))} */}
+                          {listMateriel.map((matHomePage, index) => (
+                            <>
+                              <RowPanierComponent
+                                materielItem_={matHomePage}
+                                index={index}
+                                updatePanierMatData={updatePanierMatData}
+                                handleCloseRowPanier={handleCloseRowPanier}
+                              />
+                            </>
                           ))}
                         </tbody>
                       </table>
-                      <div className="table-responsive-md">
+                      {/* <div className="table-responsive-md">
                         <table className="table cart-table "></table>
                         <div className="table-responsive-md">
                           <table className="table cart-table "></table>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
-                    <div className="row">
-                      <div
-                        className="col-4"
-                        style={{ marginLeft: "810px", marginTop: "10px" }}
-                      />
-                      
-                      
-                    </div>
-
-                    <div className="row cart-buttons">
                     
-                      <div className="col-6">
-                      
-                        <Link to={"/Material"} className="btn btn-solid">
-                        
-                          Continuer l'achataaa
-                        </Link>
+                    <div
+                      className="d-flex justify-content-end"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-end",
+                        // background: "#f2f2f2",
+                        width: "84.8vw",
+                        height: "20vh",
+                      }}
+                    >
+                      <div>
+                        <div>
+                          <label style={{ fontWeight: "bold" }}>
+                            Frais de transport
+                          </label>
+                          <label
+                            style={{
+                              textAlign: "right",
+                              marginLeft: "5px",
+                              width: "20.5vw",
+                              // background: "red",
+                            }}
+                          >
+                            <PrintPrixUser
+                              TextPrix={prixLivraison}
+                              monnai={"MLG"}
+
+                            /> / km
+
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            style={{
+                              fontWeight: "bold",
+                              marginleft: "27px",
+                            }}
+                          >
+                            Montant total Ã  payer
+                          </label>
+                          <label
+                            style={{
+                              textAlign: "right",
+                              marginLeft: "5px",
+                              width: "15vw",
+                              // background: "red",
+                            }}
+                          >
+                            <PrintPrixUser
+                              TextPrix={sommePrixTotal}
+                              monnai={"MLG"}
+                            />
+                          </label>
+                        </div>
                       </div>
-                      <div className="col-4">
-                        <a href="#" className="btn btn-solid">
-                          Commander
-                        </a>
+                      <div
+                        className="col-sm-12 table-responsive-xs"
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "flex-end",
+                          width: "82vw",
+                        }}
+                      >
+                        <ul
+                          style={{
+                            display: "flex",
+                            width: "82vw",
+                            height: "3vh",
+                          }}
+                        >
+                          <li>
+                            <Link
+                              to={"/Material"}
+                              className="btn btn-solid"
+
+                              style={{ marginLeft: "5vw"}}
+
+                            >
+                              Continuer l'achat
+                            </Link>
+                          </li>
+                          <li
+                            style={{
+                              position: "absolute",
+                              right: 165,
+                            }}
+                          >
+                            <Link to="/devis" className="btn  btn-solid">
+                              Aller au devis
+                            </Link>
+                          </li>
+                          <li
+                            style={{
+                              position: "absolute",
+                              right: 0,
+                            }}
+                          >
+                            <Link to="/paiement" className="btn  btn-solid">
+                              Commander
+                            </Link>
+                          </li>
+                        </ul>
                       </div>
                     </div>
-                    {/* <Modal
-                      open={isModalOpen}
-                      onClose={() => setIsModalOpen(false)}
-                    >
-                      <Reserver
-                        open={isModalOpen}
-                        onClose={() => setIsModalOpen(false)}
-                      />
-                    </Modal> */}
                   </div>
                 </div>
               </div>
@@ -153,4 +295,5 @@ function Panier() {
     </div>
   );
 }
+
 export default Panier;

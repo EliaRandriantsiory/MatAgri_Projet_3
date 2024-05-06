@@ -13,25 +13,31 @@ function TermeF({ onAccept }) {
   };
   return (
     <>
-      <a variant="Link" onClick={handleShow} style={{color: 'black', fontSize:'14px'}}>
-        Terme et condition de location
+      <a
+        variant="Link"
+        onClick={handleShow}
+        style={{ color: "black", fontSize: "14px" }}
+      >
+        Termes et Conditions de Location
       </a>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header
+          closeButton
+          style={{ display: "flex", justifyContent: "center" }}
+        >
           <Modal.Title>
             <center className="text-center">
               <h4 className="texte-center">
-                CONDITIONS GENERALES DE LOCATION - LOUEUR (FOURNISSEUR) DE
-                MATERIELS AGRICOLES
-                <br />
-                MATERIELS AGRICOLES MatAgri
+                CONDITIONS GENERALES DE LOCATION <br></br>LOUEUR DE MATERIELS
+                AGRICOLES MATAgri
               </h4>
             </center>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{textAlign:'justify' ,fontSize:'14px'}}><br/>
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>
+        <Modal.Body style={{ textAlign: "justify", fontSize: "14px" }}>
+          <br />
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>
             La prestation « Location de matériels » est fournie par LOCAMAT,
             ci-après le loueur. Les conditions de location font partie
             intégrante du contrat de location. Par sa signature, le
@@ -39,10 +45,11 @@ function TermeF({ onAccept }) {
             accepté les conditions de location.
           </b>
           <br />
-          <br/>
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>1. Prise en charge de l’équipement</b>
           <br />
-          
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>
+            1. Prise en charge de l’équipement
+          </b>
+          <br />
           Le preneur prend en charge le matériel en bon état de fonctionnement.
           Pour l'utilisation du matériel, le loueur s'engage à expliquer son
           fonctionnement pour que le preneur puisse l'utiliser en bonne et due
@@ -51,8 +58,10 @@ function TermeF({ onAccept }) {
           responsable d'une défaillance ultérieure, qu'elle soit matérielle ou
           physique.
           <br />
-          <br/>
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>2. Restitution de l’équipement</b>
+          <br />
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>
+            2. Restitution de l’équipement
+          </b>
           <br />
           Le preneur est tenu de restituer l’équipement au loueur au terme de la
           durée de location définie dans le contrat de location, et ce, pendant
@@ -64,7 +73,9 @@ function TermeF({ onAccept }) {
           matériels sont facturés aux tarifs publiés en magasin.
           <br />
           <br />
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>3. Prolongation de la durée de location</b>
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>
+            3. Prolongation de la durée de location
+          </b>
           <br />
           Une prolongation du contrat de location est uniquement possible avec
           l’assentiment du loueur avant la fin du contrat de location en cours.
@@ -77,20 +88,24 @@ function TermeF({ onAccept }) {
           location si le preneur ne prévient pas de son retard.
           <br />
           <br />
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>5. Âge minimal du preneur</b>
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>
+            5. Âge minimal du preneur
+          </b>
           <br />
           Le preneur doit être majeur le jour de la prise de possession du
           matériel.
           <br />
           <br />
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>6. Prestations et prix</b>
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>
+            6. Prestations et prix
+          </b>
           <br />
           Les tarifs en vigueur valables sont ceux publiés chez le loueur, sur
           sa plateforme de réservation et dans ses prospectus de l'année en
           cours.
           <br />
           <br />
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>7. Assurance</b>
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>7. Assurance</b>
           <br />
           L’assurance est à la charge du preneur. Par sa signature du contrat de
           location, le preneur confirme avoir couvert de façon adéquate les
@@ -100,14 +115,16 @@ function TermeF({ onAccept }) {
           risques en cas de dommage causé au matériel.
           <br />
           <br />
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>8. Casques</b>
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>8. Casques</b>
           <br />
           Un casque homologué est mis à disposition gratuitement à partir du
           3ème jour de location. En cas de chute, il est impératif au preneur de
           le signaler au loueur.
           <br />
           <br />
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>9. Responsabilité du preneur</b>
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>
+            9. Responsabilité du preneur
+          </b>
           <br />
           Le preneur s'engage à utiliser le matériel loué avec prudence, sans
           danger pour les tiers et conformément au code de la route et aux
@@ -124,13 +141,15 @@ function TermeF({ onAccept }) {
           facturée conformément aux tarifs en vigueur et affichés en magasin.
           <br />
           <br />
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>10. Caution</b>
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>10. Caution</b>
           <br />
           Le loueur demande une empreinte de carte bancaire comme caution contre
           la perte, le vol ou l’endommagement du matériel.
           <br />
           <br />
-          <b style={{textAlign:'justify' ,fontSize:'14px'}}>11. Droit applicable</b>
+          <b style={{ textAlign: "justify", fontSize: "14px" }}>
+            11. Droit applicable
+          </b>
           <br />
           Le contrat et les conditions générales de location sont exclusivement
           régis par le droit malgache. Préalablement à toute action en justice,
@@ -138,9 +157,14 @@ function TermeF({ onAccept }) {
           s'engagent à régler le différend qui les opposerait à l'amiable, par
           le biais, notamment, d'une procédure de conciliation.
         </Modal.Body>
-        
+
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleAccept}  style={{ color: "black" }} className="btn-solid">
+          <Button
+            variant="secondary"
+            onClick={handleAccept}
+            style={{ color: "white" }}
+            className="btn-solid"
+          >
             Accepter
           </Button>
         </Modal.Footer>

@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import TableRow from "../../../../components/componentproduct/tableRowMat";
+import AddProduit from "../AddProduit";
 
-function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
+function TabPaneProducts({ currentUserSession, setStateCrudProduct }) {
   const [imagesList, setImagesList] = useState([]);
   const [images, setImages] = useState([]);
   const [listImagesFile, setListImageFile] = useState([]);
@@ -13,66 +14,65 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
   const [stockMateriel, setStockMateriel] = useState();
   const [descriptionMateriel, setDescriptionMateriel] = useState("");
 
-
   const [listMateriel, setListMateriel] = useState([]);
   const [listMateriels, setListMateriels] = useState([]);
   const [currentUSer, setCurrentUser] = useState({});
 
-  const initAuthentification = () =>{
+  const initAuthentification = () => {
+    // initialisation donnée current user
+    axios
+      .post("http://localhost:8082/api/home/authentification", {
+        email: localStorage.getItem("email"),
+        password: localStorage.getItem("pwd"),
+      })
+      .then((response) => {
+        localStorage.setItem("currentUser", JSON.stringify(response.data));
+        setCurrentUser(response.data);
+        // setListMateriel(Array.from(response.data.materiels))
 
-      // initialisation donnée current user
-      axios
-        .post("http://localhost:8082/api/home/authentification", {
-          email: localStorage.getItem("email"),
-          password: localStorage.getItem("pwd"),
-        })
-        .then((response) => {
-          localStorage.setItem("currentUser", JSON.stringify(response.data));
-          setCurrentUser(response.data)
-          // setListMateriel(Array.from(response.data.materiels))
-
-          
-          // console.log(response.data)
-        }); 
-        initListMat()
-  }
+        // console.log(response.data)
+      });
+    initListMat();
+  };
   const initListMat = () => {
     // console.log(localStorage.getItem("crntUser"))
     axios
-        .get(
-          'http://localhost:8082/api/materiels/listMaterielByUser?param='+localStorage.getItem("crntUser")
-          // "http://localhost:8082/api/materiels/listMateriel"
-        )
-        .then((response) => {
-          // setListMateriel(response.data);
-          var dataList = response.data
-          setListMateriels(dataList)
-          // listMateriels.push(dataList)
-          // console.log(listMateriels)
-          
-          // setListMateriel(response.data)
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    
-  };
-  
-  useEffect(()=>{
-    initAuthentification()    
-    // console.log(listMateriels)
-  },[])
+      .get(
+        "http://localhost:8082/api/materiels/listMaterielByUser?param=" +
+          localStorage.getItem("crntUser")
+        // "http://localhost:8082/api/materiels/listMateriel"
+      )
+      .then((response) => {
+        // setListMateriel(response.data);
+        var dataList = response.data;
+        setListMateriels(dataList);
+        // listMateriels.push(dataList)
+        // console.log(listMateriels)
 
-  useEffect(()=>{console.log("bonjour test assync")},[setImagesList])
+        // setListMateriel(response.data)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    initAuthentification();
+    // console.log(listMateriels)
+  }, []);
+
+  useEffect(() => {
+    console.log("bonjour test assync");
+  }, [setImagesList]);
 
   // const maPromesse = new Promise((resolve, reject) => {
   //   initAuthentification()
   //   resolve(
   //     console.log(currentUSer)
   //   );
-    
+
   // })
-  
+
   // useEffect(() => {
 
   //   // console.log(currentUSer.idUser)
@@ -90,8 +90,6 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
   //       console.error(error);
   //     });
   // }, []);
-
-  
 
   const handleOnChangeNomMateriel = (e) => {
     setNomMateriel(e.target.value);
@@ -115,7 +113,7 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
     const formData = new FormData();
     formData.append("file", file);
 
-    // console.log(formData)
+    console.log(formData);
     // console.log("bonjour")
     axios
       .post("http://localhost:8082/api/materiels/file/upload", formData)
@@ -162,7 +160,7 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
       .catch((error) => {
         console.error(error);
       });
-      setStateCrudProduct()
+    setStateCrudProduct();
   };
 
   const handleImageChange = (e) => {
@@ -206,35 +204,33 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
           <div className="card dashboard-table mt-0">
             <div className="card-body">
               <div className="top-sec">
-                <h3>Tous les produits</h3>
-                <input
+                <h3>Tous les matériels</h3>
+                {/* <input
                   type="button"
                   className="btn btn-sm btn-solid"
                   aria-hidden="true"
                   data-bs-toggle="modal"
                   data-bs-target="#staticBackdropAddProduct"
                   value={"+ Ajouter Matériels"}
-                />
+                /> */}
+                <AddProduit setStateCrudProduct={setStateCrudProduct} />
               </div>
               <div className="table-responsive-md">
                 <table className="table mb-0 product-table">
                   <thead>
                     <tr>
-                      <th scope="col">image</th>
-                      <th scope="col">Nom du Matériels </th>
-                      <th scope="col">categories</th>
-                      <th scope="col">prix</th>
-                      <th scope="col">stock</th>
-                      <th scope="col">editer/Supprimer</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Designation</th>
+                      <th scope="col">Catégorie</th>
+                      <th scope="col">Prix journalier</th>
+                      <th scope="col">Quantité</th>
+                      <th scope="col">Editer/Supprimer</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {
-                      
-                      listMateriels.map((materiel)=>(
-                        <TableRow materielItem={materiel} />
-                      ))
-                    }
+                    {listMateriels.map((materiel) => (
+                      <TableRow materielItem={materiel} />
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -342,7 +338,7 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="categories" className="form-label">
-                    Catégorie:
+                    Catégorie
                   </label>
                   <select
                     class="form-select"
@@ -352,8 +348,15 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
                   >
                     <option selected>Choix de catégorie</option>
                     <option value="Motoculteur">Motoculteur</option>
-                    <option value="Tracteur">Tracteur</option>
-                    <option value="Camion">Camion</option>
+                    <option value="Tracteur/Charrue">
+                      Le tracteur et la charrue
+                    </option>
+                    <option value="Dechaumeur/Pulverisation">
+                      Le déchaumeur et le pulvérisateur
+                    </option>
+                    <option value="Semoir/moissonneuseBatteuse">
+                      Le semoir et la moissonneuse batteuse
+                    </option>
                   </select>
                 </div>
                 <div className="col-md-6">
@@ -408,7 +411,7 @@ function TabPaneProducts({ currentUserSession,setStateCrudProduct }) {
                 type="button"
                 className="btn btn-solid"
                 data-bs-dismiss="modal"
-                id="ajout" 
+                id="ajout"
               >
                 Annuler
               </button>

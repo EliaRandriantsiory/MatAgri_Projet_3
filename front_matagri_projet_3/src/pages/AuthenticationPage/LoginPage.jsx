@@ -1,12 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import "../assets/css/StyleLoginPage.css";
+import Avatar from "../avatar";
+import Connect from "../profiles";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isConnected, setIsConnected] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -20,31 +24,34 @@ function Login() {
         }
       );
       if (response.data) {
-        localStorage.setItem("currentUser",JSON.stringify(response.data))
-        localStorage.setItem("crntUser",response.data.idUser)
+        // Stocker les informations de l'utilisateur dans le local storage
+        localStorage.setItem("currentUser", JSON.stringify(response.data));
+        // localStorage.setItem("idUser", response.data.idUser); // Ajouter l'idUser
+        
+        // Gérer la redirection en fonction du profil de l'utilisateur
         if (response.data.profile.profile === "fournisseur") {
           navigate("/dashboard_fournisseur");
+          toast.success("Authentification réussie!!");
         } else if (response.data.profile.profile === "cooperative") {
-          navigate("/PageAccueilAgriculteur");
+          toast.success("Authentification réussie!!");
+          setIsConnected(true);
+          navigate("/");
         } else if (response.data.profile.profile === "agriculteur") {
-          navigate("/PageAccueilAgriculteur");
+          toast.success("Authentification réussie!!");
+          setIsConnected(true);
+          navigate("/");
         }
-
-        // localStorage.setItem('token', JSON.stringify(response.data.token));
-        localStorage.setItem("email", response.data.email);
-        localStorage.setItem("pwd", response.data.password);
-
-        
-        // localStorage.setItem('password', JSON.stringify(response.data.password));
+  
+        // Réinitialiser les champs email et password après soumission du formulaire
         setEmail("");
         setPassword("");
       }
     } catch (error) {
       setError("Email ou mot de passe incorrect.");
-      console.error("Login failed:", error);
+      console.error("Échec de la connexion:", error);
     }
   };
-
+  
   return (
     <section id="LoginPageSection" className="login-page section-b-space">
       <div className="container ">
@@ -84,6 +91,12 @@ function Login() {
           </div>
         </div>
       </div>
+      <ToastContainer/>
+      {isConnected ? (
+    <Connect isConnected={isConnected} />
+  ) : (
+    <Avatar />
+  )}
     </section>
   );
 }

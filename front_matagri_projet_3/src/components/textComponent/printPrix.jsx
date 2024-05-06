@@ -7,19 +7,23 @@ function PrintTextPrix(TextPrix, monnai) {
   // console.log(TextPrix.TextPrix);
 
   const transformSum = (sum) => {
-    const strSum = sum.toString();
-    const groups = [];
-    // console.log(strSum);
-    for (let i = strSum.length; i > 0; i -= 3) {
-      groups.unshift(strSum.slice(Math.max(0, i - 3), i));
+    // console.log(typeof sum);
+    if (typeof variable !== "string") {
+      // const strSum = sum.toString();
+      const strSum = String(sum);
+      const groups = [];
+
+      for (let i = strSum.length; i > 0; i -= 3) {
+        groups.unshift(strSum.slice(Math.max(0, i - 3), i));
+      }
+      return groups.join(" ");
     }
-    return groups.join(" ");
   };
 
   const transformedSum = transformSum(TextPrix.TextPrix);
   // console.log(transformedSum);
 
-  return <>{"Ar " + transformedSum + ",00"}</>;
+  return <>{"Ar " + transformedSum + ",00 / jour"}</>;
 }
 
 export default PrintTextPrix;

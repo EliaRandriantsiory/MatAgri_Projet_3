@@ -1,25 +1,37 @@
 import { Link } from "react-router-dom";
 import PrintTextPrix from "../textComponent/printPrix";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
+
 import Description from "../../pages/Dashboard/Fournisseur/description";
+import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
+
+import axios from "axios";
+import MyComponent from "../textComponent/testsaisiautomatique";
+import AjoutPanier from "./printDescMateriel";
+
 
 function ProductCard({ materialItem }) {
   const [quantity, setQuantity] = useState(1);
+  const [distance, setDistance] = useState("");
   const [listPanierMat, setListPanierMat] = useState([]);
   const [panierMAt, setPanierMat] = useState({});
 
+  const [notif, setNotif] = useState();
+
+  const [lieuExploitation, setLieuExploitation] = useState("");
+
+
   const incrementQuantity = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
+    setQuantity((prevQuantity) => prevQuantity + 1);
   };
   const decrementQuantity = () => {
     if (quantity > 1) {
-      setQuantity(prevQuantity => prevQuantity - 1);
+      setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
 
   const handleOnClickAddCard = (event) => {
-    // console.log(materialItem);
     setPanierMat({
       materiel: {
         materielId: materialItem.materielId,
@@ -32,40 +44,19 @@ function ProductCard({ materialItem }) {
         id_user: materialItem.id_user,
         prixMAt: materialItem.prixMAt,
       },
-      users: {
-        // idUser: 1,
-        // name: null,
-        // lastname: null,
-        // address: null,
-        // phone: null,
-        // nif: null,
-        // stat: null,
-        // cin: null,
-        // email: "rakoto@gmail.com",
-        // region: null,
-        // nbFarme: null,
-        // companyName: null,
-        // password: "rakoto",
-        // materiels: [],
-        // profile: {
-        //   idprofile: 1,
-        //   profile: "agriculteur",
-        //   roles: [],
-        // },
-      },
+      users: {},
       quantity: 2,
-      startDate: "2024-11-15",
-      endDate: "2024-11-05",
-    });
+      startDate: "15/11/2024",
+      endDate: "25/11/2024",
 
-    // listPanierMat.push(panierMAt);
+    });
   };
   useEffect(() => {
-    if(Object.keys(panierMAt).length!==0){
-      const cmd = listPanierMat.push(panierMAt)
+    if (Object.keys(panierMAt).length !== 0) {
+      const cmd = listPanierMat.push(panierMAt);
       setListPanierMat([...listPanierMat, panierMAt]);
       localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-      // console.log(listPanierMat)
+
     }
     // console.log(listPanierMat);
   }, [panierMAt]);
@@ -73,10 +64,43 @@ function ProductCard({ materialItem }) {
   useEffect(() => {
     console.log(listPanierMat.length);
   }, [localStorage.getItem("listpanier")]);
+
+  const handleLieuExploitationChange = (event) => {
+    setLieuExploitation(event.target.value);
+  };
+
+  const handleValidationClick = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8082/distance/calculate/${materialItem?.materielId}`,
+        {
+          destination: lieuExploitation,
+        }
+      );
+      if (response.status === 200) {
+        setDistance(response.data);
+        return response.data;
+      }
+    } catch (error) {
+      return "Une erreur s'est produite lors du calcul de la distance";
+    }
+  };
+
+  useEffect(() => {
+    if (lieuExploitation === "") {
+      setDistance("");
+    }
+  }, [lieuExploitation]);
   return (
     <>
       <div className="col-xl-3 col-6 col-grid-box">
-        <div className="product-box">
+        <div
+          className="product-box"
+          style={{
+            minHeight: "500px",
+            minWidth: "200px",
+          }}
+        >
           <div className="img-wrapper">
             <div className="front">
               <a href="#">
@@ -107,14 +131,15 @@ function ProductCard({ materialItem }) {
               <a href="javascript:void(0)" title="Add to Wishlist">
                 <i className="ti-heart" aria-hidden="true" />
               </a>{" "}
-              <a
+              <AjoutPanier materialItem={materialItem} />
+              {/* <a
                 href="#"
                 data-bs-toggle="modal"
                 data-bs-target="#quick-view"
                 title="Quick View"
               >
                 <i className="ti-search" aria-hidden="true" />
-              </a>{" "}
+              </a>{" "} */}
               <a href="compare.html" title="Compare">
                 <i className="ti-reload" aria-hidden="true" />
               </a>
@@ -128,13 +153,30 @@ function ProductCard({ materialItem }) {
                 <i className="fa fa-star" />
               </div>
               <a href="product-page(no-sidebar).html">
-                <h6>{materialItem.nomMat}</h6>
+                <h6>
+                  <b>{materialItem.nomMat}</b>
+                </h6>
               </a>
-              <p>{materialItem.descriptionMat} </p>
+
+              <p>
+                {" "}
+                <PrintDetailTechMat
+                  desctechMat={materialItem.techniqueMat}
+                />{" "}
+              </p>
+
               <h4>
                 <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
               </h4>
             </div>
+            {/* 
+            <a href="product-page(no-sidebar).html">
+              <h6>{materialItem.nomMat}</h6>
+            </a>
+            <p>{materialItem.descriptionMat} </p>
+            <h4>
+              <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
+            </h4> */}
           </div>
         </div>
       </div>
@@ -177,7 +219,7 @@ function ProductCard({ materialItem }) {
                 </div>
                 <div className="col-lg-6 rtl-text">
                   <div className="product-right">
-                   <h2 className="product-title">Infos supplémentaire</h2>
+                    <h2 className="product-title">Infos supplémentaire</h2>
                     <div className="border-product">
                       <h2>{materialItem.name}</h2>
                       <p>{materialItem.descriptionMat}</p>
@@ -185,13 +227,46 @@ function ProductCard({ materialItem }) {
                     <label className=""> Entrer votre plage de date :</label>
                     <ReserverPanier />
                     <br />
-                    <label className="">Entrer votre lieu d'exploitation :</label>
+
+                    {/* <label className="">
+                      Entrer votre lieu d'exploitation :
+                    </label>
                     <input
                       type="text"
                       className="form-control"
                       placeholder="Lieu d'exploitation"
-                      style={{ opacity: 0.7, fontSize: '0.9rem' }}
-                    />
+                      style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                    /> */}
+
+                    <div className="d-flex align-items-start">
+                      <label className="d-block mb-2">
+                        Entrer votre lieu d'exploitation :
+                      </label>
+                      <div className="d-flex">
+                      {/* <MyComponent handleLieuExploitationChange={handleLieuExploitationChange} /> */}
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Lieu d'exploitation"
+                          style={{ opacity: 0.7, fontSize: "0.9rem",}}
+                          value={lieuExploitation}
+                          onChange={handleLieuExploitationChange}
+                        />
+                        <button
+                          className="btn btn-solid"
+                          disabled={
+                            lieuExploitation === "" || lieuExploitation.length === 0 ? true : false}
+                          onClick={() => handleValidationClick()}
+                          style={{border: "none"}}
+                        >
+                          Valider
+                        </button>
+                      </div>
+                    </div>
+                    <label className="d-block mb-2">
+                      Votre distance est de :{distance ? distance : ""}
+                    </label>
+
                     <br />
                     {/* Quantité */}
                     <div className="product-description border-product">
@@ -202,7 +277,8 @@ function ProductCard({ materialItem }) {
                             <button
                               type="button"
                               className="btn quantity-left-minus"
-                              onClick={decrementQuantity}>
+                              onClick={decrementQuantity}
+                            >
                               <i className="ti-angle-left" />
                             </button>{" "}
                           </span>
@@ -218,7 +294,8 @@ function ProductCard({ materialItem }) {
                             <button
                               type="button"
                               className="btn quantity-right-plus"
-                              onClick={incrementQuantity}>
+                              onClick={incrementQuantity}
+                            >
                               <i className="ti-angle-right" />
                             </button>
                           </span>

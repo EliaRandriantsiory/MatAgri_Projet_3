@@ -1,72 +1,112 @@
 import React, { useState } from "react";
-import dayjs from "dayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { Modal, Button } from "react-bootstrap";
+import { DateRange, DateRangePicker } from "react-date-range";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import CheckIcon from "@mui/icons-material/Check";
 
-function ReserverPanier({ open, onClose }) {
-  const [date_d, setDate_d] = useState(dayjs());
-  const [date_f, setDate_f] = useState(dayjs());
-  const [nombreJours, setNombreJours] = useState(0);
-  const [error, setError] = useState("");
+const ReserverPanier = () => {
+  const [selectedDates, setSelectedDates] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+  const [showCalendar, setShowCalendar] = useState(false);
 
-  const handleDateChange_d = (e) => {
-    const newDate = dayjs(e.target.value);
-    console.log("New date for date_d:", newDate);
-    setDate_d(newDate);
-    if (newDate.isAfter(date_f)) {
-      setError("La date de début ne peut pas être après la date de fin");
-    } else {
-      setError("");
-      calculateNumberOfDays(newDate, date_f);
-    }
+  const handleOpenCalendar = () => {
+    setShowCalendar(true);
   };
 
-  const handleDateChange_f = (e) => {
-    const newDate = dayjs(e.target.value);
-    console.log("New date for date_f:", newDate);
-    setDate_f(newDate);
-    if (newDate.isBefore(date_d)) {
-      setError("La date de fin ne peut pas être avant la date de début");
-    } else {
-      setError("");
-      calculateNumberOfDays(date_d, newDate);
-    }
+  const handleCloseCalendar = () => {
+    setShowCalendar(false);
   };
 
-  const calculateNumberOfDays = (start, end) => {
-    const diffInDays = end.diff(start, 'day');
-    setNombreJours(diffInDays);
+  const handleConfirmSelection = () => {
+    setShowCalendar(false);
+  };
+
+  const calculateNumberOfDays = (startDate, endDate) => {
+    const oneDay = 24 * 60 * 60 * 1000; // Convert one day to milliseconds
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const diffDays = Math.round(Math.abs((start - end) / oneDay) + 1);
+    return diffDays;
   };
 
   return (
-    <>
-      <div className="row">
-        <div className="col-md-6">
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <input
-              type="date"
-              value={date_d.format("YYYY-MM-DD")}
-              onChange={handleDateChange_d}
+    <div>
+      <Button
+        className="btn-solid btn-xs"
+        style={{ border: "none", textTransform: "none" }}
+        onClick={handleOpenCalendar}
+      >
+        <CalendarTodayIcon style={{ paddingRight: "5px" }} />
+        Sélectionner une date
+      </Button>
+
+      <Modal
+        show={showCalendar}
+        onHide={handleCloseCalendar}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Sélectionner une plage de dates</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="datepicker-wrapper">
+            <DateRange
+              className="datepicker"
+              ranges={selectedDates}
+              onChange={(ranges) => setSelectedDates([ranges.selection])}
+              rangeColors={["#FFD700"]}
+              showSelectionPreview={false}
+              showMonthAndYearPickers={false}
+              showDateDisplay={false}
+              showPreview={true}
+              staticRanges={[]}
+              inputRanges={[]}
+              style={{ width: "470px", height: "250px" }}
             />
-          </LocalizationProvider>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            style={{ backgroundColor: "brown", border: "none" }}
+            onClick={handleCloseCalendar}
+          >
+            Fermer
+          </Button>
+          <Button
+            className="btn-solid btn-xs"
+            style={{ border: "none" }}
+            onClick={handleConfirmSelection}
+          >
+            <CheckIcon /> Confirmer la sélection
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      {selectedDates[0] && (
+        <div>
+          <p>
+            Intervalle de dates sélectionné :{" "}
+            {selectedDates[0].startDate.toLocaleDateString()} -{" "}
+            {selectedDates[0].endDate.toLocaleDateString()}
+          </p>
+          <p>
+            Nombre de jours :{" "}
+            {calculateNumberOfDays(
+              selectedDates[0].startDate,
+              selectedDates[0].endDate
+            )}
+          </p>
         </div>
-        <div className="col-md-6">
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <input
-              type="date"
-              value={date_f.format("YYYY-MM-DD")}
-              onChange={handleDateChange_f}
-            />
-          </LocalizationProvider>
-        </div>
-      </div>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <div>
-        <br />
-        Nombre de jours : {nombreJours}
-      </div>
-    </>
+      )}
+    </div>
   );
-}
+};
 
 export default ReserverPanier;
