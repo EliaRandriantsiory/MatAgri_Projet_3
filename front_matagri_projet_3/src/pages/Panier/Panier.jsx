@@ -47,17 +47,17 @@ function Panier() {
       console.log(commande);
       console.log(commande.quantity);
       // console.log(new Date())
-      // console.log(calculeDifferenceDate("22/04/2024","25/05/2024"))
+      console.log(calculeDifferenceDate(commande.startDate,commande.endDate)+1)
       // console.log(commande.materiel.prixMAt);
-      
+      console.log(commande.quantity+commande.materiel.prixMAt)
       let prixlocationMat =
         commande.quantity *
-        calculeDifferenceDate(commande.startDate, commande.endDate) *
+        (calculeDifferenceDate(commande.startDate, commande.endDate)+1) *
         commande.materiel.prixMAt;
       prxTotal += prixlocationMat;
 
-      // setsommePrixTotal(sommePrixTotal+prixlocationMat)
-      // console.log(sommePrixTotal+prixlocationMat)
+      setsommePrixTotal(sommePrixTotal+prixlocationMat)
+      // console.log("prix Total: "+sommePrixTotal+prixlocationMat)
 
       // const differenceDate = calculeDifferenceDate(
       //   commande.startDate,
@@ -74,7 +74,7 @@ function Panier() {
       // console.log(commande.endDate)
       // console.log(differenceDate)
     });
-    setsommePrixTotal(prxTotal + prixLivraison);
+    // setsommePrixTotal(prxTotal + prixLivraison);
   };
 
   const handleCloseRowPanier = (index) => {
@@ -102,6 +102,7 @@ function Panier() {
     currentPanierMat[index].startDate=startDateCrenau
     currentPanierMat[index].endDate=endDateCrenau
     localStorage.setItem("listpanier",JSON.stringify(currentPanierMat))
+    console.log(currentPanierMat)
   };
 
   useEffect(() => {
@@ -114,7 +115,7 @@ function Panier() {
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
     console.log(JSON.parse(localStorage.getItem("listpanier")))
-    // CalculeSommePrixTotal();
+    CalculeSommePrixTotal();
   }, []);
 
   return (

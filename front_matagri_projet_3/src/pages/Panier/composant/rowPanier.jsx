@@ -15,6 +15,7 @@ function RowPanierComponent({
 }) {
   const [materielItem, setMaterielItem] = useState({});
   const [qt, setQt] = useState(1);
+  const [prixMat, setPrixMat] = useState()
   const [matPanier, setMatPanier] = useState({});
   const [nomMat, setNomMat] = useState();
   const [prixTotal, setPrixTotal] = useState(0);
@@ -28,21 +29,58 @@ function RowPanierComponent({
       setQt(materielItem_.quantity);
       setMatPanier(materielItem_.materiel);
       setNomMat(materielItem_.nomMat);
+      setMatPanier(materielItem_)
+      setPrixMat(materielItem_.materiel.prixMAt)
+      setStartDateCrenau(materielItem_.startDate)
+      setEndDateCrenau(materielItem_.endDate)
 
-      setPrixTotal(materielItem_.materiel.prixMAt * materielItem_.quantity);
+      setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
       // setsommePrix(sommePrix+prixTotal)
+      
       // console.log(sommePrix+prixTotal)
     }
   }, []);
 
   useEffect(() => {
-    // materielItem_=materielItem_.quantity=qt
+
+    setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
+  },[endDateCrenau,startDateCrenau])
+
+  useEffect(() => {
+    console.log(qt)
+    // materielItem_.quantity=qt
     // console.log(materielItem_)
-    // updatePanierMatData(index, materielItem_,qt , prixTotal,startDateCrenau, endDateCrenau);
+    updatePanierMatData(index, materielItem_,qt , prixTotal,startDateCrenau, endDateCrenau);
   }, [prixTotal]);
+
+  function calculeDifferenceDate(startDateString, endDateString) {
+    const startDateParts = startDateString.split("/");
+    const startDate = new Date(
+      parseInt(startDateParts[2]),
+      parseInt(startDateParts[1]) - 1,
+      parseInt(startDateParts[0])
+    );
+    const endDateParts = endDateString.split("/");
+    const endDate = new Date(
+      parseInt(endDateParts[2]),
+      parseInt(endDateParts[1]) - 1,
+      parseInt(endDateParts[0])
+    );
+
+    // Calculer la différence en millisecondes
+    const differenceInMilliseconds = endDate.getTime() - startDate.getTime();
+
+    // Convertir la différence en jours
+    const differenceInDays = Math.floor(
+      differenceInMilliseconds / (1000 * 60 * 60 * 24)
+    );
+    // console.log(differenceInDays)
+    return differenceInDays;
+  }
 
   const handleNbrJourChange = (event) => {
     setNombreJourLocation(event.target.value);
+    console.log(calculeDifferenceDate(materielItem_.startDate,materielItem_.endDate)+1)
     setPrixTotal(qt * materielItem_.materiel.prixMAt * nombreJourLocation);
   };
 
@@ -62,9 +100,17 @@ function RowPanierComponent({
   };
   const handleQuantityChange = (event) => {
     let qtt = event.target.value;
-    // console.log(qtt)
+
     setQt(qtt);
-    setPrixTotal(qtt * materielItem_.materiel.prixMAt * nombreJourLocation);
+
+    
+    //console.log(materielItem_)
+    // console.log(materielItem_.materiel.prixMAt)
+    const {prixMAt} = {...materielItem_.materiel}
+    console.log(startDateCrenau+endDateCrenau)
+    console.log( calculeDifferenceDate(startDateCrenau,endDateCrenau)+1)
+
+    setPrixTotal(qtt * materielItem_.materiel.prixMAt * (calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
   };
   if (materielItem_ !== null) {
     return (

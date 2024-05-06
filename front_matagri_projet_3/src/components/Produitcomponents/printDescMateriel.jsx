@@ -72,6 +72,7 @@ function AjoutPanier({ materialItem,setPanierMat }) {
       startDate: startDateCrenau,
       endDate: endDateCrenau,
     });
+    handleCloseDescMat()
   };
   // useEffect(() => {
   //   if (Object.keys(panierMAt).length !== 0) {

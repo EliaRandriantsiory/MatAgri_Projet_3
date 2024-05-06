@@ -5,118 +5,21 @@ import ProductCard from "../../components/Produitcomponents/cartesProduitCompnen
 
 function Material({}) {
   const [listMateriel, setListMateriel] = useState([]);
-  const [panierMAt, setPanierMat] = useState(null);
-  const [listPanierMat, setListPanierMat] = useState([]);
+  const [addPanier, setAddPanier] = useState()
+
+
+  function updateAddPanier  (panierMAt) {
+    setAddPanier(panierMAt)
+  }
   useEffect(() => {
-    setListPanierMat(JSON.parse(localStorage.getItem("listpanier")));
-  }, []);
+    console.log(localStorage.getItem("listpanier"));
+    
+  }, []);  
+
   useEffect(() => {
-    // console.log(Object.keys(listPanierMat).length)
-
-    console.log(listPanierMat);
-    console.log(panierMAt);
-    if (listPanierMat[0] === null) {
-      setListPanierMat([panierMAt]);
-      localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-      console.log("bonjour");
-    } else {
-      setListPanierMat([...listPanierMat, panierMAt]);
-      // listPanierMat.push(panierMAt)
-      // console.log(listPanierMat)
-      console.log(panierMAt);
-      console.log("non");
-    }
-    //   else if(Object.keys(listPanierMat).length===0){
-    //     setListPanierMat([panierMAt])
-    //     // console.log("oui")
-    //   }
-    //
-
-    // console.log(listPanierMat)
-    // console.log("bonjour")
-    // console.log(panierMAt)
-    // // console.log(JSON.parse(localStorage.getItem("listpanier")))
-    // // setListPanierMat(JSON.parse(localStorage.getItem("listpanier")))
-    // // JSON.parse(localStorage.getItem("listpanier"))[0]===null? console.log("oui"):console.log("non")
-    // if (listPanierMat[0]===null){
-    //   setListPanierMat([panierMAt])
-    // }
-    // else if(Object.keys(listPanierMat).length===0){
-    //   setListPanierMat([panierMAt])
-    //   // console.log("oui")
-    // }
-    // else{
-    //   // setListPanierMat(...listPanierMat,panierMAt)
-    //   // listPanierMat.push(panierMAt)
-    //   // console.log(listPanierMat)
-    //   console.log(panierMAt)
-    //   console.log("non")
-    // }
-    // console.log(listPanierMat)
-
-    // console.log(Object.keys(JSON.parse(localStorage.getItem("listpanier"))[0]).length)
-
-    // console.log("bonjour panier")
-    // if(panierMAt!==null){
-    //   console.log("panier not null")
-    //   if(!(JSON.parse(localStorage.getItem("listpanier")))){
-    //     console.log("panier localstorage non exsistant")
-    //     setListPanierMat(panierMAt)
-    //     // console.log(panierMAt)
-    //     localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-    //   }
-    //   else{
-    //     console.log(JSON.parse(localStorage.getItem("listpanier")))
-    //     setListPanierMat(JSON.parse(localStorage.getItem("listpanier")),panierMAt)
-    //     // setListPanierMat([...listPanierMat, panierMAt]);
-    //     localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-    //     console.log("panier exsistant")
-    //   }
-    // }
-    // else{console.log("pannier  null")}
-
-    // if(panierMAt)
-    // console.log(Object.keys(listPanierMat[0]).length)
-
-    // console.log(JSON.parse(localStorage.getItem("listpanier"))[0]===null ? console.log("oui"):console.log("non"))
-    // if (Object.keys(JSON.parse(localStorage.getItem("listpanier"))).length===0){
-    //   // console.log("oui")
-    //    console.log(panierMAt)
-    //   console.log("nouveau panier")
-    //   setListPanierMat([panierMAt]);
-    //   localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-    // }
-    // else{
-    //   // console.log("non")
-    //   console.log("ajout panier")
-    //   const cmd = listPanierMat.push(panierMAt);
-    //   setListPanierMat([...listPanierMat, panierMAt]);
-    //   localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-    // }
-    // console.log(listPanierMat)
-
-    // if (Object.keys(listPanierMat[0]).length === 0) {
-
-    //   // console.log(panierMAt)
-    //   console.log("nouveau panier")
-    //   setListPanierMat([panierMAt]);
-    //   localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-
-    // }
-    // else{
-    //   console.log("ajout panier")
-    //   const cmd = listPanierMat.push(panierMAt);
-    //   setListPanierMat([...listPanierMat, panierMAt]);
-    //   localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-
-    // }
-  }, [panierMAt]);
-  useEffect(() => {
-    console.log(listPanierMat);
-    localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-  }, [listPanierMat]);
-
-
+    // console.log(localStorage.getItem("listpanier"));
+    console.log(addPanier)
+  }, [addPanier]);  
 
 
   useEffect(() => {
@@ -202,7 +105,7 @@ function Material({}) {
                         <div className="row margin-res">
                           {listMateriel.map((material) => (
                             <>
-                              <ProductCard materialItem={material} setPanierMat={setPanierMat} />
+                              <ProductCard materialItem={material} updateAddPanier={updateAddPanier} addPanier={addPanier}   />
                             </>
                           ))}
                           {/* <ProductsCard /> */}

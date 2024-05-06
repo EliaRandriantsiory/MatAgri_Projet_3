@@ -6,7 +6,7 @@ import "react-date-range/dist/theme/default.css";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CheckIcon from "@mui/icons-material/Check";
 
-function  ReserverPanier ({setStartDateCrenau,setEndDateCrenau}) {
+function ReserverPanier({ setStartDateCrenau, setEndDateCrenau }) {
   const [selectedDates, setSelectedDates] = useState([
     {
       startDate: new Date(),
@@ -17,11 +17,12 @@ function  ReserverPanier ({setStartDateCrenau,setEndDateCrenau}) {
 
   useEffect(() => {
     // console.log(setTestStartDate)
-    setStartDateCrenau(selectedDates[0].startDate.toLocaleDateString())
-    setEndDateCrenau(selectedDates[0].endDate.toLocaleDateString())
+    console.log(selectedDates[0]);
+    setStartDateCrenau(selectedDates[0].startDate.toLocaleDateString());
+    setEndDateCrenau(selectedDates[0].endDate.toLocaleDateString());
     // setEndDate(selectedDates[0].endDate.toLocaleDateString())
     // setStartDate(selectedDates[0].startDate.toLocaleDateString())
-  },[selectedDates])
+  }, [selectedDates]);
 
   const [showCalendar, setShowCalendar] = useState(false);
 
@@ -76,7 +77,9 @@ function  ReserverPanier ({setStartDateCrenau,setEndDateCrenau}) {
               showMonthAndYearPickers={false}
               showDateDisplay={false}
               showPreview={true}
-              staticRanges={[]}
+              staticRanges={[
+                
+              ]}
               inputRanges={[]}
               style={{ width: "470px", height: "250px" }}
             />
@@ -116,6 +119,6 @@ function  ReserverPanier ({setStartDateCrenau,setEndDateCrenau}) {
       )}
     </div>
   );
-};
+}
 
 export default ReserverPanier;
