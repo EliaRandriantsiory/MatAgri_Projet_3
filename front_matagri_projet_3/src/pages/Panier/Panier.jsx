@@ -99,10 +99,10 @@ function Panier() {
   ) => {
     let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
 
-    currentPanierMat[index].quantity=qt
-    currentPanierMat[index].startDate=startDateCrenau
-    currentPanierMat[index].endDate=endDateCrenau
-    localStorage.setItem("listpanier",JSON.stringify(currentPanierMat))
+    // currentPanierMat[index].quantity=qt
+    // currentPanierMat[index].startDate=startDateCrenau
+    // currentPanierMat[index].endDate=endDateCrenau
+    // localStorage.setItem("listpanier",JSON.stringify(currentPanierMat))
     console.log(currentPanierMat)
 
   };
@@ -116,7 +116,7 @@ function Panier() {
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
     console.log(JSON.parse(localStorage.getItem("listpanier")))
-    CalculeSommePrixTotal();
+    // CalculeSommePrixTotal();
   }, []);
 
   return (

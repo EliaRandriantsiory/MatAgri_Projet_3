@@ -26,7 +26,7 @@ function Paiement() {
   }
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    CalculeSommePrixTotal()
+    // CalculeSommePrixTotal()
     console.log(sommePrixTotal)
   },[])
 
@@ -63,7 +63,7 @@ function Paiement() {
     let prxTotal = 0;
     JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
       console.log(commande);
-      console.log(commande.quantity);
+      // console.log(commande.quantity);
       // console.log(new Date())
       // console.log(calculeDifferenceDate("22/04/2024","25/05/2024"))
       // console.log(commande.materiel.prixMAt);

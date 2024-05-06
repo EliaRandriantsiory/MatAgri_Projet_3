@@ -21,15 +21,16 @@ function Navigation() {
       .then((response) => {
         setCurrentProfilUser(response.data);
         localStorage.setItem("currentUser", JSON.stringify(response.data));
+      }).catch((error) => {
+        console.error(error);
+        navigate("/home");
       });
   }, []);
 
   useEffect(() => {
     // console.log(currentProfilUser)
   }, [currentProfilUser]);
-  if (!currentProfilUser) {
-    navigate("/home");
-  }
+  
 
   // console.log(listMateriel);
 
@@ -152,8 +153,8 @@ function Navigation() {
           <div className="tab-pane fade" id="profile">
             <TabPaneProfile />
           </div>
-        </div>
-        <ToastContainer />
+        </div> 
+         <ToastContainer />
       </div>
     </div>
   );

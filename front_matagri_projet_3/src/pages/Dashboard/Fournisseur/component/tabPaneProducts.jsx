@@ -35,11 +35,11 @@ function TabPaneProducts({ currentUserSession, setStateCrudProduct }) {
     initListMat();
   };
   const initListMat = () => {
-    // console.log(localStorage.getItem("crntUser"))
+    console.log(JSON.parse(localStorage.getItem("currentUser")).idUser)
     axios
       .get(
         "http://localhost:8082/api/materiels/listMaterielByUser?param=" +
-          localStorage.getItem("crntUser")
+          JSON.parse(localStorage.getItem("currentUser")).idUser
         // "http://localhost:8082/api/materiels/listMateriel"
       )
       .then((response) => {
@@ -47,7 +47,7 @@ function TabPaneProducts({ currentUserSession, setStateCrudProduct }) {
         var dataList = response.data;
         setListMateriels(dataList);
         // listMateriels.push(dataList)
-        // console.log(listMateriels)
+        console.log(response.data)
 
         // setListMateriel(response.data)
       })
