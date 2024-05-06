@@ -1,6 +1,22 @@
 import NombreToLetter from "../utils/nombreEnLettre";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 function DevisComponents() {
+  const exportPDF = () => {
+    const input = document.getElementById("pdf-content"); // Obtenez une référence à l'élément contenant le contenu à inclure dans le PDF
+
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "pt", "a4");
+
+      const width = pdf.internal.pageSize.getWidth();
+      const height = (canvas.height * width) / canvas.width;
+
+      pdf.addImage(imgData, "PNG", 0, 0, width, height);
+      pdf.save("demo.pdf");
+    });
+  };
   return (
     <div>
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -58,7 +74,7 @@ function DevisComponents() {
       <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
       {/* invoice 1 start */}
       <section className="theme-invoice-1 section-b-space">
-        <div className="container">
+        <div className="container" id="pdf-content">
           <div className="row">
             <div className="col-xl-8 m-auto">
               <div className="invoice-wrapper">
@@ -129,6 +145,27 @@ function DevisComponents() {
                         <td>12-03-2024</td>
                         <td>07-04-2024</td>
                         <td>120 000 Ar</td>
+                      </tr><tr>
+                        <td>kubota</td>
+                        <td>kubota 220cv</td>
+                        <td>120 000 Ar</td>
+                        <td>12-03-2024</td>
+                        <td>07-04-2024</td>
+                        <td>120 000 Ar</td>
+                      </tr><tr>
+                        <td>kubota</td>
+                        <td>kubota 220cv</td>
+                        <td>120 000 Ar</td>
+                        <td>12-03-2024</td>
+                        <td>07-04-2024</td>
+                        <td>120 000 Ar</td>
+                      </tr><tr>
+                        <td>kubota</td>
+                        <td>kubota 220cv</td>
+                        <td>120 000 Ar</td>
+                        <td>12-03-2024</td>
+                        <td>07-04-2024</td>
+                        <td>120 000 Ar</td>
                       </tr>
                     </tbody>
                   </table>
@@ -161,9 +198,9 @@ function DevisComponents() {
                     </tbody>
                   </table>
                 </div>
-                <div style={{textAlign:"center"}}>
-                  <label style={{ fontWeight: "bold", marginRight: "25px",  }}>
-                    Arrêté le présent devis à la somme de : 
+                <div style={{ textAlign: "center" }}>
+                  <label style={{ fontWeight: "bold", marginRight: "25px" }}>
+                    Arrêté le présent devis à la somme de :
                   </label>
                   <label
                     style={{
@@ -184,13 +221,12 @@ function DevisComponents() {
                     >
                       Exporter en PDF
                     </a>
-                    <a
-                      href="#"
+                    <button
                       className="btn btn-solid rounded-2"
-                      onclick="window.print();"
+                      onClick={exportPDF}
                     >
                       Imprimer
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
