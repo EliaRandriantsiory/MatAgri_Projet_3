@@ -20,12 +20,10 @@ import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
 
-
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
 
 import PanierTest from "./pages/Panier/paniertest";
-
 
 // import TermeF from "./pages/AuthenticationPage/TermeF";
 // import Terme from "./pages/AuthenticationPage/Terme";
@@ -39,6 +37,7 @@ import Distance from "./pages/Panier/calculDistance";
 
 import Devis from "./components/textComponent/Devis";
 import Paiement from "./components/Payement/Paiement";
+import Payment from "./pages/Payment";
 
 function App() {
   return (
@@ -80,6 +79,7 @@ function App() {
         </Route>
         <Route path="/carouselImage" element=<homePage /> />
         <Route path="/dashboard_fournisseur" element=<Dashboard /> />
+        <Route path="/payment" element=<Payment /> />
         <Route path="/terme" element=<Terme /> />
       </Routes>
       {/* <Route path="/Panier" element=<Panier /> />
@@ -120,7 +120,6 @@ function App() {
         <Route path="/sectionService" element=<ServiceSection /> />
         <Route path="/sectionLogo" element=<LogoSection /> />
       </Routes>*/}
-
     </BrowserRouter>
   );
 }

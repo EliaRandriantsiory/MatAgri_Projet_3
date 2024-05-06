@@ -10,7 +10,7 @@ import java.util.Map;
 public class StripeClient {
 
     public StripeClient() {
-        Stripe.apiKey = "secret-key";
+        Stripe.apiKey = "sk_test_51PCejO2NXmTUFLRD5LEsQ6MFlnHle3Al3wvHI99g5Wl8CQxYau7lKxOziWFyy6abUwDr1DWc3JkKhmN3lHMxP9aS006wDgeZAn";
     }
 
     public Customer createCustomer(String token, String email) throws Exception {
@@ -25,7 +25,7 @@ public class StripeClient {
     public Charge chargeNewCard(String token, double amount) throws Exception {
         Map<String, Object> chargeParams = new HashMap<String, Object>();
         chargeParams.put("amount", (int)(amount * 100));
-        chargeParams.put("currency", "USD");
+        chargeParams.put("currency", "MGA");
         chargeParams.put("source", token);
         Charge charge = Charge.create(chargeParams);
         return charge;
@@ -34,7 +34,7 @@ public class StripeClient {
         String sourceCard = getCustomer(customerId).getDefaultSource();
         Map<String, Object> chargeParams = new HashMap<String, Object>();
         chargeParams.put("amount", amount);
-        chargeParams.put("currency", "USD");
+        chargeParams.put("currency", "MGA");
         chargeParams.put("customer", customerId);
         chargeParams.put("source", sourceCard);
         Charge charge = Charge.create(chargeParams);
