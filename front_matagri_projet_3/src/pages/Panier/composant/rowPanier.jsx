@@ -4,6 +4,7 @@ import PrintTextPrix from "../../../components/textComponent/printPrix";
 import PrintPrixUser from "../../../components/textComponent/printPrixUser";
 import ReserverPanier from "../reserverAddPanier";
 import PrintDetailTechMat from "../../../components/textComponent/printDescTechMateriel";
+import ReserverPanierRowPanier from "../reserverAddPanierComposant";
 
 function RowPanierComponent({
   materielItem_,
@@ -47,7 +48,7 @@ function RowPanierComponent({
   },[endDateCrenau,startDateCrenau])
 
   useEffect(() => {
-    console.log(qt)
+    // console.log(qt)
     // materielItem_.quantity=qt
     // console.log(materielItem_)
     updatePanierMatData(index, materielItem_,qt , prixTotal,startDateCrenau, endDateCrenau);
@@ -168,7 +169,7 @@ function RowPanierComponent({
         </td>
         <td>
           <div>
-          <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau} />
+          <ReserverPanierRowPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau} />
             {/* <Reserver /> */}
             {/* <input
               type="number"

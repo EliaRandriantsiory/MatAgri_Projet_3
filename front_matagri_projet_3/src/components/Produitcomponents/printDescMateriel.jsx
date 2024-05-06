@@ -9,6 +9,7 @@ import MyComponent from "../textComponent/testsaisiautomatique";
 import axios from "axios";
 import PrintPrixUser from "../textComponent/printPrixUser";
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
+import SaisieAutomatiqueVille from "../textComponent/testsaisiautomatique";
 function AjoutPanier({ materialItem,setPanierMat }) {
   const [quantityPanier, setQuantity] = useState(1);
   const [distance, setDistance] = useState("");
@@ -162,11 +163,7 @@ function AjoutPanier({ materialItem,setPanierMat }) {
                     Entrer votre lieu d'exploitation :
                   </label>
                   <div className="d-flex">
-                    {/* <MyComponent
-                        handleLieuExploitationChange={
-                          handleLieuExploitationChange
-                        }
-                      /> */}
+                    {/* <SaisieAutomatiqueVille /> */}
                     <input
                       type="text"
                       className="form-control"

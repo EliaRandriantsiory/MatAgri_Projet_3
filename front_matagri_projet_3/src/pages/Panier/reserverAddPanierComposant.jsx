@@ -6,7 +6,7 @@ import "react-date-range/dist/theme/default.css";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CheckIcon from "@mui/icons-material/Check";
 
-function ReserverPanier({ setStartDateCrenau, setEndDateCrenau }) {
+function ReserverPanierRowPanier({ setStartDateCrenau, setEndDateCrenau }) {
   const [selectedDates, setSelectedDates] = useState([
     {
       startDate: new Date(),
@@ -38,15 +38,6 @@ function ReserverPanier({ setStartDateCrenau, setEndDateCrenau }) {
     setShowCalendar(false);
   };
 
-  const isDateDisabled = (date) => {
-    // Définissez ici la plage de dates à désactiver
-    const disabledStartDate = new Date('2024-05-10');
-    const disabledEndDate = new Date('2024-05-15');
-    
-    return date >= disabledStartDate && date <= disabledEndDate;
-  };
-  const disabledDates = [isDateDisabled];
-
   const calculateNumberOfDays = (startDate, endDate) => {
     const oneDay = 24 * 60 * 60 * 1000; // Convert one day to milliseconds
     const start = new Date(startDate);
@@ -58,12 +49,27 @@ function ReserverPanier({ setStartDateCrenau, setEndDateCrenau }) {
   return (
     <div>
       <Button
-        className="btn-solid btn-xs"
-        style={{ border: "none", textTransform: "none" }}
+        className="btn-default btn-xs"
+        style={{ border: "none", textTransform: "none", backgroundColor:"transparent", color:"black" }}
         onClick={handleOpenCalendar}
       >
         <CalendarTodayIcon style={{ paddingRight: "5px" }} />
         Sélectionner une date
+        <div> {selectedDates[0] && (
+        <div>
+          <p>
+            {selectedDates[0].startDate.toLocaleDateString()} -{" "}
+            {selectedDates[0].endDate.toLocaleDateString()}
+          </p>
+          <p>
+            Nombre de jours :{" "}
+            {calculateNumberOfDays(
+              selectedDates[0].startDate,
+              selectedDates[0].endDate
+            )}
+          </p>
+        </div>
+      )} </div>
       </Button>
 
       <Modal
@@ -89,7 +95,7 @@ function ReserverPanier({ setStartDateCrenau, setEndDateCrenau }) {
               staticRanges={[]}
               inputRanges={[]}
               style={{ width: "470px", height: "250px" }}
-              disabledDates={disabledDates}
+              
             />
           </div>
         </Modal.Body>
@@ -109,7 +115,7 @@ function ReserverPanier({ setStartDateCrenau, setEndDateCrenau }) {
           </Button>
         </Modal.Footer>
       </Modal>
-      {selectedDates[0] && (
+       {/* {selectedDates[0] && (
         <div>
           <p>
             Intervalle de dates sélectionné :{" "}
@@ -124,9 +130,9 @@ function ReserverPanier({ setStartDateCrenau, setEndDateCrenau }) {
             )}
           </p>
         </div>
-      )}
+      )}  */}
     </div>
   );
 }
 
-export default ReserverPanier;
+export default ReserverPanierRowPanier;
