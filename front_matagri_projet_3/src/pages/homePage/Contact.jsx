@@ -4,36 +4,36 @@ function ContactPage() {
       {/* <!-- breadcrumb start --> */}
       <div className="breadcrumb-section">
         <div className="container">
-
-            <div className="row">
-                <div className="col-sm-6">
-                    <div className="page-title">
-                        <h2>Contact</h2>
-                    </div>
-                </div>
-                <div className="col-sm-6">
-                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
-                        <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="index.html">Accueil</a></li>
-                            <li className="breadcrumb-item active">contact</li>
-                        </ol>
-                    </nav>
-                </div>
-
+          <div className="row">
+            <div className="col-sm-6">
+              <div className="page-title">
+                <h2>Contact</h2>
+              </div>
             </div>
             <div className="col-sm-6">
               <nav aria-label="breadcrumb" class="theme-breadcrumb">
-                <ol hidden className="breadcrumb">
+                <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="index.html">Home</a>
+                    <a href="index.html">Accueil</a>
                   </li>
                   <li className="breadcrumb-item active">contact</li>
                 </ol>
               </nav>
             </div>
           </div>
+          <div className="col-sm-6">
+            <nav aria-label="breadcrumb" class="theme-breadcrumb">
+              <ol hidden className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <a href="index.html">Home</a>
+                </li>
+                <li className="breadcrumb-item active">contact</li>
+              </ol>
+            </nav>
+          </div>
         </div>
-      
+      </div>
+
       {/* <!-- breadcrumb End --> */}
 
       {/* <!--section start--> */}
@@ -42,7 +42,7 @@ function ContactPage() {
           <div className="row section-b-space">
             <div className="col-lg-7 map">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1605.811957341231!2d25.45976406005396!3d36.3940974010114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1550912388321"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6367.398438453092!2d47.51626433015154!3d-18.913084858081973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f99b8fc97a17cf%3A0xfb8f94d7bc62899f!2sInclusiv%20Academy%2C%20Lot%20II%2062%20B%20Faravohitra%20Antananarivo%2C%20101%2C%20Madagascar!5e0!3m2!1sen!2sin!4v1642423841633"
                 allowfullscreen
               ></iframe>
             </div>
