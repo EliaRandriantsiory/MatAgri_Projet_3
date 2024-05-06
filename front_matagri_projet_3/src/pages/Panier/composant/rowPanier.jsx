@@ -70,13 +70,13 @@ function RowPanierComponent({
       
           <div
             style={{
-              display: "flex",
+              
               width:"20vw",
               flexDirection: "row",
               alignItems:"start"
             }}
           >
-          <img
+          &nbsp;<img
             src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
               JSON.parse(materielItem_.materiel.imagePath)[0]
             }`}
@@ -84,11 +84,10 @@ function RowPanierComponent({
             className="img-fluid blur-up lazyload bg-img"
           /><br />
           <div>
-          <br/>
-          <b className="text-capitalize" style={{textAlign:'left'}}>{materielItem_.materiel.nomMat}</b>
+          <b className="text-capitalize" style={{textAlign:'left'}}>&nbsp;&nbsp;{materielItem_.materiel.nomMat}</b>
             <br />
             <PrintDetailTechMat
-                  desctechMat={materielItem_.materiel.techniqueMat}
+                  desctechMat={materielItem_.materiel.techniqueMat} style={{marginLeft:'0'}}
                 />
             
           </div>

@@ -89,10 +89,8 @@ const ReserverPanier = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <br/>
       {selectedDates[0] && (
-        <div>
-        <br/>
+        <div style={{marginTop:"5px"}}>
           <p>
             {selectedDates[0].startDate.toLocaleDateString()} -{" "}
             {selectedDates[0].endDate.toLocaleDateString()}
