@@ -261,6 +261,7 @@ function ProductCard({ materialItem }) {
                         >
                           Valider
                         </button>
+                        
                       </div>
                     </div>
                     <label className="d-block mb-2">

@@ -19,34 +19,11 @@ import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
-<<<<<<< HEAD
-
-
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
-
-import PanierTest from "./pages/Panier/paniertest";
-
-
-// import TermeF from "./pages/AuthenticationPage/TermeF";
-// import Terme from "./pages/AuthenticationPage/Terme";
-// import Panier from "./pages/Panier/Panier";
-
-import Description from "./pages/Dashboard/Fournisseur/description";
-import ReserverPanier from "./pages/Panier/reserverAddPanier";
-import ServiceSection from "./pages/homePage/sectionService";
-import LogoSection from "./pages/homePage/sectionLogo";
-import Distance from "./pages/Panier/calculDistance";
-
-import Devis from "./components/textComponent/Devis";
 import Paiement from "./components/Payement/Paiement";
+import DevisComponents from "./pages/DevisComponent";
 
-=======
-import TermeF from "./pages/AuthenticationPage/TermeF";
-import Terme from "./pages/AuthenticationPage/Terme";
-import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
-// import DevisForm from "./pages/CalculDevis";
->>>>>>> 9e5d11938a6c91176cf0bd420ecc792e8998dac9
 
 function App() {
   return (
@@ -71,7 +48,6 @@ function App() {
             element=<InscriptionAgriculteur />
           />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
-<<<<<<< HEAD
           <Route path="/Panier" element=<Panier /> />
 {/* 
         </Route>
@@ -88,9 +64,6 @@ function App() {
           <Route path="/ProfileAgriculteur" element=<PageAccueilAgriculteur /> >
            
            </Route>
-=======
-          {/* <Route path="/CalculDevis" element=<DevisForm /> /> */}
->>>>>>> 9e5d11938a6c91176cf0bd420ecc792e8998dac9
           </Route>
           <Route path="/Dashboard" element=<DashboardUser /> />
           
@@ -104,6 +77,7 @@ function App() {
         <Route path="/carouselImage" element=<homePage /> />
         <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         <Route path="/terme" element=<Terme /> />
+        <Route path="/DevisComponent" element=<DevisComponents /> />
       </Routes>
       {/* <Route path="/Panier" element=<Panier /> />
           <Route path="/Panier" element=<PanierTest /> />
