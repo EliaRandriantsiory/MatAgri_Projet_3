@@ -1,9 +1,9 @@
-import NombreToLetter from "../utils/nombreEnLettre";
+import NombreToLetter from "../pages/utils/nombeEnLettre";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 function DevisComponents() {
-  const exportPDF = () => {                                                                                                                               
+  const exportPDF = () => {
     const input = document.getElementById("pdf-content"); // Obtenez une référence à l'élément contenant le contenu à inclure dans le PDF
 
     html2canvas(input).then((canvas) => {
@@ -41,7 +41,7 @@ function DevisComponents() {
                       />
                     </div>
                     <div className="col-md-6 text-md-end mt-md-0 mt-4">
-                      <h3>MATAgri</h3>  
+                      <h3>MATAgri</h3>
                       <div className="mt-md-4 mt-3">
                         <h4 className="mb-2">Antananarivo, 101</h4>
                         <h4 className="mb-0">Faravohitra</h4>
@@ -98,8 +98,10 @@ function DevisComponents() {
                 <div className="invoice-body table-responsive-md">
                   <table className="table table-borderless mb-0">
                     <thead>
-                      <tr >
-                        <th style={{ textTransform: "none" }}>Nom du materiel</th>
+                      <tr>
+                        <th style={{ textTransform: "none" }}>
+                          Nom du materiel
+                        </th>
                         <th style={{ textTransform: "none" }}>Description</th>
                         <th style={{ textTransform: "none" }}>Prix</th>
                         <th style={{ textTransform: "none" }}>De</th>

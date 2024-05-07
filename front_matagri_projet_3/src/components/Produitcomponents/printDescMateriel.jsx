@@ -10,15 +10,14 @@ import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 import PrintPrixUser from "../textComponent/printPrixUser";
 import SaisieAutomatiqueVille from "../textComponent/testsaisiautomatique";
 
-
-function AjoutPanier({ materialItem,setPanierMat }) {
+function AjoutPanier({ materialItem, setPanierMat }) {
   const [quantityPanier, setQuantity] = useState(1);
 
   const [distance, setDistance] = useState("");
   const [listPanierMat, setListPanierMat] = useState([]);
   // const [panierMAt, setPanierMat] = useState({});
-  const [startDateCrenau, setStartDateCrenau] = useState()
-  const [endDateCrenau, setEndDateCrenau] = useState()
+  const [startDateCrenau, setStartDateCrenau] = useState();
+  const [endDateCrenau, setEndDateCrenau] = useState();
   const [notif, setNotif] = useState();
 
   const [lieuExploitation, setLieuExploitation] = useState("");
@@ -49,7 +48,6 @@ function AjoutPanier({ materialItem,setPanierMat }) {
 
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
-
   };
   const decrementQuantity = () => {
     if (quantityPanier > 1) {
@@ -75,7 +73,6 @@ function AjoutPanier({ materialItem,setPanierMat }) {
       startDate: startDateCrenau,
       endDate: endDateCrenau,
     });
-
   };
 
   const handleValidationClick = async () => {
@@ -94,7 +91,6 @@ function AjoutPanier({ materialItem,setPanierMat }) {
       return "Une erreur s'est produite lors du calcul de la distance";
     }
     // handleCloseDescMat()
-
   };
 
   useEffect(() => {
@@ -103,7 +99,7 @@ function AjoutPanier({ materialItem,setPanierMat }) {
     }
   }, [lieuExploitation]);
 
-// console.log(materialItem)
+  // console.log(materialItem)
 
   return (
     <div>
@@ -151,7 +147,6 @@ function AjoutPanier({ materialItem,setPanierMat }) {
               <h2 className="product-title">Description</h2>
               <p>{materialItem.descriptionMat}</p>
               <br />
-
               {/* <h2 className="product-title">Description technique matériel</h2> */}
               {/* <p>{materialItem.techniqueMat}</p>
               
@@ -170,45 +165,38 @@ function AjoutPanier({ materialItem,setPanierMat }) {
                     Entrer votre plage de date :{" "}
                   </label>
                   <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau}  /> */}
-
-
-
-
-
-
-              <div className="d-flex align-items-start"  >
-                <label className="d-block mb-2" >
-                {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} */}
+              <div className="d-flex align-items-start">
+                {/* <label className="d-block mb-2">
+                  style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} 
                   Entrer votre lieu d'exploitation&nbsp;&nbsp;
-                </label>
-                <div className="d-flex">
+                </label> */}
+                {/* <div className="d-flex">
                   {/* <MyComponent
                         handleLieuExploitationChange={
                           handleLieuExploitationChange
                         }
                       /> */}
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Lieu d'exploitation"
-                    style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                    value={lieuExploitation}
-                    onChange={handleLieuExploitationChange}
-                  />
-                  <button
-                    className="btn btn-solid"
-                    disabled={
-                      lieuExploitation === "" || lieuExploitation.length === 0
-                        ? true
-                        : false
-                    }
-                    onClick={() => handleValidationClick()}
-                    style={{ border: "none" }}
-                  >
-                    Valider
-                  </button>
-
-                </div>
+                {/* <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Lieu d'exploitation"
+                  style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                  value={lieuExploitation}
+                  onChange={handleLieuExploitationChange}
+                />
+                <button
+                  className="btn btn-solid"
+                  disabled={
+                    lieuExploitation === "" || lieuExploitation.length === 0
+                      ? true
+                      : false
+                  }
+                  onClick={() => handleValidationClick()}
+                  style={{ border: "none" }}
+                >
+                  Valider
+                </button>
+              </div>{" "} */}
                 <br />
                 <div className="d-flex align-items-start">
                   <label className="d-block mb-2">
@@ -242,7 +230,6 @@ function AjoutPanier({ materialItem,setPanierMat }) {
                 <label className="d-block mb-2">
                   Votre distance est de :{distance ? distance : ""}
                 </label>
-
                 <div className="product-description border-product">
                   <h6 className="product-title">Quantité</h6>
                   <div className="qty-box">

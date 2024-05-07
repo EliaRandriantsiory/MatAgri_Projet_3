@@ -64,6 +64,7 @@ function App() {
           <Route path="/Paiement" element=<Paiement /> />
           <Route path="/Mutualisation" element=<Mutualisation /> />
           <Route path="/Payment" element=<Payment /> />
+          <Route path="/DevisComponents" element=<DevisComponents /> />
 
           <Route
             path="/InscriptionAgriculteur"

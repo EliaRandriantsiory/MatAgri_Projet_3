@@ -36,6 +36,7 @@ function Payment({ sommeMontantTotal }) {
         alignItems: "center",
         justifyContent: "right",
       }}
+      b
       className="App"
     >
       <Stripe

@@ -11,7 +11,6 @@ function Panier() {
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
   const [sommePrixTotal, setsommePrixTotal] = useState(0);
   const prixLivraison = 2000;
-  
 
   function calculeDifferenceDate(startDateString, endDateString) {
     const startDateParts = startDateString.split("/");
@@ -43,16 +42,18 @@ function Panier() {
       console.log(commande);
       console.log(commande.quantity);
       // console.log(new Date())
-      console.log(calculeDifferenceDate(commande.startDate,commande.endDate)+1)
+      console.log(
+        calculeDifferenceDate(commande.startDate, commande.endDate) + 1
+      );
       // console.log(commande.materiel.prixMAt);
-      console.log(commande.quantity+commande.materiel.prixMAt)
+      console.log(commande.quantity + commande.materiel.prixMAt);
       let prixlocationMat =
         commande.quantity *
-        (calculeDifferenceDate(commande.startDate, commande.endDate)+1) *
+        (calculeDifferenceDate(commande.startDate, commande.endDate) + 1) *
         commande.materiel.prixMAt;
       prxTotal += prixlocationMat;
 
-      setsommePrixTotal(sommePrixTotal+prixlocationMat)
+      setsommePrixTotal(sommePrixTotal + prixlocationMat);
       // console.log("prix Total: "+sommePrixTotal+prixlocationMat)
 
       // const differenceDate = calculeDifferenceDate(
@@ -91,7 +92,8 @@ function Panier() {
     materielItem_,
     qt,
     prixTotal,
-    startDateCrenau, endDateCrenau
+    startDateCrenau,
+    endDateCrenau
   ) => {
     let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
 
@@ -99,8 +101,7 @@ function Panier() {
     // currentPanierMat[index].startDate=startDateCrenau
     // currentPanierMat[index].endDate=endDateCrenau
     // localStorage.setItem("listpanier",JSON.stringify(currentPanierMat))
-    console.log(currentPanierMat)
-
+    console.log(currentPanierMat);
   };
 
   useEffect(() => {
@@ -111,7 +112,7 @@ function Panier() {
 
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    console.log(JSON.parse(localStorage.getItem("listpanier")))
+    console.log(JSON.parse(localStorage.getItem("listpanier")));
     // CalculeSommePrixTotal();
   }, []);
 
@@ -146,16 +147,15 @@ function Panier() {
                               Dates
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-
-                                  Lieu d'exploitation
-
+                              Lieu d'exploitation
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               total
                             </th>
 
-                            <th scope="col" style={{ fontSize: "12px" }}>Action</th>
-
+                            <th scope="col" style={{ fontSize: "12px" }}>
+                              Action
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -183,7 +183,7 @@ function Panier() {
                         </div>
                       </div> */}
                     </div>
-                    
+
                     <div
                       className="d-flex justify-content-end"
                       style={{
@@ -197,7 +197,9 @@ function Panier() {
                     >
                       <div>
                         <div>
-                          <label style={{ fontWeight: "bold", marginLeft:"-50" }}>
+                          <label
+                            style={{ fontWeight: "bold", marginLeft: "-50" }}
+                          >
                             Frais de transport
                           </label>
                           <label
@@ -211,9 +213,8 @@ function Panier() {
                             <PrintPrixUser
                               TextPrix={prixLivraison}
                               monnai={"MLG"}
-
-                            /> / km
-
+                            />{" "}
+                            / km
                           </label>
                         </div>
                         <div>
@@ -240,7 +241,7 @@ function Panier() {
                           </label>
                         </div>
                       </div>
-                      <br/>
+                      <br />
                       <div
                         className="col-sm-12 table-responsive-xs"
                         style={{
@@ -261,9 +262,7 @@ function Panier() {
                             <Link
                               to={"/Material"}
                               className="btn btn-solid"
-
-                              style={{ marginLeft: "5vw"}}
-
+                              style={{ marginLeft: "5vw" }}
                             >
                               Continuer l'achat
                             </Link>
@@ -275,17 +274,21 @@ function Panier() {
                               right: 165,
                               top: 12,
                               fontSize: 16,
-                              fontWeight: "bold"
+                              fontWeight: "bold",
                             }}
                           >
-
                             {/* <Link to="/devis" >
                               Aller au devis */}
 
-                            <Link to="/devis" style={{color:"black"}}>
-                            <FontAwesomeIcon icon="fa-solid fa-arrow-right" style={{color: "#000000",}} />&nbsp;
-                            Demande de devis &nbsp; &nbsp;
-
+                            <Link
+                              to="/DevisComponents"
+                              style={{ color: "black" }}
+                            >
+                              <FontAwesomeIcon
+                                icon="fa-solid fa-arrow-right"
+                                style={{ color: "#000000" }}
+                              />
+                              &nbsp; Demande de devis &nbsp; &nbsp;
                             </Link>
                           </li>
                           <li
