@@ -1,23 +1,26 @@
-import axios from "axios";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React, { useEffect, useState } from "react";
-import { Modal, Button } from "react-bootstrap";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import CheckIcon from "@mui/icons-material/Check";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { DateRange, DateRangePicker } from "react-date-range";
+import { Button, Modal } from "react-bootstrap";
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 import PrintPrixUser from "../textComponent/printPrixUser";
+
 import SaisieAutomatiqueVille from "../textComponent/testsaisiautomatique";
+import axios from 'axios';
 
 function AjoutPanier({ materialItem, setPanierMat }) {
   const [quantityPanier, setQuantity] = useState(1);
+  // const [distance, setDistance] = useState("");
+  // const [listPanierMat, setListPanierMat] = useState([]);
+  // const [panierMAt, setPanierMat] = useState({});
+  const [startDateCrenau, setStartDateCrenau] = useState();
+  const [endDateCrenau, setEndDateCrenau] = useState();
 
   const [distance, setDistance] = useState("");
   const [listPanierMat, setListPanierMat] = useState([]);
   // const [panierMAt, setPanierMat] = useState({});
-  const [startDateCrenau, setStartDateCrenau] = useState();
-  const [endDateCrenau, setEndDateCrenau] = useState();
+
+
   const [notif, setNotif] = useState();
 
   const [lieuExploitation, setLieuExploitation] = useState("");
@@ -55,6 +58,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
     }
   };
 
+  
   const handleOnClickAddCard = (event) => {
     setPanierMat({
       materiel: {
@@ -69,16 +73,15 @@ function AjoutPanier({ materialItem, setPanierMat }) {
         prixMAt: materialItem.prixMAt,
       },
       users: {},
-      quantity: quantityPanier,
-      startDate: startDateCrenau,
-      endDate: endDateCrenau,
+      quantity: 2,
+      startDate: "15/11/2024",
+      endDate: "25/11/2024",
     });
-
     console.log("bonjour")
     handleCloseDescMat()
   };
-
   const handleValidationClick = async () => {
+
     try {
       const response = await axios.post(
         `http://localhost:8082/distance/calculate/${materialItem?.materielId}`,
@@ -105,6 +108,13 @@ function AjoutPanier({ materialItem, setPanierMat }) {
   // console.log(materialItem)
 
   return ( 
+// =======
+//     handleCloseDescMat()
+    
+//   };
+// // console.log(materialItem)
+//   return (
+// >>>>>>> integer6
     <div>
       <a onClick={handleOpenCalendar}>
         <i className="ti-search" aria-hidden="true" />
@@ -126,14 +136,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
             className="row"
             style={{ display: "flex", flexDirection: "column" }}
           >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "row",
-              }}
-            >
+            <div style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} >
               <img
                 src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
                   JSON.parse(materialItem.imagePath)[0]
@@ -142,14 +145,20 @@ function AjoutPanier({ materialItem, setPanierMat }) {
                 className="img-fluid blur-up lazyload bg-img"
               />
             </div>
-            <br />
+<br/>
             <div className="product-right">
-              <h2>
-                <b>{materialItem.nomMat}</b>
-              </h2>
+            <h2><b>{materialItem.nomMat}</b></h2>
               <h2 className="product-title">Description</h2>
-              <p>{materialItem.descriptionMat}</p>
-              <br />
+                <p>{materialItem.descriptionMat}</p>
+                <br/>
+                <h2 className="product-title">Description technique matériel</h2>
+                {/* <p>{materialItem.techniqueMat}</p>
+                 */}
+                 <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
+                <br/>
+                <h2 className="product-title">Taux journalière : <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} /></h2>
+                <br/>
+
 
               <h2 className="product-title">Description technique matériel</h2>
               <p>{materialItem.techniqueMat}</p>
@@ -178,6 +187,18 @@ function AjoutPanier({ materialItem, setPanierMat }) {
               <div className="d-flex align-items-start">
                 {/* <label className="d-block mb-2">
                   style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}}
+=======
+                <div className="border-product">
+              
+              <div>
+              <label hidden className=""> Entrer votre plage de date : </label>
+              <ReserverPanier />
+              </div>
+              <br />
+              <div className="d-flex align-items-start"  >
+                <label className="d-block mb-2" >
+                {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirPriion: "row"}} */}
+{/* >>>>>>> integer6
                   Entrer votre lieu d'exploitation&nbsp;&nbsp;
                 </label>
                 <div className="d-flex"> */}
@@ -207,6 +228,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
                     Valider
                   </button>
                 </div>
+
                 <br /> */}
                 {/* </div> */}
                 <div className="d-flex align-items-start">
@@ -277,6 +299,15 @@ function AjoutPanier({ materialItem, setPanierMat }) {
                     </div>
                   </div>
                 </div>
+
+              </div>
+              <label className="d-block mb-2">
+                Votre distance est de :{distance ? distance : ""}
+              </label>
+
+              <br />
+
+
               </div>
               {/* <div className="product-buttons">
                     <button
@@ -287,7 +318,9 @@ function AjoutPanier({ materialItem, setPanierMat }) {
                     </button>
                   </div> */}
             </div>
-          </div>
+
+            
+          
         </Modal.Body>
         <Modal.Footer>
           <Button

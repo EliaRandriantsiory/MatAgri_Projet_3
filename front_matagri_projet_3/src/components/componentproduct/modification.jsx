@@ -186,7 +186,7 @@ function Modification({ materielItem }) {
   return (
     <>
       <a href="#" onClick={handleOpenModal}>
-        <BorderColorIcon width="2px" />
+        <BorderColorIcon style={{color:"#004225"}} width="2px" />
       </a>
 
       <Modal show={showModal} onHide={handleCloseModal}>
