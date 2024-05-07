@@ -65,9 +65,11 @@ function HomePage_Layout() {
     
   }, []);
   const handleOnClickLogout = (event) => {
+
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser");
     setIsConnected(false);
+
     setCurrentUser({});
     navigate("/home");
   };

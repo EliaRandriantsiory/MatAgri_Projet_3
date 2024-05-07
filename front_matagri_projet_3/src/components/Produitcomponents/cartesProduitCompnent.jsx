@@ -9,33 +9,37 @@ import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 
 import axios from "axios";
 import AjoutPanier from "./printDescMateriel";
+import LocalisationFournisseur from "../textComponent/localisationFournisseur";
 
 function ProductCard({ materialItem,addPanier, updateAddPanier }) {
   // const [quantity, setQuantity] = useState(1);
   const [distance, setDistance] = useState("");
-  
   const [listPanierMat, setListPanierMat] = useState([]);
-
   const [lieuExploitation, setLieuExploitation] = useState("");
-
   const [panierMAt, setPanierMat] = useState(null);
 
   useEffect(() => {
     setListPanierMat(JSON.parse(localStorage.getItem("listpanier")));
+    console.log(materialItem)
   }, []);
 
   useEffect(() => {
     // if (JSON.parse(localStorage.getItem("listpanier"))[0] === null) {
-    if (JSON.parse(localStorage.getItem("listpanier"))=== null) {
-      setListPanierMat([panierMAt]);
-      localStorage.setItem("listpanier", JSON.stringify([panierMAt]));
-      // console.log("bonjour");
-    } else {
-      setListPanierMat([...JSON.parse(localStorage.getItem("listpanier")), panierMAt]);
-      
-      // console.log(panierMAt);
-      // console.log("non");
-    }
+      try {
+        if (JSON.parse(localStorage.getItem("listpanier"))[0]=== null) {
+          setListPanierMat([panierMAt]);
+          localStorage.setItem("listpanier", JSON.stringify([panierMAt]));
+          // console.log("bonjour");
+        } else {
+          setListPanierMat([...JSON.parse(localStorage.getItem("listpanier")), panierMAt]);
+          
+          // console.log(panierMAt);
+          // console.log("non");
+        }    
+      } catch (error) {
+        
+      }
+    
   }, [panierMAt]);
 
   useEffect(() => {
@@ -114,14 +118,7 @@ function ProductCard({ materialItem,addPanier, updateAddPanier }) {
               materialItem={materialItem}
               setPanierMat={setPanierMat}
             />
-            {/* <a
-                href="#"
-                data-bs-toggle="modal"
-                data-bs-target="#quick-view"
-                title="Quick View"
-              >
-                <i className="ti-search" aria-hidden="true" />
-              </a>{" "} */}
+            
             <a href="compare.html" title="Compare">
               <i className="ti-reload" aria-hidden="true" />
             </a>
@@ -139,14 +136,13 @@ function ProductCard({ materialItem,addPanier, updateAddPanier }) {
                 <b>{materialItem.nomMat}</b>
               </h6>
             </a>
-
             <p>
               {" "}
               <PrintDetailTechMat
                 desctechMat={materialItem.techniqueMat}
               />{" "}
             </p>
-
+                <LocalisationFournisseur materielItem={materialItem} />
             <h4>
               <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
             </h4>

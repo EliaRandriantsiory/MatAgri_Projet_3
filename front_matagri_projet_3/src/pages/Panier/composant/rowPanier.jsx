@@ -36,16 +36,18 @@ function RowPanierComponent({
       setStartDateCrenau(materielItem_.startDate)
       setEndDateCrenau(materielItem_.endDate)
 
-      setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
+      setPrixTotal(prixMat * qt);
+      // setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
       // setsommePrix(sommePrix+prixTotal)
-      
       // console.log(sommePrix+prixTotal)
+      console.log(materielItem_)
     }
   }, []);
 
   useEffect(() => {
 
-    setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
+    // setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
+    setPrixTotal(prixMat * qt);
   },[endDateCrenau,startDateCrenau])
 
   useEffect(() => {

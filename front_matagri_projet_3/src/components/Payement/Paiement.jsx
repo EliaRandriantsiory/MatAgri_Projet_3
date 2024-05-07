@@ -130,7 +130,7 @@ function Paiement() {
                                 />
                               </td>
                               <td>{matHomePage.quantity}</td>
-                              <td>Non mutualiser</td>
+                              <td>Non mutualisé</td>
                               <td>
                                 <PrintPrixUser
                                   TextPrix={

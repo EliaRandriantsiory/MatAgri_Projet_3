@@ -1,20 +1,26 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 import PrintPrixUser from "../textComponent/printPrixUser";
+
 import SaisieAutomatiqueVille from "../textComponent/testsaisiautomatique";
 import axios from "axios";
 
 function AjoutPanier({ materialItem, setPanierMat }) {
   const [quantityPanier, setQuantity] = useState(1);
+  // const [distance, setDistance] = useState("");
+  // const [listPanierMat, setListPanierMat] = useState([]);
+  // const [panierMAt, setPanierMat] = useState({});
 
   const [distance, setDistance] = useState("");
   const [listPanierMat, setListPanierMat] = useState([]);
   // const [panierMAt, setPanierMat] = useState({});
+
   const [startDateCrenau, setStartDateCrenau] = useState();
   const [endDateCrenau, setEndDateCrenau] = useState();
+
   const [notif, setNotif] = useState();
   // const [quantity, setQntty] = useState();
   const quantity = 0;
@@ -44,12 +50,11 @@ function AjoutPanier({ materialItem, setPanierMat }) {
   const handleLieuExploitationChange = (event) => {
     setLieuExploitation(event.target.value);
   };
-
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
   const decrementQuantity = () => {
-    if (quantity > 1) {
+    if (quantityPanier > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
@@ -72,6 +77,8 @@ function AjoutPanier({ materialItem, setPanierMat }) {
       startDate: "15/11/2024",
       endDate: "25/11/2024",
     });
+    console.log("bonjour");
+    handleCloseDescMat();
   };
   const handleValidationClick = async () => {
     try {
@@ -100,6 +107,14 @@ function AjoutPanier({ materialItem, setPanierMat }) {
   // console.log(materialItem)
 
   return (
+    // =======
+    //     handleCloseDescMat()
+
+    //   };
+    // // console.log(materialItem)
+    //   return (
+    // >>>>>>> integer6
+
     <div>
       <a onClick={handleOpenCalendar}>
         <i className="ti-search" aria-hidden="true" />
@@ -143,15 +158,24 @@ function AjoutPanier({ materialItem, setPanierMat }) {
                 <b>{materialItem.nomMat}</b>
               </h2>
               <h2 className="product-title">Description</h2>
+
               <p>{materialItem.descriptionMat}</p>
               <br />
-              {/* <h2 className="product-title">Description technique matériel</h2> */}
+              <h2 className="product-title">Description technique matériel</h2>
               {/* <p>{materialItem.techniqueMat}</p>
-              
-              <div>
-              <label hidden className=""> Entrer votre plage de date : </label>
-              <ReserverPanier />
-              </div>
+               */}
+              <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
+              <br />
+              <h2 className="product-title">
+                Taux journalière :{" "}
+                <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} />
+              </h2>
+              <br />
+
+              <h2 className="product-title">Description technique matériel</h2>
+              <p>{materialItem.techniqueMat}</p>
+
+              <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
               <br />
               <h2 className="product-title">
                 Taux journalière :{" "}
@@ -165,19 +189,61 @@ function AjoutPanier({ materialItem, setPanierMat }) {
                     {" "}
                     Entrer votre plage de date :{" "}
                   </label>
-                  <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau}  /> */}
+                  <ReserverPanier
+                    setStartDateCrenau={setStartDateCrenau}
+                    setEndDateCrenau={setEndDateCrenau}
+                  />
+                </div>
+              </div>
+
               <div className="d-flex align-items-start">
                 {/* <label className="d-block mb-2">
+                  style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}}
+
+                <div className="border-product">
+
+              
+              <div>
+              <label hidden className=""> Entrer votre plage de date : </label>
+              <ReserverPanier />
+              </div>
+              <br />
+<<<<<<< HEAD
+              <h2 className="product-title">
+                Taux journalière :{" "}
+                <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} />
+              </h2>
+              <br />
+
+              <div className="border-product">
+                <div>
+                  <label hidden className="">
+                    {" "}
+                    Entrer votre plage de date :{" "}
+                  </label>
+                  <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau}  /> */}
+                <div className="d-flex align-items-start">
+                  {/* <label className="d-block mb-2">
                   style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} 
                   Entrer votre lieu d'exploitation&nbsp;&nbsp;
                 </label> */}
-                {/* <div className="d-flex">
+                  {/* <div className="d-flex">
+=======
+              <div className="d-flex align-items-start"  >
+                <label className="d-block mb-2" >
+                {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirPriion: "row"}} */}
+                  {/* >>>>>>> integer6
+                  Entrer votre lieu d'exploitation&nbsp;&nbsp;
+                </label>
+                <div className="d-flex"> */}
+
                   {/* <MyComponent
                         handleLieuExploitationChange={
                           handleLieuExploitationChange
                         }
                       /> */}
-                {/* <input
+
+                  {/* <input
                   type="text"
                   className="form-control"
                   placeholder="Lieu d'exploitation"
@@ -198,72 +264,175 @@ function AjoutPanier({ materialItem, setPanierMat }) {
                   Valider
                 </button>
               </div>{" "} */}
-                <br />
-                <div className="d-flex align-items-start">
+                  <br />
+                  <div className="d-flex align-items-start">
+                    <label className="d-block mb-2">
+                      {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} */}
+                      Entrer votre lieu d'exploitation :
+                    </label>
+                    <div className="d-flex">
+                      {/* <SaisieAutomatiqueVille /> */}
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Lieu d'exploitation"
+                        style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                        value={lieuExploitation}
+                        onChange={handleLieuExploitationChange}
+                      />
+                      <button
+                        className="btn btn-solid"
+                        disabled={
+                          lieuExploitation === "" ||
+                          lieuExploitation.length === 0
+                            ? true
+                            : false
+                        }
+                        onClick={() => handleValidationClick()}
+                        style={{ border: "none" }}
+                      >
+                        Valider
+                      </button>
+                    </div>
+                  </div>
                   <label className="d-block mb-2">
-                    {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} */}
-                    Entrer votre lieu d'exploitation :
+                    Votre distance est de :{distance ? distance : ""}
                   </label>
-                  <div className="d-flex">
-                    {/* <SaisieAutomatiqueVille /> */}
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Lieu d'exploitation"
-                      style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                      value={lieuExploitation}
-                      onChange={handleLieuExploitationChange}
-                    />
-                    <button
-                      className="btn btn-solid"
-                      disabled={
-                        lieuExploitation === "" || lieuExploitation.length === 0
-                          ? true
-                          : false
-                      }
-                      onClick={() => handleValidationClick()}
-                      style={{ border: "none" }}
-                    >
-                      Valider
-                    </button>
+                  <div className="product-description border-product">
+                    <h6 className="product-title">Quantité</h6>
+                    <div className="qty-box">
+                      <div className="input-group">
+                        <span className="input-group-prepend">
+                          <button
+                            type="button"
+                            className="btn quantity-left-minus"
+                            onClick={decrementQuantity}
+                          >
+                            <i className="ti-angle-left" />
+                          </button>{" "}
+                        </span>
+                        <input
+                          type="text"
+                          name="quantity"
+                          className="form-control input-number"
+                          value={quantityPanier}
+                          defaultValue={1}
+                          readOnly
+                        />{" "}
+                        <span className="input-group-prepend">
+                          <button
+                            type="button"
+                            className="btn quantity-right-plus"
+                            onClick={incrementQuantity}
+                          >
+                            <i className="ti-angle-right" />
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Lieu d'exploitation"
+                    style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                    value={lieuExploitation}
+                    onChange={handleLieuExploitationChange}
+                  />
+                  <button
+                    className="btn btn-solid"
+                    disabled={
+                      lieuExploitation === "" || lieuExploitation.length === 0
+                        ? true
+                        : false
+                    }
+                    onClick={() => handleValidationClick()}
+                    style={{ border: "none" }}
+                  >
+                    Valider
+                  </button>
+                </div>
+
+                <br /> */}
+                  {/* </div> */}
+                  <div className="d-flex align-items-start">
+                    <label className="d-block mb-2">
+                      {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} */}
+                      Entrer votre lieu d'exploitation :
+                    </label>
+                    <div className="d-flex">
+                      {/* <SaisieAutomatiqueVille /> */}
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Lieu d'exploitation"
+                        style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                        value={lieuExploitation}
+                        onChange={handleLieuExploitationChange}
+                      />
+                      <button
+                        className="btn btn-solid"
+                        disabled={
+                          lieuExploitation === "" ||
+                          lieuExploitation.length === 0
+                            ? true
+                            : false
+                        }
+                        onClick={() => handleValidationClick()}
+                        style={{ border: "none" }}
+                      >
+                        Valider
+                      </button>
+                    </div>
+                  </div>
+                  <label
+                    className="d-block mb-2"
+                    style={{ display: "block", marginLeft: "25px" }}
+                  >
+                    Votre distance est de :{distance ? distance : ""}
+                  </label>
+                  <br />
+
+                  <div hidden className="product-description border-product">
+                    <h6 className="product-title">Quantité</h6>
+                    <div className="qty-box">
+                      <div className="input-group">
+                        <span className="input-group-prepend">
+                          <button
+                            type="button"
+                            className="btn quantity-left-minus"
+                            onClick={decrementQuantity}
+                          >
+                            <i className="ti-angle-left" />
+                          </button>{" "}
+                        </span>
+                        <input
+                          type="text"
+                          name="quantity"
+                          className="form-control input-number"
+                          value={quantityPanier}
+                          defaultValue={1}
+                          readOnly
+                        />{" "}
+                        <span className="input-group-prepend">
+                          <button
+                            type="button"
+                            className="btn quantity-right-plus"
+                            onClick={incrementQuantity}
+                          >
+                            <i className="ti-angle-right" />
+                          </button>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <label className="d-block mb-2">
                   Votre distance est de :{distance ? distance : ""}
                 </label>
-                <div className="product-description border-product">
-                  <h6 className="product-title">Quantité</h6>
-                  <div className="qty-box">
-                    <div className="input-group">
-                      <span className="input-group-prepend">
-                        <button
-                          type="button"
-                          className="btn quantity-left-minus"
-                          onClick={decrementQuantity}
-                        >
-                          <i className="ti-angle-left" />
-                        </button>{" "}
-                      </span>
-                      <input
-                        type="text"
-                        name="quantity"
-                        className="form-control input-number"
-                        value={quantityPanier}
-                        defaultValue={1}
-                        readOnly
-                      />{" "}
-                      <span className="input-group-prepend">
-                        <button
-                          type="button"
-                          className="btn quantity-right-plus"
-                          onClick={incrementQuantity}
-                        >
-                          <i className="ti-angle-right" />
-                        </button>
-                      </span>
-                    </div>
-                  </div>
-                </div>
+
+                <br />
               </div>
               {/* <div className="product-buttons">
                     <button
@@ -286,7 +455,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
           <Button
             className="btn-solid btn-xs"
             style={{ border: "none" }}
-            onClick={() => handleValidationClick()}
+            onClick={() => handleOnClickAddCard()}
             // onClick={handleConfirmSelection}
           >
             <ShoppingCartIcon /> Ajouter au panier
