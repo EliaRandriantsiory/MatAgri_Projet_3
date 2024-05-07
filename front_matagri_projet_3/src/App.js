@@ -19,6 +19,7 @@ import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
+
 import Mutualisation from "./components/Mutualisation/InterfaceMutu";
 
 import HomePage from "./pages/homePage/homepage";
@@ -39,6 +40,13 @@ import Distance from "./pages/Panier/calculDistance";
 import Devis from "./components/textComponent/Devis";
 import Paiement from "./components/Payement/Paiement";
 import DashboardFournisseur from "./pages/Dashboard/Fournisseur/dashboardfour";
+
+// import HomePage from "./pages/homePage/homepage";
+// import HomePage_Layout from "./pages/homepage_Layout";
+// import Paiement from "./components/Payement/Paiement";
+import DevisComponents from "./pages/DevisComponent";
+
+
 
 function App() {
   return (
@@ -93,13 +101,9 @@ function App() {
         <Route path="/carouselImage" element=<homePage /> />
         <Route path="/dashboard_fournisseur" element=<DashboardFournisseur /> />
         <Route path="/terme" element=<Terme /> />
-        <Route path="/Devis" element=<Devis /> />
 
-        
-
-
-
-
+        {/* <Route path="/Devis" element=<Devis /> /> */}
+        <Route path="/DevisComponent" element=<DevisComponents /> />
 
       </Routes>
       {/* <Route path="/Devis" element=<Devis /> /> */}
