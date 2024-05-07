@@ -1,17 +1,9 @@
-<<<<<<< HEAD
+
 
 import PrintTextPrix from "../textComponent/printPrix";
 import React, { useState, useEffect } from "react";
-
-=======
-
-import { Link, useAsyncError } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
-import PrintTextPrix from "../textComponent/printPrix";
 
->>>>>>> 95550beb0340697d55bf44bdb7fc52a145a044f5
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 
 import axios from "axios";
