@@ -20,9 +20,9 @@ import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
 
-import TermeF from "./pages/AuthenticationPage/TermeF";
-import Terme from "./pages/AuthenticationPage/Terme";
-import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
+
+
+
 // import DevisForm from "./pages/CalculDevis";
 
 import Mutualisation from "./components/Mutualisation/InterfaceMutu";
@@ -30,17 +30,17 @@ import Mutualisation from "./components/Mutualisation/InterfaceMutu";
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
 
-import PanierTest from "./pages/Panier/paniertest";
+// import PanierTest from "./pages/Panier/paniertest";
 
 // import TermeF from "./pages/AuthenticationPage/TermeF";
 // import Terme from "./pages/AuthenticationPage/Terme";
 // import Panier from "./pages/Panier/Panier";
 
-import Description from "./pages/Dashboard/Fournisseur/description";
-import ReserverPanier from "./pages/Panier/reserverAddPanier";
-import ServiceSection from "./pages/homePage/sectionService";
-import LogoSection from "./pages/homePage/sectionLogo";
-import Distance from "./pages/Panier/calculDistance";
+// import Description from "./pages/Dashboard/Fournisseur/description";
+// import ReserverPanier from "./pages/Panier/reserverAddPanier";
+// import ServiceSection from "./pages/homePage/sectionService";
+// import LogoSection from "./pages/homePage/sectionLogo";
+// import Distance from "./pages/Panier/calculDistance";
 
 import Devis from "./components/textComponent/Devis";
 import Paiement from "./components/Payement/Paiement";
@@ -64,18 +64,14 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/Paiement" element=<Paiement /> />
           <Route path="/Mutualisation" element=<Mutualisation /> />
-
           <Route
             path="/InscriptionAgriculteur"
             element=<InscriptionAgriculteur />
           />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
-
           {/* <Route path="/CalculDevis" element=<DevisForm /> /> */}
           </Route>
           <Route path="/Dashboard" element=<DashboardUser /> />
-          <Route path="/PageAccueilAgriculteur" element=<PageAccueilAgriculteur /> >
-
           <Route path="/Panier" element=<Panier /> />
           {/* 
         </Route>
@@ -88,12 +84,12 @@ function App() {
         </Route>
         <Route> */}
 
-          <Route path="/ProfileAgriculteur" element=<DashBordAgriculteur /> />
+        <Route path="/ProfileAgriculteur" element=<DashBordAgriculteur /> />
           <Route
             path="/ProfileAgriculteur"
             element=<PageAccueilAgriculteur />
-          ></Route>
-        </Route>
+          >
+          </Route>
         <Route path="/Dashboard" element=<DashboardUser /> />
 
         <Route>

@@ -1,18 +1,18 @@
-import axios from "axios";
+// import axios from "axios";
 import { useState, useEffect } from "react";
-import { Modal } from "@mui/material";
-import Reserver from "./Reserver";
+// import { Modal } from "@mui/material";
+// import Reserver from "./Reserver";
 import RowPanierComponent from "./composant/rowPanier";
 import { Link, json } from "react-router-dom";
-import PrintTextPrix from "../../components/textComponent/printPrix";
-import Devis from "../../components/textComponent/Devis";
+// import PrintTextPrix from "../../components/textComponent/printPrix";
+// import Devis from "../../components/textComponent/Devis";
 import PrintPrixUser from "../../components/textComponent/printPrixUser";
 
 function Panier() {
   const [listMateriel, setListMateriel] = useState([null]);
   const [updated, setUpdated] = useState();
-  const [sommePrix, setsommePrix] = useState(0);
-  const [nombreJourLocation, setNombreJourLocation] = useState(1);
+  // const [sommePrix, setsommePrix] = useState(0);
+  // const [nombreJourLocation, setNombreJourLocation] = useState(1);
   const [sommePrixTotal, setsommePrixTotal] = useState(0);
   const prixLivraison = 2000;
   

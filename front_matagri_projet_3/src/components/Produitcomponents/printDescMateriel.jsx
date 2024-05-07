@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import CheckIcon from "@mui/icons-material/Check";
+// import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+// import CheckIcon from "@mui/icons-material/Check";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { DateRange, DateRangePicker } from "react-date-range";
+// import { DateRange, DateRangePicker } from "react-date-range";
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
-import MyComponent from "../textComponent/testsaisiautomatique";
-import axios from "axios";
+// import MyComponent from "../textComponent/testsaisiautomatique";
+// import axios from "axios";
 import PrintPrixUser from "../textComponent/printPrixUser";
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 function AjoutPanier({ materialItem,setPanierMat }) {
   const [quantityPanier, setQuantity] = useState(1);
   const [distance, setDistance] = useState("");
-  const [listPanierMat, setListPanierMat] = useState([]);
+  // const [listPanierMat, setListPanierMat] = useState([]);
   // const [panierMAt, setPanierMat] = useState({});
   const [startDateCrenau, setStartDateCrenau] = useState()
   const [endDateCrenau, setEndDateCrenau] = useState()
-  const [notif, setNotif] = useState();
+  // const [notif, setNotif] = useState();
 
   const [lieuExploitation, setLieuExploitation] = useState("");
 

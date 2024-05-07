@@ -15,11 +15,6 @@ function PageAccueilAgriculteur() {
   const navigate = useNavigate();
 
 
-  // useEffect(() => {
-  //   setEmail(localStorage.getItem("email"))
-  //   setPassword(localStorage.getItem("password"))
-  // }, []);
-
   useEffect(() => {
     
     
