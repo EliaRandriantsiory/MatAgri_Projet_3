@@ -60,12 +60,14 @@ function HomePage_Layout() {
       const userData = JSON.parse(localStorage.getItem('currentUser')) || {};
       setIsConnected(true);
       setCurrentUser(userData);
+    
     }
     
   }, []);
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser");
+    setIsConnected(false);
     setCurrentUser({});
     navigate("/home");
   };
@@ -134,7 +136,7 @@ function HomePage_Layout() {
 
                       {isConnected ? (
                       <li className="onhover-div mobile-account">
-                          <h4 >{currentUser.lastname}</h4>
+                          <h4 style={{fontStyle:""}}>{currentUser.lastname}</h4>
                       <div className="show-div">
                         <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>
                           <li>
