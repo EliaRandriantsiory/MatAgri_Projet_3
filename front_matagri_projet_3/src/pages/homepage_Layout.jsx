@@ -59,8 +59,10 @@ function HomePage_Layout() {
     // localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
   }, []);
   const handleOnClickLogout = (event) => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("currentUser");
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("currentUser");
+    
+    setIsConnected(false)
     setCurrentUser({});
     navigate("/home");
   };

@@ -26,16 +26,21 @@ function ProductCard({ materialItem,addPanier, updateAddPanier }) {
 
   useEffect(() => {
     // if (JSON.parse(localStorage.getItem("listpanier"))[0] === null) {
-    if (JSON.parse(localStorage.getItem("listpanier"))=== null) {
-      setListPanierMat([panierMAt]);
-      localStorage.setItem("listpanier", JSON.stringify([panierMAt]));
-      // console.log("bonjour");
-    } else {
-      setListPanierMat([...JSON.parse(localStorage.getItem("listpanier")), panierMAt]);
-      
-      // console.log(panierMAt);
-      // console.log("non");
-    }
+      try {
+        if (JSON.parse(localStorage.getItem("listpanier"))[0]=== null) {
+          setListPanierMat([panierMAt]);
+          localStorage.setItem("listpanier", JSON.stringify([panierMAt]));
+          // console.log("bonjour");
+        } else {
+          setListPanierMat([...JSON.parse(localStorage.getItem("listpanier")), panierMAt]);
+          
+          // console.log(panierMAt);
+          // console.log("non");
+        }    
+      } catch (error) {
+        
+      }
+    
   }, [panierMAt]);
 
   useEffect(() => {
