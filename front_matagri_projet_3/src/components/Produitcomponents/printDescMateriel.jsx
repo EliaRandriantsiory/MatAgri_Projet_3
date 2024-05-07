@@ -73,26 +73,7 @@ function AjoutPanier({ materialItem,setPanierMat }) {
       startDate: startDateCrenau,
       endDate: endDateCrenau,
     });
-<<<<<<< HEAD
-    handleCloseDescMat()
-  };
-  // useEffect(() => {
-  //   if (Object.keys(panierMAt).length !== 0) {
-  //     const cmd = listPanierMat.push(panierMAt);
-  //     setListPanierMat([...listPanierMat, panierMAt]);
-  //     localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
 
-  //   }
-  //   // console.log(listPanierMat);
-  // }, [panierMAt]);
-  const handleValidationClick = async () => {
-    // handleCloseDescMat();
-    // console.log("bonjour")
-    handleOnClickAddCard()
-    // console.log(panierMAt)
-  };
-  // console.log(materialItem)
-=======
   };
 
   const handleValidationClick = async () => {
@@ -121,7 +102,7 @@ function AjoutPanier({ materialItem,setPanierMat }) {
   }, [lieuExploitation]);
 
 // console.log(materialItem)
->>>>>>> nari
+
   return (
     <div>
       <a onClick={handleOpenCalendar}>
