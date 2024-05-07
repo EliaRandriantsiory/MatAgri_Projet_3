@@ -20,6 +20,8 @@ function SignUpProvider() {
   const [isChecked, setIsChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [isConnected, setIsConnected] = useState(false);
   const handleOnChangecheckboxcgv = (event) => {  
     setEtatCgv(event.target.checked);
     setIsChecked(event.target.checked);
@@ -118,6 +120,48 @@ function SignUpProvider() {
     // Enregistrer les informations dans le stockage local
     localStorage.setItem("email", emailForm);
     localStorage.setItem("password", passwordForm);
+
+    // Authentification utilisateur
+    try {
+      const response = await axios.post(
+        "http://localhost:8082/api/home/authentification",
+        {
+          email: emailForm,
+          password: passwordForm,
+        }
+      );
+      if (response.data) {
+        // Stocker les informations de l'utilisateur dans le local storage
+        localStorage.setItem("currentUser", JSON.stringify(response.data));
+        localStorage.setItem("currentUserSession", JSON.stringify(response.data));
+        // console.log(response.data)
+        // localStorage.setItem("idUser", response.data.idUser); // Ajouter l'idUser
+        
+        // Gérer la redirection en fonction du profil de l'utilisateur
+        if (response.data.profile.profile === "fournisseur") {
+          navigate("/dashboard_fournisseur");
+          toast.success("Authentification réussie!!");
+        } else if (response.data.profile.profile === "cooperative") {
+          toast.success("Authentification réussie!!");
+          setIsConnected(true);
+          navigate("/");
+        } else if (response.data.profile.profile === "agriculteur") {
+          toast.success("Authentification réussie!!");
+          setIsConnected(true);
+          navigate("/");
+        }
+        else{
+          // Réinitialiser les champs email et password après soumission du formulaire
+          setEmail("");
+          setPassword("");
+        }
+      }
+    } catch (error) {
+      setError("Email ou mot de passe incorrect.");
+      console.error("Échec de la connexion:", error);
+    }
+
+  
   };
 
   return (

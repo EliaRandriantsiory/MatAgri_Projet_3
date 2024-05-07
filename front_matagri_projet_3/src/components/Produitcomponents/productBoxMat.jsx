@@ -8,48 +8,21 @@ const ProductBox = ({ materialItem }) => {
         <div className="img-wrapper">
           <div className="front">
             <a href="#">
-              <img
-                src="../assets/images/pro3/35.jpg"
+            {/* <img
+                src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
+                  JSON.parse(materialItem.materialItem.imagePath)[0]
+                }`}
+                width={500}
                 className="img-fluid blur-up lazyload bg-img"
-                alt=""
-              />
+              /> */}
             </a>
           </div>
-          <div className="back">
-            <a href="#">
-              <img
-                src="../assets/images/pro3/36.jpg"
-                className="img-fluid blur-up lazyload bg-img"
-                alt=""
-              />
-            </a>
-          </div>
-          <div className="cart-info cart-wrap">
-            <button>
-              <i className="ti-shopping-cart" />
-            </button>{" "}
-            <a
-              href="#"
-              data-bs-toggle="modal"
-              data-bs-target="#quick-view"
-              title="Quick View"
-            >
-              <i className="ti-search" aria-hidden="true" />
-            </a>{" "}
-            <a href="compare.html" title="Compare">
-              <i className="ti-reload" aria-hidden="true" />
-            </a>
-          </div>
+          
         </div>
         <div className="product-detail">
           <div>
-            <div className="rating">
-              <i className="fa fa-star" /> <i className="fa fa-star" />{" "}
-              <i className="fa fa-star" /> <i className="fa fa-star" />{" "}
-              <i className="fa fa-star" />
-            </div>
             <a href="product-page(no-sidebar).html">
-              <h6>{materialItem.nomMat} </h6>
+              <h6>{materialItem.materialItem.nomMat} </h6>
             </a>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -58,11 +31,7 @@ const ProductBox = ({ materialItem }) => {
               type and scrambled it to make a type specimen book
             </p>
             <h4>Ar 45 000.00</h4>
-            <ul className="color-variant">
-              <li className="bg-light0" />
-              <li className="bg-light1" />
-              <li className="bg-light2" />
-            </ul>
+            
           </div>
         </div>
       </div>

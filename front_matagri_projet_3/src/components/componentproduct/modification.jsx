@@ -3,16 +3,17 @@ import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { FileUploader } from "react-drag-drop-files";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import { json } from "react-router-dom";
 const fileTypes = ["JPG", "PNG", "GIF"];
 
 function Modification({ materielItem }) {
-  const [imagesList, setImagesList] = useState([]);
+  
   const [images, setImages] = useState([]);
   const [image, setImage] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [nomMateriel, setNomMateriel] = useState("");
-  const [categorie, setCategorie] = useState("");
+  
+  
   const [prix, setPrix] = useState("");
   const [stock, setStock] = useState("");
   const [description, setDescription] = useState("");
@@ -24,29 +25,33 @@ function Modification({ materielItem }) {
   const [stockMateriel, setStockMateriel] = useState();
   const [descriptionMateriel, setDescriptionMateriel] = useState("");
   const [descriptionTechMateriel, setDescriptionTechMateriel] = useState("");
-
+  const [nomMateriel, setNomMateriel] = useState("");
+  const [imagesList, setImagesList] = useState([]);
+  const [materielIdForm, setMaterielIdForm] = useState()
+  const [categorie, setCategorie] = useState("");
   const [listMateriel, setListMateriel] = useState([]);
   const [listMateriels, setListMateriels] = useState([]);
   const [currentUSer, setCurrentUser] = useState({});
+  const [currentUpdateMat, setCurrentUpdateMat] = useState({})
 
   const initAuthentification = () => {
     // initialisation donnée current user
-    axios
-      .post("http://localhost:8082/api/home/authentification", {
-        email: localStorage.getItem("email"),
-        password: localStorage.getItem("pwd"),
-      })
-      .then((response) => {
-        localStorage.setItem("currentUser", JSON.stringify(response.data));
-        setCurrentUser(response.data);
-        // setListMateriel(Array.from(response.data.materiels))
+    // axios
+    //   .post("http://localhost:8082/api/home/authentification", {
+    //     email: localStorage.getItem("email"),
+    //     password: localStorage.getItem("pwd"),
+    //   })
+    //   .then((response) => {
+    //     localStorage.setItem("currentUser", JSON.stringify(response.data));
+    //     setCurrentUser(response.data);
+    //     // setListMateriel(Array.from(response.data.materiels))
 
-        // console.log(response.data)
-      });
+    //     // console.log(response.data)
+    //   });
     // initListMat();
+    
+
   };
-
-
 
   // const initListMat = ({materielItem}) => {
   //   setPrixMateriel(materielItem.prixMAt)
@@ -57,14 +62,25 @@ function Modification({ materielItem }) {
   // };
 
   useEffect(() => {
-    initAuthentification();
+    // console.log(localStorage.getItem("currentUserSession"))
+    setCurrentUser(JSON.parse(localStorage.getItem("currentUserSession")))
+    setCurrentUpdateMat(materielItem)
+  },[])
 
-    console.log("bonjour")
-    setPrixMateriel(materielItem.prixMAt)
-    setStockMateriel(materielItem.stockMat)
-    setDescriptionMateriel(materielItem.descriptionMat)
-    setDescriptionTechMateriel(materielItem.descriptionTechMateriel)
-  }, []);
+  useEffect(() => {
+    // initAuthentification();
+
+    console.log(materielItem.materielItem)
+    // console.log(materielItem.materielItem.materielId)
+    setMaterielIdForm(materielItem.materielItem.materielId)
+    setPrixMateriel(materielItem.materielItem.prixMAt)
+    setStockMateriel(materielItem.materielItem.stockMat)
+    setDescriptionMateriel(materielItem.materielItem.descriptionMat)
+    setDescriptionTechMateriel(materielItem.materielItem.techniqueMat)
+    setCategorie(materielItem.materielItem.categorieMat)
+    setNomMateriel(materielItem.materielItem.nomMat)
+    setImagesList(materielItem.materielItem.imagePath)
+  }, [currentUSer]);
 
   // useEffect(()=>{console.log("bonjour test assync")},[setImagesList])
 
@@ -82,7 +98,8 @@ function Modification({ materielItem }) {
 
     // // console.log(JSON.stringify(imagesList));
     axios
-      .post("http://localhost:8082/api/materiels/ajouter", {
+      .post("http://localhost:8082/api/materiels/modifier", {
+        materielId: materielIdForm,
         categorieMat: categorie,
         nomMat: nomMateriel,
         stockMat: stockMateriel,
@@ -100,6 +117,7 @@ function Modification({ materielItem }) {
       });
     setImagesList([]);
     setImages([]);
+    handleCloseModal()
   };
 
   const handlePrix = (event) => {
@@ -289,14 +307,20 @@ function Modification({ materielItem }) {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <div className="offset-xl-3 offset-sm-4 d-flex justify-content-between">
-            <Button className="btn btn-primary" onClick={handleSubmit}>
-              Ajouter
+          <div className="offset-xl-3 offset-sm-4 d-flex ">
+            <Button
+              className="btn btn-solid "
+              id="ajout"
+              onClick={handleOnclickSauvegardeAjout}
+              style={{ marginLeft: "20px" }}
+            >
+              Modifier
             </Button>
             <Button
-              className="me-3"
+              className="btn btn-solid"
               variant="secondary"
               onClick={handleCloseModal}
+              style={{ marginLeft: "20px", width: "120px" }}
             >
               Fermer
             </Button>

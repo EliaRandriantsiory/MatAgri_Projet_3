@@ -37,5 +37,21 @@ public class MaterielsService {
         return materielsRepository.save(materiel);
     }
    
+    public Materiels updateMateriel(Materiels materiel) {
+         Materiels updated_User = materielsRepository.findById(materiel.getMaterielId()).orElse(null);
+         updated_User.setCategorieMat(materiel.getCategorieMat());
+         updated_User.setDescriptionMat(materiel.getDescriptionMat());
+        //  updated_User.setImagePath(materiel.getImagePath());
+         updated_User.setPrixMAt(materiel.getPrixMAt());
+         updated_User.setNomMat(materiel.getNomMat());
+         updated_User.setStockMat(materiel.getStockMat());
+         updated_User.setTechniqueMat(materiel.getTechniqueMat());
+
+        return materielsRepository.save(updated_User);
+    }
     
+
+    public void deleteMateriel(Long idMateriel){
+        materielsRepository.deleteById(idMateriel);
+    }
 }

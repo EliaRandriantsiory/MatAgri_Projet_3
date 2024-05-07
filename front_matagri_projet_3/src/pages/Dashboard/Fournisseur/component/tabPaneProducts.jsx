@@ -20,26 +20,29 @@ function TabPaneProducts({ currentUserSession, setStateCrudProduct }) {
 
   const initAuthentification = () => {
     // initialisation donnée current user
-    axios
-      .post("http://localhost:8082/api/home/authentification", {
-        email: localStorage.getItem("email"),
-        password: localStorage.getItem("pwd"),
-      })
-      .then((response) => {
-        localStorage.setItem("currentUser", JSON.stringify(response.data));
-        setCurrentUser(response.data);
-        // setListMateriel(Array.from(response.data.materiels))
+    // axios
+    //   .post("http://localhost:8082/api/home/authentification", {
+    //     email: localStorage.getItem("email"),
+    //     password: localStorage.getItem("pwd"),
+    //   })
+    //   .then((response) => {
+    //     localStorage.setItem("currentUser", JSON.stringify(response.data));
+    //     setCurrentUser(response.data);
+    //     // setListMateriel(Array.from(response.data.materiels))
 
-        // console.log(response.data)
-      });
-    initListMat();
+    //     // console.log(response.data)
+    //   });
+    
   };
+
+
+  
   const initListMat = () => {
-    console.log(JSON.parse(localStorage.getItem("currentUser")).idUser)
+    console.log(JSON.parse(localStorage.getItem("currentUserSession")).idUser)
     axios
       .get(
         "http://localhost:8082/api/materiels/listMaterielByUser?param=" +
-          JSON.parse(localStorage.getItem("currentUser")).idUser
+          JSON.parse(localStorage.getItem("currentUserSession")).idUser
         // "http://localhost:8082/api/materiels/listMateriel"
       )
       .then((response) => {
@@ -57,13 +60,22 @@ function TabPaneProducts({ currentUserSession, setStateCrudProduct }) {
   };
 
   useEffect(() => {
-    initAuthentification();
+    console.log(currentUserSession)
+    setCurrentUser(currentUserSession)
+    localStorage.setItem("currentUser",JSON.stringify(currentUserSession))
+    // console.log(JSON.parse(localStorage.getItem("currentUser")).idUser)
+    // initListMat();
+    // initAuthentification();
     // console.log(listMateriels)
   }, []);
 
   useEffect(() => {
-    console.log("bonjour test assync");
-  }, [setImagesList]);
+    initListMat();
+  },[currentUSer])
+
+  // useEffect(() => {
+  //   console.log("bonjour test assync");
+  // }, [setImagesList]);
 
   // const maPromesse = new Promise((resolve, reject) => {
   //   initAuthentification()
