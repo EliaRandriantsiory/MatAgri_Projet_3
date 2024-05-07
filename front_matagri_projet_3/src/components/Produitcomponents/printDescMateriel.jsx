@@ -10,19 +10,15 @@ import axios from "axios";
 
 function AjoutPanier({ materialItem, setPanierMat }) {
   const [quantityPanier, setQuantity] = useState(1);
-  // const [distance, setDistance] = useState("");
-  // const [listPanierMat, setListPanierMat] = useState([]);
-  // const [panierMAt, setPanierMat] = useState({});
 
   const [distance, setDistance] = useState("");
   const [listPanierMat, setListPanierMat] = useState([]);
-  // const [panierMAt, setPanierMat] = useState({});
 
   const [startDateCrenau, setStartDateCrenau] = useState();
   const [endDateCrenau, setEndDateCrenau] = useState();
 
   const [notif, setNotif] = useState();
-  // const [quantity, setQntty] = useState();
+
   const quantity = 0;
 
   const [lieuExploitation, setLieuExploitation] = useState("");
@@ -95,7 +91,6 @@ function AjoutPanier({ materialItem, setPanierMat }) {
     } catch (error) {
       return "Une erreur s'est produite lors du calcul de la distance";
     }
-    // handleCloseDescMat()
   };
 
   useEffect(() => {
@@ -104,17 +99,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
     }
   }, [lieuExploitation]);
 
-  // console.log(materialItem)
-
   return (
-    // =======
-    //     handleCloseDescMat()
-
-    //   };
-    // // console.log(materialItem)
-    //   return (
-    // >>>>>>> integer6
-
     <div>
       <a onClick={handleOpenCalendar}>
         <i className="ti-search" aria-hidden="true" />
@@ -126,11 +111,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
         backdrop="static"
         keyboard={false}
         className="modal-xl"
-        // style={{ width: "80vw" }}
       >
-        {/* <Modal.Header closeButton>
-          <Modal.Title>Sélectionner une plage de dates</Modal.Title>
-        </Modal.Header> */}
         <Modal.Body>
           <div
             className="row"
@@ -159,12 +140,22 @@ function AjoutPanier({ materialItem, setPanierMat }) {
               </h2>
               <h2 className="product-title">Description</h2>
 
-              <p>{materialItem.descriptionMat}</p>
+              {/* <p>{materialItem.descriptionMat}</p> */}
               <br />
-              <h2 className="product-title">Description technique matériel</h2>
-              {/* <p>{materialItem.techniqueMat}</p>
-               */}
+              {/* <h2 className="product-title">Description technique matériel</h2> */}
+
               <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
+              <br />
+              {/* <h2 className="product-title">
+                Taux journalière :{" "}
+                <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} />
+              </h2> */}
+              <br />
+
+              {/* <h2 className="product-title">Description technique matériel</h2>
+              <p>{materialItem.techniqueMat}</p> */}
+
+              {/* <PrintDetailTechMat desctechMat={materialItem.techniqueMat} /> */}
               <br />
               <h2 className="product-title">
                 Taux journalière :{" "}
@@ -172,18 +163,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
               </h2>
               <br />
 
-              <h2 className="product-title">Description technique matériel</h2>
-              <p>{materialItem.techniqueMat}</p>
-
-              <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
-              <br />
-              <h2 className="product-title">
-                Taux journalière :{" "}
-                <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} />
-              </h2>
-              <br />
-
-              <div className="border-product">
+              {/* <div className="border-product">
                 <div>
                   <label hidden className="">
                     {" "}
@@ -194,254 +174,149 @@ function AjoutPanier({ materialItem, setPanierMat }) {
                     setEndDateCrenau={setEndDateCrenau}
                   />
                 </div>
-              </div>
+              </div> */}
 
               <div className="d-flex align-items-start">
-                {/* <label className="d-block mb-2">
-                  style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}}
-
-                <div className="border-product">
-
-              
-              <div>
-              <label hidden className=""> Entrer votre plage de date : </label>
-              <ReserverPanier />
-              </div>
-              <br />
-<<<<<<< HEAD
-              <h2 className="product-title">
-                Taux journalière :{" "}
-                <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} />
-              </h2>
-              <br />
-
-              <div className="border-product">
-                <div>
-                  <label hidden className="">
-                    {" "}
-                    Entrer votre plage de date :{" "}
-                  </label>
-                  <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau}  /> */}
+                <br />
                 <div className="d-flex align-items-start">
-                  {/* <label className="d-block mb-2">
-                  style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} 
-                  Entrer votre lieu d'exploitation&nbsp;&nbsp;
-                </label> */}
-                  {/* <div className="d-flex">
-=======
-              <div className="d-flex align-items-start"  >
-                <label className="d-block mb-2" >
-                {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirPriion: "row"}} */}
-                  {/* >>>>>>> integer6
-                  Entrer votre lieu d'exploitation&nbsp;&nbsp;
-                </label>
-                <div className="d-flex"> */}
-
-                  {/* <MyComponent
-                        handleLieuExploitationChange={
-                          handleLieuExploitationChange
-                        }
-                      /> */}
-
-                  {/* <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Lieu d'exploitation"
-                  style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                  value={lieuExploitation}
-                  onChange={handleLieuExploitationChange}
-                />
-                <button
-                  className="btn btn-solid"
-                  disabled={
-                    lieuExploitation === "" || lieuExploitation.length === 0
-                      ? true
-                      : false
-                  }
-                  onClick={() => handleValidationClick()}
-                  style={{ border: "none" }}
-                >
-                  Valider
-                </button>
-              </div>{" "} */}
-                  <br />
-                  <div className="d-flex align-items-start">
-                    <label className="d-block mb-2">
-                      {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} */}
-                      Entrer votre lieu d'exploitation :
-                    </label>
-                    <div className="d-flex">
-                      {/* <SaisieAutomatiqueVille /> */}
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Lieu d'exploitation"
-                        style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                        value={lieuExploitation}
-                        onChange={handleLieuExploitationChange}
-                      />
-                      <button
-                        className="btn btn-solid"
-                        disabled={
-                          lieuExploitation === "" ||
-                          lieuExploitation.length === 0
-                            ? true
-                            : false
-                        }
-                        onClick={() => handleValidationClick()}
-                        style={{ border: "none" }}
-                      >
-                        Valider
-                      </button>
-                    </div>
-                  </div>
                   <label className="d-block mb-2">
-                    Votre distance est de :{distance ? distance : ""}
+                    Entrer votre lieu d'exploitation :
                   </label>
-                  <div className="product-description border-product">
-                    <h6 className="product-title">Quantité</h6>
-                    <div className="qty-box">
-                      <div className="input-group">
-                        <span className="input-group-prepend">
-                          <button
-                            type="button"
-                            className="btn quantity-left-minus"
-                            onClick={decrementQuantity}
-                          >
-                            <i className="ti-angle-left" />
-                          </button>{" "}
-                        </span>
-                        <input
-                          type="text"
-                          name="quantity"
-                          className="form-control input-number"
-                          value={quantityPanier}
-                          defaultValue={1}
-                          readOnly
-                        />{" "}
-                        <span className="input-group-prepend">
-                          <button
-                            type="button"
-                            className="btn quantity-right-plus"
-                            onClick={incrementQuantity}
-                          >
-                            <i className="ti-angle-right" />
-                          </button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Lieu d'exploitation"
-                    style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                    value={lieuExploitation}
-                    onChange={handleLieuExploitationChange}
-                  />
-                  <button
-                    className="btn btn-solid"
-                    disabled={
-                      lieuExploitation === "" || lieuExploitation.length === 0
-                        ? true
-                        : false
-                    }
-                    onClick={() => handleValidationClick()}
-                    style={{ border: "none" }}
-                  >
-                    Valider
-                  </button>
-                </div>
-
-                <br /> */}
-                  {/* </div> */}
-                  <div className="d-flex align-items-start">
-                    <label className="d-block mb-2">
-                      {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} */}
-                      Entrer votre lieu d'exploitation :
-                    </label>
-                    <div className="d-flex">
-                      {/* <SaisieAutomatiqueVille /> */}
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Lieu d'exploitation"
-                        style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                        value={lieuExploitation}
-                        onChange={handleLieuExploitationChange}
-                      />
-                      <button
-                        className="btn btn-solid"
-                        disabled={
-                          lieuExploitation === "" ||
-                          lieuExploitation.length === 0
-                            ? true
-                            : false
-                        }
-                        onClick={() => handleValidationClick()}
-                        style={{ border: "none" }}
-                      >
-                        Valider
-                      </button>
-                    </div>
-                  </div>
-                  <label
-                    className="d-block mb-2"
-                    style={{ display: "block", marginLeft: "25px" }}
-                  >
-                    Votre distance est de :{distance ? distance : ""}
-                  </label>
-                  <br />
-
-                  <div hidden className="product-description border-product">
-                    <h6 className="product-title">Quantité</h6>
-                    <div className="qty-box">
-                      <div className="input-group">
-                        <span className="input-group-prepend">
-                          <button
-                            type="button"
-                            className="btn quantity-left-minus"
-                            onClick={decrementQuantity}
-                          >
-                            <i className="ti-angle-left" />
-                          </button>{" "}
-                        </span>
-                        <input
-                          type="text"
-                          name="quantity"
-                          className="form-control input-number"
-                          value={quantityPanier}
-                          defaultValue={1}
-                          readOnly
-                        />{" "}
-                        <span className="input-group-prepend">
-                          <button
-                            type="button"
-                            className="btn quantity-right-plus"
-                            onClick={incrementQuantity}
-                          >
-                            <i className="ti-angle-right" />
-                          </button>
-                        </span>
-                      </div>
-                    </div>
+                  <div className="d-flex">
+                    {/* <SaisieAutomatiqueVille /> */}
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Lieu d'exploitation"
+                      style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                      value={lieuExploitation}
+                      onChange={handleLieuExploitationChange}
+                    />
+                    <button
+                      className="btn btn-solid"
+                      disabled={
+                        lieuExploitation === "" || lieuExploitation.length === 0
+                          ? true
+                          : false
+                      }
+                      onClick={() => handleValidationClick()}
+                      style={{ border: "none" }}
+                    >
+                      Valider
+                    </button>
                   </div>
                 </div>
                 <label className="d-block mb-2">
                   Votre distance est de :{distance ? distance : ""}
                 </label>
+                <div className="product-description border-product">
+                  <h6 className="product-title">Quantité</h6>
+                  <div className="qty-box">
+                    <div className="input-group">
+                      <span className="input-group-prepend">
+                        <button
+                          type="button"
+                          className="btn quantity-left-minus"
+                          onClick={decrementQuantity}
+                        >
+                          <i className="ti-angle-left" />
+                        </button>{" "}
+                      </span>
+                      <input
+                        type="text"
+                        name="quantity"
+                        className="form-control input-number"
+                        value={quantityPanier}
+                        defaultValue={1}
+                        readOnly
+                      />{" "}
+                      <span className="input-group-prepend">
+                        <button
+                          type="button"
+                          className="btn quantity-right-plus"
+                          onClick={incrementQuantity}
+                        >
+                          <i className="ti-angle-right" />
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
 
-                <br />
-              </div>
-              {/* <div className="product-buttons">
+                {/* <div className="d-flex align-items-start">
+                  <label className="d-block mb-2">
+                    Entrer votre lieu d'exploitation :
+                  </label>
+                  <div className="d-flex">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Lieu d'exploitation"
+                      style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                      value={lieuExploitation}
+                      onChange={handleLieuExploitationChange}
+                    />
                     <button
-                      onClick={handleOnClickAddCard}
                       className="btn btn-solid"
+                      disabled={
+                        lieuExploitation === "" || lieuExploitation.length === 0
+                          ? true
+                          : false
+                      }
+                      onClick={() => handleValidationClick()}
+                      style={{ border: "none" }}
                     >
-                      Ajouter au panier
+                      Valider
                     </button>
-                  </div> */}
+                  </div>
+                </div> */}
+                {/* <label
+                  className="d-block mb-2"
+                  style={{ display: "block", marginLeft: "25px" }}
+                >
+                  Votre distance est de :{distance ? distance : ""}
+                </label> */}
+                <br />
+
+                <div hidden className="product-description border-product">
+                  <h6 className="product-title">Quantité</h6>
+                  <div className="qty-box">
+                    <div className="input-group">
+                      <span className="input-group-prepend">
+                        <button
+                          type="button"
+                          className="btn quantity-left-minus"
+                          onClick={decrementQuantity}
+                        >
+                          <i className="ti-angle-left" />
+                        </button>{" "}
+                      </span>
+                      <input
+                        type="text"
+                        name="quantity"
+                        className="form-control input-number"
+                        value={quantityPanier}
+                        defaultValue={1}
+                        readOnly
+                      />{" "}
+                      <span className="input-group-prepend">
+                        <button
+                          type="button"
+                          className="btn quantity-right-plus"
+                          onClick={incrementQuantity}
+                        >
+                          <i className="ti-angle-right" />
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* <label className="d-block mb-2">
+                Votre distance est de :{distance ? distance : ""}
+              </label> */}
+
+              <br />
             </div>
           </div>
         </Modal.Body>
@@ -462,19 +337,6 @@ function AjoutPanier({ materialItem, setPanierMat }) {
           </Button>
         </Modal.Footer>
       </Modal>
-      {/* {selectedDates[0] && (
-        <div>
-          <p>
-            Intervalle de dates sélectionné :{" "}
-            {selectedDates[0].startDate.toLocaleDateString()} -{" "}
-            {selectedDates[0].endDate.toLocaleDateString()}
-          </p>
-          <p>
-            Nombre de jours :{" "}
-            
-          </p>
-        </div>
-      )} */}
     </div>
   );
 }
