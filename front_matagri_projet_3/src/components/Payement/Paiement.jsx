@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import PrintPrixUser from "../textComponent/printPrixUser";
+import { convertToMeridiem } from "@mui/x-date-pickers/internals/utils/time-utils";
 
 function Paiement() {
   const [prixapayer, SetPrixapayer] = useState();
@@ -7,25 +9,73 @@ function Paiement() {
   const [nbredejour, SetNbredejour] = useState();
   const [mutualisation, SetMutualisation] = useState();
   const [montant, SetMontant] = useState();
+  const [listMateriel, setListMateriel] = useState([]);
+  const [updated, setUpdated] = useState();
+  const [sommePrix, setsommePrix] = useState(0);
+  const [nombreJourLocation, setNombreJourLocation] = useState(1);
+  const [sommePrixTotal, setsommePrixTotal] = useState(0);
+  const prixLivraison = 2000;
 
-  const handleNomproductsChange = (e) => {
-    SetNomproduit(e.target.value);
+
+  const sommeMontantTotal = () =>{
+    let sommeMontant =0
+    listMateriel.forEach(materiel => {
+      sommeMontant += materiel.quantity*materiel.materiel.prixMAt
+    });    
+    return sommeMontant+prixLivraison
+  }
+  useEffect(() => {
+    setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
+    // CalculeSommePrixTotal()
+    console.log(sommePrixTotal)
+  },[])
+
+  function calculeDifferenceDate(startDateString, endDateString) {
+    let differenceInDays=1
+    if(startDateString.trim() && endDateString.trim() ==="" ){
+      return differenceInDays
+    }
+    const startDateParts = startDateString.split("/");
+    const startDate = new Date(
+      parseInt(startDateParts[2]),
+      parseInt(startDateParts[1]) - 1,
+      parseInt(startDateParts[0])
+    );
+    const endDateParts = endDateString.split("/");
+    const endDate = new Date(
+      parseInt(endDateParts[2]),
+      parseInt(endDateParts[1]) - 1,
+      parseInt(endDateParts[0])
+    );
+
+    // Calculer la diffÃ©rence en millisecondes
+    const differenceInMilliseconds = endDate.getTime() - startDate.getTime();
+
+    // Convertir la diffÃ©rence en jours
+    differenceInDays = Math.floor(
+      differenceInMilliseconds / (1000 * 60 * 60 * 24)
+    );
+    // console.log(differenceInDays)
+    return differenceInDays;
+  }
+
+  const CalculeSommePrixTotal = () => {
+    let prxTotal = 0;
+    JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
+      console.log(commande);
+      // console.log(commande.quantity);
+      // console.log(new Date())
+      // console.log(calculeDifferenceDate("22/04/2024","25/05/2024"))
+      // console.log(commande.materiel.prixMAt);
+      let prixlocationMat =
+        commande.quantity *
+        calculeDifferenceDate(commande.startDate, commande.endDate) *
+        commande.materiel.prixMAt;
+      prxTotal += prixlocationMat;
+      
+    });    setsommePrixTotal(prxTotal + prixLivraison);
   };
-  const handlePrixChange = (e) => {
-    SetPrixapayer(e.target.value);
-  };
-  const handleQuantityChange = (e) => {
-    SetQuantite(e.target.value);
-  };
-  const handleNbredejourChange = (e) => {
-    SetNbredejour(e.target.value);
-  };
-  const handleMutualisationChange = (e) => {
-    SetMutualisation(e.target.value);
-  };
-  const handleMontantChange = (e) => {
-    SetMontant(e.target.value);
-  };
+
   return (
     <div>
       <div className="cart-section section-b-space">
@@ -48,7 +98,7 @@ function Paiement() {
                               Quantité
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
-                              Prix
+                              Prix journalier
                             </th>
                             <th scope="col" style={{ fontSize: "12px" }}>
                               Nombre de jour
@@ -63,14 +113,24 @@ function Paiement() {
                           </tr>
                         </thead>
                         <tbody>
+                        {listMateriel.map((matHomePage, index) => (
                           <tr>
-                            <td onChange={handleNomproductsChange} />
-                            <td onChange={handleQuantityChange} />
-                            <td onChange={handlePrixChange} />
-                            <td onChange={handleNbredejourChange} />
-                            <td on onChange={handleMutualisationChange} />
-                            <td on onChange={handleMontantChange}></td>
+                            <td>{matHomePage.materiel.nomMat} </td>
+                            <td>{matHomePage.quantity}</td>
+                            <td><PrintPrixUser
+                              TextPrix={matHomePage.materiel.prixMAt}
+                              monnai={"MLG"}
+                            /></td>
+                            <td>{matHomePage.quantity}</td>
+                            <td>Non mutualiser</td>
+                            <td><PrintPrixUser
+                              TextPrix={
+                              matHomePage.quantity*matHomePage.materiel.prixMAt
+                            }
+                              monnai={"MLG"}
+                            /> </td>
                           </tr>
+                        ))}
                         </tbody>
                       </table>
                     </div>
@@ -90,7 +150,10 @@ function Paiement() {
                                   marginRight: "75px",
                                 }}
                               >
-                                1 000,00 Ar
+                               <PrintPrixUser
+                              TextPrix={prixLivraison}
+                              monnai={"MLG"}
+                            />
                               </label>
                             </td>
                           </tr>
@@ -112,7 +175,10 @@ function Paiement() {
                                   marginRight: "75px",
                                 }}
                               >
-                                24 000 000 Ar
+                                <PrintPrixUser
+                              TextPrix={sommeMontantTotal()}
+                              monnai={"MLG"}
+                            />
                               </label>
                             </td>
                           </tr>

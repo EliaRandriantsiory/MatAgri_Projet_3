@@ -19,14 +19,13 @@ import AboutPage from "./pages/homePage/Aboutus";
 import ContactPage from "./pages/homePage/Contact";
 import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
-import Mutualisation from "./components/Mutualisation/InterfaceMutu";
 
+import Mutualisation from "./components/Mutualisation/InterfaceMutu";
 
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
 
 import PanierTest from "./pages/Panier/paniertest";
-
 
 // import TermeF from "./pages/AuthenticationPage/TermeF";
 // import Terme from "./pages/AuthenticationPage/Terme";
@@ -40,6 +39,13 @@ import Distance from "./pages/Panier/calculDistance";
 
 import Devis from "./components/textComponent/Devis";
 import Paiement from "./components/Payement/Paiement";
+import DashboardFournisseur from "./pages/Dashboard/Fournisseur/dashboardfour";
+
+// import HomePage from "./pages/homePage/homepage";
+// import HomePage_Layout from "./pages/homepage_Layout";
+// import Paiement from "./components/Payement/Paiement";
+import DevisComponents from "./pages/DevisComponent";
+
 
 
 function App() {
@@ -67,7 +73,7 @@ function App() {
           />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
           <Route path="/Panier" element=<Panier /> />
-{/* 
+          {/* 
         </Route>
         <Route path="/Dashboard" element=<DashboardUser /> />
         <Route
@@ -79,23 +85,28 @@ function App() {
         <Route> */}
 
           <Route path="/ProfileAgriculteur" element=<DashBordAgriculteur /> />
-          <Route path="/ProfileAgriculteur" element=<PageAccueilAgriculteur /> >
-           
-           </Route>
-          </Route>
-          <Route path="/Dashboard" element=<DashboardUser /> />
-          
-          <Route>
+          <Route
+            path="/ProfileAgriculteur"
+            element=<PageAccueilAgriculteur />
+          ></Route>
+        </Route>
+        <Route path="/Dashboard" element=<DashboardUser /> />
 
+        <Route>
           <Route path="/description" element=<DescriptionProduit /> />
         </Route>
         <Route>
           <Route path="/TermeF" element=<TermeF /> />
         </Route>
         <Route path="/carouselImage" element=<homePage /> />
-        <Route path="/dashboard_fournisseur" element=<Dashboard /> />
+        <Route path="/dashboard_fournisseur" element=<DashboardFournisseur /> />
         <Route path="/terme" element=<Terme /> />
+
+        {/* <Route path="/Devis" element=<Devis /> /> */}
+        <Route path="/DevisComponent" element=<DevisComponents /> />
+
       </Routes>
+      {/* <Route path="/Devis" element=<Devis /> /> */}
       {/* <Route path="/Panier" element=<Panier /> />
           <Route path="/Panier" element=<PanierTest /> />
 
@@ -133,7 +144,6 @@ function App() {
         <Route path="/sectionService" element=<ServiceSection /> />
         <Route path="/sectionLogo" element=<LogoSection /> />
       </Routes>*/}
-
     </BrowserRouter>
   );
 }

@@ -5,6 +5,23 @@ import ProductCard from "../../components/Produitcomponents/cartesProduitCompnen
 
 function Material({}) {
   const [listMateriel, setListMateriel] = useState([]);
+  const [addPanier, setAddPanier] = useState()
+
+
+  function updateAddPanier  (panierMAt) {
+    setAddPanier(panierMAt)
+  }
+  useEffect(() => {
+    console.log(localStorage.getItem("listpanier"));
+    
+  }, []);  
+
+  useEffect(() => {
+    // console.log(localStorage.getItem("listpanier"));
+    console.log(addPanier)
+  }, [addPanier]);  
+
+
   useEffect(() => {
     axios
       .get("http://localhost:8082/api/materiels/listMateriel")
@@ -88,7 +105,7 @@ function Material({}) {
                         <div className="row margin-res">
                           {listMateriel.map((material) => (
                             <>
-                              <ProductCard materialItem={material} />
+                              <ProductCard materialItem={material} updateAddPanier={updateAddPanier} addPanier={addPanier}   />
                             </>
                           ))}
                           {/* <ProductsCard /> */}

@@ -1,5 +1,5 @@
 import Navigation from "./navbar";
-function Dashboard() {
+function DashboardFournisseur() {
   return (
     <>
       <div className="breadcrumb-section container">
@@ -14,4 +14,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default DashboardFournisseur;

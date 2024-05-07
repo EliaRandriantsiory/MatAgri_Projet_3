@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+
+import { Link, useAsyncError } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
 import PrintTextPrix from "../textComponent/printPrix";
 
@@ -7,60 +10,40 @@ import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 import axios from "axios";
 import AjoutPanier from "./printDescMateriel";
 
-
-function ProductCard({ materialItem }) {
-  const [quantity, setQuantity] = useState(1);
+function ProductCard({ materialItem,addPanier, updateAddPanier }) {
+  // const [quantity, setQuantity] = useState(1);
   const [distance, setDistance] = useState("");
+  
   const [listPanierMat, setListPanierMat] = useState([]);
-  const [panierMAt, setPanierMat] = useState({});
-
-  const [notif, setNotif] = useState();
 
   const [lieuExploitation, setLieuExploitation] = useState("");
 
+  const [panierMAt, setPanierMat] = useState(null);
 
-  const incrementQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-  };
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
-    }
-  };
-
-  const handleOnClickAddCard = (event) => {
-    setPanierMat({
-      materiel: {
-        materielId: materialItem.materielId,
-        categorieMat: materialItem.categorieMat,
-        nomMat: materialItem.nomMat,
-        stockMat: materialItem.stockMat,
-        descriptionMat: materialItem.descriptionMat,
-        techniqueMat: materialItem.techniqueMat,
-        imagePath: materialItem.imagePath,
-        id_user: materialItem.id_user,
-        prixMAt: materialItem.prixMAt,
-      },
-      users: {},
-      quantity: 2,
-      startDate: "15/11/2024",
-      endDate: "25/11/2024",
-
-    });
-  };
   useEffect(() => {
-    if (Object.keys(panierMAt).length !== 0) {
-      const cmd = listPanierMat.push(panierMAt);
-      setListPanierMat([...listPanierMat, panierMAt]);
-      localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+    setListPanierMat(JSON.parse(localStorage.getItem("listpanier")));
+  }, []);
 
+  useEffect(() => {
+    // if (JSON.parse(localStorage.getItem("listpanier"))[0] === null) {
+    if (JSON.parse(localStorage.getItem("listpanier"))=== null) {
+      setListPanierMat([panierMAt]);
+      localStorage.setItem("listpanier", JSON.stringify([panierMAt]));
+      // console.log("bonjour");
+    } else {
+      setListPanierMat([...JSON.parse(localStorage.getItem("listpanier")), panierMAt]);
+      
+      // console.log(panierMAt);
+      // console.log("non");
     }
-    // console.log(listPanierMat);
   }, [panierMAt]);
-  // localStorage.setItem("listpanier", listPanierMat);
+
   useEffect(() => {
-    console.log(listPanierMat.length);
-  }, [localStorage.getItem("listpanier")]);
+    // console.log(listPanierMat);
+    localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
+  }, [listPanierMat]);
+
+  // console.log(listPanierMat)
 
   const handleLieuExploitationChange = (event) => {
     setLieuExploitation(event.target.value);
@@ -89,47 +72,49 @@ function ProductCard({ materialItem }) {
     }
   }, [lieuExploitation]);
   return (
-    <>
-      <div className="col-xl-3 col-6 col-grid-box">
-        <div
-          className="product-box"
-          style={{
-            minHeight: "500px",
-            minWidth: "200px",
-          }}
-        >
-          <div className="img-wrapper">
-            <div className="front">
-              <a href="#">
-                <img
-                  src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
-                    JSON.parse(materialItem.imagePath)[0]
-                  }`}
-                  width={500}
-                  className="img-fluid blur-up lazyload bg-img"
-                />
-              </a>
-            </div>
-            <div className="back">
-              <a href="#">
-                <img
-                  src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
-                    JSON.parse(materialItem.imagePath)[0]
-                  }`}
-                  width={500}
-                  className="img-fluid blur-up lazyload bg-img"
-                />
-              </a>
-            </div>
-            <div className="cart-info cart-wrap">
-              <button onClick={handleOnClickAddCard}>
-                <i className="ti-shopping-cart" />
-              </button>
-              <a href="javascript:void(0)" title="Add to Wishlist">
-                <i className="ti-heart" aria-hidden="true" />
-              </a>{" "}
-              <AjoutPanier materialItem={materialItem} />
-              {/* <a
+    <div className="col-xl-3 col-6 col-grid-box">
+      <div
+        className="product-box"
+        style={{
+          minHeight: "500px",
+          minWidth: "200px",
+        }}
+      >
+        <div className="img-wrapper">
+          <div className="front">
+            <a href="#">
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
+                  JSON.parse(materialItem.imagePath)[0]
+                }`}
+                width={500}
+                className="img-fluid blur-up lazyload bg-img"
+              />
+            </a>
+          </div>
+          <div className="back">
+            <a href="#">
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
+                  JSON.parse(materialItem.imagePath)[0]
+                }`}
+                width={500}
+                className="img-fluid blur-up lazyload bg-img"
+              />
+            </a>
+          </div>
+          <div className="cart-info cart-wrap">
+            <button>
+              <i className="ti-shopping-cart" />
+            </button>
+            <a href="javascript:void(0)" title="Add to Wishlist">
+              <i className="ti-heart" aria-hidden="true" />
+            </a>{" "}
+            <AjoutPanier
+              materialItem={materialItem}
+              setPanierMat={setPanierMat}
+            />
+            {/* <a
                 href="#"
                 data-bs-toggle="modal"
                 data-bs-target="#quick-view"
@@ -137,36 +122,36 @@ function ProductCard({ materialItem }) {
               >
                 <i className="ti-search" aria-hidden="true" />
               </a>{" "} */}
-              <a href="compare.html" title="Compare">
-                <i className="ti-reload" aria-hidden="true" />
-              </a>
-            </div>
+            <a href="compare.html" title="Compare">
+              <i className="ti-reload" aria-hidden="true" />
+            </a>
           </div>
-          <div className="product-detail">
-            <div>
-              <div className="rating">
-                <i className="fa fa-star" /> <i className="fa fa-star" />{" "}
-                <i className="fa fa-star" /> <i className="fa fa-star" />{" "}
-                <i className="fa fa-star" />
-              </div>
-              <a href="product-page(no-sidebar).html">
-                <h6>
-                  <b>{materialItem.nomMat}</b>
-                </h6>
-              </a>
-
-              <p>
-                {" "}
-                <PrintDetailTechMat
-                  desctechMat={materialItem.techniqueMat}
-                />{" "}
-              </p>
-
-              <h4>
-                <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
-              </h4>
+        </div>
+        <div className="product-detail">
+          <div>
+            <div className="rating">
+              <i className="fa fa-star" /> <i className="fa fa-star" />{" "}
+              <i className="fa fa-star" /> <i className="fa fa-star" />{" "}
+              <i className="fa fa-star" />
             </div>
-            {/* 
+            <a href="product-page(no-sidebar).html">
+              <h6>
+                <b>{materialItem.nomMat}</b>
+              </h6>
+            </a>
+
+            <p>
+              {" "}
+              <PrintDetailTechMat
+                desctechMat={materialItem.techniqueMat}
+              />{" "}
+            </p>
+
+            <h4>
+              <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
+            </h4>
+          </div>
+          {/* 
             <a href="product-page(no-sidebar).html">
               <h6>{materialItem.nomMat}</h6>
             </a>
@@ -174,9 +159,9 @@ function ProductCard({ materialItem }) {
             <h4>
               <PrintTextPrix TextPrix={materialItem.prixMAt} monnai={"MLG"} />
             </h4> */}
-          </div>
         </div>
       </div>
+
       {/* Description pour addproduit */}
       <div
         className="modal fade bd-example-modal-lg theme-modal"
@@ -263,6 +248,7 @@ function ProductCard({ materialItem }) {
                         >
                           Valider
                         </button>
+                        
                       </div>
                     </div>
                     <label className="d-block mb-2">
@@ -279,7 +265,7 @@ function ProductCard({ materialItem }) {
                             <button
                               type="button"
                               className="btn quantity-left-minus"
-                              onClick={decrementQuantity}
+                              // onClick={decrementQuantity}
                             >
                               <i className="ti-angle-left" />
                             </button>{" "}
@@ -288,7 +274,7 @@ function ProductCard({ materialItem }) {
                             type="text"
                             name="quantity"
                             className="form-control input-number"
-                            value={quantity}
+                            // value={quantity}
                             defaultValue={1}
                             readOnly
                           />{" "}
@@ -296,7 +282,7 @@ function ProductCard({ materialItem }) {
                             <button
                               type="button"
                               className="btn quantity-right-plus"
-                              onClick={incrementQuantity}
+                              // onClick={incrementQuantity}
                             >
                               <i className="ti-angle-right" />
                             </button>
@@ -306,7 +292,7 @@ function ProductCard({ materialItem }) {
                     </div>
                     <div className="product-buttons">
                       <button
-                        onClick={handleOnClickAddCard}
+                        // onClick={handleOnClickAddCard}
                         className="btn btn-solid"
                       >
                         Ajouter au panier
@@ -318,8 +304,10 @@ function ProductCard({ materialItem }) {
             </div>
           </div>
         </div>
-      </div>
-    </>
+        </div></div>
+      
+    
+
   );
 }
 export default ProductCard;

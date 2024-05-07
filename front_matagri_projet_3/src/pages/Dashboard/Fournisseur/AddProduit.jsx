@@ -66,10 +66,7 @@ function AddProduit() {
 
   useEffect(() => {
     initAuthentification();
-    // console.log(listMateriels)
   }, []);
-
-  // useEffect(()=>{console.log("bonjour test assync")},[setImagesList])
 
   const handleImageChange = (files) => {
     const selectedImages = Array.from(files);
@@ -99,25 +96,12 @@ function AddProduit() {
 
   const handleOnclickSauvegardeAjout = (e) => {
     e.preventDefault();
-
-    // console.log("bonjour")
-    // console.log(listImagesFile)
     images.forEach((imagesFile) => {
       imagesList.push(imagesFile.name);
       console.log(imagesFile);
       handleUpload(imagesFile);
-      // console.log(imagesFile.name)
-      // Array.from(imagesFile).forEach((imageFile) => {
-      //   handleUpload(imageFile);
-      //   // console.log("bonjour"+imageFile.name)
-      //   // console.log(imageFile)
-      //   imagesList.push(imageFile.name);
-      //   // console.log(imageFile.name)
-      // });
     });
     console.log(imagesList);
-
-    // // console.log(JSON.stringify(imagesList));
     axios
       .post("http://localhost:8082/api/materiels/ajouter", {
         categorieMat: categorie,
@@ -126,7 +110,7 @@ function AddProduit() {
         descriptionMat: descriptionMateriel,
         techniqueMat: descriptionTechMateriel,
         imagePath: JSON.stringify(imagesList),
-        id_user: localStorage.getItem("crntUser"),
+        id_user: JSON.parse(localStorage.getItem("currentUserSession")).idUser,
         prixMAt: prixMateriel,
       })
       .then((response) => {
@@ -170,40 +154,6 @@ function AddProduit() {
     setNomMateriel(e.target.value);
     console.log(e.target.value);
   };
-  // const handleOnChangeCategorieMateriel = (e) => {
-  //   setCategorieMateriel(e.target.value);
-  // };
-  // const handleOnChangePrixMateriel = (e) => {
-  //   setPrixMateriel(e.target.value);
-  // };
-  // const handleOnChangeStockMateriel = (e) => {
-  //   setStockMateriel(e.target.value);
-  // };
-  // const handleOnChangeDescriptionMateriel = (e) => {
-  //   setDescriptionMateriel(e.target.value);
-  // };
-
-  // const handleImageChange = (e) => {
-  //   const files = Array.from(e.target.files);
-  //   // console.log(files)
-  //   listImagesFile.push(files);
-  //   files.forEach((file) => {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setImagePreviews((prevPreviews) => [...prevPreviews, reader.result]);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   });
-
-  //   setImages((prevImages) => [...prevImages, ...files]);
-  // };
-
-  // const removeImage = (index) => {
-  //   setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-  //   setImagePreviews((prevPreviews) =>
-  //     prevPreviews.filter((_, i) => i !== index)
-  //   );
-  // };
 
   const addImage = () => {
     const input = document.createElement("input");

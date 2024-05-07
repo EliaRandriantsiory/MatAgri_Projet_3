@@ -1,13 +1,10 @@
 package mg.inclusiv.cdan8.projet3.Controller;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.data.jpa.domain.JpaSort.Path;
 import org.springframework.http.HttpStatus;
@@ -24,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import mg.inclusiv.cdan8.projet3.Entities.Materiels;
 import mg.inclusiv.cdan8.projet3.Entities.Users;
-import mg.inclusiv.cdan8.projet3.Repositories.MaterielsRepository;
 import mg.inclusiv.cdan8.projet3.Servicies.MaterielsService;
 
 @RestController
@@ -35,8 +31,6 @@ public class MaterielsRestController {
     @Autowired
     private MaterielsService materielsService;
 
-    @Autowired
-    private MaterielsRepository materielsRepository;
 
     @GetMapping("/listMateriel")
     public List<Materiels> listMat() {
@@ -80,7 +74,23 @@ public class MaterielsRestController {
         Materiels nouveauMateriel = materielsService.addMateriel(materiel);
         return new ResponseEntity<>(nouveauMateriel, HttpStatus.CREATED);
     }
+    @GetMapping("filter")
+    public List<Materiels> getAllmat() {
 
+        return materielsService.getAllMat();
+    }
+
+    @PostMapping("/modifier")
+    public ResponseEntity<Materiels> modiferMateriel(@RequestBody Materiels materiel) {
+        Materiels nouveauMateriel = materielsService.updateMateriel(materiel);
+        return new ResponseEntity<>(nouveauMateriel, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/supprimer")
+    public ResponseEntity<String> supprimerMateriel(@RequestBody Materiels materiel) {
+        materielsService.deleteMateriel(materiel.getMaterielId());
+        return ResponseEntity.ok("Data Supprimer");
+    }
     // @PostMapping
     // public ResponseEntity<String> uploadFiles(@RequestPart("files") List<FileUpload> fileUploadRequests) {
     //     for (FileUpload fileUploadRequest : fileUploadRequests) {
@@ -112,12 +122,6 @@ public class MaterielsRestController {
         
 
         
-    }
-
-    private String generateUniqueFileName(String originalFileName) {
-        // Implémentez votre logique pour générer un nom de fichier unique
-        // Par exemple, vous pouvez ajouter un timestamp ou utiliser un UUID
-        return "uniqueFileName";
     }
     
 }

@@ -5,12 +5,13 @@ import RowPanierComponent from "./composant/rowPanier";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Panier() {
-  const [listMateriel, setListMateriel] = useState([]);
+  const [listMateriel, setListMateriel] = useState([null]);
   const [updated, setUpdated] = useState();
   const [sommePrix, setsommePrix] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
   const [sommePrixTotal, setsommePrixTotal] = useState(0);
   const prixLivraison = 2000;
+  
 
   function calculeDifferenceDate(startDateString, endDateString) {
     const startDateParts = startDateString.split("/");
@@ -42,15 +43,17 @@ function Panier() {
       console.log(commande);
       console.log(commande.quantity);
       // console.log(new Date())
-      // console.log(calculeDifferenceDate("22/04/2024","25/05/2024"))
+      console.log(calculeDifferenceDate(commande.startDate,commande.endDate)+1)
       // console.log(commande.materiel.prixMAt);
+      console.log(commande.quantity+commande.materiel.prixMAt)
       let prixlocationMat =
         commande.quantity *
-        calculeDifferenceDate(commande.startDate, commande.endDate) *
+        (calculeDifferenceDate(commande.startDate, commande.endDate)+1) *
         commande.materiel.prixMAt;
       prxTotal += prixlocationMat;
-      // setsommePrixTotal(sommePrixTotal+prixlocationMat)
-      // console.log(sommePrixTotal+prixlocationMat)
+
+      setsommePrixTotal(sommePrixTotal+prixlocationMat)
+      // console.log("prix Total: "+sommePrixTotal+prixlocationMat)
 
       // const differenceDate = calculeDifferenceDate(
       //   commande.startDate,
@@ -67,7 +70,7 @@ function Panier() {
       // console.log(commande.endDate)
       // console.log(differenceDate)
     });
-    setsommePrixTotal(prxTotal + prixLivraison);
+    // setsommePrixTotal(prxTotal + prixLivraison);
   };
 
   const handleCloseRowPanier = (index) => {
@@ -88,11 +91,16 @@ function Panier() {
     materielItem_,
     qt,
     prixTotal,
-    nombreJourLocation
+    startDateCrenau, endDateCrenau
   ) => {
     let currentPanierMat = JSON.parse(localStorage.getItem("listpanier"));
-    currentPanierMat[index].quantity = qt;
-    localStorage.setItem("listpanier", JSON.stringify(currentPanierMat));
+
+    // currentPanierMat[index].quantity=qt
+    // currentPanierMat[index].startDate=startDateCrenau
+    // currentPanierMat[index].endDate=endDateCrenau
+    // localStorage.setItem("listpanier",JSON.stringify(currentPanierMat))
+    console.log(currentPanierMat)
+
   };
 
   useEffect(() => {
@@ -103,7 +111,8 @@ function Panier() {
 
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
-    CalculeSommePrixTotal();
+    console.log(JSON.parse(localStorage.getItem("listpanier")))
+    // CalculeSommePrixTotal();
   }, []);
 
   return (
@@ -269,9 +278,14 @@ function Panier() {
                               fontWeight: "bold"
                             }}
                           >
+
+                            {/* <Link to="/devis" >
+                              Aller au devis */}
+
                             <Link to="/devis" style={{color:"black"}}>
                             <FontAwesomeIcon icon="fa-solid fa-arrow-right" style={{color: "#000000",}} />&nbsp;
                             Demande de devis &nbsp; &nbsp;
+
                             </Link>
                           </li>
                           <li
