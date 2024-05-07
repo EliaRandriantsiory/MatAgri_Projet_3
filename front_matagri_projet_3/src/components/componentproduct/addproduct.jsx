@@ -17,18 +17,18 @@ function AddProduit() {
     const [isValid, setIsValid] = useState(true);
     const [produits, setProduits] = useState([]);
 
-    useEffect(() => {
-        const fetchProduits = async () => {
-            try {
-                const response = await axios.get('/api/produits');
-                setProduits(response.data);
-            } catch (error) {
-                console.error('Erreur lors de la récupération des produits:', error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchProduits = async () => {
+    //         try {
+    //             const response = await axios.get('/api/produits');
+    //             setProduits(response.data);
+    //         } catch (error) {
+    //             console.error('Erreur lors de la récupération des produits:', error);
+    //         }
+    //     };
 
-        fetchProduits();
-    }, []);
+    //     fetchProduits();
+    // }, []);
 
     const handleImageChange = (file) => {
         setImage([file]);

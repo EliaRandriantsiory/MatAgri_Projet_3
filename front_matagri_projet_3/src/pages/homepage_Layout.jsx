@@ -1,28 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 import React, { useState, useEffect } from "react";
 
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 import "./assets/css/homePage/homePage.css";
-import Avatar from './avatar';
+import Avatar from "./avatar";
 
 import "./assets/css/homePage/homePage.css";
-
 
 import Panier from "./Panier/Panier";
 
-
-
-import ServiceSection from './homePage/sectionService';
-import LogoSection from './homePage/sectionLogo';
+import ServiceSection from "./homePage/sectionService";
+import LogoSection from "./homePage/sectionLogo";
 
 function HomePage_Layout() {
-
-    const [isVisible, setIsVisible] = useState(false);
-    const [isConnected, setIsConnected] = useState(false);
-
+  const [isVisible, setIsVisible] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -54,17 +48,15 @@ function HomePage_Layout() {
       setListPanier(storedListPanier);
       setCountPanier(storedListPanier.length);
     }
-
   }, [localStorage.getItem("listpanier")]);
-  localStorage.getItem("currentUser")
+  localStorage.getItem("currentUser");
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('currentUser'))){
-      const userData = JSON.parse(localStorage.getItem('currentUser')) || {};
+    if (JSON.parse(localStorage.getItem("currentUser"))) {
+      const userData = JSON.parse(localStorage.getItem("currentUser")) || {};
       setIsConnected(true);
       setCurrentUser(userData);
     }
     // localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-    
   }, []);
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
@@ -134,27 +126,48 @@ function HomePage_Layout() {
                   <div>
                     <div className="icon-nav">
                       <ul>
-
-                      {isConnected ? (
-                      <li className="onhover-div mobile-account">
-                          <h4 >{currentUser.lastname}</h4>
-                      <div className="show-div">
-                        <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>
-                          <li>
-                            <Link to={"/ProfileAgriculteur"} style={{color : 'black', fontSize:'18px', textAlign:'center'}}>Mon Profile</Link>
+                        {isConnected ? (
+                          <li className="onhover-div mobile-account">
+                            <h4>{currentUser.lastname}</h4>
+                            <div className="show-div">
+                              <ul
+                                style={{
+                                  paddingLeft: "60px",
+                                  paddingBottom: "10px",
+                                  paddingTop: "10px",
+                                  paddingRight: "0px",
+                                  margin: "0",
+                                }}
+                              >
+                                <li>
+                                  <Link
+                                    to={"/ProfileAgriculteur"}
+                                    style={{
+                                      color: "black",
+                                      fontSize: "18px",
+                                      textAlign: "center",
+                                    }}
+                                  >
+                                    Mon Profile
+                                  </Link>
+                                </li>
+                                <br />
+                                <li>
+                                  <a
+                                    href="#"
+                                    onClick={handleOnClickLogout}
+                                    style={{ color: "black", fontSize: "18px" }}
+                                    data-lng="en"
+                                  >
+                                    Se déconnecter
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
                           </li>
-                          <br/>
-                          <li>
-                            <a href="#" onClick={handleOnClickLogout} style={{color : 'black', fontSize:'18px'}} data-lng="en">
-                              Se déconnecter
-                            </a>
-                          </li>
-                        </ul>
-                        </div>
-                      </li>): (
-                        <Avatar />
-                      )}
-                      
+                        ) : (
+                          <Avatar />
+                        )}
 
                         <li className="onhover-div mobile-search">
                           <Link to={"/search"}>
@@ -231,9 +244,17 @@ function HomePage_Layout() {
       </header>
       <Outlet />
       <br />
-      <ServiceSection/>
-      <br/>
-      <h3 style={{marginLeft:"839px",marginTop:"-60px", position:"absolute"}}>Nos partenaires :</h3>
+      <ServiceSection />
+      <br />
+      <h3
+        style={{
+          marginLeft: "839px",
+          marginTop: "-60px",
+          position: "absolute",
+        }}
+      >
+        Nos partenaires :
+      </h3>
       <br />
       <LogoSection />
       <footer className="footer-light">
@@ -322,9 +343,7 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-
                           Motoculteur
-
                         </a>
                       </li>
                       <li>
@@ -332,9 +351,7 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-
                           Tracteur/Charrue
-
                         </a>
                       </li>
                       <li>
@@ -342,9 +359,7 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-
                           Dechaumeur/Pulverisation
-
                         </a>
                       </li>
                       <li>
@@ -352,9 +367,7 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-
                           Semoir/moissonneuseBatteuse
-
                         </a>
                       </li>
                     </ul>

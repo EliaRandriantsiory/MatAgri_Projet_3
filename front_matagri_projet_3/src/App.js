@@ -38,6 +38,7 @@ import Distance from "./pages/Panier/calculDistance";
 
 import Devis from "./components/textComponent/Devis";
 import Paiement from "./components/Payement/Paiement";
+import DashboardFournisseur from "./pages/Dashboard/Fournisseur/dashboardfour";
 
 function App() {
   return (
@@ -91,7 +92,7 @@ function App() {
           <Route path="/TermeF" element=<TermeF /> />
         </Route>
         <Route path="/carouselImage" element=<homePage /> />
-        <Route path="/dashboard_fournisseur" element=<Dashboard /> />
+        <Route path="/dashboard_fournisseur" element=<DashboardFournisseur /> />
         <Route path="/terme" element=<Terme /> />
         <Route path="/Devis" element=<Devis /> />
       </Routes>
