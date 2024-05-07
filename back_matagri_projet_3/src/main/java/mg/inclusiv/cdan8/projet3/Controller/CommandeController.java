@@ -14,7 +14,7 @@ import mg.inclusiv.cdan8.projet3.Entities.Commande;
 import mg.inclusiv.cdan8.projet3.Servicies.CommandeService;
 
 import mg.inclusiv.cdan8.projet3.Entities.Mutualisation;
-import mg.inclusiv.cdan8.projet3.Servicies.CommandeService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

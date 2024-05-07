@@ -25,7 +25,7 @@ public class StripeClient {
     public Charge chargeNewCard(String token, double amount) throws Exception {
         Map<String, Object> chargeParams = new HashMap<String, Object>();
         chargeParams.put("amount", (int)(amount * 100));
-        chargeParams.put("currency", "USD");
+        chargeParams.put("currency", "MGA");
         chargeParams.put("source", token);
         Charge charge = Charge.create(chargeParams);
         return charge;
@@ -34,7 +34,7 @@ public class StripeClient {
         String sourceCard = getCustomer(customerId).getDefaultSource();
         Map<String, Object> chargeParams = new HashMap<String, Object>();
         chargeParams.put("amount", amount);
-        chargeParams.put("currency", "USD");
+        chargeParams.put("currency", "MGA");
         chargeParams.put("customer", customerId);
         chargeParams.put("source", sourceCard);
         Charge charge = Charge.create(chargeParams);

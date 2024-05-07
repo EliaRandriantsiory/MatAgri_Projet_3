@@ -11,7 +11,6 @@ import Choiceusers from "./pages/AuthenticationPage/choiceusers";
 import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricultuer";
 import DashBordAgriculteur from "./pages/Dashboard/Agriculteur/dashboardAgriculteur";
 import PageAccueilAgriculteur from "./pages/Dashboard/Agriculteur/pageaccueilagriculteur";
-import Dashboard from "./pages/Dashboard/Fournisseur/dashboardfour";
 import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
 import Panier from "./pages/Panier/Panier";
 import DashboardUser from "./pages/dasboard";
