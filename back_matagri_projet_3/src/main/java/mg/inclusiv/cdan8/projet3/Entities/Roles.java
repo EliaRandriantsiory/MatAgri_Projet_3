@@ -1,6 +1,5 @@
 package mg.inclusiv.cdan8.projet3.Entities;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

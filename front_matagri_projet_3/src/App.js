@@ -11,7 +11,6 @@ import Choiceusers from "./pages/AuthenticationPage/choiceusers";
 import InscriptionAgriculteur from "./pages/AuthenticationPage/inscriptionagricultuer";
 import DashBordAgriculteur from "./pages/Dashboard/Agriculteur/dashboardAgriculteur";
 import PageAccueilAgriculteur from "./pages/Dashboard/Agriculteur/pageaccueilagriculteur";
-import Dashboard from "./pages/Dashboard/Fournisseur/dashboardfour";
 import DescriptionProduit from "./pages/Dashboard/Fournisseur/description";
 import Panier from "./pages/Panier/Panier";
 import DashboardUser from "./pages/dasboard";
@@ -21,7 +20,7 @@ import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
 
 import Mutualisation from "./components/Mutualisation/InterfaceMutu";
-
+import Payment from "./pages/Payment";
 import HomePage from "./pages/homePage/homepage";
 import HomePage_Layout from "./pages/homepage_Layout";
 
@@ -46,8 +45,6 @@ import DashboardFournisseur from "./pages/Dashboard/Fournisseur/dashboardfour";
 // import Paiement from "./components/Payement/Paiement";
 import DevisComponents from "./pages/DevisComponent";
 
-
-
 function App() {
   return (
     <BrowserRouter>
@@ -66,6 +63,8 @@ function App() {
           <Route path="/SignUpProvider" element=<SignUpProvider /> />
           <Route path="/Paiement" element=<Paiement /> />
           <Route path="/Mutualisation" element=<Mutualisation /> />
+          <Route path="/Payment" element=<Payment /> />
+          <Route path="/DevisComponents" element=<DevisComponents /> />
 
           <Route
             path="/InscriptionAgriculteur"
@@ -104,7 +103,6 @@ function App() {
 
         {/* <Route path="/Devis" element=<Devis /> /> */}
         <Route path="/DevisComponent" element=<DevisComponents /> />
-
       </Routes>
       {/* <Route path="/Devis" element=<Devis /> /> */}
       {/* <Route path="/Panier" element=<Panier /> />
