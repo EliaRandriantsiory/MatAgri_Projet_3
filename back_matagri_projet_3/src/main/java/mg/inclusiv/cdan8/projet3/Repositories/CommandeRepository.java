@@ -7,4 +7,6 @@ import mg.inclusiv.cdan8.projet3.Entities.Commande;
 
 public interface CommandeRepository extends JpaRepository<Commande,Long>{
    List<Commande> findAll();
+
 }
+

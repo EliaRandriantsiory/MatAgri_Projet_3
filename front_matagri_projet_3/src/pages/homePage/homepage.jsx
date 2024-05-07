@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import HomeSlide from "../../components/homepagecomponents/homeSlideComponent"
-import CardProduct from "../assets/carteProduit"
-import ParallaxPub from "./parallaxPub";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import HomeSlide from "../../components/homepagecomponents/homeSlideComponent";
+import CardProduct from "../assets/carteProduit";
+import ParallaxPub from "./parallaxPub";
 
 function HomePage() {
     const [listMateriel, setListMateriel] = useState([]);
@@ -25,6 +25,7 @@ function HomePage() {
         <HomeSlide />
         <CardProduct listmatHomePage={listMateriel}/>
         <ParallaxPub/>
+        
     </>
     );
 }

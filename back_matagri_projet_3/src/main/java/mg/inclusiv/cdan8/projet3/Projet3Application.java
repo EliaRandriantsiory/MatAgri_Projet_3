@@ -7,5 +7,4 @@ public class Projet3Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Projet3Application.class, args);
 	}
-
 }
