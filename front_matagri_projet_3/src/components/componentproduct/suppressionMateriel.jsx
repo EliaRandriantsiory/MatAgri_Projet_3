@@ -69,7 +69,7 @@ function SupprimerMateriel({materielItem}) {
     <>
     <a href="#" onClick={handleOpenModal}>
       {/* <BorderColorIcon width="2px" /> */}
-      <DeleteForeverIcon />
+      <DeleteForeverIcon style={{color:"#86b0d"}}/>
       
     </a>
 

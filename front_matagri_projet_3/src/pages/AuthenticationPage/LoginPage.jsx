@@ -3,8 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "../assets/css/StyleLoginPage.css";
-import Avatar from "../avatar";
-import Connect from "../profiles";
 
 function Login() {
   const [email, setEmail] = useState("");
