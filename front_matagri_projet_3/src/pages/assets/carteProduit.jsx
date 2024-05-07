@@ -7,7 +7,7 @@ function CardProduct({ listmatHomePage }) {
       <div className="title1 section-t-space">
 
         {/* <h4 style={{ color: "#862b0d" }}> Produits exclusifs</h4> */}
-        <h2 className="title-inner1">Les Matériels disponibles</h2>
+        <h2 className="title-inner1">Les matériels disponibles</h2>
 
       </div>
       <section className="section-b-space ratio_asos">

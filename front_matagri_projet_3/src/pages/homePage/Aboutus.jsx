@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import Aprop from "../../pages/assets/images/about/Apropos1.png";
+import Haritiana from "../../pages/assets/images/team/haritiana.png";
+import Nirina from "../../pages/assets/images/team/Nirina.png";
+import Arnel from "../../pages/assets/images/team/arnel.png";
 import narindra from "../../pages/assets/images/team/narindra.png";
 import nasandratra from "../../pages/assets/images/team/nasandratra.png";
-
+import Rosotiana from "../../pages/assets/images/team/rosotiana.png";
+import Tsiory from "../../pages/assets/images/team/tsiory.png";
 function AboutPage() {
   return (
     <>
@@ -315,24 +319,38 @@ function AboutPage() {
                         </div>
                         <div>
                             <div>
-                                <img src="../assets/images/team/3.jpg" className="img-fluid blur-up lazyload bg-img" alt=""/>
+                                <img src={Arnel} className="img-fluid blur-up lazyload bg-img" alt=""/>
                             </div>
-                            <h4>Hileri Keol</h4>
-                            <h6>CEo & Founder At Company</h6>
+                            <h3>RAHERIMANJATO</h3>
+                            <h3>Arnel</h3>
                         </div>
                         <div>
                             <div>
-                                <img src="../assets/images/team/4.jpg" className="img-fluid blur-up lazyload bg-img" alt=""/>
+                                <img src={Tsiory} className="img-fluid blur-up lazyload bg-img" alt=""/>
                             </div>
-                            <h4>Hileri Keol</h4>
-                            <h6>CEo & Founder At Company</h6>
+                            <h3>RANDRIANTSIORY</h3>
+                            <h3>Tsiory</h3>
                         </div>
                         <div>
                             <div>
-                                <img src="../assets/images/team/1.jpg" className="img-fluid blur-up lazyload bg-img" alt=""/>
+                                <img src={Haritiana} className="img-fluid blur-up lazyload bg-img" alt=""/>
                             </div>
-                            <h4>Hileri Keol</h4>
-                            <h6>CEo & Founder At Company</h6>
+                            <h3>RANAIVOJAONA</h3>
+                            <h3>Haritiana</h3>
+                        </div>
+                        <div>
+                            <div>
+                                <img src={Nirina} className="img-fluid blur-up lazyload bg-img" alt=""/>
+                            </div>
+                            <h3>RAJAOFETRA</h3>
+                            <h3>Nirina</h3>
+                        </div>
+                        <div>
+                            <div>
+                                <img src={Rosotiana} className="img-fluid blur-up lazyload bg-img" alt=""/>
+                            </div>
+                            <h3>RATRIMOARIVONY</h3>
+                            <h3>Rosotiana</h3>
                         </div>
 
                     </div>
