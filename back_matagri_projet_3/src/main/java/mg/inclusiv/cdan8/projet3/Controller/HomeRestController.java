@@ -1,6 +1,7 @@
 package mg.inclusiv.cdan8.projet3.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpSession;
@@ -71,6 +72,18 @@ public class HomeRestController {
     @GetMapping("session_usertest")
     public ResponseEntity<String>  SessionUsertest() {
     return ResponseEntity.ok("Données reçues avec succès !");
+    }
+
+    @GetMapping("/getFournisseur")
+    public Users getlocalisationFournisseur(@RequestParam("idFournisseur") String idFournisseur) {
+        Users currentProvider = new Users() ;
+        List<Users> listpers = userService.getAllPers();
+        for (Users users : listpers) {
+            if (users.getIdUser().toString().equals(idFournisseur)){
+                currentProvider = users;
+            }
+        }
+        return currentProvider ;
     }
 
     @PostMapping("authentification")
