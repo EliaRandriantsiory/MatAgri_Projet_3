@@ -122,7 +122,7 @@ function Paiement() {
                               monnai={"MLG"}
                             /></td>
                             <td>{matHomePage.quantity}</td>
-                            <td>Non mutualiser</td>
+                            <td>Non mutualisé</td>
                             <td><PrintPrixUser
                               TextPrix={
                               matHomePage.quantity*matHomePage.materiel.prixMAt

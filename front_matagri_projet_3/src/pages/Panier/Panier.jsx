@@ -112,6 +112,7 @@ function Panier() {
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
     console.log(JSON.parse(localStorage.getItem("listpanier")))
+    console.log("bonjour")
     // CalculeSommePrixTotal();
   }, []);
 

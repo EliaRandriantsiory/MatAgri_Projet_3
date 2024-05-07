@@ -34,7 +34,7 @@ function TableRow({ materielItem }) {
       </th>
       <td>
         <div>
-          <div> {currentMAt.nomMat}</div>
+          <div><b style={{textTransform:"capitalize"}} >{currentMAt.nomMat}</b></div>
           <div
             style={{
               display: "flex",
