@@ -48,7 +48,6 @@ function AjoutPanier({ materialItem, setPanierMat }) {
   const handleLieuExploitationChange = (event) => {
     setLieuExploitation(event.target.value);
   };
-
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
@@ -57,8 +56,6 @@ function AjoutPanier({ materialItem, setPanierMat }) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
-
-  
   const handleOnClickAddCard = (event) => {
     setPanierMat({
       materiel: {
