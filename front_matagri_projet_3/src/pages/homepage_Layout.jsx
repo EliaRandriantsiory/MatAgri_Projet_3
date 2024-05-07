@@ -1,28 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 import "./assets/css/homePage/homePage.css";
-import Avatar from './avatar';
+import Avatar from "./avatar";
 
 import "./assets/css/homePage/homePage.css";
-
 
 import Panier from "./Panier/Panier";
 
-
-
-import ServiceSection from './homePage/sectionService';
-import LogoSection from './homePage/sectionLogo';
+import ServiceSection from "./homePage/sectionService";
+import LogoSection from "./homePage/sectionLogo";
 
 function HomePage_Layout() {
-
-    const [isVisible, setIsVisible] = useState(false);
-    const [isConnected, setIsConnected] = useState(false);
-
+  const [isVisible, setIsVisible] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -54,17 +48,15 @@ function HomePage_Layout() {
       setListPanier(storedListPanier);
       setCountPanier(storedListPanier.length);
     }
-
   }, [localStorage.getItem("listpanier")]);
-  localStorage.getItem("currentUser")
+  localStorage.getItem("currentUser");
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('currentUser'))){
-      const userData = JSON.parse(localStorage.getItem('currentUser')) || {};
+    if (JSON.parse(localStorage.getItem("currentUser"))) {
+      const userData = JSON.parse(localStorage.getItem("currentUser")) || {};
       setIsConnected(true);
       setCurrentUser(userData);
     }
     // localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
-    
   }, []);
   const handleOnClickLogout = (event) => {
     localStorage.removeItem("token");
@@ -131,97 +123,117 @@ function HomePage_Layout() {
                       </ul>
                     </nav>
                   </div>
-                  <div>
-                    <div className="icon-nav">
-                      <ul>
-
-                      {isConnected ? (
+                  <div className="icon-nav">
+                    {isConnected ? (
                       <li className="onhover-div mobile-account">
-                          <h4 >{currentUser.lastname}</h4>
-                      <div className="show-div">
-                        <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>
+                        <h4>{currentUser.lastname}</h4>
+                        <div className="show-div">
+                          <ul
+                            style={{
+                              paddingLeft: "60px",
+                              paddingBottom: "10px",
+                              paddingTop: "10px",
+                              paddingRight: "0px",
+                              margin: "0",
+                            }}
+                          >
+                            <li>
+                              <Link
+                                to={"/ProfileAgriculteur"}
+                                style={{
+                                  color: "black",
+                                  fontSize: "18px",
+                                  textAlign: "center",
+                                }}
+                              >
+                                Mon profil
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    ) : (
+                      <Avatar />
+                    )}
+
+                    <li className="onhover-div mobile-search">
+                      <Link to={"/search"}>
+                        {/* <img
+      src="../assets/images/jewellery/icon/search.png"
+      onclick="openSearch()"
+      className="img-fluid blur-up lazyload"
+      alt=""
+    /> */}
+                        <FontAwesomeIcon
+                          icon="fa-solid fa-magnifying-glass"
+                          size="2xl"
+                          style={{ color: "#000000" }}
+                        />
+                        <i className="ti-search" onclick="openSearch()" />
+                      </Link>
+                    </li>
+
+                    <li className="onhover-div mobile-setting">
+                      <div>
+                        {/* <img
+      src="../assets/images/jewellery/icon/controls.png"
+      className="img-fluid blur-up lazyload"
+      alt=""
+    /> */}
+                        <FontAwesomeIcon
+                          icon="fa-solid fa-gear"
+                          size="2xl"
+                          style={{ color: "#000000" }}
+                        />
+                        <i className="ti-settings" />
+                      </div>
+                      <div className="show-div setting">
+                        <h6>langues</h6>
+                        <ul>
                           <li>
-                            <Link to={"/ProfileAgriculteur"} style={{color : 'black', fontSize:'18px', textAlign:'center'}}>Mon Profile</Link>
+                            <a href="#">anglais</a>
                           </li>
-                          <br/>
                           <li>
-                            <a href="#" onClick={handleOnClickLogout} style={{color : 'black', fontSize:'18px'}} data-lng="en">
-                              Se déconnecter
-                            </a>
+                            <a href="#">français</a>
                           </li>
                         </ul>
+                        <h6>monnaie</h6>
+                        <ul className="list-inline">
+                          <li>
+                            <a href="#">ariary</a>
+                          </li>
+                          <li>
+                            <a href="#">euro</a>
+                          </li>
+                          <li>
+                            <a href="#">dollar</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+
+                    <li className="onhover-div mobile-cart">
+                      <Link to={"/Panier"}>
+                        <div className="position-relative">
+                          {/* <img
+        src="../assets/images/jewellery/icon/cart.png"
+        className="img-fluid blur-up lazyload"
+        alt=""
+      /> */}
+                          <FontAwesomeIcon
+                            icon="fa-solid fa-basket-shopping"
+                            size="2xl"
+                            style={{ color: "#000000" }}
+                          />
+                          <i className="ti-shopping-cart" />
+                          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {countPanier}
+                            <carteProduitCompnent></carteProduitCompnent>
+                            <span class="visually-hidden">unread messages</span>
+                          </span>
                         </div>
-                      </li>): (
-                        <Avatar />
-                      )}
-                      
-
-                        <li className="onhover-div mobile-search">
-                          <Link to={"/search"}>
-                            <img
-                              src="../assets/images/jewellery/icon/search.png"
-                              onclick="openSearch()"
-                              className="img-fluid blur-up lazyload"
-                              alt=""
-                            />
-                            <i className="ti-search" onclick="openSearch()" />
-                          </Link>
-                        </li>
-                        <li className="onhover-div mobile-setting">
-                          <div>
-                            <img
-                              src="../assets/images/jewellery/icon/controls.png"
-                              className="img-fluid blur-up lazyload"
-                              alt=""
-                            />
-                            <i className="ti-settings" />
-                          </div>
-                          <div className="show-div setting">
-                            <h6>langues</h6>
-                            <ul>
-                              <li>
-                                <a href="#">anglais</a>{" "}
-                              </li>
-                              <li>
-                                <a href="#">français</a>{" "}
-                              </li>
-                            </ul>
-                            <h6>monnaie</h6>
-                            <ul className="list-inline">
-                              <li>
-                                <a href="#">ariary</a>{" "}
-                              </li>
-                              <li>
-                                <a href="#">euro</a>{" "}
-                              </li>
-                              <li>
-                                <a href="#">dollar</a>{" "}
-                              </li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li className="onhover-div mobile-cart">
-                          <Link to={"/Panier"}>
-                            <div className="position-relative">
-                              <img
-                                src="../assets/images/jewellery/icon/cart.png"
-                                className="img-fluid blur-up lazyload"
-                                alt=""
-                              />
-
-                              <i className="ti-shopping-cart" />
-                              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                {countPanier}
-                                <carteProduitCompnent></carteProduitCompnent>
-                                <span class="visually-hidden">
-                                  unread messages
-                                </span>
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
+                      </Link>
+                    </li>
                   </div>
                 </div>
               </div>
@@ -231,9 +243,17 @@ function HomePage_Layout() {
       </header>
       <Outlet />
       <br />
-      <ServiceSection/>
-      <br/>
-      <h3 style={{marginLeft:"839px",marginTop:"-60px", position:"absolute"}}>Nos partenaires :</h3>
+      <ServiceSection />
+      <br />
+      <h3
+        style={{
+          marginLeft: "839px",
+          marginTop: "-60px",
+          position: "absolute",
+        }}
+      >
+        Nos partenaires :
+      </h3>
       <br />
       <LogoSection />
       <footer className="footer-light">
@@ -322,9 +342,7 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-
                           Motoculteur
-
                         </a>
                       </li>
                       <li>
@@ -332,9 +350,7 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-
                           Tracteur/Charrue
-
                         </a>
                       </li>
                       <li>
@@ -342,9 +358,7 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-
                           Dechaumeur/Pulverisation
-
                         </a>
                       </li>
                       <li>
@@ -352,9 +366,7 @@ function HomePage_Layout() {
                           href="#"
                           style={{ textAlign: "justify", fontSize: "14px" }}
                         >
-
                           Semoir/moissonneuseBatteuse
-
                         </a>
                       </li>
                     </ul>

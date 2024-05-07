@@ -1,7 +1,17 @@
+<<<<<<< HEAD
 
 import PrintTextPrix from "../textComponent/printPrix";
 import React, { useState, useEffect } from "react";
 
+=======
+
+import { Link, useAsyncError } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+
+import ReserverPanier from "../../pages/Panier/reserverAddPanier";
+import PrintTextPrix from "../textComponent/printPrix";
+
+>>>>>>> 95550beb0340697d55bf44bdb7fc52a145a044f5
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 
 import axios from "axios";
@@ -22,7 +32,8 @@ function ProductCard({ materialItem,addPanier, updateAddPanier }) {
   }, []);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("listpanier"))[0] === null) {
+    // if (JSON.parse(localStorage.getItem("listpanier"))[0] === null) {
+    if (JSON.parse(localStorage.getItem("listpanier"))=== null) {
       setListPanierMat([panierMAt]);
       localStorage.setItem("listpanier", JSON.stringify([panierMAt]));
       // console.log("bonjour");
@@ -157,7 +168,153 @@ function ProductCard({ materialItem,addPanier, updateAddPanier }) {
             </h4> */}
         </div>
       </div>
-    </div>
+
+      {/* Description pour addproduit */}
+      <div
+        className="modal fade bd-example-modal-lg theme-modal"
+        id="quick-view"
+        tabIndex={-1}
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div
+          className="modal-dialog modal-lg modal-dialog-centered"
+          role="document"
+        >
+          <div className="modal-content quick-view-modal">
+            <div className="modal-body">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+              <br />
+
+              <div className="row">
+                <div className="col-lg-6 col-xs-12">
+                  <div className="quick-view-img">
+                    <img
+                      src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
+                        JSON.parse(materialItem.imagePath)[0]
+                      }`}
+                      width={700}
+                      height={1000}
+                      className="img-fluid blur-up lazyload bg-img"
+                    />
+                  </div>
+                </div>
+                <div className="col-lg-6 rtl-text">
+                  <div className="product-right">
+                    <h2 className="product-title">Infos supplémentaire</h2>
+                    <div className="border-product">
+                      <h2>{materialItem.name}</h2>
+                      <p>{materialItem.descriptionMat}</p>
+                    </div>
+                    <label className=""> Entrer votre plage de date :</label>
+                    <ReserverPanier />
+                    <br />
+
+                    {/* <label className="">
+                      Entrer votre lieu d'exploitation :
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Lieu d'exploitation"
+                      style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                    /> */}
+
+                    <div className="d-flex align-items-start">
+                      <label className="d-block mb-2">
+                        Entrer votre lieu d'exploitation :
+                      </label>
+                      <div className="d-flex">
+                      {/* <MyComponent handleLieuExploitationChange={handleLieuExploitationChange} /> */}
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Lieu d'exploitation"
+                          style={{ opacity: 0.7, fontSize: "0.9rem",}}
+                          value={lieuExploitation}
+                          onChange={handleLieuExploitationChange}
+                        />
+                        <button
+                          className="btn btn-solid"
+                          disabled={
+                            lieuExploitation === "" || lieuExploitation.length === 0 ? true : false}
+                          onClick={() => handleValidationClick()}
+                          style={{border: "none",
+                          backgroundColor: lieuExploitation ? '#004225' : '#ccc',
+                            color: '#fff', 
+                            cursor: lieuExploitation ? 'pointer' : 'not-allowed'
+                          }}
+
+                        >
+                          Valider
+                        </button>
+                        
+                      </div>
+                    </div>
+                    <label className="d-block mb-2">
+                      Votre distance est de :{distance ? distance : ""}
+                    </label>
+
+                    <br />
+                    {/* Quantité */}
+                    <div className="product-description border-product">
+                      <h6 className="product-title">Quantité</h6>
+                      <div className="qty-box">
+                        <div className="input-group">
+                          <span className="input-group-prepend">
+                            <button
+                              type="button"
+                              className="btn quantity-left-minus"
+                              // onClick={decrementQuantity}
+                            >
+                              <i className="ti-angle-left" />
+                            </button>{" "}
+                          </span>
+                          <input
+                            type="text"
+                            name="quantity"
+                            className="form-control input-number"
+                            // value={quantity}
+                            defaultValue={1}
+                            readOnly
+                          />{" "}
+                          <span className="input-group-prepend">
+                            <button
+                              type="button"
+                              className="btn quantity-right-plus"
+                              // onClick={incrementQuantity}
+                            >
+                              <i className="ti-angle-right" />
+                            </button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="product-buttons">
+                      <button
+                        // onClick={handleOnClickAddCard}
+                        className="btn btn-solid"
+                      >
+                        Ajouter au panier
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div></div>
+      
+    
+
   );
 }
 export default ProductCard;

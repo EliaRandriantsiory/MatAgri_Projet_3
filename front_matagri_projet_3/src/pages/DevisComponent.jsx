@@ -3,12 +3,8 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 function DevisComponents() {
+  const exportPDF = () => {                                                                                                                               
 
-
-
-
-
-  const exportPDF = () => {
     const input = document.getElementById("pdf-content"); // Obtenez une référence à l'élément contenant le contenu à inclure dans le PDF
     const buttons = input.querySelectorAll(".buttons");
     buttons.forEach((button) => {
@@ -31,6 +27,7 @@ function DevisComponents() {
       .catch((err) => console.error(err));
   };
   return (
+
     <div id="pdf-content">
       <section className="theme-invoice-1 section-b-space">
         <div className="container">
@@ -46,6 +43,7 @@ function DevisComponents() {
                         alt=""
                       />
                     </div>
+
                   </div>
                   <div className="detail-bottom">
                     <div class="container">
@@ -69,6 +67,7 @@ function DevisComponents() {
                 <div className="invoice-body table-responsive-md">
                   <table className="table table-borderless mb-0">
                     <thead>
+
                       <tr>
                         <th style={{ textTransform: "none" }}>
                           Designation

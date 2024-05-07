@@ -21,8 +21,6 @@ import Material from "./pages/homePage/Material";
 import SearchPage from "./pages/homePage/Search";
 
 
-
-
 // import DevisForm from "./pages/CalculDevis";
 
 import Mutualisation from "./components/Mutualisation/InterfaceMutu";
@@ -44,6 +42,13 @@ import HomePage_Layout from "./pages/homepage_Layout";
 
 import Devis from "./components/textComponent/Devis";
 import Paiement from "./components/Payement/Paiement";
+
+import DashboardFournisseur from "./pages/Dashboard/Fournisseur/dashboardfour";
+
+// import HomePage from "./pages/homePage/homepage";
+// import HomePage_Layout from "./pages/homepage_Layout";
+// import Paiement from "./components/Payement/Paiement";
+import DevisComponents from "./pages/DevisComponent";
 
 
 function App() {
@@ -69,6 +74,7 @@ function App() {
             element=<InscriptionAgriculteur />
           />
           <Route path="/SignUpCooperative" element=<SignUpCooperative /> />
+
           {/* <Route path="/CalculDevis" element=<DevisForm /> /> */}
           </Route>
           <Route path="/Dashboard" element=<DashboardUser /> />
@@ -99,15 +105,11 @@ function App() {
           <Route path="/TermeF" element=<TermeF /> />
         </Route>
         <Route path="/carouselImage" element=<homePage /> />
-        <Route path="/dashboard_fournisseur" element=<Dashboard /> />
+        <Route path="/dashboard_fournisseur" element=<DashboardFournisseur /> />
         <Route path="/terme" element=<Terme /> />
-        <Route path="/Devis" element=<Devis /> />
 
-        
-
-
-
-
+        {/* <Route path="/Devis" element=<Devis /> /> */}
+        <Route path="/DevisComponent" element=<DevisComponents /> />
 
       </Routes>
       {/* <Route path="/Devis" element=<Devis /> /> */}
@@ -140,7 +142,6 @@ function App() {
           <Route path="/TermeF" element=<TermeF /> />
         </Route>
         <Route path="/carouselImage" element=<homePage /> />
-        <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         <Route path="/reserverAddPanier" element=<ReserverPanier /> />
         <Route path="/terme" element=<Terme /> />
 

@@ -36,6 +36,8 @@
 
         "@testing-library/user-event": "^13.5.0",
 
+        "@types/googlemaps": "^3.43.3",
+
         "axios": "^1.6.8",
 
         "bootstrap": "^5.3.3",
@@ -47,6 +49,8 @@
         "force": "^0.0.3",
 
         "framer-motion": "^11.1.7",
+
+        "google-maps-react": "^2.0.6",
 
         "html2canvas": "^1.4.1",
 
@@ -63,6 +67,10 @@
         "react-dom": "^18.2.0",
 
         "react-drag-drop-files": "^2.3.10",
+
+        "react-google-autocomplete": "^2.7.3",
+
+        "react-google-maps": "^9.4.5",
 
         "react-router-dom": "^6.22.3",
 

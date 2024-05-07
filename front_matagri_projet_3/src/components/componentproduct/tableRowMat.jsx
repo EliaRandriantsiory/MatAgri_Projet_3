@@ -55,9 +55,9 @@ function TableRow({ materielItem }) {
       <td>{currentMAt.stockMat} unité(s)</td>
       <td>
         {/* <Modification materielItem={{ materielItem }} /> */}
-        <Modification setStateCrudProduct={materielItem} />
+        <Modification materielItem={{materielItem}} />
 
-        {/* <SupprimerMateriel materielItem={{ materielItem }} /> */}
+        <SupprimerMateriel materielItem={{ materielItem }} />
       </td>
     </tr>
   );

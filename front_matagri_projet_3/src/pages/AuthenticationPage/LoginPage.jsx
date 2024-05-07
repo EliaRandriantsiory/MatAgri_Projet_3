@@ -11,6 +11,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isConnected, setIsConnected] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,6 +27,8 @@ function Login() {
       if (response.data) {
         // Stocker les informations de l'utilisateur dans le local storage
         localStorage.setItem("currentUser", JSON.stringify(response.data));
+        localStorage.setItem("currentUserSession", JSON.stringify(response.data));
+        // console.log(response.data)
         // localStorage.setItem("idUser", response.data.idUser); // Ajouter l'idUser
         
         // Gérer la redirection en fonction du profil de l'utilisateur
@@ -41,10 +44,11 @@ function Login() {
           setIsConnected(true);
           navigate("/");
         }
-  
-        // Réinitialiser les champs email et password après soumission du formulaire
-        setEmail("");
-        setPassword("");
+        else{
+          // Réinitialiser les champs email et password après soumission du formulaire
+          setEmail("");
+          setPassword("");
+        }
       }
     } catch (error) {
       setError("Email ou mot de passe incorrect.");
@@ -92,11 +96,7 @@ function Login() {
         </div>
       </div>
       <ToastContainer/>
-      {isConnected ? (
-    <Connect isConnected={isConnected} />
-  ) : (
-    <Avatar />
-  )}
+      
     </section>
   );
 }

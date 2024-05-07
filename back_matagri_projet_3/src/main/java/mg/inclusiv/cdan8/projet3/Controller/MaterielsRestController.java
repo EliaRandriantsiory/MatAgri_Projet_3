@@ -80,6 +80,17 @@ public class MaterielsRestController {
         return materielsService.getAllMat();
     }
 
+    @PostMapping("/modifier")
+    public ResponseEntity<Materiels> modiferMateriel(@RequestBody Materiels materiel) {
+        Materiels nouveauMateriel = materielsService.updateMateriel(materiel);
+        return new ResponseEntity<>(nouveauMateriel, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/supprimer")
+    public ResponseEntity<String> supprimerMateriel(@RequestBody Materiels materiel) {
+        materielsService.deleteMateriel(materiel.getMaterielId());
+        return ResponseEntity.ok("Data Supprimer");
+    }
     // @PostMapping
     // public ResponseEntity<String> uploadFiles(@RequestPart("files") List<FileUpload> fileUploadRequests) {
     //     for (FileUpload fileUploadRequest : fileUploadRequests) {
@@ -111,12 +122,6 @@ public class MaterielsRestController {
         
 
         
-    }
-
-    private String generateUniqueFileName(String originalFileName) {
-        // Implémentez votre logique pour générer un nom de fichier unique
-        // Par exemple, vous pouvez ajouter un timestamp ou utiliser un UUID
-        return "uniqueFileName";
     }
     
 }

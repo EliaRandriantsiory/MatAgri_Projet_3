@@ -13,33 +13,32 @@ function Navigation() {
 
   useEffect(() => {
     // initialisation donnée current user
-    axios
-      .post("http://localhost:8082/api/home/authentification", {
-        email: localStorage.getItem("email"),
-        password: localStorage.getItem("pwd"),
-      })
-      .then((response) => {
-        setCurrentProfilUser(response.data);
-        localStorage.setItem("currentUser", JSON.stringify(response.data));
-      });
+    // axios
+    //   .post("http://localhost:8082/api/home/authentification", {
+    //     email: localStorage.getItem("email"),
+    //     password: localStorage.getItem("pwd"),
+    //   })
+    //   .then((response) => {
+    //     setCurrentProfilUser(response.data);
+    //     console.log(response.data)
+    //     // localStorage.setItem("currentUser", JSON.stringify(response.data));
+    //   }).catch((error) => {
+    //     console.error(error);
+    //     navigate("/home");
+    //   });
+
+    setCurrentProfilUser(JSON.parse(localStorage.getItem("currentUserSession")))
+    // console.log(JSON.parse(localStorage.getItem("currentUser")))
+
+
   }, []);
 
   useEffect(() => {
-    // console.log(currentProfilUser)
+    console.log(currentProfilUser)
   }, [currentProfilUser]);
-  if (!currentProfilUser) {
-    navigate("/home");
-  }
-
-  // console.log(listMateriel);
-
+  
   const handleOnClickLogout = (event) => {
-    // localStorage.removeItem("token");
-    // localStorage.removeItem("email");
-    // localStorage.removeItem("password");
     localStorage.clear();
-    setCurrentProfilUser({});
-
     navigate("/home");
   };
 
@@ -102,43 +101,6 @@ function Navigation() {
               </li>
             </ul>
           </div>
-
-          {/* <div className="faq-tab">
-            <ul className="nav nav-tabs" id="top-tab" role="tablist">
-              
-              <li className="nav-item">
-                <Link
-                  data-bs-toggle="tab"
-                  className="nav-link" 
-                  to={"#products"}
-                >
-                  Materiels
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link data-bs-toggle="tab" className="nav-link" to={"#orders"}>
-                  Etat du matériel
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link data-bs-toggle="tab" className="nav-link" to={"#profile"}>
-                  Profile
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className="nav-link"
-                  data-toggle="modal"
-                  data-bs-target="#logout"
-                  to={"/home"}
-                  onClick={(event) => handleOnClickLogout(event)}
-                >
-                  Logout
-                </Link>
-              </li>
-            </ul>
-
-          </div> */}
         </div>
       </div>
       <div className="col-lg-9">
@@ -147,13 +109,13 @@ function Navigation() {
             <TabPaneProducts currentUserSession={currentProfilUser} />
           </div>
           <div className="tab-pane fade" id="orders">
-            <TabPaneOrders />
+            {/* <TabPaneOrders /> */}
           </div>
           <div className="tab-pane fade" id="profile">
-            <TabPaneProfile />
+            {/* <TabPaneProfile /> */}
           </div>
-        </div>
-        <ToastContainer />
+        </div> 
+         {/* <ToastContainer /> */}
       </div>
     </div>
   );

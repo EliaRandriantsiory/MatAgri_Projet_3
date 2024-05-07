@@ -7,11 +7,9 @@ import org.springframework.stereotype.Service;
 
 import mg.inclusiv.cdan8.projet3.Entities.Commande;
 
-import mg.inclusiv.cdan8.projet3.Repositories.CommandeRepository;
-
 import mg.inclusiv.cdan8.projet3.Entities.Mutualisation;
+import mg.inclusiv.cdan8.projet3.Repositories.CommandeRepository;
 import mg.inclusiv.cdan8.projet3.Repositories.MutualisationRepository;
-
 
 @Service
 public class CommandeService {
@@ -26,7 +24,6 @@ public class CommandeService {
     private MutualisationRepository mutualisationRepository;
 
 
-
     public List<Commande> getPannier() {
         return commandeRepository.findAll();
     }
@@ -34,7 +31,6 @@ public class CommandeService {
     public void saveMutualisation(Mutualisation commandeMutualisation) {
         mutualisationRep.save(commandeMutualisation);
     }
-
 
 
     public void mutualisation (Mutualisation mutualisation) {
