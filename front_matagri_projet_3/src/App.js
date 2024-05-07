@@ -136,7 +136,6 @@ function App() {
           <Route path="/TermeF" element=<TermeF /> />
         </Route>
         <Route path="/carouselImage" element=<homePage /> />
-        <Route path="/dashboard_fournisseur" element=<Dashboard /> />
         <Route path="/reserverAddPanier" element=<ReserverPanier /> />
         <Route path="/terme" element=<Terme /> />
 

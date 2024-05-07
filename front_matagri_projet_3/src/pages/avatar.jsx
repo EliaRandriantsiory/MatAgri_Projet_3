@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 
@@ -29,11 +30,12 @@ function Avatar() {
         
         <li className="onhover-div mobile-account">
         <div>
-        <img
+        {/* <img
           src="../assets/images/jewellery/icon/avatar.png"
           className="opacity-1"
           alt=""
-        />
+        /> */}
+        <FontAwesomeIcon icon="fa-solid fa-user" size="2xl" style={{color: "#000000",}} />
         </div>
         <div className="show-div">
         <ul style={{ paddingLeft: '60px', paddingBottom:'10px',paddingTop:'10px', paddingRight: '0px', margin: '0' }}>

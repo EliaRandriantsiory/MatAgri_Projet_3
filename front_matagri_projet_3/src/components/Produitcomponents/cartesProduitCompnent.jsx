@@ -1,13 +1,13 @@
-import { Link, useAsyncError } from "react-router-dom";
-import PrintTextPrix from "../textComponent/printPrix";
-import React, { useState, useEffect } from "react";
-import ReserverPanier from "../../pages/Panier/reserverAddPanier";
 
-import Description from "../../pages/Dashboard/Fournisseur/description";
+import { Link, useAsyncError } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+
+import ReserverPanier from "../../pages/Panier/reserverAddPanier";
+import PrintTextPrix from "../textComponent/printPrix";
+
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 
 import axios from "axios";
-import MyComponent from "../textComponent/testsaisiautomatique";
 import AjoutPanier from "./printDescMateriel";
 
 function ProductCard({ materialItem,addPanier, updateAddPanier }) {
@@ -239,7 +239,12 @@ function ProductCard({ materialItem,addPanier, updateAddPanier }) {
                           disabled={
                             lieuExploitation === "" || lieuExploitation.length === 0 ? true : false}
                           onClick={() => handleValidationClick()}
-                          style={{border: "none"}}
+                          style={{border: "none",
+                          backgroundColor: lieuExploitation ? '#004225' : '#ccc',
+                            color: '#fff', 
+                            cursor: lieuExploitation ? 'pointer' : 'not-allowed'
+                          }}
+
                         >
                           Valider
                         </button>

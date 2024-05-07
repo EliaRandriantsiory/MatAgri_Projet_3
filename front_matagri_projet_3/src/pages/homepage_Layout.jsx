@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -123,118 +123,117 @@ function HomePage_Layout() {
                       </ul>
                     </nav>
                   </div>
-                  <div>
-                    <div className="icon-nav">
-                      <ul>
-                        {isConnected ? (
-                          <li className="onhover-div mobile-account">
-                            <h4>{currentUser.lastname}</h4>
-                            <div className="show-div">
-                              <ul
+                  <div className="icon-nav">
+                    {isConnected ? (
+                      <li className="onhover-div mobile-account">
+                        <h4>{currentUser.lastname}</h4>
+                        <div className="show-div">
+                          <ul
+                            style={{
+                              paddingLeft: "60px",
+                              paddingBottom: "10px",
+                              paddingTop: "10px",
+                              paddingRight: "0px",
+                              margin: "0",
+                            }}
+                          >
+                            <li>
+                              <Link
+                                to={"/ProfileAgriculteur"}
                                 style={{
-                                  paddingLeft: "60px",
-                                  paddingBottom: "10px",
-                                  paddingTop: "10px",
-                                  paddingRight: "0px",
-                                  margin: "0",
+                                  color: "black",
+                                  fontSize: "18px",
+                                  textAlign: "center",
                                 }}
                               >
-                                <li>
-                                  <Link
-                                    to={"/ProfileAgriculteur"}
-                                    style={{
-                                      color: "black",
-                                      fontSize: "18px",
-                                      textAlign: "center",
-                                    }}
-                                  >
-                                    Mon Profile
-                                  </Link>
-                                </li>
-                                <br />
-                                <li>
-                                  <a
-                                    href="#"
-                                    onClick={handleOnClickLogout}
-                                    style={{ color: "black", fontSize: "18px" }}
-                                    data-lng="en"
-                                  >
-                                    Se déconnecter
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
+                                Mon profil
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    ) : (
+                      <Avatar />
+                    )}
+
+                    <li className="onhover-div mobile-search">
+                      <Link to={"/search"}>
+                        {/* <img
+      src="../assets/images/jewellery/icon/search.png"
+      onclick="openSearch()"
+      className="img-fluid blur-up lazyload"
+      alt=""
+    /> */}
+                        <FontAwesomeIcon
+                          icon="fa-solid fa-magnifying-glass"
+                          size="2xl"
+                          style={{ color: "#000000" }}
+                        />
+                        <i className="ti-search" onclick="openSearch()" />
+                      </Link>
+                    </li>
+
+                    <li className="onhover-div mobile-setting">
+                      <div>
+                        {/* <img
+      src="../assets/images/jewellery/icon/controls.png"
+      className="img-fluid blur-up lazyload"
+      alt=""
+    /> */}
+                        <FontAwesomeIcon
+                          icon="fa-solid fa-gear"
+                          size="2xl"
+                          style={{ color: "#000000" }}
+                        />
+                        <i className="ti-settings" />
+                      </div>
+                      <div className="show-div setting">
+                        <h6>langues</h6>
+                        <ul>
+                          <li>
+                            <a href="#">anglais</a>
                           </li>
-                        ) : (
-                          <Avatar />
-                        )}
+                          <li>
+                            <a href="#">français</a>
+                          </li>
+                        </ul>
+                        <h6>monnaie</h6>
+                        <ul className="list-inline">
+                          <li>
+                            <a href="#">ariary</a>
+                          </li>
+                          <li>
+                            <a href="#">euro</a>
+                          </li>
+                          <li>
+                            <a href="#">dollar</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
 
-                        <li className="onhover-div mobile-search">
-                          <Link to={"/search"}>
-                            <img
-                              src="../assets/images/jewellery/icon/search.png"
-                              onclick="openSearch()"
-                              className="img-fluid blur-up lazyload"
-                              alt=""
-                            />
-                            <i className="ti-search" onclick="openSearch()" />
-                          </Link>
-                        </li>
-                        <li className="onhover-div mobile-setting">
-                          <div>
-                            <img
-                              src="../assets/images/jewellery/icon/controls.png"
-                              className="img-fluid blur-up lazyload"
-                              alt=""
-                            />
-                            <i className="ti-settings" />
-                          </div>
-                          <div className="show-div setting">
-                            <h6>langues</h6>
-                            <ul>
-                              <li>
-                                <a href="#">anglais</a>{" "}
-                              </li>
-                              <li>
-                                <a href="#">français</a>{" "}
-                              </li>
-                            </ul>
-                            <h6>monnaie</h6>
-                            <ul className="list-inline">
-                              <li>
-                                <a href="#">ariary</a>{" "}
-                              </li>
-                              <li>
-                                <a href="#">euro</a>{" "}
-                              </li>
-                              <li>
-                                <a href="#">dollar</a>{" "}
-                              </li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li className="onhover-div mobile-cart">
-                          <Link to={"/Panier"}>
-                            <div className="position-relative">
-                              <img
-                                src="../assets/images/jewellery/icon/cart.png"
-                                className="img-fluid blur-up lazyload"
-                                alt=""
-                              />
-
-                              <i className="ti-shopping-cart" />
-                              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                {countPanier}
-                                <carteProduitCompnent></carteProduitCompnent>
-                                <span class="visually-hidden">
-                                  unread messages
-                                </span>
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
+                    <li className="onhover-div mobile-cart">
+                      <Link to={"/Panier"}>
+                        <div className="position-relative">
+                          {/* <img
+        src="../assets/images/jewellery/icon/cart.png"
+        className="img-fluid blur-up lazyload"
+        alt=""
+      /> */}
+                          <FontAwesomeIcon
+                            icon="fa-solid fa-basket-shopping"
+                            size="2xl"
+                            style={{ color: "#000000" }}
+                          />
+                          <i className="ti-shopping-cart" />
+                          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {countPanier}
+                            <carteProduitCompnent></carteProduitCompnent>
+                            <span class="visually-hidden">unread messages</span>
+                          </span>
+                        </div>
+                      </Link>
+                    </li>
                   </div>
                 </div>
               </div>

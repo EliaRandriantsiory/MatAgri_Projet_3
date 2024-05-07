@@ -21,7 +21,7 @@ function ParallaxPub() {
     backgroundPosition: 'center center',
     display: 'block'
   };
-  const textColor = scrollPosition > 900 ? '#004225' : 'white'
+  const textColor = scrollPosition > 200 ? '#004225' : 'white'
 
   return (
     <section className="p-0">

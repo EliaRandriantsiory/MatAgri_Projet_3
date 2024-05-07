@@ -1,5 +1,9 @@
 function Mutualisation() {
-  return <div>Mutualisation</div>;
+  return (
+    <table>
+    </table>
+
+  )
 }
 
 export default Mutualisation;
