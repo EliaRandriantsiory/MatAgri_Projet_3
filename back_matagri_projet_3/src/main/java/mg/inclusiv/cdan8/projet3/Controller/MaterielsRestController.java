@@ -39,6 +39,12 @@ public class MaterielsRestController {
         return listMateriels;
     }
 
+    @GetMapping("/getlocalisationFournisseur")
+    public ResponseEntity<String> getlocalisationFournisseur(@RequestParam("idFournisseur") String idFournisseur) {
+        // System.out.println(paramFiltr);
+        // List<Materiels> listMatfilter = materielsService.getAllMatByfiltrNom(paramFiltr);
+        return ResponseEntity.ok("Data Supprimer");}
+
     @GetMapping("/listMaterielfilterBynameMat")
     public List<Materiels> filtrlistMat(@RequestParam("paramFiltr") String paramFiltr) {
         System.out.println(paramFiltr);
