@@ -175,7 +175,7 @@ function AddProduit() {
 
       <Modal show={showModal} onHide={handleCloseModal} backdrop="static">
         <Modal.Header closeButton>
-          <Modal.Title>Ajout Matériel</Modal.Title>
+          <Modal.Title>Ajouter matériel</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form

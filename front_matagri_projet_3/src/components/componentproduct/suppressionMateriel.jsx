@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Button, Modal } from "react-bootstrap";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import axios from "axios";
-import ProductBox from "../Produitcomponents/productBoxMat";
-import { ImageList } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 
 function SupprimerMateriel({materielItem}) {
   const [images, setImages] = useState([]);
@@ -69,13 +67,13 @@ function SupprimerMateriel({materielItem}) {
     <>
     <a href="#" onClick={handleOpenModal}>
       {/* <BorderColorIcon width="2px" /> */}
-      <DeleteForeverIcon style={{color:"#86b0d"}}/>
+      <DeleteForeverIcon style={{color:"#862b0d"}}/>
       
     </a>
 
     <Modal show={showModal} onHide={handleCloseModal}>
       <Modal.Header>
-        <Modal.Title>Voulez-vous supprimer cette matériels !</Modal.Title>
+        <Modal.Title>Voulez-vous supprimer ce matériel !</Modal.Title>
       </Modal.Header>
       <Modal.Body>
       <div className="col-xl-3 col-6 col-grid-box">

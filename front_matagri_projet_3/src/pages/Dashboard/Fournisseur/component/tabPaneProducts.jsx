@@ -216,7 +216,7 @@ function TabPaneProducts({ currentUserSession, setStateCrudProduct }) {
           <div className="card dashboard-table mt-0">
             <div className="card-body">
               <div className="top-sec">
-                <h3>Tous les matériels</h3>
+                <h3>Tous mes matériels</h3>
                 {/* <input
                   type="button"
                   className="btn btn-sm btn-solid"

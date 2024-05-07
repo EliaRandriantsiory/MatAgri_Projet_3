@@ -191,7 +191,7 @@ function Modification({ materielItem }) {
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header>
-          <Modal.Title>Modifier Produit</Modal.Title>
+          <Modal.Title>Modifier matériel</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form

@@ -5,7 +5,6 @@ import ReserverPanier from "../../pages/Panier/reserverAddPanier";
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
 import PrintPrixUser from "../textComponent/printPrixUser";
 
-import SaisieAutomatiqueVille from "../textComponent/testsaisiautomatique";
 import axios from 'axios';
 
 function AjoutPanier({ materialItem, setPanierMat }) {
@@ -156,18 +155,6 @@ function AjoutPanier({ materialItem, setPanierMat }) {
                 <h2 className="product-title">Taux journalière : <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} /></h2>
                 <br/>
 
-
-              <h2 className="product-title">Description technique matériel</h2>
-              <p>{materialItem.techniqueMat}</p>
-
-              <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
-              <br />
-              <h2 className="product-title">
-                Taux journalière :{" "}
-                <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} />
-              </h2>
-              <br />
-
               <div className="border-product">
                 <div>
                   <label hidden className="">
@@ -298,9 +285,6 @@ function AjoutPanier({ materialItem, setPanierMat }) {
                 </div>
 
               </div>
-              <label className="d-block mb-2">
-                Votre distance est de :{distance ? distance : ""}
-              </label>
 
               <br />
 
