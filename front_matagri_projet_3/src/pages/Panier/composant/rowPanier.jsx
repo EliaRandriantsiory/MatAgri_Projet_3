@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Reserver from "../Reserver";
-import PrintTextPrix from "../../../components/textComponent/printPrix";
+import PrintDetailTechMat from "../../../components/textComponent/printDescTechMateriel";
 import PrintPrixUser from "../../../components/textComponent/printPrixUser";
 import ReserverPanier from "../reserverAddPanier";
-import PrintDetailTechMat from "../../../components/textComponent/printDescTechMateriel";
 import ReserverPanierRowPanier from "../reserverAddPanierComposant";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 function RowPanierComponent({
   materielItem_,
@@ -121,13 +122,13 @@ function RowPanierComponent({
       
           <div
             style={{
-              display: "flex",
+              
               width:"20vw",
               flexDirection: "row",
               alignItems:"start"
             }}
           >
-          <img
+          &nbsp;<img
             src={`${process.env.PUBLIC_URL}/assets/images/materiels/${
               JSON.parse(materielItem_.materiel.imagePath)[0]
             }`}
@@ -135,10 +136,10 @@ function RowPanierComponent({
             className="img-fluid blur-up lazyload bg-img"
           /><br />
           <div>
-          <b className="text-capitalize">{materielItem_.materiel.nomMat}</b>
+          <b className="text-capitalize" style={{textAlign:'left'}}>&nbsp;&nbsp;{materielItem_.materiel.nomMat}</b>
             <br />
             <PrintDetailTechMat
-                  desctechMat={materielItem_.materiel.techniqueMat}
+                  desctechMat={materielItem_.materiel.techniqueMat} style={{marginLeft:'0'}}
                 />
             
           </div>
@@ -169,7 +170,11 @@ function RowPanierComponent({
         </td>
         <td>
           <div>
+
           <ReserverPanierRowPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau} />
+
+          {/* <ReserverPanier/> */}
+
             {/* <Reserver /> */}
             {/* <input
               type="number"
@@ -182,7 +187,7 @@ function RowPanierComponent({
           </div>
         </td>
         <td>
-          manakara
+          Manakara
         </td>
         <td>
           {/* {prixTotal} */}
@@ -190,6 +195,7 @@ function RowPanierComponent({
         </td>
         <td>
           {/* <input className="icon ti-close" onClick={handleCloseRowPanier} /> */}
+          <FontAwesomeIcon icon="fa-solid fa-pen-to-square" style={{color: "#000000",}} />&nbsp;&nbsp;
           <a className="icon" onClick={() => handleCloseRowPanier(index)}>
             <i className="ti-close"></i>
           </a>

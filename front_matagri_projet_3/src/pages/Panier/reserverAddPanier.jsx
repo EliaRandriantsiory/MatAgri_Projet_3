@@ -17,9 +17,9 @@ function ReserverPanier({ setStartDateCrenau, setEndDateCrenau }) {
 
   useEffect(() => {
     // console.log(setTestStartDate)
-    console.log(selectedDates[0]);
-    setStartDateCrenau(selectedDates[0].startDate.toLocaleDateString());
-    setEndDateCrenau(selectedDates[0].endDate.toLocaleDateString());
+    // console.log(selectedDates[0]);
+    // setStartDateCrenau(selectedDates[0].startDate.toLocaleDateString());
+    // setEndDateCrenau(selectedDates[0].endDate.toLocaleDateString());
     // setEndDate(selectedDates[0].endDate.toLocaleDateString())
     // setStartDate(selectedDates[0].startDate.toLocaleDateString())
   }, [selectedDates]);
@@ -110,9 +110,8 @@ function ReserverPanier({ setStartDateCrenau, setEndDateCrenau }) {
         </Modal.Footer>
       </Modal>
       {selectedDates[0] && (
-        <div>
+        <div style={{marginTop:"5px"}}>
           <p>
-            Intervalle de dates sélectionné :{" "}
             {selectedDates[0].startDate.toLocaleDateString()} -{" "}
             {selectedDates[0].endDate.toLocaleDateString()}
           </p>

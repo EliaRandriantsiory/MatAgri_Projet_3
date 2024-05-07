@@ -6,12 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mg.inclusiv.cdan8.projet3.Entities.Commande;
-
-import mg.inclusiv.cdan8.projet3.Repositories.CommandeRepository;
-
 import mg.inclusiv.cdan8.projet3.Entities.Mutualisation;
 import mg.inclusiv.cdan8.projet3.Repositories.MutualisationRepository;
-
 
 @Service
 public class CommandeService {
@@ -21,15 +17,15 @@ public class CommandeService {
     @Autowired
     private MutualisationRepository mutualisationRepository;
 
-
     public List<Commande> getPannier() {
         return commandeRepository.findAll();
     }
 
-    public void mutualisation (Mutualisation mutualisation) {
-        
+    public void mutualisation(Mutualisation mutualisation) {
         mutualisationRepository.save(mutualisation);
-
     }
 
+    public void saveMutualisation(Mutualisation commandeMutualisation) {
+        mutualisationRepository.save(commandeMutualisation);
+    }
 }

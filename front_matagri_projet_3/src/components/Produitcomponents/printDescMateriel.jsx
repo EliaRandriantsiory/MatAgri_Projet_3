@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
@@ -5,13 +6,14 @@ import CheckIcon from "@mui/icons-material/Check";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { DateRange, DateRangePicker } from "react-date-range";
 import ReserverPanier from "../../pages/Panier/reserverAddPanier";
-import MyComponent from "../textComponent/testsaisiautomatique";
-import axios from "axios";
-import PrintPrixUser from "../textComponent/printPrixUser";
 import PrintDetailTechMat from "../textComponent/printDescTechMateriel";
+import PrintPrixUser from "../textComponent/printPrixUser";
 import SaisieAutomatiqueVille from "../textComponent/testsaisiautomatique";
+
+
 function AjoutPanier({ materialItem,setPanierMat }) {
   const [quantityPanier, setQuantity] = useState(1);
+
   const [distance, setDistance] = useState("");
   const [listPanierMat, setListPanierMat] = useState([]);
   // const [panierMAt, setPanierMat] = useState({});
@@ -73,24 +75,36 @@ function AjoutPanier({ materialItem,setPanierMat }) {
       startDate: startDateCrenau,
       endDate: endDateCrenau,
     });
-    handleCloseDescMat()
-  };
-  // useEffect(() => {
-  //   if (Object.keys(panierMAt).length !== 0) {
-  //     const cmd = listPanierMat.push(panierMAt);
-  //     setListPanierMat([...listPanierMat, panierMAt]);
-  //     localStorage.setItem("listpanier", JSON.stringify(listPanierMat));
 
-  //   }
-  //   // console.log(listPanierMat);
-  // }, [panierMAt]);
-  const handleValidationClick = async () => {
-    // handleCloseDescMat();
-    // console.log("bonjour")
-    handleOnClickAddCard()
-    // console.log(panierMAt)
   };
-  // console.log(materialItem)
+
+  const handleValidationClick = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8082/distance/calculate/${materialItem?.materielId}`,
+        {
+          destination: lieuExploitation,
+        }
+      );
+      if (response.status === 200) {
+        setDistance(response.data);
+        return response.data;
+      }
+    } catch (error) {
+      return "Une erreur s'est produite lors du calcul de la distance";
+    }
+    // handleCloseDescMat()
+
+  };
+
+  useEffect(() => {
+    if (lieuExploitation === "") {
+      setDistance("");
+    }
+  }, [lieuExploitation]);
+
+// console.log(materialItem)
+
   return (
     <div>
       <a onClick={handleOpenCalendar}>
@@ -137,9 +151,10 @@ function AjoutPanier({ materialItem,setPanierMat }) {
               <h2 className="product-title">Description</h2>
               <p>{materialItem.descriptionMat}</p>
               <br />
-              <h2 className="product-title">Description technique matériel</h2>
+
+              {/* <h2 className="product-title">Description technique matériel</h2> */}
               {/* <p>{materialItem.techniqueMat}</p>
-               */}
+              
               <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
               <br />
               <h2 className="product-title">
@@ -154,7 +169,45 @@ function AjoutPanier({ materialItem,setPanierMat }) {
                     {" "}
                     Entrer votre plage de date :{" "}
                   </label>
-                  <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau}  />
+                  <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau}  /> */}
+
+
+
+
+
+
+              <div className="d-flex align-items-start"  >
+                <label className="d-block mb-2" >
+                {/* style={{display: "flex",alignItems:"center" , justifyContent:"center", flexDirection: "row"}} */}
+                  Entrer votre lieu d'exploitation&nbsp;&nbsp;
+                </label>
+                <div className="d-flex">
+                  {/* <MyComponent
+                        handleLieuExploitationChange={
+                          handleLieuExploitationChange
+                        }
+                      /> */}
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Lieu d'exploitation"
+                    style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                    value={lieuExploitation}
+                    onChange={handleLieuExploitationChange}
+                  />
+                  <button
+                    className="btn btn-solid"
+                    disabled={
+                      lieuExploitation === "" || lieuExploitation.length === 0
+                        ? true
+                        : false
+                    }
+                    onClick={() => handleValidationClick()}
+                    style={{ border: "none" }}
+                  >
+                    Valider
+                  </button>
+
                 </div>
                 <br />
                 <div className="d-flex align-items-start">

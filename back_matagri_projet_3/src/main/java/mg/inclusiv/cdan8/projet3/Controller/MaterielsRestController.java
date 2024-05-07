@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import mg.inclusiv.cdan8.projet3.Entities.Materiels;
 import mg.inclusiv.cdan8.projet3.Entities.Users;
-import mg.inclusiv.cdan8.projet3.Repositories.MaterielsRepository;
 import mg.inclusiv.cdan8.projet3.Servicies.MaterielsService;
 
 @RestController
@@ -30,8 +29,6 @@ public class MaterielsRestController {
     @Autowired
     private MaterielsService materielsService;
 
-    @Autowired
-    private MaterielsRepository materielsRepository;
 
     @GetMapping("/listMateriel")
     public List<Materiels> listMat() {
@@ -74,6 +71,11 @@ public class MaterielsRestController {
     public ResponseEntity<Materiels> ajouterMateriel(@RequestBody Materiels materiel) {
         Materiels nouveauMateriel = materielsService.addMateriel(materiel);
         return new ResponseEntity<>(nouveauMateriel, HttpStatus.CREATED);
+    }
+    @GetMapping("filter")
+    public List<Materiels> getAllmat() {
+
+        return materielsService.getAllMat();
     }
 
     @PostMapping("/modifier")
