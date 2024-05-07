@@ -45,8 +45,6 @@ import DashboardFournisseur from "./pages/Dashboard/Fournisseur/dashboardfour";
 // import Paiement from "./components/Payement/Paiement";
 import DevisComponents from "./pages/DevisComponent";
 
-
-
 function App() {
   return (
     <BrowserRouter>
@@ -101,14 +99,9 @@ function App() {
         <Route path="/carouselImage" element=<homePage /> />
         <Route path="/dashboard_fournisseur" element=<DashboardFournisseur /> />
         <Route path="/terme" element=<Terme /> />
-<<<<<<< HEAD
-        <Route path="/Devis" element=<Devis /> />
-=======
 
         {/* <Route path="/Devis" element=<Devis /> /> */}
         <Route path="/DevisComponent" element=<DevisComponents /> />
-
->>>>>>> origin/integer6
       </Routes>
       {/* <Route path="/Devis" element=<Devis /> /> */}
       {/* <Route path="/Panier" element=<Panier /> />
