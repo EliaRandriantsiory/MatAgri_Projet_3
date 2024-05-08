@@ -11,7 +11,7 @@ function ContactPage() {
               </div>
             </div>
             <div className="col-sm-6">
-              <nav aria-label="breadcrumb" class="theme-breadcrumb">
+              <nav hidden aria-label="breadcrumb" class="theme-breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
                     <a href="index.html">Accueil</a>

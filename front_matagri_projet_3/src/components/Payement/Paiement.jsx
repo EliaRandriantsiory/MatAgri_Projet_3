@@ -5,6 +5,7 @@ import { Payement } from "../../pages/Payment";
 import Payment from "../../pages/Payment";
 
 import { Link } from "react-router-dom";
+
 function Paiement() {
   const [prixapayer, SetPrixapayer] = useState();
   const [nomproduit, SetNomproduit] = useState();

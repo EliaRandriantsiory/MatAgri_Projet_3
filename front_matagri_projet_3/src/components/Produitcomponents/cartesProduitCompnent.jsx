@@ -36,6 +36,9 @@ function ProductCard({ materialItem, addPanier, updateAddPanier }) {
         ]);
       }
     } catch (error) {}
+
+
+    console.log(panierMAt)
   }, [panierMAt]);
 
   useEffect(() => {

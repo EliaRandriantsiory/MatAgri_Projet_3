@@ -40,11 +40,11 @@ function DashBordAgriculteur() {
               <div className="dashboard-sidebar">
                 <div className="profile-top">
                   <div className="profile-image">
-                    {/* <i className="fa-solid fa-circle-user img-fluid" style={{ color: '#FFB000', height: '250px', marginLeft: '20px' }}></i> */}
+                    <i className="fa-solid fa-circle-user img-fluid" style={{ color: '#FFB000', height: '250px', marginLeft: '20px' }}></i>
                   </div>
                   <div className="profile-detail">
-                    {/* <h5> {currentUser.lastname}</h5> */}
-                    {/* <h6>{currentUser.email ? currentUser.email : 'Email non disponible'}</h6> */}
+                    <h5> {currentUser.lastname}</h5>
+                    <h6>{currentUser.email ? currentUser.email : 'Email non disponible'}</h6>
                   </div>
                 </div>
                 <div className="faq-tab">

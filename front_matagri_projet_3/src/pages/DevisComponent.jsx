@@ -18,7 +18,7 @@ function DevisComponents() {
         const height = (canvas.height * width) / canvas.width;
 
         pdf.addImage(imgData, "PNG", -200, -75, 1000, 800);
-        pdf.save("demo.pdf");
+        pdf.save("devis.pdf");
         buttons.forEach((button) => {
           button.style.display = "block";
         });
@@ -97,33 +97,7 @@ function DevisComponents() {
                         <td>07-04-2024</td>
                         <td>120 000 Ar</td>
                       </tr>
-                      <tr>
-                        <td>kubota</td>
-                        <td>kubota 220cv</td>
-                        <td>1</td>
-                        <td>120 000 Ar</td>
-                        <td>12-03-2024</td>
-                        <td>07-04-2024</td>
-                        <td>120 000 Ar</td>
-                      </tr>
-                      <tr>
-                        <td>kubota</td>
-                        <td>kubota 220cv</td>
-                        <td>1</td>
-                        <td>120 000 Ar</td>
-                        <td>12-03-2024</td>
-                        <td>07-04-2024</td>
-                        <td>120 000 Ar</td>
-                      </tr>
-                      <tr>
-                        <td>kubota</td>
-                        <td>kubota 220cv</td>
-                        <td>1</td>
-                        <td>120 000 Ar</td>
-                        <td>12-03-2024</td>
-                        <td>07-04-2024</td>
-                        <td>120 000 Ar</td>
-                      </tr>
+                      
                     </tbody>
                   </table>
                 </div>

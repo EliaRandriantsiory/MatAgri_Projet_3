@@ -294,7 +294,7 @@ function AboutPage() {
             </div>
           </div>
           <br/>
-            <div className="row">
+            <div hidden className="row">
                 <div className="col-sm-12">
                     <h2>Notre Equipe</h2>
                     <br/>

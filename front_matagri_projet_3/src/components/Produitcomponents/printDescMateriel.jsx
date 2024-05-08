@@ -7,8 +7,8 @@ import PrintPrixUser from "../textComponent/printPrixUser";
 
 import SaisieAutomatiqueVille from "../textComponent/testsaisiautomatique";
 
-import axios from 'axios';
-import LocalisationFournisseur from '../textComponent/localisationFournisseur';
+import axios from "axios";
+import LocalisationFournisseur from "../textComponent/localisationFournisseur";
 
 function AjoutPanier({ materialItem, setPanierMat }) {
   const [quantityPanier, setQuantity] = useState(1);
@@ -17,13 +17,12 @@ function AjoutPanier({ materialItem, setPanierMat }) {
   // const [panierMAt, setPanierMat] = useState({});
   // const [startDateCrenau, setStartDateCrenau] = useState();
   // const [endDateCrenau, setEndDateCrenau] = useState();
-  
-// =======
-// import axios from "axios";
 
-// function AjoutPanier({ materialItem, setPanierMat }) {
-//   const [quantityPanier, setQuantity] = useState(1);
+  // =======
+  // import axios from "axios";
 
+  // function AjoutPanier({ materialItem, setPanierMat }) {
+  //   const [quantityPanier, setQuantity] = useState(1);
 
   const [distance, setDistance] = useState("0");
   const [listPanierMat, setListPanierMat] = useState([]);
@@ -82,22 +81,20 @@ function AjoutPanier({ materialItem, setPanierMat }) {
         id_user: materialItem.id_user,
         prixMAt: materialItem.prixMAt,
       },
-      lieuExploitation:lieuExploitation,
-      distance:distance,
-      
+      lieuExploitation: lieuExploitation,
+      distance: distance,
       users: {},
       quantity: quantityPanier,
       startDate: startDateCrenau,
       endDate: endDateCrenau,
     });
-    console.log("bonjour");
-    handleCloseDescMat();
+    // console.log("bonjour");
+    // handleCloseDescMat();
   };
 
-  const calculeDistance = () =>{
-
-    return 
-  }
+  const calculeDistance = () => {
+    return;
+  };
 
   const handleValidationClick = async () => {
     try {
@@ -122,9 +119,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
     }
   }, [lieuExploitation]);
 
-
   return (
-
     <div>
       <a onClick={handleOpenCalendar}>
         <i className="ti-search" aria-hidden="true" />
@@ -134,9 +129,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
         onHide={handleCloseDescMat}
         backdrop="static"
         keyboard={false}
-
         className="modal-xl"
-
       >
         <Modal.Body>
           <div
@@ -168,58 +161,54 @@ function AjoutPanier({ materialItem, setPanierMat }) {
               </h2>
               <h2 className="product-title">Description</h2>
 
-                <p>{materialItem.descriptionMat}</p>
-                <br/>
-                <h2 className="product-title">Description technique matériel</h2>
-                 <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
-                <br/>
-                <h2 className="product-title">Taux journalière : <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} /></h2>
-                <LocalisationFournisseur materielItem={materialItem} />
-                <br/>
-
-
-                <div className="d-flex align-items-start">
-                  <label className="d-block mb-2">
-                    Entrer votre lieu d'exploitation :
-                  </label>
-                  <div className="d-flex">
-                    {/* <SaisieAutomatiqueVille /> */}
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Lieu d'exploitation"
-                      style={{ opacity: 0.7, fontSize: "0.9rem" }}
-                      value={lieuExploitation}
-                      onChange={handleLieuExploitationChange}
-                    />
-                    <button
-                      className="btn btn-solid"
-                      disabled={
-                        lieuExploitation === "" || lieuExploitation.length === 0
-                          ? true
-                          : false
-                      }
-                      onClick={() => handleValidationClick()}
-                      style={{ border: "none" }}
-                    >
-                      Calculer
-                    </button>
-                  </div>
-                </div>
-
-                <br/>
-
-
-              </div>
-               <label className="d-block mb-2">
-                Votre distance est de :{distance ? distance : ""}
-
-              </label>
+              <p>{materialItem.descriptionMat}</p>
               <br />
-              </div>
-              
-            
+              <h2 className="product-title">Description technique matériel</h2>
+              <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
+              <br />
+              <h2 className="product-title">
+                Taux journalière :{" "}
+                <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} />
+              </h2>
+              <LocalisationFournisseur materielItem={materialItem} />
+              <br />
 
+                
+              <div className="d-flex align-items-start">
+                <label className="d-block mb-2">
+                  Entrer votre lieu d'exploitation :
+                </label>
+                <div className="d-flex">
+                  {/* <SaisieAutomatiqueVille /> */}
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Lieu d'exploitation"
+                    style={{ opacity: 0.7, fontSize: "0.9rem" }}
+                    value={lieuExploitation}
+                    onChange={handleLieuExploitationChange}
+                  />
+                  <button
+                    className="btn btn-solid"
+                    disabled={
+                      lieuExploitation === "" || lieuExploitation.length === 0
+                        ? true
+                        : false
+                    }
+                    onClick={() => handleValidationClick()}
+                    style={{ border: "none" }}
+                  >
+                    Calculer
+                  </button>
+                </div>
+              </div>
+              <br />
+            </div>
+            <label className="d-block mb-2">
+              Votre distance est de :{distance ? distance : ""}
+            </label>
+            <br />
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
