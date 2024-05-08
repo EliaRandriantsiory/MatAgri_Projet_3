@@ -32,7 +32,7 @@ function Paiement() {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
 
     CalculeSommePrixTotal();
-    console.log(sommePrixTotal);
+    // console.log(sommePrixTotal);
   }, []);
 
   function calculeDifferenceDate(startDateString, endDateString) {
@@ -66,6 +66,7 @@ function Paiement() {
   }
 
   const CalculeSommePrixTotal = () => {
+
     let prxTotal = 0;
     JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
       console.log(commande);
@@ -73,11 +74,15 @@ function Paiement() {
       // console.log(new Date())
       // console.log(calculeDifferenceDate("22/04/2024","25/05/2024"))
       // console.log(commande.materiel.prixMAt);
-      let prixlocationMat =
+      try {
+        let prixlocationMat =
         commande.quantity *
         calculeDifferenceDate(commande.startDate, commande.endDate) *
         commande.materiel.prixMAt;
       prxTotal += prixlocationMat;
+      } catch (error) {
+        console.log(error)
+      }
     });
     setsommePrixTotal(prxTotal + prixLivraison);
   };
@@ -120,6 +125,10 @@ function Paiement() {
                         </thead>
                         <tbody>
                           {listMateriel.map((matHomePage, index) => (
+                            
+
+
+
                             <tr>
                               <td>{matHomePage.materiel.nomMat} </td>
                               <td>{matHomePage.quantity}</td>
@@ -141,6 +150,7 @@ function Paiement() {
                                 />{" "}
                               </td>
                             </tr>
+                            
                           ))}
                         </tbody>
                       </table>
