@@ -18,8 +18,8 @@ function ReserverPanier({ setStartDateCrenau, setEndDateCrenau }) {
   useEffect(() => {
     // console.log(setTestStartDate)
     // console.log(selectedDates[0]);
-    // setStartDateCrenau(selectedDates[0].startDate.toLocaleDateString());
-    // setEndDateCrenau(selectedDates[0].endDate.toLocaleDateString());
+    setStartDateCrenau(selectedDates[0].startDate.toLocaleDateString());
+    setEndDateCrenau(selectedDates[0].endDate.toLocaleDateString());
     // setEndDate(selectedDates[0].endDate.toLocaleDateString())
     // setStartDate(selectedDates[0].startDate.toLocaleDateString())
   }, [selectedDates]);

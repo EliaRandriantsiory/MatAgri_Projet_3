@@ -101,7 +101,7 @@ function AddProduit() {
       console.log(imagesFile);
       handleUpload(imagesFile);
     });
-    console.log(imagesList);
+    // console.log(imagesList);
     axios
       .post("http://localhost:8082/api/materiels/ajouter", {
         categorieMat: categorie,
@@ -121,6 +121,8 @@ function AddProduit() {
       });
     setImagesList([]);
     setImages([]);
+    handleCloseModal()
+    
   };
 
   const handlePrix = (event) => {
@@ -298,6 +300,7 @@ function AddProduit() {
               id="ajout"
               onClick={handleOnclickSauvegardeAjout}
               style={{ marginLeft: "20px" }}
+
             >
               Ajouter
             </Button>

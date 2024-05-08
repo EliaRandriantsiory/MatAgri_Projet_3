@@ -172,7 +172,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
               </h2>
               <LocalisationFournisseur materielItem={materialItem} />
               <br />
-
+              <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau} />
                 
               <div className="d-flex align-items-start">
                 <label className="d-block mb-2">
