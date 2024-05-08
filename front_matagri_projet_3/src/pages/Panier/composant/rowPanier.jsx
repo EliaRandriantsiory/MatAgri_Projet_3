@@ -17,17 +17,23 @@ function RowPanierComponent({
 }) {
   const [materielItem, setMaterielItem] = useState({});
   const [qt, setQt] = useState(1);
-  const [prixMat, setPrixMat] = useState()
+  const [prixMat, setPrixMat] = useState(1)
   const [matPanier, setMatPanier] = useState({});
   const [nomMat, setNomMat] = useState();
+  const [stockMatForm, setStockMatForm] = useState();
   const [prixTotal, setPrixTotal] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
+  const [lieuExploitation,setLieuExploitation] = useState()
+  const [distance, setDistance] = useState(1)
+
+
   const [startDateCrenau, setStartDateCrenau] = useState("")
   const [endDateCrenau, setEndDateCrenau] = useState("")
 
   // const [sommePrix,setsommePrix] = useState(0)
   useEffect(() => {
     if (materielItem_ !== null) {
+      setStockMatForm(materielItem_.stockMat)
       setQt(materielItem_.quantity);
       setMatPanier(materielItem_.materiel);
       setNomMat(materielItem_.nomMat);
@@ -35,8 +41,10 @@ function RowPanierComponent({
       setPrixMat(materielItem_.materiel.prixMAt)
       setStartDateCrenau(materielItem_.startDate)
       setEndDateCrenau(materielItem_.endDate)
+      setLieuExploitation(materielItem_.lieuExploitation)
+      setDistance(materielItem_.setDistance)
 
-      setPrixTotal(prixMat * qt);
+      
       // setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
       // setsommePrix(sommePrix+prixTotal)
       // console.log(sommePrix+prixTotal)
@@ -47,8 +55,8 @@ function RowPanierComponent({
   useEffect(() => {
 
     // setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
-    setPrixTotal(prixMat * qt);
-  },[endDateCrenau,startDateCrenau])
+    setPrixTotal(prixMat * qt * distance);
+  },[prixMat])
 
   useEffect(() => {
     // console.log(qt)
@@ -119,12 +127,9 @@ function RowPanierComponent({
   if (materielItem_ !== null) {
     return (
       <tr onClick={CheckCommande}>
-        
         <td>
-      
           <div
-            style={{
-              
+            style={{  
               width:"20vw",
               flexDirection: "row",
               alignItems:"start"
@@ -143,9 +148,7 @@ function RowPanierComponent({
             <PrintDetailTechMat
                   desctechMat={materielItem_.materiel.techniqueMat} style={{marginLeft:'0'}}
                 />
-            
           </div>
-            
           </div>
         </td>
         <td>
@@ -158,6 +161,7 @@ function RowPanierComponent({
                 defaultValue={materielItem_.quantity}
                 onChange={handleQuantityChange}
                 min={1}
+                max={stockMatForm}
               />
             </div>
           </div>
@@ -189,7 +193,7 @@ function RowPanierComponent({
           </div>
         </td>
         <td>
-          Manakara
+          {lieuExploitation}
         </td>
         <td>
           {/* {prixTotal} */}

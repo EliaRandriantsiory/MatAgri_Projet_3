@@ -36,24 +36,50 @@ function Panier() {
     // console.log(differenceInDays)
     return differenceInDays;
   }
-  const CalculeSommePrixTotal = () => {
-    let prxTotal = 0;
-    JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
-      console.log(commande);
-      console.log(commande.quantity);
-      // console.log(new Date())
-      console.log(
-        calculeDifferenceDate(commande.startDate, commande.endDate) + 1
-      );
-      // console.log(commande.materiel.prixMAt);
-      console.log(commande.quantity + commande.materiel.prixMAt);
-      let prixlocationMat =
-        commande.quantity *
-        (calculeDifferenceDate(commande.startDate, commande.endDate) + 1) *
-        commande.materiel.prixMAt;
-      prxTotal += prixlocationMat;
 
-      setsommePrixTotal(sommePrixTotal + prixlocationMat);
+
+  const CalculeSommePrixTotal = () => {
+    try {
+      let prxTotal = 0;
+      JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
+        console.log(commande);
+        console.log(commande.quantity);
+        // console.log(new Date())
+        console.log(calculeDifferenceDate(commande.startDate,commande.endDate)+1)
+        // console.log(commande.materiel.prixMAt);
+        console.log(commande.quantity+commande.materiel.prixMAt)
+        let prixlocationMat =
+          commande.quantity *
+          (calculeDifferenceDate(commande.startDate, commande.endDate)+1) *
+          commande.materiel.prixMAt;
+        prxTotal += prixlocationMat;
+  
+        setsommePrixTotal(sommePrixTotal+prixlocationMat)  
+      });
+    } catch (error) {
+      console.log(error)
+    }
+    
+// =======
+//   const CalculeSommePrixTotal = () => {
+//     let prxTotal = 0;
+//     JSON.parse(localStorage.getItem("listpanier")).forEach((commande) => {
+//       console.log(commande);
+//       console.log(commande.quantity);
+//       // console.log(new Date())
+//       console.log(
+//         calculeDifferenceDate(commande.startDate, commande.endDate) + 1
+//       );
+//       // console.log(commande.materiel.prixMAt);
+//       console.log(commande.quantity + commande.materiel.prixMAt);
+//       let prixlocationMat =
+//         commande.quantity *
+//         (calculeDifferenceDate(commande.startDate, commande.endDate) + 1) *
+//         commande.materiel.prixMAt;
+//       prxTotal += prixlocationMat;
+
+//       setsommePrixTotal(sommePrixTotal + prixlocationMat);
+
       // console.log("prix Total: "+sommePrixTotal+prixlocationMat)
 
       // const differenceDate = calculeDifferenceDate(
@@ -70,7 +96,7 @@ function Panier() {
       // console.log(commande.startDate)
       // console.log(commande.endDate)
       // console.log(differenceDate)
-    });
+    
     // setsommePrixTotal(prxTotal + prixLivraison);
   };
 
@@ -113,9 +139,15 @@ function Panier() {
   useEffect(() => {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
 
-    console.log(JSON.parse(localStorage.getItem("listpanier")));
+    console.log(JSON.parse(localStorage.getItem("listpanier")))
+    console.log("bonjour")
+    CalculeSommePrixTotal();
+// =======
 
-    // CalculeSommePrixTotal();
+//     console.log(JSON.parse(localStorage.getItem("listpanier")));
+
+//     // CalculeSommePrixTotal();
+
   }, []);
 
   return (
@@ -161,11 +193,7 @@ function Panier() {
                           </tr>
                         </thead>
                         <tbody>
-                          {/* {listMateriel.map((matHomePage) => (
-                            <>
-                            {matHomePage.prixMAt}
-                          <RowPanierComponent materielItem_={matHomePage} /> </>
-                          ))} */}
+                          
                           {listMateriel.map((matHomePage, index) => (
                             <>
                               <RowPanierComponent
@@ -178,12 +206,6 @@ function Panier() {
                           ))}
                         </tbody>
                       </table>
-                      {/* <div className="table-responsive-md">
-                        <table className="table cart-table "></table>
-                        <div className="table-responsive-md">
-                          <table className="table cart-table "></table>
-                        </div>
-                      </div> */}
                     </div>
 
                     <div
