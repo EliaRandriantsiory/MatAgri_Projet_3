@@ -33,7 +33,7 @@ function Paiement() {
     setListMateriel(JSON.parse(localStorage.getItem("listpanier")));
 
     CalculeSommePrixTotal();
-    // console.log(sommePrixTotal);
+    console.log(sommePrixTotal);
   }, []);
 
   function calculeDifferenceDate(startDateString, endDateString) {

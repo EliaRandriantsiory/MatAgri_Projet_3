@@ -34,6 +34,7 @@ public class CalculDistanceGeo {
                     .await();
 
             if (matrix != null && matrix.rows.length > 0 && matrix.rows[0].elements.length > 0) {
+                // System.out.println(matrix.rows[0].elements[0].distance.toString());
                 return matrix.rows[0].elements[0].distance.toString();
             } else {
                 return "Distance invalide";

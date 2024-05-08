@@ -87,9 +87,10 @@ function AjoutPanier({ materialItem, setPanierMat }) {
       quantity: quantityPanier,
       startDate: startDateCrenau,
       endDate: endDateCrenau,
+      // sommeTotal:
     });
     // console.log("bonjour");
-    // handleCloseDescMat();
+    handleCloseDescMat();
   };
 
   const calculeDistance = () => {
@@ -106,6 +107,7 @@ function AjoutPanier({ materialItem, setPanierMat }) {
       );
       if (response.status === 200) {
         setDistance(response.data);
+        // console.log(response.data)
         return response.data;
       }
     } catch (error) {
@@ -167,12 +169,45 @@ function AjoutPanier({ materialItem, setPanierMat }) {
               <PrintDetailTechMat desctechMat={materialItem.techniqueMat} />
               <br />
               <h2 className="product-title">
-                Taux journalière :{" "}
+                Taux journalier :{" "}
                 <PrintPrixUser TextPrix={materialItem.prixMAt} monnai={"MLG"} />
               </h2>
               <LocalisationFournisseur materielItem={materialItem} />
               <br />
               <ReserverPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau} />
+              <div className="product-description ">
+                  <h6 className="product-title">Quantité</h6>
+                  <div className="qty-box">
+                    <div className="input-group">
+                      <span className="input-group-prepend">
+                        <button
+                          type="button"
+                          className="btn quantity-left-minus"
+                          onClick={decrementQuantity}
+                        >
+                          <i className="ti-angle-left" />
+                        </button>{" "}
+                      </span>
+                      <input
+                        type="text"
+                        name="quantity"
+                        className="form-control input-number"
+                        value={quantityPanier}
+                        defaultValue={1}
+                        readOnly
+                      />{" "}
+                      <span className="input-group-prepend">
+                        <button
+                          type="button"
+                          className="btn quantity-right-plus"
+                          onClick={incrementQuantity}
+                        >
+                          <i className="ti-angle-right" />
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
                 
               <div className="d-flex align-items-start">
                 <label className="d-block mb-2">

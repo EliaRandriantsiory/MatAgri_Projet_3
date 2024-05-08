@@ -24,7 +24,7 @@ function RowPanierComponent({
   const [prixTotal, setPrixTotal] = useState(0);
   const [nombreJourLocation, setNombreJourLocation] = useState(1);
   const [lieuExploitation,setLieuExploitation] = useState()
-  const [distance, setDistance] = useState(1)
+  const [distance, setDistance] = useState()
 
 
   const [startDateCrenau, setStartDateCrenau] = useState("")
@@ -42,26 +42,28 @@ function RowPanierComponent({
       setStartDateCrenau(materielItem_.startDate)
       setEndDateCrenau(materielItem_.endDate)
       setLieuExploitation(materielItem_.lieuExploitation)
-      setDistance(materielItem_.setDistance)
-
+      setDistance(materielItem_.distance)
+      setPrixTotal(prixMat * qt);
       
       // setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
       // setsommePrix(sommePrix+prixTotal)
-      // console.log(sommePrix+prixTotal)
+      console.log(materielItem_.lieuExploitation+materielItem_.distance)
       console.log(materielItem_)
+      console.log(prixMat * qt)
+      
+      
     }
   }, []);
 
   useEffect(() => {
 
     // setPrixTotal(prixMat * qt*(calculeDifferenceDate(startDateCrenau,endDateCrenau)+1));
-    setPrixTotal(prixMat * qt * distance);
-  },[prixMat])
+    setPrixTotal(prixMat * qt );
+    // console.log(prixMat * qt)
+  },[])
 
   useEffect(() => {
-    // console.log(qt)
-    // materielItem_.quantity=qt
-    // console.log(materielItem_)
+    
     updatePanierMatData(index, materielItem_,qt , prixTotal,startDateCrenau, endDateCrenau);
   }, [prixTotal]);
 
@@ -176,8 +178,10 @@ function RowPanierComponent({
         </td>
         <td>
           <div>
+          De :{startDateCrenau} - {endDateCrenau}<br/>
+          {/* {calculeDifferenceDate(startDateCrenau,endDateCrenau)} */}
 
-          <ReserverPanierRowPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau} />
+          {/* <ReserverPanierRowPanier setStartDateCrenau={setStartDateCrenau} setEndDateCrenau={setEndDateCrenau} /> */}
 
           {/* <ReserverPanier/> */}
 
@@ -193,7 +197,11 @@ function RowPanierComponent({
           </div>
         </td>
         <td>
-          {lieuExploitation}
+        
+        {materielItem_.lieuExploitation}
+          <br/>
+          {materielItem_.distance}
+
         </td>
         <td>
           {/* {prixTotal} */}
